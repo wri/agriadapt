@@ -19,6 +19,9 @@ a {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
+  height: 100%;
+  width: 100%;
+  position: absolute;
 }
 
 #map {
@@ -26,10 +29,16 @@ a {
   grid-row: 1 / 4;
 }
 
-.metadata {
+.sidebar {
   grid-column: 3 / 4;
   grid-row: 1 / 4;
   overflow: auto;
-  color: #000;
-  font-size: 1em;
+}
+
+.nav {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
 }
