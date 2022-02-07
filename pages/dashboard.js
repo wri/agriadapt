@@ -40,7 +40,7 @@ export default function Dashboard(props) {
         map.current.on('mouseleave', 'wdpa-tile-cache', () => {
             map.current.getCanvas().style.cursor = '';
         });
-    }, []);
+    }, [datasets, popupContentForWDPA]);
 
     const addRasterTileLayerToMap = (mapVar, title, url) => {
         // need to first add a source
@@ -102,7 +102,7 @@ export default function Dashboard(props) {
         return renderToString(
             <div>
                 <span>name:{' '}
-                    <a target='_blank' href={`https://protectedplanet.net/${wdpaId}`}>{f.properties['name']}</a>
+                    <a target='_blank' rel="noreferrer" href={`https://protectedplanet.net/${wdpaId}`}>{f.properties['name']}</a>
                 </span>
                 <br />
                 <span>
