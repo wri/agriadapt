@@ -11,6 +11,7 @@ export default function Dashboard(props) {
     mapboxgl.accessToken = MAPBOXGL_ACCESS_TOKEN;
     useEffect(() => {
         if (map.current) return;
+
         map.current = new mapboxgl.Map({
             container: 'map', // container ID
             style: 'mapbox://styles/mapbox/streets-v11', // style URL
@@ -24,6 +25,34 @@ export default function Dashboard(props) {
             const { source } = datasets[0];
             addVectorTileLayerToMap(map.current, 'wdpa-tile-cache', source, 'wdpa_protected_areas');
         });
+
+        const popupContentForWDPA =  async (f) => {
+            const landAreaHectare = (f.properties['rep_area'] - f.properties['rep_m_area']) * 100;
+            const wdpaId = f.properties['wdpaid'];
+            const tclResponse = await callApiQueryWDPATreeCoverLoss(wdpaId, 2019, 30);
+    
+            return renderToString(
+                <div>
+                    <span>name:{' '}
+                        <a target='_blank' rel="noreferrer" href={`https://protectedplanet.net/${wdpaId}`}>{f.properties['name']}</a>
+                    </span>
+                    <br />
+                    <span>
+                        wdpaid: {wdpaId}
+                    </span>
+                    <br />
+                    <span>
+                        land area (ha): {landAreaHectare.toFixed(2)}
+                    </span>
+                    <br />
+                    {tclResponse.keys &&
+                        <span>
+                            2019 TCL area (ha): {tclResponse['data'][0]['tcl_ha'].toFixed(2)}
+                        </span>
+                    }
+                </div>
+            );
+        }
 
         map.current.on('click', 'wdpa-tile-cache', async (e) => {
             const features = map.current.queryRenderedFeatures(e.point, {layers: ['wdpa-tile-cache']});
@@ -40,7 +69,7 @@ export default function Dashboard(props) {
         map.current.on('mouseleave', 'wdpa-tile-cache', () => {
             map.current.getCanvas().style.cursor = '';
         });
-    }, [datasets, popupContentForWDPA]);
+    }, [datasets]);
 
     const addRasterTileLayerToMap = (mapVar, title, url) => {
         // need to first add a source
@@ -94,34 +123,6 @@ export default function Dashboard(props) {
             map.current.setLayoutProperty(layers[i], 'visibility', 'visible');
     }
 
-    const popupContentForWDPA =  async (f) => {
-        const landAreaHectare = (f.properties['rep_area'] - f.properties['rep_m_area']) * 100;
-        const wdpaId = f.properties['wdpaid'];
-        const tclResponse = await callApiQueryWDPATreeCoverLoss(wdpaId, 2019, 30);
-
-        return renderToString(
-            <div>
-                <span>name:{' '}
-                    <a target='_blank' rel="noreferrer" href={`https://protectedplanet.net/${wdpaId}`}>{f.properties['name']}</a>
-                </span>
-                <br />
-                <span>
-                    wdpaid: {wdpaId}
-                </span>
-                <br />
-                <span>
-                    land area (ha): {landAreaHectare.toFixed(2)}
-                </span>
-                <br />
-                {tclResponse.keys &&
-                    <span>
-                        2019 TCL area (ha): {tclResponse['data'][0]['tcl_ha'].toFixed(2)}
-                    </span>
-                }
-            </div>
-        );
-    }
-
     const callApiQueryWDPATreeCoverLoss = async (wdpaId, year, threshold) => {
         const queryDatasetId = 'a4d92f66-83f4-40f9-9d70-17297ef90e63'; // this ID (from tutorial) appears to no longer exist
         const sqlQuery = 'https://api.resourcewatch.org/v1/query/' +
@@ -162,7 +163,7 @@ export default function Dashboard(props) {
     );
 }
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
     const uuids = ['b584954c-0d8d-40c6-859c-f3fdf3c2c5df', 'a8360d91-06af-4f2d-bd61-4e50c8687ad8'];
     const config = {
         MAPBOXGL_ACCESS_TOKEN: process.env.MAPBOXGL_ACCESS_TOKEN,
