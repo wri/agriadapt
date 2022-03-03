@@ -45,12 +45,12 @@ class LayoutApp extends Component {
     } = this.props;
 
     router.events.on('routeChangeStart', () => {
-      updateIsLoading(true);
+      // updateIsLoading(true);
       if (Progress && Progress.Component.instance) Progress.show();
     });
 
     router.events.on('routeChangeComplete', () => {
-      updateIsLoading(false);
+      // updateIsLoading(false);
       if (Progress && Progress.Component.instance) Progress.hideAll();
     });
 
