@@ -6,6 +6,7 @@ const LayoutHome = () => {
         <Layout
             title="Home"
             className="l-home"
+            updateIsLoading={() => {}}
         >
             <main>
             </main>

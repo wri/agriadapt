@@ -1,67 +1,12 @@
-import {
-  useMemo,
-} from 'react';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-
 // components
-import Icon from 'components/ui/icon';
 import FooterLinks from './footer-links';
 
 export default function Footer() {
-  const {
-    asPath,
-  } = useRouter();
-
-  const isOceanWatch = useMemo(() => asPath.includes('ocean-watch'), [asPath]);
 
   return (
     <footer className="l-footer">
       <div className="footer-main">
-        <div className="l-container">
-          <div className="row">
-            <div className="column small-12">
-              <img
-                className="footer-logo"
-                height={21}
-                width={129}
-                src="/static/images/logo-embed.png"
-                alt="Resource Watch"
-              />
-            </div>
-          </div>
-        </div>
         <FooterLinks />
-      </div>
-
-      <div className="footer-social">
-        <div className="l-container">
-          <div className="row">
-            <div className="column small-12">
-              <ul>
-                <li>
-                  <Link
-                    href={`/about/newsletter${isOceanWatch ? '?origin=ocean-watch' : ''}`}
-                  >
-                    <a className="c-button -primary join-us-button">
-                      Subscribe to our newsletter
-                    </a>
-                  </Link>
-                </li>
-                <li>
-                  <a
-                    className="c-button -secondary"
-                    href="https://twitter.com/resource_watch"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Icon name="icon-twitter" />
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
       </div>
 
       <div className="footer-lower">
