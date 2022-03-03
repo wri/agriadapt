@@ -21,7 +21,7 @@ export const APP_HEADER_ITEMS = [
   {
     id: 'climate-risk-explorer',
     label: 'Climate Risk Explorer',
-    href: '/climate-risk-explorer',
+    href: '/explorer',
   },
   {
     id: 'about',
