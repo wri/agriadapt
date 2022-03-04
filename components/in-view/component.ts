@@ -4,7 +4,7 @@ const InView = (props) => {
   const { children, ...inViewProps } = props;
   const [ref, inView, entry] = useInView(inViewProps);
 
-  if ('IntersectionObserver' in window) {
+  if (typeof window !== 'undefined' && 'IntersectionObserver' in window) {
     return props.children({ inView, ref, entry });
   }
 

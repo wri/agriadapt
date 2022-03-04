@@ -3,6 +3,7 @@ import WRISerializer from 'wri-json-api-serializer';
 // utils
 import { WRIAPI } from 'utils/axios';
 import { logger } from 'utils/logs';
+import { APIWidgetSpec } from 'types/widget';
 
 /**
  * Fetch widgets according to params.
@@ -62,7 +63,7 @@ export const fetchWidgets = (params = {}, headers = {}, _meta = false) => {
  * @param {String} id - widget id.
  * @param {Object} params - params sent to the API.
  */
-export const fetchWidget = (id, params = {}) => {
+export const fetchWidget = (id: string, params = {}): Promise<APIWidgetSpec> => {
   if (!id) throw Error('The widget id is mandatory to perform this request (fetchWidget).');
   logger.info(`Fetch widget: ${id}`);
 
