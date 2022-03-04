@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
 
 import { useFetchWidget } from 'hooks/widget';
-import useBelongsToCollection from 'hooks/collection/belongs-to-collection';
-import { useMe } from 'hooks/user';
+// import useBelongsToCollection from 'hooks/collection/belongs-to-collection';
+// import { useMe } from 'hooks/user';
 
 // utils
 import { getParametrizedWidget } from 'utils/widget';

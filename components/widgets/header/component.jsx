@@ -5,7 +5,7 @@ import {
 } from 'vizzuality-components';
 
 // components
-import LoginRequired from 'components/ui/login-required';
+// import LoginRequired from 'components/ui/login-required';
 import Icon from 'components/ui/icon';
 import Title from 'components/ui/Title';
 import CollectionsPanel from 'components/collections-panel';

@@ -7,14 +7,14 @@ import { Tooltip } from 'vizzuality-components';
 
 // Components
 import Icon from 'components/ui/icon';
-import LoginRequired from 'components/ui/login-required';
+// import LoginRequired from 'components/ui/login-required';
 import CollectionsPanel from 'components/collections-panel';
 
 // hooks
-import useBelongsToCollection from 'hooks/collection/belongs-to-collection';
-import {
-  useMe,
-} from 'hooks/user';
+// import useBelongsToCollection from 'hooks/collection/belongs-to-collection';
+// import {
+//   useMe,
+// } from 'hooks/user';
 
 // utils
 import { logEvent } from 'utils/analytics';

@@ -5,7 +5,7 @@ import {
 import PropTypes from 'prop-types';
 
 // hooks
-import useFetchDatasets from 'hooks/dataset/fetch-datasets';
+// import useFetchDatasets from 'hooks/dataset/fetch-datasets';
 
 // components
 import DatasetsSidebar from './component';

@@ -7,15 +7,15 @@ import { fetchLayer } from 'services/layer';
 
 // hooks
 import { useFetchWidget } from 'hooks/widget';
-import useBelongsToCollection from 'hooks/collection/belongs-to-collection';
-import { useGeostore } from 'hooks/geostore';
-import { useMe } from 'hooks/user';
+// import useBelongsToCollection from 'hooks/collection/belongs-to-collection';
+// import { useGeostore } from 'hooks/geostore';
+// import { useMe } from 'hooks/user';
 
 // utils
 import { getAoiLayer, getMaskLayer, getLayerGroups } from 'utils/layers';
 
 // components
-import ErrorFallback from 'components/error-fallback';
+// import ErrorFallback from 'components/error-fallback';
 import MapTypeWidget from './component';
 
 import type { APILayerSpec } from 'types/layer';

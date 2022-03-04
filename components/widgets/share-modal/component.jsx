@@ -1,8 +1,8 @@
 import { useCallback, useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { saveAs } from 'file-saver';
-import dateFnsFormat from 'date-fns/format';
+// import { saveAs } from 'file-saver';
+// import dateFnsFormat from 'date-fns/format';
 
 // components
 import Modal from 'components/modal/modal-component';
@@ -16,7 +16,7 @@ import { takeWidgetWebshot } from 'services/webshot';
 import { getLinksByWidgetType } from 'utils/embed';
 import { getWidgetType } from 'utils/widget';
 import { logEvent } from 'utils/analytics';
-import { logger } from 'utils/logs';
+// import { logger } from 'utils/logs';
 
 export default function WidgetShareModal({ isVisible, onClose, widget, params }) {
   const [isWebshotLoading, setWebshotLoading] = useState(false);

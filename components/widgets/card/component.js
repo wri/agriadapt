@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 import truncate from 'lodash/truncate';
 import classnames from 'classnames';
-import { toastr } from 'react-redux-toastr';
+// import { toastr } from 'react-redux-toastr';
 import { Tooltip } from 'vizzuality-components';
 
 // services
@@ -11,7 +11,7 @@ import { deleteWidget } from 'services/widget';
 import { fetchLayer } from 'services/layer';
 
 // hooks
-import useBelongsToCollection from 'hooks/collection/belongs-to-collection';
+// import useBelongsToCollection from 'hooks/collection/belongs-to-collection';
 
 // utils
 import { isMapWidget, isEmbedWidget, isTextualWidget } from 'utils/widget';
@@ -27,7 +27,7 @@ import Icon from 'components/ui/icon';
 import Spinner from 'components/ui/Spinner';
 import Map from 'components/map';
 import LayerManager from 'components/map/layer-manager';
-import LoginRequired from 'components/ui/login-required';
+// import LoginRequired from 'components/ui/login-required';
 import CollectionsPanel from 'components/collections-panel';
 import WidgetChart from 'components/charts/widget-chart';
 import MapThumbnail from 'components/map/thumbnail';

@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { toastr } from 'react-redux-toastr';
+// import { toastr } from 'react-redux-toastr';
 
 // components
 import Icon from 'components/ui/icon';
