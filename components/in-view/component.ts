@@ -1,6 +1,6 @@
 import { useInView } from 'react-intersection-observer';
 
-const InView = (props) => {
+const InView = (props: any) => {
   const { children, ...inViewProps } = props;
   const [ref, inView, entry] = useInView(inViewProps);
 

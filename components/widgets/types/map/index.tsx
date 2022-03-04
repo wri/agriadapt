@@ -21,7 +21,7 @@ import MapTypeWidget from './component';
 import type { APILayerSpec } from 'types/layer';
 import type { APIWidgetSpec } from 'types/widget';
 
-const CustomErrorFallback = (_props) => (
+const CustomErrorFallback = (_props: any) => (
   <ErrorFallback {..._props} title="Something went wrong loading the widget" />
 );
 
@@ -31,7 +31,7 @@ export interface MapTypeWidgetContainerProps {
   style?: CSSProperties;
   isEmbed?: boolean;
   isWebshot?: boolean;
-  areaOfInterest?: string;
+  areaOfInterest?: string | null;
   onToggleShare: (widget: APIWidgetSpec) => void;
 }
 
