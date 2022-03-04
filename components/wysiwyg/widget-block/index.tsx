@@ -4,21 +4,22 @@ import WidgetBlock from './component';
 
 import type { WYSIWYGItem } from 'types/wysiwyg';
 
-export interface WidgetBlockContainerProps {
-  item: WYSIWYGItem;
-}
+// export interface WidgetBlockContainerProps {
+//   item: WYSIWYGItem;
+// }
 
-const WidgetBlockContainer = ({ item }: WidgetBlockContainerProps): JSX.Element => {
-  const { data: widget } = useFetchWidget(
-    item?.content?.widgetId,
-    { includes: 'metadata' },
-    {
-      enabled: Boolean(item?.content?.widgetId),
-      refetchOnWindowFocus: false,
-    },
-  );
+// const WidgetBlockContainer = ({ item }: WidgetBlockContainerProps): JSX.Element => {
+//   const { data: widget } = useFetchWidget(
+//     item?.content?.widgetId,
+//     { includes: 'metadata' },
+//     {
+//       enabled: Boolean(item?.content?.widgetId),
+//       refetchOnWindowFocus: false,
+//     },
+//   );
 
-  return <WidgetBlock widget={widget} />;
-};
+//   return <WidgetBlock widget={widget} />;
+// };
 
-export default WidgetBlockContainer;
+// export default WidgetBlockContainer;
+export default WidgetBlock;

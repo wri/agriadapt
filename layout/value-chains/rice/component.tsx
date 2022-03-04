@@ -2,14 +2,17 @@ import Layout from "layout/layout/layout-app";
 import { ValueChainPageProps } from "types/value-chain";
 import WidgetBlock from 'components/wysiwyg/widget-block';
 import { useFetchWidget } from "hooks/widget";
+import Icon from "components/ui/icon";
 
 const LayoutRice = ({ cid }: ValueChainPageProps) => {
 
-    const { data: widget } = useFetchWidget('dc8a4c78-60c9-491f-88a3-e31b3626c598');
+    const { data: widget } = useFetchWidget('20096f90-59c5-483c-9bfa-4d998ec4ce15');
     return (
         <Layout>
             Rice: {cid}
-            {/* {widget && <WidgetBlock item={{}}/>} */}
+            <div style={{width: 500, margin: '0 auto'}}>
+                {widget && <WidgetBlock widget={widget} />}
+            </div>
         </Layout>
     )
 }

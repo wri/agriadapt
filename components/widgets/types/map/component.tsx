@@ -28,17 +28,17 @@ import WidgetCaption from '../../caption';
 import type { Basemap, Labels } from 'components/map/types';
 
 // reducers
-// import { mapWidgetInitialState, mapWidgetSlice } from './reducer';
+import { mapWidgetInitialState, mapWidgetSlice } from './reducer';
 
-// const mapWidgetReducer = mapWidgetSlice.reducer;
+const mapWidgetReducer = mapWidgetSlice.reducer;
 
-// const {
-//   setMapLayerGroups,
-//   setMapLayerGroupVisibility,
-//   setMapLayerGroupActive,
-//   setMapLayerGroupsOrder,
-//   setMapLayerGroupOpacity,
-// } = mapWidgetSlice.actions;
+const {
+  setMapLayerGroups,
+  setMapLayerGroupVisibility,
+  setMapLayerGroupActive,
+  setMapLayerGroupsOrder,
+  setMapLayerGroupOpacity,
+} = mapWidgetSlice.actions;
 
 import type { APIWidgetSpec } from 'types/widget';
 import type { LayerGroup, Bounds } from 'components/map/types';
@@ -74,10 +74,10 @@ const MapTypeWidget = ({
   onFitBoundsChange,
 }: MapTypeWidgetProps): JSX.Element => {
   const handleError = useErrorHandler(isError ? new Error('something went wrong') : null);
-  // const [mapWidgetState, dispatch] = useReducer(mapWidgetReducer, {
-  //   ...mapWidgetInitialState,
-  //   layerGroups,
-  // });
+  const [mapWidgetState, dispatch] = useReducer(mapWidgetReducer, {
+    ...mapWidgetInitialState,
+    layerGroups,
+  });
   const [viewport, setViewport] = useState<ViewportProps>({
     ...DEFAULT_VIEWPORT,
     height: 400,
@@ -111,40 +111,40 @@ const MapTypeWidget = ({
     onToggleShare(widget);
   }, [onToggleShare, widget]);
 
-  // const onChangeOpacity = useCallback((l, opacity) => {
-  //   dispatch(
-  //     setMapLayerGroupOpacity({
-  //       dataset: {
-  //         id: l.dataset,
-  //       },
-  //       opacity,
-  //     }),
-  //   );
-  // }, []);
+  const onChangeOpacity = useCallback((l, opacity) => {
+    dispatch(
+      setMapLayerGroupOpacity({
+        dataset: {
+          id: l.dataset,
+        },
+        opacity,
+      }),
+    );
+  }, []);
 
-  // const onChangeVisibility = useCallback((l, visibility) => {
-  //   dispatch(
-  //     setMapLayerGroupVisibility({
-  //       dataset: { id: l.dataset },
-  //       visibility,
-  //     }),
-  //   );
-  // }, []);
+  const onChangeVisibility = useCallback((l, visibility) => {
+    dispatch(
+      setMapLayerGroupVisibility({
+        dataset: { id: l.dataset },
+        visibility,
+      }),
+    );
+  }, []);
 
-  // const onChangeLayer = useCallback((l) => {
-  //   dispatch(
-  //     setMapLayerGroupActive({
-  //       dataset: {
-  //         id: l.dataset,
-  //       },
-  //       active: l.id,
-  //     }),
-  //   );
-  // }, []);
+  const onChangeLayer = useCallback((l) => {
+    dispatch(
+      setMapLayerGroupActive({
+        dataset: {
+          id: l.dataset,
+        },
+        active: l.id,
+      }),
+    );
+  }, []);
 
-  // const onChangeOrder = useCallback((datasetIds) => {
-  //   dispatch(setMapLayerGroupsOrder({ datasetIds }));
-  // }, []);
+  const onChangeOrder = useCallback((datasetIds) => {
+    dispatch(setMapLayerGroupsOrder({ datasetIds }));
+  }, []);
 
   const basemap: Basemap = useMemo(() => {
     if (!widget?.widgetConfig) return 'dark';
@@ -169,21 +169,21 @@ const MapTypeWidget = ({
 
   const caption = useMemo(() => widget?.metadata?.[0]?.info?.caption, [widget]);
 
-  // useEffect(() => {
-  //   dispatch(setMapLayerGroups(layerGroups));
-  // }, [layerGroups]);
+  useEffect(() => {
+    dispatch(setMapLayerGroups(layerGroups));
+  }, [layerGroups]);
 
-  // const layers = useMemo(() => {
-  //   const activeLayers = mapWidgetState.layerGroups.map((_layerGroup) =>
-  //     (_layerGroup.layers || []).find((_layer) => _layer.active),
-  //   );
+  const layers = useMemo(() => {
+    const activeLayers = mapWidgetState.layerGroups.map((_layerGroup) =>
+      (_layerGroup.layers || []).find((_layer) => _layer.active),
+    );
 
-  //   return [
-  //     ...(aoiLayer !== null ? [aoiLayer] : []),
-  //     ...(maskLayer !== null ? [maskLayer] : []),
-  //     ...activeLayers.filter(Boolean),
-  //   ];
-  // }, [mapWidgetState, aoiLayer, maskLayer]);
+    return [
+      ...(aoiLayer !== null ? [aoiLayer] : []),
+      ...(maskLayer !== null ? [maskLayer] : []),
+      ...activeLayers.filter(Boolean),
+    ];
+  }, [mapWidgetState, aoiLayer, maskLayer]);
 
   return (
     <div

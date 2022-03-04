@@ -108,7 +108,7 @@ class LayoutApp extends Component {
 
         {/* <GDPRBanner /> */}
 
-        {/* {!browserSupported()
+        {!browserSupported()
           && (
           <Modal
             open
@@ -119,7 +119,7 @@ class LayoutApp extends Component {
           )}
 
         <Icons />
-        <IconsRW /> */}
+        <IconsRW />
 
         <Header pageHeader={pageHeader} />
 

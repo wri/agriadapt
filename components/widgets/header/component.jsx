@@ -47,7 +47,7 @@ export default function WidgetHeader({
               </button>
             </li>
             <li>
-              <LoginRequired redirect={false}>
+              {/* <LoginRequired redirect={false}> */}
                 <Tooltip
                   overlay={(
                     <CollectionsPanel
@@ -71,7 +71,7 @@ export default function WidgetHeader({
                     />
                   </button>
                 </Tooltip>
-              </LoginRequired>
+              {/* </LoginRequired> */}
             </li>
             <li>
               <button

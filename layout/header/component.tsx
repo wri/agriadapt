@@ -35,7 +35,8 @@ export default function Header({
               <div className="header-logo">
                 <Link href="/">
                   <a>
-                    <Icon name="icon-rw-logo" className="brand-logo" style={undefined} />
+                    {/* <Icon name="icon-rw-logo" className="brand-logo" style={undefined} /> */}
+                    <div style={{ backgroundColor: 'white', borderRadius: 4 }} className="brand-logo"></div>
                     <h1 className="brand-title">Climate Risk Tool</h1>
                   </a>
                 </Link>
