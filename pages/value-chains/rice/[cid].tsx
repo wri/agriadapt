@@ -12,12 +12,17 @@ const RicePage = (props: ValueChainPageProps) => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
     const cid = params?.cid;
-    const widget: APIWidgetSpec = await fetchWidget('20096f90-59c5-483c-9bfa-4d998ec4ce15');
+    const widgetIds = ['20096f90-59c5-483c-9bfa-4d998ec4ce15', 'a009abe8-96da-4665-9457-8b1941ba0e25']
+    const widgets: Array<APIWidgetSpec> = await Promise.allSettled(widgetIds.map((id) => fetchWidget(id)))
+        .then(results => results.map((r) => {
+            if (r.status === 'fulfilled')
+                return r.value
+        }));
 
     return {
         props: {
             cid: cid,
-            widget
+            widgets
         }
     }
 }

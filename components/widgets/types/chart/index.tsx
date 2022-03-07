@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 
 import { useFetchWidget } from 'hooks/widget';
 // import useBelongsToCollection from 'hooks/collection/belongs-to-collection';
@@ -6,7 +6,9 @@ import { useFetchWidget } from 'hooks/widget';
 
 // utils
 import { getParametrizedWidget } from 'utils/widget';
-import { getRWAdapter } from 'utils/widget-editor';
+// import { getRWAdapter } from 'utils/widget-editor';
+import RWAdapter from '@widget-editor/rw-adapter';
+// const { default }: () => void = import('@widget-editor/rw-adapter');
 
 // components
 import Chart from './component';
@@ -32,9 +34,9 @@ const ChartContainer = ({
   isWebshot = false,
   encodeParams = true,
 }: ChartContainerProps): JSX.Element => {
-  const RWAdapter = useSelector((state) => getRWAdapter(state));
-  const { data: user } = useMe();
-  const { isInACollection } = useBelongsToCollection(widgetId, user?.token);
+  // const RWAdapter = useSelector((state) => getRWAdapter(state));
+  // const { data: user } = useMe();
+  // const { isInACollection } = useBelongsToCollection(widgetId, user?.token);
 
   const {
     data: widget,
@@ -62,7 +64,8 @@ const ChartContainer = ({
       isWebshot={isWebshot}
       isFetching={isFetching}
       isError={isError}
-      isInACollection={isInACollection}
+      // isInACollection={isInACollection}
+      isInACollection={false}
       onToggleShare={onToggleShare}
     />
   );
