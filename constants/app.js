@@ -14,6 +14,7 @@ export const FULLSCREEN_PAGES = [
   '/data/explore',
   '/data/pulse',
   '/sign-in',
+  '/explorer'
 ];
 
 export const HOTJAR_ROUTES = [
