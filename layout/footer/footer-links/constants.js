@@ -2,7 +2,7 @@ export const FOOTER_LINKS = [
   {
     id: 'value-chains',
     label: 'Value Chains',
-    href: '/value-chains',
+    href: '/',
     children: [
       {
         label: 'Rice',

@@ -10,7 +10,7 @@
 
   .c-compound-menu-item {
     width: 50%;
-    padding: 0 0.625rem;
+    padding: 0 0.625rem 20px 0;
 
     @media screen and (min-width: map-get($breakpoints, medium)) {
       width: auto;

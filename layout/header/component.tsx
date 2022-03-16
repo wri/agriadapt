@@ -6,6 +6,7 @@ import Link from 'next/link';
 import HeaderMenu from 'layout/header/header-menu';
 import Icon from 'components/ui/icon';
 import { Media } from 'lib/media';
+import HeaderMenuMobile from 'layout/header/header-menu-mobile'
 
 export default function Header({
   className,
@@ -42,7 +43,12 @@ export default function Header({
                   </a>
                 </Link>
               </div>
-              <HeaderMenu />
+              <Media at="sm">
+                <HeaderMenuMobile />
+              </Media>
+              <Media greaterThanOrEqual="md">
+                <HeaderMenu />
+              </Media>
             </div>
           </div>
         </div>
