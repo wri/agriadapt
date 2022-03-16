@@ -14,7 +14,7 @@ import { logEvent } from 'utils/analytics';
 import Paginator from 'components/ui/Paginator';
 import Icon from 'components/ui/icon';
 import { TOPICS } from 'layout/explore/explore-topics/constants';
-import ExploreDatasetsSort from 'layout/explore/explore-datasets-header/explore-datasets-sort';
+// import ExploreDatasetsSort from 'layout/explore/explore-datasets-header/explore-datasets-sort';
 import DatasetList from './list';
 import ExploreDatasetsActions from './explore-datasets-actions';
 
@@ -63,7 +63,7 @@ export default function ExploreDatasets(props) {
     <div className={classValue}>
       <div className="explore-datasets-header">
         <div className="left-container">
-          <ExploreDatasetsSort />
+          {/* <ExploreDatasetsSort /> */}
           <div className="tags-container">
             {selectedTags.length > 0
               && selectedTags.map((t) => (
