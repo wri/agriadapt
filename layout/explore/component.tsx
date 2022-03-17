@@ -41,17 +41,6 @@ const Explore = (props: ExploreProps): JSX.Element => {
   const [sideBarOpen, setSideBarOpen] = useState(true);
   const [dataset, setDataset] = useState(null);
 
-  // useEffect(() => {
-  //     if (map.current) return;
-
-  //     map.current = new mapboxgl.Map({
-  //         container: 'map', // container ID
-  //         style: 'mapbox://styles/mapbox/streets-v11', // style URL
-  //         center: [-74.5, 40], // starting position [lng, lat]
-  //         zoom: 9, // starting zoom
-  //     });
-  // }, []);
-
   const getSidebarLayout = () => (
     <>
       {(!subsection && !selected) && (
@@ -87,7 +76,7 @@ const Explore = (props: ExploreProps): JSX.Element => {
         >
           {getSidebarLayout()}
         </ExploreSidebar>
-        {/* <ExploreMap /> */}
+        <ExploreMap />
       </div>
     </Layout>
   )
