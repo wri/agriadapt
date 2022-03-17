@@ -6,7 +6,7 @@ import { Tooltip } from 'vizzuality-components';
 
 // components
 import Icon from 'components/ui/icon';
-import LoginRequired from 'components/ui/login-required';
+// import LoginRequired from 'components/ui/login-required';
 import CollectionsPanel from 'components/collections-panel';
 import WidgetChart from 'components/charts/widget-chart';
 import MapThumbnail from 'components/map/thumbnail';
@@ -14,7 +14,7 @@ import PlaceholderChart from 'components/charts/placeholder-chart';
 import ForwardLink from 'components/forward-link';
 
 // hooks
-import useBelongsToCollection from 'hooks/collection/belongs-to-collection';
+// import useBelongsToCollection from 'hooks/collection/belongs-to-collection';
 
 // utils
 import { getTooltipContainer } from 'utils/tooltip';
@@ -25,7 +25,8 @@ import { Media } from 'lib/media';
 
 const DatasetListItem = (props) => {
   const { dataset, widget, layer, mode, user, actions, tags, metadata } = props;
-  const { isInACollection } = useBelongsToCollection(dataset.id, user.token);
+  // const { isInACollection } = useBelongsToCollection(dataset.id, user.token);
+  const isInACollection = false;
   const renderChart = useCallback(() => {
     const isWidgetMap = widget && widget.widgetConfig.type === 'map';
     const isEmbedWidget = widget && widget.widgetConfig.type === 'embed';
@@ -94,7 +95,7 @@ const DatasetListItem = (props) => {
               </Link>
 
               {/* Favorite dataset icon */}
-              <LoginRequired>
+              {/* <LoginRequired> */}
                 <Tooltip
                   overlay={<CollectionsPanel resource={dataset} resourceType="dataset" />}
                   overlayClassName="c-rc-tooltip"
@@ -107,7 +108,7 @@ const DatasetListItem = (props) => {
                     <Icon name={starIconName} className={starIconClass} />
                   </button>
                 </Tooltip>
-              </LoginRequired>
+              {/* </LoginRequired> */}
             </h4>
           </div>
 

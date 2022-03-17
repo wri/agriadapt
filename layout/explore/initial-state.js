@@ -1,4 +1,4 @@
-import { TOPICS, DATA_TYPES, FREQUENCIES, TIME_PERIODS } from 'utils/concepts';
+// import { TOPICS, DATA_TYPES, FREQUENCIES, TIME_PERIODS } from 'utils/concepts';
 import { BASEMAPS, LABELS } from 'components/map/constants';
 import { EXPLORE_SECTIONS } from 'layout/explore/constants';
 
@@ -18,10 +18,10 @@ export default {
     search: '',
     tab: 'topics',
     options: {
-      topics: TOPICS,
-      data_types: DATA_TYPES,
-      frequencies: FREQUENCIES,
-      time_periods: TIME_PERIODS,
+      // topics: TOPICS,
+      // data_types: DATA_TYPES,
+      // frequencies: FREQUENCIES,
+      // time_periods: TIME_PERIODS,
       custom: {
         label: 'Others',
         value: 'custom',

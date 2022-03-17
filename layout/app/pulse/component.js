@@ -20,7 +20,7 @@ import LayerCard from 'layout/app/pulse/layer-card';
 import Spinner from 'components/ui/Spinner';
 import GlobeTooltip from 'layout/app/pulse/globe-tooltip';
 import GlobeCesium from 'components/vis/globe-cesium';
-import WelcomeModal from 'layout/app/pulse/welcome-modal';
+// import WelcomeModal from 'layout/app/pulse/welcome-modal';
 
 // utils
 import LayerGlobeManager from 'utils/layers/LayerGlobeManager';
@@ -238,7 +238,7 @@ class LayoutPulse extends PureComponent {
         <div
           className="pulse-container -dark"
         >
-          <WelcomeModal />
+          {/* <WelcomeModal /> */}
           <Spinner
             isLoading={
               pulse.loading
