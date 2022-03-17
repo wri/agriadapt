@@ -6,14 +6,27 @@ import ExploreMap from 'layout/explore/explore-map';
 import ExploreDatasets from 'layout/explorer/explore-datasets';
 import ExploreDetail from 'layout/explorer/explore-detail';
 
-interface ExplorerProps {
-   explore: {
-       datasets: any,
-       sidebar: any,
-   }
-}
+interface ExploreProps {
+  explore: {
+    datasets: {
+      selected: string,
+    }
+    sidebar: {
+      section: string,
+      subsection: string,
+    }
+    // map: {
+    //   drawer: {
+    //     isDrawing: boolean,
+    //   }
+    // }
+  }
+  // userIsLoggedIn: PropTypes.bool.isRequired,
+  // stopDrawing: PropTypes.func.isRequired,
+};
 
-const LayoutExplorer = (props: ExplorerProps): JSX.Element => {
+const Explore = (props: ExploreProps): JSX.Element => {
+
     const {
         explore: {
             datasets: { selected },
@@ -44,7 +57,7 @@ const LayoutExplorer = (props: ExplorerProps): JSX.Element => {
                 className="explore-sidebar-content"
                 id="sidebar-content-container"
               >
-                  {/* <ExploreDatasets /> */}
+                  <ExploreDatasets />
               </div>
             </>
           )}
@@ -76,25 +89,4 @@ const LayoutExplorer = (props: ExplorerProps): JSX.Element => {
     )
 }
 
-LayoutExplorer.defaultProps = {
-    explore: {
-        datasets: {
-            list: [],
-            loading: false,
-            error: null,
-            page: 1,
-            limit: 10,
-            total: 0,
-            selected: null,
-          },
-          sidebar: {
-              open: true,
-              anchor: null,
-              subsection: null,
-              selected: null,
-              selectedCollection: null,
-            }
-    }
-}
-
-export default LayoutExplorer;
+export default Explore;

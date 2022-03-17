@@ -7,16 +7,16 @@ import classnames from 'classnames';
 
 // Components
 import Icon from 'components/ui/icon';
-import LoginRequired from 'components/ui/login-required';
+// import LoginRequired from 'components/ui/login-required';
 
 // Tooltip
 import { Tooltip } from 'vizzuality-components';
 import CollectionsPanel from 'components/collections-panel';
 import { getTooltipContainer } from 'utils/tooltip';
 
-// hooks
-import useBelongsToCollection from 'hooks/collection/belongs-to-collection';
-import useFetchCollection from 'hooks/collection/fetch-collection';
+// // hooks
+// import useBelongsToCollection from 'hooks/collection/belongs-to-collection';
+// import useFetchCollection from 'hooks/collection/fetch-collection';
 
 // Utils
 import { logEvent } from 'utils/analytics';
@@ -27,20 +27,20 @@ const ExploreDatasetsActions = (props) => {
   const {
     dataset,
     layer,
-    user,
+    // user,
     selectedCollection,
     layerGroups,
     toggleMapLayerGroup,
     resetMapLayerGroupsInteraction,
   } = props;
-  const {
-    isInACollection,
-  } = useBelongsToCollection(dataset.id, user.token);
-  const {
-    refetch,
-  } = useFetchCollection(selectedCollection, user.token, {}, {
-    enabled: !!(selectedCollection && user.token),
-  });
+  // const {
+  //   isInACollection,
+  // } = useBelongsToCollection(dataset.id, user.token);
+  // const {
+  //   refetch,
+  // } = useFetchCollection(selectedCollection, user.token, {}, {
+  //   enabled: !!(selectedCollection && user.token),
+  // });
   const isActive = useMemo(
     () => !!layerGroups.find((l) => l.dataset === dataset.id),
     [dataset, layerGroups],
@@ -74,7 +74,7 @@ const ExploreDatasetsActions = (props) => {
     }
   }, [selectedCollection, refetch]);
 
-  const userIsLoggedIn = user.token;
+  // const userIsLoggedIn = user.token;
   const datasetName = dataset?.metadata[0]?.info?.name;
 
   const starIconName = classnames({
@@ -173,9 +173,9 @@ ExploreDatasetsActions.propTypes = {
   ).isRequired,
   toggleMapLayerGroup: PropTypes.func.isRequired,
   resetMapLayerGroupsInteraction: PropTypes.func.isRequired,
-  user: PropTypes.shape({
-    token: PropTypes.string,
-  }).isRequired,
+  // user: PropTypes.shape({
+  //   token: PropTypes.string,
+  // }).isRequired,
 };
 
 export default ExploreDatasetsActions;
