@@ -36,6 +36,7 @@ const ExploreDatasetsActions = (props) => {
   // const {
   //   isInACollection,
   // } = useBelongsToCollection(dataset.id, user.token);
+  const isInACollection = false;
   // const {
   //   refetch,
   // } = useFetchCollection(selectedCollection, user.token, {}, {
@@ -53,26 +54,26 @@ const ExploreDatasetsActions = (props) => {
     resetMapLayerGroupsInteraction();
   }, [isActive, dataset, toggleMapLayerGroup, resetMapLayerGroupsInteraction]);
 
-  const handleToggleFavorite = useCallback((isFavorite, resource) => {
-    if (selectedCollection) refetch();
-    const datasetName = resource?.metadata[0]?.info?.name;
-    if (isFavorite) {
-      logEvent('Explore Menu', 'Add dataset to favorites', datasetName);
-    } else {
-      logEvent('Explore Menu', 'Remove dataset from favorites', datasetName);
-    }
-  }, [selectedCollection, refetch]);
+  // const handleToggleFavorite = useCallback((isFavorite, resource) => {
+  //   if (selectedCollection) refetch();
+  //   const datasetName = resource?.metadata[0]?.info?.name;
+  //   if (isFavorite) {
+  //     logEvent('Explore Menu', 'Add dataset to favorites', datasetName);
+  //   } else {
+  //     logEvent('Explore Menu', 'Remove dataset from favorites', datasetName);
+  //   }
+  // }, [selectedCollection, refetch]);
 
-  const handleToggleCollection = useCallback((isAdded, resource) => {
-    if (selectedCollection) refetch();
-    const datasetName = resource?.metadata[0]?.info?.name;
+  // const handleToggleCollection = useCallback((isAdded, resource) => {
+  //   if (selectedCollection) refetch();
+  //   const datasetName = resource?.metadata[0]?.info?.name;
 
-    if (isAdded) {
-      logEvent('Explore Menu', 'Add dataset to a collection', datasetName);
-    } else {
-      logEvent('Explore Menu', 'Remove dataset from a collection', datasetName);
-    }
-  }, [selectedCollection, refetch]);
+  //   if (isAdded) {
+  //     logEvent('Explore Menu', 'Add dataset to a collection', datasetName);
+  //   } else {
+  //     logEvent('Explore Menu', 'Remove dataset from a collection', datasetName);
+  //   }
+  // }, [selectedCollection, refetch]);
 
   // const userIsLoggedIn = user.token;
   const datasetName = dataset?.metadata[0]?.info?.name;
@@ -105,13 +106,13 @@ const ExploreDatasetsActions = (props) => {
         {isActive ? 'Active' : 'Add to map'}
       </button>
       {/* Favorite dataset icon */}
-      <LoginRequired
+      {/* <LoginRequired
         clickCallback={() => {
           if (!userIsLoggedIn) {
             logEvent('Explore Menu', 'Anonymous user Clicks Star', datasetName);
           }
         }}
-      >
+      > */}
         <Tooltip
           overlay={(
             <CollectionsPanel
@@ -119,8 +120,10 @@ const ExploreDatasetsActions = (props) => {
               resourceType="dataset"
               onClick={(e) => e.stopPropagation()}
               onKeyPress={(e) => e.stopPropagation()}
-              onToggleFavorite={handleToggleFavorite}
-              onToggleCollection={handleToggleCollection}
+              // onToggleFavorite={handleToggleFavorite}
+              onToggleFavorite={() => {}}
+              // onToggleCollection={handleToggleCollection}
+              onToggleCollection={() => {}}
             />
           )}
           overlayClassName="c-rc-tooltip"
@@ -135,9 +138,9 @@ const ExploreDatasetsActions = (props) => {
             tabIndex={-1}
             onClick={(event) => {
               event.stopPropagation();
-              if (userIsLoggedIn) {
-                logEvent('Explore Menu', 'Authenticated user Clicks Star', datasetName);
-              }
+              // if (userIsLoggedIn) {
+              //   logEvent('Explore Menu', 'Authenticated user Clicks Star', datasetName);
+              // }
             }}
           >
             <Icon
@@ -146,7 +149,7 @@ const ExploreDatasetsActions = (props) => {
             />
           </button>
         </Tooltip>
-      </LoginRequired>
+      {/* </LoginRequired> */}
     </div>
   );
 };
