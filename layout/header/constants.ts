@@ -18,31 +18,29 @@ export const APP_HEADER_ITEMS = [
         logEvent: true,
       },
     ],
-    // pages: [
-    //   '/app/rice',
-    //   '/app/veggies'
-    // ],
-    // children: [
-    //   {
-    //     label: 'Rice',
-    //     href: 'value-chains/rice',
-    //   },
-    //   {
-    //     label: 'Veggies',
-    //     href: 'value-chains/veggies',
-    //   },
-    // ]
   },
   {
-    id: 'climate-risk-explorer',
+    id: 'explorer',
     label: 'Climate Risk Explorer',
     href: '/explorer',
+    children: [
+      {
+        label: 'Explore the Map',
+        href: '/explorer',
+      }
+    ],
   },
   {
     id: 'about',
     label: 'About',
     href: '/about',
-  },
+    children: [
+      {
+        label: 'About the Project',
+        href: '/about',
+      }
+    ],
+  }
 ];
 
 export default { APP_HEADER_ITEMS };

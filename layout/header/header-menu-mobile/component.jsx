@@ -56,14 +56,11 @@ const HeaderMenuMobile = ({
       </button>
 
       <div className={`header-menu-mobile-content ${classNames}`}>
-        {/* Backdrop
-        eslint-disable-next-line jsx-a11y/control-has-associated-label */}
         <button
           className={`c-button -clean header-menu-mobile-backdrop ${classNames}`}
           onClick={() => setMobileOpened(false)}
         />
 
-        {/* Nav */}
         <nav className={`header-menu-mobile-nav ${classNames}`}>
           <button
             className="c-button -secondary -compressed -square header-close-button"
@@ -92,49 +89,17 @@ const HeaderMenuMobile = ({
                   key={item.label}
                   className={activeClassName}
                 >
-                  {(item.href && !item.external) && (
-                    <h2>
-                      <Link
-                        href={item.href}
-                        // route={item.route}
-                        // params={item.params}
-                      >
-                        <a>{item.label}</a>
-                      </Link>
-                    </h2>
-                  )}
-
-                  {(item.href && item.external) && (
-                    <h2>
-                      <a href={item.href}>
-                        {item.label}
-                      </a>
-                    </h2>
-                  )}
-
-                  {!item.href && (<h2>{item.label}</h2>)}
+                  {(<h2>{item.label}</h2>)}
 
                   {item.children
                     && (
                     <ul>
                       {item.children.map((c) => {
-                        // If user is defined and is not equal to the current token
-                        // if (typeof c.user !== 'undefined' && c.user !== isUserLogged) {
-                        //   return null;
-                        // }
-
-                        // If admin user is defined and is not equal to the current token
-                        // if (typeof c.admin !== 'undefined' && c.admin !== isUserAdmin) {
-                        //   return null;
-                        // }
-
                         return (
                           <li key={c.label}>
                             {c.href && (
                               <Link
                                 href={c.href}
-                                // route={c.route}
-                                // params={c.params}
                               >
                                 <a>{c.label}</a>
                               </Link>

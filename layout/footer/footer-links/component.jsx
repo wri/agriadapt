@@ -26,14 +26,15 @@ export default function FooterLinks() {
         <ul className="subMenu">
           {subMenu.map((item, index) => {
             let link;
-            if (item.href) {
+            if (item.id && item.href) {
+              link = item.label;
+            }
+            if (item.href && !item.id) {
               link = (
                 <Link
                   href={item.href}
                 >
-                  <a>
                     {item.label}
-                  </a>
                 </Link>
               );
             }
@@ -41,9 +42,7 @@ export default function FooterLinks() {
             return (
               <li
                 key={item.id || item.label}
-                className={classnames('item', {
-                  title: index === 0,
-                })}
+                className={classnames(index === 0 ? 'item-title' : 'item')}
               >
                 {index === 0 ? <h3>{link}</h3> : link}
               </li>

@@ -29,7 +29,7 @@ import { containsString } from 'utils/string';
 // constants
 import { FULLSCREEN_PAGES } from 'constants/app';
 
-const UserReportButton = dynamic(() => import('../../user-report'), { ssr: false });
+// const UserReportButton = dynamic(() => import('../../user-report'), { ssr: false });
 
 class LayoutApp extends Component {
   constructor(props) {
@@ -139,7 +139,7 @@ class LayoutApp extends Component {
           setModalOptions={setModalOptions}
         /> */}
 
-        <UserReportButton />
+        {/* <UserReportButton /> */}
       </div>
     );
   }

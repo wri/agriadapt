@@ -30,12 +30,6 @@ export const FOOTER_LINKS = [
       }
     ],
   },
-  // {
-  //   id: 'blog',
-  //   label: 'Blog',
-  //   href: 'https://blog.resourcewatch.org',
-  //   isExternalLink: true,
-  // },
   {
     id: 'about',
     label: 'About',

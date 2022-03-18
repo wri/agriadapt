@@ -21,7 +21,7 @@ import Modal from 'components/ui/Modal';
 import NoBrowserSupport from 'components/app/common/Browser';
 import GDPRBanner from 'components/ui/gdpr-banner';
 
-const UserReportButton = dynamic(() => import('../../user-report'), { ssr: false });
+// const UserReportButton = dynamic(() => import('../../user-report'), { ssr: false });
 
 export default function LayoutOceanWatch({
   title,
@@ -86,7 +86,7 @@ export default function LayoutOceanWatch({
         transitionOut="fadeOut"
       />
 
-      <UserReportButton />
+      {/* <UserReportButton /> */}
     </div>
   );
 }
