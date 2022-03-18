@@ -25,7 +25,7 @@
     
 
     .item-title {
-      color: #266510!important;
+      color: $primary-green !important;
       font-family: Lato;
       font-size: 26px;
       font-style: normal;
@@ -51,7 +51,7 @@
       }
 
       &.title a {
-        color: $dark-pink;
+        color: $primary-green;
       }
     }
     // @media screen and (min-width: map-get($breakpoints, medium)) {
