@@ -1,6 +1,6 @@
 // components
 import FooterLinks from './footer-links';
-
+import Link from 'next/link';
 export default function Footer() {
 
   return (
@@ -27,9 +27,8 @@ export default function Footer() {
                   </a>
                 </div>
                 <div className="footer-item">
-                  <p className="-bold">World Resources Institute</p>
-                  <p>10 G Street NE Suite 800, Washington, DC 20002, USA</p>
-                  <p>Phone +1 (202) 729-7600    |    Fax: +1 (202) 720 7610</p>
+                  <Link href='#'><p>Terms of Service</p></Link>
+                  <Link href='#'><p>Privacy Policy</p></Link>
                 </div>
               </div>
             </div>
