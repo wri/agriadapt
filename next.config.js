@@ -1,8 +1,9 @@
 module.exports = {
   reactStrictMode: true,
 
-  typescript: {
-    ignoreBuildErrors: true,
+  eslint: {
+    // Will remove one day
+    ignoreDuringBuilds: true,
   },
 
   async redirects() {
@@ -27,6 +28,6 @@ module.exports = {
         destination: '/value-chains/rice/india',
         permanent: false,
       },
-    ]
-  }
-}
+    ];
+  },
+};
