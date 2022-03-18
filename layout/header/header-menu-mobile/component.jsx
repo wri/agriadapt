@@ -17,13 +17,12 @@ import { APP_HEADER_ITEMS } from 'layout/header/constants';
 
 const HeaderMenuMobile = ({
   header,
-  user,
-  // setMobileOpened,
+  // user,
+  setMobileOpened,
 }) => {
   const {
     pathname,
   } = useRouter();
-  const [mobileOpened, setMobileOpened] = useState(false);
   // const logout = (e) => {
   //   if (e) e.preventDefault();
 
@@ -33,9 +32,9 @@ const HeaderMenuMobile = ({
   //     .catch((err) => { toastr.error('Error', err); });
   // };
 
-  // const {
-  //   mobileOpened,
-  // } = header;
+  const {
+    mobileOpened,
+  } = header;
   // const {
   //   role,
   //   token,
@@ -134,15 +133,15 @@ const HeaderMenuMobile = ({
   );
 };
 
-// HeaderMenuMobile.propTypes = {
-  // header: PropTypes.shape({
-  //   mobileOpened: PropTypes.bool.isRequired,
-  // }).isRequired,
+HeaderMenuMobile.propTypes = {
+  header: PropTypes.shape({
+    mobileOpened: PropTypes.bool.isRequired,
+  }).isRequired,
   // user: PropTypes.shape({
   //   token: PropTypes.string,
   //   role: PropTypes.string,
   // }).isRequired,
-  // setMobileOpened: PropTypes.func.isRequired,
-// };
+  setMobileOpened: PropTypes.func.isRequired,
+};
 
 export default HeaderMenuMobile;

@@ -1,5 +1,5 @@
 import { ErrorBoundary } from 'react-error-boundary';
-// import ErrorFallback from 'components/error-fallback';
+import ErrorFallback from 'components/error-fallback';
 
 // import useBelongsToCollection from 'hooks/collection/belongs-to-collection';
 // import { useMe } from 'hooks/user';
@@ -33,8 +33,9 @@ const EmbedTypeWidgetContainer = ({
       refetchOnWindowFocus: false,
     },
   );
-  const { data: user } = useMe();
-  const { isInACollection } = useBelongsToCollection(widgetId, user?.token);
+  // const { data: user } = useMe();
+  // const { isInACollection } = useBelongsToCollection(widgetId, user?.token);
+  const isInACollection = false;
 
   return (
     <ErrorBoundary

@@ -169,7 +169,7 @@ const SwipeTypeWidget = ({
           'relative flex h-full overflow-x-auto overflow-y-hidden widget-container grow rounded',
           {
             'border-0': !isInfoWidgetVisible,
-            'rounded-none': caption,
+            'rounded-none': !!caption,
           },
         )}
         style={{

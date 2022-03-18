@@ -90,7 +90,7 @@ const MapTypeWidgetContainer = ({
       queryKey: ['fetch-layer', layerId],
       queryFn: () => fetchLayer(layerId),
       placeholderData: null,
-      select: (_layer) =>
+      select: (_layer: Object) =>
         _layer
           ? {
               ..._layer,
@@ -100,8 +100,8 @@ const MapTypeWidgetContainer = ({
     })),
   );
 
-  const layers: APILayerSpec[] = useMemo(
-    () => layerStates.filter(({ data }) => !!data && data?.id).map(({ data }) => data),
+  const layers: APILayerSpec[] | {}[] = useMemo(
+    () => layerStates.filter(({ data }) => !!data && data['id']).map(({ data }) => data),
     [layerStates],
   );
 

@@ -46,6 +46,17 @@ export interface MapProps extends InteractiveMapProps {
   /** A function that exposes when the map is loaded.
    * It receives and object with the `mapRef` and `mapContainerRef` reference. */
   onMapLoad?: ({ map, mapContainer }) => void;
+  onError?: (errorMessage: any) => void;
+  mapStyle?: string;
+  dragPan?: boolean;
+  dragRotate?: boolean;
+  scrollZoom?: any;
+  touchZoom?: any;
+  touchRotate?: boolean;
+  doubleClickZoom?: boolean;
+  width?: string;
+  height?: string;
+  interactiveLayerIds?: Array<string>;
 
   /** A function that exposes the viewport */
   onMapViewportChange?: (viewport: Partial<ViewportProps>) => void;

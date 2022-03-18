@@ -14,10 +14,11 @@ import { WIDGET_EDITOR_MAPBOX_PROPS } from 'constants/widget-editor';
 
 import type { APIWidgetSpec } from 'types/widget';
 import type { ChartContainerProps } from './index';
+import RWAdapter from '@widget-editor/rw-adapter';
 
 export interface ChartTypeProps extends Omit<ChartContainerProps, 'widgetId'> {
   widget: APIWidgetSpec;
-  adapter: () => void;
+  adapter: typeof RWAdapter;
   isFetching: boolean;
   isError: boolean;
   isInACollection: boolean;
@@ -105,7 +106,7 @@ ChartType.propTypes = {
       }),
     ),
   }).isRequired,
-  adapter: PropTypes.func.isRequired,
+  adapter: typeof RWAdapter,
   style: PropTypes.shape({}),
   isEmbed: PropTypes.bool,
   isWebshot: PropTypes.bool,

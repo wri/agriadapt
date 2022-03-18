@@ -54,7 +54,7 @@ const EmbedTypeWidget = ({
               {
                 'border-0': !isInfoWidgetVisible,
                 'border border-gray-light': isInfoWidgetVisible,
-                'rounded-none': caption,
+                'rounded-none': !!caption,
               },
             )}
             style={{

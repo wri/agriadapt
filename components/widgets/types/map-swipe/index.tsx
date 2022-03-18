@@ -8,9 +8,9 @@ import { fetchLayer } from 'services/layer';
 
 // hooks
 import { useFetchWidget } from 'hooks/widget';
-import useBelongsToCollection from 'hooks/collection/belongs-to-collection';
+// import useBelongsToCollection from 'hooks/collection/belongs-to-collection';
 import { useGeostore } from 'hooks/geostore';
-import { useMe } from 'hooks/user';
+// import { useMe } from 'hooks/user';
 
 // utils
 import { getAoiLayer, getMaskLayer, getLayerGroups } from 'utils/layers';
@@ -46,8 +46,9 @@ const SwipeTypeWidgetContainer = ({
   onToggleShare,
 }: SwipeTypeWidgetContainerProps): JSX.Element => {
   const [minZoom, setMinZoom] = useState<number>(null);
-  const { data: user } = useMe();
-  const { isInACollection } = useBelongsToCollection(widgetId, user?.token);
+  // const { data: user } = useMe();
+  // const { isInACollection } = useBelongsToCollection(widgetId, user?.token);
+  const isInACollection = false;
 
   const onFitBoundsChange = useCallback((viewport: ViewportProps) => {
     const { zoom } = viewport;
@@ -90,7 +91,7 @@ const SwipeTypeWidgetContainer = ({
       queryKey: ['fetch-layer', layerId],
       queryFn: () => fetchLayer(layerId),
       placeholderData: null,
-      select: (_layer) => ({
+      select: (_layer: Object) => ({
         ..._layer,
         params,
       }),
@@ -102,7 +103,7 @@ const SwipeTypeWidgetContainer = ({
       queryKey: ['fetch-layer', layerId],
       queryFn: () => fetchLayer(layerId),
       placeholderData: null,
-      select: (_layer) => ({
+      select: (_layer: Object) => ({
         ..._layer,
         params,
       }),
@@ -111,7 +112,9 @@ const SwipeTypeWidgetContainer = ({
 
   const layers = useMemo(
     () => ({
+      // @ts-ignore
       left: leftLayerStates.filter(({ data }) => !!data && data?.id).map(({ data }) => data),
+      // @ts-ignore
       right: rightLayerStates.filter(({ data }) => !!data && data?.id).map(({ data }) => data),
     }),
     [leftLayerStates, rightLayerStates],

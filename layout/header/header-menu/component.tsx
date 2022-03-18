@@ -23,7 +23,7 @@ const HeaderMenu = () => {
       <ul>
         {APP_HEADER_ITEMS.map((item) => {
           // console.log('item', item)
-          const activeClassName = classnames({ '-active': item.pages && item.pages.includes(pathname) });
+          const activeClassName = classnames({ '-active': item['pages'] && item['pages'].includes(pathname) });
           let DropdownMenu;
           // if (item.id !== 'blog') {
           //   DropdownMenu = dynamic(() => header[item.id]);
