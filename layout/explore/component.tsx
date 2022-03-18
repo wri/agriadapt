@@ -54,12 +54,12 @@ const Explore = (props: ExploreProps): JSX.Element => {
           </div>
         </>
       )}
-      {/* {selected && (
-            <ExploreDetail
-              key={selected}
-              onDatasetLoaded={(_dataset) => setDataset(_dataset)}
-            />
-          )} */}
+      {selected && (
+        <ExploreDetail
+          key={selected}
+          onDatasetLoaded={(_dataset) => setDataset(_dataset)}
+        />
+      )}
     </>
   );
 
