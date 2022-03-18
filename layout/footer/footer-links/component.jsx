@@ -4,6 +4,7 @@ import {
 } from 'react';
 import classnames from 'classnames';
 import Link from 'next/link';
+import { Media } from 'lib/media';
 
 // constants
 import {
@@ -17,7 +18,7 @@ export default function FooterLinks() {
       const children = i.children || [];
       return [...[i], ...children];
     }),
-  []);
+    []);
 
   const getMenuItems = useCallback(() => footerMenu
     .map((subMenu) => (
@@ -25,14 +26,15 @@ export default function FooterLinks() {
         <ul className="subMenu">
           {subMenu.map((item, index) => {
             let link;
-            if (item.href) {
+            if (item.id && item.href) {
+              link = item.label;
+            }
+            if (item.href && !item.id) {
               link = (
                 <Link
                   href={item.href}
                 >
-                  <a>
                     {item.label}
-                  </a>
                 </Link>
               );
             }
@@ -40,9 +42,7 @@ export default function FooterLinks() {
             return (
               <li
                 key={item.id || item.label}
-                className={classnames('item', {
-                  title: index === 0,
-                })}
+                className={classnames(index === 0 ? 'item-title' : 'item')}
               >
                 {index === 0 ? <h3>{link}</h3> : link}
               </li>
@@ -57,9 +57,14 @@ export default function FooterLinks() {
       <div className="l-container">
         <div className="row">
           <div className="column small-12">
-            <div className="c-compound-menu-wrapper">
+            <Media at='sm'>
               {getMenuItems()}
-            </div>
+            </Media>
+            <Media greaterThanOrEqual="md">
+              <div className="c-compound-menu-wrapper">
+                {getMenuItems()}
+              </div>
+            </Media>
           </div>
         </div>
       </div>

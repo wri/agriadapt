@@ -5,7 +5,7 @@ import {
 export default function UserReportButton() {
   const onClick = useCallback(() => {
     // eslint-disable-next-line no-underscore-dangle
-    window._urq.push(['Feedback_Open']);
+    // window._urq.push(['Feedback_Open']);
   }, []);
 
   return (

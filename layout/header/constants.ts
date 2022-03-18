@@ -2,32 +2,45 @@ export const APP_HEADER_ITEMS = [
   {
     id: 'value-chains',
     label: 'Value Chains',
-    href: '/value-chains',
-    pages: [
-      '/app/rice',
-      '/app/veggies'
-    ],
+    href: '/',
     children: [
       {
         label: 'Rice',
-        href: 'value-chains/rice',
+        href: '/value-chains/rice',
       },
       {
-        label: 'Veggies',
-        href: 'value-chains/veggies',
+        label: 'Coffee',
+        href: '/value-chains/coffee',
       },
-    ]
+      {
+        label: 'Cotton',
+        href: '/value-chains/cotton',
+        logEvent: true,
+      },
+    ],
   },
   {
-    id: 'climate-risk-explorer',
+    id: 'explorer',
     label: 'Climate Risk Explorer',
     href: '/explorer',
+    children: [
+      {
+        label: 'Explore the Map',
+        href: '/explorer',
+      }
+    ],
   },
   {
     id: 'about',
     label: 'About',
     href: '/about',
-  },
+    children: [
+      {
+        label: 'About the Project',
+        href: '/about',
+      }
+    ],
+  }
 ];
 
 export default { APP_HEADER_ITEMS };

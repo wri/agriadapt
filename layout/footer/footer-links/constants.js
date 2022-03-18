@@ -2,7 +2,7 @@ export const FOOTER_LINKS = [
   {
     id: 'value-chains',
     label: 'Value Chains',
-    href: '/value-chains',
+    href: '/',
     children: [
       {
         label: 'Rice',
@@ -30,12 +30,6 @@ export const FOOTER_LINKS = [
       }
     ],
   },
-  // {
-  //   id: 'blog',
-  //   label: 'Blog',
-  //   href: 'https://blog.resourcewatch.org',
-  //   isExternalLink: true,
-  // },
   {
     id: 'about',
     label: 'About',

@@ -1,6 +1,7 @@
 // components
 import FooterLinks from './footer-links';
-
+import Link from 'next/link';
+import { Media } from 'lib/media';
 export default function Footer() {
 
   return (
@@ -27,13 +28,54 @@ export default function Footer() {
                   </a>
                 </div>
                 <div className="footer-item">
-                  <p className="-bold">World Resources Institute</p>
-                  <p>10 G Street NE Suite 800, Washington, DC 20002, USA</p>
-                  <p>Phone +1 (202) 729-7600    |    Fax: +1 (202) 720 7610</p>
+                  <Link href='#'><p>Terms of Service</p></Link>
+                  <Link href='#'><p>Privacy Policy</p></Link>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      <div className="footer-sub">
+        <div className="l-container">
+          <Media at="sm">
+            <div className="row">
+              <div className="column small-12">
+                <div className="footer-container">
+                  <div className="footer-item">
+                    © World Resources Institute 2022
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="row">
+              <div className="column small-12">
+                <div className="footer-container">
+                  <div className="footer-item">
+                      Powered by
+                      <img className="rw-logo" alt={"Resource Watch"} src="/static/images/Logo-RW.svg" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Media>
+          <Media greaterThanOrEqual="md">
+            <div className="row">
+              <div className="column small-12">
+                <div className="footer-container">
+                  <div className="footer-item">
+                    © World Resources Institute 2022
+                  </div>
+                  <div className="footer-item">
+                    <span>
+                      Powered by
+                    </span>
+                    <img className={"rw-logo"} alt={"Resource Watch"} src="/static/images/Logo-RW.svg" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Media>
         </div>
       </div>
     </footer>
