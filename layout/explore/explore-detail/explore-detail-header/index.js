@@ -6,7 +6,7 @@ import ExploreDetailHeaderComponent from './component';
 
 export default connect(
   (state) => ({
-    userIsLoggedIn: !!state.user.token,
+    // userIsLoggedIn: !!state.user.token,
     isSidebarOpen: state.explore.sidebar.open,
   }),
   actions,

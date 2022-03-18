@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 // components
 import Icon from 'components/ui/icon';
-import LoginRequired from 'components/ui/login-required';
+// import LoginRequired from 'components/ui/login-required';
 import Modal from 'components/modal/modal-component';
 import ShareModal from 'components/modal/share-modal';
 import { Tooltip } from 'vizzuality-components';
@@ -61,13 +61,13 @@ export default function ExploreDetailHeader({
       </button>
       <div className="right-buttons">
         {/* Collections tooltip */}
-        <LoginRequired
+        {/* <LoginRequired
           clickCallback={() => {
             if (!userIsLoggedIn) {
               logEvent('Explore (Detail)', 'Anonymous user Clicks Save', datasetName);
             }
           }}
-        >
+        > */}
           <Tooltip
             overlay={(
               <CollectionsPanel
@@ -86,16 +86,16 @@ export default function ExploreDetailHeader({
             <button
               className="c-btn -quaternary -compressed -fs-tiny"
               onClick={() => {
-                if (userIsLoggedIn) {
-                  logEvent('Explore (Detail)', 'Authenticated user Clicks Save', datasetName);
-                }
+                // if (userIsLoggedIn) {
+                //   logEvent('Explore (Detail)', 'Authenticated user Clicks Save', datasetName);
+                // }
               }}
             >
               <Icon className="-small" name="icon-star-full" />
               <span>SAVE</span>
             </button>
           </Tooltip>
-        </LoginRequired>
+        {/* </LoginRequired> */}
 
         <button
           className="c-btn -quaternary -compressed -fs-tiny share-button"

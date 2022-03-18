@@ -6,12 +6,12 @@ import WidgetEditor from '@widget-editor/widget-editor';
 
 // components
 import Modal from 'components/modal/modal-component';
-import LoginModal from 'components/modal/login-modal';
+// import LoginModal from 'components/modal/login-modal';
 import Spinner from 'components/ui/Spinner';
 import ErrorBoundary from 'components/ui/error-boundary';
 
 // hooks
-import useFetchArea from 'hooks/user-areas/fetch-area';
+// import useFetchArea from 'hooks/user-areas/fetch-area';
 
 // services
 import { createWidget, createWidgetMetadata } from 'services/widget';
@@ -32,14 +32,14 @@ function ExploreDetailVisualization(props) {
   const router = useRouter();
   const [loginModalOpen, setLoginModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
-  const { data: area } = useFetchArea(
-    aoi,
-    authorization,
-    {},
-    {
-      enabled: !!(aoi && authorization),
-    },
-  );
+  // const { data: area } = useFetchArea(
+  //   aoi,
+  //   authorization,
+  //   {},
+  //   {
+  //     enabled: !!(aoi && authorization),
+  //   },
+  // );
 
   const onSaveWidget = (widget) => {
     if (!authorization) {
@@ -94,7 +94,7 @@ function ExploreDetailVisualization(props) {
         <WidgetEditor
           datasetId={datasetId}
           {...(widgetId && { widgetId })}
-          {...(area?.geostore && { areaIntersection: area.geostore })}
+          // {...(area?.geostore && { areaIntersection: area.geostore })}
           compact
           map={WIDGET_EDITOR_MAPBOX_PROPS}
           onSave={onSaveWidget}
@@ -105,9 +105,9 @@ function ExploreDetailVisualization(props) {
           disable={[...WIDGET_EDITOR_DEFAULT_DISABLED_FEATURES, 'advanced-editor']}
         />
       </ErrorBoundary>
-      <Modal isOpen={loginModalOpen} onRequestClose={() => setLoginModalOpen(false)}>
+      {/* <Modal isOpen={loginModalOpen} onRequestClose={() => setLoginModalOpen(false)}>
         <LoginModal />
-      </Modal>
+      </Modal> */}
     </div>
   );
 }

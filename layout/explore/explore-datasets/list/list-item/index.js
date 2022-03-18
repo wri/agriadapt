@@ -17,7 +17,7 @@ export { actions, reducers, initialState };
 
 export default connect(
   (state, props) => ({
-    user: state.user,
+    // user: state.user,
     active: isActive(state, props),
   }),
   {

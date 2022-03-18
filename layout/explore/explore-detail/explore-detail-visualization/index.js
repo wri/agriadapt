@@ -10,7 +10,7 @@ import VisualizationComponent from './component';
 
 export default connect(
   (state) => ({
-    authorization: state.user.token,
+    // authorization: state.user.token,
     aoi: state.explore.map.aoi,
     RWAdapter: getRWAdapter(state),
   }),

@@ -20,13 +20,13 @@ export const FOOTER_LINKS = [
     ],
   },
   {
-    id: 'explorer',
+    id: 'explore',
     label: 'Climate Risk Explorer',
-    href: '/explorer',
+    href: '/explore',
     children: [
       {
         label: 'Explore the Map',
-        href: '/explorer',
+        href: '/explore',
       }
     ],
   },

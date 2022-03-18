@@ -29,9 +29,9 @@ import MapControls from 'components/map/controls';
 import ZoomControls from 'components/map/controls/zoom';
 import ShareControls from 'components/map/controls/share';
 import BasemapControls from 'components/map/controls/basemap';
-import SearchControls from 'components/map/controls/search';
+// import SearchControls from 'components/map/controls/search';
 import ResetViewControls from 'components/map/controls/reset-view';
-import Drawer from 'components/map/plugins/drawer';
+// import Drawer from 'components/map/plugins/drawer';
 import LayerPopup from 'components/map/popup';
 
 // Utils
@@ -68,8 +68,8 @@ const ExploreMap = (props) => {
     layerGroupsInteraction,
     layerGroupsInteractionSelected,
     layerGroupsInteractionLatLng,
-    drawer: { isDrawing },
-    stopDrawing,
+    // drawer: { isDrawing },
+    // stopDrawing,
     exploreBehavior,
     onLayerInfoButtonClick,
     setSelectedDataset,
@@ -90,7 +90,7 @@ const ExploreMap = (props) => {
     setBounds,
     setBasemap,
     setLabels,
-    setDataDrawing,
+    // setDataDrawing,
     aoi,
     previewAoi,
   } = props;
@@ -257,15 +257,15 @@ const ExploreMap = (props) => {
     resetMapLayerGroupsInteraction();
   }, [resetMapLayerGroupsInteraction]);
 
-  const handleSearch = useCallback(
-    (locationParams) => {
-      setBounds({
-        ...locationParams,
-        options: { zoom: 2 },
-      });
-    },
-    [setBounds],
-  );
+  // const handleSearch = useCallback(
+  //   (locationParams) => {
+  //     setBounds({
+  //       ...locationParams,
+  //       options: { zoom: 2 },
+  //     });
+  //   },
+  //   [setBounds],
+  // );
 
   const handleViewport = useDebouncedCallback((_viewport) => {
     setViewport(_viewport);
@@ -316,27 +316,27 @@ const ExploreMap = (props) => {
     [setLabels],
   );
 
-  const handleMapCursor = useCallback(
-    ({ isHovering, isDragging }) => {
-      if (isDrawing && isDragging) return 'grabbing';
-      if (isDrawing) return 'crosshair';
-      if (isHovering) return 'pointer';
+  // const handleMapCursor = useCallback(
+  //   ({ isHovering, isDragging }) => {
+  //     if (isDrawing && isDragging) return 'grabbing';
+  //     if (isDrawing) return 'crosshair';
+  //     if (isHovering) return 'pointer';
 
-      return 'grab';
-    },
-    [isDrawing],
-  );
+  //     return 'grab';
+  //   },
+  //   [isDrawing],
+  // );
 
-  const handleDrawComplete = useCallback(
-    (geojson) => {
-      setDataDrawing(geojson);
-    },
-    [setDataDrawing],
-  );
+  // const handleDrawComplete = useCallback(
+  //   (geojson) => {
+  //     setDataDrawing(geojson);
+  //   },
+  //   [setDataDrawing],
+  // );
 
-  const handleDrawEscapeKey = useCallback(() => {
-    stopDrawing();
-  }, [stopDrawing]);
+  // const handleDrawEscapeKey = useCallback(() => {
+  //   stopDrawing();
+  // }, [stopDrawing]);
 
   const { loading, layer } = mapState;
   const { pitch, bearing } = viewport;
@@ -344,6 +344,7 @@ const ExploreMap = (props) => {
     '-with-transition': true,
     '-visible': pitch !== 0 || bearing !== 0,
   });
+  const isDrawing = false;
   const mapClass = classnames({ 'no-pointer-events': isDrawing });
 
   useEffect(() => {
@@ -448,7 +449,8 @@ const ExploreMap = (props) => {
         .some((l) => !!l) && <Spinner isLoading />}
 
       <Map
-        {...(!isDrawing && { onClick: onClickLayer })}
+        // {...(!isDrawing && { onClick: onClickLayer })}
+        onClick={onClickLayer}
         interactiveLayerIds={activeInteractiveLayers}
         mapStyle={MAPSTYLES}
         viewport={viewport}
@@ -456,7 +458,7 @@ const ExploreMap = (props) => {
         basemap={basemap.value}
         labels={labels.value}
         boundaries={boundaries}
-        getCursor={handleMapCursor}
+        // getCursor={handleMapCursor}
         className={mapClass}
         onMapViewportChange={handleViewport}
       >
@@ -464,14 +466,15 @@ const ExploreMap = (props) => {
           <>
             <LayerManager map={_map} layers={displayedLayers} />
 
-            <Drawer
+            {/* <Drawer
               map={_map}
               drawing={isDrawing}
               onEscapeKey={handleDrawEscapeKey}
               onDrawComplete={handleDrawComplete}
-            />
+            /> */}
 
-            {!isEmpty(layerGroupsInteractionLatLng) && activeLayers.length && !isDrawing && (
+            {/* {!isEmpty(layerGroupsInteractionLatLng) && activeLayers.length && !isDrawing && ( */}
+            {!isEmpty(layerGroupsInteractionLatLng) && activeLayers.length && (
               <Popup
                 {...layerGroupsInteractionLatLng}
                 closeButton
@@ -514,7 +517,7 @@ const ExploreMap = (props) => {
           onChangeLabels={handleLabels}
           onChangeBoundaries={handleBoundaries}
         />
-        <SearchControls onSelectLocation={handleSearch} />
+        {/* <SearchControls onSelectLocation={handleSearch} /> */}
         <ResetViewControls className={resetViewBtnClass} onResetView={handleResetView} />
       </MapControls>
 
@@ -636,11 +639,11 @@ ExploreMap.propTypes = {
   onLayerInfoButtonClick: PropTypes.func,
   aoi: PropTypes.string,
   previewAoi: PropTypes.string,
-  drawer: PropTypes.shape({
-    isDrawing: PropTypes.bool.isRequired,
-  }).isRequired,
-  setDataDrawing: PropTypes.func.isRequired,
-  stopDrawing: PropTypes.func.isRequired,
+  // drawer: PropTypes.shape({
+  //   isDrawing: PropTypes.bool.isRequired,
+  // }).isRequired,
+  // setDataDrawing: PropTypes.func.isRequired,
+  // stopDrawing: PropTypes.func.isRequired,
 };
 
 export default ExploreMap;

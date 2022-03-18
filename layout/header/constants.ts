@@ -22,11 +22,11 @@ export const APP_HEADER_ITEMS = [
   {
     id: 'explorer',
     label: 'Climate Risk Explorer',
-    href: '/explorer',
+    href: '/explore',
     children: [
       {
         label: 'Explore the Map',
-        href: '/explorer',
+        href: '/explore',
       }
     ],
   },

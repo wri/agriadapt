@@ -73,7 +73,7 @@ export const Map = ({
   width = '100%',
   height = '100%',
   onFitBoundsChange,
-  getCursor,
+  // getCursor,
   ...mapboxProps
 }: MapProps): JSX.Element => {
   const mapRef = useRef(null);
@@ -336,7 +336,8 @@ export const Map = ({
         onViewportChange={handleViewportChange}
         onResize={handleResize}
         onLoad={handleLoad}
-        getCursor={getCursor || handleGetCursor}
+        // getCursor={getCursor || handleGetCursor}
+        getCursor={handleGetCursor}
         transitionInterpolator={new FlyToInterpolator()}
         transitionEasing={easeCubic}
         transformRequest={(url, resourceType) => {

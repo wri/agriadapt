@@ -9,7 +9,7 @@ import ExploreDatasetsActions from './component';
 export default connect(
   (state) => ({
     ...state.explore.map,
-    user: state.user,
+    // user: state.user,
     selectedCollection: state.explore.sidebar.selectedCollection,
   }),
   actions,

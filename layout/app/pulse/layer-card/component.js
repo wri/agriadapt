@@ -10,13 +10,13 @@ import { LAYERS_PLANET_PULSE } from 'utils/layers/pulse_layers';
 // Components
 import Legend from 'layout/app/pulse/legend';
 import WidgetChart from 'components/charts/widget-chart';
-import LoginRequired from 'components/ui/login-required';
+// import LoginRequired from 'components/ui/login-required';
 import LayerInfoModal from 'components/modal/layer-info-modal';
 import Icon from 'components/ui/icon';
 
 // Modal
 import Modal from 'components/modal/modal-component';
-import SubscriptionsModal from 'components/modal/subscriptions-modal/dataset';
+// import SubscriptionsModal from 'components/modal/subscriptions-modal/dataset';
 
 class LayerCardComponent extends PureComponent {
   constructor(props) {
@@ -228,7 +228,7 @@ class LayerCardComponent extends PureComponent {
                 <a className="c-button -tertiary link_button">Details</a>
               </Link>
               )}
-            {subscribable
+            {/* {subscribable
               && (
               <LoginRequired>
                 <button
@@ -246,7 +246,7 @@ class LayerCardComponent extends PureComponent {
                   </Modal>
                 </button>
               </LoginRequired>
-              )}
+              )} */}
           </div>
         </div>
       </div>

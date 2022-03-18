@@ -5,9 +5,9 @@ import React, {
 import PropTypes from 'prop-types';
 
 // components
-import LoginRequired from 'components/ui/login-required';
-import Modal from 'components/modal/modal-component';
-import DatasetSubscriptionsModal from 'components/modal/subscriptions-modal/dataset';
+// import LoginRequired from 'components/ui/login-required';
+// import Modal from 'components/modal/modal-component';
+// import DatasetSubscriptionsModal from 'components/modal/subscriptions-modal/dataset';
 import ProminentButton from 'components/prominent-button';
 import Icon from 'components/ui/icon';
 
@@ -18,17 +18,17 @@ import { logEvent } from 'utils/analytics';
 const ExploreDetailButtons = ({
   dataset,
 }) => {
-  const [showSubscribeModal, setShowSubscribeModal] = useState(false);
+  // const [showSubscribeModal, setShowSubscribeModal] = useState(false);
 
   const { metadata, subscribable } = dataset;
   const { info } = metadata[0];
-  const isSubscribable = subscribable && Object.keys(subscribable).length > 0;
+  // const isSubscribable = subscribable && Object.keys(subscribable).length > 0;
 
   const handleDownloadSource = useCallback(() => { logEvent('Explore', 'Download data from source', getLabel(dataset)); }, [dataset]);
   const handleDownload = useCallback(() => { logEvent('Explore', 'Download data', getLabel(dataset)); }, [dataset]);
   const handleLearnMore = useCallback(() => { logEvent('Explore', 'Click to data provider', getLabel(dataset)); }, [dataset]);
-  const openSubscribeModal = useCallback(() => { setShowSubscribeModal(true); }, []);
-  const closeSubscribeModal = useCallback(() => { setShowSubscribeModal(false); }, []);
+  // const openSubscribeModal = useCallback(() => { setShowSubscribeModal(true); }, []);
+  // const closeSubscribeModal = useCallback(() => { setShowSubscribeModal(false); }, []);
 
   return (
     <div className="c-explore-detail-buttons">
@@ -81,7 +81,7 @@ const ExploreDetailButtons = ({
             </a>
           </ProminentButton>
         )}
-        {isSubscribable && (
+        {/* {isSubscribable && (
           <LoginRequired redirect={false}>
             <ProminentButton
               onClick={openSubscribeModal}
@@ -92,9 +92,9 @@ const ExploreDetailButtons = ({
               </span>
             </ProminentButton>
           </LoginRequired>
-        )}
+        )} */}
       </div>
-      <Modal
+      {/* <Modal
         isOpen={showSubscribeModal}
         onRequestClose={closeSubscribeModal}
       >
@@ -102,7 +102,7 @@ const ExploreDetailButtons = ({
           onRequestClose={closeSubscribeModal}
           dataset={{ ...dataset, metadata: metadata[0] }}
         />
-      </Modal>
+      </Modal> */}
     </div>
   );
 };

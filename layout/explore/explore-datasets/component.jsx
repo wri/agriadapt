@@ -13,7 +13,7 @@ import { logEvent } from 'utils/analytics';
 // components
 import Paginator from 'components/ui/Paginator';
 import Icon from 'components/ui/icon';
-import { TOPICS } from 'layout/explore/explore-topics/constants';
+// import { TOPICS } from 'layout/explore/explore-topics/constants';
 import ExploreDatasetsSort from 'layout/explore/explore-datasets-header/explore-datasets-sort';
 import DatasetList from './list';
 import ExploreDatasetsActions from './explore-datasets-actions';
@@ -34,16 +34,16 @@ export default function ExploreDatasets(props) {
     fetchDatasets,
   } = props;
 
-  const relatedDashboards = useMemo(
-    () => TOPICS.filter((topic) => selectedTags.find((tag) => tag.id === topic.id))
-      .map((_dashboard) => ({
-        ..._dashboard,
-        ..._dashboard.slug === 'ocean-watch' && {
-          label: 'Ocean Watch',
-        },
-      })),
-    [selectedTags],
-  );
+  // const relatedDashboards = useMemo(
+  //   () => TOPICS.filter((topic) => selectedTags.find((tag) => tag.id === topic.id))
+  //     .map((_dashboard) => ({
+  //       ..._dashboard,
+  //       ..._dashboard.slug === 'ocean-watch' && {
+  //         label: 'Ocean Watch',
+  //       },
+  //     })),
+  //   [selectedTags],
+  // );
 
   const fetchDatasetsPerPage = useCallback((_page) => {
     setDatasetsPage(_page);
@@ -116,7 +116,7 @@ export default function ExploreDatasets(props) {
         </div>
       </div>
 
-      {relatedDashboards.length > 0
+      {/* {relatedDashboards.length > 0
         && (
         <div className="related-dashboards">
           <div className="header">
@@ -148,7 +148,7 @@ export default function ExploreDatasets(props) {
             </Link>
           ))}
         </div>
-        )}
+        )} */}
 
       {!list.length && !loading
         && (
