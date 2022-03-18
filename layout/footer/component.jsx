@@ -1,6 +1,7 @@
 // components
 import FooterLinks from './footer-links';
 import Link from 'next/link';
+import { Media } from 'lib/media';
 export default function Footer() {
 
   return (
@@ -33,6 +34,48 @@ export default function Footer() {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      <div className="footer-sub">
+        <div className="l-container">
+          <Media at="sm">
+            <div className="row">
+              <div className="column small-12">
+                <div className="footer-container">
+                  <div className="footer-item">
+                    © World Resources Institute 2022
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="row">
+              <div className="column small-12">
+                <div className="footer-container">
+                  <div className="footer-item">
+                      Powered by
+                      <img className="rw-logo" alt={"Resource Watch"} src="/static/images/Logo-RW.svg" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Media>
+          <Media greaterThanOrEqual="md">
+            <div className="row">
+              <div className="column small-12">
+                <div className="footer-container">
+                  <div className="footer-item">
+                    © World Resources Institute 2022
+                  </div>
+                  <div className="footer-item">
+                    <span>
+                      Powered by
+                    </span>
+                    <img className={"rw-logo"} alt={"Resource Watch"} src="/static/images/Logo-RW.svg" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Media>
         </div>
       </div>
     </footer>

@@ -74,7 +74,26 @@
 
   .footer-lower {
     background-color: #333333;
+  }
 
+  .footer-sub {
+    background-color: $primary-green;
+
+    .footer-container {
+      padding: 12px 0 !important;
+    }
+
+    .footer-item {
+      flex-flow: row !important;
+      line-height: 32px;
+
+      .rw-logo {
+        margin-left: 14px;
+      }
+    }
+  }
+
+  .footer-lower, .footer-sub {
     p {
       font-size: 14px;
       margin: 0;
@@ -87,7 +106,6 @@
         font-weight: bold;
       }
     }
-
 
     .footer-container {
       padding: 55px 0;
