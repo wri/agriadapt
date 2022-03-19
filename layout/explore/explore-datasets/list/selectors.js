@@ -1,7 +1,7 @@
-import { createSelector } from 'reselect';
+import { createSelector } from "reselect";
 
 // Utils
-import { getDateConsideringTimeZone } from 'utils/utils';
+import { getDateConsideringTimeZone } from "utils/utils";
 
 const getDatasets = (state) => state.datasets.datasets.list;
 const getIsServer = (state) => state.common.isServer;
@@ -15,7 +15,7 @@ export const getUpdatedDatasets = createSelector(
       ..._dataset,
       dateLastUpdated: getDateConsideringTimeZone(_dataset.dataLastUpdated),
     }));
-  },
+  }
 );
 
 export default { getUpdatedDatasets };

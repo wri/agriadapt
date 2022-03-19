@@ -1,5 +1,5 @@
 @use "sass:math";
-@import 'css/settings';
+@import "css/settings";
 
 .c-sorting-layer-manager {
   > .sorting-layer-manager-list {
@@ -29,7 +29,7 @@
 
           &:before,
           &:after {
-            content: '';
+            content: "";
             display: inline-block;
             width: 3px;
             height: 3px;

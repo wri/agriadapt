@@ -26,7 +26,7 @@ export default class LayerGlobeManager {
    * PRIVATE METHODS
    * - abortRequest
    * - addCartoLayer
-  */
+   */
   abortRequest() {
     if (this.layer.request) {
       if (this.layer.request.readyState !== 4) {
@@ -63,11 +63,13 @@ export default class LayerGlobeManager {
     };
 
     const layerTpl = {
-      version: '1.3.0',
-      stat_tag: 'API',
+      version: "1.3.0",
+      stat_tag: "API",
       layers: layer.body.layers,
     };
-    const params = `?stat_tag=API&config=${encodeURIComponent(JSON.stringify(layerTpl))}`;
+    const params = `?stat_tag=API&config=${encodeURIComponent(
+      JSON.stringify(layerTpl)
+    )}`;
 
     const f = fetch(`https://${layer.account}.carto.com/api/v1/map${params}`)
       .then((response) => {

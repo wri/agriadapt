@@ -1,10 +1,10 @@
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
 
 // Components
-import Field from 'components/form/Field';
-import Code from 'components/form/Code';
-import Spinner from 'components/ui/Spinner';
+import Field from "components/form/Field";
+import Code from "components/form/Code";
+import Spinner from "components/ui/Spinner";
 
 class TrySubscriptionModal extends PureComponent {
   componentDidMount() {
@@ -24,26 +24,25 @@ class TrySubscriptionModal extends PureComponent {
   }
 
   render() {
-    const {
-      data, loading, error, query,
-    } = this.props;
+    const { data, loading, error, query } = this.props;
 
     return (
       <div className="c-try-subscription-modal">
         {loading && <Spinner isLoading className="-light -tiny" />}
 
         <Field
-          hint={`${process.env.NEXT_PUBLIC_WRI_API_URL}/v1/query?sql=${encodeURIComponent(query)}`}
+          hint={`${
+            process.env.NEXT_PUBLIC_WRI_API_URL
+          }/v1/query?sql=${encodeURIComponent(query)}`}
           properties={{
-            name: 'query-result',
-            label: 'Query result',
+            name: "query-result",
+            label: "Query result",
             value: (!!data.length && data) || error || [],
             disabled: true,
           }}
         >
           {Code}
         </Field>
-
       </div>
     );
   }

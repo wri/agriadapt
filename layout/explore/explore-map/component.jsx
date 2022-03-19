@@ -1,11 +1,11 @@
-import { useState, useEffect, useCallback } from 'react';
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
-import { toastr } from 'react-redux-toastr';
-import debounce from 'lodash/debounce';
-import isEmpty from 'lodash/isEmpty';
-import { useDebouncedCallback } from 'use-debounce';
-import { Popup } from 'react-map-gl';
+import { useState, useEffect, useCallback } from "react";
+import PropTypes from "prop-types";
+import classnames from "classnames";
+import { toastr } from "react-redux-toastr";
+import debounce from "lodash/debounce";
+import isEmpty from "lodash/isEmpty";
+import { useDebouncedCallback } from "use-debounce";
+import { Popup } from "react-map-gl";
 import {
   Legend,
   LegendListItem,
@@ -16,41 +16,41 @@ import {
   LegendItemButtonInfo,
   LegendItemTypes,
   LegendItemTimeStep,
-} from 'vizzuality-components';
-import { LegendItemTimeline } from 'old-vizzuality-components';
+} from "vizzuality-components";
+import { LegendItemTimeline } from "old-vizzuality-components";
 
 // components
-import Modal from 'components/modal/modal-component';
-import LayerInfoModal from 'components/modal/layer-info-modal';
-import Spinner from 'components/ui/Spinner';
-import Map from 'components/map';
-import LayerManager from 'components/map/layer-manager';
-import MapControls from 'components/map/controls';
-import ZoomControls from 'components/map/controls/zoom';
-import ShareControls from 'components/map/controls/share';
-import BasemapControls from 'components/map/controls/basemap';
+import Modal from "components/modal/modal-component";
+import LayerInfoModal from "components/modal/layer-info-modal";
+import Spinner from "components/ui/Spinner";
+import Map from "components/map";
+import LayerManager from "components/map/layer-manager";
+import MapControls from "components/map/controls";
+import ZoomControls from "components/map/controls/zoom";
+import ShareControls from "components/map/controls/share";
+import BasemapControls from "components/map/controls/basemap";
 // import SearchControls from 'components/map/controls/search';
-import ResetViewControls from 'components/map/controls/reset-view';
+import ResetViewControls from "components/map/controls/reset-view";
 // import Drawer from 'components/map/plugins/drawer';
-import LayerPopup from 'components/map/popup';
+import LayerPopup from "components/map/popup";
 
 // Utils
-import { logEvent } from 'utils/analytics';
-import { getUserAreaLayer } from 'components/map/utils';
+import { logEvent } from "utils/analytics";
+import { getUserAreaLayer } from "components/map/utils";
 
 // services
-import { fetchArea } from 'services/areas';
-import { fetchGeostore } from 'services/geostore';
+import { fetchArea } from "services/areas";
+import { fetchGeostore } from "services/geostore";
 
 // constants
 import {
   MAPSTYLES,
   USER_AREA_LAYER_TEMPLATES,
   BASEMAP_LABEL_DICTIONARY,
-} from 'components/map/constants';
+} from "components/map/constants";
 
 // constants
-import { LEGEND_TIMELINE_PROPERTIES, TIMELINE_THRESHOLD } from './constants';
+import { LEGEND_TIMELINE_PROPERTIES, TIMELINE_THRESHOLD } from "./constants";
 
 const ExploreMap = (props) => {
   const {
@@ -112,11 +112,17 @@ const ExploreMap = (props) => {
           onLayerInfoButtonClick(layer);
         } else {
           setSelectedDataset(layer.dataset);
-          setSidebarAnchor('layers');
+          setSidebarAnchor("layers");
         }
       }
     },
-    [mapState, exploreBehavior, onLayerInfoButtonClick, setSelectedDataset, setSidebarAnchor],
+    [
+      mapState,
+      exploreBehavior,
+      onLayerInfoButtonClick,
+      setSelectedDataset,
+      setSidebarAnchor,
+    ]
   );
 
   const onChangeOpacity = debounce((l, opacity) => {
@@ -131,7 +137,7 @@ const ExploreMap = (props) => {
         visibility,
       });
     },
-    [setMapLayerGroupVisibility],
+    [setMapLayerGroupVisibility]
   );
 
   const onChangeLayer = useCallback(
@@ -144,12 +150,12 @@ const ExploreMap = (props) => {
       });
 
       logEvent(
-        'Explore Map',
-        'Clicks Another Layer from Map Legend Tooltip',
-        `${l.name} [${l.id}]`,
+        "Explore Map",
+        "Clicks Another Layer from Map Legend Tooltip",
+        `${l.name} [${l.id}]`
       );
     },
-    [resetLayerParametrization, setMapLayerGroupActive],
+    [resetLayerParametrization, setMapLayerGroupActive]
   );
 
   const onRemoveLayer = useCallback(
@@ -161,14 +167,14 @@ const ExploreMap = (props) => {
 
       removeLayerParametrization(l.id);
     },
-    [toggleMapLayerGroup, removeLayerParametrization],
+    [toggleMapLayerGroup, removeLayerParametrization]
   );
 
   const onChangeOrder = useCallback(
     (datasetIds) => {
       setMapLayerGroupsOrder({ datasetIds });
     },
-    [setMapLayerGroupsOrder],
+    [setMapLayerGroupsOrder]
   );
 
   const onChangeLayerDate = useCallback(
@@ -196,19 +202,19 @@ const ExploreMap = (props) => {
         },
       });
     },
-    [setMapLayerParametrization],
+    [setMapLayerParametrization]
   );
 
   const onChangeLayerTimeLine = useCallback(
     (l) => {
       setMapLayerGroupActive({ dataset: { id: l.dataset }, active: l.id });
       logEvent(
-        'Explore Map',
-        'Clicks Another Layer from Map Legend Timeline',
-        `${l.name} [${l.id}]`,
+        "Explore Map",
+        "Clicks Another Layer from Map Legend Timeline",
+        `${l.name} [${l.id}]`
       );
     },
-    [setMapLayerGroupActive],
+    [setMapLayerGroupActive]
   );
 
   const onClickLayer = useCallback(
@@ -223,7 +229,7 @@ const ExploreMap = (props) => {
             ...accumulator,
             [currentValue]: {},
           }),
-          {},
+          {}
         );
       } else {
         interactions = features.reduce(
@@ -231,7 +237,7 @@ const ExploreMap = (props) => {
             ...accumulator,
             [currentValue.layer.source]: { data: currentValue.properties },
           }),
-          {},
+          {}
         );
       }
 
@@ -243,14 +249,18 @@ const ExploreMap = (props) => {
 
       return true;
     },
-    [layerGroupsInteraction, setMapLayerGroupsInteractionLatLng, setMapLayerGroupsInteraction],
+    [
+      layerGroupsInteraction,
+      setMapLayerGroupsInteractionLatLng,
+      setMapLayerGroupsInteraction,
+    ]
   );
 
   const onChangeInteractiveLayer = useCallback(
     (selected) => {
       setMapLayerGroupsInteractionSelected(selected);
     },
-    [setMapLayerGroupsInteractionSelected],
+    [setMapLayerGroupsInteractionSelected]
   );
 
   const handleClosePopup = useCallback(() => {
@@ -275,7 +285,7 @@ const ExploreMap = (props) => {
     (_boundaries) => {
       setBoundaries(_boundaries);
     },
-    [setBoundaries],
+    [setBoundaries]
   );
 
   const handleZoom = useCallback(
@@ -287,16 +297,16 @@ const ExploreMap = (props) => {
         transitionDuration: 250,
       });
     },
-    [setViewport],
+    [setViewport]
   );
 
   const handleBasemap = useCallback(
     (_basemap) => {
       const { id } = _basemap;
       setBasemap(id);
-      if (labels.value !== 'none') setLabels(BASEMAP_LABEL_DICTIONARY[id]);
+      if (labels.value !== "none") setLabels(BASEMAP_LABEL_DICTIONARY[id]);
     },
-    [setBasemap, setLabels, labels],
+    [setBasemap, setLabels, labels]
   );
 
   const handleResetView = useCallback(() => {
@@ -313,7 +323,7 @@ const ExploreMap = (props) => {
     ({ value }) => {
       setLabels(value);
     },
-    [setLabels],
+    [setLabels]
   );
 
   // const handleMapCursor = useCallback(
@@ -341,11 +351,11 @@ const ExploreMap = (props) => {
   const { loading, layer } = mapState;
   const { pitch, bearing } = viewport;
   const resetViewBtnClass = classnames({
-    '-with-transition': true,
-    '-visible': pitch !== 0 || bearing !== 0,
+    "-with-transition": true,
+    "-visible": pitch !== 0 || bearing !== 0,
   });
   const isDrawing = false;
-  const mapClass = classnames({ 'no-pointer-events': isDrawing });
+  const mapClass = classnames({ "no-pointer-events": isDrawing });
 
   useEffect(() => {
     setDisplayedLayers((prevLayers) => [
@@ -366,10 +376,11 @@ const ExploreMap = (props) => {
           {},
           {
             Authorization: token,
-          },
+          }
         );
 
-        if (!isPublicArea && areaUserId !== userId) throw new Error('This area is private.');
+        if (!isPublicArea && areaUserId !== userId)
+          throw new Error("This area is private.");
 
         const { id, geojson, bbox } = await fetchGeostore(geostoreId);
 
@@ -378,7 +389,7 @@ const ExploreMap = (props) => {
             id,
             geojson,
           },
-          USER_AREA_LAYER_TEMPLATES.explore,
+          USER_AREA_LAYER_TEMPLATES.explore
         );
 
         setDisplayedLayers((prevLayers) => [
@@ -404,7 +415,7 @@ const ExploreMap = (props) => {
           id,
           geojson,
         },
-        USER_AREA_LAYER_TEMPLATES.explore,
+        USER_AREA_LAYER_TEMPLATES.explore
       );
 
       setDisplayedLayers((prevLayers) => [
@@ -518,7 +529,10 @@ const ExploreMap = (props) => {
           onChangeBoundaries={handleBoundaries}
         />
         {/* <SearchControls onSelectLocation={handleSearch} /> */}
-        <ResetViewControls className={resetViewBtnClass} onResetView={handleResetView} />
+        <ResetViewControls
+          className={resetViewBtnClass}
+          onResetView={handleResetView}
+        />
       </MapControls>
 
       <div className="c-legend-map">
@@ -552,7 +566,9 @@ const ExploreMap = (props) => {
                 customClass="rw-legend-timeline"
                 defaultStyles={LEGEND_TIMELINE_PROPERTIES}
                 dots={false}
-                {...(lg.layers.length > TIMELINE_THRESHOLD && { dotStyle: { opacity: 0 } })}
+                {...(lg.layers.length > TIMELINE_THRESHOLD && {
+                  dotStyle: { opacity: 0 },
+                })}
               />
               {/* Temporary: only show old timeline approach if there's no occurrence of
                 new timelineParams config
@@ -562,7 +578,9 @@ const ExploreMap = (props) => {
                   onChangeLayer={onChangeLayerTimeLine}
                   customClass="rw-legend-timeline"
                   {...LEGEND_TIMELINE_PROPERTIES}
-                  {...(lg.layers.length > TIMELINE_THRESHOLD && { dotStyle: { opacity: 0 } })}
+                  {...(lg.layers.length > TIMELINE_THRESHOLD && {
+                    dotStyle: { opacity: 0 },
+                  })}
                 />
               )}
             </LegendListItem>
@@ -570,7 +588,11 @@ const ExploreMap = (props) => {
         </Legend>
       </div>
       {!!layer && embed && (
-        <Modal isOpen={!!layer} className="-medium" onRequestClose={() => onChangeInfo(null)}>
+        <Modal
+          isOpen={!!layer}
+          className="-medium"
+          onRequestClose={() => onChangeInfo(null)}
+        >
           <LayerInfoModal layer={layer} />
         </Modal>
       )}

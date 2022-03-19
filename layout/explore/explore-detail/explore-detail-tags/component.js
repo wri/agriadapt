@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
 // Utils
-import { logEvent } from 'utils/analytics';
+import { logEvent } from "utils/analytics";
 
 // Constants
-import { EXPLORE_SECTIONS } from 'layout/explore/constants';
+import { EXPLORE_SECTIONS } from "layout/explore/constants";
 
 function ExploreDetailTags(props) {
   const { tags } = props;
@@ -13,13 +13,13 @@ function ExploreDetailTags(props) {
   const getFilterObject = (tag) => {
     const { id, labels } = tag;
 
-    let keySt = 'topics';
-    if (labels.includes('TOPIC')) {
-      keySt = 'topics';
-    } else if (labels.includes('GEOGRAPHY')) {
-      keySt = 'geographies';
-    } else if (labels.includes('DATA_TYPE')) {
-      keySt = 'dataTypes';
+    let keySt = "topics";
+    if (labels.includes("TOPIC")) {
+      keySt = "topics";
+    } else if (labels.includes("GEOGRAPHY")) {
+      keySt = "geographies";
+    } else if (labels.includes("DATA_TYPE")) {
+      keySt = "dataTypes";
     }
 
     return { key: keySt, list: [id] };
@@ -40,7 +40,7 @@ function ExploreDetailTags(props) {
               props.setFiltersSelected(getFilterObject(tag));
               props.setDatasetsPage(1);
               props.fetchDatasets();
-              logEvent('Explore (Detail)', 'Clicks Tag', tag.id);
+              logEvent("Explore (Detail)", "Clicks Tag", tag.id);
             }}
           >
             {tag.label}

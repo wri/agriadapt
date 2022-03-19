@@ -1,3 +1,3 @@
-import CountryIndicatorsComponent from './component';
+import CountryIndicatorsComponent from "./component";
 
 export default CountryIndicatorsComponent;

@@ -1,3 +1,3 @@
-import SectionComponent from './component';
+import SectionComponent from "./component";
 
 export default SectionComponent;

@@ -1,23 +1,18 @@
-import {
-  useCallback,
-} from 'react';
-import PropTypes from 'prop-types';
-import { Tooltip } from 'vizzuality-components';
+import { useCallback } from "react";
+import PropTypes from "prop-types";
+import { Tooltip } from "vizzuality-components";
 
 // components
-import TooltipList from './component';
+import TooltipList from "./component";
 
 export default {
-  title: 'Components/Tooltip-List',
+  title: "Components/Tooltip-List",
   component: TooltipList,
   argTypes: {},
 };
 
 const Template = (args) => {
-  const {
-    placeholder,
-    list,
-  } = args;
+  const { placeholder, list } = args;
 
   const handleClickItem = useCallback((item) => {
     // eslint-disable-next-line no-console
@@ -27,20 +22,20 @@ const Template = (args) => {
   return (
     <div
       style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100%',
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100%",
       }}
     >
       <Tooltip
-        overlay={(
+        overlay={
           <TooltipList
             list={list}
             placeholder={placeholder}
             onClickItem={handleClickItem}
           />
-        )}
+        }
         overlayClassName="c-rc-tooltip -default"
         placement="top"
         trigger="click"
@@ -48,11 +43,7 @@ const Template = (args) => {
         onVisibleChange={() => {}}
         destroyTooltipOnHide
       >
-        <button
-          type="button"
-          className="c-btn -secondary"
-          onClick={() => {}}
-        >
+        <button type="button" className="c-btn -secondary" onClick={() => {}}>
           Select a country
         </button>
       </Tooltip>
@@ -66,7 +57,7 @@ Template.propTypes = {
       PropTypes.shape({
         label: PropTypes.string.isRequired,
         value: PropTypes.string.isRequired,
-      }),
+      })
     ).isRequired,
     placeholder: PropTypes.string,
   }).isRequired,
@@ -77,17 +68,17 @@ export const Default = Template.bind({});
 Default.args = {
   list: [
     {
-      label: 'Brazil',
-      value: 'BRA',
+      label: "Brazil",
+      value: "BRA",
     },
     {
-      label: 'Italy',
-      value: 'ITA',
+      label: "Italy",
+      value: "ITA",
     },
     {
-      label: 'Spain',
-      value: 'ESP',
+      label: "Spain",
+      value: "ESP",
     },
   ],
-  placeholder: 'Type something',
+  placeholder: "Type something",
 };

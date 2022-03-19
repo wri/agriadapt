@@ -1,28 +1,23 @@
-import {
-  useEffect,
-  useState
-} from 'react';
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import classnames from "classnames";
+import Link from "next/link";
+import { useRouter } from "next/router";
 // import { toastr } from 'react-redux-toastr';
 
 // components
-import Icon from 'components/ui/icon';
+import Icon from "components/ui/icon";
 // import SearchMobile from 'layout/header/search-mobile';
 
 // constants
-import { APP_HEADER_ITEMS } from 'layout/header/constants';
+import { APP_HEADER_ITEMS } from "layout/header/constants";
 
 const HeaderMenuMobile = ({
   header,
   // user,
   setMobileOpened,
 }) => {
-  const {
-    pathname,
-  } = useRouter();
+  const { pathname } = useRouter();
   // const logout = (e) => {
   //   if (e) e.preventDefault();
 
@@ -32,17 +27,15 @@ const HeaderMenuMobile = ({
   //     .catch((err) => { toastr.error('Error', err); });
   // };
 
-  const {
-    mobileOpened,
-  } = header;
+  const { mobileOpened } = header;
   // const {
   //   role,
   //   token,
   // } = user;
-  const classNames = classnames({ '-opened': mobileOpened });
+  const classNames = classnames({ "-opened": mobileOpened });
 
   useEffect(() => {
-    document.body.classList.toggle('no-scroll', mobileOpened);
+    document.body.classList.toggle("no-scroll", mobileOpened);
   }, [mobileOpened]);
 
   return (
@@ -81,33 +74,27 @@ const HeaderMenuMobile = ({
               // If admin user is defined and is not equal to the current token
               // if (typeof item.admin !== 'undefined' && item.admin !== isUserAdmin) return null;
 
-              const activeClassName = classnames({ '-active': item.pages && item.pages.includes(pathname) });
+              const activeClassName = classnames({
+                "-active": item.pages && item.pages.includes(pathname),
+              });
 
               return (
-                <li
-                  key={item.label}
-                  className={activeClassName}
-                >
-                  {(<h2>{item.label}</h2>)}
+                <li key={item.label} className={activeClassName}>
+                  {<h2>{item.label}</h2>}
 
-                  {item.children
-                    && (
+                  {item.children && (
                     <ul>
                       {item.children.map((c) => {
                         return (
                           <li key={c.label}>
                             {c.href && (
-                              <Link
-                                href={c.href}
-                              >
+                              <Link href={c.href}>
                                 <a>{c.label}</a>
                               </Link>
                             )}
 
-                            {(c.href && c.external) && (
-                              <a href={c.href}>
-                                {c.label}
-                              </a>
+                            {c.href && c.external && (
+                              <a href={c.href}>{c.label}</a>
                             )}
 
                             {/* {c.id === 'logout' && (
@@ -122,7 +109,7 @@ const HeaderMenuMobile = ({
                         );
                       })}
                     </ul>
-                    )}
+                  )}
                 </li>
               );
             })}

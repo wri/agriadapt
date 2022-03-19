@@ -1,6 +1,6 @@
 // import { TOPICS, DATA_TYPES, FREQUENCIES, TIME_PERIODS } from 'utils/concepts';
-import { BASEMAPS, LABELS } from 'components/map/constants';
-import { EXPLORE_SECTIONS } from 'layout/explore/constants';
+import { BASEMAPS, LABELS } from "components/map/constants";
+import { EXPLORE_SECTIONS } from "layout/explore/constants";
 
 export default {
   // Datasets
@@ -15,16 +15,16 @@ export default {
   },
   filters: {
     open: false,
-    search: '',
-    tab: 'topics',
+    search: "",
+    tab: "topics",
     options: {
       // topics: TOPICS,
       // data_types: DATA_TYPES,
       // frequencies: FREQUENCIES,
       // time_periods: TIME_PERIODS,
       custom: {
-        label: 'Others',
-        value: 'custom',
+        label: "Others",
+        value: "custom",
         list: [],
       },
     },
@@ -37,15 +37,15 @@ export default {
     },
   },
   sort: {
-    selected: 'most-viewed',
+    selected: "most-viewed",
     direction: -1,
     isSetFromDefaultState: true,
     options: [
-      { value: 'updatedAt', label: 'Last modified' },
-      { value: 'most-viewed', label: 'Most viewed' },
-      { value: 'most-favorited', label: 'Most favorited' },
-      { value: 'relevance', label: 'Relevance' },
-      { value: 'createdAt', label: 'Date added' },
+      { value: "updatedAt", label: "Last modified" },
+      { value: "most-viewed", label: "Most viewed" },
+      { value: "most-favorited", label: "Most favorited" },
+      { value: "relevance", label: "Relevance" },
+      { value: "createdAt", label: "Date added" },
     ],
   },
 

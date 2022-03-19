@@ -1,21 +1,18 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import sortBy from 'lodash/sortBy';
-import isEqual from 'lodash/isEqual';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import sortBy from "lodash/sortBy";
+import isEqual from "lodash/isEqual";
 
 // actions
-import { getUserAreas } from 'redactions/user';
-import * as actions from '../actions';
+import { getUserAreas } from "redactions/user";
+import * as actions from "../actions";
 
 // selectors
-import {
-  getAvailableAreas,
-  isAreaFound,
-} from '../selectors';
+import { getAvailableAreas, isAreaFound } from "../selectors";
 
 // component
-import DatasetSubscriptionsModal from './component';
+import DatasetSubscriptionsModal from "./component";
 
 class DatasetSubscriptionModalContainer extends Component {
   static propTypes = {
@@ -41,7 +38,7 @@ class DatasetSubscriptionModalContainer extends Component {
     updateSubscription: PropTypes.func.isRequired,
     clearSubscriptions: PropTypes.func.isRequired,
     clearLocalSubscriptions: PropTypes.func.isRequired,
-  }
+  };
 
   UNSAFE_componentWillMount() {
     const {
@@ -68,13 +65,25 @@ class DatasetSubscriptionModalContainer extends Component {
           id: dataset.id,
           label: dataset.name,
           value: dataset.name,
-          subscriptions: sortBy(Object.keys(dataset.subscribable || dataset.attributes.subscribable)
-            .map((val, index) => ({
+          subscriptions: sortBy(
+            Object.keys(
+              dataset.subscribable || dataset.attributes.subscribable
+            ).map((val, index) => ({
               label: val,
               value: val,
-              ...((dataset.subscribable || dataset.attributes.subscribable)[val] && { query: ((dataset.subscribable || dataset.attributes.subscribable)[val] || {}).dataQuery }),
+              ...((dataset.subscribable || dataset.attributes.subscribable)[
+                val
+              ] && {
+                query: (
+                  (dataset.subscribable || dataset.attributes.subscribable)[
+                    val
+                  ] || {}
+                ).dataQuery,
+              }),
               ...(index === 0 && { selected: true }),
-            })), 'label'),
+            })),
+            "label"
+          ),
           threshold: 1,
         })),
       });
@@ -83,30 +92,40 @@ class DatasetSubscriptionModalContainer extends Component {
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     const { subscriptions, setUserSelection, activeArea } = this.props;
-    const { subscriptions: nextSubscriptions, activeArea: nextActiveArea } = nextProps;
+    const { subscriptions: nextSubscriptions, activeArea: nextActiveArea } =
+      nextProps;
     const subscriptionsChanged = !isEqual(subscriptions, nextSubscriptions);
 
     if (nextSubscriptions.length && subscriptionsChanged) {
       if (nextActiveArea && nextActiveArea.subscription) {
-        const currentSubscription = nextSubscriptions.find((_subscription) => _subscription.id === activeArea.subscription.id);
+        const currentSubscription = nextSubscriptions.find(
+          (_subscription) => _subscription.id === activeArea.subscription.id
+        );
         const subscriptionTypes = currentSubscription.attributes.datasetsQuery
           .filter((_datasetQuery) => _datasetQuery.type)
           .map((_datasetQuery) => _datasetQuery.type);
 
         setUserSelection({
-          datasets: activeArea.subscription.attributes.datasets.map((dataset, index) => ({
-            id: dataset.id,
-            label: dataset.name,
-            value: dataset.name,
-            subscriptions: sortBy(Object.keys(dataset.subscribable
-              || dataset.attributes.subscribable)
-              .map((val) => ({
-                label: val,
-                value: val,
-                ...(subscriptionTypes.includes(val) && { selected: true }),
-              })), 'label'),
-            threshold: activeArea.subscription.attributes.datasetsQuery[index].threshold,
-          })),
+          datasets: activeArea.subscription.attributes.datasets.map(
+            (dataset, index) => ({
+              id: dataset.id,
+              label: dataset.name,
+              value: dataset.name,
+              subscriptions: sortBy(
+                Object.keys(
+                  dataset.subscribable || dataset.attributes.subscribable
+                ).map((val) => ({
+                  label: val,
+                  value: val,
+                  ...(subscriptionTypes.includes(val) && { selected: true }),
+                })),
+                "label"
+              ),
+              threshold:
+                activeArea.subscription.attributes.datasetsQuery[index]
+                  .threshold,
+            })
+          ),
         });
       }
     }
@@ -131,13 +150,25 @@ class DatasetSubscriptionModalContainer extends Component {
           id: dataset.id,
           label: dataset.name,
           value: dataset.name,
-          subscriptions: sortBy(Object.keys(dataset.subscribable || dataset.attributes.subscribable)
-            .map((val, index) => ({
+          subscriptions: sortBy(
+            Object.keys(
+              dataset.subscribable || dataset.attributes.subscribable
+            ).map((val, index) => ({
               label: val,
               value: val,
-              ...((dataset.subscribable || dataset.attributes.subscribable)[val] && { query: ((dataset.subscribable || dataset.attributes.subscribable)[val] || {}).dataQuery }),
+              ...((dataset.subscribable || dataset.attributes.subscribable)[
+                val
+              ] && {
+                query: (
+                  (dataset.subscribable || dataset.attributes.subscribable)[
+                    val
+                  ] || {}
+                ).dataQuery,
+              }),
               ...(index === 0 && { selected: true }),
-            })), 'label'),
+            })),
+            "label"
+          ),
           threshold: 1,
         })),
       });
@@ -145,7 +176,7 @@ class DatasetSubscriptionModalContainer extends Component {
   }
 
   render() {
-    return (<DatasetSubscriptionsModal {...this.props} />);
+    return <DatasetSubscriptionsModal {...this.props} />;
   }
 }
 
@@ -159,13 +190,15 @@ export default connect(
     subscriptions: state.subscriptions.list,
     subscription: state.subscriptions.subscriptionCreation,
     preview: state.subscriptions.list.preview,
-    loading: state.subscriptions.areas.loading
-      || state.subscriptions.userAreas.loading || state.subscriptions.datasets.loading,
+    loading:
+      state.subscriptions.areas.loading ||
+      state.subscriptions.userAreas.loading ||
+      state.subscriptions.datasets.loading,
     // loading: state.subscriptions.loading || state.subscriptions.areas.loading ||
     //   state.subscriptions.userAreas.loading || state.subscriptions.datasets.loading
   }),
   {
     getUserAreas,
     ...actions,
-  },
+  }
 )(DatasetSubscriptionModalContainer);

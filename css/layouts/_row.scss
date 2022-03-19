@@ -6,8 +6,8 @@
       margin-top: -#{map-get($grid-column-gutter, medium)};
     }
 
-    div[class*=col],
-    div[class^=col] {
+    div[class*="col"],
+    div[class^="col"] {
       display: flex;
       flex-direction: column;
       margin-top: #{map-get($grid-column-gutter, small)};

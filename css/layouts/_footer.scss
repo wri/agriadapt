@@ -30,7 +30,7 @@
         color: $dove-grey;
 
         &:after {
-          content: '';
+          content: "";
           position: absolute;
           right: -17px;
           top: 4px;
@@ -63,7 +63,9 @@
 
       li {
         margin-left: 10px;
-        &:first-child { margin-left: 0; }
+        &:first-child {
+          margin-left: 0;
+        }
       }
     }
 
@@ -93,14 +95,17 @@
     }
   }
 
-  .footer-lower, .footer-sub {
+  .footer-lower,
+  .footer-sub {
     p {
       font-size: 14px;
       margin: 0;
       line-height: 24px;
       margin-bottom: 5px;
 
-      &:last-child { margin-bottom: 0; }
+      &:last-child {
+        margin-bottom: 0;
+      }
 
       &.-bold {
         font-weight: bold;
@@ -124,5 +129,4 @@
       }
     }
   }
-
 }

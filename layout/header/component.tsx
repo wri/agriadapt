@@ -1,32 +1,20 @@
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
-import Link from 'next/link';
+import PropTypes from "prop-types";
+import classnames from "classnames";
+import Link from "next/link";
 
 // components
-import HeaderMenu from 'layout/header/header-menu';
-import Icon from 'components/ui/icon';
-import { Media } from 'lib/media';
-import HeaderMenuMobile from 'layout/header/header-menu-mobile'
+import HeaderMenu from "layout/header/header-menu";
+import Icon from "components/ui/icon";
+import { Media } from "lib/media";
+import HeaderMenuMobile from "layout/header/header-menu-mobile";
 
-export default function Header({
-  className,
-  header,
-  pageHeader,
-}) {
-  const {
-    admin,
-  } = header;
-  const headerClass = classnames(
-    'l-header',
-    {
-      '-transparent': pageHeader,
-      [className]: !!className,
-    },
-  );
-  const containerClass = classnames(
-    'l-container',
-    { '-admin': admin },
-  );
+export default function Header({ className, header, pageHeader }) {
+  const { admin } = header;
+  const headerClass = classnames("l-header", {
+    "-transparent": pageHeader,
+    [className]: !!className,
+  });
+  const containerClass = classnames("l-container", { "-admin": admin });
 
   return (
     <header className={headerClass}>
@@ -38,7 +26,10 @@ export default function Header({
                 <Link href="/">
                   <a>
                     {/* <Icon name="icon-rw-logo" className="brand-logo" style={undefined} /> */}
-                    <div style={{ backgroundColor: 'white', borderRadius: 4 }} className="brand-logo"></div>
+                    <div
+                      style={{ backgroundColor: "white", borderRadius: 4 }}
+                      className="brand-logo"
+                    ></div>
                     <h1 className="brand-title">Climate Risk Tool</h1>
                   </a>
                 </Link>
@@ -61,7 +52,7 @@ Header.defaultProps = {
   className: null,
   pageHeader: false,
   header: {
-    admin: false
+    admin: false,
   },
 };
 

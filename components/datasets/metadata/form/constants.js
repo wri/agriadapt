@@ -1,13 +1,13 @@
 export const LANGUAGE_OPTIONS = [
-  { label: 'English', value: 'en' },
-  { label: 'Español', value: 'es' },
-  { label: 'Français', value: 'fr' },
-  { label: 'Português', value: 'pt' },
+  { label: "English", value: "en" },
+  { label: "Español", value: "es" },
+  { label: "Français", value: "fr" },
+  { label: "Português", value: "pt" },
 ];
 
 export const RASTER_COLUMN_TYPES = [
-  { label: 'Categorical', value: 'categorical' },
-  { label: 'Continuous', value: 'continuous' },
+  { label: "Categorical", value: "categorical" },
+  { label: "Continuous", value: "continuous" },
 ];
 
 export const STATE_DEFAULT = {
@@ -16,10 +16,10 @@ export const STATE_DEFAULT = {
   submitting: false,
   loading: false,
   form: {
-    source: '',
-    description: '',
-    name: '',
-    language: 'en',
+    source: "",
+    description: "",
+    name: "",
+    language: "en",
     info: {},
     columns: {},
     application: process.env.NEXT_PUBLIC_APPLICATIONS,

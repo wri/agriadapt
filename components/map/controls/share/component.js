@@ -1,23 +1,23 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent } from "react";
 
 // components
-import Modal from 'components/modal/modal-component';
-import ShareModal from 'components/modal/share-modal';
-import Icon from 'components/ui/icon';
+import Modal from "components/modal/modal-component";
+import ShareModal from "components/modal/share-modal";
+import Icon from "components/ui/icon";
 
 // utils
-import { logEvent } from 'utils/analytics';
+import { logEvent } from "utils/analytics";
 
 class ShareControls extends PureComponent {
-  state = { showShareModal: false }
+  state = { showShareModal: false };
 
   handleToggleShareModal = (modalVisibility) => {
     this.setState({ showShareModal: modalVisibility });
-  }
+  };
 
   render() {
     const { showShareModal } = this.state;
-    const location = typeof window !== 'undefined' && window.location;
+    const location = typeof window !== "undefined" && window.location;
 
     return (
       <div className="c-share-control">
@@ -26,10 +26,7 @@ class ShareControls extends PureComponent {
           className="share-control--btn"
           onClick={() => this.handleToggleShareModal(true)}
         >
-          <Icon
-            name="icon-share"
-            className="-small"
-          />
+          <Icon name="icon-share" className="-small" />
 
           <Modal
             isOpen={showShareModal}
@@ -39,13 +36,16 @@ class ShareControls extends PureComponent {
             <ShareModal
               links={{
                 link: location && location.href,
-                embed: location && `${location.origin}/embed${location.pathname}${location.search}`,
+                embed:
+                  location &&
+                  `${location.origin}/embed${location.pathname}${location.search}`,
               }}
               analytics={{
-                facebook: () => logEvent('Share', 'Share explore', 'Facebook'),
-                twitter: () => logEvent('Share', 'Share explore', 'Twitter'),
-                email: () => logEvent('Share', 'Share explore', 'Email'),
-                copy: (type) => logEvent('Share', 'Share explore', `Copy ${type}`),
+                facebook: () => logEvent("Share", "Share explore", "Facebook"),
+                twitter: () => logEvent("Share", "Share explore", "Twitter"),
+                email: () => logEvent("Share", "Share explore", "Email"),
+                copy: (type) =>
+                  logEvent("Share", "Share explore", `Copy ${type}`),
               }}
             />
           </Modal>

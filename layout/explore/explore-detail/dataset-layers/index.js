@@ -1,14 +1,14 @@
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
 // component
-import DatasetLayersComponent from './component';
+import DatasetLayersComponent from "./component";
 
 // selectors
 import {
   isATimelineDataset,
   getTimelineLayer,
   getTimelineLayerMapbox,
-} from './selectors';
+} from "./selectors";
 
 export default connect(
   (state, props) => ({
@@ -18,5 +18,5 @@ export default connect(
     timelineLayerMapbox: getTimelineLayerMapbox(state, props),
     timelineLayer: getTimelineLayer(state, props),
   }),
-  null,
+  null
 )(DatasetLayersComponent);

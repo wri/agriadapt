@@ -1,20 +1,20 @@
-import { useState } from 'react';
-import PropTypes from 'prop-types';
-import { toastr } from 'react-redux-toastr';
-import { useRouter } from 'next/router';
-import WidgetEditor from '@widget-editor/widget-editor';
+import { useState } from "react";
+import PropTypes from "prop-types";
+import { toastr } from "react-redux-toastr";
+import { useRouter } from "next/router";
+import WidgetEditor from "@widget-editor/widget-editor";
 
 // components
-import Modal from 'components/modal/modal-component';
+import Modal from "components/modal/modal-component";
 // import LoginModal from 'components/modal/login-modal';
-import Spinner from 'components/ui/Spinner';
-import ErrorBoundary from 'components/ui/error-boundary';
+import Spinner from "components/ui/Spinner";
+import ErrorBoundary from "components/ui/error-boundary";
 
 // hooks
 // import useFetchArea from 'hooks/user-areas/fetch-area';
 
 // services
-import { createWidget, createWidgetMetadata } from 'services/widget';
+import { createWidget, createWidgetMetadata } from "services/widget";
 
 // constants
 import {
@@ -22,10 +22,10 @@ import {
   WIDGET_EDITOR_DEFAULT_DISABLED_FEATURES,
   WIDGET_EDITOR_COLOUR_SCHEMES,
   WIDGET_EDITOR_MAPBOX_PROPS,
-} from 'constants/widget-editor';
+} from "constants/widget-editor";
 
 // utils
-import { logEvent } from 'utils/analytics';
+import { logEvent } from "utils/analytics";
 
 function ExploreDetailVisualization(props) {
   const { widgetId, datasetId, aoi, authorization, RWAdapter } = props;
@@ -44,7 +44,11 @@ function ExploreDetailVisualization(props) {
   const onSaveWidget = (widget) => {
     if (!authorization) {
       setLoginModalOpen(true);
-      logEvent('Explore (Detail)', 'Anonymous user clicks on Save from Widget Editor', datasetId);
+      logEvent(
+        "Explore (Detail)",
+        "Anonymous user clicks on Save from Widget Editor",
+        datasetId
+      );
     } else {
       // The widget creation endpoint expects the application property to be
       // of array type
@@ -54,11 +58,11 @@ function ExploreDetailVisualization(props) {
         description: widget.description,
         widgetConfig: widget.widgetConfig,
         published: false,
-        application: process.env.NEXT_PUBLIC_APPLICATIONS.split(','),
+        application: process.env.NEXT_PUBLIC_APPLICATIONS.split(","),
         env: process.env.NEXT_PUBLIC_API_ENV,
       };
 
-      logEvent('Explore (Detail)', 'Save Widget', datasetId);
+      logEvent("Explore (Detail)", "Save Widget", datasetId);
 
       setLoading(true);
 
@@ -70,18 +74,18 @@ function ExploreDetailVisualization(props) {
             newWidgetObject.id,
             newWidgetObject.dataset,
             {
-              language: 'en',
+              language: "en",
               info: { caption: widget.metadata.caption },
             },
-            authorization,
+            authorization
           ).then(() => {
-            router.push('/myrw/widgets/my_widgets');
-            toastr.success('Success', 'Widget created successfully!');
+            router.push("/myrw/widgets/my_widgets");
+            toastr.success("Success", "Widget created successfully!");
           });
         })
         .catch((err) => {
           setLoading(false);
-          toastr.error('Error creating widget', err);
+          toastr.error("Error creating widget", err);
         });
     }
   };
@@ -102,7 +106,10 @@ function ExploreDetailVisualization(props) {
           adapter={RWAdapter}
           schemes={WIDGET_EDITOR_COLOUR_SCHEMES}
           authenticated
-          disable={[...WIDGET_EDITOR_DEFAULT_DISABLED_FEATURES, 'advanced-editor']}
+          disable={[
+            ...WIDGET_EDITOR_DEFAULT_DISABLED_FEATURES,
+            "advanced-editor",
+          ]}
         />
       </ErrorBoundary>
       {/* <Modal isOpen={loginModalOpen} onRequestClose={() => setLoginModalOpen(false)}>

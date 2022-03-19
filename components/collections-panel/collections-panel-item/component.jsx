@@ -1,11 +1,9 @@
-import React, {
-  useCallback,
-} from 'react';
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import React, { useCallback } from "react";
+import PropTypes from "prop-types";
+import classnames from "classnames";
 
 // components
-import Spinner from 'components/ui/Spinner';
+import Spinner from "components/ui/Spinner";
 
 const CollectionPanelItem = ({
   collection,
@@ -13,15 +11,18 @@ const CollectionPanelItem = ({
   loading,
   onToggleCollection,
 }) => {
-  const onCheck = useCallback((evt) => {
-    const newIsChecked = evt.currentTarget.checked;
-    onToggleCollection(newIsChecked, collection);
-  }, [collection, onToggleCollection]);
+  const onCheck = useCallback(
+    (evt) => {
+      const newIsChecked = evt.currentTarget.checked;
+      onToggleCollection(newIsChecked, collection);
+    },
+    [collection, onToggleCollection]
+  );
 
   const { name } = collection;
   const collectionItemClass = classnames({
-    'collection-item': true,
-    '-selected': isChecked,
+    "collection-item": true,
+    "-selected": isChecked,
   });
 
   return (
@@ -31,7 +32,7 @@ const CollectionPanelItem = ({
           isLoading
           className="-transparent -tiny -pink-icon"
           style={{
-            left: 'auto',
+            left: "auto",
             right: 5,
           }}
         />

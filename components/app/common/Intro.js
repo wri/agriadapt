@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Banner from 'components/app/common/Banner';
+import React from "react";
+import PropTypes from "prop-types";
+import Banner from "components/app/common/Banner";
 
-function Intro({ title = '', intro = '', styles = {} }) {
-  const isIntroString = typeof intro === 'string';
+function Intro({ title = "", intro = "", styles = {} }) {
+  const isIntroString = typeof intro === "string";
 
   return (
     <div className="c-intro">
@@ -20,11 +20,11 @@ function Intro({ title = '', intro = '', styles = {} }) {
             <p className="c-text -huge -italic">
               {!isIntroString
                 ? intro.map((line, i) => (
-                  <span key={i}>
-                    {line}
-                    {(i !== intro.length - 1) && <br /> }
-                  </span>
-                ))
+                    <span key={i}>
+                      {line}
+                      {i !== intro.length - 1 && <br />}
+                    </span>
+                  ))
                 : intro}
             </p>
           </div>

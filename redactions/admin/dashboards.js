@@ -1,21 +1,21 @@
-import 'isomorphic-fetch';
-import { fetchDashboards, deleteDashboard } from 'services/dashboard';
+import "isomorphic-fetch";
+import { fetchDashboards, deleteDashboard } from "services/dashboard";
 
 // utils
-import sortBy from 'lodash/sortBy';
+import sortBy from "lodash/sortBy";
 
 /**
  * CONSTANTS
-*/
-const GET_DASHBOARDS_SUCCESS = 'dashboards/GET_DASHBOARDS_SUCCESS';
-const GET_DASHBOARDS_ERROR = 'dashboards/GET_DASHBOARDS_ERROR';
-const GET_DASHBOARDS_LOADING = 'dashboards/GET_DASHBOARDS_LOADING';
+ */
+const GET_DASHBOARDS_SUCCESS = "dashboards/GET_DASHBOARDS_SUCCESS";
+const GET_DASHBOARDS_ERROR = "dashboards/GET_DASHBOARDS_ERROR";
+const GET_DASHBOARDS_LOADING = "dashboards/GET_DASHBOARDS_LOADING";
 
-const SET_DASHBOARDS_FILTERS = 'dashboards/SET_DASHBOARDS_FILTERS';
+const SET_DASHBOARDS_FILTERS = "dashboards/SET_DASHBOARDS_FILTERS";
 
-const DELETE_DASHBOARD_SUCCESS = 'dashboards/DELETE_DASHBOARD_SUCCESS';
-const DELETE_DASHBOARD_ERROR = 'dashboards/DELETE_DASHBOARD_ERROR';
-const DELETE_DASHBOARD_LOADING = 'dashboards/DELETE_DASHBOARD_LOADING';
+const DELETE_DASHBOARD_SUCCESS = "dashboards/DELETE_DASHBOARD_SUCCESS";
+const DELETE_DASHBOARD_ERROR = "dashboards/DELETE_DASHBOARD_ERROR";
+const DELETE_DASHBOARD_LOADING = "dashboards/DELETE_DASHBOARD_LOADING";
 
 /**
  * STORE
@@ -92,8 +92,12 @@ export const getDashboards = (options, headers) => (dispatch) => {
   dispatch({ type: GET_DASHBOARDS_LOADING });
 
   fetchDashboards(options, headers)
-    .then((data) => { dispatch({ type: GET_DASHBOARDS_SUCCESS, payload: sortBy(data, 'name') }); })
-    .catch((err) => { dispatch({ type: GET_DASHBOARDS_ERROR, payload: err.message }); });
+    .then((data) => {
+      dispatch({ type: GET_DASHBOARDS_SUCCESS, payload: sortBy(data, "name") });
+    })
+    .catch((err) => {
+      dispatch({ type: GET_DASHBOARDS_ERROR, payload: err.message });
+    });
 };
 
 /**
@@ -102,10 +106,11 @@ export const getDashboards = (options, headers) => (dispatch) => {
  * @param {{ key: string, value: string|number }[]} filters List of filters
  */
 export function setFilters(filters) {
-  return (dispatch) => dispatch({
-    type: SET_DASHBOARDS_FILTERS,
-    payload: filters,
-  });
+  return (dispatch) =>
+    dispatch({
+      type: SET_DASHBOARDS_FILTERS,
+      payload: filters,
+    });
 }
 
 /**
@@ -115,7 +120,9 @@ export function setFilters(filters) {
  */
 export function onDeleteDashboard({ id }) {
   return (dispatch, getState) => {
-    const { user: { token } } = getState();
+    const {
+      user: { token },
+    } = getState();
     dispatch({ type: DELETE_DASHBOARD_LOADING });
 
     return deleteDashboard(id, token)

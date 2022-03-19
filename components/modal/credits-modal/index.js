@@ -1,3 +1,3 @@
-import CreditsModalComponent from './component';
+import CreditsModalComponent from "./component";
 
 export default CreditsModalComponent;

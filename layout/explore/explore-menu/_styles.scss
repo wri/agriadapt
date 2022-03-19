@@ -1,4 +1,4 @@
-@import 'css/settings';
+@import "css/settings";
 
 .c-explore-menu {
   min-width: 200px;
@@ -27,7 +27,7 @@
       cursor: pointer;
 
       &:before {
-        content: '';
+        content: "";
         position: absolute;
         left: 0;
         top: 0;
@@ -47,7 +47,7 @@
       }
 
       &.-active {
-        background-color: rgba($sea-blue, .05);
+        background-color: rgba($sea-blue, 0.05);
 
         &:before {
           background: $sea-blue;

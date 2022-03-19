@@ -1,5 +1,5 @@
-import * as actions from './actions';
-import initialState from './initial-state';
+import * as actions from "./actions";
+import initialState from "./initial-state";
 
 export default {
   // user subscriptions
@@ -37,7 +37,10 @@ export default {
       error: payload,
     },
   }),
-  [actions.clearSubscriptionsPreview]: (state) => ({ ...state, list: initialState.list }),
+  [actions.clearSubscriptionsPreview]: (state) => ({
+    ...state,
+    list: initialState.list,
+  }),
   // areas
   [actions.setAreas]: (state, { payload }) => ({
     ...state,

@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
-import isEqual from 'lodash/isEqual';
-import Checkbox from './Checkbox';
+import React from "react";
+import PropTypes from "prop-types";
+import classnames from "classnames";
+import isEqual from "lodash/isEqual";
+import Checkbox from "./Checkbox";
 
 export default class CheckboxGroup extends React.Component {
   constructor(props) {
@@ -23,10 +23,12 @@ export default class CheckboxGroup extends React.Component {
   /**
    * UI EVENTS
    * - onChange
-  */
+   */
   onChange(newItem) {
     // Send objects
-    const selectedObj = this.props.options.find((option) => option.value === newItem.value);
+    const selectedObj = this.props.options.find(
+      (option) => option.value === newItem.value
+    );
     const newChecked = this.state.checked.slice(0);
 
     if (newItem.checked) {
@@ -62,7 +64,9 @@ export default class CheckboxGroup extends React.Component {
 
     return (
       <div className={`c-checkbox-box ${customClassName}`}>
-        {this.props.title && <span className="checkbox-box-title">{this.props.title}</span>}
+        {this.props.title && (
+          <span className="checkbox-box-title">{this.props.title}</span>
+        )}
         {this.getCheckbox()}
       </div>
     );

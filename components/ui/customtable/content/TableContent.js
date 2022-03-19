@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
-import isEmpty from 'lodash/isEmpty';
+import React from "react";
+import PropTypes from "prop-types";
+import classnames from "classnames";
+import isEmpty from "lodash/isEmpty";
 
 export default class TableContent extends React.Component {
   static propTypes = {
@@ -29,23 +29,24 @@ export default class TableContent extends React.Component {
   };
 
   getPageBounds() {
-    const { pagination: { page, limit } } = this.props;
+    const {
+      pagination: { page, limit },
+    } = this.props;
 
     return {
       bottom: page === 1 ? 0 : (page - 1) * limit,
-      top: page === 1 ? limit : (page * limit),
+      top: page === 1 ? limit : page * limit,
     };
   }
 
   render() {
-    const {
-      actions, columns, sort, rowSelection, manualPagination,
-    } = this.props;
+    const { actions, columns, sort, rowSelection, manualPagination } =
+      this.props;
     const actionsShowed = actions.list.filter((ac) => ac.show || ac.component);
 
     let data = this.props.filteredData;
     if (!data.length) {
-      const length = (actions.show) ? columns.length + 1 : columns.length;
+      const length = actions.show ? columns.length + 1 : columns.length;
 
       return (
         <tbody>
@@ -62,16 +63,20 @@ export default class TableContent extends React.Component {
         const rowAField = rowA[sort.field];
         const rowBField = rowB[sort.field];
 
-        const rowACondition = (rowAField !== null && typeof rowAField !== 'undefined' && rowAField.toString)
-          ? rowAField.toString().toLowerCase().trim()
-          : rowAField;
-        const rowBCondition = (rowBField !== null && typeof rowBField !== 'undefined' && rowBField.toString)
-          ? rowBField.toString().toLowerCase().trim()
-          : rowBField;
+        const rowACondition =
+          rowAField !== null &&
+          typeof rowAField !== "undefined" &&
+          rowAField.toString
+            ? rowAField.toString().toLowerCase().trim()
+            : rowAField;
+        const rowBCondition =
+          rowBField !== null &&
+          typeof rowBField !== "undefined" &&
+          rowBField.toString
+            ? rowBField.toString().toLowerCase().trim()
+            : rowBField;
 
-        return (rowACondition > rowBCondition)
-          ? sort.value
-          : sort.value * -1;
+        return rowACondition > rowBCondition ? sort.value : sort.value * -1;
       });
     }
 
@@ -84,7 +89,9 @@ export default class TableContent extends React.Component {
     return (
       <tbody>
         {data.map((row) => {
-          const selectedClass = classnames({ '-selected': rowSelection.includes(row.id) });
+          const selectedClass = classnames({
+            "-selected": rowSelection.includes(row.id),
+          });
           return (
             <tr
               className={`${selectedClass}`}
@@ -93,13 +100,16 @@ export default class TableContent extends React.Component {
             >
               {columns.map((col, i) => {
                 const value = row[col.value];
-                const td = col.td
-                  ? <col.td {...col.tdProps} key={i} row={row} value={value} />
-                  : <td key={i} className={col.className || ''}>{(value && value.toString) ? value.toString() : value}</td>;
+                const td = col.td ? (
+                  <col.td {...col.tdProps} key={i} row={row} value={value} />
+                ) : (
+                  <td key={i} className={col.className || ""}>
+                    {value && value.toString ? value.toString() : value}
+                  </td>
+                );
                 return td;
               })}
-              {actions.show && !row.disabled
-                && (
+              {actions.show && !row.disabled && (
                 <td className="individual-actions">
                   <ul>
                     {actionsShowed.map((ac, j) => {
@@ -111,7 +121,9 @@ export default class TableContent extends React.Component {
                               action={ac}
                               data={row}
                               onRowDelete={this.props.onRowDelete}
-                              onToggleSelectedRow={this.props.onToggleSelectedRow}
+                              onToggleSelectedRow={
+                                this.props.onToggleSelectedRow
+                              }
                             />
                           </li>
                         );
@@ -126,7 +138,7 @@ export default class TableContent extends React.Component {
                     })}
                   </ul>
                 </td>
-                )}
+              )}
             </tr>
           );
         })}

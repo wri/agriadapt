@@ -1,14 +1,12 @@
-import {
-  HYDRATE,
-} from 'next-redux-wrapper';
+import { HYDRATE } from "next-redux-wrapper";
 
-const SET_LOCALE = 'common/SET_LOCALE';
-const SET_EMBED = 'common/SET_EMBED';
-const SET_WEBSHOT = 'common/SET_WEBSHOT';
-const SET_IS_SERVER = 'common/SET_IS_SERVER';
+const SET_LOCALE = "common/SET_LOCALE";
+const SET_EMBED = "common/SET_EMBED";
+const SET_WEBSHOT = "common/SET_WEBSHOT";
+const SET_IS_SERVER = "common/SET_IS_SERVER";
 
 const initialState = {
-  locale: 'en',
+  locale: "en",
   embed: false,
   webshot: false,
   isServer: true,
@@ -17,10 +15,10 @@ const initialState = {
 export default function commonReducer(state = initialState, action) {
   switch (action.type) {
     case HYDRATE:
-      return ({
+      return {
         ...state,
         ...action.payload.common,
-      });
+      };
     case SET_LOCALE:
       return { ...state, locale: action.payload };
 

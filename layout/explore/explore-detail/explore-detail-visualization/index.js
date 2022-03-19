@@ -1,12 +1,10 @@
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
 // constants
-import {
-  getRWAdapter,
-} from 'utils/widget-editor';
+import { getRWAdapter } from "utils/widget-editor";
 
 // component
-import VisualizationComponent from './component';
+import VisualizationComponent from "./component";
 
 export default connect(
   (state) => ({
@@ -14,5 +12,5 @@ export default connect(
     aoi: state.explore.map.aoi,
     RWAdapter: getRWAdapter(state),
   }),
-  null,
+  null
 )(VisualizationComponent);

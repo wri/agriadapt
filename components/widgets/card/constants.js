@@ -8,18 +8,18 @@ export const INITIAL_STATE = {
 
 export const REDUCER = (state, { type, payload }) => {
   switch (type) {
-    case 'WIDGET-CARD/SET_LAYER':
+    case "WIDGET-CARD/SET_LAYER":
       return { ...state, layer: payload };
-    case 'WIDGET-CARD/SET_LOADING':
+    case "WIDGET-CARD/SET_LOADING":
       return { ...state, loading: payload };
-    case 'WIDGET-CARD/SET_MAP_LOADING':
+    case "WIDGET-CARD/SET_MAP_LOADING":
       return { ...state, mapLoading: payload };
-    case 'WIDGET-CARD/SET_ERROR':
+    case "WIDGET-CARD/SET_ERROR":
       return { ...state, error: payload };
-    case 'WIDGET-CARD/SET_TOOLTIP':
+    case "WIDGET-CARD/SET_TOOLTIP":
       return { ...state, tooltip: payload };
     default:
-      throw new Error('action not supported');
+      throw new Error("action not supported");
   }
 };
 

@@ -1,9 +1,8 @@
 // components
-import FooterLinks from './footer-links';
-import Link from 'next/link';
-import { Media } from 'lib/media';
+import FooterLinks from "./footer-links";
+import Link from "next/link";
+import { Media } from "lib/media";
 export default function Footer() {
-
   return (
     <footer className="l-footer">
       <div className="footer-main">
@@ -21,15 +20,16 @@ export default function Footer() {
                     target="_blank"
                     rel="noreferrer noopener"
                   >
-                    <img
-                      src="/static/images/wri-logo.svg"
-                      alt="WRI logo"
-                    />
+                    <img src="/static/images/wri-logo.svg" alt="WRI logo" />
                   </a>
                 </div>
                 <div className="footer-item">
-                  <Link href='#'><p>Terms of Service</p></Link>
-                  <Link href='#'><p>Privacy Policy</p></Link>
+                  <Link href="#">
+                    <p>Terms of Service</p>
+                  </Link>
+                  <Link href="#">
+                    <p>Privacy Policy</p>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -52,8 +52,12 @@ export default function Footer() {
               <div className="column small-12">
                 <div className="footer-container">
                   <div className="footer-item">
-                      Powered by
-                      <img className="rw-logo" alt={"Resource Watch"} src="/static/images/Logo-RW.svg" />
+                    Powered by
+                    <img
+                      className="rw-logo"
+                      alt={"Resource Watch"}
+                      src="/static/images/Logo-RW.svg"
+                    />
                   </div>
                 </div>
               </div>
@@ -67,10 +71,12 @@ export default function Footer() {
                     © World Resources Institute 2022
                   </div>
                   <div className="footer-item">
-                    <span>
-                      Powered by
-                    </span>
-                    <img className={"rw-logo"} alt={"Resource Watch"} src="/static/images/Logo-RW.svg" />
+                    <span>Powered by</span>
+                    <img
+                      className={"rw-logo"}
+                      alt={"Resource Watch"}
+                      src="/static/images/Logo-RW.svg"
+                    />
                   </div>
                 </div>
               </div>

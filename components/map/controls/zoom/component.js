@@ -1,9 +1,9 @@
-import { PureComponent } from 'react';
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import { PureComponent } from "react";
+import PropTypes from "prop-types";
+import classnames from "classnames";
 
 // components
-import Icon from 'components/ui/icon';
+import Icon from "components/ui/icon";
 
 class ZoomControls extends PureComponent {
   increaseZoom = (e) => {
@@ -12,7 +12,7 @@ class ZoomControls extends PureComponent {
     const { zoom, maxZoom } = viewport;
 
     onClick(zoom === maxZoom ? zoom : zoom + 1);
-  }
+  };
 
   decreaseZoom = (e) => {
     e.stopPropagation();
@@ -20,19 +20,23 @@ class ZoomControls extends PureComponent {
     const { zoom, minZoom } = viewport;
 
     onClick(zoom === minZoom ? zoom : zoom - 1);
-  }
+  };
 
   render() {
     const { className, viewport } = this.props;
     const { zoom, maxZoom, minZoom } = viewport;
 
     const componentClass = classnames({
-      'c-zoom-control': true,
+      "c-zoom-control": true,
       [className]: !!className,
     });
 
-    const zoomInClass = classnames('zoom-control--btn', { '-disabled': zoom >= maxZoom });
-    const zoomOutClass = classnames('zoom-control--btn', { '-disabled': zoom <= minZoom });
+    const zoomInClass = classnames("zoom-control--btn", {
+      "-disabled": zoom >= maxZoom,
+    });
+    const zoomOutClass = classnames("zoom-control--btn", {
+      "-disabled": zoom <= minZoom,
+    });
 
     return (
       <div className={componentClass}>

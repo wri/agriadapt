@@ -1,6 +1,4 @@
-import {
-  useCallback,
-} from 'react';
+import { useCallback } from "react";
 
 export default function UserReportButton() {
   const onClick = useCallback(() => {
@@ -9,11 +7,7 @@ export default function UserReportButton() {
   }, []);
 
   return (
-    <button
-      type="button"
-      onClick={onClick}
-      className="c-user-report"
-    >
+    <button type="button" onClick={onClick} className="c-user-report">
       Feedback
     </button>
   );

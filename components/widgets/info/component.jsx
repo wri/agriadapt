@@ -1,13 +1,16 @@
-import { useMemo } from 'react';
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import { useMemo } from "react";
+import PropTypes from "prop-types";
+import classnames from "classnames";
 
 export default function WidgetInfo({ widget, className }) {
-  const widgetLinks = useMemo(() => widget?.metadata?.[0]?.info?.widgetLinks || [], [widget]);
+  const widgetLinks = useMemo(
+    () => widget?.metadata?.[0]?.info?.widgetLinks || [],
+    [widget]
+  );
 
   return (
     <div
-      className={classnames('c-widget-info', {
+      className={classnames("c-widget-info", {
         [className]: Boolean(className),
       })}
     >
@@ -56,10 +59,10 @@ WidgetInfo.propTypes = {
             PropTypes.shape({
               name: PropTypes.string,
               link: PropTypes.string,
-            }),
+            })
           ),
         }),
-      }),
+      })
     ),
   }).isRequired,
   style: PropTypes.shape({}),

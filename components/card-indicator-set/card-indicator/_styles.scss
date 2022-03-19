@@ -1,4 +1,4 @@
-@import 'css/settings';
+@import "css/settings";
 
 .c-indicator-card-set {
   display: flex;
@@ -8,15 +8,15 @@
   height: 160px;
   width: 160px;
   padding: ($space * 2);
-  border: 1px solid rgba($white, .3);
+  border: 1px solid rgba($white, 0.3);
   border-radius: 4px;
-  box-shadow: 0 1px 2px 0 rgba($black, .09);
+  box-shadow: 0 1px 2px 0 rgba($black, 0.09);
   cursor: pointer;
   transition: all $animation-time-2 $ease-in-out-sine;
 
   &:hover {
     &:not(.-active) {
-      box-shadow: 0 0 0 1px rgba($black, .05), 0 20px 30px rgba($black, .2);
+      box-shadow: 0 0 0 1px rgba($black, 0.05), 0 20px 30px rgba($black, 0.2);
       transform: translateY(-4px);
     }
   }

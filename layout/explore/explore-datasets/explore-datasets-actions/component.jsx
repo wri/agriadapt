@@ -1,27 +1,22 @@
-import {
-  useCallback,
-  useMemo,
-} from 'react';
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import { useCallback, useMemo } from "react";
+import PropTypes from "prop-types";
+import classnames from "classnames";
 
 // Components
-import Icon from 'components/ui/icon';
+import Icon from "components/ui/icon";
 // import LoginRequired from 'components/ui/login-required';
 
 // Tooltip
-import { Tooltip } from 'vizzuality-components';
-import CollectionsPanel from 'components/collections-panel';
-import { getTooltipContainer } from 'utils/tooltip';
+import { Tooltip } from "vizzuality-components";
+import CollectionsPanel from "components/collections-panel";
+import { getTooltipContainer } from "utils/tooltip";
 
 // // hooks
 // import useBelongsToCollection from 'hooks/collection/belongs-to-collection';
 // import useFetchCollection from 'hooks/collection/fetch-collection';
 
 // Utils
-import { logEvent } from 'utils/analytics';
-
-
+import { logEvent } from "utils/analytics";
 
 const ExploreDatasetsActions = (props) => {
   const {
@@ -44,15 +39,18 @@ const ExploreDatasetsActions = (props) => {
   // });
   const isActive = useMemo(
     () => !!layerGroups.find((l) => l.dataset === dataset.id),
-    [dataset, layerGroups],
+    [dataset, layerGroups]
   );
 
-  const handleToggleLayerGroup = useCallback((event) => {
-    event.stopPropagation();
+  const handleToggleLayerGroup = useCallback(
+    (event) => {
+      event.stopPropagation();
 
-    toggleMapLayerGroup({ dataset, toggle: !isActive });
-    resetMapLayerGroupsInteraction();
-  }, [isActive, dataset, toggleMapLayerGroup, resetMapLayerGroupsInteraction]);
+      toggleMapLayerGroup({ dataset, toggle: !isActive });
+      resetMapLayerGroupsInteraction();
+    },
+    [isActive, dataset, toggleMapLayerGroup, resetMapLayerGroupsInteraction]
+  );
 
   // const handleToggleFavorite = useCallback((isFavorite, resource) => {
   //   if (selectedCollection) refetch();
@@ -79,31 +77,31 @@ const ExploreDatasetsActions = (props) => {
   const datasetName = dataset?.metadata[0]?.info?.name;
 
   const starIconName = classnames({
-    'icon-star-full': isInACollection,
-    'icon-star-empty': !isInACollection,
+    "icon-star-full": isInACollection,
+    "icon-star-empty": !isInACollection,
   });
   const starIconClass = classnames({
-    '-small': true,
-    '-filled': true,
-    '-empty': !isInACollection,
+    "-small": true,
+    "-filled": true,
+    "-empty": !isInACollection,
   });
 
   return (
     <div className="c-explore-datasets-actions">
       <button
         className={classnames({
-          'c-button': true,
-          '-secondary': !isActive,
-          '-primary': isActive,
-          '-compressed': true,
-          '-disable': !layer,
-          '-fullwidth': true,
+          "c-button": true,
+          "-secondary": !isActive,
+          "-primary": isActive,
+          "-compressed": true,
+          "-disable": !layer,
+          "-fullwidth": true,
         })}
         type="button"
         disabled={!layer}
         onClick={handleToggleLayerGroup}
       >
-        {isActive ? 'Active' : 'Add to map'}
+        {isActive ? "Active" : "Add to map"}
       </button>
       {/* Favorite dataset icon */}
       {/* <LoginRequired
@@ -113,42 +111,39 @@ const ExploreDatasetsActions = (props) => {
           }
         }}
       > */}
-        <Tooltip
-          overlay={(
-            <CollectionsPanel
-              resource={dataset}
-              resourceType="dataset"
-              onClick={(e) => e.stopPropagation()}
-              onKeyPress={(e) => e.stopPropagation()}
-              // onToggleFavorite={handleToggleFavorite}
-              onToggleFavorite={() => {}}
-              // onToggleCollection={handleToggleCollection}
-              onToggleCollection={() => {}}
-            />
-          )}
-          overlayClassName="c-rc-tooltip"
-          placement="bottomRight"
-          trigger="click"
-          getTooltipContainer={getTooltipContainer}
-          monitorWindowResize
+      <Tooltip
+        overlay={
+          <CollectionsPanel
+            resource={dataset}
+            resourceType="dataset"
+            onClick={(e) => e.stopPropagation()}
+            onKeyPress={(e) => e.stopPropagation()}
+            // onToggleFavorite={handleToggleFavorite}
+            onToggleFavorite={() => {}}
+            // onToggleCollection={handleToggleCollection}
+            onToggleCollection={() => {}}
+          />
+        }
+        overlayClassName="c-rc-tooltip"
+        placement="bottomRight"
+        trigger="click"
+        getTooltipContainer={getTooltipContainer}
+        monitorWindowResize
+      >
+        <button
+          type="button"
+          className="c-button -secondary -compressed"
+          tabIndex={-1}
+          onClick={(event) => {
+            event.stopPropagation();
+            // if (userIsLoggedIn) {
+            //   logEvent('Explore Menu', 'Authenticated user Clicks Star', datasetName);
+            // }
+          }}
         >
-          <button
-            type="button"
-            className="c-button -secondary -compressed"
-            tabIndex={-1}
-            onClick={(event) => {
-              event.stopPropagation();
-              // if (userIsLoggedIn) {
-              //   logEvent('Explore Menu', 'Authenticated user Clicks Star', datasetName);
-              // }
-            }}
-          >
-            <Icon
-              name={starIconName}
-              className={starIconClass}
-            />
-          </button>
-        </Tooltip>
+          <Icon name={starIconName} className={starIconClass} />
+        </button>
+      </Tooltip>
       {/* </LoginRequired> */}
     </div>
   );
@@ -166,14 +161,12 @@ ExploreDatasetsActions.propTypes = {
         info: PropTypes.shape({
           name: PropTypes.string,
         }),
-      }),
+      })
     ),
   }).isRequired,
   layer: PropTypes.shape({}).isRequired,
   selectedCollection: PropTypes.string,
-  layerGroups: PropTypes.arrayOf(
-    PropTypes.shape({}),
-  ).isRequired,
+  layerGroups: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   toggleMapLayerGroup: PropTypes.func.isRequired,
   resetMapLayerGroupsInteraction: PropTypes.func.isRequired,
   // user: PropTypes.shape({

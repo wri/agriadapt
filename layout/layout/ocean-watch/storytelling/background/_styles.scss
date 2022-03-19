@@ -1,4 +1,4 @@
-@import 'css/settings';
+@import "css/settings";
 
 .c-storytelling-background {
   position: absolute;
@@ -6,7 +6,7 @@
   height: 100%;
   top: 0;
   left: 0;
-  transition: opacity .5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;

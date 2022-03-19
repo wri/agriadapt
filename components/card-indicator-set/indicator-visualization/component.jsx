@@ -1,30 +1,32 @@
-import { useState, useMemo, useEffect, useCallback } from 'react';
-import PropTypes from 'prop-types';
-import dynamic from 'next/dynamic';
-import { useQuery, useQueryClient } from 'react-query';
-import classnames from 'classnames';
-import { format } from 'd3-format';
-import Renderer from '@widget-editor/renderer';
-import { replace } from 'layer-manager';
-import axios from 'axios';
-import isNumber from 'lodash/isNumber';
+import { useState, useMemo, useEffect, useCallback } from "react";
+import PropTypes from "prop-types";
+import dynamic from "next/dynamic";
+import { useQuery, useQueryClient } from "react-query";
+import classnames from "classnames";
+import { format } from "d3-format";
+import Renderer from "@widget-editor/renderer";
+import { replace } from "layer-manager";
+import axios from "axios";
+import isNumber from "lodash/isNumber";
 
 // components
-import Spinner from 'components/ui/Spinner';
-import Title from 'components/ui/Title';
-import WidgetHeader from 'components/widgets/header';
-import WidgetInfo from 'components/widgets/info';
+import Spinner from "components/ui/Spinner";
+import Title from "components/ui/Title";
+import WidgetHeader from "components/widgets/header";
+import WidgetInfo from "components/widgets/info";
 
 // hooks
-import { useFetchWidget } from 'hooks/widget';
+import { useFetchWidget } from "hooks/widget";
 
 // utils
-import { getParametrizedWidget } from 'utils/widget';
+import { getParametrizedWidget } from "utils/widget";
 
 // constants
-import { WIDGET_EDITOR_MAPBOX_PROPS } from 'constants/widget-editor';
+import { WIDGET_EDITOR_MAPBOX_PROPS } from "constants/widget-editor";
 
-const WidgetShareModal = dynamic(() => import('../../widgets/share-modal'), { ssr: false });
+const WidgetShareModal = dynamic(() => import("../../widgets/share-modal"), {
+  ssr: false,
+});
 
 export default function IndicatorVisualization({
   indicator: { widgets: _widgets, sections },
@@ -43,14 +45,15 @@ export default function IndicatorVisualization({
         ...section,
         id: index,
       })),
-    [sections],
+    [sections]
   );
 
   const defaultSection = useMemo(() => {
     if (!serializedSections.length) return null;
 
     return (
-      serializedSections.find(({ default: isDefault }) => isDefault) || serializedSections?.[0]
+      serializedSections.find(({ default: isDefault }) => isDefault) ||
+      serializedSections?.[0]
     );
   }, [serializedSections]);
 
@@ -82,14 +85,14 @@ export default function IndicatorVisualization({
   } = useFetchWidget(
     mainWidgetAvailable,
     {
-      includes: 'metadata',
+      includes: "metadata",
     },
     {
       enabled: !!mainWidgetAvailable,
       refetchOnWindowFocus: false,
       placeholderData: {},
       select: (_widget) => getParametrizedWidget(_widget, params),
-    },
+    }
   );
 
   const handleShareToggle = useCallback(() => {
@@ -104,7 +107,7 @@ export default function IndicatorVisualization({
     (_id) => {
       setSection(serializedSections.find(({ id }) => _id === id));
     },
-    [serializedSections],
+    [serializedSections]
   );
 
   const replacedQuery = useMemo(() => {
@@ -120,16 +123,21 @@ export default function IndicatorVisualization({
     isError: isErrorSecondaryWidget,
     refetch: refetchSecondaryWidget,
   } = useQuery(
-    ['fetch-query', replacedQuery, ...queryKeys],
+    ["fetch-query", replacedQuery, ...queryKeys],
     () => {
-      if (!replacedQuery) return Promise.resolve('-');
+      if (!replacedQuery) return Promise.resolve("-");
       return axios.get(replacedQuery).then(({ data }) => data?.rows);
     },
     {
       refetchOnWindowFocus: false,
-      placeholderData: queryClient.getQueryData(['fetch-query', replacedQuery, ...queryKeys]) || {},
+      placeholderData:
+        queryClient.getQueryData([
+          "fetch-query",
+          replacedQuery,
+          ...queryKeys,
+        ]) || {},
       select: (data) => data[0]?.value,
-    },
+    }
   );
 
   const handleToggleInfo = useCallback(() => {
@@ -156,8 +164,8 @@ export default function IndicatorVisualization({
                 handleSection(id);
               }}
               className={classnames({
-                'btn-section': true,
-                '-active': currentSection?.id === id,
+                "btn-section": true,
+                "-active": currentSection?.id === id,
               })}
             >
               {title}
@@ -169,7 +177,9 @@ export default function IndicatorVisualization({
         <div className="main-widget-container">
           {!isFetchingMainWidget && isErrorMainWidget && (
             <div className="error-container">
-              <span className="error">There was an error loading the widget.</span>
+              <span className="error">
+                There was an error loading the widget.
+              </span>
               <button
                 type="button"
                 onClick={refetchMainWidget}
@@ -182,7 +192,9 @@ export default function IndicatorVisualization({
               </button>
             </div>
           )}
-          {isFetchingMainWidget && <Spinner isLoading className="-transparent" />}
+          {isFetchingMainWidget && (
+            <Spinner isLoading className="-transparent" />
+          )}
           {!isFetchingMainWidget && !isErrorMainWidget && (
             <>
               {mainWidget && (
@@ -206,7 +218,7 @@ export default function IndicatorVisualization({
                   ...(isInfoVisible && {
                     padding: 0,
                   }),
-                  height: 'calc(100% - 70px)',
+                  height: "calc(100% - 70px)",
                 }}
               >
                 {mainWidget?.widgetConfig && (
@@ -216,7 +228,9 @@ export default function IndicatorVisualization({
                     map={WIDGET_EDITOR_MAPBOX_PROPS}
                   />
                 )}
-                {isInfoVisible && mainWidget && <WidgetInfo widget={mainWidget} className="p-4" />}
+                {isInfoVisible && mainWidget && (
+                  <WidgetInfo widget={mainWidget} className="p-4" />
+                )}
               </div>
             </>
           )}
@@ -224,7 +238,9 @@ export default function IndicatorVisualization({
         <div className="secondary-widget-container">
           {!isFetchingSecondaryWidget && isErrorSecondaryWidget && (
             <>
-              <span className="error">There was an error loading the widget.</span>
+              <span className="error">
+                There was an error loading the widget.
+              </span>
               <button
                 type="button"
                 onClick={refetchSecondaryWidget}
@@ -237,14 +253,16 @@ export default function IndicatorVisualization({
               </button>
             </>
           )}
-          {isFetchingSecondaryWidget && <Spinner isLoading className="-transparent" />}
+          {isFetchingSecondaryWidget && (
+            <Spinner isLoading className="-transparent" />
+          )}
           {!isFetchingSecondaryWidget && (
             <>
               <span className="data">
                 {/* eslint-disable-next-line no-nested-ternary */}
                 {widgets?.[1]?.format && isNumber(secondaryWidgetValue)
                   ? format(widgets[1].format)(secondaryWidgetValue)
-                  : secondaryWidgetValue || '-'}
+                  : secondaryWidgetValue || "-"}
                 {widgets?.[1]?.unit && isNumber(secondaryWidgetValue) && (
                   <span className="unit">{widgets[1].unit}</span>
                 )}
@@ -271,7 +289,7 @@ export default function IndicatorVisualization({
 }
 
 IndicatorVisualization.defaultProps = {
-  theme: 'primary',
+  theme: "primary",
   params: {},
   isInACollection: false,
 };
@@ -283,7 +301,7 @@ IndicatorVisualization.propTypes = {
       PropTypes.shape({
         title: PropTypes.string.isRequired,
         widgets: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-      }),
+      })
     ),
     widgets: PropTypes.arrayOf(
       PropTypes.shape({
@@ -292,10 +310,10 @@ IndicatorVisualization.propTypes = {
         text: PropTypes.string,
         format: PropTypes.string,
         unit: PropTypes.string,
-      }).isRequired,
+      }).isRequired
     ),
   }).isRequired,
-  theme: PropTypes.oneOf(['primary', 'secondary']),
+  theme: PropTypes.oneOf(["primary", "secondary"]),
   params: PropTypes.shape({}),
   isInACollection: PropTypes.bool,
   RWAdapter: PropTypes.func.isRequired,

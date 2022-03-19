@@ -1,21 +1,13 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 // components
-import CardPlaceholder from 'components/card-placeholder';
-import WidgetSidebar from './component';
+import CardPlaceholder from "components/card-placeholder";
+import WidgetSidebar from "./component";
 
-export default function WidgetSidebarContainer({
-  widgetIds,
-  params,
-  adapter,
-}) {
+export default function WidgetSidebarContainer({ widgetIds, params, adapter }) {
   if (params.geostore_id) {
     return (
-      <WidgetSidebar
-        adapter={adapter}
-        widgetIds={widgetIds}
-        params={params}
-      />
+      <WidgetSidebar adapter={adapter} widgetIds={widgetIds} params={params} />
     );
   }
 
@@ -24,23 +16,23 @@ export default function WidgetSidebarContainer({
       <CardPlaceholder />
       <div
         style={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
           padding: 25,
-          textAlign: 'center',
+          textAlign: "center",
         }}
       >
         <h4
           style={{
-            fontWeight: 'bold',
+            fontWeight: "bold",
           }}
         >
           Start by selecting a coastal river basin
         </h4>
         <p>
-          The graphs will show the concentration of dissolved oxygen,
-          and nutrients at the mouths of the rivers in the selected area
+          The graphs will show the concentration of dissolved oxygen, and
+          nutrients at the mouths of the rivers in the selected area
         </p>
       </div>
       <CardPlaceholder />
@@ -54,9 +46,7 @@ WidgetSidebarContainer.defaultProps = {
 };
 
 WidgetSidebarContainer.propTypes = {
-  widgetIds: PropTypes.arrayOf(
-    PropTypes.string.isRequired,
-  ).isRequired,
+  widgetIds: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   params: PropTypes.shape({
     geostore_id: PropTypes.string,
   }),

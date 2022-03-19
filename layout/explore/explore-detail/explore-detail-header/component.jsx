@@ -1,20 +1,17 @@
-import {
-  useState,
-  useCallback,
-} from 'react';
-import PropTypes from 'prop-types';
+import { useState, useCallback } from "react";
+import PropTypes from "prop-types";
 
 // components
-import Icon from 'components/ui/icon';
+import Icon from "components/ui/icon";
 // import LoginRequired from 'components/ui/login-required';
-import Modal from 'components/modal/modal-component';
-import ShareModal from 'components/modal/share-modal';
-import { Tooltip } from 'vizzuality-components';
-import CollectionsPanel from 'components/collections-panel';
-import { getTooltipContainer } from 'utils/tooltip';
+import Modal from "components/modal/modal-component";
+import ShareModal from "components/modal/share-modal";
+import { Tooltip } from "vizzuality-components";
+import CollectionsPanel from "components/collections-panel";
+import { getTooltipContainer } from "utils/tooltip";
 
 // utils
-import { logEvent } from 'utils/analytics';
+import { logEvent } from "utils/analytics";
 
 export default function ExploreDetailHeader({
   dataset,
@@ -26,30 +23,34 @@ export default function ExploreDetailHeader({
   const handleToggleFavorite = useCallback((isFavorite, resource) => {
     const datasetName = resource?.metadata[0]?.info?.name;
     if (isFavorite) {
-      logEvent('Explore Menu', 'Add dataset to favorites', datasetName);
+      logEvent("Explore Menu", "Add dataset to favorites", datasetName);
     } else {
-      logEvent('Explore Menu', 'Remove dataset from favorites', datasetName);
+      logEvent("Explore Menu", "Remove dataset from favorites", datasetName);
     }
   }, []);
 
   const handleToggleCollection = useCallback((isAdded, resource) => {
     const datasetName = resource?.metadata[0]?.info?.name;
     if (isAdded) {
-      logEvent('Explore Menu', 'Add dataset to a collection', datasetName);
+      logEvent("Explore Menu", "Add dataset to a collection", datasetName);
     } else {
-      logEvent('Explore Menu', 'Remove dataset from a collection', datasetName);
+      logEvent("Explore Menu", "Remove dataset from a collection", datasetName);
     }
   }, []);
 
-  const location = typeof window !== 'undefined' && window.location;
-  const datasetName = dataset && dataset.metadata && dataset.metadata[0]
-      && dataset.metadata[0].info && dataset.metadata[0].info.name;
+  const location = typeof window !== "undefined" && window.location;
+  const datasetName =
+    dataset &&
+    dataset.metadata &&
+    dataset.metadata[0] &&
+    dataset.metadata[0].info &&
+    dataset.metadata[0].info.name;
 
   return (
     <div
       className="c-explore-detail-header"
       style={{
-        ...!isSidebarOpen && { position: 'absolute' },
+        ...(!isSidebarOpen && { position: "absolute" }),
       }}
     >
       <button
@@ -68,33 +69,33 @@ export default function ExploreDetailHeader({
             }
           }}
         > */}
-          <Tooltip
-            overlay={(
-              <CollectionsPanel
-                resource={dataset}
-                resourceType="dataset"
-                onToggleFavorite={handleToggleFavorite}
-                onToggleCollection={handleToggleCollection}
-              />
-            )}
-            overlayClassName="c-rc-tooltip"
-            placement="bottomRight"
-            trigger="click"
-            getTooltipContainer={getTooltipContainer}
-            monitorWindowResize
+        <Tooltip
+          overlay={
+            <CollectionsPanel
+              resource={dataset}
+              resourceType="dataset"
+              onToggleFavorite={handleToggleFavorite}
+              onToggleCollection={handleToggleCollection}
+            />
+          }
+          overlayClassName="c-rc-tooltip"
+          placement="bottomRight"
+          trigger="click"
+          getTooltipContainer={getTooltipContainer}
+          monitorWindowResize
+        >
+          <button
+            className="c-btn -quaternary -compressed -fs-tiny"
+            onClick={() => {
+              // if (userIsLoggedIn) {
+              //   logEvent('Explore (Detail)', 'Authenticated user Clicks Save', datasetName);
+              // }
+            }}
           >
-            <button
-              className="c-btn -quaternary -compressed -fs-tiny"
-              onClick={() => {
-                // if (userIsLoggedIn) {
-                //   logEvent('Explore (Detail)', 'Authenticated user Clicks Save', datasetName);
-                // }
-              }}
-            >
-              <Icon className="-small" name="icon-star-full" />
-              <span>SAVE</span>
-            </button>
-          </Tooltip>
+            <Icon className="-small" name="icon-star-full" />
+            <span>SAVE</span>
+          </button>
+        </Tooltip>
         {/* </LoginRequired> */}
 
         <button
@@ -111,13 +112,16 @@ export default function ExploreDetailHeader({
             <ShareModal
               links={{
                 link: location && location.href,
-                embed: location && `${location.origin}/embed${location.pathname}${location.search}`,
+                embed:
+                  location &&
+                  `${location.origin}/embed${location.pathname}${location.search}`,
               }}
               analytics={{
-                facebook: () => logEvent('Share', 'Share explore', 'Facebook'),
-                twitter: () => logEvent('Share', 'Share explore', 'Twitter'),
-                email: () => logEvent('Share', 'Share explore', 'Email'),
-                copy: (type) => logEvent('Share', 'Share explore', `Copy ${type}`),
+                facebook: () => logEvent("Share", "Share explore", "Facebook"),
+                twitter: () => logEvent("Share", "Share explore", "Twitter"),
+                email: () => logEvent("Share", "Share explore", "Email"),
+                copy: (type) =>
+                  logEvent("Share", "Share explore", `Copy ${type}`),
               }}
             />
           </Modal>
@@ -134,7 +138,7 @@ ExploreDetailHeader.propTypes = {
         info: PropTypes.shape({
           name: PropTypes.string,
         }),
-      }),
+      })
     ),
   }).isRequired,
   userIsLoggedIn: PropTypes.bool.isRequired,

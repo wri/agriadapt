@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import isEqual from 'lodash/isEqual';
+import React from "react";
+import PropTypes from "prop-types";
+import isEqual from "lodash/isEqual";
 
 export default class Table extends React.Component {
   /* Property typing */
@@ -109,12 +109,20 @@ export default class Table extends React.Component {
 
     return paginatedData.map((row, index) => (
       <tr key={index}>
-        {this.props.columns.map((col, i) => <td key={i} className={col.cellClasses ? col.cellClasses : ''}>{row[col.name]}</td>)}
+        {this.props.columns.map((col, i) => (
+          <td key={i} className={col.cellClasses ? col.cellClasses : ""}>
+            {row[col.name]}
+          </td>
+        ))}
         {this.props.actionsColumn ? (
           <td>
             <ul className="menu simple">
-              <li><a href={`/admin/datasets/${row.id}/edit`}>Edit</a></li>
-              <li><a href={`/admin/datasets/${row.id}/remove`}>Remove</a></li>
+              <li>
+                <a href={`/admin/datasets/${row.id}/edit`}>Edit</a>
+              </li>
+              <li>
+                <a href={`/admin/datasets/${row.id}/remove`}>Remove</a>
+              </li>
             </ul>
           </td>
         ) : null}
@@ -126,24 +134,28 @@ export default class Table extends React.Component {
     return (
       <div className="table-footer">
         {/* Paginator */}
-        {this.props.paginated
-          && (
+        {this.props.paginated && (
           <ul className="pagination" role="navigation">
-            <li className="pagination-previous"><button className="paginator-btn" onClick={this.prevPage}>Prev</button></li>
-            <li className="pagination-next"><button className="paginator-btn" onClick={this.nextPage}>Next</button></li>
+            <li className="pagination-previous">
+              <button className="paginator-btn" onClick={this.prevPage}>
+                Prev
+              </button>
+            </li>
+            <li className="pagination-next">
+              <button className="paginator-btn" onClick={this.nextPage}>
+                Next
+              </button>
+            </li>
           </ul>
-          )}
+        )}
         {/* Page locator */}
-        {this.props.paginated
-          && (
+        {this.props.paginated && (
           <div>
             Page
-            <span>{this.state.currentPage + 1}</span>
-            {' '}
-            of
+            <span>{this.state.currentPage + 1}</span> of
             <span>{this.state.totalPages}</span>
           </div>
-          )}
+        )}
       </div>
     );
   }

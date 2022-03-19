@@ -1,18 +1,12 @@
-import {
-  useReducer,
-  useMemo,
-} from 'react';
-import PropTypes from 'prop-types';
+import { useReducer, useMemo } from "react";
+import PropTypes from "prop-types";
 
 // components
-import DatasetsSidebar from './datasets-sidebar';
-import MiniExploreMap from './map';
+import DatasetsSidebar from "./datasets-sidebar";
+import MiniExploreMap from "./map";
 
 // reducers
-import {
-  miniExploreState,
-  miniExploreSlice,
-} from './reducer';
+import { miniExploreState, miniExploreSlice } from "./reducer";
 
 const miniExploreReducer = miniExploreSlice.reducer;
 
@@ -27,21 +21,20 @@ export default function MiniExplore({
     forcedBbox,
   },
 }) {
-  const [mapState, dispatch] = useReducer(miniExploreReducer, ({
+  const [mapState, dispatch] = useReducer(miniExploreReducer, {
     ...miniExploreState,
-    ...boundaries && { boundaries },
-  }));
-  const {
-    layerGroups,
-  } = mapState;
-  const activeDatasets = useMemo(() => layerGroups.map(({ dataset }) => dataset), [layerGroups]);
+    ...(boundaries && { boundaries }),
+  });
+  const { layerGroups } = mapState;
+  const activeDatasets = useMemo(
+    () => layerGroups.map(({ dataset }) => dataset),
+    [layerGroups]
+  );
 
   return (
     <div className="c-mini-explore">
       <header>
-        <h4>
-          {title}
-        </h4>
+        <h4>{title}</h4>
       </header>
       <div className="main-container">
         <DatasetsSidebar
@@ -71,16 +64,12 @@ MiniExplore.propTypes = {
         title: PropTypes.string.isRequired,
         datasets: PropTypes.arrayOf(PropTypes.string).isRequired,
         default: PropTypes.arrayOf(PropTypes.string),
-      }),
+      })
     ).isRequired,
     boundaries: PropTypes.bool,
-    disabledControls: PropTypes.arrayOf(
-      PropTypes.string,
-    ),
+    disabledControls: PropTypes.arrayOf(PropTypes.string),
     areaOfInterest: PropTypes.string,
     aoiBorder: PropTypes.bool,
-    forcedBbox: PropTypes.arrayOf(
-      PropTypes.number,
-    ),
+    forcedBbox: PropTypes.arrayOf(PropTypes.number),
   }).isRequired,
 };

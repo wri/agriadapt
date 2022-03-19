@@ -13,7 +13,9 @@
       visibility: hidden;
     }
 
-    h5 { margin: 0; }
+    h5 {
+      margin: 0;
+    }
 
     &--dataset {
       width: 340px;
@@ -55,5 +57,4 @@
       }
     }
   }
-
 }

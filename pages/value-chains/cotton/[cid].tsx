@@ -3,28 +3,24 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { ValueChainPageProps } from "types/value-chain";
 
 const CottonPage = (props: ValueChainPageProps) => {
-    return (
-        <LayoutCotton {...props} />
-    )
-}
+  return <LayoutCotton {...props} />;
+};
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-    const cid = params?.cid;
+  const cid = params?.cid;
 
-    return {
-        props: {
-            cid: cid
-        }
-    }
-}
+  return {
+    props: {
+      cid: cid,
+    },
+  };
+};
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    return {
-        paths: [
-            { params: { cid: 'india' } }
-        ],
-        fallback: false
-    }
-}
+  return {
+    paths: [{ params: { cid: "india" } }],
+    fallback: false,
+  };
+};
 
 export default CottonPage;

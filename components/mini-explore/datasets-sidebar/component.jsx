@@ -1,28 +1,22 @@
-import {
-  useMemo,
-} from 'react';
-import PropTypes from 'prop-types';
+import { useMemo } from "react";
+import PropTypes from "prop-types";
 import {
   Accordion,
   AccordionItem,
   AccordionItemHeading,
   AccordionItemButton,
   AccordionItemPanel,
-} from 'react-accessible-accordion';
+} from "react-accessible-accordion";
 
 // components
-import DatasetCardList from 'components/datasets/card-list';
-import Icon from 'components/ui/icon';
-import MiniExploreDatasetsActions from './dataset-actions';
+import DatasetCardList from "components/datasets/card-list";
+import Icon from "components/ui/icon";
+import MiniExploreDatasetsActions from "./dataset-actions";
 
-export default function DatasetsSidebar({
-  datasetGroups,
-  handleAddMap,
-}) {
+export default function DatasetsSidebar({ datasetGroups, handleAddMap }) {
   const expandedGroupsByDefault = useMemo(
-    () => datasetGroups
-      .map(({ id }) => id),
-    [datasetGroups],
+    () => datasetGroups.map(({ id }) => id),
+    [datasetGroups]
   );
 
   return (
@@ -32,18 +26,13 @@ export default function DatasetsSidebar({
         allowZeroExpanded
         preExpanded={expandedGroupsByDefault}
       >
-        {datasetGroups.map(({
-          id,
-          title,
-          datasets,
-        }) => {
-          const datasetCounter = `${datasets.length} dataset${(datasets.length > 1) ? 's' : ''}`;
+        {datasetGroups.map(({ id, title, datasets }) => {
+          const datasetCounter = `${datasets.length} dataset${
+            datasets.length > 1 ? "s" : ""
+          }`;
 
           return (
-            <AccordionItem
-              key={id}
-              uuid={id}
-            >
+            <AccordionItem key={id} uuid={id}>
               <div className="dataset-group">
                 <AccordionItemHeading>
                   <AccordionItemButton>
@@ -56,13 +45,9 @@ export default function DatasetsSidebar({
                             height: 10,
                           }}
                         />
-                        <h4>
-                          {title}
-                        </h4>
+                        <h4>{title}</h4>
                       </div>
-                      <div className="number-of-datasets">
-                        {datasetCounter}
-                      </div>
+                      <div className="number-of-datasets">{datasetCounter}</div>
                     </div>
                   </AccordionItemButton>
                 </AccordionItemHeading>
@@ -70,11 +55,9 @@ export default function DatasetsSidebar({
                   <DatasetCardList
                     numberOfPlaceholders={2}
                     list={datasets}
-                    actions={(
-                      <MiniExploreDatasetsActions
-                        handleAddMap={handleAddMap}
-                      />
-                  )}
+                    actions={
+                      <MiniExploreDatasetsActions handleAddMap={handleAddMap} />
+                    }
                   />
                 </AccordionItemPanel>
               </div>
@@ -90,11 +73,9 @@ DatasetsSidebar.propTypes = {
   datasetGroups: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,
-      datasets: PropTypes.arrayOf(
-        PropTypes.shape({}),
-      ).isRequired,
+      datasets: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
       default: PropTypes.string,
-    }),
+    })
   ).isRequired,
   handleAddMap: PropTypes.func.isRequired,
 };

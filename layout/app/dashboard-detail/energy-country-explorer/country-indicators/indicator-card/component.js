@@ -1,18 +1,21 @@
-import React, { useEffect, useState, Fragment } from 'react';
-import PropTypes from 'prop-types';
-import axios from 'axios';
-import { format } from 'd3-format';
-import { Tooltip } from 'vizzuality-components';
+import React, { useEffect, useState, Fragment } from "react";
+import PropTypes from "prop-types";
+import axios from "axios";
+import { format } from "d3-format";
+import { Tooltip } from "vizzuality-components";
 
 // Components
-import Spinner from 'components/ui/Spinner';
-import Icon from 'components/ui/icon';
-import { WORLD_COUNTRY, US_COUNTRY_VALUES } from 'layout/app/dashboard-detail/energy-country-explorer/constants';
-import InfoTooltip from './info-tooltip';
+import Spinner from "components/ui/Spinner";
+import Icon from "components/ui/icon";
+import {
+  WORLD_COUNTRY,
+  US_COUNTRY_VALUES,
+} from "layout/app/dashboard-detail/energy-country-explorer/constants";
+import InfoTooltip from "./info-tooltip";
 
 // Constants
 
-import RankingBar from './ranking-bar/component';
+import RankingBar from "./ranking-bar/component";
 
 function IndicatorCard(props) {
   const { indicator, country } = props;
@@ -26,7 +29,8 @@ function IndicatorCard(props) {
 
   useEffect(() => {
     if (indicator) {
-      let countryValue = indicator.param === 'ISO' ? country.value : country.label;
+      let countryValue =
+        indicator.param === "ISO" ? country.value : country.label;
       const _countryIsWorld = country.value === WORLD_COUNTRY.value;
       // --- This patch is necessary since the country name varies in some cases -----
       if (countryValue === US_COUNTRY_VALUES.nameFoundInSource) {
@@ -35,17 +39,22 @@ function IndicatorCard(props) {
       // -----------------------------------------------------------------------------
 
       setCountryIsWorld(_countryIsWorld);
-      const query = _countryIsWorld ? indicator.worldQuery
-        : indicator.query.replace(new RegExp(`{${indicator.param}}`, 'g'), `'${countryValue}'`);
+      const query = _countryIsWorld
+        ? indicator.worldQuery
+        : indicator.query.replace(
+            new RegExp(`{${indicator.param}}`, "g"),
+            `'${countryValue}'`
+          );
 
-      axios.get(query)
+      axios
+        .get(query)
         .then((result) => {
           const { rows } = result.data;
 
           if (rows && rows.length > 0) {
             const resObj = rows[0];
             setQueryResult({
-              value: format(indicator.format)(resObj.x).replace('G', 'B'),
+              value: format(indicator.format)(resObj.x).replace("G", "B"),
               ranking: resObj.ranking,
               count: resObj.count,
               year: resObj.year,
@@ -63,44 +72,36 @@ function IndicatorCard(props) {
   return (
     <div className="c-indicator-card">
       <Spinner isLoading={loading} className="-light -relative" />
-      {!loading
-        && (
+      {!loading && (
         <>
-          <div className="indicator-name">
-            {indicator.name}
-          </div>
+          <div className="indicator-name">{indicator.name}</div>
           <RankingBar
             ranking={queryResult && queryResult.ranking}
             count={queryResult && queryResult.count}
             showPoint={!countryIsWorld}
           />
           <div className="indicator-value">
-            {(queryResult && queryResult.value) || '-'}
+            {(queryResult && queryResult.value) || "-"}
           </div>
           <Tooltip
-            overlay={(
+            overlay={
               <InfoTooltip
                 datasetID={indicator.datasetID}
                 dataYear={queryResult && queryResult.year}
               />
-            )}
+            }
             overlayClassName="c-rc-tooltip -default -no-max-width"
             placement="top"
-            trigger={['click']}
+            trigger={["click"]}
             mouseLeaveDelay={0}
             destroyTooltipOnHide
           >
-            <div
-              className="info-button"
-              role="button"
-              tabIndex={0}
-            >
+            <div className="info-button" role="button" tabIndex={0}>
               <Icon name="icon-info" />
             </div>
           </Tooltip>
-
         </>
-        )}
+      )}
     </div>
   );
 }

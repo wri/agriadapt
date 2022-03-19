@@ -8,7 +8,6 @@
   box-sizing: border-box;
   padding: 0 math.div(map-get($grid-column-gutter, medium), 2);
 
-
   @media screen and (min-width: map-get($breakpoints, medium)) {
     max-width: map-get($breakpoints, medium);
     padding: 0 math.div(map-get($grid-column-gutter, small), 2);

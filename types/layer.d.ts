@@ -1,4 +1,4 @@
-import { Source } from '@vizzuality/layer-manager';
+import { Source } from "@vizzuality/layer-manager";
 
 export interface Render {
   layers?: Record<string, string | number | boolean | unknown>[];
@@ -7,7 +7,11 @@ export interface Render {
 export interface layerConfigSpec {
   render?: Render;
   source: Partial<Source>;
-  [key: string]: Record<string, string | number | boolean | unknown> | string | boolean | number;
+  [key: string]:
+    | Record<string, string | number | boolean | unknown>
+    | string
+    | boolean
+    | number;
 }
 
 export interface APILayerSpec {

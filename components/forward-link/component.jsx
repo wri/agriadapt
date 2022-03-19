@@ -1,16 +1,8 @@
-import React, { forwardRef } from 'react';
-import PropTypes from 'prop-types';
+import React, { forwardRef } from "react";
+import PropTypes from "prop-types";
 
-const ForwardLink = forwardRef(({
-  href,
-  children,
-  ...restProps
-}, ref) => (
-  <a
-    href={href}
-    ref={ref}
-    {...restProps}
-  >
+const ForwardLink = forwardRef(({ href, children, ...restProps }, ref) => (
+  <a href={href} ref={ref} {...restProps}>
     {children}
   </a>
 ));
@@ -20,9 +12,7 @@ ForwardLink.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.element,
-    PropTypes.arrayOf(
-      PropTypes.element,
-    ),
+    PropTypes.arrayOf(PropTypes.element),
   ]).isRequired,
 };
 

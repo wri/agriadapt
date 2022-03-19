@@ -1,4 +1,4 @@
-@import 'css/settings';
+@import "css/settings";
 
 .c-area-card {
   display: flex;
@@ -7,9 +7,10 @@
   flex: 1;
   width: 100%;
   border-radius: 4px;
-  box-shadow: 0 2px 6px 0 rgba($black, .1);
+  box-shadow: 0 2px 6px 0 rgba($black, 0.1);
 
-  h4, h5 {
+  h4,
+  h5 {
     margin: 0px;
   }
 
@@ -48,7 +49,7 @@
             overflow-x: hidden;
             width: 100%;
             max-width: 100%;
-            padding: 7.5px ($space *2);
+            padding: 7.5px ($space * 2);
             border: 1px solid transparent;
             border-radius: 4px;
             cursor: pointer;

@@ -1,32 +1,31 @@
-import Layout from 'layout/layout/layout-app';
-import { useEffect, useRef, useState } from 'react';
-import mapboxgl from 'mapbox-gl';
-import ExploreSidebar from 'layout/explore/explore-sidebar';
-import ExploreMap from 'layout/explore/explore-map';
-import ExploreDatasets from 'layout/explore/explore-datasets';
-import ExploreDetail from 'layout/explore/explore-detail';
+import Layout from "layout/layout/layout-app";
+import { useEffect, useRef, useState } from "react";
+import mapboxgl from "mapbox-gl";
+import ExploreSidebar from "layout/explore/explore-sidebar";
+import ExploreMap from "layout/explore/explore-map";
+import ExploreDatasets from "layout/explore/explore-datasets";
+import ExploreDetail from "layout/explore/explore-detail";
 
 interface ExploreProps {
   explore: {
     datasets: {
-      selected: string,
-    }
+      selected: string;
+    };
     sidebar: {
-      section: string,
-      subsection: string,
-    }
+      section: string;
+      subsection: string;
+    };
     // map: {
     //   drawer: {
     //     isDrawing: boolean,
     //   }
     // }
-  }
+  };
   // userIsLoggedIn: PropTypes.bool.isRequired,
   // stopDrawing: PropTypes.func.isRequired,
-};
+}
 
 const Explore = (props: ExploreProps): JSX.Element => {
-
   useEffect(() => {
     console.log(props);
   }, []);
@@ -43,7 +42,7 @@ const Explore = (props: ExploreProps): JSX.Element => {
 
   const getSidebarLayout = () => (
     <>
-      {(!subsection && !selected) && (
+      {!subsection && !selected && (
         <>
           {/* <ExploreMenu /> */}
           <div
@@ -64,22 +63,15 @@ const Explore = (props: ExploreProps): JSX.Element => {
   );
 
   return (
-    <Layout
-      title="Home"
-      className="l-home"
-      updateIsLoading={() => { }}
-    >
+    <Layout title="Home" className="l-home" updateIsLoading={() => {}}>
       <div className="c-page-explore">
-        <ExploreSidebar
-          open={sideBarOpen}
-          setSidebarOpen={setSideBarOpen}
-        >
+        <ExploreSidebar open={sideBarOpen} setSidebarOpen={setSideBarOpen}>
           {getSidebarLayout()}
         </ExploreSidebar>
         <ExploreMap />
       </div>
     </Layout>
-  )
-}
+  );
+};
 
 export default Explore;

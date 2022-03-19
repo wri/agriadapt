@@ -1,9 +1,9 @@
-import React, { useState, useEffect, Fragment } from 'react';
-import axios from 'axios';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect, Fragment } from "react";
+import axios from "axios";
+import PropTypes from "prop-types";
 
 // components
-import Spinner from 'components/ui/Spinner';
+import Spinner from "components/ui/Spinner";
 
 function RankingWidget(props) {
   const { widgetConfig } = props;
@@ -16,16 +16,17 @@ function RankingWidget(props) {
   useEffect(() => {
     const { url } = widgetConfig;
 
-    axios.get(url)
+    axios
+      .get(url)
       .then((result) => {
         const { rows } = result.data;
         setRankingWidget({
           loading: false,
-          data: (rows.length > 0) ? rows[0] : null,
+          data: rows.length > 0 ? rows[0] : null,
         });
       })
       .catch((err) => {
-        console.error('Error loading ranking widget', err);
+        console.error("Error loading ranking widget", err);
         setRankingWidget({
           loading: false,
           data: null,
@@ -35,37 +36,23 @@ function RankingWidget(props) {
 
   return (
     <div className="c-ranking-widget">
-      <Spinner
-        isLoading={loading}
-        className="-light -relative"
-      />
-      {!loading
-                && (
-                <div className="data-container">
-                  {data
-                        && (
-                        <>
-                          <h1>{data.x}</h1>
-                          <div className="subtitle">
-                            Rank
-                            {' '}
-                            <span className="ranking-value">{data.ranking}</span>
-                            {' '}
-                            of
-                            {data.count}
-                            {' '}
-                            countries
-                          </div>
-                        </>
-                        )}
-                  {!loading && !data
-                        && (
-                        <div className="no-data">
-                          No data available
-                        </div>
-                        )}
-                </div>
-                )}
+      <Spinner isLoading={loading} className="-light -relative" />
+      {!loading && (
+        <div className="data-container">
+          {data && (
+            <>
+              <h1>{data.x}</h1>
+              <div className="subtitle">
+                Rank <span className="ranking-value">{data.ranking}</span> of
+                {data.count} countries
+              </div>
+            </>
+          )}
+          {!loading && !data && (
+            <div className="no-data">No data available</div>
+          )}
+        </div>
+      )}
     </div>
   );
 }

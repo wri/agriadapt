@@ -1,12 +1,12 @@
-import { createReducer } from '@reduxjs/toolkit';
-import { HYDRATE } from 'next-redux-wrapper';
+import { createReducer } from "@reduxjs/toolkit";
+import { HYDRATE } from "next-redux-wrapper";
 
 // utils
-import { logEvent } from 'utils/analytics';
-import { sortLayers } from 'utils/layers';
+import { logEvent } from "utils/analytics";
+import { sortLayers } from "utils/layers";
 
-import * as actions from './actions';
-import initialState from './initial-state';
+import * as actions from "./actions";
+import initialState from "./initial-state";
 
 export default createReducer(initialState, (builder) => {
   builder
@@ -57,7 +57,7 @@ export default createReducer(initialState, (builder) => {
       },
     }))
     .addCase(actions.setDatasetsMode, (state, { payload }) => {
-      logEvent('Explore Menu', 'Change dataset view', payload);
+      logEvent("Explore Menu", "Change dataset view", payload);
 
       return {
         ...state,
@@ -264,7 +264,8 @@ export default createReducer(initialState, (builder) => {
         applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS].layerOrder &&
         layers.length > 1
       ) {
-        const { layerOrder } = applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS];
+        const { layerOrder } =
+          applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS];
         datasetLayers = sortLayers(datasetLayers, layerOrder);
       }
 
@@ -276,9 +277,9 @@ export default createReducer(initialState, (builder) => {
         });
         if (layerGroups[0].layers.length) {
           logEvent(
-            'Explore Map',
-            'Add layer',
-            `${layerGroups[0].layers[0].name} [${layerGroups[0].layers[0].id}]`,
+            "Explore Map",
+            "Add layer",
+            `${layerGroups[0].layers[0].name} [${layerGroups[0].layers[0].id}]`
           );
         }
       } else {
@@ -314,7 +315,10 @@ export default createReducer(initialState, (builder) => {
       const { dataset, opacity } = payload;
       const layerGroups = state.map.layerGroups.map((lg) => {
         if (lg.dataset !== dataset.id) return lg;
-        const layers = lg.layers.map((l) => ({ ...l, layerConfig: { ...l.layerConfig, opacity } }));
+        const layers = lg.layers.map((l) => ({
+          ...l,
+          layerConfig: { ...l.layerConfig, opacity },
+        }));
         return { ...lg, layers, opacity };
       });
 
@@ -329,7 +333,10 @@ export default createReducer(initialState, (builder) => {
       const layerGroups = state.map.layerGroups.map((lg) => {
         if (lg.dataset !== dataset.id) return lg;
 
-        const layers = lg.layers.map((l) => ({ ...l, active: l.id === active }));
+        const layers = lg.layers.map((l) => ({
+          ...l,
+          active: l.id === active,
+        }));
 
         return { ...lg, layers };
       });
@@ -346,7 +353,7 @@ export default createReducer(initialState, (builder) => {
 
       // Sort by new order
       layerGroups.sort((a, b) =>
-        datasetIds.indexOf(a.dataset) > datasetIds.indexOf(b.dataset) ? 1 : -1,
+        datasetIds.indexOf(a.dataset) > datasetIds.indexOf(b.dataset) ? 1 : -1
       );
 
       const map = { ...state.map, layerGroups };
@@ -369,10 +376,12 @@ export default createReducer(initialState, (builder) => {
           if (
             applicationConfig &&
             applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS] &&
-            applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS].layerOrder &&
+            applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS]
+              .layerOrder &&
             layers.length > 1
           ) {
-            const { layerOrder } = applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS];
+            const { layerOrder } =
+              applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS];
             publishedLayers = sortLayers(publishedLayers, layerOrder);
           }
 
@@ -412,20 +421,26 @@ export default createReducer(initialState, (builder) => {
         },
       },
     }))
-    .addCase(actions.setMapLayerGroupsInteractionSelected, (state, { payload }) => ({
-      ...state,
-      map: {
-        ...state.map,
-        layerGroupsInteractionSelected: payload,
-      },
-    }))
-    .addCase(actions.setMapLayerGroupsInteractionLatLng, (state, { payload }) => ({
-      ...state,
-      map: {
-        ...state.map,
-        layerGroupsInteractionLatLng: payload,
-      },
-    }))
+    .addCase(
+      actions.setMapLayerGroupsInteractionSelected,
+      (state, { payload }) => ({
+        ...state,
+        map: {
+          ...state.map,
+          layerGroupsInteractionSelected: payload,
+        },
+      })
+    )
+    .addCase(
+      actions.setMapLayerGroupsInteractionLatLng,
+      (state, { payload }) => ({
+        ...state,
+        map: {
+          ...state.map,
+          layerGroupsInteractionLatLng: payload,
+        },
+      })
+    )
     .addCase(actions.resetMapLayerGroupsInteraction, (state) => ({
       ...state,
       map: {

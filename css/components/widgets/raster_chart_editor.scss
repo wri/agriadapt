@@ -53,12 +53,15 @@
         width: 100%;
         font-size: $font-size-normal;
 
-        thead, tbody, tr {
+        thead,
+        tbody,
+        tr {
           display: block;
           width: 100%;
         }
 
-        th, td {
+        th,
+        td {
           display: inline-block;
           width: calc(100% / 6);
         }

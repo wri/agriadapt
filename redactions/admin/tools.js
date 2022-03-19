@@ -1,12 +1,12 @@
-import { fetchTools } from 'services/tools';
+import { fetchTools } from "services/tools";
 
 /**
  * CONSTANTS
-*/
-const GET_TOOLS_SUCCESS = 'tools/GET_TOOLS_SUCCESS';
-const GET_TOOLS_ERROR = 'tools/GET_TOOLS_ERROR';
-const GET_TOOLS_LOADING = 'tools/GET_TOOLS_LOADING';
-const SET_TOOLS_FILTERS = 'tools/SET_TOOLS_FILTERS';
+ */
+const GET_TOOLS_SUCCESS = "tools/GET_TOOLS_SUCCESS";
+const GET_TOOLS_ERROR = "tools/GET_TOOLS_ERROR";
+const GET_TOOLS_LOADING = "tools/GET_TOOLS_LOADING";
+const SET_TOOLS_FILTERS = "tools/SET_TOOLS_FILTERS";
 
 /**
  * STORE
@@ -95,8 +95,9 @@ export function getTools(params = {}) {
  * @param {{ key: string, value: string|number }[]} filters List of filters
  */
 export function setFilters(filters) {
-  return (dispatch) => dispatch({
-    type: SET_TOOLS_FILTERS,
-    payload: filters,
-  });
+  return (dispatch) =>
+    dispatch({
+      type: SET_TOOLS_FILTERS,
+      payload: filters,
+    });
 }

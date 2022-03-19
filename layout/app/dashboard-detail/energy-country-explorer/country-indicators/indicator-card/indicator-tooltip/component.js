@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
 function IndicatorTooltip(props) {
   const { ranking, count } = props;
@@ -10,9 +10,7 @@ function IndicatorTooltip(props) {
       <div className="value">{ranking}</div>
       <div className="text">
         of
-        {count}
-        {' '}
-        countries
+        {count} countries
       </div>
     </div>
   );

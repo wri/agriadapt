@@ -1,4 +1,4 @@
-@import 'css/settings';
+@import "css/settings";
 
 .c-storytelling-step {
   position: relative;
@@ -8,7 +8,13 @@
   align-items: center;
   pointer-events: none;
   padding: 240px 0 150px;
-  background: linear-gradient(180deg, rgba(15,69,115,0) 0%, rgba(15, 69, 115, 0.7) 16.33%, rgba(15, 69, 115, 0.85) 79.68%, rgba(15,69,115,0) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(15, 69, 115, 0) 0%,
+    rgba(15, 69, 115, 0.7) 16.33%,
+    rgba(15, 69, 115, 0.85) 79.68%,
+    rgba(15, 69, 115, 0) 100%
+  );
 
   > .content {
     display: flex;
@@ -63,7 +69,7 @@
         color: $white;
 
         &:after {
-          content: '';
+          content: "";
           display: inline-block;
           position: absolute;
           bottom: 0;
@@ -78,7 +84,7 @@
           margin: 0 0 0 ($space * 10);
         }
 
-        &.-active  {
+        &.-active {
           &:after {
             background: $white;
           }

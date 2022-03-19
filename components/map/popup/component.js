@@ -1,13 +1,13 @@
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
-import { replace } from 'layer-manager';
-import isEmpty from 'lodash/isEmpty';
-import moment from 'moment';
-import numeral from 'numeral';
-import axios from 'axios';
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
+import { replace } from "layer-manager";
+import isEmpty from "lodash/isEmpty";
+import moment from "moment";
+import numeral from "numeral";
+import axios from "axios";
 
 // components
-import Spinner from 'components/ui/Spinner';
+import Spinner from "components/ui/Spinner";
 
 class LayerPopup extends PureComponent {
   static propTypes = {
@@ -102,7 +102,7 @@ class LayerPopup extends PureComponent {
           })
           .catch((err) => {
             this.setState({ loading: false });
-            if (err && err.json && typeof err.json === 'function') {
+            if (err && err.json && typeof err.json === "function") {
               err.json().then((er) => {
                 console.error(er);
               });
@@ -116,19 +116,19 @@ class LayerPopup extends PureComponent {
   }
 
   formatValue(item, data) {
-    if (item.type === 'date' && item.format && data) {
+    if (item.type === "date" && item.format && data) {
       data = moment(data).format(item.format);
-    } else if (item.type === 'number' && item.format && (data || data === 0)) {
+    } else if (item.type === "number" && item.format && (data || data === 0)) {
       data = numeral(data).format(item.format);
     }
 
     function removeHtmlTags(str) {
       if (!str || !str.toString) return str;
-      return str.toString().replace(/<\/?[a-z]+>/gi, '');
+      return str.toString().replace(/<\/?[a-z]+>/gi, "");
     }
 
-    return `${item.prefix || ''}${removeHtmlTags(data) || '-'}${
-      item.suffix || ''
+    return `${item.prefix || ""}${removeHtmlTags(data) || "-"}${
+      item.suffix || ""
     }`;
   }
 
@@ -172,7 +172,7 @@ class LayerPopup extends PureComponent {
           {!isEmpty(interaction.data || interactionState.data) &&
             output.map((outputItem) => {
               const { column } = outputItem;
-              const columnArray = column.split('.');
+              const columnArray = column.split(".");
               const value = columnArray.reduce(
                 (acc, c) => acc[c],
                 interaction.data || interactionState.data
@@ -187,12 +187,12 @@ class LayerPopup extends PureComponent {
                     {outputItem.property || outputItem.column}
                   </div>
                   <div className="field-value">
-                    {(outputItem.property || outputItem.column) === 'Link' && (
+                    {(outputItem.property || outputItem.column) === "Link" && (
                       <a href={value} target="_blank" rel="noopener noreferrer">
                         {value}
                       </a>
                     )}
-                    {(outputItem.property || outputItem.column) !== 'Link' &&
+                    {(outputItem.property || outputItem.column) !== "Link" &&
                       this.formatValue(outputItem, value)}
                   </div>
                 </div>
@@ -213,12 +213,12 @@ class LayerPopup extends PureComponent {
               isEmpty(interaction.data || interactionState.data)) &&
             interactionConfig.config &&
             interactionConfig.config.url &&
-            'No data available'}
+            "No data available"}
 
           {!interaction.data &&
             !interactionState.data &&
             (!interactionConfig.config || !interactionConfig.config.url) &&
-            'No data available'}
+            "No data available"}
         </div>
       </div>
     );

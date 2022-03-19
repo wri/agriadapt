@@ -6,7 +6,7 @@
     padding: $margin-size-small 0;
   }
 
-  &.-medium  {
+  &.-medium {
     padding: ($space * 10) 0;
   }
 
@@ -22,5 +22,4 @@
   @media screen and (min-width: map-get($breakpoints, medium)) {
     padding: $margin-size * 2 0;
   }
-
 }

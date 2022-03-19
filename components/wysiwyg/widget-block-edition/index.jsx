@@ -1,13 +1,13 @@
-import React, { useReducer, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { useDebouncedCallback } from 'use-debounce';
+import React, { useReducer, useEffect } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { useDebouncedCallback } from "use-debounce";
 
 // services
-import { fetchWidgets } from 'services/widget';
+import { fetchWidgets } from "services/widget";
 
 // utils
-import { hasValidConfiguration } from 'utils/widget';
+import { hasValidConfiguration } from "utils/widget";
 
 // import {
 //   setWidgets,
@@ -20,8 +20,8 @@ import { hasValidConfiguration } from 'utils/widget';
 //   setPages,
 // } from './actions';
 // import reducer from './reducer';
-import initialState from './initial-state';
-import WidgetBlockEditionComponent from './component';
+import initialState from "./initial-state";
+import WidgetBlockEditionComponent from "./component";
 
 const WidgetBlockEdition = (props) => {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -36,20 +36,24 @@ const WidgetBlockEdition = (props) => {
   useEffect(() => {
     fetchWidgets(
       {
-        ...(tab === 'my-widgets' && { userId: user.id }),
-        ...(tab === 'my-favorites' && { favourite: true }),
+        ...(tab === "my-widgets" && { userId: user.id }),
+        ...(tab === "my-favorites" && { favourite: true }),
         ...(!!search && { name: search }),
-        'page[number]': page,
+        "page[number]": page,
       },
       { Authorization: user.token },
-      true,
+      true
     )
       .then(({ widgets, meta }) => {
         dispatch(setLoading(false));
         dispatch(setError(null));
-        dispatch(setWidgets(widgets.filter((_widget) => hasValidConfiguration(_widget))));
-        dispatch(setTotal(meta['total-items']));
-        dispatch(setPages(meta['total-pages']));
+        dispatch(
+          setWidgets(
+            widgets.filter((_widget) => hasValidConfiguration(_widget))
+          )
+        );
+        dispatch(setTotal(meta["total-items"]));
+        dispatch(setPages(meta["total-pages"]));
       })
       .catch((err) => {
         dispatch(setLoading(false));
@@ -90,4 +94,7 @@ WidgetBlockEdition.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 };
 
-export default connect((state) => ({ user: state.user }), null)(WidgetBlockEdition);
+export default connect(
+  (state) => ({ user: state.user }),
+  null
+)(WidgetBlockEdition);

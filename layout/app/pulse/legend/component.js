@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { LegendItemTypes } from 'vizzuality-components';
+import React from "react";
+import PropTypes from "prop-types";
+import { LegendItemTypes } from "vizzuality-components";
 
 function Legend(props) {
   if (props.layerActive) {
@@ -16,7 +16,10 @@ function Legend(props) {
               </header>
 
               <LegendItemTypes
-                activeLayer={{ ...props.layerActive, ...props.layerActive.attributes }}
+                activeLayer={{
+                  ...props.layerActive,
+                  ...props.layerActive.attributes,
+                }}
               />
             </li>
           </ul>

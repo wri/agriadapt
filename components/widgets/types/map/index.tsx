@@ -1,25 +1,25 @@
-import { useMemo, useCallback, useState, CSSProperties } from 'react';
-import { useQueries } from 'react-query';
-import { ErrorBoundary } from 'react-error-boundary';
+import { useMemo, useCallback, useState, CSSProperties } from "react";
+import { useQueries } from "react-query";
+import { ErrorBoundary } from "react-error-boundary";
 
 // services
-import { fetchLayer } from 'services/layer';
+import { fetchLayer } from "services/layer";
 
 // hooks
-import { useFetchWidget } from 'hooks/widget';
+import { useFetchWidget } from "hooks/widget";
 // import useBelongsToCollection from 'hooks/collection/belongs-to-collection';
-import { useGeostore } from 'hooks/geostore';
+import { useGeostore } from "hooks/geostore";
 // import { useMe } from 'hooks/user';
 
 // utils
-import { getAoiLayer, getMaskLayer, getLayerGroups } from 'utils/layers';
+import { getAoiLayer, getMaskLayer, getLayerGroups } from "utils/layers";
 
 // components
-import ErrorFallback from 'components/error-fallback';
-import MapTypeWidget from './component';
+import ErrorFallback from "components/error-fallback";
+import MapTypeWidget from "./component";
 
-import type { APILayerSpec } from 'types/layer';
-import type { APIWidgetSpec } from 'types/widget';
+import type { APILayerSpec } from "types/layer";
+import type { APIWidgetSpec } from "types/widget";
 
 const CustomErrorFallback = (_props: any) => (
   <ErrorFallback {..._props} title="Something went wrong loading the widget" />
@@ -57,13 +57,13 @@ const MapTypeWidgetContainer = ({
   } = useFetchWidget(
     widgetId,
     {
-      includes: 'metadata',
+      includes: "metadata",
     },
     {
       enabled: !!widgetId,
       refetchOnWindowFocus: false,
       placeholderData: {},
-    },
+    }
   );
 
   const {
@@ -76,18 +76,20 @@ const MapTypeWidgetContainer = ({
     {
       enabled: !!areaOfInterest,
       refetchOnWindowFocus: false,
-    },
+    }
   );
 
   const layerIds = useMemo(() => {
-    if (widget?.widgetConfig?.paramsConfig?.layers) return widget.widgetConfig.paramsConfig.layers;
-    if (widget?.widgetConfig?.paramsConfig?.layer) return [widget.widgetConfig.paramsConfig.layer];
+    if (widget?.widgetConfig?.paramsConfig?.layers)
+      return widget.widgetConfig.paramsConfig.layers;
+    if (widget?.widgetConfig?.paramsConfig?.layer)
+      return [widget.widgetConfig.paramsConfig.layer];
     return [];
   }, [widget]);
 
   const layerStates = useQueries(
     layerIds.map((layerId) => ({
-      queryKey: ['fetch-layer', layerId],
+      queryKey: ["fetch-layer", layerId],
       queryFn: () => fetchLayer(layerId),
       placeholderData: null,
       select: (_layer: Object) =>
@@ -97,12 +99,15 @@ const MapTypeWidgetContainer = ({
               params,
             }
           : null,
-    })),
+    }))
   );
 
   const layers: APILayerSpec[] | {}[] = useMemo(
-    () => layerStates.filter(({ data }) => !!data && data['id']).map(({ data }) => data),
-    [layerStates],
+    () =>
+      layerStates
+        .filter(({ data }) => !!data && data["id"])
+        .map(({ data }) => data),
+    [layerStates]
   );
 
   const onFitBoundsChange = useCallback((viewport) => {
@@ -113,7 +118,7 @@ const MapTypeWidgetContainer = ({
 
   const aoiLayer = useMemo(
     () => getAoiLayer(widget, geostore, { minZoom }),
-    [geostore, widget, minZoom],
+    [geostore, widget, minZoom]
   );
 
   const bounds = useMemo(() => {
@@ -132,14 +137,20 @@ const MapTypeWidgetContainer = ({
     };
   }, [widget, geostore]);
 
-  const maskLayer = useMemo(() => getMaskLayer(widget, params), [widget, params]);
+  const maskLayer = useMemo(
+    () => getMaskLayer(widget, params),
+    [widget, params]
+  );
 
   const layerGroups = useMemo(() => {
     const { layerParams } = widget?.widgetConfig?.paramsConfig || {};
     return getLayerGroups(layers, layerParams, true);
   }, [layers, widget]);
 
-  const isError = useMemo(() => isErrorWidget || isErrorGeostore, [isErrorWidget, isErrorGeostore]);
+  const isError = useMemo(
+    () => isErrorWidget || isErrorGeostore,
+    [isErrorWidget, isErrorGeostore]
+  );
 
   return (
     <ErrorBoundary

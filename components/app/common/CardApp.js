@@ -1,47 +1,46 @@
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
-import Link from 'next/link';
+import PropTypes from "prop-types";
+import classnames from "classnames";
+import Link from "next/link";
 
 // Components
-import Title from 'components/ui/Title';
+import Title from "components/ui/Title";
 
 // Utils
-import { logEvent } from 'utils/analytics';
+import { logEvent } from "utils/analytics";
 
 function CardApp({
-  background, title, description, link, className, buttonType, logEvent = false,
+  background,
+  title,
+  description,
+  link,
+  className,
+  buttonType,
+  logEvent = false,
 }) {
   const classNames = classnames({
     [className]: className,
   });
 
   const buttonClasses = classnames({
-    '-secondary': !buttonType,
-    '-primary': buttonType && buttonType === 'primary',
+    "-secondary": !buttonType,
+    "-primary": buttonType && buttonType === "primary",
   });
 
   return (
-    <div
-      className={`c-card-app ${classNames}`}
-    >
-      {!!(background)
-        && (
+    <div className={`c-card-app ${classNames}`}>
+      {!!background && (
         <div
           className="card-background"
           style={{
             backgroundImage: `url(${background})`,
           }}
         />
-        )}
+      )}
 
       <div className="card-container">
-        <Title className="-default">
-          {title}
-        </Title>
+        <Title className="-default">{title}</Title>
 
-        <div className="card-content">
-          {description}
-        </div>
+        <div className="card-content">{description}</div>
 
         <div className="card-footer">
           {!!link && !link.external && (
@@ -50,7 +49,7 @@ function CardApp({
                 className={`c-button ${buttonClasses} -fullwidth`}
                 onClick={() => {
                   if (logEvent) {
-                    logEvent('Related app Go to site clicked', title);
+                    logEvent("Related app Go to site clicked", title);
                   }
                 }}
               >
@@ -65,7 +64,7 @@ function CardApp({
               className={`c-button ${buttonClasses} -fullwidth`}
               onClick={() => {
                 if (logEvent) {
-                  logEvent('Related app Go to site clicked', title);
+                  logEvent("Related app Go to site clicked", title);
                 }
               }}
             >

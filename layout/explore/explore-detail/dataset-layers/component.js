@@ -1,27 +1,30 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
 // Components
-import DatasetLayerCard from './dataset-layer-card';
+import DatasetLayerCard from "./dataset-layer-card";
 
 function DatasetLayers(props) {
-  const {
-    layers, dataset, isATimeline, timelineLayerMapbox, timelineLayer,
-  } = props;
+  const { layers, dataset, isATimeline, timelineLayerMapbox, timelineLayer } =
+    props;
   const showTimelineMapbox = isATimeline && !!timelineLayerMapbox;
-  const showTimelineOldApproach = isATimeline && !timelineLayerMapbox && timelineLayer;
+  const showTimelineOldApproach =
+    isATimeline && !timelineLayerMapbox && timelineLayer;
 
   return (
     <div className="c-dataset-layers">
       <h3>Dataset layers</h3>
       <div className="layers-container">
-        {showTimelineOldApproach
-          && <DatasetLayerCard layer={timelineLayer} dataset={dataset} />}
-        {showTimelineMapbox
-          && <DatasetLayerCard layer={timelineLayerMapbox} dataset={dataset} />}
-        {!isATimeline && layers.map((layer) => (
-          <DatasetLayerCard layer={layer} dataset={dataset} />
-        ))}
+        {showTimelineOldApproach && (
+          <DatasetLayerCard layer={timelineLayer} dataset={dataset} />
+        )}
+        {showTimelineMapbox && (
+          <DatasetLayerCard layer={timelineLayerMapbox} dataset={dataset} />
+        )}
+        {!isATimeline &&
+          layers.map((layer) => (
+            <DatasetLayerCard layer={layer} dataset={dataset} />
+          ))}
       </div>
     </div>
   );

@@ -1,8 +1,8 @@
-import WRISerializer from 'wri-json-api-serializer';
+import WRISerializer from "wri-json-api-serializer";
 
 // utils
-import { WRIAPI } from 'utils/axios';
-import { logger } from 'utils/logs';
+import { WRIAPI } from "utils/axios";
+import { logger } from "utils/logs";
 
 /**
  * Get Subscriptions
@@ -11,8 +11,8 @@ import { logger } from 'utils/logs';
  * @param {Object} params request paremeters to API.
  */
 export const fetchSubscriptions = (token, params) => {
-  logger.info('Fetch subscriptions');
-  return WRIAPI.get('/v1/subscriptions', {
+  logger.info("Fetch subscriptions");
+  return WRIAPI.get("/v1/subscriptions", {
     headers: {
       ...WRIAPI.defaults.headers,
       Authorization: token,
@@ -27,7 +27,10 @@ export const fetchSubscriptions = (token, params) => {
       const { status, statusText, data } = response;
 
       if (status >= 300) {
-        logger.error('Error fetching subscriptions:', `${status}: ${statusText}`);
+        logger.error(
+          "Error fetching subscriptions:",
+          `${status}: ${statusText}`
+        );
         throw new Error(statusText);
       }
 
@@ -51,31 +54,34 @@ export const createSubscriptionToArea = ({
   datasetsQuery,
   user,
   language,
-  name = '',
+  name = "",
 }) => {
   logger.info(`Create subscription to area: ${areaId}`);
   const bodyObj = {
     name,
     application: process.env.NEXT_PUBLIC_APPLICATIONS,
     env: process.env.NEXT_PUBLIC_API_ENV,
-    language: language || 'en',
+    language: language || "en",
     datasets,
     datasetsQuery,
     resource: {
-      type: 'EMAIL',
+      type: "EMAIL",
       content: user.email,
     },
     params: { area: areaId },
   };
 
-  return WRIAPI.post('/v1/subscriptions',
-    bodyObj,
-    { headers: { Authorization: user.token } })
-    .catch(({ response }) => {
-      const { status, statusText } = response;
-      logger.error(`Error creating subscription to area ${areaId}: ${status}: ${statusText}`);
-      throw new Error(`Error creating subscription to area ${areaId}: ${statusText}`);
-    });
+  return WRIAPI.post("/v1/subscriptions", bodyObj, {
+    headers: { Authorization: user.token },
+  }).catch(({ response }) => {
+    const { status, statusText } = response;
+    logger.error(
+      `Error creating subscription to area ${areaId}: ${status}: ${statusText}`
+    );
+    throw new Error(
+      `Error creating subscription to area ${areaId}: ${statusText}`
+    );
+  });
 };
 
 /**
@@ -94,30 +100,33 @@ export const updateSubscriptionToArea = (
   datasetsQuery,
   user,
   language,
-  areaId,
+  areaId
 ) => {
   logger.info(`Update subscription: ${subscriptionId}`);
   const bodyObj = {
     application: process.env.NEXT_PUBLIC_APPLICATIONS,
     env: process.env.NEXT_PUBLIC_API_ENV,
-    language: language || 'en',
+    language: language || "en",
     datasets,
     datasetsQuery,
     resource: {
-      type: 'EMAIL',
+      type: "EMAIL",
       content: user.email,
     },
     params: { area: areaId },
   };
 
-  return WRIAPI.patch(`/v1/subscriptions/${subscriptionId}`,
-    bodyObj,
-    { headers: { Authorization: user.token } })
-    .catch(({ response }) => {
-      const { status, statusText } = response;
-      logger.error(`Error updating subscription ${subscriptionId}: ${status}: ${statusText}`);
-      throw new Error(`Error updating subscription ${subscriptionId}: ${statusText}`);
-    });
+  return WRIAPI.patch(`/v1/subscriptions/${subscriptionId}`, bodyObj, {
+    headers: { Authorization: user.token },
+  }).catch(({ response }) => {
+    const { status, statusText } = response;
+    logger.error(
+      `Error updating subscription ${subscriptionId}: ${status}: ${statusText}`
+    );
+    throw new Error(
+      `Error updating subscription ${subscriptionId}: ${statusText}`
+    );
+  });
 };
 
 /**
@@ -128,13 +137,19 @@ export const updateSubscriptionToArea = (
  */
 export const fetchSubscription = (subscriptionId, token) => {
   logger.info(`Fetch subscription: ${subscriptionId}`);
-  return WRIAPI.get(`/v1/subscriptions/${subscriptionId}?application=${process.env.NEXT_PUBLIC_APPLICATIONS}&env=${process.env.NEXT_PUBLIC_API_ENV}`,
-    { headers: { Authorization: token } })
+  return WRIAPI.get(
+    `/v1/subscriptions/${subscriptionId}?application=${process.env.NEXT_PUBLIC_APPLICATIONS}&env=${process.env.NEXT_PUBLIC_API_ENV}`,
+    { headers: { Authorization: token } }
+  )
     .then((response) => response.data)
     .catch(({ response }) => {
       const { status, statusText } = response;
-      logger.error(`Error fetching subscription ${subscriptionId}: ${status}: ${statusText}`);
-      throw new Error(`Error fetching subscription ${subscriptionId}: ${statusText}`);
+      logger.error(
+        `Error fetching subscription ${subscriptionId}: ${status}: ${statusText}`
+      );
+      throw new Error(
+        `Error fetching subscription ${subscriptionId}: ${statusText}`
+      );
     });
 };
 
@@ -147,13 +162,17 @@ export const fetchSubscription = (subscriptionId, token) => {
  */
 export const deleteSubscription = (subscriptionId, token) => {
   logger.info(`Delete subscription: ${subscriptionId}`);
-  return WRIAPI.delete(`/v1/subscriptions/${subscriptionId}`,
-    { headers: { Authorization: token } })
-    .catch(({ response }) => {
-      const { status, statusText } = response;
-      logger.error(`Error deleting subscription ${subscriptionId}: ${status}: ${statusText}`);
-      throw new Error(`Error deleting subscription ${subscriptionId}: ${statusText}`);
-    });
+  return WRIAPI.delete(`/v1/subscriptions/${subscriptionId}`, {
+    headers: { Authorization: token },
+  }).catch(({ response }) => {
+    const { status, statusText } = response;
+    logger.error(
+      `Error deleting subscription ${subscriptionId}: ${status}: ${statusText}`
+    );
+    throw new Error(
+      `Error deleting subscription ${subscriptionId}: ${statusText}`
+    );
+  });
 };
 
 export default {

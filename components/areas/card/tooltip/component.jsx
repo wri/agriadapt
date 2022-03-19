@@ -1,8 +1,8 @@
-import React, { useEffect, useCallback } from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect, useCallback } from "react";
+import PropTypes from "prop-types";
 
 // Utils
-import { logEvent } from 'utils/analytics';
+import { logEvent } from "utils/analytics";
 
 const AreaActionsTooltip = (props) => {
   const {
@@ -16,28 +16,38 @@ const AreaActionsTooltip = (props) => {
     tooltipRef,
   } = props;
 
-  const handleClick = useCallback((action) => {
-    switch (action) {
-      case 'rename':
-        onRenameArea();
-        break;
-      case 'change-visibility':
-        onChangeVisibility();
-        break;
-      case 'edit_subscriptions':
-        logEvent('My RW', 'Edit subscription', area.name);
-        onEditSubscriptions();
-        break;
-      case 'delete_area':
-        onDeleteArea();
-        break;
-      default: {
-        throw Error(`Action '${action}' not supported`);
+  const handleClick = useCallback(
+    (action) => {
+      switch (action) {
+        case "rename":
+          onRenameArea();
+          break;
+        case "change-visibility":
+          onChangeVisibility();
+          break;
+        case "edit_subscriptions":
+          logEvent("My RW", "Edit subscription", area.name);
+          onEditSubscriptions();
+          break;
+        case "delete_area":
+          onDeleteArea();
+          break;
+        default: {
+          throw Error(`Action '${action}' not supported`);
+        }
       }
-    }
 
-    onMouseDown();
-  }, [area, onRenameArea, onChangeVisibility, onEditSubscriptions, onDeleteArea, onMouseDown]);
+      onMouseDown();
+    },
+    [
+      area,
+      onRenameArea,
+      onChangeVisibility,
+      onEditSubscriptions,
+      onDeleteArea,
+      onMouseDown,
+    ]
+  );
 
   useEffect(() => {
     const triggerMouseDown = (e) => {
@@ -46,10 +56,10 @@ const AreaActionsTooltip = (props) => {
       if (clickOutside) onMouseDown();
     };
 
-    window.addEventListener('mousedown', triggerMouseDown);
+    window.addEventListener("mousedown", triggerMouseDown);
 
     return () => {
-      window.removeEventListener('mousedown', triggerMouseDown);
+      window.removeEventListener("mousedown", triggerMouseDown);
     };
   }, [onMouseDown, tooltipRef]);
 
@@ -60,7 +70,7 @@ const AreaActionsTooltip = (props) => {
           <button
             type="button"
             className="c-button"
-            onClick={() => handleClick('rename')}
+            onClick={() => handleClick("rename")}
           >
             Rename
           </button>
@@ -69,23 +79,21 @@ const AreaActionsTooltip = (props) => {
           <button
             type="button"
             className="c-button"
-            onClick={() => handleClick('change-visibility')}
+            onClick={() => handleClick("change-visibility")}
           >
-            {`Make ${area.public ? 'Private' : 'Public'}`}
+            {`Make ${area.public ? "Private" : "Public"}`}
           </button>
         </li>
-        {
-        /**
-        * * Enable subscriptions unconditionally when they work properly.
-        * * Currently, they are disabled in Explore.
-        */
-        }
+        {/**
+         * * Enable subscriptions unconditionally when they work properly.
+         * * Currently, they are disabled in Explore.
+         */}
         {showSubscriptions && (
           <li>
             <button
               type="button"
               className="c-button -desktopOnly"
-              onClick={() => handleClick('edit_subscriptions')}
+              onClick={() => handleClick("edit_subscriptions")}
             >
               Edit subscriptions
             </button>
@@ -95,7 +103,7 @@ const AreaActionsTooltip = (props) => {
           <button
             type="button"
             className="c-button"
-            onClick={() => handleClick('delete_area')}
+            onClick={() => handleClick("delete_area")}
           >
             Delete area
           </button>

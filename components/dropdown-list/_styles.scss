@@ -1,4 +1,4 @@
-@import 'css/settings';
+@import "css/settings";
 
 .c-dropdown-list {
   width: 255px;
@@ -7,7 +7,7 @@
 
   &.-direction-up {
     &:after {
-      content: '';
+      content: "";
       position: absolute;
       left: 50%;
       top: 0;
@@ -22,7 +22,7 @@
 
   &.-direction-down {
     &:after {
-      content: '';
+      content: "";
       position: absolute;
       left: 50%;
       top: 0;
@@ -61,7 +61,7 @@
 
     &:before,
     &:after {
-      content: '';
+      content: "";
       position: absolute;
       width: calc(100% - 15px);
       height: 15px;

@@ -1,13 +1,18 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 // components
-import WidgetItem from './widget-item';
+import WidgetItem from "./widget-item";
 
 export default function WidgetSidebar({ widgetIds, params, adapter }) {
   return (
     <div className="widgets-sidebar">
       {widgetIds.map((widgetId) => (
-        <WidgetItem key={widgetId} adapter={adapter} widgetId={widgetId} params={params} />
+        <WidgetItem
+          key={widgetId}
+          adapter={adapter}
+          widgetId={widgetId}
+          params={params}
+        />
       ))}
     </div>
   );

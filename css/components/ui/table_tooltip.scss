@@ -1,4 +1,3 @@
-
 @use "sass:math";
 
 /* Filters */
@@ -17,10 +16,14 @@ $_footer-height: 40px;
     visibility: hidden;
   }
 
-  li { list-style: none; }
+  li {
+    list-style: none;
+  }
 
   button {
-    &:focus { outline: none; }
+    &:focus {
+      outline: none;
+    }
   }
 
   .tooltip-content {
@@ -34,13 +37,16 @@ $_footer-height: 40px;
 
     // Arrow
     &:after {
-      content: '';
+      content: "";
       position: absolute;
       left: 50%;
       top: 0;
       width: $_arrow-width;
       height: $_arrow-width;
-      margin: -#{math.div($-arrow-width, 2)} 0px 0px -#{math.div($-arrow-width, 2)};
+      margin: -#{math.div($-arrow-width, 2)} 0px 0px -#{math.div(
+          $-arrow-width,
+          2
+        )};
       background: $white;
       border-top: 1px solid $blue-grey;
       border-left: 1px solid $blue-grey;
@@ -58,8 +64,9 @@ $_footer-height: 40px;
       overflow-y: auto;
       padding: $space-1 * 3 $space-1 * 3 $space-1 * 2;
 
-      &:before, &:after {
-        content: '';
+      &:before,
+      &:after {
+        content: "";
         position: absolute;
         left: 0;
         width: 100%;

@@ -1,14 +1,12 @@
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
-import {
-  Tooltip,
-} from 'vizzuality-components';
+import PropTypes from "prop-types";
+import classnames from "classnames";
+import { Tooltip } from "vizzuality-components";
 
 // components
 // import LoginRequired from 'components/ui/login-required';
-import Icon from 'components/ui/icon';
-import Title from 'components/ui/Title';
-import CollectionsPanel from 'components/collections-panel';
+import Icon from "components/ui/icon";
+import Title from "components/ui/Title";
+import CollectionsPanel from "components/collections-panel";
 
 export default function WidgetHeader({
   widget,
@@ -18,12 +16,12 @@ export default function WidgetHeader({
   isInfoVisible,
 }) {
   const starIconName = classnames({
-    'icon-star-full': isInACollection,
-    'icon-star-empty': !isInACollection,
+    "icon-star-full": isInACollection,
+    "icon-star-empty": !isInACollection,
   });
   const modalIcon = classnames({
-    'icon-cross': isInfoVisible,
-    'icon-info': !isInfoVisible,
+    "icon-cross": isInfoVisible,
+    "icon-info": !isInfoVisible,
   });
 
   return (
@@ -40,37 +38,24 @@ export default function WidgetHeader({
                 className="c-btn -tertiary -clean"
                 onClick={onToggleShare}
               >
-                <Icon
-                  name="icon-share"
-                  className="-small"
-                />
+                <Icon name="icon-share" className="-small" />
               </button>
             </li>
             <li>
               {/* <LoginRequired redirect={false}> */}
-                <Tooltip
-                  overlay={(
-                    <CollectionsPanel
-                      resource={widget}
-                      resourceType="widget"
-                    />
-                  )}
-                  overlayClassName="c-rc-tooltip"
-                  overlayStyle={{ color: '#fff' }}
-                  placement="bottomLeft"
-                  trigger="click"
-                >
-                  <button
-                    type="button"
-                    className="c-btn -clean"
-                    tabIndex={-1}
-                  >
-                    <Icon
-                      name={starIconName}
-                      className="-star -small"
-                    />
-                  </button>
-                </Tooltip>
+              <Tooltip
+                overlay={
+                  <CollectionsPanel resource={widget} resourceType="widget" />
+                }
+                overlayClassName="c-rc-tooltip"
+                overlayStyle={{ color: "#fff" }}
+                placement="bottomLeft"
+                trigger="click"
+              >
+                <button type="button" className="c-btn -clean" tabIndex={-1}>
+                  <Icon name={starIconName} className="-star -small" />
+                </button>
+              </Tooltip>
               {/* </LoginRequired> */}
             </li>
             <li>

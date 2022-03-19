@@ -1,4 +1,4 @@
-import { createSelector } from 'reselect';
+import { createSelector } from "reselect";
 
 // Get datasets
 const datasetList = (state) => state.explore.datasets.list;
@@ -10,7 +10,7 @@ const datasetSorting = (state) => state.explore.sorting;
 
 const getPaginatedDatasets = (_list, _page, _limit) => {
   const from = (_page - 1) * _limit;
-  const to = ((_page - 1) * _limit) + _limit;
+  const to = (_page - 1) * _limit + _limit;
 
   return _list.slice(from, to);
 };
@@ -21,7 +21,7 @@ const getPaginatedDatasets = (_list, _page, _limit) => {
  * @param {{ order: string, datasets: string[], loading: boolean }[]} sorting Sorting object
  */
 const getSortedDatasets = (datasets, sorting) => {
-  if (sorting.order === 'modified' || sorting.loading) {
+  if (sorting.order === "modified" || sorting.loading) {
     return datasets;
   }
 
@@ -37,12 +37,20 @@ const getSortedDatasets = (datasets, sorting) => {
 };
 
 // Filter datasets by issues
-const getFilteredDatasets = (_list, _filters, _exploreDatasetFilters, _page, _limit, _sorting) => {
+const getFilteredDatasets = (
+  _list,
+  _filters,
+  _exploreDatasetFilters,
+  _page,
+  _limit,
+  _sorting
+) => {
   const { search, datasetsFilteredByConcepts } = _filters;
   const { topics, dataTypes, geographies } = _exploreDatasetFilters;
   const haveResults = datasetsFilteredByConcepts.length;
-  const areFiltersApplied = ([...topics || [], ...geographies || [],
-    ...dataTypes || []].length) || search;
+  const areFiltersApplied =
+    [...(topics || []), ...(geographies || []), ...(dataTypes || [])].length ||
+    search;
 
   if (!haveResults && areFiltersApplied && !search) {
     return {
@@ -54,7 +62,11 @@ const getFilteredDatasets = (_list, _filters, _exploreDatasetFilters, _page, _li
   if (!areFiltersApplied) {
     return {
       totalFilteredDatasets: _list || [],
-      filteredDatasets: getPaginatedDatasets(getSortedDatasets(_list, _sorting), _page, _limit),
+      filteredDatasets: getPaginatedDatasets(
+        getSortedDatasets(_list, _sorting),
+        _page,
+        _limit
+      ),
     };
   }
 
@@ -62,16 +74,21 @@ const getFilteredDatasets = (_list, _filters, _exploreDatasetFilters, _page, _li
     let searchFilterPassed = false;
     let conceptsCheckPassed = true;
 
-    if (search && search.key === 'name') {
+    if (search && search.key === "name") {
       const searchSt = search.value.toLowerCase();
 
       if (it.attributes.metadata.length > 0) {
         const metadataObj = it.attributes.metadata[0].attributes;
         const infoObj = metadataObj.info;
 
-        const nameCheck = infoObj.name && infoObj.name.toLowerCase().indexOf(searchSt) >= 0;
-        const functionsCheck = infoObj.functions && infoObj.functions.toLowerCase().indexOf(searchSt) >= 0;
-        const sourceCheck = metadataObj.source && metadataObj.source.toLowerCase().indexOf(searchSt) >= 0;
+        const nameCheck =
+          infoObj.name && infoObj.name.toLowerCase().indexOf(searchSt) >= 0;
+        const functionsCheck =
+          infoObj.functions &&
+          infoObj.functions.toLowerCase().indexOf(searchSt) >= 0;
+        const sourceCheck =
+          metadataObj.source &&
+          metadataObj.source.toLowerCase().indexOf(searchSt) >= 0;
 
         if (nameCheck || functionsCheck || sourceCheck) {
           searchFilterPassed = true;
@@ -81,7 +98,9 @@ const getFilteredDatasets = (_list, _filters, _exploreDatasetFilters, _page, _li
       }
       if (it.attributes.vocabulary.length > 0) {
         const vocabulary = it.attributes.vocabulary[0];
-        const tagsCheck = vocabulary.attributes.tags.find((tag) => tag.toLowerCase().indexOf(searchSt) >= 0);
+        const tagsCheck = vocabulary.attributes.tags.find(
+          (tag) => tag.toLowerCase().indexOf(searchSt) >= 0
+        );
         if (tagsCheck) {
           searchFilterPassed = true;
         }
@@ -93,10 +112,12 @@ const getFilteredDatasets = (_list, _filters, _exploreDatasetFilters, _page, _li
     }
 
     const searchCheck = (search && searchFilterPassed) || !search;
-    const conceptsCheck = (datasetsFilteredByConcepts.length
-      && datasetsFilteredByConcepts.length > 0
-      && conceptsCheckPassed)
-      || !datasetsFilteredByConcepts.length || !datasetsFilteredByConcepts.length > 0;
+    const conceptsCheck =
+      (datasetsFilteredByConcepts.length &&
+        datasetsFilteredByConcepts.length > 0 &&
+        conceptsCheckPassed) ||
+      !datasetsFilteredByConcepts.length ||
+      !datasetsFilteredByConcepts.length > 0;
 
     return searchCheck && conceptsCheck;
   });
@@ -105,7 +126,11 @@ const getFilteredDatasets = (_list, _filters, _exploreDatasetFilters, _page, _li
 
   return {
     totalFilteredDatasets: sortedFilteredDatasets || [],
-    filteredDatasets: getPaginatedDatasets(sortedFilteredDatasets, _page, _limit),
+    filteredDatasets: getPaginatedDatasets(
+      sortedFilteredDatasets,
+      _page,
+      _limit
+    ),
   };
 };
 
@@ -117,5 +142,5 @@ export default createSelector(
   datasetPage,
   datasetLimit,
   datasetSorting,
-  getFilteredDatasets,
+  getFilteredDatasets
 );

@@ -1,22 +1,25 @@
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
-import cx from 'classnames';
-import { toastr } from 'react-redux-toastr';
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
+import cx from "classnames";
+import { toastr } from "react-redux-toastr";
 
 // Service
-import { fetchDataset, createMetadata, updateMetadata } from 'services/dataset';
-import { fetchFields } from 'services/fields';
+import { fetchDataset, createMetadata, updateMetadata } from "services/dataset";
+import { fetchFields } from "services/fields";
 
 // Contants
-import { STATE_DEFAULT, FORM_ELEMENTS } from 'components/datasets/metadata/form/constants';
+import {
+  STATE_DEFAULT,
+  FORM_ELEMENTS,
+} from "components/datasets/metadata/form/constants";
 
 // Components
-import Spinner from 'components/ui/Spinner';
-import Navigation from 'components/form/Navigation';
-import Step1 from 'components/datasets/metadata/form/steps/Step1';
+import Spinner from "components/ui/Spinner";
+import Navigation from "components/form/Navigation";
+import Step1 from "components/datasets/metadata/form/steps/Step1";
 
 // utils
-import { getFieldUrl, getFields } from 'utils/fields';
+import { getFieldUrl, getFields } from "utils/fields";
 
 class DatasetMetadataForm extends PureComponent {
   static propTypes = {
@@ -25,9 +28,9 @@ class DatasetMetadataForm extends PureComponent {
     onSubmit: PropTypes.func,
     setSources: PropTypes.func.isRequired,
     resetSources: PropTypes.func.isRequired,
-  }
+  };
 
-  static defaultProps = { onSubmit: null }
+  static defaultProps = { onSubmit: null };
 
   state = {
     ...STATE_DEFAULT,
@@ -43,18 +46,16 @@ class DatasetMetadataForm extends PureComponent {
     const { form } = this.state;
 
     if (dataset) {
-      fetchDataset(dataset, { includes: 'metadata' })
+      fetchDataset(dataset, { includes: "metadata" })
         .then((result) => {
-          const {
-            metadata,
-            type,
-            provider,
-            env,
-          } = result;
+          const { metadata, type, provider, env } = result;
           this.setState({
-            form: metadata && metadata.length ? this.setFormFromParams(metadata[0]) : form,
+            form:
+              metadata && metadata.length
+                ? this.setFormFromParams(metadata[0])
+                : form,
             metadata,
-            type: type || 'tabular',
+            type: type || "tabular",
             env,
             // Stop the loading
             loading: false,
@@ -64,7 +65,7 @@ class DatasetMetadataForm extends PureComponent {
             setSources(metadata[0].info.sources || []);
           }
 
-          if (provider !== 'wms') {
+          if (provider !== "wms") {
             // fetchs column fields based on dataset type
             const url = getFieldUrl(result);
             fetchFields(url)
@@ -84,7 +85,7 @@ class DatasetMetadataForm extends PureComponent {
         })
         .catch((err) => {
           this.setState({ loading: false });
-          toastr.error('Error', err);
+          toastr.error("Error", err);
         });
     }
   }
@@ -125,47 +126,66 @@ class DatasetMetadataForm extends PureComponent {
             const hasApp = m.application === form.application;
 
             return hasLang && hasApp;
-          }),
+          })
         );
 
         // Set the request
-        const requestOptions = { type: dataset && thereIsMetadata ? 'PATCH' : 'POST' };
+        const requestOptions = {
+          type: dataset && thereIsMetadata ? "PATCH" : "POST",
+        };
 
         // update metadata flow
-        if (requestOptions.type === 'PATCH') {
+        if (requestOptions.type === "PATCH") {
           updateMetadata(dataset, form, token)
             .then(() => {
-              toastr.success('Success', 'Metadata has been updated correctly');
+              toastr.success("Success", "Metadata has been updated correctly");
               if (onSubmit) onSubmit();
             })
-            .catch(() => { toastr.error('Error', 'There was an error updating the metadata.'); })
-            .finally(() => { this.setState({ submitting: false }); });
+            .catch(() => {
+              toastr.error(
+                "Error",
+                "There was an error updating the metadata."
+              );
+            })
+            .finally(() => {
+              this.setState({ submitting: false });
+            });
         }
 
         // creation metadata flow
-        if (requestOptions.type === 'POST') {
+        if (requestOptions.type === "POST") {
           createMetadata(dataset, form, token)
             .then(() => {
-              toastr.success('Success', 'Metadata has been updated correctly');
+              toastr.success("Success", "Metadata has been updated correctly");
               if (onSubmit) onSubmit();
             })
-            .catch(() => { toastr.error('Error', 'There was an error updateing the metadata.'); })
-            .finally(() => { this.setState({ submitting: false }); });
+            .catch(() => {
+              toastr.error(
+                "Error",
+                "There was an error updateing the metadata."
+              );
+            })
+            .finally(() => {
+              this.setState({ submitting: false });
+            });
         }
       } else {
-        toastr.error('Error', 'Fill all the required fields or correct the invalid values');
+        toastr.error(
+          "Error",
+          "Fill all the required fields or correct the invalid values"
+        );
       }
     }, 0);
-  }
+  };
 
   onChange = (obj) => {
     const form = { ...this.state.form, ...obj.form };
     this.setState({ form });
-  }
+  };
 
   onStepChange = (step) => {
     this.setState({ step });
-  }
+  };
 
   // HELPERS
   setFormFromParams(params) {
@@ -193,26 +213,19 @@ class DatasetMetadataForm extends PureComponent {
       step,
       env,
     } = this.state;
-    const disabled = process.env.NEXT_PUBLIC_ENVS_EDIT.split(',').findIndex((d) => d === env) < 0;
+    const disabled =
+      process.env.NEXT_PUBLIC_ENVS_EDIT.split(",").findIndex((d) => d === env) <
+      0;
 
     return (
       <div
         className={cx({
-          'c-metadata-form': true,
-          '-disabled': disabled,
+          "c-metadata-form": true,
+          "-disabled": disabled,
         })}
       >
-        <form
-          className="c-form"
-          onSubmit={this.onSubmit}
-          noValidate
-        >
-          {loading && (
-            <Spinner
-              isLoading={loading}
-              className="-light"
-            />
-          )}
+        <form className="c-form" onSubmit={this.onSubmit} noValidate>
+          {loading && <Spinner isLoading={loading} className="-light" />}
           {!loading && (
             <Step1
               onChange={(value) => this.onChange(value)}

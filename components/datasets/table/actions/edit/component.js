@@ -1,15 +1,15 @@
-import { PureComponent } from 'react';
-import PropTypes from 'prop-types';
-import Link from 'next/link';
+import { PureComponent } from "react";
+import PropTypes from "prop-types";
+import Link from "next/link";
 
 // utils
-import { substitution } from 'utils/utils';
+import { substitution } from "utils/utils";
 
 class EditAction extends PureComponent {
   static propTypes = {
     data: PropTypes.object.isRequired,
     action: PropTypes.object.isRequired,
-  }
+  };
 
   getParsedParams() {
     const {
@@ -17,7 +17,9 @@ class EditAction extends PureComponent {
       action: { params },
     } = this.props;
 
-    return JSON.parse(substitution(JSON.stringify(params), [{ key: 'id', value: id }]));
+    return JSON.parse(
+      substitution(JSON.stringify(params), [{ key: "id", value: id }])
+    );
   }
 
   render() {
@@ -25,20 +27,15 @@ class EditAction extends PureComponent {
       data: { status },
     } = this.props;
 
-    const {
-      tab,
-      subtab,
-      id,
-    } = this.getParsedParams();
+    const { tab, subtab, id } = this.getParsedParams();
 
     return (
       <span>
-        {(status === 'saved')
-          && (
+        {status === "saved" && (
           <Link href={`/admin/data/${tab}/${id}/${subtab}`}>
             <a className="c-btn">Edit</a>
           </Link>
-          )}
+        )}
       </span>
     );
   }

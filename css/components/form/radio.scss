@@ -27,7 +27,7 @@
       height: 14px;
       border: 1px solid $sea-blue;
       border-radius: 50%;
-      transform: translate(0,-50%);
+      transform: translate(0, -50%);
 
       &:after {
         content: "";
@@ -39,20 +39,20 @@
         background: $sea-blue;
         border-radius: 50%;
         display: block;
-        transform: translate(-50%,-50%) scale(0);
-        transition: all .16s cubic-bezier(0.445, 0.050, 0.550, 0.950);
+        transform: translate(-50%, -50%) scale(0);
+        transition: all 0.16s cubic-bezier(0.445, 0.05, 0.55, 0.95);
       }
     }
   }
 
-  input[type=radio] {
+  input[type="radio"] {
     display: none;
   }
 
-  input[type=radio]:checked + label {
+  input[type="radio"]:checked + label {
     span {
       &:after {
-        transform: translate(-50%,-50%) scale(1);
+        transform: translate(-50%, -50%) scale(1);
       }
     }
   }
@@ -72,7 +72,7 @@
     display: flex;
     > * {
       margin: 0 16px 0 0;
-      &:last-child {
+      &:last-child  {
         margin: 0;
       }
     }

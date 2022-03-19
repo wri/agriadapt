@@ -1,7 +1,7 @@
 // CONSTANTS
-const SET_SOURCES = 'sources/SET_SOURCES';
-const SET_TMP_SOURCES = 'sources/SET_TMP_SOURCES';
-const RESET_SOURCES = 'sources/RESET_SOURCES';
+const SET_SOURCES = "sources/SET_SOURCES";
+const SET_TMP_SOURCES = "sources/SET_TMP_SOURCES";
+const RESET_SOURCES = "sources/RESET_SOURCES";
 
 // REDUCER
 const initialState = {

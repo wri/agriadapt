@@ -1,12 +1,10 @@
-import PropTypes from 'prop-types';
-import Link from 'next/link';
+import PropTypes from "prop-types";
+import Link from "next/link";
 
 // components
-import Icon from 'components/ui/icon';
+import Icon from "components/ui/icon";
 
-export default function Breadcrumbs({
-  items,
-}) {
+export default function Breadcrumbs({ items }) {
   return (
     <ul className="c-breadcrumbs">
       {items.map((item) => (
@@ -22,7 +20,9 @@ export default function Breadcrumbs({
             </Link>
           ) : (
             <a href={item.href}>
-              {items.length === 1 && <Icon className="c-icon -smaller" name="icon-arrow-left-2" />}
+              {items.length === 1 && (
+                <Icon className="c-icon -smaller" name="icon-arrow-left-2" />
+              )}
               <span>{item.name}</span>
             </a>
           )}
@@ -42,6 +42,6 @@ Breadcrumbs.propTypes = {
       name: PropTypes.string,
       route: PropTypes.string,
       href: PropTypes.string,
-    }),
+    })
   ),
 };

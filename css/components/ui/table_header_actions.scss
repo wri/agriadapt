@@ -1,6 +1,7 @@
-
 .c-table-header-actions {
-  ul { margin-left: 10px; }
+  ul {
+    margin-left: 10px;
+  }
 
   .action {
     cursor: pointer;
@@ -8,8 +9,12 @@
     button {
       cursor: pointer;
 
-      &:focus { outline: none; }
-      &:hover { opacity: .5; }
+      &:focus {
+        outline: none;
+      }
+      &:hover {
+        opacity: 0.5;
+      }
 
       &.-active {
         svg {
@@ -18,7 +23,6 @@
         }
       }
     }
-
   }
 
   .sortby-action {

@@ -1,8 +1,8 @@
-import WRISerializer from 'wri-json-api-serializer';
+import WRISerializer from "wri-json-api-serializer";
 
 // utils
-import { WRIAPI } from 'utils/axios';
-import { logger } from 'utils/logs';
+import { WRIAPI } from "utils/axios";
+import { logger } from "utils/logs";
 
 // API docs: TBD
 
@@ -14,13 +14,13 @@ import { logger } from 'utils/logs';
  * @returns {Object[]} array of serialized dashboards.
  */
 export const fetchDashboards = (params = {}, headers = {}, _meta = false) => {
-  logger.info('Fetch dashboards');
-  return WRIAPI.get('/v1/dashboard', {
+  logger.info("Fetch dashboards");
+  return WRIAPI.get("/v1/dashboard", {
     headers: {
       ...WRIAPI.defaults.headers,
       ...headers,
       // TO-DO: forces the API to not cache, this should be removed at some point
-      'Upgrade-Insecure-Requests': 1,
+      "Upgrade-Insecure-Requests": 1,
     },
     params: {
       env: process.env.NEXT_PUBLIC_API_ENV,
@@ -29,23 +29,30 @@ export const fetchDashboards = (params = {}, headers = {}, _meta = false) => {
     },
     // resolves only if the status code is less than 300
     validateStatus: (status) => status < 300,
-  }).then((response) => {
-    const { status, statusText, data } = response;
-    const { meta } = data;
-    logger.debug(`Fetched dashboards: ${status} - ${statusText}: ${JSON.stringify(data)}`);
-
-    if (_meta) {
-      return {
-        dashboards: WRISerializer(data),
-        meta,
-      };
-    }
-
-    return WRISerializer(data);
   })
+    .then((response) => {
+      const { status, statusText, data } = response;
+      const { meta } = data;
+      logger.debug(
+        `Fetched dashboards: ${status} - ${statusText}: ${JSON.stringify(data)}`
+      );
+
+      if (_meta) {
+        return {
+          dashboards: WRISerializer(data),
+          meta,
+        };
+      }
+
+      return WRISerializer(data);
+    })
     .catch(({ response }) => {
       const { status, data } = response;
-      throw new Error(`Error fetching dashboards: ${data?.errors[0]?.detail || 'Error not defined'} – ${status}`);
+      throw new Error(
+        `Error fetching dashboards: ${
+          data?.errors[0]?.detail || "Error not defined"
+        } – ${status}`
+      );
     });
 };
 
@@ -61,7 +68,7 @@ export const fetchDashboard = (id, params = {}) => {
     headers: {
       ...WRIAPI.defaults.headers,
       // TO-DO: forces the API to not cache, this should be removed at some point
-      'Upgrade-Insecure-Requests': 1,
+      "Upgrade-Insecure-Requests": 1,
     },
     params: {
       env: process.env.NEXT_PUBLIC_API_ENV,
@@ -73,7 +80,10 @@ export const fetchDashboard = (id, params = {}) => {
       const { status, statusText, data } = response;
 
       if (status >= 300) {
-        if (status !== 404) logger.error(`Error fetching dashboard ${id}: ${status}: ${statusText}`);
+        if (status !== 404)
+          logger.error(
+            `Error fetching dashboard ${id}: ${status}: ${statusText}`
+          );
         throw new Error(statusText);
       }
       return WRISerializer(data);
@@ -93,19 +103,23 @@ export const fetchDashboard = (id, params = {}) => {
  * @returns {Object} serialized created dashboard.
  */
 export const createDashboard = (body, token) => {
-  logger.info('Create dashboard');
-  return WRIAPI.post('/v1/dashboard', {
-    data: {
-      attributes: { ...body },
-      application: [process.env.NEXT_PUBLIC_APPLICATIONS],
-      env: process.env.NEXT_PUBLIC_API_ENV,
+  logger.info("Create dashboard");
+  return WRIAPI.post(
+    "/v1/dashboard",
+    {
+      data: {
+        attributes: { ...body },
+        application: [process.env.NEXT_PUBLIC_APPLICATIONS],
+        env: process.env.NEXT_PUBLIC_API_ENV,
+      },
     },
-  }, {
-    headers: {
-      ...WRIAPI.defaults.headers,
-      Authorization: token,
-    },
-  })
+    {
+      headers: {
+        ...WRIAPI.defaults.headers,
+        Authorization: token,
+      },
+    }
+  )
     .then((response) => {
       const { status, statusText, data } = response;
 
@@ -132,19 +146,24 @@ export const createDashboard = (body, token) => {
  */
 export const updateDashboard = (id, body, token) => {
   logger.info(`Updates dashboard ${id}`);
-  return WRIAPI.patch(`/v1/dashboard/${id}`,
+  return WRIAPI.patch(
+    `/v1/dashboard/${id}`,
     { data: { attributes: { ...body } } },
     {
       headers: {
         ...WRIAPI.defaults.headers,
         Authorization: token,
       },
-    })
+    }
+  )
     .then((response) => {
       const { status, statusText, data } = response;
 
       if (status >= 300) {
-        if (status !== 404) logger.error(`Error updating dashboard ${id}, ${status}: ${statusText}`);
+        if (status !== 404)
+          logger.error(
+            `Error updating dashboard ${id}, ${status}: ${statusText}`
+          );
         throw new Error(statusText);
       }
       return WRISerializer(data);
@@ -170,13 +189,12 @@ export const deleteDashboard = (id, token) => {
       ...WRIAPI.defaults.headers,
       Authorization: token,
     },
-  })
-    .catch(({ response }) => {
-      const { status, statusText } = response;
+  }).catch(({ response }) => {
+    const { status, statusText } = response;
 
-      logger.error(`Error deleting dashboard ${id}: ${status}: ${statusText}`);
-      throw new Error(`Error deleting dashboard ${id}: ${status}: ${statusText}`);
-    });
+    logger.error(`Error deleting dashboard ${id}: ${status}: ${statusText}`);
+    throw new Error(`Error deleting dashboard ${id}: ${status}: ${statusText}`);
+  });
 };
 
 /**
@@ -188,14 +206,12 @@ export const deleteDashboard = (id, token) => {
  * @return {Object} resulting dashboard based on the dashboard provided.
  */
 export const cloneDashboard = (dashboard, user) => {
-  const {
-    id, name, description, photo, summary,
-  } = dashboard;
+  const { id, name, description, photo, summary } = dashboard;
   logger.info(`Clones dashboard from dashboard ${id}`);
   const { token, id: userId } = user;
   const url = `/v1/dashboard/${id}/clone`;
   const params = {
-    'user-id': userId,
+    "user-id": userId,
     data: {
       attributes: {
         published: false,
@@ -221,8 +237,12 @@ export const cloneDashboard = (dashboard, user) => {
     })
     .catch(({ response }) => {
       const { status, statusText } = response;
-      logger.error(`Error cloning dashboard from dashboard ${id}: ${status}: ${statusText}`);
-      throw new Error(`Error cloning dashboard from dashboard ${id}: ${status}: ${statusText}`);
+      logger.error(
+        `Error cloning dashboard from dashboard ${id}: ${status}: ${statusText}`
+      );
+      throw new Error(
+        `Error cloning dashboard from dashboard ${id}: ${status}: ${statusText}`
+      );
     });
 };
 

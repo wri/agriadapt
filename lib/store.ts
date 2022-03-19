@@ -1,19 +1,22 @@
-import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
-import thunk from 'redux-thunk';
-import { createWrapper } from 'next-redux-wrapper';
-import { handleModule } from 'redux-tools';
+import { createStore, applyMiddleware, combineReducers, compose } from "redux";
+import thunk from "redux-thunk";
+import { createWrapper } from "next-redux-wrapper";
+import { handleModule } from "redux-tools";
 import {
   reducers as WEReducers,
   middleware as WEmiddleware,
   sagas,
-} from '@widget-editor/widget-editor';
+} from "@widget-editor/widget-editor";
 
 // todo: move redactions to modules
-import * as reducers from 'redactions';
-import modules from 'modules';
+import * as reducers from "redactions";
+import modules from "modules";
 
 // Layout
-import { reducers as headerReducers, initialState as headerInitialState } from 'layout/header';
+import {
+  reducers as headerReducers,
+  initialState as headerInitialState,
+} from "layout/header";
 // import {
 //   reducers as headerAdminReducers,
 //   initialState as headerAdminInitialState,
@@ -29,11 +32,11 @@ import { reducers as headerReducers, initialState as headerInitialState } from '
 import {
   reducers as datasetListItemReducers,
   initialState as datasetListItemInitialState,
-} from 'components/datasets/list/list-item';
+} from "components/datasets/list/list-item";
 import {
   reducers as similarDatasetsReducers,
   initialState as similarDatasetsInitialState,
-} from 'components/datasets/similar-datasets/similar-datasets';
+} from "components/datasets/similar-datasets/similar-datasets";
 // import {
 //   reducers as trySubscriptionModalReducers,
 //   initialState as trySubscriptionModalInitialState,
@@ -49,18 +52,21 @@ import {
 import {
   reducers as relatedToolsReducers,
   initialState as relatedToolsInitialState,
-} from 'components/tools/related-tools';
+} from "components/tools/related-tools";
 
 // Pulse
-import { reducers as pulseReducers, initialState as pulseInitialState } from 'layout/app/pulse';
+import {
+  reducers as pulseReducers,
+  initialState as pulseInitialState,
+} from "layout/app/pulse";
 import {
   reducers as layerContainerReducers,
   initialState as layerContainerInitialState,
-} from 'layout/app/pulse/layer-container';
+} from "layout/app/pulse/layer-container";
 import {
   reducers as layerMenuReducers,
   initialState as layerMenuInitialState,
-} from 'layout/app/pulse/layer-menu';
+} from "layout/app/pulse/layer-menu";
 // import {
 //   reducers as layerCardReducers,
 //   initialState as layerCardInitialState,
@@ -68,15 +74,15 @@ import {
 import {
   reducers as layerPillReducers,
   initialState as layerPillInitialState,
-} from 'layout/app/pulse/layer-pill';
+} from "layout/app/pulse/layer-pill";
 import {
   reducers as labelsPillsReducers,
   initialState as labelsPillsInitialState,
-} from 'layout/app/pulse/labels-pill';
+} from "layout/app/pulse/labels-pill";
 import {
   reducers as globeCesiumReducers,
   initialState as globeCesiumInitialState,
-} from 'components/vis/globe-cesium';
+} from "components/vis/globe-cesium";
 
 // // Get Involved
 // import { getInvolvedIndexReducer } from 'layout/get-involved';
@@ -190,8 +196,10 @@ const reducer = combineReducers({
 function initStore() {
   const middlewares = applyMiddleware(thunk, WEmiddleware);
   const composeEnhancers =
-  // @ts-ignore
-    (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
+    // @ts-ignore
+    (typeof window !== "undefined" &&
+      window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
+    compose;
 
   const store = createStore(reducer, composeEnhancers(middlewares));
 
@@ -201,6 +209,6 @@ function initStore() {
 }
 
 export type RootStore = ReturnType<typeof initStore>;
-export type RootState = ReturnType<RootStore['getState']>;
+export type RootState = ReturnType<RootStore["getState"]>;
 
 export default createWrapper(initStore);

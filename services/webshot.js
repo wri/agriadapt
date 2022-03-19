@@ -1,8 +1,6 @@
 // utils
-import { logger } from 'utils/logs';
-import {
-  WRIAPI,
-} from 'utils/axios';
+import { logger } from "utils/logs";
+import { WRIAPI } from "utils/axios";
 
 /**
  * Check out the API docs for this endpoint {@link https://resource-watch.github.io/doc-api/reference.html#webshot|here}
@@ -13,17 +11,24 @@ import {
 export const takeWidgetWebshot = (widgetId, params = {}) => {
   logger.info(`Taking webshot to widget ${widgetId}...`);
 
-  return WRIAPI
-    .post(`webshot/widget/${widgetId}/thumbnail`, {}, {
+  return WRIAPI.post(
+    `webshot/widget/${widgetId}/thumbnail`,
+    {},
+    {
       params,
-    })
+    }
+  )
     .then(({ data }) => data.data)
     .catch(({ response }) => {
       const { status, statusText } = response;
 
       if (status >= 300) {
-        logger.error(`Error taking webshot to widget ${widgetId}:  ${statusText}`);
-        throw new Error(`Error taking webshot to widget ${widgetId}:  ${statusText}`);
+        logger.error(
+          `Error taking webshot to widget ${widgetId}:  ${statusText}`
+        );
+        throw new Error(
+          `Error taking webshot to widget ${widgetId}:  ${statusText}`
+        );
       }
     });
 };

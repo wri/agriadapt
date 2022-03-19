@@ -1,8 +1,8 @@
-import WRISerializer from 'wri-json-api-serializer';
+import WRISerializer from "wri-json-api-serializer";
 
 // utils
-import { WRIAPI } from 'utils/axios';
-import { logger } from 'utils/logs';
+import { WRIAPI } from "utils/axios";
+import { logger } from "utils/logs";
 
 /**
  * Fetch tools
@@ -11,20 +11,17 @@ import { logger } from 'utils/logs';
  * @param {Object} headers Request headers.
  */
 export const fetchTools = (params = {}, headers = {}) => {
-  logger.info('Fetch tools');
-  return WRIAPI.get(
-    '/v1/tool',
-    {
-      headers: {
-        ...headers,
-      },
-      params: {
-        application: process.env.NEXT_PUBLIC_APPLICATIONS,
-        env: process.env.NEXT_PUBLIC_API_ENV,
-        ...params,
-      },
+  logger.info("Fetch tools");
+  return WRIAPI.get("/v1/tool", {
+    headers: {
+      ...headers,
     },
-  )
+    params: {
+      application: process.env.NEXT_PUBLIC_APPLICATIONS,
+      env: process.env.NEXT_PUBLIC_API_ENV,
+      ...params,
+    },
+  })
     .then((response) => WRISerializer(response.data))
     .catch(({ response }) => {
       const { status, statusText } = response;
@@ -43,16 +40,13 @@ export const fetchTools = (params = {}, headers = {}) => {
  */
 export const fetchTool = (id, token, params = {}, headers = {}) => {
   logger.info(`Fetch tool ${id}`);
-  return WRIAPI.get(
-    `/v1/tool/${id}`,
-    {
-      headers: {
-        ...headers,
-        Authorization: token,
-      },
-      params: { ...params },
+  return WRIAPI.get(`/v1/tool/${id}`, {
+    headers: {
+      ...headers,
+      Authorization: token,
     },
-  )
+    params: { ...params },
+  })
     .then((response) => WRISerializer(response.data))
     .catch(({ response }) => {
       const { status, statusText } = response;
@@ -69,14 +63,18 @@ export const fetchTool = (id, token, params = {}, headers = {}) => {
  */
 export const updateTool = (tool, token) => {
   logger.info(`Update tool ${tool.id}`);
-  return WRIAPI.patch(`/v1/tool/${tool.id}`,
+  return WRIAPI.patch(
+    `/v1/tool/${tool.id}`,
     { data: { attributes: { ...tool } } },
-    { headers: { Authorization: token } })
+    { headers: { Authorization: token } }
+  )
     .then((response) => WRISerializer(response.data))
     .catch(({ response }) => {
       const { status, statusText } = response;
       logger.error(`Error updating tool ${tool.id}: ${status}: ${statusText}`);
-      throw new Error(`Error updating tool ${tool.id}: ${status}: ${statusText}`);
+      throw new Error(
+        `Error updating tool ${tool.id}: ${status}: ${statusText}`
+      );
     });
 };
 
@@ -87,8 +85,9 @@ export const updateTool = (tool, token) => {
  * @param {Object} token Authentication token.
  */
 export const createTool = (tool, token) => {
-  logger.info('Create tool');
-  return WRIAPI.post('/v1/tool',
+  logger.info("Create tool");
+  return WRIAPI.post(
+    "/v1/tool",
     {
       data: {
         application: process.env.NEXT_PUBLIC_APPLICATIONS,
@@ -96,7 +95,8 @@ export const createTool = (tool, token) => {
         attributes: { ...tool },
       },
     },
-    { headers: { Authorization: token } })
+    { headers: { Authorization: token } }
+  )
     .then((response) => WRISerializer(response.data))
     .catch(({ response }) => {
       const { status, statusText } = response;
@@ -115,21 +115,17 @@ export const createTool = (tool, token) => {
  */
 export const deleteTool = (id, token, params = {}, headers = {}) => {
   logger.info(`Delete tool ${id}`);
-  return WRIAPI.delete(
-    `/v1/tool/${id}`,
-    {
-      headers: {
-        ...headers,
-        Authorization: token,
-      },
-      params: { ...params },
+  return WRIAPI.delete(`/v1/tool/${id}`, {
+    headers: {
+      ...headers,
+      Authorization: token,
     },
-  )
-    .catch(({ response }) => {
-      const { status, statusText } = response;
-      logger.error(`Error deleting tool ${id}: ${status}: ${statusText}`);
-      throw new Error(`Error deleting tool ${id}: ${status}: ${statusText}`);
-    });
+    params: { ...params },
+  }).catch(({ response }) => {
+    const { status, statusText } = response;
+    logger.error(`Error deleting tool ${id}: ${status}: ${statusText}`);
+    throw new Error(`Error deleting tool ${id}: ${status}: ${statusText}`);
+  });
 };
 
 export default {

@@ -1,12 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import React from "react";
+import PropTypes from "prop-types";
+import classnames from "classnames";
 
 // Utils
-import { logEvent } from 'utils/analytics';
+import { logEvent } from "utils/analytics";
 
 // Components
-import Icon from 'components/ui/icon';
+import Icon from "components/ui/icon";
 
 class ExploreSidebarComponent extends React.Component {
   static propTypes = {
@@ -20,7 +20,7 @@ class ExploreSidebarComponent extends React.Component {
   /**
    * UI EVENTS
    * - triggerToggle
-  */
+   */
   triggerToggle = () => {
     const { open } = this.props;
 
@@ -29,11 +29,11 @@ class ExploreSidebarComponent extends React.Component {
 
     // Analytics
     if (!open) {
-      logEvent('Explore Map', 'Sidebar', 'Expand sidebar');
+      logEvent("Explore Map", "Sidebar", "Expand sidebar");
     } else {
-      logEvent('Explore Map', 'Sidebar', 'Collapse sidebar');
+      logEvent("Explore Map", "Sidebar", "Collapse sidebar");
     }
-  }
+  };
 
   render() {
     const { open } = this.props;
@@ -41,8 +41,8 @@ class ExploreSidebarComponent extends React.Component {
     return (
       <aside
         className={classnames({
-          'c-sidebar': true,
-          '-open': open,
+          "c-sidebar": true,
+          "-open": open,
         })}
       >
         <button
@@ -52,16 +52,16 @@ class ExploreSidebarComponent extends React.Component {
         >
           <Icon
             className={classnames({
-              '-little': true,
-              '-left': open,
-              '-right': !open,
+              "-little": true,
+              "-left": open,
+              "-right": !open,
             })}
             name="icon-arrow-down"
           />
         </button>
         <div
           className="sidebar-content explore-sidebar"
-        // onScroll={() => this.handleScroll()}
+          // onScroll={() => this.handleScroll()}
         >
           {this.props.children}
         </div>

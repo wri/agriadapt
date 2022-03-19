@@ -1,4 +1,4 @@
-$this: 'c-alerts-page';
+$this: "c-alerts-page";
 
 .#{$this} {
   display: block;
@@ -14,21 +14,18 @@ $this: 'c-alerts-page';
       button {
         margin-left: auto;
       }
-
     }
 
     &--heading {
       padding: 0;
     }
-
   }
 
   &__graph {
     position: relative;
     height: 400px;
-    box-shadow: 0 3px 6px 0 rgba(0,0,0,0.15);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.15);
     border-radius: 5px;
     overflow: hidden;
   }
-
 }

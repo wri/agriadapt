@@ -1,4 +1,4 @@
-@import 'css/settings';
+@import "css/settings";
 
 .c-share-modal {
   .share-input-container {
@@ -18,7 +18,9 @@
       > * {
         margin: 0 0 0 10px;
 
-        &:first-child { margin: 0 }
+        &:first-child {
+          margin: 0;
+        }
       }
     }
 
@@ -49,7 +51,9 @@
       > * {
         margin: 0 0 0 $space-1;
 
-        &:first-child { margin: 0 }
+        &:first-child {
+          margin: 0;
+        }
       }
     }
   }

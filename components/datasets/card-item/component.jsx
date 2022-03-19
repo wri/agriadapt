@@ -1,29 +1,32 @@
-import { useCallback, cloneElement } from 'react';
-import PropTypes from 'prop-types';
-import Link from 'next/link';
-import classnames from 'classnames';
+import { useCallback, cloneElement } from "react";
+import PropTypes from "prop-types";
+import Link from "next/link";
+import classnames from "classnames";
 
 // components
-import WidgetChart from 'components/charts/widget-chart';
-import MapThumbnail from 'components/map/thumbnail';
-import PlaceholderChart from 'components/charts/placeholder-chart';
+import WidgetChart from "components/charts/widget-chart";
+import MapThumbnail from "components/map/thumbnail";
+import PlaceholderChart from "components/charts/placeholder-chart";
 
 // Utils
-import { getDateConsideringTimeZone } from 'utils/utils';
+import { getDateConsideringTimeZone } from "utils/utils";
 
 // lib
-import { Media } from 'lib/media';
+import { Media } from "lib/media";
 
 export default function DatasetCardItem(props) {
   const { dataset, widget, layer, metadata, actions, expandedChart } = props;
-  const dateLastUpdated = getDateConsideringTimeZone(dataset.dataLastUpdated, true);
+  const dateLastUpdated = getDateConsideringTimeZone(
+    dataset.dataLastUpdated,
+    true
+  );
 
   const renderChart = useCallback(() => {
-    const isWidgetMap = widget && widget.widgetConfig.type === 'map';
-    const isEmbedWidget = widget && widget.widgetConfig.type === 'embed';
+    const isWidgetMap = widget && widget.widgetConfig.type === "map";
+    const isEmbedWidget = widget && widget.widgetConfig.type === "embed";
     const classNameValue = classnames({
-      'list-item-chart': true,
-      '-expanded-chart': expandedChart,
+      "list-item-chart": true,
+      "-expanded-chart": expandedChart,
     });
 
     if (widget && !isWidgetMap && !isEmbedWidget) {
@@ -60,8 +63,8 @@ export default function DatasetCardItem(props) {
   return (
     <div
       className={classnames({
-        'c-dataset-card-item': true,
-        '-active': dataset.active,
+        "c-dataset-card-item": true,
+        "-active": dataset.active,
       })}
     >
       <Media greaterThanOrEqual="md">{renderChart()}</Media>
@@ -85,10 +88,17 @@ export default function DatasetCardItem(props) {
         <div className="title-actions">
           <h4>
             <Link href={dataset.hrefLink}>
-              <a>{(metadata && metadata.info && metadata.info.name) || dataset.name}</a>
+              <a>
+                {(metadata && metadata.info && metadata.info.name) ||
+                  dataset.name}
+              </a>
             </Link>
           </h4>
-          {actions && <Media greaterThanOrEqual="md">{cloneElement(actions, { ...props })}</Media>}
+          {actions && (
+            <Media greaterThanOrEqual="md">
+              {cloneElement(actions, { ...props })}
+            </Media>
+          )}
         </div>
       </div>
     </div>

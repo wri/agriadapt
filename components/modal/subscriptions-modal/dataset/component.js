@@ -1,15 +1,15 @@
-import { PureComponent } from 'react';
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
-import { withRouter } from 'next/router';
-import { toastr } from 'react-redux-toastr';
+import { PureComponent } from "react";
+import PropTypes from "prop-types";
+import classnames from "classnames";
+import { withRouter } from "next/router";
+import { toastr } from "react-redux-toastr";
 
 // components
-import Field from 'components/form/Field';
-import CustomSelect from 'components/ui/CustomSelect';
-import Spinner from 'components/ui/Spinner';
-import DatasetsManager from '../dataset-manager';
-import SubscriptionsPreview from '../subscriptions-preview';
+import Field from "components/form/Field";
+import CustomSelect from "components/ui/CustomSelect";
+import Spinner from "components/ui/Spinner";
+import DatasetsManager from "../dataset-manager";
+import SubscriptionsPreview from "../subscriptions-preview";
 
 class DatasetSubscriptionsModal extends PureComponent {
   static propTypes = {
@@ -30,43 +30,38 @@ class DatasetSubscriptionsModal extends PureComponent {
     router: PropTypes.shape({
       push: PropTypes.func.isRequired,
     }).isRequired,
-  }
+  };
 
-  static defaultProps = { activeArea: null }
+  static defaultProps = { activeArea: null };
 
-  state = { showSubscribePreview: false }
+  state = { showSubscribePreview: false };
 
   onChangeArea = (area = {}) => {
-    const {
-      activeDataset,
-      onRequestClose,
-      setUserSelection,
-      router,
-    } = this.props;
-    const {
-      selectedType,
-      selectedThreshold,
-    } = this.state;
+    const { activeDataset, onRequestClose, setUserSelection, router } =
+      this.props;
+    const { selectedType, selectedThreshold } = this.state;
 
-    if (area.value === 'upload_area') {
+    if (area.value === "upload_area") {
       onRequestClose();
 
-      router.push(`/myrw-detail/areas/new?subscriptionDataset=${activeDataset.id}&subscriptionType=${selectedType}&subscriptionThreshold=${selectedThreshold}`);
+      router.push(
+        `/myrw-detail/areas/new?subscriptionDataset=${activeDataset.id}&subscriptionType=${selectedType}&subscriptionThreshold=${selectedThreshold}`
+      );
     } else {
       setUserSelection({ area });
     }
-  }
+  };
 
   handleCancel = () => {
     const { resetModal, onRequestClose } = this.props;
 
     onRequestClose();
     resetModal();
-  }
+  };
 
   handleShowSubscribePreview = () => {
     this.setState({ showSubscribePreview: true });
-  }
+  };
 
   handleSubscribe = () => {
     const {
@@ -83,48 +78,54 @@ class DatasetSubscriptionsModal extends PureComponent {
       if (userSelection.area.areaID) {
         if (areaFound) {
           // The user selected one of his/her areas - with subscriptions
-          toastr.confirm(`There already exists a subscription for the selected area.
-            Do you want to update it?`, {
-            onOk: () => {
-              updateSubscription();
-            },
-            onCancel: () => { },
-          });
+          toastr.confirm(
+            `There already exists a subscription for the selected area.
+            Do you want to update it?`,
+            {
+              onOk: () => {
+                updateSubscription();
+              },
+              onCancel: () => {},
+            }
+          );
         } else {
           // The user selected one of his/her areas - with no subscriptions
           createSubscriptionToArea();
         }
         // ++++++++++ THE USER SELECTED A COUNTRY +++++++++++++++
         // Check if the user already has an area with that country
-      } else if (userAreas.map((val) => val.geostore).includes(userSelection.area.value)) {
+      } else if (
+        userAreas.map((val) => val.geostore).includes(userSelection.area.value)
+      ) {
         // The user selected a country for which he/she already has an area
         createSubscriptionToArea();
       } else {
         // The user selected a country he/she has no area for.
         // In this case, we create a new area on the fly
-        createSubscriptionOnNewArea()
-          .then(() => {
-            if (showSubscribePreview) {
-              this.setState({ showSubscribePreview: false });
-            }
-          });
+        createSubscriptionOnNewArea().then(() => {
+          if (showSubscribePreview) {
+            this.setState({ showSubscribePreview: false });
+          }
+        });
       }
     } else {
-      toastr.error('Data missing', 'Please select an area and a subscription type');
+      toastr.error(
+        "Data missing",
+        "Please select an area and a subscription type"
+      );
     }
-  }
+  };
 
   handleGoToMySubscriptions = () => {
-    const {
-      onRequestClose,
-      router,
-    } = this.props;
+    const { onRequestClose, router } = this.props;
 
     onRequestClose();
-    router.push('/myrw/areas');
-  }
+    router.push("/myrw/areas");
+  };
 
-  handleState = (bool) => { this.setState({ showSubscribePreview: bool }); }
+  handleState = (bool) => {
+    this.setState({ showSubscribePreview: bool });
+  };
 
   render() {
     const {
@@ -139,21 +140,22 @@ class DatasetSubscriptionsModal extends PureComponent {
 
     const { showSubscribePreview } = this.state;
 
-    let headerText = 'Subscription saved!';
+    let headerText = "Subscription saved!";
 
     const { success } = subscription;
 
-    const datasetName = activeDataset && activeDataset.metadata && activeDataset.metadata.name;
-    if (Object.keys(activeDataset).length) headerText = `Subscribe to ${datasetName}`;
+    const datasetName =
+      activeDataset && activeDataset.metadata && activeDataset.metadata.name;
+    if (Object.keys(activeDataset).length)
+      headerText = `Subscribe to ${datasetName}`;
     if (activeArea) headerText = `${activeArea.name} subscriptions`;
 
-    const paragraphText = success
-      ? (
-        <p>
-          Your subscription was successfully created.
-          <strong> Please check your email address to confirm it.</strong>
-        </p>
-      ) : null;
+    const paragraphText = success ? (
+      <p>
+        Your subscription was successfully created.
+        <strong> Please check your email address to confirm it.</strong>
+      </p>
+    ) : null;
 
     if (showSubscribePreview) {
       return (
@@ -168,12 +170,8 @@ class DatasetSubscriptionsModal extends PureComponent {
 
     return (
       <div className="c-subscriptions-modal">
-        <Spinner
-          className="-light"
-          isLoading={loading}
-        />
-        {!success
-          && (
+        <Spinner className="-light" isLoading={loading} />
+        {!success && (
           <>
             <div className="header-div">
               <h2>{headerText}</h2>
@@ -182,14 +180,14 @@ class DatasetSubscriptionsModal extends PureComponent {
             <div className="selectors-container">
               <Field
                 properties={{
-                  name: 'areas',
-                  label: 'Areas',
+                  name: "areas",
+                  label: "Areas",
                 }}
               >
                 <CustomSelect
                   placeholder="Select area"
                   options={areas}
-                  className={classnames({ '-disabled': !!activeArea })}
+                  className={classnames({ "-disabled": !!activeArea })}
                   clearable={!activeArea}
                   onValueChange={this.onChangeArea}
                   allowNonLeafSelection={false}
@@ -200,17 +198,18 @@ class DatasetSubscriptionsModal extends PureComponent {
             <div className="separator" />
             <DatasetsManager activeArea={activeArea} />
           </>
-          )}
+        )}
 
-        {success
-          && (
+        {success && (
           <div className="icon-container">
-            <img alt="success" src="/static/images/components/modal/widget-saved.svg" />
+            <img
+              alt="success"
+              src="/static/images/components/modal/widget-saved.svg"
+            />
           </div>
-          )}
+        )}
 
-        {!success
-          && (
+        {!success && (
           <div className="buttons">
             <button className="c-btn -primary" onClick={this.handleSubscribe}>
               Save
@@ -218,12 +217,15 @@ class DatasetSubscriptionsModal extends PureComponent {
 
             <button
               className={classnames({
-                'c-btn': true,
-                '-secondary': true,
-                '-disabled': !!activeArea,
+                "c-btn": true,
+                "-secondary": true,
+                "-disabled": !!activeArea,
               })}
               onClick={this.handleShowSubscribePreview}
-              disabled={userSelection.area === null || (userSelection.datasets).length === 0}
+              disabled={
+                userSelection.area === null ||
+                userSelection.datasets.length === 0
+              }
             >
               Preview
             </button>
@@ -231,19 +233,21 @@ class DatasetSubscriptionsModal extends PureComponent {
               Cancel
             </button>
           </div>
-          )}
+        )}
 
-        {success
-          && (
+        {success && (
           <div className="buttons">
             <button className="c-btn -secondary" onClick={this.handleCancel}>
               Ok
             </button>
-            <button className="c-btn -primary" onClick={this.handleGoToMySubscriptions}>
+            <button
+              className="c-btn -primary"
+              onClick={this.handleGoToMySubscriptions}
+            >
               View my subscriptions
             </button>
           </div>
-          )}
+        )}
       </div>
     );
   }

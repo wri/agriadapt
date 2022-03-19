@@ -1,59 +1,59 @@
 .c-dataset-widgets {
- .list-actions {
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
+  .list-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-   .left-container {
-     display: flex;
+    .left-container {
+      display: flex;
 
-     button {
-       margin-right: 10px;
-     }
-   }
+      button {
+        margin-right: 10px;
+      }
+    }
 
-   .buttons-container {
-     display: flex;
-     align-items: center;
+    .buttons-container {
+      display: flex;
+      align-items: center;
 
-     .last-modified-container {
-       display: flex;
-       align-items: center;
-       cursor: pointer;
-       min-width: 120px;
+      .last-modified-container {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        min-width: 120px;
 
-       svg {
-         margin-left: 5px;
-         fill: $blue-grey;
-       }
-     }
+        svg {
+          margin-left: 5px;
+          fill: $blue-grey;
+        }
+      }
 
-     .mode-buttons {
-       display: flex;
-       align-items: center;
-       min-width: 70px;
+      .mode-buttons {
+        display: flex;
+        align-items: center;
+        min-width: 70px;
 
-       button {
-         cursor: pointer;
-         fill: $blue-grey;
-         padding-top: 0px;
-         padding-bottom: 0px;
+        button {
+          cursor: pointer;
+          fill: $blue-grey;
+          padding-top: 0px;
+          padding-bottom: 0px;
 
-         &.-active {
-           fill: $black;
-         }
-       }
-     }
-   }
- }
+          &.-active {
+            fill: $black;
+          }
+        }
+      }
+    }
+  }
 
- .no-widgets-div {
-   display: flex;
-   justify-content: center;
-   align-items: center;
- }
+  .no-widgets-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
- .list {
-   padding: 0px;
- }
+  .list {
+    padding: 0px;
+  }
 }

@@ -1,4 +1,4 @@
-@import 'css/settings';
+@import "css/settings";
 
 $translate-dropdown: 5px;
 
@@ -10,7 +10,7 @@ $translate-dropdown: 5px;
   background: $white;
   border-radius: 4px;
   box-shadow: 0 20px 30px 0 rgba(0, 0, 0, 0.1);
-  transform: translate(0,$translate-dropdown);
+  transform: translate(0, $translate-dropdown);
 
   &:before {
     content: "";
@@ -22,7 +22,6 @@ $translate-dropdown: 5px;
     background: transparent;
     transform: translate(0, -$translate-dropdown);
   }
-
 
   &:after {
     content: "";
@@ -69,6 +68,5 @@ $translate-dropdown: 5px;
       top: auto;
       bottom: -8px;
     }
-
   }
 }

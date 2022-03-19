@@ -1,8 +1,8 @@
 // component
-import LayoutApp from './component';
+import LayoutApp from "./component";
 
 LayoutApp.defaultProps = {
-    updateIsLoading: () => {}
-}
+  updateIsLoading: () => {},
+};
 
 export default LayoutApp;

@@ -1,16 +1,12 @@
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import PropTypes from "prop-types";
+import classnames from "classnames";
 
-export default function TooltipContainer({
-  style,
-  children,
-  direction,
-}) {
+export default function TooltipContainer({ style, children, direction }) {
   return (
     <div
-      className={classnames('c-tooltip-container', {
-        '-direction-down': direction === 'down',
-        '-direction-up': direction === 'up',
+      className={classnames("c-tooltip-container", {
+        "-direction-down": direction === "down",
+        "-direction-up": direction === "up",
       })}
       style={style}
     >
@@ -20,15 +16,12 @@ export default function TooltipContainer({
 }
 
 TooltipContainer.defaultProps = {
-  direction: 'down',
+  direction: "down",
   style: {},
 };
 
 TooltipContainer.propTypes = {
   style: PropTypes.shape({}),
   children: PropTypes.node.isRequired,
-  direction: PropTypes.oneOf([
-    'up',
-    'down',
-  ]),
+  direction: PropTypes.oneOf(["up", "down"]),
 };

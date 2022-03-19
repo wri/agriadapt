@@ -1,88 +1,88 @@
-import { useState, useCallback, useRef } from 'react';
-import { useRouter } from 'next/router';
-import { useDebouncedCallback } from 'use-debounce';
-import { Popup } from 'react-map-gl';
-import { Tooltip } from 'vizzuality-components';
+import { useState, useCallback, useRef } from "react";
+import { useRouter } from "next/router";
+import { useDebouncedCallback } from "use-debounce";
+import { Popup } from "react-map-gl";
+import { Tooltip } from "vizzuality-components";
 
 // components
-import Map from 'components/map';
-import MapControls from 'components/map/controls';
-import ZoomControls from 'components/map/controls/zoom';
-import LayerManager from 'components/map/layer-manager';
-import TooltipList from 'components/tooltip-list';
+import Map from "components/map";
+import MapControls from "components/map/controls";
+import ZoomControls from "components/map/controls/zoom";
+import LayerManager from "components/map/layer-manager";
+import TooltipList from "components/tooltip-list";
 
 // hooks
-import { useOceanWatchAreas } from 'hooks/ocean-watch';
+import { useOceanWatchAreas } from "hooks/ocean-watch";
 
 // constants
-import { MAPSTYLES, DEFAULT_VIEWPORT } from 'components/map/constants';
+import { MAPSTYLES, DEFAULT_VIEWPORT } from "components/map/constants";
 
 // utils
-import { getInteractiveLayers } from 'components/map/utils';
+import { getInteractiveLayers } from "components/map/utils";
 
 const layers = [
   {
-    id: 'ocean-watch-coastal-countries',
-    provider: 'cartodb',
-    promoteId: 'iso',
+    id: "ocean-watch-coastal-countries",
+    provider: "cartodb",
+    promoteId: "iso",
     isInteractive: true,
     layerConfig: {
-      account: 'wri-rw',
+      account: "wri-rw",
       body: {
         layers: [
           {
-            type: 'mapnik',
+            type: "mapnik",
             options: {
-              sql: 'SELECT gid_0 as iso, name_0 as name, coastal, the_geom_webmercator FROM gadm36_0 where coastal is true',
+              sql: "SELECT gid_0 as iso, name_0 as name, coastal, the_geom_webmercator FROM gadm36_0 where coastal is true",
             },
           },
         ],
         vectorLayers: [
           {
             paint: {
-              'fill-color': [
-                'case',
-                ['boolean', ['feature-state', 'hover'], false],
-                '#fab72e',
-                '#217098',
+              "fill-color": [
+                "case",
+                ["boolean", ["feature-state", "hover"], false],
+                "#fab72e",
+                "#217098",
               ],
-              'fill-opacity': 1,
+              "fill-opacity": 1,
             },
-            'source-layer': 'layer0',
-            type: 'fill',
+            "source-layer": "layer0",
+            type: "fill",
           },
         ],
-        layerType: 'vector',
+        layerType: "vector",
       },
     },
     opacity: 1,
   },
   {
-    id: 'ocean-watch-non-coastal-countries',
-    provider: 'cartodb',
-    promoteId: 'iso',
+    id: "ocean-watch-non-coastal-countries",
+    provider: "cartodb",
+    promoteId: "iso",
     layerConfig: {
-      account: 'wri-rw',
+      account: "wri-rw",
       body: {
         layers: [
           {
-            type: 'mapnik',
+            type: "mapnik",
             options: {
-              sql: 'SELECT the_geom_webmercator FROM gadm36_0 where coastal is false',
+              sql: "SELECT the_geom_webmercator FROM gadm36_0 where coastal is false",
             },
           },
         ],
         vectorLayers: [
           {
             paint: {
-              'fill-color': '#0f4573',
-              'fill-opacity': 1,
+              "fill-color": "#0f4573",
+              "fill-opacity": 1,
             },
-            'source-layer': 'layer0',
-            type: 'fill',
+            "source-layer": "layer0",
+            type: "fill",
           },
         ],
-        layerType: 'vector',
+        layerType: "vector",
       },
     },
     opacity: 1,
@@ -92,11 +92,11 @@ const layers = [
 let hoverState = null;
 
 const gradientStyles = {
-  position: 'absolute',
-  width: '100%',
+  position: "absolute",
+  width: "100%",
   height: 75,
   zIndex: 2,
-  pointerEvents: 'none',
+  pointerEvents: "none",
 };
 
 export default function MapSelection() {
@@ -135,7 +135,7 @@ export default function MapSelection() {
       } = evt.features[0];
 
       router.push({
-        pathname: '/dashboards/ocean-watch/country/[iso]',
+        pathname: "/dashboards/ocean-watch/country/[iso]",
         query: {
           iso,
         },
@@ -143,7 +143,7 @@ export default function MapSelection() {
 
       return true;
     },
-    [router],
+    [router]
   );
 
   const handleVisibility = useCallback((_visible) => {
@@ -187,7 +187,7 @@ export default function MapSelection() {
   const handleCountryList = useCallback(
     ({ value }) => {
       router.push({
-        pathname: '/dashboards/ocean-watch/country/[iso]',
+        pathname: "/dashboards/ocean-watch/country/[iso]",
         query: {
           iso: value,
         },
@@ -195,7 +195,7 @@ export default function MapSelection() {
 
       setVisibility(false);
     },
-    [router],
+    [router]
   );
 
   const { data: areas } = useOceanWatchAreas({
@@ -211,18 +211,18 @@ export default function MapSelection() {
     <>
       <div
         style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          flexDirection: 'column',
-          textAlign: 'center',
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+          textAlign: "center",
         }}
       >
         <h3
           style={{
             fontSize: 64,
             fontWeight: 300,
-            color: '#fff',
+            color: "#fff",
           }}
         >
           Where?
@@ -231,7 +231,7 @@ export default function MapSelection() {
           style={{
             fontSize: 26,
             fontWeight: 300,
-            color: '#fff',
+            color: "#fff",
             lineHeight: 1.4,
           }}
         >
@@ -242,17 +242,17 @@ export default function MapSelection() {
       </div>
       <div
         style={{
-          display: 'flex',
-          alignItems: 'center',
-          position: 'relative',
+          display: "flex",
+          alignItems: "center",
+          position: "relative",
           height: 475,
         }}
       >
         <div
           style={{
-            position: 'relative',
-            height: '100%',
-            width: '100%',
+            position: "relative",
+            height: "100%",
+            width: "100%",
           }}
         >
           <div
@@ -260,7 +260,8 @@ export default function MapSelection() {
               ...gradientStyles,
               top: 0,
               left: 0,
-              background: 'linear-gradient(to bottom, #0F4573 33%, rgba(15, 69, 115, 0) 100%)',
+              background:
+                "linear-gradient(to bottom, #0F4573 33%, rgba(15, 69, 115, 0) 100%)",
             }}
           />
           <div
@@ -268,9 +269,10 @@ export default function MapSelection() {
               ...gradientStyles,
               top: 0,
               bottom: 0,
-              height: '100%',
+              height: "100%",
               width: 75,
-              background: 'linear-gradient(to right, #0F4573 33%, rgba(15, 69, 115, 0) 100%)',
+              background:
+                "linear-gradient(to right, #0F4573 33%, rgba(15, 69, 115, 0) 100%)",
             }}
           />
           <div
@@ -279,9 +281,10 @@ export default function MapSelection() {
               top: 0,
               right: 0,
               bottom: 0,
-              height: '100%',
+              height: "100%",
               width: 75,
-              background: 'linear-gradient(to left, #0F4573 33%, rgba(15, 69, 115, 0) 100%)',
+              background:
+                "linear-gradient(to left, #0F4573 33%, rgba(15, 69, 115, 0) 100%)",
             }}
           />
           <div
@@ -289,7 +292,8 @@ export default function MapSelection() {
               ...gradientStyles,
               bottom: 0,
               left: 0,
-              background: 'linear-gradient(to top, #0F4573 33%, rgba(15, 69, 115, 0) 100%)',
+              background:
+                "linear-gradient(to top, #0F4573 33%, rgba(15, 69, 115, 0) 100%)",
             }}
           />
           <Map
@@ -323,8 +327,8 @@ export default function MapSelection() {
                   >
                     <span
                       style={{
-                        color: '#fab72e',
-                        textShadow: '1px 1px 2px rgba(15, 69, 115, 0.75)',
+                        color: "#fab72e",
+                        textShadow: "1px 1px 2px rgba(15, 69, 115, 0.75)",
                       }}
                     >
                       {tooltip.countryName}
@@ -334,23 +338,27 @@ export default function MapSelection() {
 
                 <MapControls
                   style={{
-                    top: '50%',
+                    top: "50%",
                     right: 60,
-                    transform: 'translate(0, -50%)',
+                    transform: "translate(0, -50%)",
                   }}
                 >
-                  <ZoomControls className="-ocean-watch" viewport={viewport} onClick={handleZoom} />
+                  <ZoomControls
+                    className="-ocean-watch"
+                    viewport={viewport}
+                    onClick={handleZoom}
+                  />
                 </MapControls>
               </>
             )}
           </Map>
           <div
             style={{
-              position: 'absolute',
+              position: "absolute",
               bottom: 0,
-              display: 'flex',
-              justifyContent: 'center',
-              width: '100%',
+              display: "flex",
+              justifyContent: "center",
+              width: "100%",
               zIndex: 3,
             }}
           >
@@ -373,7 +381,7 @@ export default function MapSelection() {
                 type="button"
                 className="c-btn -secondary -alt"
                 style={{
-                  pointerEvents: 'all',
+                  pointerEvents: "all",
                 }}
                 onClick={() => {
                   setVisibility(true);

@@ -1,25 +1,19 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import sortBy from 'lodash/sortBy';
-import isEqual from 'lodash/isEqual';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import sortBy from "lodash/sortBy";
+import isEqual from "lodash/isEqual";
 
 // actions
-import { getUserAreas } from 'redactions/user';
-import * as actions from '../actions';
+import { getUserAreas } from "redactions/user";
+import * as actions from "../actions";
 
 // selectors
-import {
-  getAvailableAreas,
-  isAreaFound,
-} from '../selectors';
-import {
-  getSubscriptionsByArea,
-  getActiveArea,
-} from './selectors';
+import { getAvailableAreas, isAreaFound } from "../selectors";
+import { getSubscriptionsByArea, getActiveArea } from "./selectors";
 
 // component
-import AreaSubscriptionsModal from './component';
+import AreaSubscriptionsModal from "./component";
 
 class AreaSubscriptionsModalContainer extends Component {
   static propTypes = {
@@ -45,7 +39,7 @@ class AreaSubscriptionsModalContainer extends Component {
     updateSubscription: PropTypes.func.isRequired,
     clearSubscriptions: PropTypes.func.isRequired,
     clearLocalSubscriptions: PropTypes.func.isRequired,
-  }
+  };
 
   UNSAFE_componentWillMount() {
     const {
@@ -71,8 +65,14 @@ class AreaSubscriptionsModalContainer extends Component {
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     const { subscriptionsByArea, setUserSelection } = this.props;
-    const { subscriptionsByArea: nextSubscriptions, activeArea: nextActiveArea } = nextProps;
-    const subscriptionsChanged = !isEqual(subscriptionsByArea, nextSubscriptions);
+    const {
+      subscriptionsByArea: nextSubscriptions,
+      activeArea: nextActiveArea,
+    } = nextProps;
+    const subscriptionsChanged = !isEqual(
+      subscriptionsByArea,
+      nextSubscriptions
+    );
 
     if (nextSubscriptions.length && subscriptionsChanged) {
       if (nextActiveArea && nextActiveArea.subscriptions) {
@@ -84,12 +84,14 @@ class AreaSubscriptionsModalContainer extends Component {
               id: dataset.id,
               label: dataset.name,
               value: dataset.name,
-              subscriptions: sortBy(Object.keys(dataset.subscribable)
-                .map((val) => ({
+              subscriptions: sortBy(
+                Object.keys(dataset.subscribable).map((val) => ({
                   label: val,
                   value: val,
                   ...(datasetQuery.type.includes(val) && { selected: true }),
-                })), 'label'),
+                })),
+                "label"
+              ),
               threshold: datasetQuery.threshold,
             };
           }),
@@ -99,11 +101,8 @@ class AreaSubscriptionsModalContainer extends Component {
   }
 
   componentWillUnmount() {
-    const {
-      clearSubscriptions,
-      clearUserSelection,
-      clearLocalSubscriptions,
-    } = this.props;
+    const { clearSubscriptions, clearUserSelection, clearLocalSubscriptions } =
+      this.props;
 
     clearLocalSubscriptions();
     clearSubscriptions();
@@ -111,7 +110,7 @@ class AreaSubscriptionsModalContainer extends Component {
   }
 
   render() {
-    return (<AreaSubscriptionsModal {...this.props} />);
+    return <AreaSubscriptionsModal {...this.props} />;
   }
 }
 
@@ -126,11 +125,13 @@ export default connect(
     subscription: state.subscriptions.userSelection,
     subscriptionCreation: state.subscriptions.subscriptionCreation,
     preview: state.subscriptions.list.preview,
-    loading: state.subscriptions.areas.loading
-      || state.subscriptions.userAreas.loading || state.subscriptions.datasets.loading,
+    loading:
+      state.subscriptions.areas.loading ||
+      state.subscriptions.userAreas.loading ||
+      state.subscriptions.datasets.loading,
   }),
   {
     ...actions,
     getUserAreas,
-  },
+  }
 )(AreaSubscriptionsModalContainer);

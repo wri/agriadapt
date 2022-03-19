@@ -1,4 +1,4 @@
-@import 'css/settings';
+@import "css/settings";
 
 .c-explore-detail {
   position: absolute;
@@ -31,12 +31,14 @@
           list-style-position: outside;
           margin: 0px 0px 3 * $space 4 * $space;
         }
-        ul ul, ol ul {
+        ul ul,
+        ol ul {
           list-style-type: circle;
           list-style-position: outside;
           margin-left: 4 * $space;
         }
-        ol ol, ul ol {
+        ol ol,
+        ul ol {
           list-style-type: lower-latin;
           list-style-position: outside;
           margin-left: 4 * $space;

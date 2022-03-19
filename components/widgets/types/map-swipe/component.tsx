@@ -1,34 +1,40 @@
-import { createRef, useRef, useState, useMemo, useCallback } from 'react';
-import classnames from 'classnames';
-import { useDebouncedCallback } from 'use-debounce';
-import { Legend, LegendListItem, LegendItemTypes } from 'vizzuality-components';
-import compact from 'lodash/compact';
+import { createRef, useRef, useState, useMemo, useCallback } from "react";
+import classnames from "classnames";
+import { useDebouncedCallback } from "use-debounce";
+import { Legend, LegendListItem, LegendItemTypes } from "vizzuality-components";
+import compact from "lodash/compact";
 
 // constants
-import { DEFAULT_VIEWPORT, MAPSTYLES, BASEMAPS, LABELS } from 'components/map/constants';
+import {
+  DEFAULT_VIEWPORT,
+  MAPSTYLES,
+  BASEMAPS,
+  LABELS,
+} from "components/map/constants";
 
 // components
-import Spinner from 'components/ui/Spinner';
-import Map from 'components/map';
-import LayerManager from 'components/map/layer-manager';
-import MapboxCompare from 'components/map/plugins/compare/mapbox-compare';
-import MapControls from 'components/map/controls';
-import ZoomControls from 'components/map/controls/zoom';
-import WidgetHeader from '../../header';
-import WidgetInfo from '../../info';
-import WidgetCaption from '../../caption';
+import Spinner from "components/ui/Spinner";
+import Map from "components/map";
+import LayerManager from "components/map/layer-manager";
+import MapboxCompare from "components/map/plugins/compare/mapbox-compare";
+import MapControls from "components/map/controls";
+import ZoomControls from "components/map/controls/zoom";
+import WidgetHeader from "../../header";
+import WidgetInfo from "../../info";
+import WidgetCaption from "../../caption";
 
-import type { ViewportProps } from 'react-map-gl';
-import type { APIWidgetSpec } from 'types/widget';
-import type { Bounds, LayerGroup, Basemap, Labels } from 'components/map/types';
-import type { SwipeTypeWidgetContainerProps } from './index';
+import type { ViewportProps } from "react-map-gl";
+import type { APIWidgetSpec } from "types/widget";
+import type { Bounds, LayerGroup, Basemap, Labels } from "components/map/types";
+import type { SwipeTypeWidgetContainerProps } from "./index";
 
 export interface LayerGroupsBySide {
   left: LayerGroup[];
   right: LayerGroup[];
 }
 
-export interface SwipeTypeWidgetProps extends Omit<SwipeTypeWidgetContainerProps, 'widgetId'> {
+export interface SwipeTypeWidgetProps
+  extends Omit<SwipeTypeWidgetContainerProps, "widgetId"> {
   layerGroupsBySide: LayerGroupsBySide;
   // todo: improve typing of layers
   aoiLayer?: Record<string, string | unknown>;
@@ -80,14 +86,14 @@ const SwipeTypeWidget = ({
         ..._map,
       });
     },
-    [map],
+    [map]
   );
 
   const handleFitBoundsChange = useCallback(
     (_viewport) => {
       onFitBoundsChange(_viewport);
     },
-    [onFitBoundsChange],
+    [onFitBoundsChange]
   );
 
   const handleViewport = useDebouncedCallback((_viewport) => {
@@ -103,13 +109,13 @@ const SwipeTypeWidget = ({
   }, []);
 
   const basemap = useMemo(() => {
-    const basemapKey = widget?.widgetConfig?.basemapLayers?.basemap || 'dark';
+    const basemapKey = widget?.widgetConfig?.basemapLayers?.basemap || "dark";
 
     return BASEMAPS[basemapKey].value as Basemap;
   }, [widget]);
 
   const labels = useMemo(() => {
-    const label = widget?.widgetConfig?.basemapLayers?.labels || 'light';
+    const label = widget?.widgetConfig?.basemapLayers?.labels || "light";
 
     return LABELS[label].value as Labels;
   }, [widget]);
@@ -121,8 +127,8 @@ const SwipeTypeWidget = ({
         ...(maskLayer !== null ? [maskLayer] : []),
         ...compact(
           layerGroupsBySide.left.map((_layerGroup) =>
-            (_layerGroup.layers || []).find((_layer) => _layer.active),
-          ),
+            (_layerGroup.layers || []).find((_layer) => _layer.active)
+          )
         ),
       ],
       right: [
@@ -130,26 +136,26 @@ const SwipeTypeWidget = ({
         ...(maskLayer !== null ? [maskLayer] : []),
         ...compact(
           layerGroupsBySide.right.map((_layerGroup) =>
-            (_layerGroup.layers || []).find((_layer) => _layer.active),
-          ),
+            (_layerGroup.layers || []).find((_layer) => _layer.active)
+          )
         ),
       ],
     }),
-    [layerGroupsBySide, aoiLayer, maskLayer],
+    [layerGroupsBySide, aoiLayer, maskLayer]
   );
 
   const boundaries = useMemo(
     () => Boolean(widget?.widgetConfig?.basemapLayers?.boundaries),
-    [widget],
+    [widget]
   );
 
   const caption = useMemo(() => widget?.metadata?.[0]?.info?.caption, [widget]);
 
   return (
     <div
-      className={classnames('c-widget', { '-is-embed': isEmbed })}
+      className={classnames("c-widget", { "-is-embed": isEmbed })}
       style={{
-        height: '100%',
+        height: "100%",
         ...style,
       }}
     >
@@ -166,11 +172,11 @@ const SwipeTypeWidget = ({
       )}
       <div
         className={classnames(
-          'relative flex h-full overflow-x-auto overflow-y-hidden widget-container grow rounded',
+          "relative flex h-full overflow-x-auto overflow-y-hidden widget-container grow rounded",
           {
-            'border-0': !isInfoWidgetVisible,
-            'rounded-none': !!caption,
-          },
+            "border-0": !isInfoWidgetVisible,
+            "rounded-none": !!caption,
+          }
         )}
         style={{
           height: 400,
@@ -181,7 +187,7 @@ const SwipeTypeWidget = ({
         <div
           className="c-map-comparison"
           style={{
-            height: '100%',
+            height: "100%",
           }}
         >
           <div className="compare-container">
@@ -201,7 +207,9 @@ const SwipeTypeWidget = ({
                   onFitBoundsChange={handleFitBoundsChange}
                   onMapLoad={({ map: _map }) => handleMapRefs({ left: _map })}
                 >
-                  {(_map) => <LayerManager map={_map} layers={layersBySide.left} />}
+                  {(_map) => (
+                    <LayerManager map={_map} layers={layersBySide.left} />
+                  )}
                 </Map>
 
                 {layersBySide.left.length > 0 && (
@@ -228,7 +236,10 @@ const SwipeTypeWidget = ({
               <>
                 {/* right map */}
                 {/* swiper */}
-                <div ref={swiperRef} className="swiper-container mapboxgl-compare">
+                <div
+                  ref={swiperRef}
+                  className="swiper-container mapboxgl-compare"
+                >
                   <div className="compare-swiper" />
                 </div>
                 <Map
@@ -244,7 +255,9 @@ const SwipeTypeWidget = ({
                   bounds={bounds}
                   onMapLoad={({ map: _map }) => handleMapRefs({ right: _map })}
                 >
-                  {(_map) => <LayerManager map={_map} layers={layersBySide.right} />}
+                  {(_map) => (
+                    <LayerManager map={_map} layers={layersBySide.right} />
+                  )}
                 </Map>
 
                 <MapControls customClass="c-map-controls -embed">

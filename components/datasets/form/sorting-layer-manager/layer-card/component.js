@@ -1,12 +1,14 @@
-import PropTypes from 'prop-types';
-import Link from 'next/link';
+import PropTypes from "prop-types";
+import Link from "next/link";
 
 const LayerCardItem = ({
-  layer, onDragStart, onDragEnd, onDragOver, index,
+  layer,
+  onDragStart,
+  onDragEnd,
+  onDragOver,
+  index,
 }) => {
-  const {
-    name, id, dataset, published,
-  } = layer;
+  const { name, id, dataset, published } = layer;
 
   return (
     <li
@@ -20,7 +22,7 @@ const LayerCardItem = ({
         <Link href={`/admin/data/layers/${id}/edit?dataset=${dataset}`}>
           <a>{name}</a>
         </Link>
-        {!published && (<span className="unpublished">&nbsp;(Unpublished)</span>)}
+        {!published && <span className="unpublished">&nbsp;(Unpublished)</span>}
       </div>
       <div className="draggable-symbol">
         <span className="square-container" />

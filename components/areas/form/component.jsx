@@ -1,32 +1,36 @@
-import { useState, useCallback, useEffect, useRef, useMemo } from 'react';
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
-import Link from 'next/link';
-import { useDebouncedCallback } from 'use-debounce';
+import { useState, useCallback, useEffect, useRef, useMemo } from "react";
+import PropTypes from "prop-types";
+import classnames from "classnames";
+import Link from "next/link";
+import { useDebouncedCallback } from "use-debounce";
 
 // components
-import Map from 'components/map';
-import LayerManager from 'components/map/layer-manager';
-import Drawer from 'components/map/plugins/drawer';
-import MapControls from 'components/map/controls';
-import ZoomControls from 'components/map/controls/zoom';
-import DrawPolygonControls from 'components/map/controls/draw-polygon';
-import CustomSelect from 'components/ui/CustomSelect';
-import Field from 'components/form/Field';
-import Input from 'components/form/Input';
-import UploadArea from 'components/areas/form/upload-area';
+import Map from "components/map";
+import LayerManager from "components/map/layer-manager";
+import Drawer from "components/map/plugins/drawer";
+import MapControls from "components/map/controls";
+import ZoomControls from "components/map/controls/zoom";
+import DrawPolygonControls from "components/map/controls/draw-polygon";
+import CustomSelect from "components/ui/CustomSelect";
+import Field from "components/form/Field";
+import Input from "components/form/Input";
+import UploadArea from "components/areas/form/upload-area";
 
 // hooks
-import useCountryList from 'hooks/country/country-list';
+import useCountryList from "hooks/country/country-list";
 
 // services
-import { fetchGeostore } from 'services/geostore';
+import { fetchGeostore } from "services/geostore";
 
 // utils
-import { getUserAreaLayer } from 'components/map/utils';
+import { getUserAreaLayer } from "components/map/utils";
 
 // constants
-import { DEFAULT_VIEWPORT, MAPSTYLES, USER_AREA_LAYER_TEMPLATES } from 'components/map/constants';
+import {
+  DEFAULT_VIEWPORT,
+  MAPSTYLES,
+  USER_AREA_LAYER_TEMPLATES,
+} from "components/map/constants";
 
 const AreasForm = ({ area, onSubmit }) => {
   const drawer = useRef(null);
@@ -37,8 +41,8 @@ const AreasForm = ({ area, onSubmit }) => {
     isDrawing: false,
   });
   const [form, setForm] = useState({
-    name: area ? area.name : '',
-    geostore: area ? area.geostore : '',
+    name: area ? area.name : "",
+    geostore: area ? area.geostore : "",
     geojson: null,
   });
   const [previewAoi, setPreviewAoi] = useState(null);
@@ -50,11 +54,11 @@ const AreasForm = ({ area, onSubmit }) => {
 
       onSubmit(form);
     },
-    [form, onSubmit],
+    [form, onSubmit]
   );
 
   const onChangeSelectedArea = useCallback((value) => {
-    if (typeof value === 'undefined') {
+    if (typeof value === "undefined") {
       setForm((prevFormState) => ({
         ...prevFormState,
         geostore: null,
@@ -116,13 +120,13 @@ const AreasForm = ({ area, onSubmit }) => {
     ({ isHovering, isDragging }) => {
       const { isDrawing } = mapState;
 
-      if (isDrawing && isDragging) return 'grabbing';
-      if (isDrawing) return 'crosshair';
-      if (isHovering) return 'pointer';
+      if (isDrawing && isDragging) return "grabbing";
+      if (isDrawing) return "crosshair";
+      if (isHovering) return "pointer";
 
-      return 'grab';
+      return "grab";
     },
-    [mapState],
+    [mapState]
   );
 
   const handleDrawerReady = useCallback((ref) => {
@@ -144,8 +148,8 @@ const AreasForm = ({ area, onSubmit }) => {
     }));
 
     setForm({
-      name: '',
-      geostore: '',
+      name: "",
+      geostore: "",
       geojson: null,
     });
   }, []);
@@ -155,7 +159,7 @@ const AreasForm = ({ area, onSubmit }) => {
     if (!drawerRef) return null;
 
     drawerRef.deleteAll();
-    drawerRef.changeMode('draw_polygon');
+    drawerRef.changeMode("draw_polygon");
 
     return drawerRef;
   }, []);
@@ -186,7 +190,7 @@ const AreasForm = ({ area, onSubmit }) => {
         id,
         geojson,
       },
-      USER_AREA_LAYER_TEMPLATES.explore,
+      USER_AREA_LAYER_TEMPLATES.explore
     );
 
     setMapState((prevMapState) => ({
@@ -197,7 +201,7 @@ const AreasForm = ({ area, onSubmit }) => {
     return true;
   }, []);
 
-  const mapClass = classnames({ 'no-pointer-events': mapState.isDrawing });
+  const mapClass = classnames({ "no-pointer-events": mapState.isDrawing });
 
   const countryOptions = useMemo(
     () =>
@@ -207,7 +211,7 @@ const AreasForm = ({ area, onSubmit }) => {
           label: name,
           value: geostoreId,
         })),
-    [countries],
+    [countries]
   );
 
   useEffect(() => {
@@ -220,11 +224,11 @@ const AreasForm = ({ area, onSubmit }) => {
         <fieldset className="c-field-container">
           <Field
             onChange={handleNameChange}
-            validations={['required']}
+            validations={["required"]}
             properties={{
-              name: 'name',
-              label: 'Title',
-              type: 'text',
+              name: "name",
+              label: "Title",
+              type: "text",
               value: form.name,
               default: form.name,
               required: true,
@@ -248,7 +252,8 @@ const AreasForm = ({ area, onSubmit }) => {
 
         {form.geostore && form.geoCountrySelected && (
           <span className="c-field__helpMessage">
-            If you want to draw/upload a custom area, remove the selected area above.
+            If you want to draw/upload a custom area, remove the selected area
+            above.
           </span>
         )}
 
@@ -279,7 +284,10 @@ const AreasForm = ({ area, onSubmit }) => {
                 )}
               </Map>
               <MapControls>
-                <ZoomControls viewport={mapState.viewport} onClick={handleZoom} />
+                <ZoomControls
+                  viewport={mapState.viewport}
+                  onClick={handleZoom}
+                />
                 <DrawPolygonControls
                   drawing={mapState.isDrawing}
                   onDrawPolygon={handleDrawPolygon}

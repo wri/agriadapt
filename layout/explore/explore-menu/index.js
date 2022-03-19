@@ -1,8 +1,8 @@
-import { connect } from 'react-redux';
-import * as actions from 'layout/explore/actions';
+import { connect } from "react-redux";
+import * as actions from "layout/explore/actions";
 
 // component
-import ExploreMenu from './component';
+import ExploreMenu from "./component";
 
 export default connect(
   (state) => ({
@@ -15,5 +15,5 @@ export default connect(
     selectedDataset: state.explore.datasets.selected,
     token: state.user.token,
   }),
-  actions,
+  actions
 )(ExploreMenu);

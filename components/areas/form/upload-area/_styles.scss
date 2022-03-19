@@ -1,4 +1,4 @@
-@import 'css/settings';
+@import "css/settings";
 
 .c-upload-area {
   p a {
@@ -43,7 +43,7 @@
 
     list-style: none;
 
-    background-color: rgba(250,183,46,0.2);
+    background-color: rgba(250, 183, 46, 0.2);
     border-radius: 4px;
 
     span {
@@ -62,7 +62,9 @@
     margin-top: 20px;
     font-size: $font-size-normal;
 
-    p { margin: 0; }
+    p {
+      margin: 0;
+    }
 
     ul {
       margin: 10px 0;

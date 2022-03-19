@@ -1,4 +1,4 @@
-import type { Basemap, Labels } from 'components/map/types';
+import type { Basemap, Labels } from "components/map/types";
 
 export interface WidgetParamsConfig {
   layer?: string;
@@ -20,7 +20,7 @@ export interface WidgetConfig {
   bbox?: [number, number, number, number];
   bounds?: number[];
   paramsConfig?: WidgetParamsConfig;
-  type: 'widget' | 'map' | 'embed';
+  type: "widget" | "map" | "embed";
   url?: string;
 }
 

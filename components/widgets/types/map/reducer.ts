@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 export const mapWidgetInitialState = {
   layerGroups: [],
@@ -8,7 +8,7 @@ export const mapWidgetInitialState = {
 };
 
 export const mapWidgetSlice = createSlice({
-  name: 'map-widget',
+  name: "map-widget",
   reducers: {
     setMapLayerGroups: (state, { payload }) => ({
       ...state,
@@ -38,7 +38,10 @@ export const mapWidgetSlice = createSlice({
       const { dataset, opacity } = payload;
       const layerGroups = state.layerGroups.map((lg) => {
         if (lg.id !== dataset.id) return lg;
-        const layers = lg.layers.map((l) => ({ ...l, layerConfig: { ...l.layerConfig, opacity } }));
+        const layers = lg.layers.map((l) => ({
+          ...l,
+          layerConfig: { ...l.layerConfig, opacity },
+        }));
         return {
           ...lg,
           layers,
@@ -76,7 +79,7 @@ export const mapWidgetSlice = createSlice({
 
       // Sort by new order
       layerGroups.sort((a, b) =>
-        datasetIds.indexOf(a.dataset) > datasetIds.indexOf(b.dataset) ? 1 : -1,
+        datasetIds.indexOf(a.dataset) > datasetIds.indexOf(b.dataset) ? 1 : -1
       );
 
       return {

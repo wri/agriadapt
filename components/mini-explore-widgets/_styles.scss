@@ -1,8 +1,8 @@
-@import 'css/settings';
+@import "css/settings";
 
 .c-mini-explore-widgets {
   width: 100%;
-  border: 1px solid rgba($black ,.1);
+  border: 1px solid rgba($black, 0.1);
   border-radius: 4px;
 
   > header {
@@ -11,8 +11,8 @@
     > h4 {
       margin: 0;
     }
-    border-bottom: 1px solid rgba($black ,.1);
-    box-shadow: 0 1px 2px 0 rgba($black, .09);
+    border-bottom: 1px solid rgba($black, 0.1);
+    box-shadow: 0 1px 2px 0 rgba($black, 0.09);
   }
 
   > .main-container {
@@ -26,7 +26,8 @@
       width: 430px;
       overflow-y: auto;
       padding: ($space * 3);
-      box-shadow: 0 1px 3px 0 rgba($black, .15), 0 7px 15px 0 rgba($black, .15);
+      box-shadow: 0 1px 3px 0 rgba($black, 0.15),
+        0 7px 15px 0 rgba($black, 0.15);
 
       .widget-item {
         position: relative;
@@ -34,9 +35,9 @@
         flex-direction: column;
         height: 200px;
         padding: $space * 2;
-        border: 1px solid rgba($black, .1);
+        border: 1px solid rgba($black, 0.1);
         border-radius: 4px;
-        box-shadow: 0 1px 2px 0 rgba($black, .05);
+        box-shadow: 0 1px 2px 0 rgba($black, 0.05);
 
         &:not(:first-child) {
           margin: ($space * 4) 0 0;
@@ -54,7 +55,7 @@
       position: relative;
       width: 100%;
       min-height: 100%;
-      margin: 0 0 0($space * 3);
+      margin: 0 0 0 ($space * 3);
     }
   }
 }

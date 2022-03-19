@@ -12,7 +12,9 @@
 
     > li {
       margin: 0 0 0 $space-1;
-      &:first-child { margin: 0; }
+      &:first-child {
+        margin: 0;
+      }
 
       a {
         display: flex;
@@ -27,7 +29,9 @@
 
         > * {
           margin: 0 0 0 math.div($space-1, 2);
-          &:first-child { margin: 0; }
+          &:first-child {
+            margin: 0;
+          }
         }
 
         &.-empty {
@@ -47,10 +51,10 @@
         > a {
           pointer-events: none;
           cursor: default;
-          color: rgba($charcoal-grey, .3);
+          color: rgba($charcoal-grey, 0.3);
 
           > svg {
-            fill: rgba($charcoal-grey, .3);
+            fill: rgba($charcoal-grey, 0.3);
           }
         }
       }

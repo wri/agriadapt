@@ -1,34 +1,42 @@
-import { useCallback, useState, useMemo } from 'react';
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
-import dynamic from 'next/dynamic';
-import { format } from 'd3-format';
-import { replace } from '@vizzuality/layer-manager-utils';
+import { useCallback, useState, useMemo } from "react";
+import PropTypes from "prop-types";
+import classnames from "classnames";
+import dynamic from "next/dynamic";
+import { format } from "d3-format";
+import { replace } from "@vizzuality/layer-manager-utils";
 
 // hooks
-import { useSQLQuery } from 'hooks/sql';
+import { useSQLQuery } from "hooks/sql";
 
 // components
-import InView from 'components/in-view';
-import ChartWidget from 'components/widgets/types/chart';
-import MapWidget from 'components/widgets/types/map';
-import SwipeMapWidget from 'components/widgets/types/map-swipe';
+import InView from "components/in-view";
+import ChartWidget from "components/widgets/types/chart";
+import MapWidget from "components/widgets/types/map";
+import SwipeMapWidget from "components/widgets/types/map-swipe";
 
-const WidgetShareModal = dynamic(() => import('../../../../../components/widgets/share-modal'), {
-  ssr: false,
-});
+const WidgetShareModal = dynamic(
+  () => import("../../../../../components/widgets/share-modal"),
+  {
+    ssr: false,
+  }
+);
 
-function renderWidget({ id: widgetId, type: widgetType, handleShareWidget, params }) {
+function renderWidget({
+  id: widgetId,
+  type: widgetType,
+  handleShareWidget,
+  params,
+}) {
   return (
     <>
-      {widgetId && widgetType === 'chart' && (
+      {widgetId && widgetType === "chart" && (
         <InView triggerOnce threshold={0.25}>
           {({ ref, inView }) => (
             <div
               ref={ref}
               style={{
-                width: '100%',
-                height: '100%',
+                width: "100%",
+                height: "100%",
               }}
             >
               {inView && (
@@ -39,7 +47,7 @@ function renderWidget({ id: widgetId, type: widgetType, handleShareWidget, param
                   style={{
                     height: 450,
                     borderRadius: 4,
-                    color: '#393f44',
+                    color: "#393f44",
                   }}
                 />
               )}
@@ -48,7 +56,7 @@ function renderWidget({ id: widgetId, type: widgetType, handleShareWidget, param
         </InView>
       )}
 
-      {widgetId && widgetType === 'map' && (
+      {widgetId && widgetType === "map" && (
         <MapWidget
           widgetId={widgetId}
           onToggleShare={handleShareWidget}
@@ -60,7 +68,7 @@ function renderWidget({ id: widgetId, type: widgetType, handleShareWidget, param
         />
       )}
 
-      {widgetId && widgetType === 'map-swipe' && (
+      {widgetId && widgetType === "map-swipe" && (
         <SwipeMapWidget
           widgetId={widgetId}
           onToggleShare={handleShareWidget}
@@ -92,14 +100,15 @@ export default function StoryStep({ data, geostore, params }) {
         ...section,
         id: index,
       })),
-    [content],
+    [content]
   );
 
   const defaultSection = useMemo(() => {
     if (!serializedSections.length) return null;
 
     return (
-      serializedSections.find(({ default: isDefault }) => isDefault) || serializedSections?.[0]
+      serializedSections.find(({ default: isDefault }) => isDefault) ||
+      serializedSections?.[0]
     );
   }, [serializedSections]);
 
@@ -124,7 +133,7 @@ export default function StoryStep({ data, geostore, params }) {
     (_id) => {
       setSection(serializedSections.find(({ id }) => _id === id));
     },
-    [serializedSections],
+    [serializedSections]
   );
 
   const { data: queryValueSection } = useSQLQuery(
@@ -136,24 +145,26 @@ export default function StoryStep({ data, geostore, params }) {
         const { format: valueFormat } =
           currentSection.widget.find(({ format: _format }) => _format) || {};
 
-        return valueFormat ? format(valueFormat)(_data?.rows?.[0]?.value) : _data?.rows?.[0]?.value;
+        return valueFormat
+          ? format(valueFormat)(_data?.rows?.[0]?.value)
+          : _data?.rows?.[0]?.value;
       },
-    },
+    }
   );
 
   const widgetParams = useMemo(
     () => ({
-      geostore_env: 'geostore_prod',
+      geostore_env: "geostore_prod",
       ...(geostore && { geostore_id: geostore }),
     }),
-    [geostore],
+    [geostore]
   );
 
   return (
     <>
       <div
-        className={classnames('c-storytelling-step', {
-          '-is-placeholder': data.isPlaceholder,
+        className={classnames("c-storytelling-step", {
+          "-is-placeholder": data.isPlaceholder,
         })}
         id={data.id}
       >
@@ -163,13 +174,17 @@ export default function StoryStep({ data, geostore, params }) {
               <div
                 className="row"
                 style={{
-                  width: '100%',
+                  width: "100%",
                 }}
               >
                 <div className="column small-12">
-                  {content.title && <h3 className="story-title">{content.title}</h3>}
+                  {content.title && (
+                    <h3 className="story-title">{content.title}</h3>
+                  )}
                   {content.subtitle && (
-                    <h4 className="story-subtitle -text-center">{content.subtitle}</h4>
+                    <h4 className="story-subtitle -text-center">
+                      {content.subtitle}
+                    </h4>
                   )}
                   {content.intro && (
                     <div className="story-intro">
@@ -183,7 +198,7 @@ export default function StoryStep({ data, geostore, params }) {
                 <div
                   className="row"
                   style={{
-                    width: '100%',
+                    width: "100%",
                   }}
                 >
                   {content.widget.map((_widgetBlock, index) => (
@@ -192,21 +207,23 @@ export default function StoryStep({ data, geostore, params }) {
                       key={`_widgetBlock-${index}`}
                       className={classnames({
                         column: true,
-                        'small-12': content.widget.length === 1,
-                        'medium-6': content.widget.length === 2,
+                        "small-12": content.widget.length === 1,
+                        "medium-6": content.widget.length === 2,
                       })}
                     >
                       <div
                         style={{
-                          display: 'flex',
-                          justifyContent: 'center',
-                          alignItems: 'center',
-                          flexDirection: 'column',
-                          height: '100%',
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          flexDirection: "column",
+                          height: "100%",
                         }}
                       >
                         {_widgetBlock.description && (
-                          <p className="-text-center">{_widgetBlock.description}</p>
+                          <p className="-text-center">
+                            {_widgetBlock.description}
+                          </p>
                         )}
                         {_widgetBlock.value && (
                           <span className="widget-value">
@@ -232,22 +249,23 @@ export default function StoryStep({ data, geostore, params }) {
               {serializedSections.length > 0 && (
                 <div
                   style={{
-                    margin: '25px 0 0',
-                    width: '100%',
+                    margin: "25px 0 0",
+                    width: "100%",
                   }}
                 >
                   <div className="row">
                     <div className="column small-6">
                       <div
                         style={{
-                          display: 'flex',
-                          flexDirection: 'column',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          height: '100%',
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          height: "100%",
                         }}
                       >
-                        {(!content.sectionPosition || content.sectionPosition === 'left') && (
+                        {(!content.sectionPosition ||
+                          content.sectionPosition === "left") && (
                           <>
                             <div className="sections-container">
                               {serializedSections.map(({ id, title }) => (
@@ -258,8 +276,8 @@ export default function StoryStep({ data, geostore, params }) {
                                     handleSection(id);
                                   }}
                                   className={classnames({
-                                    'btn-section': true,
-                                    '-active': currentSection?.id === id,
+                                    "btn-section": true,
+                                    "-active": currentSection?.id === id,
                                   })}
                                 >
                                   {title}
@@ -268,32 +286,39 @@ export default function StoryStep({ data, geostore, params }) {
                             </div>
                             <div
                               style={{
-                                display: 'flex',
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                                flexDirection: 'column',
-                                height: '100%',
+                                display: "flex",
+                                justifyContent: "center",
+                                alignItems: "center",
+                                flexDirection: "column",
+                                height: "100%",
                               }}
                             >
-                              {currentSection.widget.find(({ description }) => description) && (
+                              {currentSection.widget.find(
+                                ({ description }) => description
+                              ) && (
                                 <p className="-text-center">
                                   {
-                                    currentSection.widget.find(({ description }) => description)
-                                      .description
+                                    currentSection.widget.find(
+                                      ({ description }) => description
+                                    ).description
                                   }
                                 </p>
                               )}
                               {queryValueSection && (
                                 <span className="widget-value">
                                   {queryValueSection}
-                                  {currentSection.widget.find(({ unit }) => unit)?.unit}
+                                  {
+                                    currentSection.widget.find(
+                                      ({ unit }) => unit
+                                    )?.unit
+                                  }
                                 </span>
                               )}
                             </div>
                           </>
                         )}
 
-                        {widgetSection && content.sectionPosition === 'right' && (
+                        {widgetSection && content.sectionPosition === "right" && (
                           <>
                             {renderWidget({
                               id: widgetSection.id,
@@ -308,14 +333,14 @@ export default function StoryStep({ data, geostore, params }) {
                     <div className="column small-6">
                       <div
                         style={{
-                          display: 'flex',
-                          flexDirection: 'column',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          height: '100%',
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          height: "100%",
                         }}
                       >
-                        {content.sectionPosition === 'right' && (
+                        {content.sectionPosition === "right" && (
                           <>
                             <div className="sections-container">
                               {serializedSections.map(({ id, title }) => (
@@ -326,8 +351,8 @@ export default function StoryStep({ data, geostore, params }) {
                                     handleSection(id);
                                   }}
                                   className={classnames({
-                                    'btn-section': true,
-                                    '-active': currentSection?.id === id,
+                                    "btn-section": true,
+                                    "-active": currentSection?.id === id,
                                   })}
                                 >
                                   {title}
@@ -336,30 +361,37 @@ export default function StoryStep({ data, geostore, params }) {
                             </div>
                             <div
                               style={{
-                                display: 'flex',
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                                flexDirection: 'column',
+                                display: "flex",
+                                justifyContent: "center",
+                                alignItems: "center",
+                                flexDirection: "column",
                               }}
                             >
-                              {currentSection.widget.find(({ description }) => description) && (
+                              {currentSection.widget.find(
+                                ({ description }) => description
+                              ) && (
                                 <p className="-text-center">
                                   {
-                                    currentSection.widget.find(({ description }) => description)
-                                      .description
+                                    currentSection.widget.find(
+                                      ({ description }) => description
+                                    ).description
                                   }
                                 </p>
                               )}
                               {queryValueSection && (
                                 <span className="widget-value">
                                   {queryValueSection}
-                                  {currentSection.widget.find(({ unit }) => unit)?.unit}
+                                  {
+                                    currentSection.widget.find(
+                                      ({ unit }) => unit
+                                    )?.unit
+                                  }
                                 </span>
                               )}
                             </div>
                           </>
                         )}
-                        {widgetSection && content.sectionPosition !== 'right' && (
+                        {widgetSection && content.sectionPosition !== "right" && (
                           <>
                             {renderWidget({
                               id: widgetSection.id,
@@ -403,7 +435,7 @@ StoryStep.propTypes = {
       subtitle: PropTypes.string,
       intro: PropTypes.string,
       widget: PropTypes.arrayOf(PropTypes.shape({})),
-      sectionPosition: PropTypes.oneOf(['left', 'right']),
+      sectionPosition: PropTypes.oneOf(["left", "right"]),
       sections: PropTypes.arrayOf(PropTypes.shape({})),
     }),
   }).isRequired,

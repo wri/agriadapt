@@ -1,7 +1,7 @@
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
-import Hammer from 'react-hammerjs';
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
+import classnames from "classnames";
+import Hammer from "react-hammerjs";
 
 class LayerContainerComponent extends PureComponent {
   handleSwipe() {
@@ -13,19 +13,13 @@ class LayerContainerComponent extends PureComponent {
 
   render() {
     const { displayed, children } = this.props;
-    const classNames = classnames(
-      'c-layer-container',
-      { '-displayed': displayed },
-    );
+    const classNames = classnames("c-layer-container", {
+      "-displayed": displayed,
+    });
 
     return (
-      <Hammer
-        onSwipe={() => this.handleSwipe()}
-        direction="DIRECTION_VERTICAL"
-      >
-        <div className={classNames}>
-          {children}
-        </div>
+      <Hammer onSwipe={() => this.handleSwipe()} direction="DIRECTION_VERTICAL">
+        <div className={classNames}>{children}</div>
       </Hammer>
     );
   }

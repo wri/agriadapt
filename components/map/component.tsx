@@ -1,16 +1,20 @@
-import { useEffect, useState, useRef, useCallback } from 'react';
-import { useDebouncedCallback } from 'use-debounce';
-import cx from 'classnames';
-import isEmpty from 'lodash/isEmpty';
-import ReactMapGL, { FlyToInterpolator, TRANSITION_EVENTS, ViewportProps } from 'react-map-gl';
-import { InteractiveMapProps } from 'react-map-gl';
-import { fitBounds } from '@math.gl/web-mercator';
-import { easeCubic } from 'd3-ease';
+import { useEffect, useState, useRef, useCallback } from "react";
+import { useDebouncedCallback } from "use-debounce";
+import cx from "classnames";
+import isEmpty from "lodash/isEmpty";
+import ReactMapGL, {
+  FlyToInterpolator,
+  TRANSITION_EVENTS,
+  ViewportProps,
+} from "react-map-gl";
+import { InteractiveMapProps } from "react-map-gl";
+import { fitBounds } from "@math.gl/web-mercator";
+import { easeCubic } from "d3-ease";
 
 // constants
-import { DEFAULT_VIEWPORT, MAPSTYLES } from './constants';
+import { DEFAULT_VIEWPORT, MAPSTYLES } from "./constants";
 
-import { Basemap, Labels } from './types';
+import { Basemap, Labels } from "./types";
 
 export interface MapProps extends InteractiveMapProps {
   /** A function that returns the map instance */
@@ -69,8 +73,8 @@ export const Map = ({
   className,
   viewport,
   bounds,
-  basemap = 'dark',
-  labels = 'light',
+  basemap = "dark",
+  labels = "light",
   boundaries = false,
   onMapReady,
   onMapLoad,
@@ -81,8 +85,8 @@ export const Map = ({
   touchZoom,
   touchRotate,
   doubleClickZoom,
-  width = '100%',
-  height = '100%',
+  width = "100%",
+  height = "100%",
   onFitBoundsChange,
   // getCursor,
   ...mapboxProps
@@ -100,7 +104,8 @@ export const Map = ({
 
   const handleLoad = useCallback(() => {
     setLoaded(true);
-    if (onMapLoad) onMapLoad({ map: mapRef.current, mapContainer: mapContainerRef.current });
+    if (onMapLoad)
+      onMapLoad({ map: mapRef.current, mapContainer: mapContainerRef.current });
   }, [onMapLoad]);
 
   const debouncedOnMapViewportChange = useDebouncedCallback((v) => {
@@ -112,7 +117,7 @@ export const Map = ({
       setViewport(v);
       debouncedOnMapViewportChange(v);
     },
-    [debouncedOnMapViewportChange],
+    [debouncedOnMapViewportChange]
   );
 
   const handleResize = useCallback(
@@ -125,14 +130,17 @@ export const Map = ({
       setViewport(newViewport);
       debouncedOnMapViewportChange(newViewport);
     },
-    [mapViewport, debouncedOnMapViewportChange],
+    [mapViewport, debouncedOnMapViewportChange]
   );
 
   const handleFitBounds = useCallback(() => {
     const { bbox, options = {}, viewportOptions = {} } = bounds;
     const { transitionDuration = 0 } = viewportOptions;
 
-    if (mapContainerRef.current.offsetWidth <= 0 || mapContainerRef.current.offsetHeight <= 0) {
+    if (
+      mapContainerRef.current.offsetWidth <= 0 ||
+      mapContainerRef.current.offsetHeight <= 0
+    ) {
       throw new Error("mapContainerRef doesn't have any dimensions");
     }
 
@@ -171,59 +179,67 @@ export const Map = ({
   const handleBasemap = useCallback(
     (basemap: Basemap) => {
       const { current: map } = mapRef;
-      const BASEMAP_GROUPS = ['basemap'];
+      const BASEMAP_GROUPS = ["basemap"];
       const { layers, metadata } = map.getStyle();
 
-      const basemapGroups = Object.keys(metadata['mapbox:groups']).filter((k) => {
-        const { name } = metadata['mapbox:groups'][k];
+      const basemapGroups = Object.keys(metadata["mapbox:groups"]).filter(
+        (k) => {
+          const { name } = metadata["mapbox:groups"][k];
 
-        const matchedGroups = BASEMAP_GROUPS.map((rgr) => name.toLowerCase().includes(rgr));
+          const matchedGroups = BASEMAP_GROUPS.map((rgr) =>
+            name.toLowerCase().includes(rgr)
+          );
 
-        return matchedGroups.some((bool) => bool);
-      });
+          return matchedGroups.some((bool) => bool);
+        }
+      );
 
       const basemapsWithMeta = basemapGroups.map((groupId) => ({
-        ...metadata['mapbox:groups'][groupId],
+        ...metadata["mapbox:groups"][groupId],
         id: groupId,
       }));
-      const basemapToDisplay = basemapsWithMeta.find((_basemap) => _basemap.name.includes(basemap));
+      const basemapToDisplay = basemapsWithMeta.find((_basemap) =>
+        _basemap.name.includes(basemap)
+      );
 
       const basemapLayers = layers.filter((l) => {
         const { metadata: layerMetadata } = l;
         if (!layerMetadata) return false;
 
-        const gr = layerMetadata['mapbox:group'];
+        const gr = layerMetadata["mapbox:group"];
         return basemapGroups.includes(gr);
       });
 
       basemapLayers.forEach((_layer) => {
-        const match = _layer.metadata['mapbox:group'] === basemapToDisplay.id;
+        const match = _layer.metadata["mapbox:group"] === basemapToDisplay.id;
         if (!match) {
-          mapRef.current.setLayoutProperty(_layer.id, 'visibility', 'none');
+          mapRef.current.setLayoutProperty(_layer.id, "visibility", "none");
         } else {
-          mapRef.current.setLayoutProperty(_layer.id, 'visibility', 'visible');
+          mapRef.current.setLayoutProperty(_layer.id, "visibility", "visible");
         }
       });
     },
-    [mapRef],
+    [mapRef]
   );
 
   const handleLabels = useCallback(
     (labels: Labels) => {
       const { current: map } = mapRef;
-      const LABELS_GROUP = ['labels'];
+      const LABELS_GROUP = ["labels"];
       const { layers, metadata } = map.getStyle();
 
-      const labelGroups = Object.keys(metadata['mapbox:groups']).filter((k) => {
-        const { name } = metadata['mapbox:groups'][k];
+      const labelGroups = Object.keys(metadata["mapbox:groups"]).filter((k) => {
+        const { name } = metadata["mapbox:groups"][k];
 
-        const matchedGroups = LABELS_GROUP.filter((rgr) => name.toLowerCase().includes(rgr));
+        const matchedGroups = LABELS_GROUP.filter((rgr) =>
+          name.toLowerCase().includes(rgr)
+        );
 
         return matchedGroups.some((bool) => bool);
       });
 
       const labelsWithMeta = labelGroups.map((_groupId) => ({
-        ...metadata['mapbox:groups'][_groupId],
+        ...metadata["mapbox:groups"][_groupId],
         id: _groupId,
       }));
       const labelsToDisplay =
@@ -233,66 +249,88 @@ export const Map = ({
         const { metadata: layerMetadata } = l;
         if (!layerMetadata) return false;
 
-        const gr = layerMetadata['mapbox:group'];
+        const gr = layerMetadata["mapbox:group"];
         return labelGroups.includes(gr);
       });
 
       labelLayers.forEach((_layer) => {
-        const match = _layer.metadata['mapbox:group'] === labelsToDisplay.id;
-        map.setLayoutProperty(_layer.id, 'visibility', match ? 'visible' : 'none');
+        const match = _layer.metadata["mapbox:group"] === labelsToDisplay.id;
+        map.setLayoutProperty(
+          _layer.id,
+          "visibility",
+          match ? "visible" : "none"
+        );
       });
     },
-    [mapRef],
+    [mapRef]
   );
 
   const handleBoundaries = useCallback(
     (boundaries: boolean) => {
       const { current: map } = mapRef;
-      const LABELS_GROUP = ['boundaries'];
+      const LABELS_GROUP = ["boundaries"];
       const { layers, metadata } = map.getStyle();
 
-      const boundariesGroups = Object.keys(metadata['mapbox:groups']).filter((k) => {
-        const { name } = metadata['mapbox:groups'][k];
+      const boundariesGroups = Object.keys(metadata["mapbox:groups"]).filter(
+        (k) => {
+          const { name } = metadata["mapbox:groups"][k];
 
-        const labelsGroup = LABELS_GROUP.map((rgr) => name.toLowerCase().includes(rgr));
+          const labelsGroup = LABELS_GROUP.map((rgr) =>
+            name.toLowerCase().includes(rgr)
+          );
 
-        return labelsGroup.some((bool) => bool);
-      });
+          return labelsGroup.some((bool) => bool);
+        }
+      );
 
       const boundariesLayers = layers.filter((l) => {
         const { metadata: layerMetadata } = l;
         if (!layerMetadata) return false;
 
-        const gr = layerMetadata['mapbox:group'];
+        const gr = layerMetadata["mapbox:group"];
         return boundariesGroups.includes(gr);
       });
 
       boundariesLayers.forEach((l) => {
-        map.setLayoutProperty(l.id, 'visibility', boundaries ? 'visible' : 'none');
+        map.setLayoutProperty(
+          l.id,
+          "visibility",
+          boundaries ? "visible" : "none"
+        );
       });
     },
-    [mapRef],
+    [mapRef]
   );
 
   const handleGetCursor = useCallback(
-    ({ isHovering, isDragging }: { isHovering: boolean; isDragging: boolean }): string => {
-      if (isHovering) return 'pointer';
-      if (isDragging) return 'grabbing';
-      return 'grab';
+    ({
+      isHovering,
+      isDragging,
+    }: {
+      isHovering: boolean;
+      isDragging: boolean;
+    }): string => {
+      if (isHovering) return "pointer";
+      if (isDragging) return "grabbing";
+      return "grab";
     },
-    [],
+    []
   );
 
   useEffect(() => {
     setReady(true);
-    if (onMapReady) onMapReady({ map: mapRef.current, mapContainer: mapContainerRef.current });
+    if (onMapReady)
+      onMapReady({
+        map: mapRef.current,
+        mapContainer: mapContainerRef.current,
+      });
   }, [onMapReady]);
 
   useEffect(() => {
     if (
       !isEmpty(bounds) &&
       !!bounds.bbox &&
-      bounds.bbox.every((b) => typeof b === 'number') &&
+      bounds.bbox.every((b) => typeof b === "number") &&
       loaded
     ) {
       handleFitBounds();
@@ -322,7 +360,7 @@ export const Map = ({
     <div
       ref={mapContainerRef}
       className={cx({
-        'relative w-full h-full z-0': true,
+        "relative w-full h-full z-0": true,
         [className]: !!className,
       })}
     >
@@ -331,7 +369,8 @@ export const Map = ({
           if (_map) mapRef.current = _map.getMap();
         }}
         mapboxApiAccessToken={
-          process.env.NEXT_PUBLIC_RW_MAPBOX_API_TOKEN || process.env.STORYBOOK_RW_MAPBOX_API_TOKEN
+          process.env.NEXT_PUBLIC_RW_MAPBOX_API_TOKEN ||
+          process.env.STORYBOOK_RW_MAPBOX_API_TOKEN
         }
         mapStyle={MAPSTYLES}
         {...mapboxProps}
@@ -355,8 +394,8 @@ export const Map = ({
           // Global Fishing Watch tilers require authorization so we need to add
           // the header before Mapbox handles the request
           if (
-            resourceType === 'Tile' &&
-            url.startsWith('https://gateway.api.globalfishingwatch.org/')
+            resourceType === "Tile" &&
+            url.startsWith("https://gateway.api.globalfishingwatch.org/")
           ) {
             return {
               url,
@@ -372,7 +411,7 @@ export const Map = ({
         {ready &&
           loaded &&
           !!mapRef.current &&
-          typeof children === 'function' &&
+          typeof children === "function" &&
           children(mapRef.current)}
       </ReactMapGL>
     </div>

@@ -6,9 +6,10 @@ $table-font-size: $font-size-small;
   overflow-y: hidden;
   overflow-x: auto;
 
-  .table, table {
+  .table,
+  table {
     border-collapse: separate;
-    border-spacing:0;
+    border-spacing: 0;
     width: 100%;
     padding: 0;
     border-radius: 4px;
@@ -33,7 +34,8 @@ $table-font-size: $font-size-small;
     //   border-bottom: 1px solid $border-color-1;
     // }
 
-    td, th {
+    td,
+    th {
       border-bottom: 1px solid $border-color-1;
     }
 
@@ -133,7 +135,7 @@ $table-font-size: $font-size-small;
   // Status
   td.status {
     &:before {
-      content: '';
+      content: "";
       display: inline-block;
       width: 6px;
       height: 6px;
@@ -146,22 +148,30 @@ $table-font-size: $font-size-small;
     &.-saved,
     &.-completed {
       color: $color-14;
-      &:before { background-color: $color-14; }
+      &:before {
+        background-color: $color-14;
+      }
     }
 
     &.-pending {
       color: $light-grey;
-      &:before { background-color: $light-grey; }
+      &:before {
+        background-color: $light-grey;
+      }
     }
 
     &.-failed {
       color: $yellow;
-      &:before { background-color: $yellow; }
+      &:before {
+        background-color: $yellow;
+      }
     }
 
     &.-deleted {
       color: $color-13;
-      &:before { background-color: $color-13; }
+      &:before {
+        background-color: $color-13;
+      }
     }
   }
 }

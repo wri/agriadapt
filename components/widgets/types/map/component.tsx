@@ -1,5 +1,5 @@
-import { useState, useReducer, useMemo, useCallback, useEffect } from 'react';
-import classnames from 'classnames';
+import { useState, useReducer, useMemo, useCallback, useEffect } from "react";
+import classnames from "classnames";
 import {
   Legend,
   LegendListItem,
@@ -8,27 +8,32 @@ import {
   LegendItemButtonOpacity,
   LegendItemButtonVisibility,
   LegendItemTypes,
-} from 'vizzuality-components';
-import { useErrorHandler } from 'react-error-boundary';
-import type { ViewportProps } from 'react-map-gl';
+} from "vizzuality-components";
+import { useErrorHandler } from "react-error-boundary";
+import type { ViewportProps } from "react-map-gl";
 
 // constants
-import { DEFAULT_VIEWPORT, MAPSTYLES, BASEMAPS, LABELS } from 'components/map/constants';
+import {
+  DEFAULT_VIEWPORT,
+  MAPSTYLES,
+  BASEMAPS,
+  LABELS,
+} from "components/map/constants";
 
 // components
-import Spinner from 'components/ui/Spinner';
-import Map from 'components/map';
-import LayerManager from 'components/map/layer-manager';
-import MapControls from 'components/map/controls';
-import ZoomControls from 'components/map/controls/zoom';
-import WidgetHeader from '../../header';
-import WidgetInfo from '../../info';
-import WidgetCaption from '../../caption';
+import Spinner from "components/ui/Spinner";
+import Map from "components/map";
+import LayerManager from "components/map/layer-manager";
+import MapControls from "components/map/controls";
+import ZoomControls from "components/map/controls/zoom";
+import WidgetHeader from "../../header";
+import WidgetInfo from "../../info";
+import WidgetCaption from "../../caption";
 
-import type { Basemap, Labels } from 'components/map/types';
+import type { Basemap, Labels } from "components/map/types";
 
 // reducers
-import { mapWidgetInitialState, mapWidgetSlice } from './reducer';
+import { mapWidgetInitialState, mapWidgetSlice } from "./reducer";
 
 const mapWidgetReducer = mapWidgetSlice.reducer;
 
@@ -40,12 +45,12 @@ const {
   setMapLayerGroupOpacity,
 } = mapWidgetSlice.actions;
 
-import type { APIWidgetSpec } from 'types/widget';
-import type { LayerGroup, Bounds } from 'components/map/types';
-import type { MapTypeWidgetContainerProps } from './index';
+import type { APIWidgetSpec } from "types/widget";
+import type { LayerGroup, Bounds } from "components/map/types";
+import type { MapTypeWidgetContainerProps } from "./index";
 
 export interface MapTypeWidgetProps
-  extends Omit<MapTypeWidgetContainerProps, 'widgetId' | 'params'> {
+  extends Omit<MapTypeWidgetContainerProps, "widgetId" | "params"> {
   widget: APIWidgetSpec;
   layerGroups: LayerGroup[];
   // todo: improve typing of layers
@@ -73,7 +78,9 @@ const MapTypeWidget = ({
   onToggleShare,
   onFitBoundsChange,
 }: MapTypeWidgetProps): JSX.Element => {
-  const handleError = useErrorHandler(isError ? new Error('something went wrong') : null);
+  const handleError = useErrorHandler(
+    isError ? new Error("something went wrong") : null
+  );
   const [mapWidgetState, dispatch] = useReducer(mapWidgetReducer, {
     ...mapWidgetInitialState,
     layerGroups,
@@ -92,7 +99,7 @@ const MapTypeWidget = ({
     (_viewport: ViewportProps) => {
       onFitBoundsChange(_viewport);
     },
-    [onFitBoundsChange],
+    [onFitBoundsChange]
   );
 
   const handleZoom = useCallback((zoom) => {
@@ -118,7 +125,7 @@ const MapTypeWidget = ({
           id: l.dataset,
         },
         opacity,
-      }),
+      })
     );
   }, []);
 
@@ -127,7 +134,7 @@ const MapTypeWidget = ({
       setMapLayerGroupVisibility({
         dataset: { id: l.dataset },
         visibility,
-      }),
+      })
     );
   }, []);
 
@@ -138,7 +145,7 @@ const MapTypeWidget = ({
           id: l.dataset,
         },
         active: l.id,
-      }),
+      })
     );
   }, []);
 
@@ -147,24 +154,24 @@ const MapTypeWidget = ({
   }, []);
 
   const basemap: Basemap = useMemo(() => {
-    if (!widget?.widgetConfig) return 'dark';
+    if (!widget?.widgetConfig) return "dark";
 
-    const basemapKey = widget.widgetConfig?.basemapLayers?.basemap || 'dark';
+    const basemapKey = widget.widgetConfig?.basemapLayers?.basemap || "dark";
 
     return BASEMAPS[basemapKey].value as Basemap;
   }, [widget]);
 
   const labels: Labels = useMemo(() => {
-    if (!widget?.widgetConfig) return 'light';
+    if (!widget?.widgetConfig) return "light";
 
-    const label = widget.widgetConfig?.basemapLayers?.labels || 'light';
+    const label = widget.widgetConfig?.basemapLayers?.labels || "light";
 
     return LABELS[label].value as Labels;
   }, [widget]);
 
   const boundaries = useMemo(
     () => Boolean(widget?.widgetConfig?.basemapLayers?.boundaries),
-    [widget],
+    [widget]
   );
 
   const caption = useMemo(() => widget?.metadata?.[0]?.info?.caption, [widget]);
@@ -175,7 +182,7 @@ const MapTypeWidget = ({
 
   const layers = useMemo(() => {
     const activeLayers = mapWidgetState.layerGroups.map((_layerGroup) =>
-      (_layerGroup.layers || []).find((_layer) => _layer.active),
+      (_layerGroup.layers || []).find((_layer) => _layer.active)
     );
 
     return [
@@ -187,7 +194,7 @@ const MapTypeWidget = ({
 
   return (
     <div
-      className={classnames('c-widget h-full', { '-is-embed': isEmbed })}
+      className={classnames("c-widget h-full", { "-is-embed": isEmbed })}
       style={{
         ...style,
       }}
@@ -205,12 +212,12 @@ const MapTypeWidget = ({
       )}
       <div
         className={classnames(
-          'relative flex h-full overflow-x-auto overflow-y-hidden widget-container grow',
+          "relative flex h-full overflow-x-auto overflow-y-hidden widget-container grow",
           {
-            'border-0': !isInfoWidgetVisible,
-            'border border-gray-light': isInfoWidgetVisible,
-            'rounded-none': !!caption,
-          },
+            "border-0": !isInfoWidgetVisible,
+            "border border-gray-light": isInfoWidgetVisible,
+            "rounded-none": !!caption,
+          }
         )}
         style={{
           height: 400,

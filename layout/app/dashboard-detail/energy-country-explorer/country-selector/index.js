@@ -1,3 +1,3 @@
-import CountrySelectorComponent from './component';
+import CountrySelectorComponent from "./component";
 
 export default CountrySelectorComponent;

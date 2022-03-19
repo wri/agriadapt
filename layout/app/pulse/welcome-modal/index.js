@@ -1,6 +1,6 @@
-import { Component, createElement } from 'react';
+import { Component, createElement } from "react";
 
-import WelcomeModal from './component';
+import WelcomeModal from "./component";
 
 class WelcomeModalContainer extends Component {
   render() {

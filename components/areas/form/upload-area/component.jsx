@@ -1,22 +1,15 @@
-import {
-  useState,
-  useCallback,
-  useMemo,
-  useRef,
-} from 'react';
-import PropTypes from 'prop-types';
-import Dropzone from 'react-dropzone';
-import classnames from 'classnames';
+import { useState, useCallback, useMemo, useRef } from "react";
+import PropTypes from "prop-types";
+import Dropzone from "react-dropzone";
+import classnames from "classnames";
 
 // components
-import Spinner from 'components/ui/Spinner';
+import Spinner from "components/ui/Spinner";
 
 // utils
-import { processFile } from 'utils/areas';
+import { processFile } from "utils/areas";
 
-const UploadArea = ({
-  onUploadArea,
-}) => {
+const UploadArea = ({ onUploadArea }) => {
   const dropzoneRef = useRef(null);
   const [uploadState, setUploadState] = useState({
     accepted: null,
@@ -25,12 +18,7 @@ const UploadArea = ({
     loading: false,
     errors: [],
   });
-  const {
-    accepted,
-    dropzoneActive,
-    loading,
-    errors,
-  } = uploadState;
+  const { accepted, dropzoneActive, loading, errors } = uploadState;
 
   /**
    * Event handler executed when the user drags a file over the
@@ -60,33 +48,36 @@ const UploadArea = ({
    * @param {File[]} accepted List of accepted files
    * @param {File[]} rejected List of rejected files
    */
-  const onDrop = useCallback(async (_accepted, rejected) => {
-    setUploadState((prevUploadState) => ({
-      ...prevUploadState,
-      accepted: _accepted[0],
-      rejected: rejected[0],
-      dropzoneActive: false,
-      loading: true,
-      errors: [],
-    }));
+  const onDrop = useCallback(
+    async (_accepted, rejected) => {
+      setUploadState((prevUploadState) => ({
+        ...prevUploadState,
+        accepted: _accepted[0],
+        rejected: rejected[0],
+        dropzoneActive: false,
+        loading: true,
+        errors: [],
+      }));
 
-    if (_accepted[0]) {
-      try {
-        const id = await processFile(_accepted[0]);
-        onUploadArea(id);
-        setUploadState((prevUploadState) => ({
-          ...prevUploadState,
-          loading: false,
-        }));
-      } catch (e) {
-        setUploadState((prevUploadState) => ({
-          ...prevUploadState,
-          errors: [e.message],
-          loading: false,
-        }));
+      if (_accepted[0]) {
+        try {
+          const id = await processFile(_accepted[0]);
+          onUploadArea(id);
+          setUploadState((prevUploadState) => ({
+            ...prevUploadState,
+            loading: false,
+          }));
+        } catch (e) {
+          setUploadState((prevUploadState) => ({
+            ...prevUploadState,
+            errors: [e.message],
+            loading: false,
+          }));
+        }
       }
-    }
-  }, [onUploadArea]);
+    },
+    [onUploadArea]
+  );
 
   /**
    * Event handler executed when the user clicks on the drop
@@ -104,19 +95,14 @@ const UploadArea = ({
   const getFileName = useCallback((file) => file.name, []);
 
   const fileInputContent = useMemo(() => {
-    if (dropzoneActive) return 'Drop the file here';
+    if (dropzoneActive) return "Drop the file here";
     if (accepted) return getFileName(accepted);
-    return 'Select a file';
+    return "Select a file";
   }, [dropzoneActive, accepted, getFileName]);
 
   return (
     <div className="c-upload-area">
-      {loading && (
-        <Spinner
-          isLoading
-          className="-light"
-        />
-      )}
+      {loading && <Spinner isLoading className="-light" />}
 
       <Dropzone
         ref={dropzoneRef}
@@ -130,19 +116,20 @@ const UploadArea = ({
         onDragEnter={onDragEnter}
         onDragLeave={onDragLeave}
       >
-        <div className={classnames({ 'dropzone-file-input': true, '-active': dropzoneActive })}>
+        <div
+          className={classnames({
+            "dropzone-file-input": true,
+            "-active": dropzoneActive,
+          })}
+        >
           <div
             role="presentation"
             className="dropzone-file-name"
             onClick={onOpenDialog}
           >
-            { fileInputContent }
+            {fileInputContent}
           </div>
-          <button
-            type="button"
-            className="c-button"
-            onClick={onOpenDialog}
-          >
+          <button type="button" className="c-button" onClick={onOpenDialog}>
             Select file
           </button>
         </div>
@@ -161,29 +148,27 @@ const UploadArea = ({
 
         <p>
           Drop a file in the designated area or click the button to upload it.
-          The recommended
-          &nbsp;
+          The recommended &nbsp;
           <strong>maximum file size is 1MB</strong>
           .Anything larger than that may not work properly.
         </p>
         <p>
           If you want to draw the area, you can use&nbsp;
-          <a href="http://geojson.io" target="_blank" rel="noopener noreferrer">geojson.io</a>
+          <a href="http://geojson.io" target="_blank" rel="noopener noreferrer">
+            geojson.io
+          </a>
           &nbsp;and download a file with one of the supported format below.
         </p>
 
         <div className="info">
           <div className="complementary-info">
-            <p>
-              List of supported file formats:
-            </p>
+            <p>List of supported file formats:</p>
             <ul>
               <li>
                 Unzipped:
                 <strong>.csv</strong>
-                &nbsp;
-                (must contain a geom column that contains geographic information),
-                &nbsp;
+                &nbsp; (must contain a geom column that contains geographic
+                information), &nbsp;
                 <strong>.geojson</strong>
                 ,&nbsp;
                 <strong>.kml</strong>
@@ -193,8 +178,7 @@ const UploadArea = ({
                 <strong>.wkt</strong>
               </li>
               <li>
-                Zipped:
-                &nbsp;
+                Zipped: &nbsp;
                 <strong>.shp</strong>
                 &nbsp;(must include the .shp, .shx, .dbf and .prj files)
               </li>

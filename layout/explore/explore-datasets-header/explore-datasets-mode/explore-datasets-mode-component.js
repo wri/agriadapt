@@ -1,11 +1,11 @@
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
+import classnames from "classnames";
 
-import { Tooltip } from 'vizzuality-components';
+import { Tooltip } from "vizzuality-components";
 
 // Components
-import Icon from 'components/ui/icon';
+import Icon from "components/ui/icon";
 
 class ExploreDatasetsSortComponent extends PureComponent {
   static propTypes = {
@@ -22,16 +22,16 @@ class ExploreDatasetsSortComponent extends PureComponent {
           overlay="Grid mode"
           overlayClassName="c-rc-tooltip -default"
           placement="top"
-          trigger={['hover', 'click']}
+          trigger={["hover", "click"]}
           mouseLeaveDelay={0}
           destroyTooltipOnHide
         >
           <button
             className={classnames({
-              'actions-mode-button': true,
-              '-active': (mode === 'grid'),
+              "actions-mode-button": true,
+              "-active": mode === "grid",
             })}
-            onClick={() => this.props.setDatasetsMode('grid')}
+            onClick={() => this.props.setDatasetsMode("grid")}
           >
             <Icon name="icon-view-grid" />
           </button>
@@ -41,16 +41,16 @@ class ExploreDatasetsSortComponent extends PureComponent {
           overlay="List mode"
           overlayClassName="c-rc-tooltip -default"
           placement="top"
-          trigger={['hover', 'click']}
+          trigger={["hover", "click"]}
           mouseLeaveDelay={0}
           destroyTooltipOnHide
         >
           <button
             className={classnames({
-              'actions-mode-button': true,
-              '-active': (mode === 'list'),
+              "actions-mode-button": true,
+              "-active": mode === "list",
             })}
-            onClick={() => this.props.setDatasetsMode('list')}
+            onClick={() => this.props.setDatasetsMode("list")}
           >
             <Icon name="icon-view-list" />
           </button>

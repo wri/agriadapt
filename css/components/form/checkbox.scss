@@ -29,7 +29,7 @@
       margin-right: 5px;
       border: 1px solid $sea-blue;
       border-radius: 4px;
-      transform: translate(0,-50%);
+      transform: translate(0, -50%);
 
       &:after {
         content: "";
@@ -41,8 +41,8 @@
         height: 3px;
         border-left: 1px solid $sea-blue;
         border-bottom: 1px solid $sea-blue;
-        transform: translate(-50%,-50%) rotate(-40deg) scale(0);
-        transition: all .16s cubic-bezier(0.445, 0.050, 0.550, 0.950);
+        transform: translate(-50%, -50%) rotate(-40deg) scale(0);
+        transition: all 0.16s cubic-bezier(0.445, 0.05, 0.55, 0.95);
       }
     }
 
@@ -52,16 +52,16 @@
     }
   }
 
-  input[type=checkbox] {
+  input[type="checkbox"] {
     display: none;
   }
 
-  input[type=checkbox]:checked + label {
+  input[type="checkbox"]:checked + label {
     color: black;
 
     .checkbox-icon {
       &:after {
-        transform: translate(-50%,-50%) rotate(-40deg) scale(1);
+        transform: translate(-50%, -50%) rotate(-40deg) scale(1);
       }
     }
   }

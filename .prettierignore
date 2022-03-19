@@ -3,6 +3,7 @@
 
 # Compiled files
 /.next
+out
 
 # Environmental variables
 .env

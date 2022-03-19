@@ -37,10 +37,12 @@
     top: -28px;
     border: 0;
     border-radius: 2px 2px 0 0;
-    background-color: rgba($white, .2);
+    background-color: rgba($white, 0.2);
     cursor: pointer;
 
-    &:focus { outline: none; }
+    &:focus {
+      outline: none;
+    }
 
     svg {
       margin-top: 4px;

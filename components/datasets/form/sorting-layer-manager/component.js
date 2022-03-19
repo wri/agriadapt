@@ -1,16 +1,16 @@
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
 
 // components
-import LayerCard from './layer-card';
+import LayerCard from "./layer-card";
 
 class SortingLayerManager extends PureComponent {
   static propTypes = {
     layers: PropTypes.array.isRequired,
     onChange: PropTypes.func.isRequired,
-  }
+  };
 
-  state = { layers: this.props.layers }
+  state = { layers: this.props.layers };
 
   handleOnDragStart = (e, index) => {
     this.draggedLayer = this.state.layers[index];
@@ -18,7 +18,7 @@ class SortingLayerManager extends PureComponent {
 
   handleOnDragEnd = () => {
     this.draggedLayer = null;
-  }
+  };
 
   handleOnDragOver = (index) => {
     const draggedOverLayer = this.state.layers[index];
@@ -29,13 +29,15 @@ class SortingLayerManager extends PureComponent {
     }
 
     // filter out the currently dragged item
-    const layers = this.state.layers.filter((layer) => layer !== this.draggedLayer);
+    const layers = this.state.layers.filter(
+      (layer) => layer !== this.draggedLayer
+    );
 
     // add the dragged layer after the dragged over layer
     layers.splice(index, 0, this.draggedLayer);
 
     this.setState({ layers }, () => this.props.onChange(layers));
-  }
+  };
 
   render() {
     const { layers } = this.state;

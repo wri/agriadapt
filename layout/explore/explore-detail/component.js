@@ -1,26 +1,26 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
+import React, { Fragment } from "react";
+import PropTypes from "prop-types";
 
 // Components
-import Spinner from 'components/ui/Spinner';
-import ReadMore from 'components/ui/read-more';
+import Spinner from "components/ui/Spinner";
+import ReadMore from "components/ui/read-more";
 
 // Utils
-import { getDateConsideringTimeZone } from 'utils/utils';
-import { logEvent } from 'utils/analytics';
+import { getDateConsideringTimeZone } from "utils/utils";
+import { logEvent } from "utils/analytics";
 
 // Explore detail components
-import ExploreDetailHeader from './explore-detail-header';
-import ExploreDetailFooter from './explore-detail-footer';
-import FurtherInformation from './further-information';
-import ExploreDetailButtons from './explore-detail-buttons';
-import ExploreDetailTags from './explore-detail-tags';
-import DatasetLayers from './dataset-layers';
-import RelatedContent from './related-content';
-import ExploreDetailVisualization from './explore-detail-visualization';
+import ExploreDetailHeader from "./explore-detail-header";
+import ExploreDetailFooter from "./explore-detail-footer";
+import FurtherInformation from "./further-information";
+import ExploreDetailButtons from "./explore-detail-buttons";
+import ExploreDetailTags from "./explore-detail-tags";
+import DatasetLayers from "./dataset-layers";
+import RelatedContent from "./related-content";
+import ExploreDetailVisualization from "./explore-detail-visualization";
 
 // Constants
-import { DEFAULT_LIMIT_CHAR_FOR_METADATA_FIELDS } from './constants';
+import { DEFAULT_LIMIT_CHAR_FOR_METADATA_FIELDS } from "./constants";
 
 class ExploreDetailComponent extends React.Component {
   static propTypes = {
@@ -40,21 +40,28 @@ class ExploreDetailComponent extends React.Component {
 
   render() {
     const { dataset, datasetLoading, tags } = this.props;
-    const metadata = dataset && dataset.metadata
-      && dataset.metadata.length > 0 && dataset.metadata[0];
+    const metadata =
+      dataset &&
+      dataset.metadata &&
+      dataset.metadata.length > 0 &&
+      dataset.metadata[0];
     const info = metadata && metadata.info;
     const layers = dataset && dataset.layer;
-    const dateLastUpdated = getDateConsideringTimeZone(dataset && dataset.dataLastUpdated);
-    const defaultWidget = dataset && dataset.widget
-      && dataset.widget.find((w) => w.defaultEditableWidget);
-    const showLayersSection = dataset && dataset.layer && dataset.layer.length > 0;
+    const dateLastUpdated = getDateConsideringTimeZone(
+      dataset && dataset.dataLastUpdated
+    );
+    const defaultWidget =
+      dataset &&
+      dataset.widget &&
+      dataset.widget.find((w) => w.defaultEditableWidget);
+    const showLayersSection =
+      dataset && dataset.layer && dataset.layer.length > 0;
     const showTags = tags && tags.length > 0;
 
     return (
       <div className="c-explore-detail">
         <Spinner isLoading={datasetLoading} className="-light" />
-        { metadata
-          && (
+        {metadata && (
           <>
             <div className="content">
               <ExploreDetailHeader dataset={dataset} />
@@ -67,7 +74,9 @@ class ExploreDetailComponent extends React.Component {
                     {`SOURCE: ${metadata.source}`}
                   </div>
                   <div className="date">
-                    {dateLastUpdated ? `UPDATED ON ${dateLastUpdated}`.toUpperCase() : ''}
+                    {dateLastUpdated
+                      ? `UPDATED ON ${dateLastUpdated}`.toUpperCase()
+                      : ""}
                   </div>
                 </div>
                 <div className="functions metadata-field">
@@ -79,18 +88,22 @@ class ExploreDetailComponent extends React.Component {
                     markdown
                     text={metadata.description}
                     limitChar={DEFAULT_LIMIT_CHAR_FOR_METADATA_FIELDS}
-                    readMoreClicked={() => logEvent('Explore (Detail)', 'Clicks Read More', 'description')}
+                    readMoreClicked={() =>
+                      logEvent(
+                        "Explore (Detail)",
+                        "Clicks Read More",
+                        "description"
+                      )
+                    }
                   />
                 </div>
-                {showTags
-                  && <ExploreDetailTags tags={tags} />}
+                {showTags && <ExploreDetailTags tags={tags} />}
               </div>
-              {showLayersSection
-                && (
+              {showLayersSection && (
                 <div id="layers" className="metadata-section">
                   <DatasetLayers layers={layers} dataset={dataset} />
                 </div>
-                )}
+              )}
               <div id="visualization" className="metadata-section">
                 <ExploreDetailVisualization
                   datasetId={dataset.id}
@@ -106,16 +119,15 @@ class ExploreDetailComponent extends React.Component {
             </div>
             <ExploreDetailFooter />
           </>
-          )}
-        {!metadata && !datasetLoading
-          && (
+        )}
+        {!metadata && !datasetLoading && (
           <div className="content">
             <ExploreDetailHeader dataset={dataset} />
             <div id="overview" className="overview metadata-section">
               <p>Metadata for this dataset couldn&apos;t be loaded.</p>
             </div>
           </div>
-          )}
+        )}
       </div>
     );
   }

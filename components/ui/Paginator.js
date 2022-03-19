@@ -1,6 +1,6 @@
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
-import Pagination from 'rc-pagination';
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
+import Pagination from "rc-pagination";
 
 class Paginator extends PureComponent {
   static propTypes = {
@@ -32,7 +32,7 @@ class Paginator extends PureComponent {
   /**
    * UI EVENTS
    * - triggerChangePage (page, size)
-  */
+   */
   triggerChangePage(page) {
     this.setState({ page }, () => {
       this.props.onChange(this.state.page);
