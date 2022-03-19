@@ -196,8 +196,8 @@ const reducer = combineReducers({
 function initStore() {
   const middlewares = applyMiddleware(thunk, WEmiddleware);
   const composeEnhancers =
-    // @ts-ignore
-    (typeof window !== "undefined" &&
+  (typeof window !== "undefined" &&
+  // @ts-ignore
       window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
     compose;
 
