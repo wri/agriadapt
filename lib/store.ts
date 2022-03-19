@@ -200,4 +200,7 @@ function initStore() {
   return store;
 }
 
+export type RootStore = ReturnType<typeof initStore>;
+export type RootState = ReturnType<RootStore['getState']>;
+
 export default createWrapper(initStore);

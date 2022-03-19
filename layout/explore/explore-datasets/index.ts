@@ -5,9 +5,10 @@ import * as actions from 'layout/explore/actions';
 import { getUpdatedDatasets, getSelectedTagsWithData } from './selectors';
 
 import ExploreDatasetsComponent from './component';
+import { RootState } from 'lib/store';
 
 export default connect(
-    (state) => ({
+    (state: RootState) => ({
       // Store
       datasets: state.explore.datasets,
       list: getUpdatedDatasets(state),
