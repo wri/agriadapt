@@ -2,6 +2,9 @@ import { createAction } from "@reduxjs/toolkit";
 import { createThunkAction } from "redux-tools";
 import sortBy from "lodash/sortBy";
 
+// Constants
+import { EXPLORE_DATASETS_IDS } from "./constants";
+
 // Services
 import { fetchDatasets as fetchDatasetsService } from "services/dataset";
 import { fetchAllTags, fetchInferredTags } from "services/graph";
@@ -63,7 +66,7 @@ export const fetchDatasets = createThunkAction(
     dispatch(setDatasetsLoading(true));
     dispatch(setDatasetsError(null));
 
-    return fetchDatasetsService(params, {}, true)
+    return fetchDatasetsService(EXPLORE_DATASETS_IDS, params, {}, true)
       .then((response) => {
         const { meta = {}, datasets } = response;
         dispatch(setDatasetsTotal(meta["total-items"] || 0));
@@ -223,6 +226,9 @@ export const setSidebarSelectedCollection = createAction(
 );
 export const clearSidebarSubsection = createAction(
   "EXPLORE/clearSidebarSubsection"
+);
+export const setSidebarSelectedTab = createAction(
+  'EXPLORE/setSidebarSelectedTab'
 );
 
 // TAGS TOOLTIP
