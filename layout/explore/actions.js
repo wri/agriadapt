@@ -165,6 +165,7 @@ export const setSidebarSection = createAction('EXPLORE/setSidebarSection');
 export const setSidebarSubsection = createAction('EXPLORE/setSidebarSubsection');
 export const setSidebarSelectedCollection = createAction('EXPLORE/setSidebarSelectedCollection');
 export const clearSidebarSubsection = createAction('EXPLORE/clearSidebarSubsection');
+export const setSidebarSelectedTab = createAction("EXPLORE/setSidebarSelectedTab");
 
 // TAGS TOOLTIP
 export const setTags = createAction('EXPLORE/setTags');

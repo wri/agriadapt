@@ -14,9 +14,10 @@ import { logEvent } from 'utils/analytics';
 import Paginator from 'components/ui/Paginator';
 import Icon from 'components/ui/icon';
 // import { TOPICS } from 'layout/explore/explore-topics/constants';
-import ExploreDatasetsSort from 'layout/explore/explore-datasets-header/explore-datasets-sort';
-import DatasetList from './list';
-import ExploreDatasetsActions from './explore-datasets-actions';
+import ExploreDatasetsSort from "layout/explore/explore-datasets-header/explore-datasets-sort";
+import ExploreSwitch from "../explore-switch";
+import DatasetList from "./list";
+import ExploreDatasetsActions from "./explore-datasets-actions";
 
 export default function ExploreDatasets(props) {
   const {
@@ -62,7 +63,8 @@ export default function ExploreDatasets(props) {
   return (
     <div className={classValue}>
       <div className="explore-datasets-header">
-        <div className="left-container">
+        <ExploreSwitch />
+        {/* <div className="left-container">
           <ExploreDatasetsSort />
           <div className="tags-container">
             {selectedTags.length > 0
@@ -112,8 +114,8 @@ export default function ExploreDatasets(props) {
           </div>
         </div>
         <div className="number-of-datasets">
-          {`${total} ${total === 1 ? 'DATASET' : 'DATASETS'}`}
-        </div>
+          {`${total} ${total === 1 ? "DATASET" : "DATASETS"}`}
+              </div> */}
       </div>
 
       {/* {relatedDashboards.length > 0

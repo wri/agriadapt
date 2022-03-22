@@ -11,6 +11,11 @@ export const EXPLORE_SECTIONS = {
   },
 };
 
+export const EXPLORE_TABS = {
+  LAYERS: 'Layers',
+  ANALYSIS: 'Analysis',
+}
+
 export const EXPLORE_SUBSECTIONS = {
   NEW_AREA: 'area/new',
 };

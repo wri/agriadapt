@@ -520,6 +520,13 @@ export default createReducer(initialState, (builder) => {
         subsection: initialState.sidebar.subsection,
       },
     }))
+    .addCase(actions.setSidebarSelectedTab, (state, { payload }) => ({
+      ...state,
+      sidebar: {
+        ...state.sidebar,
+        selectedTab: payload,
+      }
+    }))
     // tags
     .addCase(actions.setTagsTooltip, (state, { payload }) => ({
       ...state,

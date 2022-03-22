@@ -35,7 +35,11 @@
     .rc-slider {
 
       .rc-slider-track {
-        background-color: $light-grey;
+        background-color: $primary-green !important;
+      }
+
+      .rc-slider-handle {
+        background-color: $primary-green !important;
       }
 
       .rc-slider-mark {

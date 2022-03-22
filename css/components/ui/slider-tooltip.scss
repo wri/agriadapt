@@ -29,7 +29,7 @@
   }
 
   .rc-slider-track {
-    background-color: $dark-pink;
+    background-color: $primary-green;
     height: 2px;
     top: 50%;
     margin: -1px 0 0;
@@ -54,7 +54,7 @@
     margin: 0;
     transform: translate(-50%, -50%);
     border-color: $white;
-    background-color: $dark-pink;
+    background-color: $primary-green;
 
     &:focus,
     &:hover, {
@@ -68,7 +68,7 @@
     height: 2px;
 
     &.input-range__track--active {
-      background-color: $dark-pink;
+      background-color: $primary-green;
     }
   }
 
@@ -81,7 +81,7 @@
     width: 17px;
     height: 17px;
     border-color: $white;
-    background-color: $dark-pink;
+    background-color: $primary-green;
 
     &:focus,
     &:hover, {

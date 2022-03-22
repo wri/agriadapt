@@ -1,6 +1,6 @@
 // import { TOPICS, DATA_TYPES, FREQUENCIES, TIME_PERIODS } from 'utils/concepts';
-import { BASEMAPS, LABELS } from 'components/map/constants';
-import { EXPLORE_SECTIONS } from 'layout/explore/constants';
+import { BASEMAPS, LABELS } from "components/map/constants";
+import { EXPLORE_SECTIONS, EXPLORE_TABS } from "layout/explore/constants";
 
 export default {
   // Datasets
@@ -99,6 +99,7 @@ export default {
     subsection: null,
     selected: null,
     selectedCollection: null,
+    selectedTab: EXPLORE_TABS.LAYERS,
   },
 
   tags: {
