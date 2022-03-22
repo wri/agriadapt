@@ -14,7 +14,6 @@ import { logEvent } from 'utils/analytics';
 import Paginator from 'components/ui/Paginator';
 import Icon from 'components/ui/icon';
 // import { TOPICS } from 'layout/explore/explore-topics/constants';
-import ExploreDatasetsSort from "layout/explore/explore-datasets-header/explore-datasets-sort";
 import ExploreSwitch from "../explore-switch";
 import DatasetList from "./list";
 import ExploreDatasetsActions from "./explore-datasets-actions";
