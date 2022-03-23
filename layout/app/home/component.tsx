@@ -1,6 +1,6 @@
 import Layout from "layout/layout/layout-app";
 import { Media } from "lib/media";
-import Flickity from 'react-flickity-component'
+import Carousel from './home-analysis-container/carousel';
 
 const LayoutHome = () => {
 
@@ -127,88 +127,42 @@ const LayoutHome = () => {
   };
 
   const getAnalysisContainer = () => {
-    // https://flickity.metafizzy.co/options.html
-    const flickityOptions = {
-      freeScroll: true,
-      draggable: true,
-      prevNextButtons: false,
-      autoPlay: false,
-      pageDots: true,
-      wrapAround: true
+    const settings = {
+      slidesToShow: 7,
+      slidesToScroll: 7,
+      dragging: true,
+      autoplay: true,
+      autoplayInterval: 3500,
+      initialSlideHeight: 56,
+      wrapAround: true,
+      renderTopCenterControls: () => {},
+      renderCenterLeftControls: () => {},
+      renderCenterRightControls: () => {},
+      renderBottomCenterControls: ({ currentSlide }) => (
+        <div>Slide: {currentSlide}</div>
+      )
     }
-
     const getAnalysisCard = () => {
-      <div style={{ height: '250px', width: '30%', display: 'flex', flexDirection: 'column' }}>
-        <h3>Understand how climate hazards affect coffee production around the world</h3>
-        <div style={{ width: '100%', textAlign: 'center' }}>
-          <button className="c-button -primary">
-            Check out the data
-          </button>
+      return (
+        <div style={{ height: '150px', width: '200px', display: 'flex', flexDirection: 'column' }}>
+          <h3>Understand how climate hazards affect coffee production around the world</h3>
+          <div style={{ width: '100%', textAlign: 'center' }}>
+            <button className="c-button -primary">
+              Check out the data
+            </button>
+          </div>
         </div>
-      </div>
+      );
     };
     return (
       <div className='analysisContainer' style={{ height: '50vh' }}>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <h2>Here's a more compelling header for the map experience.</h2>
           <h3>Here's a subheader that provides additional contextual information.</h3>
-          <Flickity
-            className={'carousel'}
-            elementType={'div'}
-            options={flickityOptions}
-            reloadOnUpdate
-          >
-            <div className='carousel-cell'>
-              <div style={{ padding: '20px', height: '250px', width: '300px', display: 'flex', flexDirection: 'column', border: 3, borderColor: 'black' }}>
-                <h3>Understand how climate hazards affect coffee production around the world</h3>
-                <div style={{ width: '100%', textAlign: 'center' }}>
-                  <button className="c-button -primary">
-                    Check out the data
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className='carousel-cell'>
-              <div style={{ padding: '20px', height: '250px', width: '300px', display: 'flex', flexDirection: 'column', border: 3, borderColor: 'black' }}>
-                <h3>Understand how climate hazards affect coffee production around the world</h3>
-                <div style={{ width: '100%', textAlign: 'center' }}>
-                  <button className="c-button -primary">
-                    Check out the data
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className='carousel-cell'>
-              <div style={{ padding: '20px', height: '250px', width: '300px', display: 'flex', flexDirection: 'column', border: 3, borderColor: 'black' }}>
-                <h3>Understand how climate hazards affect coffee production around the world</h3>
-                <div style={{ width: '100%', textAlign: 'center' }}>
-                  <button className="c-button -primary">
-                    Check out the data
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className='carousel-cell'>
-              <div style={{ padding: '20px', height: '250px', width: '300px', display: 'flex', flexDirection: 'column', border: 3, borderColor: 'black' }}>
-                <h3>Understand how climate hazards affect coffee production around the world</h3>
-                <div style={{ width: '100%', textAlign: 'center' }}>
-                  <button className="c-button -primary">
-                    Check out the data
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className='carousel-cell'>
-              <div style={{ padding: '20px', height: '250px', width: '300px', display: 'flex', flexDirection: 'column', border: 3, borderColor: 'black' }}>
-                <h3>Understand how climate hazards affect coffee production around the world</h3>
-                <div style={{ width: '100%', textAlign: 'center' }}>
-                  <button className="c-button -primary">
-                    Check out the data
-                  </button>
-                </div>
-              </div>
-            </div>
-          </Flickity>
+          <Carousel
+            items={[getAnalysisCard(), getAnalysisCard(), getAnalysisCard()]}
+            settings={settings}
+          />
         </div>
       </div>
     )
