@@ -13,7 +13,7 @@ import Icon from "components/ui/icon";
 import ExploreSwitch from "../explore-switch";
 import DatasetList from "./list";
 import ExploreDatasetsActions from "./explore-datasets-actions";
-import ExploreSearch from '../explore-datasets-header/explore-datasets-search';
+import ExploreSearch from '../explore-datasets-search';
 
 export default function ExploreDatasets(props) {
   const {

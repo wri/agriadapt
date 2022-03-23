@@ -2,7 +2,7 @@ import SearchInput from 'components/ui/SearchInput';
 import SearchSelect from 'components/ui/SearchSelect';
 import Link from 'next/link';
 import { useEffect } from 'react';
-import { EXPLORE_FILTERS } from '../../constants';
+import { EXPLORE_FILTERS } from '../constants';
 
 interface SearchProps {
     search: string;
