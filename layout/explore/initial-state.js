@@ -13,7 +13,7 @@ export default {
     total: 0,
     selected: null,
   },
-  search: {
+  filters: {
     search: '',
     value_chains: [],
     advanced: {
@@ -22,17 +22,6 @@ export default {
       region: [],
       emission_scenario: [],
       supply_chain_node: [],
-    },
-  },
-  filters: {
-    open: false,
-    search: "",
-    selected: {
-      topics: [],
-      data_types: [],
-      frequencies: [],
-      time_periods: [],
-      custom: [],
     },
   },
   sort: {

@@ -74,80 +74,15 @@ export default createReducer(initialState, (builder) => {
         selected: payload,
       },
     }))
-    // search
-    .addCase(actions.setSearchAdvancedOpen, (state, { payload }) => ({
+    // filters
+    .addCase(actions.setFiltersAdvancedOpen, (state, { payload }) => ({
       ...state,
-      search: {
-        ...state.search,
+      filters: {
+        ...state.filters,
         advanced: {
-          ...state.search.advanced,
+          ...state.filters.advanced,
           open: payload,
         },
-      },
-    }))
-    // filters
-    .addCase(actions.setFiltersOpen, (state, { payload }) => ({
-      ...state,
-      filters: {
-        ...state.filters,
-        open: payload,
-      },
-    }))
-    .addCase(actions.setFiltersTab, (state, { payload }) => ({
-      ...state,
-      filters: {
-        ...state.filters,
-        tab: payload,
-      },
-    }))
-    .addCase(actions.setFiltersSearch, (state, { payload }) => ({
-      ...state,
-      filters: {
-        ...state.filters,
-        search: payload,
-      },
-    }))
-    .addCase(actions.setFiltersTags, (state, { payload }) => ({
-      ...state,
-      filters: {
-        ...state.filters,
-        tags: payload,
-      },
-    }))
-    .addCase(actions.setFiltersSelected, (state, { payload }) => {
-      const { key, list } = payload;
-      const selected = { ...state.filters.selected, [key]: list };
-      const filters = { ...state.filters, selected };
-
-      return {
-        ...state,
-        filters,
-      };
-    })
-    .addCase(actions.toggleFiltersSelected, (state, { payload }) => {
-      const { tab, tag } = payload;
-      const arr = [...state.filters.selected[tab]];
-
-      if (!arr.includes(tag.id)) {
-        arr.push(tag.id);
-      } else {
-        const index = arr.findIndex((s) => s === tag.id);
-        arr.splice(index, 1);
-      }
-
-      const selected = { ...state.filters.selected, [tab]: arr };
-      const filters = { ...state.filters, selected };
-      return {
-        ...state,
-        filters,
-      };
-    })
-    .addCase(actions.resetFiltersSelected, (state) => ({
-      ...state,
-      filters: {
-        ...state.filters,
-        search: initialState.filters.search,
-        selected: initialState.filters.selected,
       },
     }))
     // sort

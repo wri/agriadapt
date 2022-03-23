@@ -5,23 +5,22 @@ import { EXPLORE_FILTERS } from '../constants';
 
 const ExploreDatasetsSearch = ({
   search,
-  value_chains,
   advanced,
-  setSearchAdvancedOpen,
+  setFiltersAdvancedOpen,
 }): JSX.Element => {
   const { VALUE_CHAINS } = EXPLORE_FILTERS;
   const { open: advOpen } = advanced;
 
   const handleCancel = () => {
-    setSearchAdvancedOpen(false);
+    setFiltersAdvancedOpen(false);
   };
 
   const handleSearch = () => {
-    setSearchAdvancedOpen(false);
+    setFiltersAdvancedOpen(false);
   };
 
   const handleClickAdvanced = () => {
-    setSearchAdvancedOpen(true);
+    setFiltersAdvancedOpen(true);
   };
 
   return (
@@ -48,11 +47,14 @@ const ExploreDatasetsSearch = ({
       )}
       {advOpen && (
         <>
-          {' '}
-          {Object.entries(EXPLORE_FILTERS).map(([k, v]) => (
+          {Object.entries(EXPLORE_FILTERS.ADVANCED).map(([k, v]) => (
             <div id={k}>
               {/* TODO: Translate */}
               <div>Filter Layers by {v['placeholder']}</div>
+              <SearchSelect
+                options={[]}
+                placeholder={v.placeholder} // TODO: Translate
+              />
             </div>
           ))}
           <div>
@@ -79,11 +81,6 @@ const ExploreDatasetsSearch = ({
           </div>
         </>
       )}
-      {/* <>Filter Layers by Timescale</>
-        <SearchSelect
-          options={[]}
-          placeholder={'Timescale'} // TODO: Translate
-        /> */}
     </>
   );
 };

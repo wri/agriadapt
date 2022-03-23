@@ -25,16 +25,18 @@ export const EXPLORE_FILTERS = {
     placeholder: 'Value Chains',
     options: ['Rice', 'Cotton', 'Coffee'],
   },
-  TIMESCALE: {
-    placeholder: 'Timescale',
-  },
-  REGION: {
-    placeholder: 'Region',
-  },
-  EMISSION_SCENARIO: {
-    placeholder: 'Emission Scenario',
-  },
-  SUPPLY_CHAIN_NODE: {
-    placeholder: 'Supply Chain Node',
+  ADVANCED: {
+    TIMESCALE: {
+      placeholder: 'Timescale',
+    },
+    REGION: {
+      placeholder: 'Region',
+    },
+    EMISSION_SCENARIO: {
+      placeholder: 'Emission Scenario',
+    },
+    SUPPLY_CHAIN_NODE: {
+      placeholder: 'Supply Chain Node',
+    },
   },
 };
