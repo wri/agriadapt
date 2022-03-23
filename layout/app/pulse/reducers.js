@@ -1,6 +1,8 @@
+import { createReducer } from "@reduxjs/toolkit";
+import initialState from "modules/dashboards/initial-state";
 import * as actions from "./actions";
 
-export default {
+const reducers = createReducer(initialState, {
   [actions.setLayers]: (state, action) => ({
     ...state,
     layers: action.payload,
@@ -46,4 +48,6 @@ export default {
   }),
 
   [actions.resetLayerPoints]: (state) => ({ ...state, layerPoints: [] }),
-};
+});
+
+export default reducers;

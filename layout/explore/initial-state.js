@@ -17,7 +17,7 @@ export default {
     search: '',
     value_chains: [],
     advanced: {
-      open: true,
+      open: false,
       timescale: [],
       region: [],
       emission_scenario: [],

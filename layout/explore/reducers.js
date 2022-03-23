@@ -57,7 +57,7 @@ export default createReducer(initialState, (builder) => {
       },
     }))
     .addCase(actions.setDatasetsMode, (state, { payload }) => {
-      logEvent("Explore Menu", "Change dataset view", payload);
+      logEvent('Explore Menu', 'Change dataset view', payload);
 
       return {
         ...state,
@@ -72,6 +72,17 @@ export default createReducer(initialState, (builder) => {
       datasets: {
         ...state.datasets,
         selected: payload,
+      },
+    }))
+    // search
+    .addCase(actions.setSearchAdvancedOpen, (state, { payload }) => ({
+      ...state,
+      search: {
+        ...state.search,
+        advanced: {
+          ...state.search.advanced,
+          open: payload,
+        },
       },
     }))
     // filters
@@ -277,8 +288,8 @@ export default createReducer(initialState, (builder) => {
         });
         if (layerGroups[0].layers.length) {
           logEvent(
-            "Explore Map",
-            "Add layer",
+            'Explore Map',
+            'Add layer',
             `${layerGroups[0].layers[0].name} [${layerGroups[0].layers[0].id}]`
           );
         }
@@ -540,7 +551,7 @@ export default createReducer(initialState, (builder) => {
       sidebar: {
         ...state.sidebar,
         selectedTab: payload,
-      }
+      },
     }))
     // tags
     .addCase(actions.setTagsTooltip, (state, { payload }) => ({

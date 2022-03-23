@@ -167,6 +167,9 @@ export const fetchMapLayerGroups = createThunkAction(
   }
 );
 
+// SEARCH
+export const setSearchAdvancedOpen = createAction("EXPLORE/setSearchAdvancedOpen");
+
 // FILTERS
 export const setFiltersOpen = createAction("EXPLORE/setFiltersOpen");
 export const setFiltersTab = createAction("EXPLORE/setFiltersTab");
