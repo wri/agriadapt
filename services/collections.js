@@ -1,8 +1,8 @@
-import WRISerializer from 'wri-json-api-serializer';
+import WRISerializer from "wri-json-api-serializer";
 
 // utils
-import { WRIAPI } from 'utils/axios';
-import { logger } from 'utils/logs';
+import { WRIAPI } from "utils/axios";
+import { logger } from "utils/logs";
 
 /**
  * Retrieve all collections from a user
@@ -10,38 +10,34 @@ import { logger } from 'utils/logs';
  * @param {String} token User's token
  * @param {Object} params Request optional parameters
  */
-export const fetchAllCollections = (
-  token,
-  params = {},
-  _meta = false,
-) => {
-  logger.info('Fetch all collections');
-  return WRIAPI.get('/v1/collection', {
+export const fetchAllCollections = (token, params = {}, _meta = false) => {
+  logger.info("Fetch all collections");
+  return WRIAPI.get("/v1/collection", {
     headers: {
       Authorization: token,
-      'Upgrade-Insecure-Requests': 1,
+      "Upgrade-Insecure-Requests": 1,
     },
     params: {
       env: process.env.NEXT_PUBLIC_API_ENV,
       application: process.env.NEXT_PUBLIC_APPLICATIONS,
       ...params,
     },
-    ..._meta && {
+    ...(_meta && {
       transformResponse: [].concat(
         WRIAPI.defaults.transformResponse,
-        (({ data, meta }) => ({
+        ({ data, meta }) => ({
           collections: data,
           meta,
-        })),
+        })
       ),
-    },
+    }),
   })
     .then((response) => {
       const { status, statusText, data } = response;
       const { collections, meta } = data;
 
       if (status >= 300) {
-        logger.error('Error fetching collections:', `${status}: ${statusText}`);
+        logger.error("Error fetching collections:", `${status}: ${statusText}`);
         throw new Error(statusText);
       }
 
@@ -56,7 +52,9 @@ export const fetchAllCollections = (
     .catch(({ response }) => {
       const { status, statusText } = response;
       logger.error(`Error fetching all collections: ${status}: ${statusText}`);
-      throw new Error(`Error fetching all collections: ${status}: ${statusText}`);
+      throw new Error(
+        `Error fetching all collections: ${status}: ${statusText}`
+      );
     });
 };
 /**
@@ -66,16 +64,12 @@ export const fetchAllCollections = (
  * @param {String} collectionId Id of the collection we are asking for.
  * @param {Object} params Request parameters
  */
-export const fetchCollection = (
-  token,
-  collectionId,
-  params = {},
-) => {
+export const fetchCollection = (token, collectionId, params = {}) => {
   logger.info(`Fetch collection ${collectionId}`);
   return WRIAPI.get(`/v1/collection/${collectionId}`, {
     headers: {
       Authorization: token,
-      'Upgrade-Insecure-Requests': 1,
+      "Upgrade-Insecure-Requests": 1,
     },
     params: {
       env: process.env.NEXT_PUBLIC_API_ENV,
@@ -86,8 +80,12 @@ export const fetchCollection = (
     .then((response) => WRISerializer(response.data))
     .catch(({ response }) => {
       const { status, statusText } = response;
-      logger.error(`Error fetching collection ${collectionId}: ${status}: ${statusText}`);
-      throw new Error(`Error fetching collection ${collectionId}: ${status}: ${statusText}`);
+      logger.error(
+        `Error fetching collection ${collectionId}: ${status}: ${statusText}`
+      );
+      throw new Error(
+        `Error fetching collection ${collectionId}: ${status}: ${statusText}`
+      );
     });
 };
 
@@ -98,18 +96,20 @@ export const fetchCollection = (
  * @param {Object} data collection data
  */
 export const createCollection = (token, data = {}) => {
-  logger.info('Create collection');
-  return WRIAPI.post('v1/collection',
+  logger.info("Create collection");
+  return WRIAPI.post(
+    "v1/collection",
     {
       env: process.env.NEXT_PUBLIC_API_ENV,
       ...data,
     },
     {
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
         Authorization: token,
       },
-    })
+    }
+  )
     .then((response) => WRISerializer(response.data))
     .catch(({ response }) => {
       const { status, statusText } = response;
@@ -117,7 +117,9 @@ export const createCollection = (token, data = {}) => {
       // we shouldn't assume 400 is duplicated collection,
       // but there's no another way to find it out at this moment
       if (status === 400) {
-        throw new Error(`Collection duplicated. The collection "${data.name}" already exists.`);
+        throw new Error(
+          `Collection duplicated. The collection "${data.name}" already exists.`
+        );
       } else {
         throw new Error(`Error creating collection: ${status}: ${statusText}`);
       }
@@ -138,8 +140,12 @@ export const deleteCollection = (token, collectionId) => {
     .then((response) => WRISerializer(response.data))
     .catch(({ response }) => {
       const { status, statusText } = response;
-      logger.error(`Error deleting collection ${collectionId}: ${status}: ${statusText}`);
-      throw new Error(`Error deleting collection ${collectionId}: ${status}: ${statusText}`);
+      logger.error(
+        `Error deleting collection ${collectionId}: ${status}: ${statusText}`
+      );
+      throw new Error(
+        `Error deleting collection ${collectionId}: ${status}: ${statusText}`
+      );
     });
 };
 
@@ -152,22 +158,28 @@ export const deleteCollection = (token, collectionId) => {
  */
 export const updateCollection = (token, collectionId, data) => {
   logger.info(`Update collection ${collectionId}`);
-  return WRIAPI.patch(`/v1/collection/${collectionId}`,
+  return WRIAPI.patch(
+    `/v1/collection/${collectionId}`,
     {
       env: process.env.NEXT_PUBLIC_API_ENV,
       ...data,
     },
     {
       headers: {
-        'content-type': 'application/json',
+        "content-type": "application/json",
         Authorization: token,
       },
-    })
+    }
+  )
     .then((response) => WRISerializer(response.data))
     .catch(({ response }) => {
       const { status, statusText } = response;
-      logger.error(`Error updating collection ${collectionId}: ${status}: ${statusText}`);
-      throw new Error(`Error updating collection ${collectionId}: ${status}: ${statusText}`);
+      logger.error(
+        `Error updating collection ${collectionId}: ${status}: ${statusText}`
+      );
+      throw new Error(
+        `Error updating collection ${collectionId}: ${status}: ${statusText}`
+      );
     });
 };
 
@@ -187,17 +199,19 @@ export const addResourceToCollection = (token, collectionId, resource = {}) => {
     { ...resource },
     {
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
         Authorization: token,
       },
-    },
+    }
   )
     .then((response) => WRISerializer(response.data))
     .catch(({ response }) => {
       const { status, statusText } = response;
-      logger.error(`Error adding resource to collection ${collectionId}: ${status}: ${statusText}`);
+      logger.error(
+        `Error adding resource to collection ${collectionId}: ${status}: ${statusText}`
+      );
       throw new Error(
-        `Error adding resource to collection ${collectionId}: ${status}: ${statusText}`,
+        `Error adding resource to collection ${collectionId}: ${status}: ${statusText}`
       );
     });
 };
@@ -209,21 +223,27 @@ export const addResourceToCollection = (token, collectionId, resource = {}) => {
  * @param {String} collectionId Id of the collection to be edited
  * @param {Object} resource Resource to be removed from the collection
  */
-export const removeResourceFromCollection = (token, collectionId, resource = {}) => {
+export const removeResourceFromCollection = (
+  token,
+  collectionId,
+  resource = {}
+) => {
   logger.info(`Remove resource from collection ${collectionId}`);
   const { type, id } = resource;
-  return WRIAPI.delete(`/v1/collection/${collectionId}/resource/${type}/${id}`,
+  return WRIAPI.delete(
+    `/v1/collection/${collectionId}/resource/${type}/${id}`,
     {
       headers: { Authorization: token },
-    })
+    }
+  )
     .then((response) => WRISerializer(response.data))
     .catch(({ response }) => {
       const { status, statusText } = response;
       logger.error(
-        `Error removing resource from collection ${collectionId}: ${status}: ${statusText}`,
+        `Error removing resource from collection ${collectionId}: ${status}: ${statusText}`
       );
       throw new Error(
-        `Error removing resource from collection ${collectionId}: ${status}: ${statusText}`,
+        `Error removing resource from collection ${collectionId}: ${status}: ${statusText}`
       );
     });
 };

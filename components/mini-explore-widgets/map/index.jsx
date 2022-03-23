@@ -1,27 +1,37 @@
-import { useState, useCallback, useReducer, useEffect, useMemo, useRef } from 'react';
-import PropTypes from 'prop-types';
-import { useDebouncedCallback } from 'use-debounce';
-import { v4 as uuidv4 } from 'uuid';
+import {
+  useState,
+  useCallback,
+  useReducer,
+  useEffect,
+  useMemo,
+  useRef,
+} from "react";
+import PropTypes from "prop-types";
+import { useDebouncedCallback } from "use-debounce";
+import { v4 as uuidv4 } from "uuid";
 
 // hooks
-import { useGeostore } from 'hooks/geostore';
+import { useGeostore } from "hooks/geostore";
 
 // constants
-import { USER_AREA_LAYER_TEMPLATES, BASEMAP_LABEL_DICTIONARY } from 'components/map/constants';
+import {
+  USER_AREA_LAYER_TEMPLATES,
+  BASEMAP_LABEL_DICTIONARY,
+} from "components/map/constants";
 
 // services
-import { fetchLayer } from 'services/layer';
+import { fetchLayer } from "services/layer";
 
 // utils
-import { getUserAreaLayer, getInteractiveLayers } from 'components/map/utils';
-import { getLayerGroups } from 'utils/layers';
-import { logEvent } from 'utils/analytics';
+import { getUserAreaLayer, getInteractiveLayers } from "components/map/utils";
+import { getLayerGroups } from "utils/layers";
+import { logEvent } from "utils/analytics";
 
 // components
-import MiniExploreMap from 'components/mini-explore/map/component';
+import MiniExploreMap from "components/mini-explore/map/component";
 
 // reducers
-import { initialState, mapSlice } from './reducer';
+import { initialState, mapSlice } from "./reducer";
 
 const {
   setViewport,
@@ -81,10 +91,10 @@ export default function MiniExploreMapContainer({
         setMapLayerGroupVisibility({
           dataset: { id: l.dataset },
           visibility,
-        }),
+        })
       );
     },
-    [dispatch],
+    [dispatch]
   );
 
   const onChangeLayer = useCallback(
@@ -95,16 +105,16 @@ export default function MiniExploreMapContainer({
         setMapLayerGroupActive({
           dataset: { id: l.dataset },
           active: l.id,
-        }),
+        })
       );
 
       logEvent(
-        'Mini Explore Map',
-        'Clicks Another Layer from Map Legend Tooltip',
-        `${l.name} [${l.id}]`,
+        "Mini Explore Map",
+        "Clicks Another Layer from Map Legend Tooltip",
+        `${l.name} [${l.id}]`
       );
     },
-    [dispatch],
+    [dispatch]
   );
 
   const onRemoveLayer = useCallback(
@@ -113,19 +123,19 @@ export default function MiniExploreMapContainer({
         toggleMapLayerGroup({
           dataset: { id: l.dataset },
           toggle: false,
-        }),
+        })
       );
 
       removeLayerParametrization(l.id);
     },
-    [dispatch],
+    [dispatch]
   );
 
   const onChangeOrder = useCallback(
     (datasetIds) => {
       dispatch(setMapLayerGroupsOrder({ datasetIds }));
     },
-    [dispatch],
+    [dispatch]
   );
 
   const onChangeLayerDate = useCallback(
@@ -152,10 +162,10 @@ export default function MiniExploreMapContainer({
               },
             }),
           },
-        }),
+        })
       );
     },
-    [dispatch],
+    [dispatch]
   );
 
   const onChangeLayerTimeLine = useCallback(
@@ -166,22 +176,22 @@ export default function MiniExploreMapContainer({
             id: l.dataset,
           },
           active: l.id,
-        }),
+        })
       );
       logEvent(
-        'Mini Explore Map',
-        'Clicks Another Layer from Map Legend Timeline',
-        `${l.name} [${l.id}]`,
+        "Mini Explore Map",
+        "Clicks Another Layer from Map Legend Timeline",
+        `${l.name} [${l.id}]`
       );
     },
-    [dispatch],
+    [dispatch]
   );
 
   const onChangeInteractiveLayer = useCallback(
     (selected) => {
       dispatch(setMapLayerGroupsInteractionSelected(selected));
     },
-    [dispatch],
+    [dispatch]
   );
 
   const handleClosePopup = useCallback(() => {
@@ -196,7 +206,7 @@ export default function MiniExploreMapContainer({
     (_boundaries) => {
       dispatch(setBoundaries(_boundaries));
     },
-    [dispatch],
+    [dispatch]
   );
 
   const handleZoom = useCallback(
@@ -207,19 +217,20 @@ export default function MiniExploreMapContainer({
           // transitionDuration is always set to avoid mixing
           // durations of other actions (like flying)
           transitionDuration: 250,
-        }),
+        })
       );
     },
-    [dispatch],
+    [dispatch]
   );
 
   const handleBasemap = useCallback(
     (_basemap) => {
       const { id } = _basemap;
       dispatch(setBasemap(id));
-      if (labelsId !== 'none') dispatch(setLabels(BASEMAP_LABEL_DICTIONARY[id]));
+      if (labelsId !== "none")
+        dispatch(setLabels(BASEMAP_LABEL_DICTIONARY[id]));
     },
-    [dispatch, labelsId],
+    [dispatch, labelsId]
   );
 
   const handleResetView = useCallback(() => {
@@ -230,7 +241,7 @@ export default function MiniExploreMapContainer({
         // transitionDuration is always set to avoid mixing
         // durations of other actions (like flying)
         transitionDuration: 250,
-      }),
+      })
     );
   }, [dispatch]);
 
@@ -238,12 +249,12 @@ export default function MiniExploreMapContainer({
     ({ value }) => {
       dispatch(setLabels(value));
     },
-    [dispatch],
+    [dispatch]
   );
 
   const handleMapCursor = useCallback(({ isHovering }) => {
-    if (isHovering) return 'pointer';
-    return 'grab';
+    if (isHovering) return "pointer";
+    return "grab";
   }, []);
 
   const onChangeInfo = useCallback((layer) => {
@@ -305,7 +316,7 @@ export default function MiniExploreMapContainer({
     {
       enabled: !!areaOfInterest,
       refetchOnWindowFocus: false,
-    },
+    }
   );
 
   useEffect(() => {
@@ -319,7 +330,7 @@ export default function MiniExploreMapContainer({
         options: {
           padding: 50,
         },
-      }),
+      })
     );
 
     return true;
@@ -338,7 +349,7 @@ export default function MiniExploreMapContainer({
           geojson,
           minZoom,
         },
-        USER_AREA_LAYER_TEMPLATES.explore,
+        USER_AREA_LAYER_TEMPLATES.explore
       );
 
       aoiLayer = {
@@ -375,13 +386,16 @@ export default function MiniExploreMapContainer({
     ];
   }, [layerGroups, geostore, mask, params, minZoom]);
 
-  const activeInteractiveLayers = useMemo(() => getInteractiveLayers(activeLayers), [activeLayers]);
+  const activeInteractiveLayers = useMemo(
+    () => getInteractiveLayers(activeLayers),
+    [activeLayers]
+  );
 
   const handleClickLayer = useCallback(
     (stuff) => {
       if (onClickLayer) onClickLayer(stuff, mapRef.current);
     },
-    [mapRef, onClickLayer],
+    [mapRef, onClickLayer]
   );
 
   return (

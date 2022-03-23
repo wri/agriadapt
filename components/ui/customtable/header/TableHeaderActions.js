@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import TableFilters from './TableFilters';
-import TableSorts from './TableSorts';
+import React from "react";
+import PropTypes from "prop-types";
+import TableFilters from "./TableFilters";
+import TableSorts from "./TableSorts";
 
 function TableHeaderActions(props) {
   return (
@@ -11,12 +11,11 @@ function TableHeaderActions(props) {
           <TableSorts {...props} />
         </li>
 
-        {props.filters
-          && (
+        {props.filters && (
           <li className="action filter-action">
             <TableFilters {...props} />
           </li>
-          )}
+        )}
       </ul>
     </div>
   );

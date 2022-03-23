@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
-import Link from 'next/link';
+import React from "react";
+import PropTypes from "prop-types";
+import classnames from "classnames";
+import Link from "next/link";
 
 export default class Tabs extends React.Component {
   constructor(props) {
@@ -18,7 +18,7 @@ export default class Tabs extends React.Component {
   /**
    * UI EVENTS
    * - onChangeTab
-  */
+   */
   onChangeTab(selected) {
     this.setState({ selected }, () => {
       if (this.props.onChange) this.props.onChange(selected);
@@ -32,39 +32,41 @@ export default class Tabs extends React.Component {
     return (
       <header
         className={classnames({
-          'c-tabs': true,
+          "c-tabs": true,
           [className]: !!className,
         })}
       >
         <div className="row l-row">
           {options.map((option) => {
             const btnClasses = classnames({
-              '-active': option.value === selected,
-              '-desktopOnly': option.desktopOnly,
+              "-active": option.value === selected,
+              "-desktopOnly": option.desktopOnly,
             });
 
             return (
-              <div
-                key={option.value}
-                className="column shrink"
-              >
-                {option.route
-                  && (
+              <div key={option.value} className="column shrink">
+                {option.route && (
                   <Link href={option.route}>
                     <a className={`tabs-btn ${btnClasses}`}>
                       <span className="title">{option.label}</span>
-                      {!!option.number && <span className="number">{option.number}</span>}
+                      {!!option.number && (
+                        <span className="number">{option.number}</span>
+                      )}
                     </a>
                   </Link>
-                  )}
+                )}
 
-                {!option.route
-                  && (
-                  <button className={`tabs-btn ${btnClasses}`} onClick={() => this.onChangeTab(option.value)}>
+                {!option.route && (
+                  <button
+                    className={`tabs-btn ${btnClasses}`}
+                    onClick={() => this.onChangeTab(option.value)}
+                  >
                     <span className="title">{option.label}</span>
-                    {!!option.number && <span className="number">{option.number}</span>}
+                    {!!option.number && (
+                      <span className="number">{option.number}</span>
+                    )}
                   </button>
-                  )}
+                )}
               </div>
             );
           })}

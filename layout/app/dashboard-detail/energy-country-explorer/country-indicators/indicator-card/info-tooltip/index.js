@@ -1,3 +1,3 @@
-import InfoTooltipComponent from './component';
+import InfoTooltipComponent from "./component";
 
 export default InfoTooltipComponent;

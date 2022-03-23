@@ -1,7 +1,7 @@
-import { createSelector } from 'reselect';
+import { createSelector } from "reselect";
 
 // utils
-import { getDateConsideringTimeZone } from 'utils/utils';
+import { getDateConsideringTimeZone } from "utils/utils";
 
 const getDatasets = (state) => state.explore.datasets.list;
 const getIsServer = (state) => state.common.isServer;
@@ -17,15 +17,16 @@ export const getUpdatedDatasets = createSelector(
       ..._dataset,
       dateLastUpdated: getDateConsideringTimeZone(_dataset.dataLastUpdated),
     }));
-  },
+  }
 );
 
 export const getSelectedTagsWithData = createSelector(
   [getTags, getSelectedTags],
-  (_tags, _selectedTags) => _selectedTags.map((t) => ({
-    id: t,
-    label: _tags.find((e) => e.id === t).label,
-  })),
+  (_tags, _selectedTags) =>
+    _selectedTags.map((t) => ({
+      id: t,
+      label: _tags.find((e) => e.id === t).label,
+    }))
 );
 
 export default { getUpdatedDatasets, getSelectedTagsWithData };

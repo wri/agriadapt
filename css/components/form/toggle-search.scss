@@ -1,7 +1,6 @@
 @use "sass:math";
 
 .toggle-search {
-
   .c-field-search {
     background-color: $white;
     border-radius: 4px;
@@ -15,7 +14,7 @@
     margin: 0;
     width: 95px;
 
-    font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans;
+    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans;
     font-size: $font-size-normal;
     color: $charcoal-grey;
 
@@ -32,7 +31,7 @@
     border: 1px solid $border-color-2;
   }
 
-  .c-icon  {
+  .c-icon {
     position: absolute;
     top: 50%;
     right: 5px;

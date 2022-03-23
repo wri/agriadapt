@@ -48,7 +48,11 @@ $switch-width: 28px;
     }
 
     // Switch position
-    &.-left > span { transform: translate(0,0); }
-    &.-right > span { transform: translate(math.div($switch-width, 2),0); }
+    &.-left > span {
+      transform: translate(0, 0);
+    }
+    &.-right > span {
+      transform: translate(math.div($switch-width, 2), 0);
+    }
   }
 }

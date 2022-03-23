@@ -1,4 +1,4 @@
-import { createSelector } from 'reselect';
+import { createSelector } from "reselect";
 
 /**
  * Return the list of layer groups with their associated data
@@ -10,23 +10,27 @@ import { createSelector } from 'reselect';
  */
 export const getLayerGroups = (datasets, layerGroups) => {
   if (!datasets.length) return [];
-  return layerGroups.map((layerGroup, index) => {
-    const dataset = datasets.find((d) => d.id === layerGroup.dataset);
+  return layerGroups
+    .map((layerGroup, index) => {
+      const dataset = datasets.find((d) => d.id === layerGroup.dataset);
 
-    // If for some reason the dataset is not found,
-    // we skip it
-    if (!dataset) return null;
+      // If for some reason the dataset is not found,
+      // we skip it
+      if (!dataset) return null;
 
-    const layers = [...layerGroup.layers].map((layer) => {
-      const layerData = dataset.attributes.layer.find((l) => l.id === layer.id);
-      return {
-        ...layer,
-        ...layerData ? layerData.attributes || {} : {},
-        order: layerGroups.length - index, // Like z-index: higher = on top,
-      };
-    });
-    return { ...layerGroup, layers };
-  }).filter((layerGroup) => layerGroup !== null);
+      const layers = [...layerGroup.layers].map((layer) => {
+        const layerData = dataset.attributes.layer.find(
+          (l) => l.id === layer.id
+        );
+        return {
+          ...layer,
+          ...(layerData ? layerData.attributes || {} : {}),
+          order: layerGroups.length - index, // Like z-index: higher = on top,
+        };
+      });
+      return { ...layerGroup, layers };
+    })
+    .filter((layerGroup) => layerGroup !== null);
 };
 
 const datasets = ({ explore }) => explore.datasets.list;

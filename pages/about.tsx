@@ -1,9 +1,7 @@
 import LayoutAbout from "layout/about";
 
 const AboutPage = () => {
-    return (
-        <LayoutAbout />
-    )
-}
+  return <LayoutAbout />;
+};
 
 export default AboutPage;

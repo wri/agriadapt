@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import React from "react";
+import PropTypes from "prop-types";
+import classnames from "classnames";
 
 // components
-import InView from 'components/in-view';
-import WidgetCard from '../card';
+import InView from "components/in-view";
+import WidgetCard from "../card";
 
 const WidgetCardList = (props) => {
   const {
@@ -22,33 +22,24 @@ const WidgetCardList = (props) => {
   } = props;
 
   const componentClass = classnames({
-    'c-widget-list': true,
+    "c-widget-list": true,
     [className]: !!className,
   });
 
   const columnClassName = classnames({
     column: true,
-    'small-12': true,
-    'medium-4': mode === 'grid',
+    "small-12": true,
+    "medium-4": mode === "grid",
   });
 
   return (
     <div className={componentClass}>
       <ul className="row">
         {widgets.map((widget) => (
-          <li
-            key={widget.id}
-            className={columnClassName}
-          >
-            <InView
-              triggerOnce
-              threshold={0.35}
-            >
+          <li key={widget.id} className={columnClassName}>
+            <InView triggerOnce threshold={0.35}>
               {({ ref, inView }) => (
-                <div
-                  ref={ref}
-                  className="card-container"
-                >
+                <div ref={ref} className="card-container">
                   {inView && (
                     <WidgetCard
                       widget={widget}
@@ -82,7 +73,7 @@ WidgetCardList.propTypes = {
   thumbnail: PropTypes.bool,
   clickable: PropTypes.bool,
   className: PropTypes.string,
-  mode: PropTypes.oneOf(['grid', 'list']).isRequired,
+  mode: PropTypes.oneOf(["grid", "list"]).isRequired,
   onWidgetClick: PropTypes.func.isRequired,
   onWidgetRemove: PropTypes.func.isRequired,
 };

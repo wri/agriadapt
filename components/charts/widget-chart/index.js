@@ -1,16 +1,14 @@
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
 // constants
-import {
-  getRWAdapter,
-} from 'utils/widget-editor';
+import { getRWAdapter } from "utils/widget-editor";
 
 // component
-import WidgetChart from './component';
+import WidgetChart from "./component";
 
 export default connect(
   (state) => ({
     RWAdapter: getRWAdapter(state),
   }),
-  null,
+  null
 )(WidgetChart);

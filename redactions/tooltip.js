@@ -1,12 +1,12 @@
 // CONSTANTS
-const TOOLTIP_TOGGLE = 'TOOLTIP_TOGGLE';
-const TOOLTIP_SET_CHILDREN = 'TOOLTIP_SET_CHILDREN';
-const TOOLTIP_LOADING = 'TOOLTIP_LOADING';
-const TOOLTIP_SET_CHILDREN_PROPS = 'TOOLTIP_SET_CHILDREN_PROPS';
-const TOOLTIP_SET_POSITION = 'TOOLTIP_SET_POSITION';
-const TOOLTIP_FOLLOW_TOGGLE = 'TOOLTIP_FOLLOW_TOGGLE';
-const TOOLTIP_DIRECTION = 'TOOLTIP_DIRECTION';
-const TOOLTIP_CLASSNAME = 'TOOLTIP_CLASSNAME';
+const TOOLTIP_TOGGLE = "TOOLTIP_TOGGLE";
+const TOOLTIP_SET_CHILDREN = "TOOLTIP_SET_CHILDREN";
+const TOOLTIP_LOADING = "TOOLTIP_LOADING";
+const TOOLTIP_SET_CHILDREN_PROPS = "TOOLTIP_SET_CHILDREN_PROPS";
+const TOOLTIP_SET_POSITION = "TOOLTIP_SET_POSITION";
+const TOOLTIP_FOLLOW_TOGGLE = "TOOLTIP_FOLLOW_TOGGLE";
+const TOOLTIP_DIRECTION = "TOOLTIP_DIRECTION";
+const TOOLTIP_CLASSNAME = "TOOLTIP_CLASSNAME";
 
 // REDUCER
 const initialState = {
@@ -14,8 +14,8 @@ const initialState = {
   children: null,
   loading: false,
   follow: false,
-  className: '',
-  direction: 'bottom',
+  className: "",
+  direction: "bottom",
   childrenProps: {},
   position: {
     x: 0,
@@ -34,7 +34,10 @@ export default function Tooltip(state = initialState, action) {
     case TOOLTIP_SET_CHILDREN_PROPS:
       return { ...state, childrenProps: action.payload };
     case TOOLTIP_SET_POSITION:
-      return { ...state, position: { x: action.payload.x, y: action.payload.y } };
+      return {
+        ...state,
+        position: { x: action.payload.x, y: action.payload.y },
+      };
     case TOOLTIP_FOLLOW_TOGGLE:
       return { ...state, follow: action.payload };
     case TOOLTIP_DIRECTION:
@@ -47,7 +50,8 @@ export default function Tooltip(state = initialState, action) {
 }
 
 export function setTooltipChildren(children) {
-  return (dispatch) => dispatch({ type: TOOLTIP_SET_CHILDREN, payload: children });
+  return (dispatch) =>
+    dispatch({ type: TOOLTIP_SET_CHILDREN, payload: children });
 }
 
 export function toggleTooltip(opened, opts = {}) {
@@ -69,7 +73,10 @@ export function toggleTooltip(opened, opts = {}) {
         dispatch({ type: TOOLTIP_SET_CHILDREN, payload: opts.children });
 
         if (opts.childrenProps) {
-          dispatch({ type: TOOLTIP_SET_CHILDREN_PROPS, payload: opts.childrenProps });
+          dispatch({
+            type: TOOLTIP_SET_CHILDREN_PROPS,
+            payload: opts.childrenProps,
+          });
         }
       }
 
@@ -119,5 +126,6 @@ export function tooltipLoading(loading) {
 }
 
 export function setTooltipPosition({ x, y }) {
-  return (dispatch) => dispatch({ type: TOOLTIP_SET_POSITION, payload: { x, y } });
+  return (dispatch) =>
+    dispatch({ type: TOOLTIP_SET_POSITION, payload: { x, y } });
 }

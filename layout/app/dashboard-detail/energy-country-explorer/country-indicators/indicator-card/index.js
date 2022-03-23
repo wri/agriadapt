@@ -1,3 +1,3 @@
-import IndicatorCardComponent from './component';
+import IndicatorCardComponent from "./component";
 
 export default IndicatorCardComponent;

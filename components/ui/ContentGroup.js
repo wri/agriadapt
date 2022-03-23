@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
 export default class ContentGroup extends React.Component {
   static propTypes = {
@@ -17,7 +17,7 @@ export default class ContentGroup extends React.Component {
   renderComponent(index, values = {}) {
     const { componentProps } = this.props;
     const newComponentProps = { ...componentProps, index, values };
-    return (<this.props.component key={index} {...newComponentProps} />);
+    return <this.props.component key={index} {...newComponentProps} />;
   }
 
   render() {

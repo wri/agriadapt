@@ -1,12 +1,12 @@
-import { useState, useMemo, useCallback } from 'react';
-import classnames from 'classnames';
+import { useState, useMemo, useCallback } from "react";
+import classnames from "classnames";
 
-import Spinner from 'components/ui/Spinner';
-import WidgetHeader from '../../header';
-import WidgetInfo from '../../info';
-import WidgetCaption from '../../caption';
+import Spinner from "components/ui/Spinner";
+import WidgetHeader from "../../header";
+import WidgetInfo from "../../info";
+import WidgetCaption from "../../caption";
 
-import type { APIWidgetSpec } from 'types/widget';
+import type { APIWidgetSpec } from "types/widget";
 
 export interface EmbedTypeWidgetProps {
   widget: APIWidgetSpec;
@@ -50,12 +50,12 @@ const EmbedTypeWidget = ({
           </div>
           <div
             className={classnames(
-              'relative flex h-full overflow-x-auto overflow-y-hidden widget-container grow',
+              "relative flex h-full overflow-x-auto overflow-y-hidden widget-container grow",
               {
-                'border-0': !isInfoWidgetVisible,
-                'border border-gray-light': isInfoWidgetVisible,
-                'rounded-none': caption,
-              },
+                "border-0": !isInfoWidgetVisible,
+                "border border-gray-light": isInfoWidgetVisible,
+                "rounded-none": !!caption,
+              }
             )}
             style={{
               height: 400,

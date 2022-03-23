@@ -1,18 +1,16 @@
-import { PureComponent } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { PureComponent } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
 // components
-import LayerMenuDropdown from 'layout/app/pulse/layer-menu-dropdown';
-import LayerMenuNative from 'layout/app/pulse/layer-menu-native';
+import LayerMenuDropdown from "layout/app/pulse/layer-menu-dropdown";
+import LayerMenuNative from "layout/app/pulse/layer-menu-native";
 
 // utils
-import { logEvent } from 'utils/analytics';
+import { logEvent } from "utils/analytics";
 
 // lib
-import {
-  Media,
-} from 'lib/media';
+import { Media } from "lib/media";
 
 class LayerMenuComponent extends PureComponent {
   handleLayerClick(layer) {
@@ -30,7 +28,7 @@ class LayerMenuComponent extends PureComponent {
     this.props.resetLayerPoints();
     this.props.toggleActiveLayer({
       id,
-      threedimensional: layer['3d'],
+      threedimensional: layer["3d"],
       markerType,
       basemap,
       contextLayers,
@@ -40,17 +38,16 @@ class LayerMenuComponent extends PureComponent {
       rotatableGlobe,
       initialPosition,
     });
-    logEvent('Planet Pulse', 'Choose layer to view', layer.label);
+    logEvent("Planet Pulse", "Choose layer to view", layer.label);
   }
 
   createItemGroup(group) {
     const { layerActive } = this.props;
-    const activeGroup = layerActive && layerActive.group === group.label ? '-active' : '';
+    const activeGroup =
+      layerActive && layerActive.group === group.label ? "-active" : "";
     return (
       <li key={`item-group-${group.label}`} className={activeGroup}>
-        <span className="name">
-          {group.label}
-        </span>
+        <span className="name">{group.label}</span>
         <LayerMenuDropdown
           layers={group.layers}
           triggerClick={(layer) => this.handleLayerClick(layer)}
@@ -64,17 +61,13 @@ class LayerMenuComponent extends PureComponent {
     if (layersGroup.length > 0) {
       return (
         <>
-          <Media
-            at="sm"
-          >
+          <Media at="sm">
             <LayerMenuNative
               layers={layersGroup[0].layers}
               triggerClick={(layer) => this.handleLayerClick(layer)}
             />
           </Media>
-          <Media
-            greaterThanOrEqual="md"
-          >
+          <Media greaterThanOrEqual="md">
             <div className="c-layer-menu">
               <div className="l-container">
                 <ul className="layer-menu-list">

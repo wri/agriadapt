@@ -1,3 +1,3 @@
-import NewsletterConfirmationModal from './component';
+import NewsletterConfirmationModal from "./component";
 
 export default NewsletterConfirmationModal;

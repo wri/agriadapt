@@ -1,3 +1,3 @@
-import RankingBarComponent from './component';
+import RankingBarComponent from "./component";
 
 export default RankingBarComponent;

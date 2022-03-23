@@ -1,8 +1,8 @@
-import WRISerializer from 'wri-json-api-serializer';
+import WRISerializer from "wri-json-api-serializer";
 
 // utils
-import { WRIAPI } from 'utils/axios';
-import { logger } from 'utils/logs';
+import { WRIAPI } from "utils/axios";
+import { logger } from "utils/logs";
 
 /**
  * Fetch partners according to params and headers.
@@ -12,8 +12,8 @@ import { logger } from 'utils/logs';
  * @returns {Object[]} array of serialized partners.
  */
 export const fetchPartners = (params = {}, headers = {}) => {
-  logger.info('Fetch partners');
-  return WRIAPI.get('/v1/partner', {
+  logger.info("Fetch partners");
+  return WRIAPI.get("/v1/partner", {
     params: {
       env: process.env.NEXT_PUBLIC_API_ENV,
       application: process.env.NEXT_PUBLIC_APPLICATIONS,
@@ -25,12 +25,18 @@ export const fetchPartners = (params = {}, headers = {}) => {
   })
     .then((response) => {
       const { status, statusText, data } = response;
-      logger.debug(`Fetched partners: ${status} - ${statusText}: ${JSON.stringify(data)}`);
+      logger.debug(
+        `Fetched partners: ${status} - ${statusText}: ${JSON.stringify(data)}`
+      );
       return WRISerializer(data);
     })
     .catch(({ response }) => {
       const { status, data } = response;
-      throw new Error(`Error fetching partners: ${data?.errors[0]?.detail || 'Error not defined'} – ${status}`);
+      throw new Error(
+        `Error fetching partners: ${
+          data?.errors[0]?.detail || "Error not defined"
+        } – ${status}`
+      );
     });
 };
 
@@ -44,17 +50,14 @@ export const fetchPartners = (params = {}, headers = {}) => {
  */
 export const fetchPartner = (id, params = {}, headers = {}) => {
   logger.info(`Fetch partner ${id}`);
-  return WRIAPI.get(
-    `/v1/partner/${id}`,
-    {
-      headers: { ...headers },
-      params: {
-        env: process.env.NEXT_PUBLIC_API_ENV,
-        application: process.env.NEXT_PUBLIC_APPLICATIONS,
-        ...params,
-      },
+  return WRIAPI.get(`/v1/partner/${id}`, {
+    headers: { ...headers },
+    params: {
+      env: process.env.NEXT_PUBLIC_API_ENV,
+      application: process.env.NEXT_PUBLIC_APPLICATIONS,
+      ...params,
     },
-  )
+  })
     .then((response) => WRISerializer(response.data))
     .catch((response) => {
       const { status, statusText } = response;
@@ -73,14 +76,22 @@ export const fetchPartner = (id, params = {}, headers = {}) => {
  * @param {Object} headers - headers sent to the API.
  * @returns {Object} Partner object.
  */
-export const updatePartner = (id, partner, token, params = {}, headers = {}) => {
+export const updatePartner = (
+  id,
+  partner,
+  token,
+  params = {},
+  headers = {}
+) => {
   logger.info(`Update partner ${id}`);
-  return WRIAPI.patch(`/v1/partner/${id}`,
+  return WRIAPI.patch(
+    `/v1/partner/${id}`,
     { ...partner },
     {
       params: { ...params },
       headers: { ...headers, Authorization: token },
-    })
+    }
+  )
     .then((response) => WRISerializer(response.data))
     .catch(({ response }) => {
       const { status, statusText } = response;
@@ -99,8 +110,9 @@ export const updatePartner = (id, partner, token, params = {}, headers = {}) => 
  * @returns {Object} Partner object.
  */
 export const createPartner = (partner, token, params = {}, headers = {}) => {
-  logger.info('Create partner');
-  return WRIAPI.post('/v1/partner',
+  logger.info("Create partner");
+  return WRIAPI.post(
+    "/v1/partner",
     { ...partner },
     {
       params: {
@@ -109,7 +121,8 @@ export const createPartner = (partner, token, params = {}, headers = {}) => {
         ...params,
       },
       headers: { ...headers, Authorization: token },
-    })
+    }
+  )
     .then((response) => WRISerializer(response.data))
     .catch(({ response }) => {
       const { status, statusText } = response;
@@ -128,24 +141,20 @@ export const createPartner = (partner, token, params = {}, headers = {}) => {
  */
 export const deletePartner = (id, token, params = {}, headers = {}) => {
   logger.info(`Delete partner ${id}`);
-  return WRIAPI.delete(
-    `/v1/partner/${id}`,
-    {
-      params: {
-        application: process.env.NEXT_PUBLIC_APPLICATIONS,
-        ...params,
-      },
-      headers: {
-        ...headers,
-        Authorization: token,
-      },
+  return WRIAPI.delete(`/v1/partner/${id}`, {
+    params: {
+      application: process.env.NEXT_PUBLIC_APPLICATIONS,
+      ...params,
     },
-  )
-    .catch(({ response }) => {
-      const { status, statusText } = response;
-      logger.error(`Error deleting partner: ${id} ${status}: ${statusText}`);
-      throw new Error(`Error deleting partner: ${id} ${status}: ${statusText}`);
-    });
+    headers: {
+      ...headers,
+      Authorization: token,
+    },
+  }).catch(({ response }) => {
+    const { status, statusText } = response;
+    logger.error(`Error deleting partner: ${id} ${status}: ${statusText}`);
+    throw new Error(`Error deleting partner: ${id} ${status}: ${statusText}`);
+  });
 };
 
 export default {

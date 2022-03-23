@@ -1,4 +1,4 @@
-$this: 'c-interactions';
+$this: "c-interactions";
 
 .#{$this} {
   display: block;
@@ -10,7 +10,6 @@ $this: 'c-interactions';
       background: #f9f9f9;
       padding-top: 60px;
     }
-
   }
 
   &__warning {
@@ -19,7 +18,7 @@ $this: 'c-interactions';
     top: 0;
     left: 0;
 
-    color: #FFF;
+    color: #fff;
 
     background: #ffaa00;
     width: 100%;
@@ -31,5 +30,4 @@ $this: 'c-interactions';
       font-weight: 600;
     }
   }
-
 }

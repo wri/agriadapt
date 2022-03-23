@@ -1,4 +1,4 @@
-@import 'css/settings';
+@import "css/settings";
 
 .c-layer-menu {
   position: absolute;
@@ -53,7 +53,7 @@
       &.-active {
         // NAME
         > .name {
-          border-color: rgba($white, .2);
+          border-color: rgba($white, 0.2);
         }
       }
     }

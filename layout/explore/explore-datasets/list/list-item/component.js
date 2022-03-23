@@ -1,19 +1,19 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
-import Link from 'next/link';
-import { withRouter } from 'next/router';
+import React from "react";
+import PropTypes from "prop-types";
+import classnames from "classnames";
+import Link from "next/link";
+import { withRouter } from "next/router";
 
 // components
-import WidgetChart from 'components/charts/widget-chart';
-import MapThumbnail from 'components/map/thumbnail';
-import PlaceholderChart from 'components/charts/placeholder-chart';
+import WidgetChart from "components/charts/widget-chart";
+import MapThumbnail from "components/map/thumbnail";
+import PlaceholderChart from "components/charts/placeholder-chart";
 
 // Utils
-import { getDateConsideringTimeZone } from 'utils/utils';
+import { getDateConsideringTimeZone } from "utils/utils";
 
 // lib
-import { Media } from 'lib/media';
+import { Media } from "lib/media";
 
 class DatasetListItem extends React.Component {
   /**
@@ -23,11 +23,11 @@ class DatasetListItem extends React.Component {
   renderChart = () => {
     const { dataset, widget, layer, expandedChart } = this.props;
 
-    const isWidgetMap = widget && widget.widgetConfig.type === 'map';
-    const isEmbedWidget = widget && widget.widgetConfig.type === 'embed';
+    const isWidgetMap = widget && widget.widgetConfig.type === "map";
+    const isEmbedWidget = widget && widget.widgetConfig.type === "embed";
     const classNameValue = classnames({
-      'list-item-chart': true,
-      '-expanded-chart': expandedChart,
+      "list-item-chart": true,
+      "-expanded-chart": expandedChart,
     });
 
     if (widget && !isWidgetMap && !isEmbedWidget) {
@@ -83,10 +83,13 @@ class DatasetListItem extends React.Component {
   render() {
     const { dataset, metadata, actions, active } = this.props;
 
-    const dateLastUpdated = getDateConsideringTimeZone(dataset.dataLastUpdated, true);
+    const dateLastUpdated = getDateConsideringTimeZone(
+      dataset.dataLastUpdated,
+      true
+    );
     const classNameValue = classnames({
-      'c-explore-dataset-list-item': true,
-      '-active': active,
+      "c-explore-dataset-list-item": true,
+      "-active": active,
     });
 
     return (
@@ -94,7 +97,9 @@ class DatasetListItem extends React.Component {
         <Media greaterThanOrEqual="md">{this.renderChart()}</Media>
 
         <Media at="sm">
-          <Link href={`/data/explore/${dataset.slug}`}>{this.renderChart()}</Link>
+          <Link href={`/data/explore/${dataset.slug}`}>
+            {this.renderChart()}
+          </Link>
         </Media>
 
         {/* INFO */}
@@ -113,7 +118,8 @@ class DatasetListItem extends React.Component {
             <h4>
               <Link href={`/data/explore/${dataset.slug}`}>
                 <a className="line-clamp-2">
-                  {(metadata && metadata.info && metadata.info.name) || dataset.name}
+                  {(metadata && metadata.info && metadata.info.name) ||
+                    dataset.name}
                 </a>
               </Link>
             </h4>

@@ -12,7 +12,7 @@
       padding: $margin-size-extra-small;
       border: 1px solid $border-color-2;
       border-radius: 4px;
-      box-shadow: 0 1px 2px 0 rgba($black, .09);
+      box-shadow: 0 1px 2px 0 rgba($black, 0.09);
       cursor: pointer;
 
       &:not(:first-child) {
@@ -33,7 +33,7 @@
         position: relative;
 
         &:after {
-          content: '';
+          content: "";
           display: inline-block;
           position: absolute;
           top: 0;
@@ -48,7 +48,7 @@
       &.-disabled {
         cursor: default;
         pointer-events: none;
-        opacity: .35;
+        opacity: 0.35;
 
         > .template-name {
           color: $dove-grey;

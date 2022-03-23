@@ -1,33 +1,33 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
-import isEqual from 'lodash/isEqual';
-import compact from 'lodash/compact';
+import React from "react";
+import PropTypes from "prop-types";
+import classnames from "classnames";
+import isEqual from "lodash/isEqual";
+import compact from "lodash/compact";
 
 // redux
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
 // redactions
-import { setSources } from 'redactions/admin/sources';
+import { setSources } from "redactions/admin/sources";
 
 // actions
-import { toggleModal } from 'redactions/modal';
+import { toggleModal } from "redactions/modal";
 
 // components
-import Field from 'components/form/Field';
-import Input from 'components/form/Input';
-import Select from 'components/form/SelectInput';
-import TextArea from 'components/form/TextArea';
-import Title from 'components/ui/Title';
-import Spinner from 'components/ui/Spinner';
-import SourcesContentModal from 'components/datasets/metadata/form/SourcesContentModal';
+import Field from "components/form/Field";
+import Input from "components/form/Input";
+import Select from "components/form/SelectInput";
+import TextArea from "components/form/TextArea";
+import Title from "components/ui/Title";
+import Spinner from "components/ui/Spinner";
+import SourcesContentModal from "components/datasets/metadata/form/SourcesContentModal";
 
 // constants
 import {
   FORM_ELEMENTS,
   LANGUAGE_OPTIONS,
   RASTER_COLUMN_TYPES,
-} from 'components/datasets/metadata/form/constants';
+} from "components/datasets/metadata/form/constants";
 
 class Step1 extends React.Component {
   static propTypes = {
@@ -40,7 +40,7 @@ class Step1 extends React.Component {
     sources: PropTypes.array.isRequired,
   };
 
-  static defaultProps = { type: 'tabular' };
+  static defaultProps = { type: "tabular" };
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (!isEqual(this.props.sources, nextProps.sources)) {
@@ -73,19 +73,17 @@ class Step1 extends React.Component {
   }
 
   render() {
-    const {
-      form, columns, type, sources, loadingColumns,
-    } = this.props;
-    const isRaster = type === 'raster';
+    const { form, columns, type, sources, loadingColumns } = this.props;
+    const isRaster = type === "raster";
 
-    const aliasColumnClass = classnames('columns', {
-      'small-2': isRaster,
-      'small-5': !isRaster,
+    const aliasColumnClass = classnames("columns", {
+      "small-2": isRaster,
+      "small-5": !isRaster,
     });
 
-    const descriptionColumnClass = classnames('columns', {
-      'small-4': isRaster,
-      'small-5': !isRaster,
+    const descriptionColumnClass = classnames("columns", {
+      "small-4": isRaster,
+      "small-5": !isRaster,
     });
 
     return (
@@ -100,13 +98,13 @@ class Step1 extends React.Component {
               if (c) FORM_ELEMENTS.elements.name = c;
             }}
             onChange={(value) => this.changeMetadata({ info: { name: value } })}
-            validations={['required']}
+            validations={["required"]}
             hint="Max length of 75 characters"
             properties={{
-              name: 'name',
-              label: 'Title',
-              type: 'text',
-              maxLength: '75',
+              name: "name",
+              label: "Title",
+              type: "text",
+              maxLength: "75",
               required: true,
               default: form.info.name,
             }}
@@ -120,9 +118,9 @@ class Step1 extends React.Component {
             }}
             onChange={(value) => this.changeMetadata({ subtitle: value })}
             properties={{
-              name: 'subtitle',
-              label: 'Subtitle',
-              type: 'text',
+              name: "subtitle",
+              label: "Subtitle",
+              type: "text",
               default: form.subtitle,
             }}
           >
@@ -134,11 +132,11 @@ class Step1 extends React.Component {
               if (c) FORM_ELEMENTS.elements.description = c;
             }}
             onChange={(value) => this.changeMetadata({ description: value })}
-            validations={['required']}
+            validations={["required"]}
             properties={{
-              name: 'description',
-              label: 'Description',
-              rows: '6',
+              name: "description",
+              label: "Description",
+              rows: "6",
               required: true,
               default: form.description,
             }}
@@ -154,9 +152,9 @@ class Step1 extends React.Component {
             onChange={(value) => this.changeMetadata({ info: { rwId: value } })}
             validations={[]}
             properties={{
-              name: 'rwId',
-              label: 'Resource Watch ID',
-              type: 'text',
+              name: "rwId",
+              label: "Resource Watch ID",
+              type: "text",
               required: false,
               default: form.info.rwId,
             }}
@@ -169,16 +167,16 @@ class Step1 extends React.Component {
               if (c) FORM_ELEMENTS.elements.language = c;
             }}
             onChange={(value) => this.changeMetadata({ language: value })}
-            validations={['required']}
+            validations={["required"]}
             options={LANGUAGE_OPTIONS}
             properties={{
-              name: 'language',
-              label: 'Data language',
-              type: 'text',
+              name: "language",
+              label: "Data language",
+              type: "text",
               disabled: true,
               required: true,
-              default: form.language || 'en',
-              instanceId: 'selectLanguage',
+              default: form.language || "en",
+              instanceId: "selectLanguage",
             }}
           >
             {Select}
@@ -192,12 +190,14 @@ class Step1 extends React.Component {
             ref={(c) => {
               if (c) FORM_ELEMENTS.elements.technical_title = c;
             }}
-            onChange={(value) => this.changeMetadata({ info: { technical_title: value } })}
-            validations={['required']}
+            onChange={(value) =>
+              this.changeMetadata({ info: { technical_title: value } })
+            }
+            validations={["required"]}
             properties={{
-              name: 'technical_title',
-              label: 'Technical title',
-              type: 'text',
+              name: "technical_title",
+              label: "Technical title",
+              type: "text",
               required: true,
               default: form.info.technical_title,
             }}
@@ -208,14 +208,16 @@ class Step1 extends React.Component {
             ref={(c) => {
               if (c) FORM_ELEMENTS.elements.functions = c;
             }}
-            onChange={(value) => this.changeMetadata({ info: { functions: value } })}
+            onChange={(value) =>
+              this.changeMetadata({ info: { functions: value } })
+            }
             hint="Briefly describes the purpose of the data and what it represents. Max length of 200 characters"
             properties={{
-              name: 'functions',
-              label: 'Function',
-              type: 'text',
-              rows: '6',
-              maxLength: '200',
+              name: "functions",
+              label: "Function",
+              type: "text",
+              rows: "6",
+              maxLength: "200",
               default: form.info.functions,
             }}
           >
@@ -226,13 +228,15 @@ class Step1 extends React.Component {
             ref={(c) => {
               if (c) FORM_ELEMENTS.elements.cautions = c;
             }}
-            onChange={(value) => this.changeMetadata({ info: { cautions: value } })}
+            onChange={(value) =>
+              this.changeMetadata({ info: { cautions: value } })
+            }
             hint="Describes any limitations of the data set that users should be aware of."
             properties={{
-              name: 'cautions',
-              label: 'Cautions',
-              type: 'text',
-              rows: '6',
+              name: "cautions",
+              label: "Cautions",
+              type: "text",
+              rows: "6",
               default: form.info.cautions,
             }}
           >
@@ -243,13 +247,15 @@ class Step1 extends React.Component {
             ref={(c) => {
               if (c) FORM_ELEMENTS.elements.citation = c;
             }}
-            onChange={(value) => this.changeMetadata({ info: { citation: value } })}
+            onChange={(value) =>
+              this.changeMetadata({ info: { citation: value } })
+            }
             hint="Unless otherwise specified on Data Sharing Agreement, format should be: Organization name. “Official data layer name as in the ODP.” Accessed through Resource Watch [date]. www.resourcewatch.org (should always end with: Accessed through Resource Watch on [date]. www.resourcewatch.org)"
             properties={{
-              name: 'citation',
-              label: 'Citation',
-              type: 'text',
-              rows: '6',
+              name: "citation",
+              label: "Citation",
+              type: "text",
+              rows: "6",
               default: form.info.citation,
             }}
           >
@@ -260,13 +266,15 @@ class Step1 extends React.Component {
             ref={(c) => {
               if (c) FORM_ELEMENTS.elements.geographic_coverage = c;
             }}
-            onChange={(value) => this.changeMetadata({ info: { geographic_coverage: value } })}
+            onChange={(value) =>
+              this.changeMetadata({ info: { geographic_coverage: value } })
+            }
             hint="Describes the spatial extent of the data set (Note: if Global, write Global. If for a select group of countries, list countries in alphabetical order, use Oxford comma, and include 'the' in country names, e.g., Republic of the Congo)"
             properties={{
-              name: 'geographic_coverage',
-              label: 'Geographic Coverage',
-              type: 'text',
-              rows: '6',
+              name: "geographic_coverage",
+              label: "Geographic Coverage",
+              type: "text",
+              rows: "6",
               default: form.info.geographic_coverage,
             }}
           >
@@ -277,13 +285,15 @@ class Step1 extends React.Component {
             ref={(c) => {
               if (c) FORM_ELEMENTS.elements.spatial_resolution = c;
             }}
-            onChange={(value) => this.changeMetadata({ info: { spatial_resolution: value } })}
+            onChange={(value) =>
+              this.changeMetadata({ info: { spatial_resolution: value } })
+            }
             hint="Describes the spatial resolution, e.g., 50 meters (50 m in parentheses), 500 × 500 meters (note use of times symbol instead of x), 15 arc second/minute/degree"
             properties={{
-              name: 'spatial_resolution',
-              label: 'Spatial Resolution',
-              type: 'text',
-              rows: '6',
+              name: "spatial_resolution",
+              label: "Spatial Resolution",
+              type: "text",
+              rows: "6",
               default: form.info.spatial_resolution,
             }}
           >
@@ -294,12 +304,14 @@ class Step1 extends React.Component {
             ref={(c) => {
               if (c) FORM_ELEMENTS.elements.date_of_content = c;
             }}
-            onChange={(value) => this.changeMetadata({ info: { date_of_content: value } })}
+            onChange={(value) =>
+              this.changeMetadata({ info: { date_of_content: value } })
+            }
             hint="Date or time period that the data represents (Select the finest level of content - yearly, monthly, weekly, daily - and Other. Under other list the years for which data is available using four digits, separated by a space and a comma, e.g. 2005, 2010, 2015)"
             properties={{
-              name: 'date_of_content',
-              label: 'Date of Content',
-              type: 'text',
+              name: "date_of_content",
+              label: "Date of Content",
+              type: "text",
               default: form.info.date_of_content,
             }}
           >
@@ -310,12 +322,14 @@ class Step1 extends React.Component {
             ref={(c) => {
               if (c) FORM_ELEMENTS.elements.frequency_of_updates = c;
             }}
-            onChange={(value) => this.changeMetadata({ info: { frequency_of_updates: value } })}
+            onChange={(value) =>
+              this.changeMetadata({ info: { frequency_of_updates: value } })
+            }
             hint="Describes how frequently the data set is updated"
             properties={{
-              name: 'frequency_of_updates',
-              label: 'Frequency of Updates',
-              type: 'text',
+              name: "frequency_of_updates",
+              label: "Frequency of Updates",
+              type: "text",
               default: form.info.frequency_of_updates,
             }}
           >
@@ -326,12 +340,14 @@ class Step1 extends React.Component {
             ref={(c) => {
               if (c) FORM_ELEMENTS.elements.license = c;
             }}
-            onChange={(value) => this.changeMetadata({ info: { license: value } })}
+            onChange={(value) =>
+              this.changeMetadata({ info: { license: value } })
+            }
             hint="License under which data are published"
             properties={{
-              name: 'license',
-              label: 'License',
-              type: 'text',
+              name: "license",
+              label: "License",
+              type: "text",
               default: form.info.license,
             }}
           >
@@ -342,12 +358,14 @@ class Step1 extends React.Component {
             ref={(c) => {
               if (c) FORM_ELEMENTS.elements.license_link = c;
             }}
-            onChange={(value) => this.changeMetadata({ info: { license_link: value } })}
-            validations={['url']}
+            onChange={(value) =>
+              this.changeMetadata({ info: { license_link: value } })
+            }
+            validations={["url"]}
             properties={{
-              name: 'license_link',
-              label: 'License link',
-              type: 'text',
+              name: "license_link",
+              label: "License link",
+              type: "text",
               default: form.info.license_link,
             }}
           >
@@ -370,14 +388,16 @@ class Step1 extends React.Component {
                     <div className="source-container">
                       <a
                         className="source-name"
-                        href={source['source-name']}
+                        href={source["source-name"]}
                         rel="noopener noreferrer"
                         target="_blank"
                       >
-                        {source['source-name']}
+                        {source["source-name"]}
                       </a>
-                      {source['source-description'] && (
-                        <span className="source-description">{source['source-description']}</span>
+                      {source["source-description"] && (
+                        <span className="source-description">
+                          {source["source-description"]}
+                        </span>
                       )}
                     </div>
                   </li>
@@ -394,11 +414,13 @@ class Step1 extends React.Component {
             ref={(c) => {
               if (c) FORM_ELEMENTS.elements.translated_title = c;
             }}
-            onChange={(value) => this.changeMetadata({ info: { translated_title: value } })}
+            onChange={(value) =>
+              this.changeMetadata({ info: { translated_title: value } })
+            }
             properties={{
-              name: 'translated_title',
-              label: 'Translated Title',
-              type: 'text',
+              name: "translated_title",
+              label: "Translated Title",
+              type: "text",
               default: form.info.translated_title,
             }}
           >
@@ -409,13 +431,15 @@ class Step1 extends React.Component {
             ref={(c) => {
               if (c) FORM_ELEMENTS.elements.translated_function = c;
             }}
-            onChange={(value) => this.changeMetadata({ info: { translated_function: value } })}
+            onChange={(value) =>
+              this.changeMetadata({ info: { translated_function: value } })
+            }
             hint="Briefly describes the purpose of the data and what it represents"
             properties={{
-              name: 'translated_function',
-              label: 'Translated Function',
-              type: 'text',
-              rows: '6',
+              name: "translated_function",
+              label: "Translated Function",
+              type: "text",
+              rows: "6",
               default: form.info.translated_function,
             }}
           >
@@ -426,13 +450,15 @@ class Step1 extends React.Component {
             ref={(c) => {
               if (c) FORM_ELEMENTS.elements.translated_description = c;
             }}
-            onChange={(value) => this.changeMetadata({ info: { translated_description: value } })}
+            onChange={(value) =>
+              this.changeMetadata({ info: { translated_description: value } })
+            }
             hint="Briefly describes the purpose of the data and what it represents"
             properties={{
-              name: 'translated_description',
-              label: 'Translated Description',
-              type: 'text',
-              rows: '6',
+              name: "translated_description",
+              label: "Translated Description",
+              type: "text",
+              rows: "6",
               default: form.info.translated_description,
             }}
           >
@@ -447,12 +473,14 @@ class Step1 extends React.Component {
             ref={(c) => {
               if (c) FORM_ELEMENTS.elements.learn_more_link = c;
             }}
-            onChange={(value) => this.changeMetadata({ info: { learn_more_link: value } })}
-            validations={['url']}
+            onChange={(value) =>
+              this.changeMetadata({ info: { learn_more_link: value } })
+            }
+            validations={["url"]}
             properties={{
-              name: 'learn_more_link',
-              label: 'Learn More link',
-              type: 'text',
+              name: "learn_more_link",
+              label: "Learn More link",
+              type: "text",
               default: form.info.learn_more_link,
             }}
           >
@@ -463,12 +491,14 @@ class Step1 extends React.Component {
             ref={(c) => {
               if (c) FORM_ELEMENTS.elements.data_download_link = c;
             }}
-            onChange={(value) => this.changeMetadata({ info: { data_download_link: value } })}
-            validations={['url']}
+            onChange={(value) =>
+              this.changeMetadata({ info: { data_download_link: value } })
+            }
+            validations={["url"]}
             properties={{
-              name: 'data_download_link',
-              label: 'Data Download link',
-              type: 'text',
+              name: "data_download_link",
+              label: "Data Download link",
+              type: "text",
               default: form.info.data_download_link,
             }}
           >
@@ -479,12 +509,16 @@ class Step1 extends React.Component {
             ref={(c) => {
               if (c) FORM_ELEMENTS.elements.data_download_original_link = c;
             }}
-            onChange={(value) => this.changeMetadata({ info: { data_download_original_link: value } })}
-            validations={['url']}
+            onChange={(value) =>
+              this.changeMetadata({
+                info: { data_download_original_link: value },
+              })
+            }
+            validations={["url"]}
             properties={{
-              name: 'data_download_original_link',
-              label: 'Download from Original Source link',
-              type: 'text',
+              name: "data_download_original_link",
+              label: "Download from Original Source link",
+              type: "text",
               default: form.info.data_download_original_link,
             }}
           >
@@ -495,7 +529,9 @@ class Step1 extends React.Component {
         <fieldset className="c-field-container">
           <Title className="-default -secondary">Columns</Title>
 
-          {loadingColumns && <Spinner className="-inline" isLoading={loadingColumns} />}
+          {loadingColumns && (
+            <Spinner className="-inline" isLoading={loadingColumns} />
+          )}
 
           {!loadingColumns && !columns.length && <p>No columns</p>}
 
@@ -507,8 +543,8 @@ class Step1 extends React.Component {
                     <Field
                       properties={{
                         name: `columns_${column.name}_name`,
-                        label: 'Column name',
-                        type: 'text',
+                        label: "Column name",
+                        type: "text",
                         disabled: true,
                         readOnly: true,
                         default: column.name,
@@ -521,7 +557,10 @@ class Step1 extends React.Component {
                   <div className={aliasColumnClass}>
                     <Field
                       ref={(c) => {
-                        if (c) FORM_ELEMENTS.elements[`columns_${column.name}_alias`] = c;
+                        if (c)
+                          FORM_ELEMENTS.elements[
+                            `columns_${column.name}_alias`
+                          ] = c;
                       }}
                       onChange={(value) => {
                         this.changeMetadata({
@@ -536,9 +575,11 @@ class Step1 extends React.Component {
                       }}
                       properties={{
                         name: `columns_${column.name}_alias`,
-                        label: 'Alias',
-                        type: 'text',
-                        default: form.columns[column.name] ? form.columns[column.name].alias : '',
+                        label: "Alias",
+                        type: "text",
+                        default: form.columns[column.name]
+                          ? form.columns[column.name].alias
+                          : "",
                       }}
                     >
                       {Input}
@@ -548,7 +589,10 @@ class Step1 extends React.Component {
                   <div className={descriptionColumnClass}>
                     <Field
                       ref={(c) => {
-                        if (c) FORM_ELEMENTS.elements[`columns_${column.name}_description`] = c;
+                        if (c)
+                          FORM_ELEMENTS.elements[
+                            `columns_${column.name}_description`
+                          ] = c;
                       }}
                       onChange={(value) => {
                         this.changeMetadata({
@@ -563,11 +607,11 @@ class Step1 extends React.Component {
                       }}
                       properties={{
                         name: `columns_${column.name}_description`,
-                        label: 'Description',
-                        type: 'text',
+                        label: "Description",
+                        type: "text",
                         default: form.columns[column.name]
                           ? form.columns[column.name].description
-                          : '',
+                          : "",
                       }}
                     >
                       {Input}
@@ -578,7 +622,11 @@ class Step1 extends React.Component {
                     <div className="columns small-4">
                       <Field
                         ref={(columnType) => {
-                          if (columnType) { FORM_ELEMENTS.elements[`columns_${column.name}_type`] = columnType; }
+                          if (columnType) {
+                            FORM_ELEMENTS.elements[
+                              `columns_${column.name}_type`
+                            ] = columnType;
+                          }
                         }}
                         onChange={(columnType) => {
                           this.changeMetadata({
@@ -591,14 +639,14 @@ class Step1 extends React.Component {
                             },
                           });
                         }}
-                        validations={['required']}
+                        validations={["required"]}
                         options={RASTER_COLUMN_TYPES}
                         properties={{
-                          name: 'type',
-                          label: 'Type',
+                          name: "type",
+                          label: "Type",
                           default: form.columns[column.name]
                             ? form.columns[column.name].type
-                            : 'continuous',
+                            : "continuous",
                         }}
                       >
                         {Select}
@@ -622,7 +670,4 @@ const mapDispatchToProps = {
   setSources,
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Step1);
+export default connect(mapStateToProps, mapDispatchToProps)(Step1);

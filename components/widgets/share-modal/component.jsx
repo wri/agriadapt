@@ -1,31 +1,36 @@
-import { useCallback, useState, useMemo } from 'react';
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import { useCallback, useState, useMemo } from "react";
+import PropTypes from "prop-types";
+import classnames from "classnames";
 // import { saveAs } from 'file-saver';
 // import dateFnsFormat from 'date-fns/format';
 
 // components
-import Modal from 'components/modal/modal-component';
-import ShareModal from 'components/modal/share-modal';
-import Spinner from 'components/ui/Spinner';
+import Modal from "components/modal/modal-component";
+import ShareModal from "components/modal/share-modal";
+import Spinner from "components/ui/Spinner";
 
 // services
-import { takeWidgetWebshot } from 'services/webshot';
+import { takeWidgetWebshot } from "services/webshot";
 
 // utils
-import { getLinksByWidgetType } from 'utils/embed';
-import { getWidgetType } from 'utils/widget';
-import { logEvent } from 'utils/analytics';
+import { getLinksByWidgetType } from "utils/embed";
+import { getWidgetType } from "utils/widget";
+import { logEvent } from "utils/analytics";
 // import { logger } from 'utils/logs';
 
-export default function WidgetShareModal({ isVisible, onClose, widget, params }) {
+export default function WidgetShareModal({
+  isVisible,
+  onClose,
+  widget,
+  params,
+}) {
   const [isWebshotLoading, setWebshotLoading] = useState(false);
 
   const handleWidgetWebshot = useCallback(async () => {
     try {
       const widgetType = getWidgetType(widget);
 
-      logEvent('Share', 'user downloads an image of a widget', widget.name);
+      logEvent("Share", "user downloads an image of a widget", widget.name);
 
       setWebshotLoading(true);
 
@@ -37,7 +42,10 @@ export default function WidgetShareModal({ isVisible, onClose, widget, params })
       if (widgetThumbnail) {
         saveAs(
           widgetThumbnail,
-          `${widget.slug}-${dateFnsFormat(Date.now(), "yyyy-MM-dd'T'HH:mm:ss")}.png`,
+          `${widget.slug}-${dateFnsFormat(
+            Date.now(),
+            "yyyy-MM-dd'T'HH:mm:ss"
+          )}.png`
         );
         setWebshotLoading(false);
       }
@@ -47,25 +55,43 @@ export default function WidgetShareModal({ isVisible, onClose, widget, params })
     }
   }, [widget, params]);
 
-  const shareLinks = useMemo(() => getLinksByWidgetType(widget, params), [widget, params]);
+  const shareLinks = useMemo(
+    () => getLinksByWidgetType(widget, params),
+    [widget, params]
+  );
 
   return (
     <Modal isOpen={isVisible} className="-medium" onRequestClose={onClose}>
       <ShareModal
         links={shareLinks}
         analytics={{
-          facebook: () => logEvent('Share (embed)', `Share widget: ${widget?.name}`, 'Facebook'),
-          twitter: () => logEvent('Share (embed)', `Share widget: ${widget?.name}`, 'Twitter'),
-          email: () => logEvent('Share', `Share widget: ${widget?.name}`, 'Email'),
+          facebook: () =>
+            logEvent(
+              "Share (embed)",
+              `Share widget: ${widget?.name}`,
+              "Facebook"
+            ),
+          twitter: () =>
+            logEvent(
+              "Share (embed)",
+              `Share widget: ${widget?.name}`,
+              "Twitter"
+            ),
+          email: () =>
+            logEvent("Share", `Share widget: ${widget?.name}`, "Email"),
           copy: (type) =>
-            logEvent('Share (embed)', `Share widget: ${widget?.name}`, `Copy ${type}`),
+            logEvent(
+              "Share (embed)",
+              `Share widget: ${widget?.name}`,
+              `Copy ${type}`
+            ),
         }}
       />
 
       <div
         style={{
-          display: 'flex',
-          margin: '80px 0 0',
+          display: "flex",
+          margin: "80px 0 0",
         }}
       >
         <button type="button" className="c-btn -primary" onClick={onClose}>
@@ -73,17 +99,19 @@ export default function WidgetShareModal({ isVisible, onClose, widget, params })
         </button>
         <button
           type="button"
-          className={classnames('c-btn -secondary', { '-disabled': isWebshotLoading })}
+          className={classnames("c-btn -secondary", {
+            "-disabled": isWebshotLoading,
+          })}
           onClick={handleWidgetWebshot}
           style={{
-            margin: '0 0 0 10px',
+            margin: "0 0 0 10px",
             minWidth: 180,
           }}
         >
           {isWebshotLoading ? (
             <Spinner isLoading className="-transparent -small" />
           ) : (
-            'Download image'
+            "Download image"
           )}
         </button>
       </div>

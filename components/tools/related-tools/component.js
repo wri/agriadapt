@@ -1,9 +1,9 @@
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
 
 // Components
-import CardApp from 'components/app/common/CardApp';
-import Spinner from 'components/ui/Spinner';
+import CardApp from "components/app/common/CardApp";
+import Spinner from "components/ui/Spinner";
 
 // Constants
 class RelatedTools extends PureComponent {
@@ -13,10 +13,10 @@ class RelatedTools extends PureComponent {
     loading: PropTypes.bool,
 
     fetchTools: PropTypes.func,
-  }
+  };
 
   componentDidMount() {
-    this.props.fetchTools({ published: 'all' });
+    this.props.fetchTools({ published: "all" });
   }
 
   render() {
@@ -26,21 +26,23 @@ class RelatedTools extends PureComponent {
       <div className="c-related-tools">
         <Spinner isLoading={loading} className="-light" />
 
-        {!loading && !active.length
-          && <p>No data available</p>}
+        {!loading && !active.length && <p>No data available</p>}
 
         <div className="row">
           {list
             .filter((t) => active.includes(t.slug) || active.includes(t.id))
             .map((tool) => (
-              <div key={tool.id} className="column small-12 medium-6 large-4 c-card-column">
+              <div
+                key={tool.id}
+                className="column small-12 medium-6 large-4 c-card-column"
+              >
                 <CardApp
                   background={tool.thumbnail.original}
                   title={tool.title}
                   description={tool.summary}
                   logEvent
                   link={{
-                    label: 'Go to site',
+                    label: "Go to site",
                     route: tool.url,
                     external: true,
                   }}

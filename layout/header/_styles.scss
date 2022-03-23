@@ -1,4 +1,4 @@
-@import 'css/settings';
+@import "css/settings";
 
 .l-header {
   background-color: $primary-green;
@@ -56,7 +56,6 @@
       align-items: center;
 
       > li {
-
         &:not(:first-child) {
           margin-left: $margin-size-extra-small;
         }
@@ -86,7 +85,7 @@
           text-decoration: none;
 
           &:after {
-            content: '';
+            content: "";
             position: absolute;
             bottom: 0;
             left: 50%;
@@ -100,5 +99,3 @@
     }
   }
 }
-
-

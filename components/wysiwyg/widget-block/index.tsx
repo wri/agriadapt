@@ -1,8 +1,8 @@
-import { useFetchWidget } from 'hooks/widget';
+import { useFetchWidget } from "hooks/widget";
 
-import WidgetBlock from './component';
+import WidgetBlock from "./component";
 
-import type { WYSIWYGItem } from 'types/wysiwyg';
+import type { WYSIWYGItem } from "types/wysiwyg";
 
 // export interface WidgetBlockContainerProps {
 //   item: WYSIWYGItem;

@@ -15,7 +15,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
 
     .icon {
       position: relative;
@@ -40,8 +40,12 @@
   }
 
   // Colors
-  &.-light { background: rgba($white, 0.5); }
-  &.-transparent { background: rgba($white, 0); }
+  &.-light {
+    background: rgba($white, 0.5);
+  }
+  &.-transparent {
+    background: rgba($white, 0);
+  }
 
   // Icon colors
   &.-white-icon {
@@ -61,8 +65,12 @@
   }
 
   // Position
-  &.-fixed { position: fixed;}
-  &.-relative { position: relative;}
+  &.-fixed {
+    position: fixed;
+  }
+  &.-relative {
+    position: relative;
+  }
   &.-inline {
     position: static;
     display: inline-block;
@@ -98,23 +106,38 @@
       }
     }
   }
-
 }
 
- // ROTATE
- @-webkit-keyframes rotate {
-   from { transform: rotate(0deg);}
-   to { transform: rotate(360deg);}
- }
- @-moz-keyframes rotate {
-   from { transform: rotate(0deg);}
-   to { transform: rotate(360deg);}
- }
- @-ms-keyframes rotate {
-   from { transform: rotate(0deg);}
-   to { transform: rotate(360deg);}
- }
- @keyframes rotate {
-   from { transform: rotate(0deg);}
-   to { transform: rotate(360deg);}
- }
+// ROTATE
+@-webkit-keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@-moz-keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@-ms-keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

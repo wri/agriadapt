@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
 // Components
-import Tag from 'components/ui/Tag';
+import Tag from "components/ui/Tag";
 
 class DatasetTagsTooltip extends React.Component {
   static propTypes = {

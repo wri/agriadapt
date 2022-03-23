@@ -1,28 +1,28 @@
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
+import classnames from "classnames";
 
 // components
-import Icon from 'components/ui/icon';
+import Icon from "components/ui/icon";
 
 class ResetViewControls extends PureComponent {
   static propTypes = {
     className: PropTypes.string,
     onResetView: PropTypes.func.isRequired,
-  }
+  };
 
-  static defaultProps = { className: null }
+  static defaultProps = { className: null };
 
   handleResetView = (e) => {
     const { onResetView } = this.props;
 
     onResetView(e);
-  }
+  };
 
   render() {
     const { className } = this.props;
     const componentClass = classnames({
-      'c-reset-view-control': true,
+      "c-reset-view-control": true,
       [className]: !!className,
     });
 

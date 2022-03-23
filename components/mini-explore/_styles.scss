@@ -1,8 +1,8 @@
-@import 'css/settings';
+@import "css/settings";
 
 .c-mini-explore {
   width: 100%;
-  border: 1px solid rgba($black ,.1);
+  border: 1px solid rgba($black, 0.1);
   border-radius: 4px;
 
   > header {
@@ -11,8 +11,8 @@
     > h4 {
       margin: 0;
     }
-    border-bottom: 1px solid rgba($black ,.1);
-    box-shadow: 0 1px 2px 0 rgba($black, .09);
+    border-bottom: 1px solid rgba($black, 0.1);
+    box-shadow: 0 1px 2px 0 rgba($black, 0.09);
   }
 
   > .main-container {
@@ -28,14 +28,13 @@
 
       overflow-y: auto;
       padding: ($space * 3);
-      box-shadow: 0 1px 3px 0 rgba($black, .15), 0 7px 15px 0 rgba($black, .15);
+      box-shadow: 0 1px 3px 0 rgba($black, 0.15),
+        0 7px 15px 0 rgba($black, 0.15);
 
       .accordion__item {
-
         .dataset-group {
           display: flex;
           flex-direction: column;
-
         }
 
         &:not(:first-child) {
@@ -43,12 +42,11 @@
         }
 
         .accordion__button {
-
           .group-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin: 0 0 ($space *2);
+            margin: 0 0 ($space * 2);
             cursor: pointer;
 
             > .group-header-title {
@@ -64,7 +62,6 @@
                 transform: rotate(0);
               }
             }
-
 
             .number-of-datasets {
               font-size: $font-size-tiny;
@@ -82,15 +79,15 @@
         }
       }
 
-        .c-explore-dataset-list {
-          margin: 0 ($space * 2);
-        }
+      .c-explore-dataset-list {
+        margin: 0 ($space * 2);
+      }
     }
     .map-container {
       position: relative;
       width: 100%;
       min-height: 100%;
-      margin: 0 0 0($space * 3);
+      margin: 0 0 0 ($space * 3);
     }
   }
 }

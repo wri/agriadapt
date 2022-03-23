@@ -1,13 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
 // Components
-import FormElement from './FormElement';
+import FormElement from "./FormElement";
 
 let Editor;
 
-if (typeof window !== 'undefined') {
-  Editor = require('react-quill');
+if (typeof window !== "undefined") {
+  Editor = require("react-quill");
 }
 
 class Wysiwyg extends FormElement {
@@ -18,7 +18,7 @@ class Wysiwyg extends FormElement {
   constructor(props) {
     super(props);
 
-    if (typeof window === 'undefined') {
+    if (typeof window === "undefined") {
       return;
     }
 
@@ -39,18 +39,18 @@ class Wysiwyg extends FormElement {
   }
 
   attachQuillRefs = () => {
-    if (typeof this.reactQuillRef.getEditor !== 'function') return;
+    if (typeof this.reactQuillRef.getEditor !== "function") return;
     this.quill = this.reactQuillRef.getEditor();
 
     if (!this.state.isQuillRef) {
       this.setState({ isQuillRef: true });
     }
-  }
+  };
 
   /**
    * UI EVENTS
    * - triggerChange
-  */
+   */
   triggerChange(value) {
     this.setState({ value }, () => {
       // Validate
@@ -67,25 +67,25 @@ class Wysiwyg extends FormElement {
 
     return (
       <div className="c-wysiwyg">
-        {this.props.toolbar
-          && (
-          <this.props.toolbar.component
-            quill={this.quill}
-          />
-          )}
+        {this.props.toolbar && (
+          <this.props.toolbar.component quill={this.quill} />
+        )}
 
-        {!!Editor
-          && (
+        {!!Editor && (
           <Editor
-            ref={(c) => { this.reactQuillRef = c; }}
+            ref={(c) => {
+              this.reactQuillRef = c;
+            }}
             theme="snow"
             value={value}
             onChange={this.triggerChange}
             modules={{
-              ...!!this.props.toolbar && { toolbar: this.props.toolbar.container },
+              ...(!!this.props.toolbar && {
+                toolbar: this.props.toolbar.container,
+              }),
             }}
           />
-          )}
+        )}
       </div>
     );
   }

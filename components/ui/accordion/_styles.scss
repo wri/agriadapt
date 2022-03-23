@@ -1,4 +1,4 @@
-@import 'css/settings';
+@import "css/settings";
 
 .c-accordion {
   .accordion__item + .accordion__item {
@@ -16,7 +16,7 @@
 
   .accordion__button:before {
     display: inline-block;
-    content: '';
+    content: "";
     height: 10px;
     width: 10px;
     margin-right: 12px;
@@ -25,8 +25,8 @@
     transform: rotate(-45deg);
   }
 
-  .accordion__button[aria-expanded='true']::before,
-  .accordion__button[aria-selected='true']::before {
+  .accordion__button[aria-expanded="true"]::before,
+  .accordion__button[aria-selected="true"]::before {
     transform: rotate(45deg);
   }
 
@@ -43,10 +43,10 @@
 
 @keyframes fadein {
   0% {
-      opacity: 0;
+    opacity: 0;
   }
 
   100% {
-      opacity: 1;
+    opacity: 1;
   }
 }

@@ -1,29 +1,31 @@
-import {
-  HYDRATE,
-} from 'next-redux-wrapper';
-import isEmpty from 'lodash/isEmpty';
+import { HYDRATE } from "next-redux-wrapper";
+import isEmpty from "lodash/isEmpty";
 
 // Services
-import { fetchDataset } from 'services/dataset';
-import RasterService from 'services/raster';
-import { fetchLayer } from 'services/layer';
-import { deleteFavourite, createFavourite, fetchFavorites } from 'services/favourites';
-import { fetchWidget } from 'services/widget';
+import { fetchDataset } from "services/dataset";
+import RasterService from "services/raster";
+import { fetchLayer } from "services/layer";
+import {
+  deleteFavourite,
+  createFavourite,
+  fetchFavorites,
+} from "services/favourites";
+import { fetchWidget } from "services/widget";
 
 /**
  * CONSTANTS
-*/
-const SET_WIDGET_SUCCESS = 'SET_WIDGET_SUCCESS';
-const GET_WIDGET_ERROR = 'GET_WIDGET_ERROR';
-const SET_WIDGET_LOADING = 'SET_WIDGET_LOADING';
-const SET_WIDGET_DATA = 'SET_WIDGET_DATA';
-const SET_WIDGET_DATASET = 'SET_WIDGET_DATASET';
-const SET_WIDGET_BAND_DESCRIPTION = 'SET_WIDGET_BAND_DESCRIPTION';
-const SET_WIDGET_BAND_STATS = 'SET_WIDGET_BAND_STATS';
-const SET_WIDGET_LAYERGROUPS = 'SET_WIDGET_LAYERGROUPS';
-const SET_WIDGET_ZOOM = 'SET_WIDGET_ZOOM';
-const SET_WIDGET_LATLNG = 'SET_WIDGET_LATLNG';
-const GET_WIDGET_FAVORITE = 'GET_WIDGET_FAVORITE';
+ */
+const SET_WIDGET_SUCCESS = "SET_WIDGET_SUCCESS";
+const GET_WIDGET_ERROR = "GET_WIDGET_ERROR";
+const SET_WIDGET_LOADING = "SET_WIDGET_LOADING";
+const SET_WIDGET_DATA = "SET_WIDGET_DATA";
+const SET_WIDGET_DATASET = "SET_WIDGET_DATASET";
+const SET_WIDGET_BAND_DESCRIPTION = "SET_WIDGET_BAND_DESCRIPTION";
+const SET_WIDGET_BAND_STATS = "SET_WIDGET_BAND_STATS";
+const SET_WIDGET_LAYERGROUPS = "SET_WIDGET_LAYERGROUPS";
+const SET_WIDGET_ZOOM = "SET_WIDGET_ZOOM";
+const SET_WIDGET_LATLNG = "SET_WIDGET_LATLNG";
+const GET_WIDGET_FAVORITE = "GET_WIDGET_FAVORITE";
 
 /**
  * STORE
@@ -50,10 +52,10 @@ const initialState = {
 export default function Widget(state = initialState, action) {
   switch (action.type) {
     case HYDRATE: {
-      return ({
+      return {
         ...state,
         ...action.payload.widget,
-      });
+      };
     }
     case SET_WIDGET_LOADING: {
       const widget = {
@@ -135,8 +137,10 @@ export default function Widget(state = initialState, action) {
  * @param {string} datasetId
  * @returns {Promise<void>}
  */
-const getDataset = (datasetId) => (dispatch) => fetchDataset(datasetId, { includes: 'metadata' })
-  .then((dataset) => dispatch({ type: SET_WIDGET_DATASET, payload: dataset }));
+const getDataset = (datasetId) => (dispatch) =>
+  fetchDataset(datasetId, { includes: "metadata" }).then((dataset) =>
+    dispatch({ type: SET_WIDGET_DATASET, payload: dataset })
+  );
 
 /**
  * Get the information of band of a raster dataset
@@ -145,41 +149,45 @@ const getDataset = (datasetId) => (dispatch) => fetchDataset(datasetId, { includ
  */
 function fetchRasterBandInfo(datasetId, bandName) {
   // eslint-disable-next-line no-async-promise-executor
-  return (dispatch, getState) => new Promise(async (resolve) => {
-    try {
-      if (isEmpty(getState().widget.dataset)) {
-        await dispatch(getDataset(datasetId));
-      }
-
-      const dataset = getState().widget.dataset.attributes;
-
-      // We don't need the "else" for the following conditions
-      // because the band information is not vital and also because
-      // it's not mandatory
-      let { metadata } = dataset;
-      if (metadata && metadata.length) {
-        metadata = metadata[0].attributes;
-        const { columns } = metadata;
-
-        if (columns[bandName] && columns[bandName].description) {
-          dispatch({ type: SET_WIDGET_BAND_DESCRIPTION, payload: columns[bandName].description });
+  return (dispatch, getState) =>
+    new Promise(async (resolve) => {
+      try {
+        if (isEmpty(getState().widget.dataset)) {
+          await dispatch(getDataset(datasetId));
         }
+
+        const dataset = getState().widget.dataset.attributes;
+
+        // We don't need the "else" for the following conditions
+        // because the band information is not vital and also because
+        // it's not mandatory
+        let { metadata } = dataset;
+        if (metadata && metadata.length) {
+          metadata = metadata[0].attributes;
+          const { columns } = metadata;
+
+          if (columns[bandName] && columns[bandName].description) {
+            dispatch({
+              type: SET_WIDGET_BAND_DESCRIPTION,
+              payload: columns[bandName].description,
+            });
+          }
+        }
+
+        const { provider, tableName } = dataset;
+        const rasterService = new RasterService(datasetId, tableName, provider);
+        const bandStats = await rasterService.getBandStatsInfo(bandName);
+        dispatch({ type: SET_WIDGET_BAND_STATS, payload: bandStats });
+        dispatch({ type: SET_WIDGET_SUCCESS });
+        resolve();
+      } catch (err) {
+        // We can't use Toastr here because an embed doesn't display a notification
+
+        // Even if we failed to load some data, we still resolve because we can still
+        // display the graph (only the additional info will be missing)
+        resolve();
       }
-
-      const { provider, tableName } = dataset;
-      const rasterService = new RasterService(datasetId, tableName, provider);
-      const bandStats = await rasterService.getBandStatsInfo(bandName);
-      dispatch({ type: SET_WIDGET_BAND_STATS, payload: bandStats });
-      dispatch({ type: SET_WIDGET_SUCCESS });
-      resolve();
-    } catch (err) {
-      // We can't use Toastr here because an embed doesn't display a notification
-
-      // Even if we failed to load some data, we still resolve because we can still
-      // display the graph (only the additional info will be missing)
-      resolve();
-    }
-  });
+    });
 }
 /**
  * Get the layer of a map widget
@@ -187,16 +195,20 @@ function fetchRasterBandInfo(datasetId, bandName) {
  * @param {string} layerId Layer ID
  */
 function getLayer(datasetId, layerId) {
-  return (dispatch) => fetchLayer(layerId)
-    .then((layer) => {
-      const layerGroups = [{
-        dataset: datasetId,
-        visible: true,
-        layers: [{
-          active: true,
-          ...layer,
-        }],
-      }];
+  return (dispatch) =>
+    fetchLayer(layerId).then((layer) => {
+      const layerGroups = [
+        {
+          dataset: datasetId,
+          visible: true,
+          layers: [
+            {
+              active: true,
+              ...layer,
+            },
+          ],
+        },
+      ];
       dispatch({ type: SET_WIDGET_LAYERGROUPS, payload: layerGroups });
       dispatch({ type: SET_WIDGET_SUCCESS });
     });
@@ -222,10 +234,12 @@ export function getWidget(widgetId, params = {}) {
       .then((widget) => {
         dispatch({ type: SET_WIDGET_DATA, payload: widget });
         const { widgetConfig } = widget;
-        const isRaster = widgetConfig.paramsConfig
-          && widgetConfig.paramsConfig.visualizationType === 'raster_chart';
-        const isMap = widgetConfig.paramsConfig
-          && widgetConfig.paramsConfig.visualizationType === 'map';
+        const isRaster =
+          widgetConfig.paramsConfig &&
+          widgetConfig.paramsConfig.visualizationType === "raster_chart";
+        const isMap =
+          widgetConfig.paramsConfig &&
+          widgetConfig.paramsConfig.visualizationType === "map";
         const datasetId = widget.dataset;
         if (isRaster) {
           const bandName = widgetConfig.paramsConfig.band.name;
@@ -233,10 +247,14 @@ export function getWidget(widgetId, params = {}) {
         }
 
         if (isMap) {
-          const layerId = widgetConfig.paramsConfig && widgetConfig.paramsConfig.layer;
+          const layerId =
+            widgetConfig.paramsConfig && widgetConfig.paramsConfig.layer;
           const { zoom } = widgetConfig;
-          const latLng = widgetConfig.lat && widgetConfig.lng
-            && { lat: widgetConfig.lat, lng: widgetConfig.lng };
+          const latLng = widgetConfig.lat &&
+            widgetConfig.lng && {
+              lat: widgetConfig.lat,
+              lng: widgetConfig.lng,
+            };
 
           if (zoom) dispatch(setZoom(zoom));
           if (latLng) dispatch(setLatLng(latLng));
@@ -248,7 +266,9 @@ export function getWidget(widgetId, params = {}) {
 
         return widget;
       })
-      .catch((err) => { dispatch({ type: GET_WIDGET_ERROR, payload: err.message }); });
+      .catch((err) => {
+        dispatch({ type: GET_WIDGET_ERROR, payload: err.message });
+      });
   };
 }
 
@@ -280,20 +300,24 @@ export function checkIfFavorited(widgetId) {
     const { user } = getState();
 
     if (!user.id) {
-      dispatch({ type: GET_WIDGET_FAVORITE, payload: { id: null, favourited: false } });
+      dispatch({
+        type: GET_WIDGET_FAVORITE,
+        payload: { id: null, favourited: false },
+      });
     } else {
-      fetchFavorites(user.token)
-        .then((res) => {
-          const favourite = res.find && res.find((elem) => elem.attributes.resourceId === widgetId);
+      fetchFavorites(user.token).then((res) => {
+        const favourite =
+          res.find &&
+          res.find((elem) => elem.attributes.resourceId === widgetId);
 
-          dispatch({
-            type: GET_WIDGET_FAVORITE,
-            payload: {
-              id: favourite ? favourite.id : null,
-              favourited: !!favourite,
-            },
-          });
+        dispatch({
+          type: GET_WIDGET_FAVORITE,
+          payload: {
+            id: favourite ? favourite.id : null,
+            favourited: !!favourite,
+          },
         });
+      });
     }
   };
 }
@@ -313,17 +337,31 @@ export function setIfFavorited(widgetId, toFavorite) {
 
     // We have an optimistic approach: we tell the user the action
     // is already done, and if it fails, we rever it
-    dispatch({ type: GET_WIDGET_FAVORITE, payload: { favourited: toFavorite } });
+    dispatch({
+      type: GET_WIDGET_FAVORITE,
+      payload: { favourited: toFavorite },
+    });
 
     if (toFavorite) {
-      createFavourite(user.token, { resourceType: 'widget', resourceId: widgetId })
-        .then((res) => dispatch({ type: GET_WIDGET_FAVORITE, payload: { id: res.data.id } }))
-        .catch(() => dispatch({ type: GET_WIDGET_FAVORITE, payload: { id: null } }));
+      createFavourite(user.token, {
+        resourceType: "widget",
+        resourceId: widgetId,
+      })
+        .then((res) =>
+          dispatch({ type: GET_WIDGET_FAVORITE, payload: { id: res.data.id } })
+        )
+        .catch(() =>
+          dispatch({ type: GET_WIDGET_FAVORITE, payload: { id: null } })
+        );
     } else {
-      const { favourite: { id } } = widget;
+      const {
+        favourite: { id },
+      } = widget;
 
       deleteFavourite(id, user.token)
-        .then(() => dispatch({ type: GET_WIDGET_FAVORITE, payload: { id: null } }))
+        .then(() =>
+          dispatch({ type: GET_WIDGET_FAVORITE, payload: { id: null } })
+        )
         .catch(() => dispatch({ type: GET_WIDGET_FAVORITE, payload: { id } }));
     }
   };

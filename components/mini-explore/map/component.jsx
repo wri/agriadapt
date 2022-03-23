@@ -1,35 +1,35 @@
-import { useMemo } from 'react';
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
-import isEmpty from 'lodash/isEmpty';
-import { Popup } from 'react-map-gl';
+import { useMemo } from "react";
+import PropTypes from "prop-types";
+import classnames from "classnames";
+import isEmpty from "lodash/isEmpty";
+import { Popup } from "react-map-gl";
 import {
   Legend,
   LegendListItem,
   LegendItemToolbar,
   LegendItemTypes,
   LegendItemTimeStep,
-} from 'vizzuality-components';
-import { LegendItemTimeline } from 'old-vizzuality-components';
+} from "vizzuality-components";
+import { LegendItemTimeline } from "old-vizzuality-components";
 
 // components
-import Map from 'components/map';
-import Modal from 'components/modal/modal-component';
-import LayerInfoModal from 'components/modal/layer-info-modal';
-import LayerManager from 'components/map/layer-manager';
-import MapControls from 'components/map/controls';
-import ZoomControls from 'components/map/controls/zoom';
-import BasemapControls from 'components/map/controls/basemap';
-import ResetViewControls from 'components/map/controls/reset-view';
-import LayerPopup from 'components/map/popup';
+import Map from "components/map";
+import Modal from "components/modal/modal-component";
+import LayerInfoModal from "components/modal/layer-info-modal";
+import LayerManager from "components/map/layer-manager";
+import MapControls from "components/map/controls";
+import ZoomControls from "components/map/controls/zoom";
+import BasemapControls from "components/map/controls/basemap";
+import ResetViewControls from "components/map/controls/reset-view";
+import LayerPopup from "components/map/popup";
 
 // constants
-import { MAPSTYLES, BASEMAPS, LABELS } from 'components/map/constants';
+import { MAPSTYLES, BASEMAPS, LABELS } from "components/map/constants";
 // todo: these constants should be generic
 import {
   LEGEND_TIMELINE_PROPERTIES,
   TIMELINE_THRESHOLD,
-} from 'layout/explore/explore-map/constants';
+} from "layout/explore/explore-map/constants";
 
 export default function MiniExploreMap({
   viewport,
@@ -70,22 +70,22 @@ export default function MiniExploreMap({
 }) {
   const { pitch, bearing } = viewport;
   const resetViewBtnClass = classnames({
-    '-with-transition': true,
-    '-visible': pitch !== 0 || bearing !== 0,
+    "-with-transition": true,
+    "-visible": pitch !== 0 || bearing !== 0,
   });
   const basemap = useMemo(() => BASEMAPS[basemapId], [basemapId]);
   const labels = useMemo(() => LABELS[labelsId], [labelsId]);
   const activeLayersWithoutAreaOfInterest = useMemo(
     () => activeLayers.filter(({ isAreaOfInterest }) => !isAreaOfInterest),
-    [activeLayers],
+    [activeLayers]
   );
 
   return (
     <div
       style={{
-        display: 'flex',
+        display: "flex",
         flex: 1,
-        position: 'relative',
+        position: "relative",
       }}
     >
       <Map
@@ -109,34 +109,35 @@ export default function MiniExploreMap({
           <>
             <LayerManager map={_map} layers={activeLayers} />
 
-            {!isEmpty(layerGroupsInteractionLatLng) && activeLayersWithoutAreaOfInterest.length && (
-              <Popup
-                {...layerGroupsInteractionLatLng}
-                closeButton
-                closeOnClick={false}
-                onClose={handleClosePopup}
-                className="rw-popup-layer"
-                maxWidth="250px"
-                captureScroll
-                capturePointerMove
-              >
-                <LayerPopup
-                  data={{
-                    // data available in certain point
-                    layersInteraction: layerGroupsInteraction,
-                    // ID of the layer will display data (defaults into the first layer)
-                    layersInteractionSelected: layerGroupsInteractionSelected,
-                    // current active layers to get their layerConfig attributes
-                    layers: activeLayersWithoutAreaOfInterest,
-                  }}
-                  latlng={{
-                    lat: layerGroupsInteractionLatLng.latitude,
-                    lng: layerGroupsInteractionLatLng.longitude,
-                  }}
-                  onChangeInteractiveLayer={onChangeInteractiveLayer}
-                />
-              </Popup>
-            )}
+            {!isEmpty(layerGroupsInteractionLatLng) &&
+              activeLayersWithoutAreaOfInterest.length && (
+                <Popup
+                  {...layerGroupsInteractionLatLng}
+                  closeButton
+                  closeOnClick={false}
+                  onClose={handleClosePopup}
+                  className="rw-popup-layer"
+                  maxWidth="250px"
+                  captureScroll
+                  capturePointerMove
+                >
+                  <LayerPopup
+                    data={{
+                      // data available in certain point
+                      layersInteraction: layerGroupsInteraction,
+                      // ID of the layer will display data (defaults into the first layer)
+                      layersInteractionSelected: layerGroupsInteractionSelected,
+                      // current active layers to get their layerConfig attributes
+                      layers: activeLayersWithoutAreaOfInterest,
+                    }}
+                    latlng={{
+                      lat: layerGroupsInteractionLatLng.latitude,
+                      lng: layerGroupsInteractionLatLng.longitude,
+                    }}
+                    onChangeInteractiveLayer={onChangeInteractiveLayer}
+                  />
+                </Popup>
+              )}
           </>
         )}
       </Map>
@@ -152,7 +153,10 @@ export default function MiniExploreMap({
           onChangeLabels={handleLabels}
           onChangeBoundaries={handleBoundaries}
         />
-        <ResetViewControls className={resetViewBtnClass} onResetView={handleResetView} />
+        <ResetViewControls
+          className={resetViewBtnClass}
+          onResetView={handleResetView}
+        />
       </MapControls>
 
       <div className="c-legend-map">
@@ -175,7 +179,9 @@ export default function MiniExploreMap({
                 customClass="rw-legend-timeline"
                 defaultStyles={LEGEND_TIMELINE_PROPERTIES}
                 dots={false}
-                {...(lg.layers.length > TIMELINE_THRESHOLD && { dotStyle: { opacity: 0 } })}
+                {...(lg.layers.length > TIMELINE_THRESHOLD && {
+                  dotStyle: { opacity: 0 },
+                })}
               />
               {/* Temporary: only show old timeline approach if there's no occurrence of
                 new timelineParams config
@@ -185,7 +191,9 @@ export default function MiniExploreMap({
                   onChangeLayer={onChangeLayerTimeLine}
                   customClass="rw-legend-timeline"
                   {...LEGEND_TIMELINE_PROPERTIES}
-                  {...(lg.layers.length > TIMELINE_THRESHOLD && { dotStyle: { opacity: 0 } })}
+                  {...(lg.layers.length > TIMELINE_THRESHOLD && {
+                    dotStyle: { opacity: 0 },
+                  })}
                 />
               )}
             </LegendListItem>
@@ -193,7 +201,11 @@ export default function MiniExploreMap({
         </Legend>
       </div>
       {!!layerModal && (
-        <Modal isOpen className="-medium" onRequestClose={() => onChangeInfo(null)}>
+        <Modal
+          isOpen
+          className="-medium"
+          onRequestClose={() => onChangeInfo(null)}
+        >
           <LayerInfoModal layer={layerModal} />
         </Modal>
       )}

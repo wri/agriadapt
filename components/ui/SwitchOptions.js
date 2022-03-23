@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
 class SwitchOptions extends React.Component {
   constructor(props) {
@@ -14,42 +14,47 @@ class SwitchOptions extends React.Component {
    * UI EVENTS
    * - onChange
    * - onToggle
-  */
+   */
   onChange(e) {
     // Send object
-    const selectedObj = this.props.options.find((option) => option.value === e.currentTarget.dataset.value);
+    const selectedObj = this.props.options.find(
+      (option) => option.value === e.currentTarget.dataset.value
+    );
     this.props.onChange(selectedObj);
   }
 
   onToggle() {
     // Send object
-    const selectedObj = this.props.options.find((option) => option.value !== this.props.selected);
+    const selectedObj = this.props.options.find(
+      (option) => option.value !== this.props.selected
+    );
     this.props.onChange(selectedObj);
   }
 
   render() {
     const { selected, options } = this.props;
-    const position = (selected === options[0].value) ? '-left' : '-right';
+    const position = selected === options[0].value ? "-left" : "-right";
 
     return (
       <div className="c-switch-options">
         <span
-          className={`switch-label ${(selected === options[0].value) ? '-selected' : ''}`}
+          className={`switch-label ${
+            selected === options[0].value ? "-selected" : ""
+          }`}
           data-value={options[0].value}
           onClick={this.onChange}
         >
           {options[0].label}
         </span>
 
-        <span
-          className={`switch-element ${position}`}
-          onClick={this.onToggle}
-        >
+        <span className={`switch-element ${position}`} onClick={this.onToggle}>
           <span />
         </span>
 
         <span
-          className={`switch-label ${(selected === options[1].value) ? '-selected' : ''}`}
+          className={`switch-label ${
+            selected === options[1].value ? "-selected" : ""
+          }`}
           data-value={options[1].value}
           onClick={this.onChange}
         >

@@ -1,14 +1,14 @@
-import PropTypes from 'prop-types';
-import Renderer from '@widget-editor/renderer';
+import PropTypes from "prop-types";
+import Renderer from "@widget-editor/renderer";
 
 // components
-import WidgetHeader from 'components/widgets/header';
-import Spinner from 'components/ui/Spinner';
-import WidgetShareModal from 'components/widgets/share-modal';
-import WidgetInfo from 'components/widgets/info';
+import WidgetHeader from "components/widgets/header";
+import Spinner from "components/ui/Spinner";
+import WidgetShareModal from "components/widgets/share-modal";
+import WidgetInfo from "components/widgets/info";
 
 // constants
-import { WIDGET_EDITOR_MAPBOX_PROPS } from 'constants/widget-editor';
+import { WIDGET_EDITOR_MAPBOX_PROPS } from "constants/widget-editor";
 
 export default function WidgetItem({
   widgetState,
@@ -23,7 +23,9 @@ export default function WidgetItem({
   return (
     <>
       <div className="widget-item">
-        {widgetState.isFetching && <Spinner isLoading className="-transparent" />}
+        {widgetState.isFetching && (
+          <Spinner isLoading className="-transparent" />
+        )}
         {!widgetState.isFetching && !widgetState.isError && (
           <>
             <WidgetHeader
@@ -39,13 +41,19 @@ export default function WidgetItem({
                 widgetConfig={widgetState.data.widgetConfig}
                 map={WIDGET_EDITOR_MAPBOX_PROPS}
               />
-              {isInfoVisible && widgetState.data && <WidgetInfo widget={widgetState.data} />}
+              {isInfoVisible && widgetState.data && (
+                <WidgetInfo widget={widgetState.data} />
+              )}
             </div>
           </>
         )}
       </div>
       {isShareVisible && (
-        <WidgetShareModal isVisible widget={widgetState.data} onClose={handleCloseShareWidget} />
+        <WidgetShareModal
+          isVisible
+          widget={widgetState.data}
+          onClose={handleCloseShareWidget}
+        />
       )}
     </>
   );

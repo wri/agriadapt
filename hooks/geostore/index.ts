@@ -1,13 +1,17 @@
-import { useQuery } from 'react-query';
+import { useQuery } from "react-query";
 
 // services
-import { fetchGeostore } from 'services/geostore';
+import { fetchGeostore } from "services/geostore";
 
-import type { Geostore } from 'types/geostore';
+import type { Geostore } from "types/geostore";
 
 export const useGeostore = (id, params = {}, queryConfig = {}) =>
-  useQuery<Geostore, Error>(['geostore', id, params], () => fetchGeostore(id, params), {
-    ...queryConfig,
-  });
+  useQuery<Geostore, Error>(
+    ["geostore", id, params],
+    () => fetchGeostore(id, params),
+    {
+      ...queryConfig,
+    }
+  );
 
 export default useGeostore;

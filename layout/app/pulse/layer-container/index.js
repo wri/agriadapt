@@ -1,11 +1,11 @@
-import { Component, createElement } from 'react';
-import { connect } from 'react-redux';
+import { Component, createElement } from "react";
+import { connect } from "react-redux";
 
-import * as actions from './actions';
-import * as reducers from './reducer';
-import initialState from './initial-state';
+import * as actions from "./actions";
+import * as reducers from "./reducer";
+import initialState from "./initial-state";
 
-import LayerContainerComponent from './component';
+import LayerContainerComponent from "./component";
 
 const mapStateToProps = (state) => ({
   displayed: state.layerContainerPulse.displayed,

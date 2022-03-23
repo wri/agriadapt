@@ -1,15 +1,9 @@
-import {
-  useState,
-  useReducer,
-  useCallback,
-} from 'react';
-import PropTypes from 'prop-types';
-import {
-  useQueryClient,
-} from 'react-query';
+import { useState, useReducer, useCallback } from "react";
+import PropTypes from "prop-types";
+import { useQueryClient } from "react-query";
 // import { toastr } from 'react-redux-toastr';
 // components
-import CollectionPanelItem from 'components/collections-panel/collections-panel-item/component';
+import CollectionPanelItem from "components/collections-panel/collections-panel-item/component";
 
 // hooks
 // import {
@@ -30,17 +24,14 @@ import CollectionPanelItem from 'components/collections-panel/collections-panel-
 // } from 'services/favourites';
 
 // utils
-import { logEvent } from 'utils/analytics';
+import { logEvent } from "utils/analytics";
 
 // constants
-import { FAVOURITES_COLLECTION } from './collections-panel-constants';
+import { FAVOURITES_COLLECTION } from "./collections-panel-constants";
 
 // reducer
-import {
-  addToLoadingQueue,
-  removeToLoadingQueue,
-} from './actions';
-import reducer from './reducer';
+import { addToLoadingQueue, removeToLoadingQueue } from "./actions";
+import reducer from "./reducer";
 
 const CollectionsPanel = ({
   resource,
@@ -51,11 +42,9 @@ const CollectionsPanel = ({
   onToggleCollection,
 }) => {
   const queryClient = useQueryClient();
-  const {
-    data: user,
-  } = useMe();
+  const { data: user } = useMe();
   const [newCollectionState, setNewCollectionState] = useState({
-    name: '',
+    name: "",
   });
   const [collectionQueue, dispatch] = useReducer(reducer, []);
   const {
@@ -65,12 +54,12 @@ const CollectionsPanel = ({
   } = useFetchCollections(
     user?.token,
     {
-      sort: 'name',
+      sort: "name",
     },
     {
       initialData: [],
       initialStale: true,
-    },
+    }
   );
   const {
     isFavorite,
@@ -79,23 +68,22 @@ const CollectionsPanel = ({
     isSuccess: isFavoriteSuccess,
     refetch: refetchFavorites,
   } = useIsFavorite(resource.id, user?.token);
-  const isSuccess = (isCollectionsSuccess || isFavoriteSuccess);
+  const isSuccess = isCollectionsSuccess || isFavoriteSuccess;
 
   const onAddCollection = useCallback(async () => {
     const { newCollectionName } = newCollectionState;
 
-    if (newCollectionName && newCollectionName !== '') {
-      if (newCollectionName.toLowerCase() === 'favourites') {
+    if (newCollectionName && newCollectionName !== "") {
+      if (newCollectionName.toLowerCase() === "favourites") {
         // toastr.error('Duplicated Favourites list', 'You cannot duplicate this list.');
       } else {
         try {
-          await createCollection(user?.token,
-            {
-              name: newCollectionName,
-              env: process.env.NEXT_PUBLIC_API_ENV,
-              application: process.env.NEXT_PUBLIC_APPLICATIONS,
-              resources: [],
-            });
+          await createCollection(user?.token, {
+            name: newCollectionName,
+            env: process.env.NEXT_PUBLIC_API_ENV,
+            application: process.env.NEXT_PUBLIC_APPLICATIONS,
+            resources: [],
+          });
           refetchCollections();
         } catch (e) {
           // toastr.error(e.message);
@@ -116,12 +104,16 @@ const CollectionsPanel = ({
       }
     } else {
       try {
-        await createFavourite(user?.token, ({
+        await createFavourite(user?.token, {
           resourceId: resource.id,
           resourceType,
-        }));
+        });
 
-        logEvent('Favorites', `user adds ${resourceType} to favorites`, resource.name);
+        logEvent(
+          "Favorites",
+          `user adds ${resourceType} to favorites`,
+          resource.name
+        );
 
         await refetchFavorites();
       } catch (e) {
@@ -130,44 +122,70 @@ const CollectionsPanel = ({
     }
 
     if (onToggleFavorite) onToggleFavorite(!isFavorite, resource);
-  }, [user, resource, resourceType, isFavorite, refetchFavorites, favorite, onToggleFavorite]);
+  }, [
+    user,
+    resource,
+    resourceType,
+    isFavorite,
+    refetchFavorites,
+    favorite,
+    onToggleFavorite,
+  ]);
 
-  const handleToggleCollection = useCallback(async (isAdded, collection) => {
-    const resourcePayload = {
-      id: resource.id,
-      type: resourceType,
-    };
+  const handleToggleCollection = useCallback(
+    async (isAdded, collection) => {
+      const resourcePayload = {
+        id: resource.id,
+        type: resourceType,
+      };
 
-    if (isAdded) {
-      try {
-        dispatch({ type: addToLoadingQueue, payload: collection.id });
-        await addResourceToCollection(user?.token, collection.id, resourcePayload);
+      if (isAdded) {
+        try {
+          dispatch({ type: addToLoadingQueue, payload: collection.id });
+          await addResourceToCollection(
+            user?.token,
+            collection.id,
+            resourcePayload
+          );
 
-        logEvent('Collections', `user adds ${resourceType} to collection`, resource.name);
+          logEvent(
+            "Collections",
+            `user adds ${resourceType} to collection`,
+            resource.name
+          );
 
-        dispatch({ type: removeToLoadingQueue, payload: collection.id });
-      } catch (e) {
-        // do something
+          dispatch({ type: removeToLoadingQueue, payload: collection.id });
+        } catch (e) {
+          // do something
+        }
+      } else {
+        try {
+          dispatch({ type: addToLoadingQueue, payload: collection.id });
+          await removeResourceFromCollection(
+            user?.token,
+            collection.id,
+            resourcePayload
+          );
+          dispatch({ type: removeToLoadingQueue, payload: collection.id });
+        } catch (e) {
+          // do something
+        }
       }
-    } else {
-      try {
-        dispatch({ type: addToLoadingQueue, payload: collection.id });
-        await removeResourceFromCollection(user?.token, collection.id, resourcePayload);
-        dispatch({ type: removeToLoadingQueue, payload: collection.id });
-      } catch (e) {
-        // do something
-      }
-    }
 
-    queryClient.invalidateQueries('fetch-collections');
+      queryClient.invalidateQueries("fetch-collections");
 
-    if (onToggleCollection) onToggleCollection(isAdded, resource);
-  }, [user, resource, resourceType, onToggleCollection, queryClient]);
+      if (onToggleCollection) onToggleCollection(isAdded, resource);
+    },
+    [user, resource, resourceType, onToggleCollection, queryClient]
+  );
 
-  const handleKeyPress = useCallback((evt) => {
-    if (evt.key !== 'Enter') return false;
-    return onAddCollection();
-  }, [onAddCollection]);
+  const handleKeyPress = useCallback(
+    (evt) => {
+      if (evt.key !== "Enter") return false;
+      return onAddCollection();
+    },
+    [onAddCollection]
+  );
 
   const handleInputChange = useCallback((evt) => {
     setNewCollectionState({
@@ -225,11 +243,11 @@ const CollectionsPanel = ({
                 collection={collection}
                 loading={
                   !!collectionQueue.find(
-                    (collectionId) => collectionId === collection.id,
+                    (collectionId) => collectionId === collection.id
                   )
                 }
                 isChecked={collection.resources.some(
-                  (collectionResource) => collectionResource.id === resource.id,
+                  (collectionResource) => collectionResource.id === resource.id
                 )}
                 onToggleCollection={handleToggleCollection}
               />
@@ -253,11 +271,7 @@ CollectionsPanel.propTypes = {
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
   }).isRequired,
-  resourceType: PropTypes.oneOf([
-    'dataset',
-    'layer',
-    'widget',
-  ]).isRequired,
+  resourceType: PropTypes.oneOf(["dataset", "layer", "widget"]).isRequired,
   onClick: PropTypes.func,
   onKeyPress: PropTypes.func,
   onToggleFavorite: PropTypes.func,

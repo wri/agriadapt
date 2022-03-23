@@ -1,15 +1,15 @@
-import { PureComponent } from 'react';
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
-import { withRouter } from 'next/router';
-import { toastr } from 'react-redux-toastr';
+import { PureComponent } from "react";
+import PropTypes from "prop-types";
+import classnames from "classnames";
+import { withRouter } from "next/router";
+import { toastr } from "react-redux-toastr";
 
 // components
-import Field from 'components/form/Field';
-import CustomSelect from 'components/ui/CustomSelect';
-import Spinner from 'components/ui/Spinner';
-import DatasetsManager from '../dataset-manager';
-import SubscriptionsPreview from '../subscriptions-preview';
+import Field from "components/form/Field";
+import CustomSelect from "components/ui/CustomSelect";
+import Spinner from "components/ui/Spinner";
+import DatasetsManager from "../dataset-manager";
+import SubscriptionsPreview from "../subscriptions-preview";
 
 class AreaSubscriptionsModal extends PureComponent {
   static propTypes = {
@@ -26,22 +26,22 @@ class AreaSubscriptionsModal extends PureComponent {
     router: PropTypes.shape({
       push: PropTypes.func.isRequired,
     }).isRequired,
-  }
+  };
 
-  static defaultProps = { activeArea: null }
+  static defaultProps = { activeArea: null };
 
-  state = { showSubscribePreview: false }
+  state = { showSubscribePreview: false };
 
   handleCancel = () => {
     const { resetModal, onRequestClose } = this.props;
 
     onRequestClose();
     resetModal();
-  }
+  };
 
   handleShowSubscribePreview = () => {
     this.setState({ showSubscribePreview: true });
-  }
+  };
 
   handleSubscribe = () => {
     const {
@@ -62,22 +62,24 @@ class AreaSubscriptionsModal extends PureComponent {
       // so that it no longers has any subscriptions associated to it
       updateSubscription();
     } else {
-      toastr.error('Data missing', 'Please select at least one dataset and a subscription type');
+      toastr.error(
+        "Data missing",
+        "Please select at least one dataset and a subscription type"
+      );
     }
     this.props.onRequestClose();
-  }
+  };
 
   handleGoToMySubscriptions = () => {
-    const {
-      onRequestClose,
-      router,
-    } = this.props;
+    const { onRequestClose, router } = this.props;
 
     onRequestClose();
-    router.push('/myrw/areas');
-  }
+    router.push("/myrw/areas");
+  };
 
-  handleState = (bool) => { this.setState({ showSubscribePreview: bool }); }
+  handleState = (bool) => {
+    this.setState({ showSubscribePreview: bool });
+  };
 
   render() {
     const {
@@ -90,15 +92,14 @@ class AreaSubscriptionsModal extends PureComponent {
     } = this.props;
     const { showSubscribePreview } = this.state;
     const { success } = subscriptionCreation;
-    const paragraphText = success
-      ? (
-        <p>
-          Your subscription was successfully created.
-          <strong> Please check your email address to confirm it.</strong>
-        </p>
-      ) : null;
+    const paragraphText = success ? (
+      <p>
+        Your subscription was successfully created.
+        <strong> Please check your email address to confirm it.</strong>
+      </p>
+    ) : null;
     let headerText = `${activeArea.name} subscriptions`;
-    if (success) headerText = 'Subscription saved!';
+    if (success) headerText = "Subscription saved!";
 
     if (showSubscribePreview) {
       return (
@@ -112,12 +113,8 @@ class AreaSubscriptionsModal extends PureComponent {
     }
     return (
       <div className="c-subscriptions-modal">
-        <Spinner
-          className="-light"
-          isLoading={loading}
-        />
-        {!success
-          && (
+        <Spinner className="-light" isLoading={loading} />
+        {!success && (
           <>
             <div className="header-div">
               <h2>{headerText}</h2>
@@ -126,8 +123,8 @@ class AreaSubscriptionsModal extends PureComponent {
             <div className="selectors-container">
               <Field
                 properties={{
-                  name: 'areas',
-                  label: 'Areas',
+                  name: "areas",
+                  label: "Areas",
                 }}
               >
                 <CustomSelect
@@ -142,17 +139,18 @@ class AreaSubscriptionsModal extends PureComponent {
             <div className="separator" />
             <DatasetsManager activeArea={activeArea} />
           </>
-          )}
+        )}
 
-        {success
-          && (
+        {success && (
           <div className="icon-container">
-            <img alt="success" src="/static/images/components/modal/widget-saved.svg" />
+            <img
+              alt="success"
+              src="/static/images/components/modal/widget-saved.svg"
+            />
           </div>
-          )}
+        )}
 
-        {!success
-          && (
+        {!success && (
           <div className="buttons">
             <button className="c-btn -primary" onClick={this.handleSubscribe}>
               Save
@@ -160,12 +158,15 @@ class AreaSubscriptionsModal extends PureComponent {
 
             <button
               className={classnames({
-                'c-btn': true,
-                '-secondary': true,
-                '-disabled': !userSelection.datasets.length,
+                "c-btn": true,
+                "-secondary": true,
+                "-disabled": !userSelection.datasets.length,
               })}
               onClick={this.handleShowSubscribePreview}
-              disabled={userSelection.area === null || (userSelection.datasets).length === 0}
+              disabled={
+                userSelection.area === null ||
+                userSelection.datasets.length === 0
+              }
             >
               Preview
             </button>
@@ -173,19 +174,21 @@ class AreaSubscriptionsModal extends PureComponent {
               Cancel
             </button>
           </div>
-          )}
+        )}
 
-        {success
-          && (
+        {success && (
           <div className="buttons">
             <button className="c-btn -secondary" onClick={this.handleCancel}>
               Ok
             </button>
-            <button className="c-btn -primary" onClick={this.handleGoToMySubscriptions}>
+            <button
+              className="c-btn -primary"
+              onClick={this.handleGoToMySubscriptions}
+            >
               View my subscriptions
             </button>
           </div>
-          )}
+        )}
       </div>
     );
   }

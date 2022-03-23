@@ -1,3 +1,3 @@
-import Accordion from './component';
+import Accordion from "./component";
 
 export default Accordion;

@@ -1,39 +1,30 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
 // Components
-import { Tooltip } from 'vizzuality-components';
-import IndicatorTooltip from 'layout/app/dashboard-detail/energy-country-explorer/country-indicators/indicator-card/indicator-tooltip';
+import { Tooltip } from "vizzuality-components";
+import IndicatorTooltip from "layout/app/dashboard-detail/energy-country-explorer/country-indicators/indicator-card/indicator-tooltip";
 
 function RankingBar(props) {
   const { count, ranking, showPoint } = props;
 
-  const pointPosition = ranking * 100 / count;
+  const pointPosition = (ranking * 100) / count;
 
   return (
     <div className="c-ranking-bar">
       <div className="bar">
-        {showPoint
-          && (
+        {showPoint && (
           <Tooltip
-            overlay={(
-              <IndicatorTooltip
-                count={count}
-                ranking={ranking}
-              />
-            )}
+            overlay={<IndicatorTooltip count={count} ranking={ranking} />}
             overlayClassName="c-rc-tooltip -default"
             placement="top"
-            trigger={['hover']}
+            trigger={["hover"]}
             mouseLeaveDelay={0}
             destroyTooltipOnHide
           >
-            <div
-              className="point"
-              style={{ left: `${pointPosition}%` }}
-            />
+            <div className="point" style={{ left: `${pointPosition}%` }} />
           </Tooltip>
-          )}
+        )}
       </div>
     </div>
   );

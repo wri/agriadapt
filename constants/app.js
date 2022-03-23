@@ -1,22 +1,20 @@
 export const TRANSIFEX_BLACKLIST = [
-  '/app/embed/EmbedDashboard',
-  '/app/embed/EmbedMap',
-  '/app/embed/EmbedTable',
-  '/app/embed/EmbedText',
-  '/app/embed/EmbedWidget',
-  '/app/embed/EmbedEmbed',
-  '/app/embed/EmbedDataset',
-  '/app/embed/EmbedSimilarDatasets',
-  '/app/explore/embed',
+  "/app/embed/EmbedDashboard",
+  "/app/embed/EmbedMap",
+  "/app/embed/EmbedTable",
+  "/app/embed/EmbedText",
+  "/app/embed/EmbedWidget",
+  "/app/embed/EmbedEmbed",
+  "/app/embed/EmbedDataset",
+  "/app/embed/EmbedSimilarDatasets",
+  "/app/explore/embed",
 ];
 
 export const FULLSCREEN_PAGES = [
-  '/data/explore',
-  '/data/pulse',
-  '/sign-in',
-  '/explore'
+  "/data/explore",
+  "/data/pulse",
+  "/sign-in",
+  "/explore",
 ];
 
-export const HOTJAR_ROUTES = [
-  '/data/explore',
-];
+export const HOTJAR_ROUTES = ["/data/explore"];

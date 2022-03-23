@@ -1,7 +1,6 @@
-@import 'css/settings';
+@import "css/settings";
 
 .c-legend {
-
   width: 100%;
 
   &:last-child {
@@ -34,7 +33,9 @@
     margin: 0;
     margin-bottom: 3px;
 
-    &.-dark { color: $charcoal-grey; }
+    &.-dark {
+      color: $charcoal-grey;
+    }
 
     .category {
       font-weight: 400;

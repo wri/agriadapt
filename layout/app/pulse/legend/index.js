@@ -1,6 +1,6 @@
-import { Component, createElement } from 'react';
+import { Component, createElement } from "react";
 
-import LegendComponent from './component';
+import LegendComponent from "./component";
 
 class LegendContainer extends Component {
   render() {

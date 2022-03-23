@@ -1,7 +1,6 @@
-@import 'css/settings';
+@import "css/settings";
 
 .c-header-menu-mobile {
-
   .header-menu-mobile-content {
     z-index: 4;
     visibility: hidden;
@@ -50,7 +49,7 @@
     }
 
     .header-menu-mobile-backdrop {
-      background: rgba($black, .15);
+      background: rgba($black, 0.15);
       position: absolute;
       width: 100%;
       height: 100%;
@@ -73,5 +72,6 @@
     position: absolute;
     top: 10px;
     right: 10px;
+    border-color: $primary-green;
   }
 }

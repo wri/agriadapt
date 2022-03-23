@@ -1,10 +1,10 @@
-import { flatten, compact, isEmpty } from 'lodash';
+import { flatten, compact, isEmpty } from "lodash";
 
-import { USER_AREA_LAYER_TEMPLATES } from 'components/map/constants';
+import { USER_AREA_LAYER_TEMPLATES } from "components/map/constants";
 
 export const getUserAreaLayer = (
-  { id = 'user-area', geojson, minZoom },
-  template = USER_AREA_LAYER_TEMPLATES['area-card'],
+  { id = "user-area", geojson, minZoom },
+  template = USER_AREA_LAYER_TEMPLATES["area-card"]
 ) => template({ id, geojson, minZoom });
 
 /**
@@ -20,7 +20,8 @@ export const getInteractiveLayers = (activeLayers) =>
         if (isEmpty(layerConfig)) return null;
 
         // * keeps backward compatibility for now
-        const vectorLayers = layerConfig.render?.layers || layerConfig.body?.vectorLayers;
+        const vectorLayers =
+          layerConfig.render?.layers || layerConfig.body?.vectorLayers;
 
         if (vectorLayers) {
           return vectorLayers.map((l, i) => {
@@ -30,6 +31,6 @@ export const getInteractiveLayers = (activeLayers) =>
         }
 
         return null;
-      }),
-    ),
+      })
+    )
   );

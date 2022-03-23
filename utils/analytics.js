@@ -1,15 +1,15 @@
-import ReactGA from 'react-ga';
+import ReactGA from "react-ga";
 
 export const initGA = () => {
-  if (process.env.NEXT_PUBLIC_RW_ENV === 'production') {
+  if (process.env.NEXT_PUBLIC_RW_ENV === "production") {
     ReactGA.initialize(process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS);
   } else {
-    console.info('[GA] Init');
+    console.info("[GA] Init");
   }
 };
 
 export const logPageView = () => {
-  if (process.env.NEXT_PUBLIC_RW_ENV === 'production') {
+  if (process.env.NEXT_PUBLIC_RW_ENV === "production") {
     ReactGA.set({ page: window.location.pathname });
     ReactGA.pageview(window.location.pathname);
   } else {
@@ -17,13 +17,13 @@ export const logPageView = () => {
   }
 };
 
-export const logEvent = (category = '', action = '', label = '') => {
-  if (process.env.NEXT_PUBLIC_RW_ENV === 'production') {
+export const logEvent = (category = "", action = "", label = "") => {
+  if (process.env.NEXT_PUBLIC_RW_ENV === "production") {
     if (category && action) {
       ReactGA.event({
         category,
         action,
-        ...!!label && { label },
+        ...(!!label && { label }),
       });
     }
   } else {

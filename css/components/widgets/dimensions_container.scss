@@ -4,6 +4,8 @@
 
   .c-column-container {
     margin-bottom: $space-1;
-    &:last-child { margin-bottom: 0; }
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 }

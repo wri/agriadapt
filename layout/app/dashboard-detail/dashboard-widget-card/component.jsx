@@ -1,29 +1,29 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
-import Renderer from '@widget-editor/renderer';
-import { Tooltip } from 'vizzuality-components';
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import classnames from "classnames";
+import Renderer from "@widget-editor/renderer";
+import { Tooltip } from "vizzuality-components";
 
 // components
-import TextChart from 'components/widgets/charts/TextChart';
-import LoginRequired from 'components/ui/login-required';
-import Icon from 'components/ui/icon';
-import Title from 'components/ui/Title';
-import Spinner from 'components/ui/Spinner';
-import CollectionsPanel from 'components/collections-panel';
-import Modal from 'components/modal/modal-component';
-import ShareModal from 'components/modal/share-modal';
-import ErrorBoundary from 'components/ui/error-boundary';
+import TextChart from "components/widgets/charts/TextChart";
+import LoginRequired from "components/ui/login-required";
+import Icon from "components/ui/icon";
+import Title from "components/ui/Title";
+import Spinner from "components/ui/Spinner";
+import CollectionsPanel from "components/collections-panel";
+import Modal from "components/modal/modal-component";
+import ShareModal from "components/modal/share-modal";
+import ErrorBoundary from "components/ui/error-boundary";
 
 // utils
-import { logEvent } from 'utils/analytics';
+import { logEvent } from "utils/analytics";
 
 // hooks
-import useBelongsToCollection from 'hooks/collection/belongs-to-collection';
-import RankingWidget from './ranking-widget';
+import useBelongsToCollection from "hooks/collection/belongs-to-collection";
+import RankingWidget from "./ranking-widget";
 
 // constants
-import { WIDGET_EDITOR_MAPBOX_PROPS } from 'constants/widget-editor';
+import { WIDGET_EDITOR_MAPBOX_PROPS } from "constants/widget-editor";
 
 function DashboardWidgetCard(props) {
   const { user, widget, loading, explicitHeight, RWAdapter } = props;
@@ -33,43 +33,50 @@ function DashboardWidgetCard(props) {
   const { isInACollection } = useBelongsToCollection(widget.id, user.token);
   const widgetType = widget && widget.type;
   const metadataInfo =
-    (widget && widget.metadata && widget.metadata.length > 0 && widget.metadata[0].info) || {};
+    (widget &&
+      widget.metadata &&
+      widget.metadata.length > 0 &&
+      widget.metadata[0].info) ||
+    {};
 
   const widgetLinks = metadataInfo.widgetLinks || [];
   const { caption } = metadataInfo;
-  const widgetIsEmbed = widgetConfig && widgetConfig.type === 'embed';
-  const widgetIsRanking = widgetConfig && widgetConfig.type === 'ranking';
-  const widgetIsMap = widgetConfig && widgetConfig.type === 'map';
+  const widgetIsEmbed = widgetConfig && widgetConfig.type === "embed";
+  const widgetIsRanking = widgetConfig && widgetConfig.type === "ranking";
+  const widgetIsMap = widgetConfig && widgetConfig.type === "map";
   const widgetEmbedUrl = widgetIsEmbed && widgetConfig.url;
   const starIconName = classnames({
-    'icon-star-full': isInACollection,
-    'icon-star-empty': !isInACollection,
+    "icon-star-full": isInACollection,
+    "icon-star-empty": !isInACollection,
   });
   const modalIcon = classnames({
-    'icon-cross': infoCardOpen,
-    'icon-info': !infoCardOpen,
+    "icon-cross": infoCardOpen,
+    "icon-info": !infoCardOpen,
   });
 
   const classNameValue = classnames({
-    'c-dashboard-widget-card': true,
-    '-embed-widget': widgetIsEmbed,
-    '-map': widgetIsMap,
+    "c-dashboard-widget-card": true,
+    "-embed-widget": widgetIsEmbed,
+    "-map": widgetIsMap,
   });
 
   const classNameWidgetContainer = classnames({
-    'widget-container': true,
-    '-full-height': widgetIsEmbed,
+    "widget-container": true,
+    "-full-height": widgetIsEmbed,
   });
 
   return (
     <div className={classNameValue}>
       <header>
         <div className="header-container">
-          <Title className="-default">{widget ? widget.name : '–'}</Title>
+          <Title className="-default">{widget ? widget.name : "–"}</Title>
           <div className="buttons">
             <ul>
               <li>
-                <button className="c-btn -tertiary -clean" onClick={() => setShareModalOpen(true)}>
+                <button
+                  className="c-btn -tertiary -clean"
+                  onClick={() => setShareModalOpen(true)}
+                >
                   <Icon name="icon-share" className="-small" />
                 </button>
 
@@ -81,22 +88,39 @@ function DashboardWidgetCard(props) {
                   <ShareModal
                     links={{
                       link:
-                        typeof window !== 'undefined' &&
+                        typeof window !== "undefined" &&
                         widget &&
                         `${window.location.origin}/embed/${widgetType}/${widget.id}`,
                       embed:
-                        typeof window !== 'undefined' &&
+                        typeof window !== "undefined" &&
                         widget &&
                         `${window.location.origin}/embed/${widgetType}/${widget.id}`,
                     }}
                     analytics={{
                       facebook: () =>
-                        logEvent('Share (embed)', `Share widget: ${widget.name}`, 'Facebook'),
+                        logEvent(
+                          "Share (embed)",
+                          `Share widget: ${widget.name}`,
+                          "Facebook"
+                        ),
                       twitter: () =>
-                        logEvent('Share (embed)', `Share widget: ${widget.name}`, 'Twitter'),
-                      email: () => logEvent('Share', `Share widget: ${widget.name}`, 'Email'),
+                        logEvent(
+                          "Share (embed)",
+                          `Share widget: ${widget.name}`,
+                          "Twitter"
+                        ),
+                      email: () =>
+                        logEvent(
+                          "Share",
+                          `Share widget: ${widget.name}`,
+                          "Email"
+                        ),
                       copy: (type) =>
-                        logEvent('Share (embed)', `Share widget: ${widget.name}`, `Copy ${type}`),
+                        logEvent(
+                          "Share (embed)",
+                          `Share widget: ${widget.name}`,
+                          `Copy ${type}`
+                        ),
                     }}
                   />
                 </Modal>
@@ -105,9 +129,14 @@ function DashboardWidgetCard(props) {
               <li>
                 <LoginRequired>
                   <Tooltip
-                    overlay={<CollectionsPanel resource={widget} resourceType="widget" />}
+                    overlay={
+                      <CollectionsPanel
+                        resource={widget}
+                        resourceType="widget"
+                      />
+                    }
                     overlayClassName="c-rc-tooltip"
-                    overlayStyle={{ color: '#fff' }}
+                    overlayStyle={{ color: "#fff" }}
                     placement="bottomLeft"
                     trigger="click"
                   >
@@ -118,7 +147,10 @@ function DashboardWidgetCard(props) {
                 </LoginRequired>
               </li>
               <li>
-                <button type="button" onClick={() => setInfoCardOpen(!infoCardOpen)}>
+                <button
+                  type="button"
+                  onClick={() => setInfoCardOpen(!infoCardOpen)}
+                >
                   <Icon name={modalIcon} className="-small" />
                 </button>
               </li>
@@ -129,9 +161,11 @@ function DashboardWidgetCard(props) {
       <ErrorBoundary message="There was an error loading the visualization">
         <div className={classNameWidgetContainer}>
           <Spinner isLoading={loading} className="-light -small" />
-          {widgetType === 'text' && widget && <TextChart widgetConfig={widgetConfig} />}
+          {widgetType === "text" && widget && (
+            <TextChart widgetConfig={widgetConfig} />
+          )}
 
-          {widgetType === 'widget' && !widgetIsEmbed && !widgetIsRanking && (
+          {widgetType === "widget" && !widgetIsEmbed && !widgetIsRanking && (
             <Renderer
               adapter={RWAdapter}
               widgetConfig={widgetConfig}
@@ -144,7 +178,7 @@ function DashboardWidgetCard(props) {
               title={widget.name}
               src={widgetEmbedUrl}
               width="100%"
-              height={explicitHeight ? `${explicitHeight}px` : '100%'}
+              height={explicitHeight ? `${explicitHeight}px` : "100%"}
               frameBorder="0"
             />
           )}
@@ -153,7 +187,9 @@ function DashboardWidgetCard(props) {
 
           {infoCardOpen && (
             <div className="widget-modal">
-              {widget && !widget.description && <p>No additional information is available</p>}
+              {widget && !widget.description && (
+                <p>No additional information is available</p>
+              )}
 
               {widget && widget.description && (
                 <div>
@@ -168,7 +204,11 @@ function DashboardWidgetCard(props) {
                   <ul>
                     {widgetLinks.map((link) => (
                       <li>
-                        <a href={link.link} target="_blank" rel="noopener noreferrer">
+                        <a
+                          href={link.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
                           {link.name}
                         </a>
                       </li>
@@ -205,7 +245,7 @@ DashboardWidgetCard.propTypes = {
         info: PropTypes.shape({
           caption: PropTypes.string,
         }),
-      }),
+      })
     ),
   }).isRequired,
   loading: PropTypes.bool,

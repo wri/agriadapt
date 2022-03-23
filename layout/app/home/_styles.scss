@@ -1,4 +1,4 @@
-@import 'css/settings';
+@import "css/settings";
 
 .l-home {
   .video-intro {
@@ -6,7 +6,7 @@
     width: 100%;
     height: 390px;
     overflow: hidden;
-    background-image: url('/static/images/homepage/video-bg.jpg');
+    background-image: url("/static/images/homepage/video-bg.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -22,10 +22,16 @@
     }
 
     @media (min-aspect-ratio: 16/9) {
-      .video-foreground { height: 300%; top: -100%; }
+      .video-foreground {
+        height: 300%;
+        top: -100%;
+      }
     }
     @media (max-aspect-ratio: 16/9) {
-      .video-foreground { height: 250%; top: -75%; }
+      .video-foreground {
+        height: 250%;
+        top: -75%;
+      }
     }
 
     .video-foreground {
@@ -46,13 +52,13 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: rgba(0,0,0,0.2);
+      background: rgba(0, 0, 0, 0.2);
       padding: 0 32px;
 
       color: $white;
       font-size: $font-size-big;
       text-align: center;
-      text-shadow: 0 2px 1px rgba(0, 0, 0, .2);
+      text-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
 
       z-index: 1;
 
@@ -94,7 +100,6 @@
   }
 }
 
-
 .insight-cards {
   min-height: 590px;
   position: relative;
@@ -104,7 +109,7 @@
     height: 590px;
 
     &:before {
-      content: '';
+      content: "";
       position: absolute;
       display: block;
       top: 0;
@@ -112,12 +117,16 @@
       bottom: 0;
       right: 0;
       border-radius: 4px;
-      background-image: linear-gradient(180deg, rgba(22, 22, 22, .5) 0%, rgba(22, 22, 22, .1) 50%);
+      background-image: linear-gradient(
+        180deg,
+        rgba(22, 22, 22, 0.5) 0%,
+        rgba(22, 22, 22, 0.1) 50%
+      );
     }
 
     div {
       z-index: 1;
-    };
+    }
 
     h3 {
       font-weight: 600;
@@ -152,7 +161,6 @@
   margin-top: 20px;
 
   .c-card-static {
-
     .tag-name {
       text-transform: uppercase;
       font-size: $font-size-small;

@@ -1,3 +1,3 @@
-import reducers from 'layout/explore/reducers';
+import reducers from "layout/explore/reducers";
 
 export default reducers;

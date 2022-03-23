@@ -1,26 +1,26 @@
-import { useMemo, useState, useCallback, CSSProperties } from 'react';
-import { useQueries } from 'react-query';
-import { ErrorBoundary } from 'react-error-boundary';
-import type { ViewportProps } from 'react-map-gl';
+import { useMemo, useState, useCallback, CSSProperties } from "react";
+import { useQueries } from "react-query";
+import { ErrorBoundary } from "react-error-boundary";
+import type { ViewportProps } from "react-map-gl";
 
 // services
-import { fetchLayer } from 'services/layer';
+import { fetchLayer } from "services/layer";
 
 // hooks
-import { useFetchWidget } from 'hooks/widget';
-import useBelongsToCollection from 'hooks/collection/belongs-to-collection';
-import { useGeostore } from 'hooks/geostore';
-import { useMe } from 'hooks/user';
+import { useFetchWidget } from "hooks/widget";
+// import useBelongsToCollection from 'hooks/collection/belongs-to-collection';
+import { useGeostore } from "hooks/geostore";
+// import { useMe } from 'hooks/user';
 
 // utils
-import { getAoiLayer, getMaskLayer, getLayerGroups } from 'utils/layers';
+import { getAoiLayer, getMaskLayer, getLayerGroups } from "utils/layers";
 
 // components
-import ErrorFallback from 'components/error-fallback';
-import SwipeTypeWidget from './component';
+import ErrorFallback from "components/error-fallback";
+import SwipeTypeWidget from "./component";
 
-import type { Bounds } from 'components/map/types';
-import type { APIWidgetSpec } from 'types/widget';
+import type { Bounds } from "components/map/types";
+import type { APIWidgetSpec } from "types/widget";
 
 const CustomErrorFallback = (_props) => (
   <ErrorFallback {..._props} title="Something went wrong loading the widget" />
@@ -46,8 +46,9 @@ const SwipeTypeWidgetContainer = ({
   onToggleShare,
 }: SwipeTypeWidgetContainerProps): JSX.Element => {
   const [minZoom, setMinZoom] = useState<number>(null);
-  const { data: user } = useMe();
-  const { isInACollection } = useBelongsToCollection(widgetId, user?.token);
+  // const { data: user } = useMe();
+  // const { isInACollection } = useBelongsToCollection(widgetId, user?.token);
+  const isInACollection = false;
 
   const onFitBoundsChange = useCallback((viewport: ViewportProps) => {
     const { zoom } = viewport;
@@ -63,13 +64,13 @@ const SwipeTypeWidgetContainer = ({
   } = useFetchWidget(
     widgetId,
     {
-      includes: 'metadata',
+      includes: "metadata",
     },
     {
       enabled: !!widgetId,
       refetchOnWindowFocus: false,
       placeholderData: {},
-    },
+    }
   );
 
   const {
@@ -82,47 +83,54 @@ const SwipeTypeWidgetContainer = ({
     {
       enabled: !!areaOfInterest,
       refetchOnWindowFocus: false,
-    },
+    }
   );
 
   const leftLayerStates = useQueries(
     (widget?.widgetConfig?.paramsConfig?.layersLeft || []).map((layerId) => ({
-      queryKey: ['fetch-layer', layerId],
+      queryKey: ["fetch-layer", layerId],
       queryFn: () => fetchLayer(layerId),
       placeholderData: null,
-      select: (_layer) => ({
+      select: (_layer: Object) => ({
         ..._layer,
         params,
       }),
-    })),
+    }))
   );
 
   const rightLayerStates = useQueries(
     (widget?.widgetConfig?.paramsConfig?.layersRight || []).map((layerId) => ({
-      queryKey: ['fetch-layer', layerId],
+      queryKey: ["fetch-layer", layerId],
       queryFn: () => fetchLayer(layerId),
       placeholderData: null,
-      select: (_layer) => ({
+      select: (_layer: Object) => ({
         ..._layer,
         params,
       }),
-    })),
+    }))
   );
 
   const layers = useMemo(
     () => ({
-      left: leftLayerStates.filter(({ data }) => !!data && data?.id).map(({ data }) => data),
-      right: rightLayerStates.filter(({ data }) => !!data && data?.id).map(({ data }) => data),
+      left: leftLayerStates
+        .filter(({ data }) => !!data && data['id'])
+        .map(({ data }) => data),
+      right: rightLayerStates
+        .filter(({ data }) => !!data && data['id'])
+        .map(({ data }) => data),
     }),
-    [leftLayerStates, rightLayerStates],
+    [leftLayerStates, rightLayerStates]
   );
 
   const aoiLayer = useMemo(
     () => getAoiLayer(widget, geostore, { minZoom }),
-    [geostore, widget, minZoom],
+    [geostore, widget, minZoom]
   );
 
-  const maskLayer = useMemo(() => getMaskLayer(widget, params), [widget, params]);
+  const maskLayer = useMemo(
+    () => getMaskLayer(widget, params),
+    [widget, params]
+  );
 
   const layerGroupsBySide = useMemo(() => {
     const { layerParams } = widget?.widgetConfig?.paramsConfig || {};
@@ -149,7 +157,10 @@ const SwipeTypeWidgetContainer = ({
     } as Bounds;
   }, [widget, geostore]);
 
-  const isError = useMemo(() => isErrorWidget || isErrorGeostore, [isErrorWidget, isErrorGeostore]);
+  const isError = useMemo(
+    () => isErrorWidget || isErrorGeostore,
+    [isErrorWidget, isErrorGeostore]
+  );
 
   return (
     <ErrorBoundary

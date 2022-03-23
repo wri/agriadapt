@@ -1,4 +1,4 @@
-@import 'css/settings';
+@import "css/settings";
 
 .c-icon {
   width: 20px;
@@ -13,6 +13,8 @@
   &.-smaller {
     width: 10px;
     height: 10px;
+    stroke: $primary-green;
+    fill: $primary-green;
   }
 
   &.-small {

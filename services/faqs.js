@@ -1,8 +1,8 @@
-import WRISerializer from 'wri-json-api-serializer';
+import WRISerializer from "wri-json-api-serializer";
 
 // utils
-import { WRIAPI } from 'utils/axios';
-import { logger } from 'utils/logs';
+import { WRIAPI } from "utils/axios";
+import { logger } from "utils/logs";
 
 /**
  * Get FAQs.
@@ -12,19 +12,16 @@ import { logger } from 'utils/logs';
  * @returns {Object}
  */
 export const fetchFaqs = (params = {}, headers = {}) => {
-  logger.info('Fetch FAQs');
-  return WRIAPI.get(
-    '/v1/faq',
-    {
-      params: {
-        env: process.env.NEXT_PUBLIC_API_ENV,
-        application: process.env.NEXT_PUBLIC_APPLICATIONS,
-        ...params,
-        published: 'all',
-      },
-      headers: { ...headers },
+  logger.info("Fetch FAQs");
+  return WRIAPI.get("/v1/faq", {
+    params: {
+      env: process.env.NEXT_PUBLIC_API_ENV,
+      application: process.env.NEXT_PUBLIC_APPLICATIONS,
+      ...params,
+      published: "all",
     },
-  )
+    headers: { ...headers },
+  })
     .then((response) => WRISerializer(response.data))
     .catch(({ response }) => {
       const { status, statusText } = response;
@@ -43,17 +40,14 @@ export const fetchFaqs = (params = {}, headers = {}) => {
  */
 export const fetchFaq = (id, params = {}, headers = {}) => {
   logger.info(`Fetch FAQ - ${id}`);
-  return WRIAPI.get(
-    `/v1/faq/${id}`,
-    {
-      params: {
-        env: process.env.NEXT_PUBLIC_API_ENV,
-        application: process.env.NEXT_PUBLIC_APPLICATIONS,
-        ...params,
-      },
-      headers: { ...headers },
+  return WRIAPI.get(`/v1/faq/${id}`, {
+    params: {
+      env: process.env.NEXT_PUBLIC_API_ENV,
+      application: process.env.NEXT_PUBLIC_APPLICATIONS,
+      ...params,
     },
-  )
+    headers: { ...headers },
+  })
     .then((response) => WRISerializer(response.data))
     .catch(({ response }) => {
       const { status, statusText } = response;
@@ -72,21 +66,17 @@ export const fetchFaq = (id, params = {}, headers = {}) => {
  */
 export const deleteFaq = (id, token, params = {}, headers = {}) => {
   logger.info(`Delete FAQ ${id}`);
-  return WRIAPI.delete(
-    `/v1/faq/${id}`,
-    {
-      headers: {
-        ...headers,
-        Authorization: token,
-      },
-      params: { ...params },
+  return WRIAPI.delete(`/v1/faq/${id}`, {
+    headers: {
+      ...headers,
+      Authorization: token,
     },
-  )
-    .catch(({ response }) => {
-      const { status, statusText } = response;
-      logger.error(`Error deleting faq ${id}: ${status}: ${statusText}`);
-      throw new Error(`Error deleting faq ${id}: ${status}: ${statusText}`);
-    });
+    params: { ...params },
+  }).catch(({ response }) => {
+    const { status, statusText } = response;
+    logger.error(`Error deleting faq ${id}: ${status}: ${statusText}`);
+    throw new Error(`Error deleting faq ${id}: ${status}: ${statusText}`);
+  });
 };
 
 /**
@@ -110,7 +100,7 @@ export const updateFaq = (id, faq, token, params = {}, headers = {}) => {
         Authorization: token,
       },
       params: { ...params },
-    },
+    }
   )
     .then((response) => WRISerializer(response.data))
     .catch(({ response }) => {
@@ -130,9 +120,9 @@ export const updateFaq = (id, faq, token, params = {}, headers = {}) => {
  * @returns {Object}
  */
 export const createFaq = (faq, token, params = {}, headers = {}) => {
-  logger.info('Create FAQ');
+  logger.info("Create FAQ");
   return WRIAPI.post(
-    '/v1/faq',
+    "/v1/faq",
     { ...faq },
     {
       headers: {
@@ -143,7 +133,7 @@ export const createFaq = (faq, token, params = {}, headers = {}) => {
         env: process.env.NEXT_PUBLIC_API_ENV,
         ...params,
       },
-    },
+    }
   )
     .then((response) => WRISerializer(response.data))
     .catch(({ response }) => {
@@ -163,9 +153,9 @@ export const createFaq = (faq, token, params = {}, headers = {}) => {
  * @returns {Object}
  */
 export const updateFaqOrder = (order, token, params = {}, headers = {}) => {
-  logger.info('Reorder FAQ');
+  logger.info("Reorder FAQ");
   return WRIAPI.post(
-    '/v1/faq/reorder',
+    "/v1/faq/reorder",
     { ...order },
     {
       headers: {
@@ -173,7 +163,7 @@ export const updateFaqOrder = (order, token, params = {}, headers = {}) => {
         Authorization: token,
       },
       params: { ...params },
-    },
+    }
   )
     .then((response) => WRISerializer(response.data))
     .catch(({ response }) => {

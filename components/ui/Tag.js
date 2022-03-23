@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import React from "react";
+import PropTypes from "prop-types";
+import classnames from "classnames";
 
-import Icon from 'components/ui/icon';
+import Icon from "components/ui/icon";
 
 class Tag extends React.PureComponent {
   static propTypes = {
@@ -11,7 +11,7 @@ class Tag extends React.PureComponent {
     isRemovable: PropTypes.bool,
 
     onClick: PropTypes.func,
-  }
+  };
 
   render() {
     const { name, className, isRemovable } = this.props;
@@ -24,13 +24,7 @@ class Tag extends React.PureComponent {
       >
         <span>{name}</span>
 
-        {isRemovable
-          && (
-          <Icon
-            name="icon-cross"
-            className="-tiny"
-          />
-          )}
+        {isRemovable && <Icon name="icon-cross" className="-tiny" />}
       </button>
     );
   }

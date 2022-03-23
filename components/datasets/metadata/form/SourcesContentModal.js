@@ -1,17 +1,17 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { toastr } from 'react-redux-toastr';
+import React from "react";
+import PropTypes from "prop-types";
+import { toastr } from "react-redux-toastr";
 
 // redux
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
 // redactions
-import { setTmpSources, setSources } from 'redactions/admin/sources';
+import { setTmpSources, setSources } from "redactions/admin/sources";
 
 // components
-import ContentGroup from 'components/ui/ContentGroup';
-import Source from 'components/datasets/metadata/form/Source';
-import { SOURCE_ELEMENTS } from 'components/datasets/metadata/form/constants';
+import ContentGroup from "components/ui/ContentGroup";
+import Source from "components/datasets/metadata/form/Source";
+import { SOURCE_ELEMENTS } from "components/datasets/metadata/form/constants";
 
 class SourcesContentModal extends React.Component {
   static propTypes = {
@@ -51,10 +51,13 @@ class SourcesContentModal extends React.Component {
         this.props.onSubmit();
         this.props.setSources(tmpSources);
       } else {
-        toastr.error('Error', 'Fill all the required fields or correct the invalid values');
+        toastr.error(
+          "Error",
+          "Fill all the required fields or correct the invalid values"
+        );
       }
     }, 0);
-  }
+  };
 
   render() {
     const { tmpSources } = this.props;
@@ -106,4 +109,7 @@ const mapDispatchToProps = {
   setTmpSources,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SourcesContentModal);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SourcesContentModal);

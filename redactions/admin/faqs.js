@@ -1,19 +1,17 @@
-import {
-  HYDRATE,
-} from 'next-redux-wrapper';
-import { fetchFaqs, updateFaqOrder } from 'services/faqs';
+import { HYDRATE } from "next-redux-wrapper";
+import { fetchFaqs, updateFaqOrder } from "services/faqs";
 
 /**
  * CONSTANTS
-*/
-const GET_FAQS_SUCCESS = 'faqs/GET_FAQS_SUCCESS';
-const GET_FAQS_ERROR = 'faqs/GET_FAQS_ERROR';
-const GET_FAQS_LOADING = 'faqs/GET_FAQS_LOADING';
-const SET_FAQS_FILTERS = 'faqs/SET_FAQS_FILTERS';
-const SET_FAQS_ORDER = 'faq/SET_FAQS_ORDER';
-const SET_FAQS_ORDER_LOADING = 'faq/SET_FAQS_ORDER_LOADING';
-const SET_FAQS_ORDER_SUCCESS = 'faq/SET_FAQS_ORDER_SUCCESS';
-const SET_FAQS_ORDER_ERROR = 'faq/SET_FAQS_ORDER_ERROR';
+ */
+const GET_FAQS_SUCCESS = "faqs/GET_FAQS_SUCCESS";
+const GET_FAQS_ERROR = "faqs/GET_FAQS_ERROR";
+const GET_FAQS_LOADING = "faqs/GET_FAQS_LOADING";
+const SET_FAQS_FILTERS = "faqs/SET_FAQS_FILTERS";
+const SET_FAQS_ORDER = "faq/SET_FAQS_ORDER";
+const SET_FAQS_ORDER_LOADING = "faq/SET_FAQS_ORDER_LOADING";
+const SET_FAQS_ORDER_SUCCESS = "faq/SET_FAQS_ORDER_SUCCESS";
+const SET_FAQS_ORDER_ERROR = "faq/SET_FAQS_ORDER_ERROR";
 
 /**
  * STORE
@@ -37,10 +35,10 @@ const initialState = {
 export default function Faqs(state = initialState, action) {
   switch (action.type) {
     case HYDRATE: {
-      return ({
+      return {
         ...state,
         ...action.payload.faqs,
-      });
+      };
     }
     case GET_FAQS_LOADING: {
       const faqs = {
@@ -141,8 +139,9 @@ export function setFaqOrder(order, token) {
  * @param {{ key: string, value: string|number }[]} filters List of filters
  */
 export function setFilters(filters) {
-  return (dispatch) => dispatch({
-    type: SET_FAQS_FILTERS,
-    payload: filters,
-  });
+  return (dispatch) =>
+    dispatch({
+      type: SET_FAQS_FILTERS,
+      payload: filters,
+    });
 }

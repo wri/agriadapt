@@ -1,32 +1,33 @@
 module.exports = {
   reactStrictMode: true,
 
-  typescript: {
-    ignoreBuildErrors: true,
+  eslint: {
+    // Will remove one day
+    ignoreDuringBuilds: true,
   },
 
   async redirects() {
     return [
       {
-        source: '/value-chains',
-        destination: '/value-chains/coffee/colombia',
+        source: "/value-chains",
+        destination: "/value-chains/coffee/colombia",
         permanent: false,
       },
       {
-        source: '/value-chains/coffee',
-        destination: '/value-chains/coffee/colombia',
+        source: "/value-chains/coffee",
+        destination: "/value-chains/coffee/colombia",
         permanent: false,
       },
       {
-        source: '/value-chains/cotton',
-        destination: '/value-chains/cotton/india',
+        source: "/value-chains/cotton",
+        destination: "/value-chains/cotton/india",
         permanent: false,
       },
       {
-        source: '/value-chains/rice',
-        destination: '/value-chains/rice/india',
+        source: "/value-chains/rice",
+        destination: "/value-chains/rice/india",
         permanent: false,
       },
-    ]
-  }
-}
+    ];
+  },
+};

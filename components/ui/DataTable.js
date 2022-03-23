@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
 export default function DataTable({ title, table, downloadLink }) {
   if (!table || !table.data || table.data.length === 0) {
@@ -16,33 +16,31 @@ export default function DataTable({ title, table, downloadLink }) {
 
       <section className="c-dataset-table__container">
         <table className="c-dataset-table__table">
-          {columns && columns.length
-          && (
-          <tbody>
-            <tr>
-              {columns.map((l, k) => <th key={k}>{l}</th>)}
-            </tr>
-          </tbody>
+          {columns && columns.length && (
+            <tbody>
+              <tr>
+                {columns.map((l, k) => (
+                  <th key={k}>{l}</th>
+                ))}
+              </tr>
+            </tbody>
           )}
           <tbody>
             {data.map((row, k) => (
               <tr key={k}>
-                {row.map((col, i) => <td key={k + i}>{col}</td>)}
+                {row.map((col, i) => (
+                  <td key={k + i}>{col}</td>
+                ))}
               </tr>
             ))}
           </tbody>
         </table>
 
-        {downloadLink
-          && (
-          <a
-            className="c-dataset-table__cta c-btn -b"
-            href={downloadLink}
-          >
+        {downloadLink && (
+          <a className="c-dataset-table__cta c-btn -b" href={downloadLink}>
             Download full list
           </a>
-          )}
-
+        )}
       </section>
     </div>
   );

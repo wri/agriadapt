@@ -1,4 +1,4 @@
-@import 'css/settings';
+@import "css/settings";
 
 .c-layer-card {
   position: absolute;
@@ -30,7 +30,8 @@
     }
   }
 
-  h3, h5 {
+  h3,
+  h5 {
     color: $dark-pink;
     margin: 0px;
   }

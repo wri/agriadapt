@@ -1,10 +1,8 @@
-import WRISerializer from 'wri-json-api-serializer';
+import WRISerializer from "wri-json-api-serializer";
 
 // utils
-import {
-  WRIAPI,
-} from 'utils/axios';
-import { logger } from 'utils/logs';
+import { WRIAPI } from "utils/axios";
+import { logger } from "utils/logs";
 
 /**
  * Get area.
@@ -17,19 +15,16 @@ import { logger } from 'utils/logs';
 export const fetchArea = (id, params = {}, headers = {}) => {
   logger.info(`Fetch area ${id}`);
 
-  return WRIAPI.get(
-    `/v2/area/${id}`,
-    {
-      headers: {
-        ...headers,
-        'Upgrade-Insecure-Requests': 1,
-      },
-      params: {
-        env: process.env.NEXT_PUBLIC_API_ENV,
-        ...params,
-      },
+  return WRIAPI.get(`/v2/area/${id}`, {
+    headers: {
+      ...headers,
+      "Upgrade-Insecure-Requests": 1,
     },
-  )
+    params: {
+      env: process.env.NEXT_PUBLIC_API_ENV,
+      ...params,
+    },
+  })
     .then((response) => WRISerializer(response.data))
     .catch(({ response }) => {
       const { status, statusText } = response;
@@ -45,12 +40,12 @@ export const fetchArea = (id, params = {}, headers = {}) => {
  * @returns {Object}
  */
 export const fetchUserAreas = (token, params = {}, _meta = false) => {
-  logger.info('Fetch user areas');
+  logger.info("Fetch user areas");
 
-  return WRIAPI.get('/v2/area', {
+  return WRIAPI.get("/v2/area", {
     headers: {
       Authorization: token,
-      'Upgrade-Insecure-Requests': 1,
+      "Upgrade-Insecure-Requests": 1,
     },
     params: {
       application: process.env.NEXT_PUBLIC_APPLICATIONS,
@@ -59,7 +54,7 @@ export const fetchUserAreas = (token, params = {}, _meta = false) => {
     },
     transformResponse: [].concat(
       WRIAPI.defaults.transformResponse,
-      (({ data, meta }) => ({ areas: data, meta })),
+      ({ data, meta }) => ({ areas: data, meta })
     ),
   })
     .then((response) => {
@@ -67,7 +62,7 @@ export const fetchUserAreas = (token, params = {}, _meta = false) => {
       const { areas, meta } = data;
 
       if (status >= 300) {
-        logger.error('Error fetching areas:', `${status}: ${statusText}`);
+        logger.error("Error fetching areas:", `${status}: ${statusText}`);
         throw new Error(statusText);
       }
 
@@ -99,12 +94,11 @@ export const deleteArea = (areaId, token) => {
 
   return WRIAPI.delete(`/v2/area/${areaId}`, {
     headers: { Authorization: token },
-  })
-    .catch(({ response }) => {
-      const { status, statusText } = response;
-      logger.error(`Error deleting area ${areaId}: ${status}: ${statusText}`);
-      throw new Error(`Error deleting area ${areaId}: ${status}: ${statusText}`);
-    });
+  }).catch(({ response }) => {
+    const { status, statusText } = response;
+    logger.error(`Error deleting area ${areaId}: ${status}: ${statusText}`);
+    throw new Error(`Error deleting area ${areaId}: ${status}: ${statusText}`);
+  });
 };
 
 /**
@@ -116,7 +110,7 @@ export const deleteArea = (areaId, token) => {
  * @returns {Object}
  */
 export const createArea = (name, geostore, token) => {
-  logger.info('Create area');
+  logger.info("Create area");
 
   const bodyObj = {
     name,
@@ -125,7 +119,7 @@ export const createArea = (name, geostore, token) => {
     geostore,
   };
 
-  return WRIAPI.post('/v2/area', bodyObj, { headers: { Authorization: token } })
+  return WRIAPI.post("/v2/area", bodyObj, { headers: { Authorization: token } })
     .then((response) => WRISerializer(response.data))
     .catch(({ response }) => {
       const { status, statusText } = response;
@@ -145,16 +139,19 @@ export const createArea = (name, geostore, token) => {
 export const updateArea = (id, params, token) => {
   logger.info(`Update area ${id}`);
 
-  return WRIAPI.patch(`/v2/area/${id}`, {
-    application: process.env.NEXT_PUBLIC_APPLICATIONS,
-    env: process.env.NEXT_PUBLIC_API_ENV,
-    ...params,
-  },
-  {
-    headers: {
-      Authorization: token,
+  return WRIAPI.patch(
+    `/v2/area/${id}`,
+    {
+      application: process.env.NEXT_PUBLIC_APPLICATIONS,
+      env: process.env.NEXT_PUBLIC_API_ENV,
+      ...params,
     },
-  })
+    {
+      headers: {
+        Authorization: token,
+      },
+    }
+  )
     .then((response) => WRISerializer(response.data))
     .catch(({ response }) => {
       const { status, statusText } = response;

@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { remove } from 'utils/request';
-import { toastr } from 'react-redux-toastr';
+import React from "react";
+import PropTypes from "prop-types";
+import { remove } from "utils/request";
+import { toastr } from "react-redux-toastr";
 
 class DeleteAction extends React.Component {
   constructor(props) {
@@ -22,15 +22,20 @@ class DeleteAction extends React.Component {
       onOk: () => {
         remove({
           url: `${url}/${data.id}`,
-          headers: [{
-            key: 'Authorization',
-            value: this.props.authorization,
-          }],
+          headers: [
+            {
+              key: "Authorization",
+              value: this.props.authorization,
+            },
+          ],
           onSuccess: () => {
             this.props.onRowDelete(data.id);
           },
           onError: () => {
-            toastr.error('Error', 'There was an error with the request. The object was not deleted');
+            toastr.error(
+              "Error",
+              "There was an error with the request. The object was not deleted"
+            );
           },
         });
       },
@@ -41,11 +46,7 @@ class DeleteAction extends React.Component {
     const { href } = this.props;
     return (
       <span>
-        <a
-          href={href}
-          onClick={this.handleOnClickDelete}
-          className="c-btn"
-        >
+        <a href={href} onClick={this.handleOnClickDelete} className="c-btn">
           Remove
         </a>
       </span>

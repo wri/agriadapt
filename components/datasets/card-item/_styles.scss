@@ -1,4 +1,4 @@
-@import 'css/settings';
+@import "css/settings";
 
 .c-dataset-card-item {
   display: flex;
@@ -6,14 +6,14 @@
   position: relative;
   min-height: 130px;
   border-radius: 4px;
-  box-shadow: 0 0 0 1px rgba(0,0,0,0.05), 0 1px 6px 0 rgba(0,0,0,.0);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 1px 6px 0 rgba(0, 0, 0, 0);
   box-sizing: border-box;
   transition: all $animation-time-2 $ease-in-out-sine;
   // cursor: pointer;
   background-color: white;
 
   &:hover {
-    box-shadow: 0 0 0 1px rgba(0,0,0,0.05), 0 20px 30px rgba(0,0,0,.2);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 20px 30px rgba(0, 0, 0, 0.2);
     -webkit-transform: translateY(-4px);
     transform: translateY(-4px);
     z-index: 99;
@@ -21,14 +21,14 @@
 
   &.-active {
     border: none;
-    box-shadow: 0 0 0 2px $dark-pink, 0 1px 6px 0 rgba(0,0,0,.0);
+    box-shadow: 0 0 0 2px $dark-pink, 0 1px 6px 0 rgba(0, 0, 0, 0);
 
     &:hover {
-      box-shadow: 0 0 0 2px $dark-pink, 0 20px 30px rgba(0,0,0,.2);
+      box-shadow: 0 0 0 2px $dark-pink, 0 20px 30px rgba(0, 0, 0, 0.2);
     }
   }
 
-    // Chart
+  // Chart
   .list-item-chart {
     width: 130px;
     // min-height: 100%;

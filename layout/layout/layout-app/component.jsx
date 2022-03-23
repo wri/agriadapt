@@ -1,35 +1,35 @@
-import { Component } from 'react';
-import PropTypes from 'prop-types';
-import dynamic from 'next/dynamic';
-import { withRouter } from 'next/router';
-import Progress from 'react-progress-2';
-import classnames from 'classnames';
+import { Component } from "react";
+import PropTypes from "prop-types";
+import dynamic from "next/dynamic";
+import { withRouter } from "next/router";
+import Progress from "react-progress-2";
+import classnames from "classnames";
 
 // Utils
-import { initGA, logPageView } from 'utils/analytics';
-import { browserSupported } from 'utils/browser';
+import { initGA, logPageView } from "utils/analytics";
+import { browserSupported } from "utils/browser";
 
 // vizzuality-components
-import { Icons } from 'vizzuality-components';
+import { Icons } from "vizzuality-components";
 
 // Components
-import HeadApp from 'layout/head/app';
-import Header from 'layout/header';
-import Footer from 'layout/footer';
+import HeadApp from "layout/head/app";
+import Header from "layout/header";
+import Footer from "layout/footer";
 
-import IconsRW from 'components/icons';
-import Tooltip from 'components/ui/Tooltip';
-import Modal from 'components/ui/Modal';
-import NoBrowserSupport from 'components/app/common/Browser';
-import GDPRBanner from 'components/ui/gdpr-banner';
+import IconsRW from "components/icons";
+import Tooltip from "components/ui/Tooltip";
+import Modal from "components/ui/Modal";
+import NoBrowserSupport from "components/app/common/Browser";
+import GDPRBanner from "components/ui/gdpr-banner";
 
 // utils
-import { containsString } from 'utils/string';
+import { containsString } from "utils/string";
 
 // constants
-import { FULLSCREEN_PAGES } from 'constants/app';
+import { FULLSCREEN_PAGES } from "constants/app";
 
-const UserReportButton = dynamic(() => import('../../user-report'), { ssr: false });
+// const UserReportButton = dynamic(() => import('../../user-report'), { ssr: false });
 
 class LayoutApp extends Component {
   constructor(props) {
@@ -39,10 +39,7 @@ class LayoutApp extends Component {
   }
 
   componentDidMount() {
-    const {
-      router,
-      updateIsLoading,
-    } = this.props;
+    const { router, updateIsLoading } = this.props;
 
     router.events.on('routeChangeStart', () => {
       updateIsLoading(true);
@@ -64,9 +61,7 @@ class LayoutApp extends Component {
 
   // eslint-disable-next-line camelcase
   UNSAFE_componentWillReceiveProps(newProps) {
-    const {
-      modalOpen,
-    } = this.state;
+    const { modalOpen } = this.state;
     if (modalOpen !== newProps.modal.open) {
       this.setState({ modalOpen: newProps.modal.open });
     }
@@ -83,40 +78,28 @@ class LayoutApp extends Component {
       children,
       toggleModal,
       setModalOptions,
-      router: {
-        pathname,
-      },
+      router: { pathname },
     } = this.props;
     const { modalOpen } = this.state;
-    const componentClass = classnames(
-      'l-page',
-      { [className]: !!className },
-    );
+    const componentClass = classnames("l-page", { [className]: !!className });
 
     const isFullScreen = containsString(pathname, FULLSCREEN_PAGES);
 
     return (
-      <div
-        id="#main"
-        className={componentClass}
-      >
+      <div id="#main" className={componentClass}>
         <HeadApp
           title={title}
           description={description}
-          {...thumbnail && { thumbnail }}
+          {...(thumbnail && { thumbnail })}
         />
 
         {/* <GDPRBanner /> */}
 
-        {!browserSupported()
-          && (
-          <Modal
-            open
-            canClose={false}
-          >
+        {!browserSupported() && (
+          <Modal open canClose={false}>
             <NoBrowserSupport />
           </Modal>
-          )}
+        )}
 
         <Icons />
         <IconsRW />
@@ -127,7 +110,7 @@ class LayoutApp extends Component {
 
         {children}
 
-        {!isFullScreen && (<Footer />)}
+        {!isFullScreen && <Footer />}
 
         <Tooltip />
 
@@ -139,7 +122,7 @@ class LayoutApp extends Component {
           setModalOptions={setModalOptions}
         /> */}
 
-        <UserReportButton />
+        {/* <UserReportButton /> */}
       </div>
     );
   }
@@ -150,7 +133,7 @@ LayoutApp.defaultProps = {
   description: null,
   className: null,
   pageHeader: false,
-  thumbnail: 'https://resourcewatch.org/static/images/social-big.jpg',
+  thumbnail: "https://resourcewatch.org/static/images/social-big.jpg",
   modal: {},
 };
 

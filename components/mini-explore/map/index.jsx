@@ -1,25 +1,28 @@
-import { useState, useCallback, useEffect, useMemo } from 'react';
-import PropTypes from 'prop-types';
-import flattenDeep from 'lodash/flattenDeep';
-import compact from 'lodash/compact';
-import { useDebouncedCallback } from 'use-debounce';
+import { useState, useCallback, useEffect, useMemo } from "react";
+import PropTypes from "prop-types";
+import flattenDeep from "lodash/flattenDeep";
+import compact from "lodash/compact";
+import { useDebouncedCallback } from "use-debounce";
 
 // hooks
 // import { useFetchDatasets } from 'hooks/dataset/fetch-datasets';
 // import { useGeostore } from 'hooks/geostore';
 
 // constants
-import { USER_AREA_LAYER_TEMPLATES, BASEMAP_LABEL_DICTIONARY } from 'components/map/constants';
+import {
+  USER_AREA_LAYER_TEMPLATES,
+  BASEMAP_LABEL_DICTIONARY,
+} from "components/map/constants";
 
 // utils
-import { getUserAreaLayer, getInteractiveLayers } from 'components/map/utils';
-import { logEvent } from 'utils/analytics';
+import { getUserAreaLayer, getInteractiveLayers } from "components/map/utils";
+import { logEvent } from "utils/analytics";
 
 // components
-import MiniExploreMap from './component';
+import MiniExploreMap from "./component";
 
 // reducers
-import { miniExploreSlice } from '../reducer';
+import { miniExploreSlice } from "../reducer";
 
 const {
   setViewport,
@@ -73,10 +76,10 @@ export default function MiniExploreMapContainer({
         setMapLayerGroupVisibility({
           dataset: { id: l.dataset },
           visibility,
-        }),
+        })
       );
     },
-    [dispatch],
+    [dispatch]
   );
 
   const onChangeLayer = useCallback(
@@ -87,16 +90,16 @@ export default function MiniExploreMapContainer({
         setMapLayerGroupActive({
           dataset: { id: l.dataset },
           active: l.id,
-        }),
+        })
       );
 
       logEvent(
-        'Mini Explore Map',
-        'Clicks Another Layer from Map Legend Tooltip',
-        `${l.name} [${l.id}]`,
+        "Mini Explore Map",
+        "Clicks Another Layer from Map Legend Tooltip",
+        `${l.name} [${l.id}]`
       );
     },
-    [dispatch],
+    [dispatch]
   );
 
   const onRemoveLayer = useCallback(
@@ -105,19 +108,19 @@ export default function MiniExploreMapContainer({
         toggleMapLayerGroup({
           dataset: { id: l.dataset },
           toggle: false,
-        }),
+        })
       );
 
       removeLayerParametrization(l.id);
     },
-    [dispatch],
+    [dispatch]
   );
 
   const onChangeOrder = useCallback(
     (datasetIds) => {
       dispatch(setMapLayerGroupsOrder({ datasetIds }));
     },
-    [dispatch],
+    [dispatch]
   );
 
   const onChangeLayerDate = useCallback(
@@ -144,10 +147,10 @@ export default function MiniExploreMapContainer({
               },
             }),
           },
-        }),
+        })
       );
     },
-    [dispatch],
+    [dispatch]
   );
 
   const onChangeLayerTimeLine = useCallback(
@@ -158,15 +161,15 @@ export default function MiniExploreMapContainer({
             id: l.dataset,
           },
           active: l.id,
-        }),
+        })
       );
       logEvent(
-        'Mini Explore Map',
-        'Clicks Another Layer from Map Legend Timeline',
-        `${l.name} [${l.id}]`,
+        "Mini Explore Map",
+        "Clicks Another Layer from Map Legend Timeline",
+        `${l.name} [${l.id}]`
       );
     },
-    [dispatch],
+    [dispatch]
   );
 
   const onClickLayer = useCallback(
@@ -181,7 +184,7 @@ export default function MiniExploreMapContainer({
             ...accumulator,
             [currentValue]: {},
           }),
-          {},
+          {}
         );
       } else {
         interactions = features.reduce(
@@ -189,7 +192,7 @@ export default function MiniExploreMapContainer({
             ...accumulator,
             [currentValue.layer.source]: { data: currentValue.properties },
           }),
-          {},
+          {}
         );
       }
 
@@ -197,21 +200,21 @@ export default function MiniExploreMapContainer({
         setMapLayerGroupsInteractionLatLng({
           longitude: lngLat[0],
           latitude: lngLat[1],
-        }),
+        })
       );
 
       dispatch(setMapLayerGroupsInteraction(interactions));
 
       return true;
     },
-    [layerGroupsInteraction, dispatch],
+    [layerGroupsInteraction, dispatch]
   );
 
   const onChangeInteractiveLayer = useCallback(
     (selected) => {
       dispatch(setMapLayerGroupsInteractionSelected(selected));
     },
-    [dispatch],
+    [dispatch]
   );
 
   const handleClosePopup = useCallback(() => {
@@ -226,7 +229,7 @@ export default function MiniExploreMapContainer({
     (_boundaries) => {
       dispatch(setBoundaries(_boundaries));
     },
-    [dispatch],
+    [dispatch]
   );
 
   const handleZoom = useCallback(
@@ -237,19 +240,20 @@ export default function MiniExploreMapContainer({
           // transitionDuration is always set to avoid mixing
           // durations of other actions (like flying)
           transitionDuration: 250,
-        }),
+        })
       );
     },
-    [dispatch],
+    [dispatch]
   );
 
   const handleBasemap = useCallback(
     (_basemap) => {
       const { id } = _basemap;
       dispatch(setBasemap(id));
-      if (labelsId !== 'none') dispatch(setLabels(BASEMAP_LABEL_DICTIONARY[id]));
+      if (labelsId !== "none")
+        dispatch(setLabels(BASEMAP_LABEL_DICTIONARY[id]));
     },
-    [dispatch, labelsId],
+    [dispatch, labelsId]
   );
 
   const handleResetView = useCallback(() => {
@@ -260,7 +264,7 @@ export default function MiniExploreMapContainer({
         // transitionDuration is always set to avoid mixing
         // durations of other actions (like flying)
         transitionDuration: 250,
-      }),
+      })
     );
   }, [dispatch]);
 
@@ -268,12 +272,12 @@ export default function MiniExploreMapContainer({
     ({ value }) => {
       dispatch(setLabels(value));
     },
-    [dispatch],
+    [dispatch]
   );
 
   const handleMapCursor = useCallback(({ isHovering }) => {
-    if (isHovering) return 'pointer';
-    return 'grab';
+    if (isHovering) return "pointer";
+    return "grab";
   }, []);
 
   const onChangeInfo = useCallback((layer) => {
@@ -288,38 +292,42 @@ export default function MiniExploreMapContainer({
 
   // returns an array of dataset IDs through the different dataset groups
   const datasetIds = useMemo(
-    () => flattenDeep(datasetGroups.map(({ datasets: _datasets }) => _datasets)),
-    [datasetGroups],
+    () =>
+      flattenDeep(datasetGroups.map(({ datasets: _datasets }) => _datasets)),
+    [datasetGroups]
   );
 
   // returns an array of dataset IDs should be displayed the different dataset groups
   const defaultDatasets = useMemo(
-    () => compact(flattenDeep(datasetGroups.map(({ default: _default }) => _default))),
-    [datasetGroups],
+    () =>
+      compact(
+        flattenDeep(datasetGroups.map(({ default: _default }) => _default))
+      ),
+    [datasetGroups]
   );
 
   const { data: datasetsWithLayers } = useFetchDatasets(
     {
-      includes: 'layer',
-      ids: datasetIds.join(','),
-      'page[size]': 30,
+      includes: "layer",
+      ids: datasetIds.join(","),
+      "page[size]": 30,
       env: process.env.NEXT_PUBLIC_ENVS_SHOW,
     },
     {
       enabled: !!datasetIds.length,
       refetchOnWindowFocus: false,
       placeholderData: [],
-    },
+    }
   );
 
   useEffect(() => {
     const defaultDatasetsWithLayers = datasetsWithLayers.filter(({ id }) =>
-      defaultDatasets.includes(id),
+      defaultDatasets.includes(id)
     );
     dispatch(
       setMapLayerGroups({
         datasets: defaultDatasetsWithLayers,
-      }),
+      })
     );
   }, [dispatch, datasetsWithLayers, defaultDatasets]);
 
@@ -329,7 +337,7 @@ export default function MiniExploreMapContainer({
     {
       enabled: !!areaOfInterest,
       refetchOnWindowFocus: false,
-    },
+    }
   );
 
   useEffect(() => {
@@ -344,7 +352,7 @@ export default function MiniExploreMapContainer({
           options: {
             padding: 50,
           },
-        }),
+        })
       );
     }
 
@@ -355,7 +363,7 @@ export default function MiniExploreMapContainer({
           options: {
             padding: 50,
           },
-        }),
+        })
       );
     }
 
@@ -373,7 +381,7 @@ export default function MiniExploreMapContainer({
           geojson,
           minZoom,
         },
-        USER_AREA_LAYER_TEMPLATES.explore,
+        USER_AREA_LAYER_TEMPLATES.explore
       );
 
       aoiLayer = {
@@ -393,7 +401,10 @@ export default function MiniExploreMapContainer({
     return [...(aoiLayer !== null ? [aoiLayer] : []), ...activeLayerGroups];
   }, [layerGroups, geostore, aoiBorder, minZoom]);
 
-  const activeInteractiveLayers = useMemo(() => getInteractiveLayers(activeLayers), [activeLayers]);
+  const activeInteractiveLayers = useMemo(
+    () => getInteractiveLayers(activeLayers),
+    [activeLayers]
+  );
 
   return (
     <MiniExploreMap

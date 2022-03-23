@@ -1,13 +1,13 @@
-import { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { toastr } from 'react-redux-toastr';
-import { useRouter } from 'next/router';
+import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+import { toastr } from "react-redux-toastr";
+import { useRouter } from "next/router";
 
 // Services
-import { fetchDataset } from 'services/dataset';
+import { fetchDataset } from "services/dataset";
 
 // Components
-import Spinner from 'components/ui/Spinner';
+import Spinner from "components/ui/Spinner";
 
 function InfoTooltip(props) {
   const { datasetID, dataYear } = props;
@@ -22,40 +22,41 @@ function InfoTooltip(props) {
   const datasetDescription = metadataObj && metadataObj.info.functions;
 
   useEffect(() => {
-    fetchDataset(datasetID, { includes: 'metadata' })
-      .then((data) => setDataset({
-        loading: false,
-        value: data,
-      }))
+    fetchDataset(datasetID, { includes: "metadata" })
+      .then((data) =>
+        setDataset({
+          loading: false,
+          value: data,
+        })
+      )
       .catch((err) => toastr.error(`Error loading dataset ${datasetID}`, err));
   }, [datasetID]);
 
   return (
     <div className="c-info-tooltip">
       <Spinner isLoading={dataset.loading} className="-light" />
-      {!dataset.loading
-                && (
-                <>
-                  <h3>{datasetName}</h3>
-                  <div>
-                    <strong>Data year: </strong>
-                    {dataYear}
-                  </div>
-                  <div className="description">
-                    <p>{datasetDescription}</p>
-                  </div>
-                  <div className="actions">
-                    <button
-                      className="c-button -primary -compressed -fs-tiny"
-                      onClick={() => {
-                        router.push(`/data/explore/${datasetID}`);
-                      }}
-                    >
-                      More info
-                    </button>
-                  </div>
-                </>
-                )}
+      {!dataset.loading && (
+        <>
+          <h3>{datasetName}</h3>
+          <div>
+            <strong>Data year: </strong>
+            {dataYear}
+          </div>
+          <div className="description">
+            <p>{datasetDescription}</p>
+          </div>
+          <div className="actions">
+            <button
+              className="c-button -primary -compressed -fs-tiny"
+              onClick={() => {
+                router.push(`/data/explore/${datasetID}`);
+              }}
+            >
+              More info
+            </button>
+          </div>
+        </>
+      )}
     </div>
   );
 }

@@ -1,10 +1,10 @@
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
 // import { toastr } from 'react-redux-toastr';
 
 // components
-import Icon from 'components/ui/icon';
-import Spinner from 'components/ui/Spinner';
+import Icon from "components/ui/icon";
+import Spinner from "components/ui/Spinner";
 
 class ShareModalComponent extends PureComponent {
   static propTypes = {
@@ -66,7 +66,7 @@ class ShareModalComponent extends PureComponent {
     input.select();
 
     try {
-      document.execCommand('copy');
+      document.execCommand("copy");
 
       this.setState({
         copied: {
@@ -86,7 +86,7 @@ class ShareModalComponent extends PureComponent {
         });
       }, 1000);
     } catch (err) {
-      toastr.warning('Oops, unable to copy');
+      toastr.warning("Oops, unable to copy");
     }
   };
 
@@ -103,13 +103,15 @@ class ShareModalComponent extends PureComponent {
             const url = shortLinks[type] || links[type];
 
             switch (type) {
-              case 'link':
+              case "link":
                 return (
                   <div key={type} className="c-field">
                     <label htmlFor={htmlFor}>Public url to share</label>
 
                     <div className="share-input-container">
-                      {loading && <Spinner className="-light -tiny" isLoading />}
+                      {loading && (
+                        <Spinner className="-light -tiny" isLoading />
+                      )}
 
                       <input
                         ref={(n) => {
@@ -144,7 +146,7 @@ class ShareModalComponent extends PureComponent {
                         <a
                           className="c-btn -secondary -compressed -square"
                           href={`https://twitter.com/share?url=${url}&text=${encodeURIComponent(
-                            document.title,
+                            document.title
                           )}`}
                           target="_blank"
                           rel="noopener noreferrer"
@@ -159,14 +161,14 @@ class ShareModalComponent extends PureComponent {
                           role="button"
                           onClick={() => this.onCopyClick(type)}
                         >
-                          {this.state.copied[type] ? 'Copied' : 'Copy link'}
+                          {this.state.copied[type] ? "Copied" : "Copy link"}
                         </a>
                       </div>
                     </div>
                   </div>
                 );
 
-              case 'embed':
+              case "embed":
                 return (
                   <div key={type} className="c-field">
                     <label htmlFor={htmlFor}>Code to embed</label>
@@ -190,7 +192,7 @@ class ShareModalComponent extends PureComponent {
                           role="button"
                           onClick={() => this.onCopyClick(type)}
                         >
-                          {this.state.copied[type] ? 'Copied' : 'Copy link'}
+                          {this.state.copied[type] ? "Copied" : "Copy link"}
                         </a>
                       </div>
                     </div>

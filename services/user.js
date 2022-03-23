@@ -1,9 +1,6 @@
 // utils
-import { logger } from 'utils/logs';
-import {
-  localAPI,
-  WRIAPI,
-} from 'utils/axios';
+import { logger } from "utils/logs";
+import { localAPI, WRIAPI } from "utils/axios";
 
 /**
  * Logs in a user based on the email + password combination
@@ -12,9 +9,9 @@ import {
  * @returns {Object}
  */
 export const loginUser = ({ email, password }) => {
-  logger.info('Login user');
+  logger.info("Login user");
   return localAPI
-    .post('local-sign-in', { email, password })
+    .post("local-sign-in", { email, password })
     .then((response) => response.data);
 };
 
@@ -26,16 +23,19 @@ export const loginUser = ({ email, password }) => {
  * @returns {Object}
  */
 export const forgotPassword = ({ email }) => {
-  logger.info('Forgot password');
-  return WRIAPI
-    .post('auth/reset-password', { email })
+  logger.info("Forgot password");
+  return WRIAPI.post("auth/reset-password", { email })
     .then((response) => response.data)
     .catch(({ response }) => {
       const { status, statusText } = response;
 
       if (status >= 300) {
-        logger.error(`Error requesting token for password reset: ${status}: ${statusText}`);
-        throw new Error(`Error requesting token for password reset: ${status}: ${statusText}`);
+        logger.error(
+          `Error requesting token for password reset: ${status}: ${statusText}`
+        );
+        throw new Error(
+          `Error requesting token for password reset: ${status}: ${statusText}`
+        );
       }
     });
 };
@@ -47,13 +47,11 @@ export const forgotPassword = ({ email }) => {
  * @returns {Object}
  */
 export const registerUser = ({ email }) => {
-  logger.info('Register user');
-  return WRIAPI
-    .post('auth/sign-up',
-      {
-        email,
-        apps: [process.env.NEXT_PUBLIC_APPLICATIONS],
-      })
+  logger.info("Register user");
+  return WRIAPI.post("auth/sign-up", {
+    email,
+    apps: [process.env.NEXT_PUBLIC_APPLICATIONS],
+  })
     .then((response) => response.data)
     .catch(({ response }) => {
       const { status, statusText } = response;
@@ -72,18 +70,18 @@ export const registerUser = ({ email }) => {
  * @returns {Object}
  */
 export const resetPassword = ({ tokenEmail, password, repeatPassword }) => {
-  logger.info('Reset password');
-  return WRIAPI
-    .post(`auth/reset-password/${tokenEmail}`,
-      {
-        password,
-        repeatPassword,
-      })
+  logger.info("Reset password");
+  return WRIAPI.post(`auth/reset-password/${tokenEmail}`, {
+    password,
+    repeatPassword,
+  })
     .then((response) => response.data)
     .catch(({ response }) => {
       const { status, statusText } = response;
       logger.error(`Error resetting user password: ${status}: ${statusText}`);
-      throw new Error(`Error resetting user password: ${status}: ${statusText}`);
+      throw new Error(
+        `Error resetting user password: ${status}: ${statusText}`
+      );
     });
 };
 
@@ -92,45 +90,47 @@ export const resetPassword = ({ tokenEmail, password, repeatPassword }) => {
  * @param {Blob} file file data
  * @param {Object} user
  */
-export const uploadPhoto = (file, user) => new Promise((resolve, reject) => {
-  const reader = new FileReader();
-  reader.readAsDataURL(file);
+export const uploadPhoto = (file, user) =>
+  new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
 
-  reader.onload = () => {
-    const bodyObj = {
-      data: {
-        attributes: {
-          user_id: user.id,
-          avatar: reader.result,
+    reader.onload = () => {
+      const bodyObj = {
+        data: {
+          attributes: {
+            user_id: user.id,
+            avatar: reader.result,
+          },
         },
-      },
+      };
+
+      return fetch(`${process.env.NEXT_PUBLIC_WRI_API_URL}/v1/profile`, {
+        method: "POST",
+        body: JSON.stringify(bodyObj),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: user.token,
+        },
+      })
+        .then((response) => response.json())
+        .then(({ data }) => {
+          resolve(data.attributes.avatar.original);
+        });
     };
 
-    return fetch(`${process.env.NEXT_PUBLIC_WRI_API_URL}/v1/profile`, {
-      method: 'POST',
-      body: JSON.stringify(bodyObj),
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: user.token,
-      },
-    })
-      .then((response) => response.json())
-      .then(({ data }) => {
-        resolve(data.attributes.avatar.original);
-      });
-  };
-
-  reader.onerror = (error) => {
-    reject(error);
-  };
-});
-
-export const fetchUser = (userToken) => WRIAPI.get('/auth/user/me', {
-  headers: {
-    Authorization: userToken,
-  },
-})
-  .then((res) => res.data)
-  .catch(() => {
-    throw Error('unable to fetch user');
+    reader.onerror = (error) => {
+      reject(error);
+    };
   });
+
+export const fetchUser = (userToken) =>
+  WRIAPI.get("/auth/user/me", {
+    headers: {
+      Authorization: userToken,
+    },
+  })
+    .then((res) => res.data)
+    .catch(() => {
+      throw Error("unable to fetch user");
+    });

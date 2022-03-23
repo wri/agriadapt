@@ -1,4 +1,4 @@
-@import 'css/settings';
+@import "css/settings";
 
 .l-explore-map {
   position: absolute;
@@ -33,7 +33,6 @@
     margin: $space * 4 0;
 
     .rc-slider {
-
       .rc-slider-track {
         background-color: $primary-green !important;
       }
@@ -44,14 +43,15 @@
 
       .rc-slider-mark {
         min-width: 100%;
-        margin-left: 0;  
+        margin-left: 0;
         display: flex;
-        justify-content: space-between;      
+        justify-content: space-between;
 
         .rc-slider-mark-text {
           display: none;
 
-          &:last-child, &:first-child {
+          &:last-child,
+          &:first-child {
             display: block;
           }
         }

@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import TableHeaderActions from './TableHeaderActions';
+import React from "react";
+import PropTypes from "prop-types";
+import TableHeaderActions from "./TableHeaderActions";
 
 export default function TableHeader(props) {
   const {
@@ -20,7 +20,7 @@ export default function TableHeader(props) {
     <thead>
       <tr>
         {columns.map((c, index) => (
-          <th key={index} className={c.type || ''}>
+          <th key={index} className={c.type || ""}>
             <span className="th-wrapper">
               <span>{c.label}</span>
 
@@ -37,8 +37,9 @@ export default function TableHeader(props) {
             </span>
           </th>
         ))}
-        {actions.show && actionsShowed.length
-          && <th colSpan={`${actionsShowed.length}`} />}
+        {actions.show && actionsShowed.length && (
+          <th colSpan={`${actionsShowed.length}`} />
+        )}
       </tr>
     </thead>
   );

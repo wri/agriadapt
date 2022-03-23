@@ -1,8 +1,8 @@
-import WRISerializer from 'wri-json-api-serializer';
+import WRISerializer from "wri-json-api-serializer";
 
 // utils
-import { WRIAPI } from 'utils/axios';
-import { logger } from 'utils/logs';
+import { WRIAPI } from "utils/axios";
+import { logger } from "utils/logs";
 
 /**
  * Retrieve all favourites items of the user
@@ -10,18 +10,17 @@ import { logger } from 'utils/logs';
  * @param {String} token User's token
  */
 export const fetchFavorites = (token, params = {}) => {
-  logger.info('Fetch favorites');
-  return WRIAPI.get('/v1/favourite',
-    {
-      headers: {
-        Authorization: token,
-      },
-      params: {
-        application: process.env.NEXT_PUBLIC_APPLICATIONS,
-        env: process.env.NEXT_PUBLIC_API_ENV,
-        ...params,
-      },
-    })
+  logger.info("Fetch favorites");
+  return WRIAPI.get("/v1/favourite", {
+    headers: {
+      Authorization: token,
+    },
+    params: {
+      application: process.env.NEXT_PUBLIC_APPLICATIONS,
+      env: process.env.NEXT_PUBLIC_API_ENV,
+      ...params,
+    },
+  })
     .then((response) => WRISerializer(response.data))
     .catch(({ response }) => {
       const { status, statusText } = response;
@@ -38,15 +37,17 @@ export const fetchFavorites = (token, params = {}) => {
  * resourceType - resource's type (can be dataset, layer or widget)
  */
 export const createFavourite = (token, { resourceId, resourceType }) => {
-  logger.info('Create favourite');
-  return WRIAPI.post('/v1/favourite',
+  logger.info("Create favourite");
+  return WRIAPI.post(
+    "/v1/favourite",
     {
       application: process.env.NEXT_PUBLIC_APPLICATIONS,
       env: process.env.NEXT_PUBLIC_API_ENV,
       resourceId,
       resourceType,
     },
-    { headers: { Authorization: token } })
+    { headers: { Authorization: token } }
+  )
     .then((response) => WRISerializer(response.data))
     .catch(({ response }) => {
       const { status, statusText } = response;
@@ -63,12 +64,17 @@ export const createFavourite = (token, { resourceId, resourceType }) => {
  */
 export const deleteFavourite = (token, resourceId) => {
   logger.info(`Delete favourite ${resourceId}`);
-  return WRIAPI.delete(`/v1/favourite/${resourceId}`,
-    { headers: { Authorization: token } })
+  return WRIAPI.delete(`/v1/favourite/${resourceId}`, {
+    headers: { Authorization: token },
+  })
     .then((response) => WRISerializer(response.data))
     .catch(({ response }) => {
       const { status, statusText } = response;
-      logger.error(`Error deleting favourite ${resourceId} ${status}: ${statusText}`);
-      throw new Error(`Error deleting favourite ${resourceId} ${status}: ${statusText}`);
+      logger.error(
+        `Error deleting favourite ${resourceId} ${status}: ${statusText}`
+      );
+      throw new Error(
+        `Error deleting favourite ${resourceId} ${status}: ${statusText}`
+      );
     });
 };

@@ -9,7 +9,7 @@
   z-index: 10001;
 
   &:after {
-    content: '';
+    content: "";
     position: absolute;
     left: 50%;
     top: 0;
@@ -50,7 +50,6 @@
       }
     }
 
-
     &.myrw-list {
       padding-bottom: $margin-size-extra-small;
     }
@@ -60,7 +59,7 @@
       padding-top: $margin-size-extra-small;
 
       &:after {
-        content: '';
+        content: "";
         display: inline-block;
         position: absolute;
         top: 0;

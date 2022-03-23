@@ -1,35 +1,35 @@
-import React from 'react';
+import React from "react";
 
 // Services
-import { toastr } from 'react-redux-toastr';
-import { contactUs } from 'services/contact-us';
+import { toastr } from "react-redux-toastr";
+import { contactUs } from "services/contact-us";
 
 // Components
-import Spinner from 'components/ui/Spinner';
-import Field from 'components/form/Field';
-import Input from 'components/form/Input';
-import TextArea from 'components/form/TextArea';
-import Select from 'components/form/SelectInput';
+import Spinner from "components/ui/Spinner";
+import Field from "components/form/Field";
+import Input from "components/form/Input";
+import TextArea from "components/form/TextArea";
+import Select from "components/form/SelectInput";
 
-import Modal from 'components/modal/modal-component';
-import SubmitModalComponent from 'components/modal/submit-modal';
+import Modal from "components/modal/modal-component";
+import SubmitModalComponent from "components/modal/submit-modal";
 
 // Constants
-import { FORM_ELEMENTS, STATE_DEFAULT, FORM_TOPICS } from './constants';
+import { FORM_ELEMENTS, STATE_DEFAULT, FORM_TOPICS } from "./constants";
 
 class ContactUsForm extends React.Component {
-  state = ({
+  state = {
     ...STATE_DEFAULT,
     form: STATE_DEFAULT.form,
     showSubmitModal: false,
-  });
+  };
 
   /**
    * UI EVENTS
    * - onSubmit
    * - onChange
    * - handleToggleModal
-  */
+   */
   onSubmit = (event) => {
     const { form } = this.state;
     event.preventDefault();
@@ -51,13 +51,16 @@ class ContactUsForm extends React.Component {
           })
           .catch(() => {
             this.setState({ submitting: false });
-            toastr.error('Error', 'Oops!! There was an error. Try again');
+            toastr.error("Error", "Oops!! There was an error. Try again");
           });
       } else {
-        toastr.error('Error', 'Fill all the required fields or correct the invalid values');
+        toastr.error(
+          "Error",
+          "Fill all the required fields or correct the invalid values"
+        );
       }
     }, 0);
-  }
+  };
 
   onChange(obj) {
     const form = { ...this.state.form, ...obj };
@@ -66,7 +69,7 @@ class ContactUsForm extends React.Component {
 
   handleToggleModal = (bool) => {
     this.setState({ showSubmitModal: bool });
-  }
+  };
 
   render() {
     const { submitting } = this.state;
@@ -75,15 +78,17 @@ class ContactUsForm extends React.Component {
       <div className="c-contact-us">
         <form className="c-form" onSubmit={this.onSubmit} noValidate>
           <Field
-            ref={(c) => { if (c) FORM_ELEMENTS.elements.topic = c; }}
+            ref={(c) => {
+              if (c) FORM_ELEMENTS.elements.topic = c;
+            }}
             onChange={(value) => this.onChange({ topic: value })}
-            validations={['required']}
+            validations={["required"]}
             className="-fluid"
             options={FORM_TOPICS.options}
             properties={{
-              name: 'topic',
-              label: 'Topic',
-              type: 'text',
+              name: "topic",
+              label: "Topic",
+              type: "text",
               required: true,
               default: this.state.form.topic,
             }}
@@ -92,16 +97,18 @@ class ContactUsForm extends React.Component {
           </Field>
 
           <Field
-            ref={(c) => { if (c) FORM_ELEMENTS.elements.email = c; }}
+            ref={(c) => {
+              if (c) FORM_ELEMENTS.elements.email = c;
+            }}
             onChange={(value) => this.onChange({ email: value })}
-            validations={['required', 'email']}
+            validations={["required", "email"]}
             className="-fluid"
             properties={{
-              name: 'email',
-              label: 'Email',
-              type: 'email',
+              name: "email",
+              label: "Email",
+              type: "email",
               required: true,
-              placeholder: 'Your Email',
+              placeholder: "Your Email",
               default: this.state.form.email,
             }}
           >
@@ -109,15 +116,17 @@ class ContactUsForm extends React.Component {
           </Field>
 
           <Field
-            ref={(c) => { if (c) FORM_ELEMENTS.elements.text = c; }}
+            ref={(c) => {
+              if (c) FORM_ELEMENTS.elements.text = c;
+            }}
             onChange={(value) => this.onChange({ text: value })}
-            validations={['required']}
+            validations={["required"]}
             className="-fluid"
             properties={{
-              name: 'text',
-              label: 'Message',
+              name: "text",
+              label: "Message",
               required: true,
-              placeholder: 'Tell us how we can help.',
+              placeholder: "Tell us how we can help.",
               default: this.state.form.text,
             }}
           >
@@ -125,8 +134,17 @@ class ContactUsForm extends React.Component {
           </Field>
 
           <div className="actions-container -align-right">
-            <button type="submit" className={`c-btn -primary ${submitting ? '-disabled' : null}`} disabled={submitting}>
-              {submitting && <Spinner className="-small -transparent -white-icon" isLoading={submitting} />}
+            <button
+              type="submit"
+              className={`c-btn -primary ${submitting ? "-disabled" : null}`}
+              disabled={submitting}
+            >
+              {submitting && (
+                <Spinner
+                  className="-small -transparent -white-icon"
+                  isLoading={submitting}
+                />
+              )}
               Submit
             </button>
           </div>

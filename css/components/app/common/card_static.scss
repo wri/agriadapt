@@ -11,13 +11,16 @@
   background-size: cover;
   background-position: center;
 
-  -webkit-box-shadow: 0 0 0 rgba($black, .1);
-  transition: all .3s;
+  -webkit-box-shadow: 0 0 0 rgba($black, 0.1);
+  transition: all 0.3s;
 
   &.-alt {
     color: $white;
 
-    h1, h2, h3, h4  {
+    h1,
+    h2,
+    h3,
+    h4 {
       color: $white;
 
       a {
@@ -65,9 +68,8 @@
   }
 
   &.-clickable:hover {
-    box-shadow: 0 20px 30px rgba($black, .2);
+    box-shadow: 0 20px 30px rgba($black, 0.2);
     transform: translateY(-4px);
     cursor: pointer;
   }
 }
-

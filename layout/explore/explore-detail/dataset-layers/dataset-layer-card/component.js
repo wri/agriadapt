@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import React from "react";
+import PropTypes from "prop-types";
+import classnames from "classnames";
 
 // Utils
-import { logEvent } from 'utils/analytics';
+import { logEvent } from "utils/analytics";
 
 function DatasetLayerCard(props) {
   const {
@@ -16,14 +16,14 @@ function DatasetLayerCard(props) {
   } = props;
 
   const componentClassname = classnames({
-    'c-dataset-layer-card': true,
-    '-active': layerIsActive,
+    "c-dataset-layer-card": true,
+    "-active": layerIsActive,
   });
   const layerButtonClassname = classnames({
-    'c-button': true,
-    '-secondary': !layerIsActive,
-    '-primary': layerIsActive,
-    '-fullwidth': true,
+    "c-button": true,
+    "-secondary": !layerIsActive,
+    "-primary": layerIsActive,
+    "-fullwidth": true,
   });
 
   return (
@@ -37,14 +37,20 @@ function DatasetLayerCard(props) {
           className={layerButtonClassname}
           onClick={() => {
             if (!layerIsActive) {
-              logEvent('Explore (Detail)', 'Show Layer', `${name} [${id}]`);
+              logEvent("Explore (Detail)", "Show Layer", `${name} [${id}]`);
               if (!layerGroup) {
                 toggleMapLayerGroup({ dataset, toggle: true });
               }
-              setMapLayerGroupActive({ dataset: { id: dataset.id }, active: id });
+              setMapLayerGroupActive({
+                dataset: { id: dataset.id },
+                active: id,
+              });
             } else {
-              toggleMapLayerGroup({ dataset: { id: dataset.id }, toggle: false });
-              logEvent('Explore (Detail)', 'Hide Layer', `${name} [${id}]`);
+              toggleMapLayerGroup({
+                dataset: { id: dataset.id },
+                toggle: false,
+              });
+              logEvent("Explore (Detail)", "Hide Layer", `${name} [${id}]`);
             }
           }}
         >

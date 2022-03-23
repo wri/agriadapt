@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import PropTypes from "prop-types";
+import classNames from "classnames";
 
 export default function Banner({
   styles,
@@ -12,16 +12,16 @@ export default function Banner({
   return (
     <section
       className={classNames({
-        'c-banner': true,
-        '-use-background': useBackground,
-        '-use-dim': useDim,
+        "c-banner": true,
+        "-use-background": useBackground,
+        "-use-dim": useDim,
         [className]: className,
       })}
       style={{
         ...styles,
-        ...bgImage && {
+        ...(bgImage && {
           backgroundImage: `url(${bgImage})`,
-        },
+        }),
       }}
     >
       {useDim ? (
@@ -32,7 +32,9 @@ export default function Banner({
         >
           {children}
         </div>
-      ) : children}
+      ) : (
+        children
+      )}
     </section>
   );
 }
@@ -48,9 +50,7 @@ Banner.defaultProps = {
 Banner.propTypes = {
   bgImage: PropTypes.string,
   children: PropTypes.oneOfType([
-    PropTypes.arrayOf(
-      PropTypes.element,
-    ),
+    PropTypes.arrayOf(PropTypes.element),
     PropTypes.element,
   ]).isRequired,
   className: PropTypes.string,

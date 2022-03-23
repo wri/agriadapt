@@ -1,21 +1,21 @@
 export interface FeatureServiceQueryParams {
-  f: 'geojson';
+  f: "geojson";
   geometryType:
-    | 'esriGeometryPoint'
-    | 'esriGeometryMultipoint'
-    | 'esriGeometryPolyline'
-    | 'esriGeometryPolygon'
-    | 'esriGeometryEnvelope';
+    | "esriGeometryPoint"
+    | "esriGeometryMultipoint"
+    | "esriGeometryPolyline"
+    | "esriGeometryPolygon"
+    | "esriGeometryEnvelope";
   spatialRel:
-    | 'esriSpatialRelIntersects'
-    | 'esriSpatialRelContains'
-    | 'esriSpatialRelCrosses'
-    | 'esriSpatialRelEnvelopeIntersects'
-    | 'esriSpatialRelIndexIntersects'
-    | 'esriSpatialRelOverlaps'
-    | 'esriSpatialRelTouches'
-    | 'esriSpatialRelWithin'
-    | 'esriSpatialRelRelation';
+    | "esriSpatialRelIntersects"
+    | "esriSpatialRelContains"
+    | "esriSpatialRelCrosses"
+    | "esriSpatialRelEnvelopeIntersects"
+    | "esriSpatialRelIndexIntersects"
+    | "esriSpatialRelOverlaps"
+    | "esriSpatialRelTouches"
+    | "esriSpatialRelWithin"
+    | "esriSpatialRelRelation";
   returnGeometry: boolean;
   returnTrueCurves: boolean;
   returnIdsOnly: boolean;

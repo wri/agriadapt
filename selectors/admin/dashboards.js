@@ -1,4 +1,4 @@
-import { createSelector } from 'reselect';
+import { createSelector } from "reselect";
 
 const dashboards = (state) => state.adminDashboards.dashboards.list;
 const filters = (state) => state.adminDashboards.dashboards.filters;
@@ -8,19 +8,23 @@ const filters = (state) => state.adminDashboards.dashboards.filters;
  * @param {object[]} dashboards Datasets to filter
  * @param {{ key: string, value: string|number }[]} filters Filters to apply to the dashboards
  */
-export const getFilteredDashboards = (dashboards, filters) => { // eslint-disable-line no-shadow
+export const getFilteredDashboards = (dashboards, filters) => {
+  // eslint-disable-line no-shadow
   if (!filters.length) return dashboards;
 
-  return dashboards.filter((dashboard) => { // eslint-disable-line arrow-body-style
+  return dashboards.filter((dashboard) => {
+    // eslint-disable-line arrow-body-style
     return filters.every((filter) => {
-      if (filter.key === 'id') return dashboard.id === filter.value;
-      if (filter.key === 'owner') {
+      if (filter.key === "id") return dashboard.id === filter.value;
+      if (filter.key === "owner") {
         return dashboard.user && dashboard.user.role === filter.value;
       }
       if (!dashboard[filter.key]) return false;
 
-      if (typeof filter.value === 'string') {
-        return dashboard[filter.key].toLowerCase().match(filter.value.toLowerCase());
+      if (typeof filter.value === "string") {
+        return dashboard[filter.key]
+          .toLowerCase()
+          .match(filter.value.toLowerCase());
       }
 
       return dashboard[filter.key] === filter.value;
@@ -28,14 +32,23 @@ export const getFilteredDashboards = (dashboards, filters) => { // eslint-disabl
   });
 };
 
-export const getAllFilteredDashboards = createSelector(dashboards, filters, getFilteredDashboards);
+export const getAllFilteredDashboards = createSelector(
+  dashboards,
+  filters,
+  getFilteredDashboards
+);
 
-export const getDashboards = createSelector([getAllFilteredDashboards],
-  (data) => data.map((_dashboard) => ({
-    ..._dashboard,
-    owner: _dashboard.user ? _dashboard.user.name || (_dashboard.user.email || '').split('@')[0] : '',
-    role: _dashboard.user ? _dashboard.user.role || '' : '',
-  })));
+export const getDashboards = createSelector(
+  [getAllFilteredDashboards],
+  (data) =>
+    data.map((_dashboard) => ({
+      ..._dashboard,
+      owner: _dashboard.user
+        ? _dashboard.user.name || (_dashboard.user.email || "").split("@")[0]
+        : "",
+      role: _dashboard.user ? _dashboard.user.role || "" : "",
+    }))
+);
 
 export default {
   getDashboards,

@@ -1,15 +1,14 @@
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
 // actions
-import { setMobileOpened } from '../actions';
+import { setMobileOpened } from "../actions";
 
 // component
-import HeaderMenuMobile from './component';
-
+import HeaderMenuMobile from "./component";
 export default connect(
   (state) => ({
     header: state.header,
-    user: state.user,
+    // user: state.user,
   }),
-  { setMobileOpened },
+  { setMobileOpened }
 )(HeaderMenuMobile);

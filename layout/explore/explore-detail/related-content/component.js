@@ -1,12 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
 // Components
-import DatasetList from 'layout/explore/explore-datasets/list';
-import ExploreDatasetsActions from 'layout/explore/explore-datasets/explore-datasets-actions';
+import DatasetList from "layout/explore/explore-datasets/list";
+import ExploreDatasetsActions from "layout/explore/explore-datasets/explore-datasets-actions";
 
 function RelatedContent(props) {
-  const { datasets: { list, loading }, setSelectedDataset } = props;
+  const {
+    datasets: { list, loading },
+    setSelectedDataset,
+  } = props;
 
   return (
     <div className="c-related-content">

@@ -1,4 +1,4 @@
-@import 'css/settings';
+@import "css/settings";
 
 .c-tooltip-list {
   > .search-container {
@@ -14,7 +14,7 @@
 
     &:before,
     &:after {
-      content: '';
+      content: "";
       display: inline-block;
       position: absolute;
       left: 0;

@@ -1,5 +1,5 @@
 // components
-import CardIndicator from 'components/card-indicator-set/card-indicator';
+import CardIndicator from "components/card-indicator-set/card-indicator";
 
 export default function IndicatorsNavigation({
   indicators,
@@ -9,21 +9,20 @@ export default function IndicatorsNavigation({
   return (
     <div
       style={{
-        display: 'flex',
-        justifyContent: 'space-between',
+        display: "flex",
+        justifyContent: "space-between",
       }}
     >
-      {(indicators || [])
-        .map(({ id, title, icon }) => (
-          <CardIndicator
-            key={id}
-            id={id}
-            title={title}
-            icon={icon}
-            isSelected={id === selectedIndicator}
-            onClickCard={onClickIndicator}
-          />
-        ))}
+      {(indicators || []).map(({ id, title, icon }) => (
+        <CardIndicator
+          key={id}
+          id={id}
+          title={title}
+          icon={icon}
+          isSelected={id === selectedIndicator}
+          onClickCard={onClickIndicator}
+        />
+      ))}
     </div>
   );
 }

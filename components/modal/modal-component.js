@@ -1,9 +1,9 @@
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
+import classnames from "classnames";
 
-import Modal from 'react-modal';
-import Icon from 'components/ui/icon';
+import Modal from "react-modal";
+import Icon from "components/ui/icon";
 
 class ModalComponent extends PureComponent {
   static propTypes = {
@@ -25,13 +25,8 @@ class ModalComponent extends PureComponent {
 
   // eslint-disable-line react/prefer-stateless-function
   render() {
-    const {
-      isOpen,
-      className,
-      header,
-      onAfterOpen,
-      onRequestClose,
-    } = this.props;
+    const { isOpen, className, header, onAfterOpen, onRequestClose } =
+      this.props;
     const classNames = classnames({ [className]: !!className });
     return (
       <Modal
@@ -40,7 +35,7 @@ class ModalComponent extends PureComponent {
         bodyOpenClassName="-no-scroll"
         isOpen={isOpen}
         ariaHideApp={false}
-        {...onAfterOpen && { onAfterOpen }}
+        {...(onAfterOpen && { onAfterOpen })}
         onRequestClose={onRequestClose}
       >
         {header}
@@ -52,9 +47,7 @@ class ModalComponent extends PureComponent {
           <Icon name="icon-cross" className="-small" />
         </button>
 
-        <div className="modal-content">
-          {this.props.children}
-        </div>
+        <div className="modal-content">{this.props.children}</div>
       </Modal>
     );
   }

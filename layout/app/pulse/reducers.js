@@ -1,4 +1,4 @@
-import * as actions from './actions';
+import * as actions from "./actions";
 
 export default {
   [actions.setLayers]: (state, action) => ({
@@ -8,11 +8,20 @@ export default {
     error: null,
   }),
 
-  [actions.setLayersLoading]: (state, action) => ({ ...state, loading: action.payload }),
+  [actions.setLayersLoading]: (state, action) => ({
+    ...state,
+    loading: action.payload,
+  }),
 
-  [actions.setLayersError]: (state, action) => ({ ...state, error: action.payload }),
+  [actions.setLayersError]: (state, action) => ({
+    ...state,
+    error: action.payload,
+  }),
 
-  [actions.setActiveLayer]: (state, action) => ({ ...state, layerActive: (state.layerActive !== action.payload) ? action.payload : null }),
+  [actions.setActiveLayer]: (state, action) => ({
+    ...state,
+    layerActive: state.layerActive !== action.payload ? action.payload : null,
+  }),
 
   [actions.setLayerPoints]: (state, action) => ({
     ...state,
@@ -21,12 +30,20 @@ export default {
     error: null,
   }),
 
-  [actions.setLayerPointsLoading]: (state, action) => ({ ...state, loading: action.payload }),
+  [actions.setLayerPointsLoading]: (state, action) => ({
+    ...state,
+    loading: action.payload,
+  }),
 
-  [actions.setLayerPointsError]: (state, action) => ({ ...state, error: action.payload }),
+  [actions.setLayerPointsError]: (state, action) => ({
+    ...state,
+    error: action.payload,
+  }),
 
-  [actions.setSimilarWidgets]: (state, action) => ({ ...state, similarWidgets: action.payload }),
+  [actions.setSimilarWidgets]: (state, action) => ({
+    ...state,
+    similarWidgets: action.payload,
+  }),
 
   [actions.resetLayerPoints]: (state) => ({ ...state, layerPoints: [] }),
-
 };

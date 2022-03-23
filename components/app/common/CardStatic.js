@@ -1,7 +1,7 @@
-import React from 'react';
-import classNames from 'classnames';
-import PropTypes from 'prop-types';
-import { withRouter } from 'next/router';
+import React from "react";
+import classNames from "classnames";
+import PropTypes from "prop-types";
+import { withRouter } from "next/router";
 
 class CardStatic extends React.Component {
   static propTypes = {
@@ -17,7 +17,7 @@ class CardStatic extends React.Component {
     }).isRequired,
   };
 
-  static defaultProps = { children: '' };
+  static defaultProps = { children: "" };
 
   constructor(props) {
     super(props);
@@ -28,28 +28,21 @@ class CardStatic extends React.Component {
   }
 
   handleClick(event) {
-    const {
-      clickable,
-      route,
-      anchor,
-      router,
-    } = this.props;
-    if (!anchor && clickable && event.target.tagName !== 'A') {
+    const { clickable, route, anchor, router } = this.props;
+    if (!anchor && clickable && event.target.tagName !== "A") {
       router.push(route);
     }
 
-    if (anchor && clickable && event.target.tagName !== 'A') {
+    if (anchor && clickable && event.target.tagName !== "A") {
       window.location = route;
     }
   }
 
   render() {
-    const {
-      background, backgroundSize, className, children,
-    } = this.props;
-    const style = { background, backgroundSize: backgroundSize || 'cover' };
+    const { background, backgroundSize, className, children } = this.props;
+    const style = { background, backgroundSize: backgroundSize || "cover" };
     const classNameObj = classNames({
-      'c-card-static': true,
+      "c-card-static": true,
       [className]: className,
     });
 

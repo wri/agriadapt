@@ -1,16 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import debounce from 'lodash/debounce';
-import upperFirst from 'lodash/upperFirst';
+import React from "react";
+import PropTypes from "prop-types";
+import debounce from "lodash/debounce";
+import upperFirst from "lodash/upperFirst";
 
 // Utils
-import { TAGS_BLACKLIST } from 'utils/tags';
+import { TAGS_BLACKLIST } from "utils/tags";
 
 // Components
-import { Tooltip } from 'vizzuality-components';
-import Tag from 'components/ui/Tag';
-import { getTooltipContainer } from 'utils/tooltip';
-import TagsTooltip from './tooltip';
+import { Tooltip } from "vizzuality-components";
+import Tag from "components/ui/Tag";
+import { getTooltipContainer } from "utils/tooltip";
+import TagsTooltip from "./tooltip";
 
 class ExploreDatasetsTagsComponent extends React.Component {
   static propTypes = {
@@ -29,19 +29,21 @@ class ExploreDatasetsTagsComponent extends React.Component {
   state = {
     tagsOpened: false,
     tagsLoading: false,
-  }
+  };
 
   onTagSelected = (tag) => {
-    const options = Object.keys(this.props.options).map((o) => this.props.options[o]);
+    const options = Object.keys(this.props.options).map(
+      (o) => this.props.options[o]
+    );
 
     const tab = options.find((o) => o.type === tag.labels[1]) || {};
 
     this.props.toggleFiltersSelected({
-      tab: tab.value || 'custom',
+      tab: tab.value || "custom",
       tag,
     });
     this.fetchDatasets(1);
-  }
+  };
 
   onVisibleChange = (visible) => {
     const { vocabulary } = this.props;
@@ -49,7 +51,8 @@ class ExploreDatasetsTagsComponent extends React.Component {
     if (visible) {
       this.setState({ tagsLoading: true });
 
-      this.props.fetchTags(vocabulary.tags)
+      this.props
+        .fetchTags(vocabulary.tags)
         .then(() => {
           this.setState({ tagsOpened: true, tagsLoading: false });
         })
@@ -60,12 +63,12 @@ class ExploreDatasetsTagsComponent extends React.Component {
       this.props.resetTags();
       this.setState({ tagsOpened: false, tagsLoading: false });
     }
-  }
+  };
 
   /**
    * HELPER
    * - fetchDatasets
-  */
+   */
 
   fetchDatasets = debounce((page) => {
     this.props.setDatasetsPage(page);
@@ -73,10 +76,7 @@ class ExploreDatasetsTagsComponent extends React.Component {
   });
 
   render() {
-    const {
-      vocabulary,
-      list,
-    } = this.props;
+    const { vocabulary, list } = this.props;
 
     const { tagsOpened, tagsLoading } = this.state;
     const vTags = (vocabulary.tags || [])
@@ -85,17 +85,17 @@ class ExploreDatasetsTagsComponent extends React.Component {
 
     return (
       <div className="tags-container">
-        <div
-          className="c-tag-list -inline"
-        >
-          {vTags
-            && vTags
+        <div className="c-tag-list -inline">
+          {vTags &&
+            vTags
               .sort()
               .filter((t) => !TAGS_BLACKLIST.includes(t))
               .map((t, i) => (
                 <Tag
                   key={t}
-                  name={`${upperFirst(t.replace('_', ' '))}${i !== vTags.length - 1 ? ', ' : ''}`}
+                  name={`${upperFirst(t.replace("_", " "))}${
+                    i !== vTags.length - 1 ? ", " : ""
+                  }`}
                   className="-clean"
                   onClick={() => {
                     this.setState({ tagsOpened: false });
@@ -104,11 +104,9 @@ class ExploreDatasetsTagsComponent extends React.Component {
                 />
               ))}
 
-          <div
-            className="btn-more-container"
-          >
+          <div className="btn-more-container">
             <Tooltip
-              overlay={(
+              overlay={
                 <TagsTooltip
                   tags={list}
                   onTagSelected={(t) => {
@@ -116,7 +114,7 @@ class ExploreDatasetsTagsComponent extends React.Component {
                     this.onTagSelected(t);
                   }}
                 />
-              )}
+              }
               visible={tagsOpened}
               overlayClassName="c-rc-tooltip"
               placement="bottomRight"
@@ -127,9 +125,9 @@ class ExploreDatasetsTagsComponent extends React.Component {
               onVisibleChange={this.onVisibleChange}
             >
               <button>
-                {tagsLoading && 'loading...'}
-                {!tagsLoading && !tagsOpened && 'more...'}
-                {!tagsLoading && tagsOpened && 'less...'}
+                {tagsLoading && "loading..."}
+                {!tagsLoading && !tagsOpened && "more..."}
+                {!tagsLoading && tagsOpened && "less..."}
               </button>
             </Tooltip>
           </div>

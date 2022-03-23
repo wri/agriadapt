@@ -1,7 +1,7 @@
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
 
-import Icon from 'components/ui/icon';
+import Icon from "components/ui/icon";
 
 class LayerMenuNativeComponent extends PureComponent {
   render() {
@@ -15,7 +15,9 @@ class LayerMenuNativeComponent extends PureComponent {
               triggerClick(null);
             } else {
               layers.forEach((g) => {
-                const index = g.layers.findIndex((layer) => event.target.value === layer.label);
+                const index = g.layers.findIndex(
+                  (layer) => event.target.value === layer.label
+                );
                 if (index !== -1) {
                   triggerClick(g.layers[index]);
                 }
@@ -27,10 +29,7 @@ class LayerMenuNativeComponent extends PureComponent {
           {layers.map((group) => (
             <optgroup label={group.label} key={group.label}>
               {group.layers.map((layer) => (
-                <option
-                  value={layer.label}
-                  key={layer.label}
-                >
+                <option value={layer.label} key={layer.label}>
                   {layer.label}
                 </option>
               ))}

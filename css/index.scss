@@ -4,28 +4,18 @@
 
 @import "settings";
 
-@import '~react-progress-2/main';
+@import "~react-progress-2/main";
 // @import '~react-redux-toastr/lib/css/react-redux-toastr.min';
-@import '~react-input-range/lib/css/index';
-@import '~vizzuality-components/dist/bundle';
+@import "~react-input-range/lib/css/index";
+@import "~vizzuality-components/dist/bundle";
 
-
-@import '~react-quill/dist/quill.snow';
-
+@import "~react-quill/dist/quill.snow";
 
 @import "base";
 @import "mixins";
-@import "layouts/container",
-  "layouts/page",
-  "layouts/error",
-  "layouts/section",
-  "layouts/content",
-  "layouts/postcontent",
-  "layouts/row",
-  "layouts/footer",
-  "layouts/sidebar",
-  "layouts/static",
-  "layouts/ocean-watch",
+@import "layouts/container", "layouts/page", "layouts/error", "layouts/section",
+  "layouts/content", "layouts/postcontent", "layouts/row", "layouts/footer",
+  "layouts/sidebar", "layouts/static", "layouts/ocean-watch",
   "layouts/_coral-reefs-dashboard";
 
 @import "./components/ui/aside";
@@ -70,7 +60,6 @@
 @import "./components/ui/dataset-table";
 @import "./components/ui/browser";
 
-
 @import "./components/modal/credits_modal";
 @import "./components/modal/save_widget_modal";
 @import "./components/modal/how_to_widget_editor_modal";
@@ -83,15 +72,13 @@
 @import "./components/modal/subscriptions_modal";
 @import "./components/modal/alerts_preview";
 
-
 @import "./components/areas/areas_form";
-
 
 @import "./components/collections/collections-panel";
 
-@import './components/datasets/list';
-@import './components/datasets/list-item';
-@import './components/datasets/search';
+@import "./components/datasets/list";
+@import "./components/datasets/list-item";
+@import "./components/datasets/search";
 
 @import "./components/subscriptions/subscriptions_form";
 @import "./components/subscriptions/subscription_selector";
@@ -100,7 +87,7 @@
 
 @import "./components/map/map-swipe";
 
-@import '~@vizzuality/wysiwyg/build/rw';
+@import "~@vizzuality/wysiwyg/build/rw";
 @import "./components/form/form";
 @import "./components/form/field";
 @import "./components/form/field-container";
@@ -113,7 +100,6 @@
 @import "./components/form/token";
 @import "./components/form/toggle-search";
 @import "./components/form/wysiwyg";
-
 
 @import "./components/widgets/add_widget_to_collection_tooltip";
 @import "./components/widgets/text_chart";
@@ -140,8 +126,6 @@
 @import "./components/widgets/vega_chart_legend";
 @import "./components/widget";
 
-
-
 @import "./components/admin/dataset/card";
 @import "./components/admin/dataset/filter";
 @import "./components/admin/dataset/filter-item";
@@ -149,7 +133,6 @@
 @import "./components/admin/dataset/datasets-list-card";
 @import "./components/admin/dataset/source-item";
 @import "./components/admin/dataset/metadata-source-list";
-
 
 @import "./components/admin/widget/chart";
 @import "./components/admin/widget/widget_chart";
@@ -165,7 +148,6 @@
 
 @import "./components/admin/faqs/faqs_table";
 
-
 @import "./components/app/common/banner";
 @import "./components/app/common/card_static";
 @import "./components/app/common/partner_block";
@@ -179,7 +161,6 @@
 @import "./components/app/pages/apps";
 @import "./components/app/pages/alerts_page";
 @import "./components/app/pages/newsletter";
-
 
 @import "./components/app/explore/dataset_placeholder_chart";
 @import "./components/app/explore/widget_configurator";
@@ -313,7 +294,7 @@
 @import "./components/widgets/card-list/styles";
 @import "./components/widgets/header/styles";
 
-@import '~foundation-sites/scss/foundation';
+@import "~foundation-sites/scss/foundation";
 @include foundation-flex-classes;
 @include foundation-flex-grid;
 @include foundation-responsive-embed;

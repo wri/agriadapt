@@ -1,4 +1,4 @@
-@import 'css/settings';
+@import "css/settings";
 
 .c-prominent-button {
   display: flex;
@@ -6,16 +6,16 @@
   flex-direction: column;
   width: 100%;
   padding: ($space * 4);
-  border: 1px solid rgba($black,.03);
+  border: 1px solid rgba($black, 0.03);
   border-radius: 4px;
-  box-shadow: 0 1px 2px rgba($black, .1);
+  box-shadow: 0 1px 2px rgba($black, 0.1);
   text-align: center;
   transition: all $animation-time-2 $ease-in-out-sine;
   transition-property: transform, box-shadow;
   cursor: pointer;
 
   &:hover {
-    box-shadow: 0 0 0 1px rgba($black, .05), 0 20px 30px rgba($black, .2);
+    box-shadow: 0 0 0 1px rgba($black, 0.05), 0 20px 30px rgba($black, 0.2);
     transform: translateY(-4px);
   }
 
@@ -24,7 +24,7 @@
     border-color: $dark-pink;
   }
 
-  svg{
+  svg {
     height: 40px;
     width: 40px;
     stroke: $dark-pink;

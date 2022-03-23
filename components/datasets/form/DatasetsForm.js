@@ -1,31 +1,27 @@
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
-import omit from 'lodash/omit';
-import { toastr } from 'react-redux-toastr';
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
+import omit from "lodash/omit";
+import { toastr } from "react-redux-toastr";
 
 // Redux
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
 // services
-import {
-  fetchDataset,
-  createDataset,
-  updateDataset,
-} from 'services/dataset';
-import { fetchFields } from 'services/fields';
+import { fetchDataset, createDataset, updateDataset } from "services/dataset";
+import { fetchFields } from "services/fields";
 
 // components
-import Navigation from 'components/form/Navigation';
-import Step1 from 'components/datasets/form/steps';
-import Spinner from 'components/ui/Spinner';
+import Navigation from "components/form/Navigation";
+import Step1 from "components/datasets/form/steps";
+import Spinner from "components/ui/Spinner";
 
 // utils
-import { logEvent } from 'utils/analytics';
-import { sortLayers } from 'utils/layers';
-import { getFieldUrl, getFields } from 'utils/fields';
+import { logEvent } from "utils/analytics";
+import { sortLayers } from "utils/layers";
+import { getFieldUrl, getFields } from "utils/fields";
 
 // constants
-import { STATE_DEFAULT, FORM_ELEMENTS } from './constants';
+import { STATE_DEFAULT, FORM_ELEMENTS } from "./constants";
 
 class DatasetsForm extends PureComponent {
   static propTypes = {
@@ -35,38 +31,41 @@ class DatasetsForm extends PureComponent {
     dataset: PropTypes.string,
     basic: PropTypes.bool,
     onSubmit: PropTypes.func,
-  }
+  };
 
   static defaultProps = {
     dataset: null,
     basic: true,
     onSubmit: null,
-  }
+  };
 
-  state = ({
+  state = {
     ...STATE_DEFAULT,
     loading: !!this.props.dataset,
     loadingColumns: !!this.props.dataset,
     columns: [],
     form: { ...STATE_DEFAULT.form, application: this.props.application },
-  });
+  };
 
   UNSAFE_componentWillMount() {
     const { dataset: datasetId } = this.props;
     // Get the dataset and fill the state with its params if it exists
     if (datasetId) {
-      fetchDataset(datasetId, { includes: 'layer' })
+      fetchDataset(datasetId, { includes: "layer" })
         .then((dataset) => {
           const { provider, applicationConfig, layer: layers } = dataset;
           let _layers = layers;
 
           // sorts layers if applies
           if (
-            applicationConfig
-            && applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS]
-            && applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS].layerOrder
-            && layers.length > 1) {
-            const { layerOrder } = applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS];
+            applicationConfig &&
+            applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS] &&
+            applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS]
+              .layerOrder &&
+            layers.length > 1
+          ) {
+            const { layerOrder } =
+              applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS];
             _layers = sortLayers(layers, layerOrder);
           }
 
@@ -78,7 +77,7 @@ class DatasetsForm extends PureComponent {
             dataDataset: dataset,
           });
 
-          if (provider !== 'wms') {
+          if (provider !== "wms") {
             // fetchs column fields based on dataset type
             const url = getFieldUrl(dataset);
             fetchFields(url)
@@ -92,15 +91,22 @@ class DatasetsForm extends PureComponent {
               })
               .catch(({ message }) => {
                 const { id } = dataset;
-                this.setState({ loadingColumns: false }, () => { toastr.error(`Error fetching fields from dataset ${id}`); });
-                console.error(`Error fetching fields from dataset ${id}`, message);
+                this.setState({ loadingColumns: false }, () => {
+                  toastr.error(`Error fetching fields from dataset ${id}`);
+                });
+                console.error(
+                  `Error fetching fields from dataset ${id}`,
+                  message
+                );
               });
           } else {
             this.setState({ loadingColumns: false });
           }
         })
         .catch(({ message }) => {
-          this.setState({ loading: false }, () => { toastr.error('Error fetching dataset'); });
+          this.setState({ loading: false }, () => {
+            toastr.error("Error fetching dataset");
+          });
           console.error(`Error fetching dataset: ${message}`);
         });
     }
@@ -120,19 +126,22 @@ class DatasetsForm extends PureComponent {
 
       if (valid) {
         // if we are in the last step we will submit the form
-        if (this.state.step === this.state.stepLength && !this.state.submitting) {
+        if (
+          this.state.step === this.state.stepLength &&
+          !this.state.submitting
+        ) {
           const { form, layers } = this.state;
-          logEvent('My RW', 'Add New Dataset', form.name);
+          logEvent("My RW", "Add New Dataset", form.name);
 
           // Start the submitting
           this.setState({ submitting: true });
 
           // Set the request
           const requestOptions = {
-            type: dataset ? 'PATCH' : 'POST',
+            type: dataset ? "PATCH" : "POST",
             omit: dataset
-              ? ['connectorUrlHint', 'connectorType', 'provider']
-              : ['connectorUrlHint'],
+              ? ["connectorUrlHint", "connectorType", "provider"]
+              : ["connectorUrlHint"],
           };
 
           let bodyObj = omit(form, requestOptions.omit);
@@ -140,7 +149,6 @@ class DatasetsForm extends PureComponent {
           bodyObj.subscribable = {};
           form.subscribable.forEach((_subscription) => {
             bodyObj.subscribable[_subscription.type] = {
-
               dataQuery: _subscription.dataQuery,
               subscriptionQuery: _subscription.subscriptionQuery,
             };
@@ -149,70 +157,79 @@ class DatasetsForm extends PureComponent {
           // every updated dataset will contain set the layer order in its config
           // if it doesn't previously
           if (
-            dataset
-            && layers.length
-            && (!bodyObj.applicationConfig
-            || !bodyObj.applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS]
-            || !bodyObj.applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS].layerOrder)
+            dataset &&
+            layers.length &&
+            (!bodyObj.applicationConfig ||
+              !bodyObj.applicationConfig[
+                process.env.NEXT_PUBLIC_APPLICATIONS
+              ] ||
+              !bodyObj.applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS]
+                .layerOrder)
           ) {
             bodyObj = {
               ...bodyObj,
               applicationConfig: {
                 ...form.applicationConfig,
                 [process.env.NEXT_PUBLIC_APPLICATIONS]: {
-                  ...(form.applicationConfig && form.applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS]),
+                  ...(form.applicationConfig &&
+                    form.applicationConfig[
+                      process.env.NEXT_PUBLIC_APPLICATIONS
+                    ]),
                   layerOrder: layers.map((_layer) => _layer.id),
                 },
               },
             };
           }
 
-          if (requestOptions.type === 'PATCH') {
+          if (requestOptions.type === "PATCH") {
             updateDataset(dataset, authorization, bodyObj)
               .then((data) => {
                 this.setState({ submitting: false });
                 toastr.success(
-                  'Success',
-                  `The dataset "${data.id}" - "${data.name}" has been updated correctly`,
+                  "Success",
+                  `The dataset "${data.id}" - "${data.name}" has been updated correctly`
                 );
                 if (this.props.onSubmit) this.props.onSubmit(data.id);
               })
               .catch((err) => {
                 this.setState({ submitting: false });
-                toastr.error('There was an error updating the dataset', err);
+                toastr.error("There was an error updating the dataset", err);
               });
-          } else if (requestOptions.type === 'POST') {
+          } else if (requestOptions.type === "POST") {
             createDataset(authorization, bodyObj)
               .then((data) => {
                 this.setState({ submitting: false });
                 toastr.success(
-                  'Success',
-                  `The dataset "${data.id}" - "${data.name}" has been created correctly`,
+                  "Success",
+                  `The dataset "${data.id}" - "${data.name}" has been created correctly`
                 );
                 if (this.props.onSubmit) this.props.onSubmit(data.id);
               })
               .catch((err) => {
                 this.setState({ submitting: false });
-                toastr.error('There was an error creating the dataset', err);
+                toastr.error("There was an error creating the dataset", err);
               });
           }
         } else {
           this.setState({ step: this.state.step + 1 });
         }
       } else {
-        toastr.error('Error', 'Fill all the required fields or correct the invalid values');
+        toastr.error(
+          "Error",
+          "Fill all the required fields or correct the invalid values"
+        );
       }
     }, 0);
-  }
+  };
 
   onChange = (obj) => {
     const form = { ...this.state.form, ...obj };
     this.setState({ form });
-  }
+  };
 
   onStepChange = (step) => {
     this.setState({ step });
-  }
+  };
 
   // HELPERS
   setFormFromParams(params) {
@@ -221,7 +238,7 @@ class DatasetsForm extends PureComponent {
 
     form.forEach((f) => {
       if (params[f] || this.state.form[f]) {
-        if (f === 'subscribable') {
+        if (f === "subscribable") {
           const subscribable = params[f] || this.state.form[f];
           newForm.subscribable = Object.keys(subscribable).map((prop, i) => ({
             type: prop,
@@ -250,10 +267,18 @@ class DatasetsForm extends PureComponent {
       dataDataset,
     } = this.state;
     const { dataset, basic, authorization } = this.props;
-    const disabled = dataDataset && process.env.NEXT_PUBLIC_ENVS_EDIT.split(',').findIndex((d) => d === dataDataset.env) < 0;
+    const disabled =
+      dataDataset &&
+      process.env.NEXT_PUBLIC_ENVS_EDIT.split(",").findIndex(
+        (d) => d === dataDataset.env
+      ) < 0;
 
     return (
-      <form className="c-form c-datasets-form" onSubmit={this.onSubmit} noValidate>
+      <form
+        className="c-form c-datasets-form"
+        onSubmit={this.onSubmit}
+        noValidate
+      >
         <Spinner isLoading={loading} className="-light" />
 
         {step === 1 && !loading && (
@@ -287,7 +312,4 @@ class DatasetsForm extends PureComponent {
 
 const mapStateToProps = (state) => ({ locale: state.common.locale });
 
-export default connect(
-  mapStateToProps,
-  null,
-)(DatasetsForm);
+export default connect(mapStateToProps, null)(DatasetsForm);

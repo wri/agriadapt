@@ -1,3 +1,3 @@
-import IndicatorTooltipComponent from './component';
+import IndicatorTooltipComponent from "./component";
 
 export default IndicatorTooltipComponent;

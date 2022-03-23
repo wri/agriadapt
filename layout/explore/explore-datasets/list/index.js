@@ -1,3 +1,3 @@
-import DatasetListComponent from './component';
+import DatasetListComponent from "./component";
 
 export default DatasetListComponent;

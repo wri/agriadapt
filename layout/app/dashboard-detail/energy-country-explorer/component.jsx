@@ -1,38 +1,31 @@
-import {
-  useEffect,
-  useState,
-} from 'react';
-import PropTypes from 'prop-types';
-import { toastr } from 'react-redux-toastr';
-import axios from 'axios';
-import ReactMarkdown from 'react-markdown';
-import { Tooltip } from 'vizzuality-components';
-import { withRouter } from 'next/router';
+import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import { toastr } from "react-redux-toastr";
+import axios from "axios";
+import ReactMarkdown from "react-markdown";
+import { Tooltip } from "vizzuality-components";
+import { withRouter } from "next/router";
 
 // hooks
-import {
-  useCountryV2,
-} from 'hooks/country';
+import { useCountryV2 } from "hooks/country";
 
 // services
-import { fetchCountryPowerExplorerConfig } from 'services/config';
+import { fetchCountryPowerExplorerConfig } from "services/config";
 
-import CountryEnergyExplorerConfig from 'public/static/data/CountryEnergyExplorer.json';
+import CountryEnergyExplorerConfig from "public/static/data/CountryEnergyExplorer.json";
 
 // Components
-import CountrySelector from './country-selector';
-import CustomSection from './custom-section';
-import CountryIndicators from './country-indicators';
+import CountrySelector from "./country-selector";
+import CustomSection from "./custom-section";
+import CountryIndicators from "./country-indicators";
 
 // Constants
-import { WORLD_COUNTRY, US_COUNTRY_VALUES } from './constants';
+import { WORLD_COUNTRY, US_COUNTRY_VALUES } from "./constants";
 
 function EnergyCountryExplorer(props) {
   const {
     router: {
-      query: {
-        country: selectedCountry,
-      },
+      query: { country: selectedCountry },
     },
   } = props;
   const [countries, setCountries] = useState({
@@ -44,25 +37,27 @@ function EnergyCountryExplorer(props) {
   const [selectedCountryBbox, setSelectedCountryBbox] = useState(null);
   const [selectedGeostore, setSelectedGeostore] = useState(null);
 
-  const {
-    data: geostore,
-  } = useCountryV2(
+  const { data: geostore } = useCountryV2(
     selectedCountry,
     {},
     {
-      enabled: !!selectedCountry && ![WORLD_COUNTRY.value].includes(selectedCountry),
+      enabled:
+        !!selectedCountry && ![WORLD_COUNTRY.value].includes(selectedCountry),
       refetchOnWindowFocus: false,
-    },
+    }
   );
 
   useEffect(() => {
-    if (geostore && selectedCountry && selectedCountry !== WORLD_COUNTRY.value) {
-      const {
-        id,
-        bbox,
-      } = geostore;
+    if (
+      geostore &&
+      selectedCountry &&
+      selectedCountry !== WORLD_COUNTRY.value
+    ) {
+      const { id, bbox } = geostore;
       // USA uses a different bbox rather the one provided by the API
-      setSelectedCountryBbox(selectedCountry === 'USA' ? US_COUNTRY_VALUES.bbox : bbox);
+      setSelectedCountryBbox(
+        selectedCountry === "USA" ? US_COUNTRY_VALUES.bbox : bbox
+      );
       setSelectedGeostore(id);
     } else {
       setSelectedCountryBbox(WORLD_COUNTRY.bbox);
@@ -74,11 +69,11 @@ function EnergyCountryExplorer(props) {
 
   useEffect(() => {
     // loads the configuration from Github in production
-    if (process.env.NODE_ENV === 'production') {
+    if (process.env.NODE_ENV === "production") {
       fetchCountryPowerExplorerConfig()
         .then((data) => setConfig(data))
         .catch((err) => {
-          toastr.error('Error loading configuration file');
+          toastr.error("Error loading configuration file");
           console.error(err);
         });
     } else {
@@ -87,11 +82,15 @@ function EnergyCountryExplorer(props) {
     }
 
     // Load countries
-    axios.get('https://api.resourcewatch.org/v1/query/a86d906d-9862-4783-9e30-cdb68cd808b8', {
-      params: {
-        sql: 'SELECT distinct country_long as country, country as iso FROM powerwatch_data_20180102 ORDER BY country_long ASC',
-      },
-    })
+    axios
+      .get(
+        "https://api.resourcewatch.org/v1/query/a86d906d-9862-4783-9e30-cdb68cd808b8",
+        {
+          params: {
+            sql: "SELECT distinct country_long as country, country as iso FROM powerwatch_data_20180102 ORDER BY country_long ASC",
+          },
+        }
+      )
       .then((data) => {
         setCountries({
           loading: false,
@@ -101,17 +100,22 @@ function EnergyCountryExplorer(props) {
           ],
         });
       })
-      .catch((err) => toastr.error('Error loading countries', err));
+      .catch((err) => toastr.error("Error loading countries", err));
   }, []);
 
-  const selectedCountryIsWorld = selectedCountry === WORLD_COUNTRY.value || !selectedCountry;
+  const selectedCountryIsWorld =
+    selectedCountry === WORLD_COUNTRY.value || !selectedCountry;
 
   const selectedCountryObj = selectedCountry
     ? countries.list.find((c) => c.value === selectedCountry)
     : WORLD_COUNTRY;
 
-  const showCustomSections = config && (!selectedCountry || (selectedCountryObj
-    && (selectedCountryIsWorld || (!selectedCountryIsWorld && selectedCountryBbox))));
+  const showCustomSections =
+    config &&
+    (!selectedCountry ||
+      (selectedCountryObj &&
+        (selectedCountryIsWorld ||
+          (!selectedCountryIsWorld && selectedCountryBbox))));
 
   const ndcsURL = `https://www.climatewatchdata.org/embed/countries/${selectedCountry}/ndc-content-overview?isNdcp=true#ndc-content-overview`;
 
@@ -124,20 +128,21 @@ function EnergyCountryExplorer(props) {
               <div className="country-container">
                 <div className="country-selector">
                   <div>
-                    <h1>
-                      {selectedCountryObj && selectedCountryObj.label}
-                    </h1>
-                    <ReactMarkdown linkTarget="_blank" source={config && config.countrySelector.mainText} />
+                    <h1>{selectedCountryObj && selectedCountryObj.label}</h1>
+                    <ReactMarkdown
+                      linkTarget="_blank"
+                      source={config && config.countrySelector.mainText}
+                    />
                     <Tooltip
                       visible={tooltipOpen}
-                      overlay={(
+                      overlay={
                         <CountrySelector
                           countries={countries.list}
                           loading={countries.loading}
                           onCountrySelected={() => setTooltipOpen(false)}
                           selectedCountry={selectedCountry || WORLD_COUNTRY}
                         />
-                      )}
+                      }
                       overlayClassName="c-rc-tooltip -default -no-max-width"
                       placement="bottom"
                       trigger="click"
@@ -152,13 +157,12 @@ function EnergyCountryExplorer(props) {
                     </Tooltip>
                   </div>
                 </div>
-                {selectedCountryObj && config && config.countryIndicators
-                  && (
+                {selectedCountryObj && config && config.countryIndicators && (
                   <CountryIndicators
                     indicators={config.countryIndicators}
                     country={selectedCountryObj}
                   />
-                  )}
+                )}
               </div>
             </div>
           </div>
@@ -166,8 +170,8 @@ function EnergyCountryExplorer(props) {
       </div>
 
       {/* ------- CUSTOM SECTIONS ---------- */}
-      {showCustomSections
-        && config.sections.map((section) => (
+      {showCustomSections &&
+        config.sections.map((section) => (
           <CustomSection
             section={section}
             bbox={selectedCountryBbox}
@@ -177,8 +181,7 @@ function EnergyCountryExplorer(props) {
           />
         ))}
       {/* ------- NDCs ---------- */}
-      {!selectedCountryIsWorld
-        && (
+      {!selectedCountryIsWorld && (
         <div className="ndcs-container l-container">
           <div className="row">
             <div className="column small-12">
@@ -192,7 +195,7 @@ function EnergyCountryExplorer(props) {
             </div>
           </div>
         </div>
-        )}
+      )}
     </div>
   );
 }

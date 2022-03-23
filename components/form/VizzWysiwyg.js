@@ -1,15 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
 // Components
-import VizzWysiwyg from '@vizzuality/wysiwyg';
-import FormElement from './FormElement';
+import VizzWysiwyg from "@vizzuality/wysiwyg";
+import FormElement from "./FormElement";
 
 class Wysiwyg extends FormElement {
   constructor(props) {
     super(props);
 
-    if (typeof window === 'undefined') {
+    if (typeof window === "undefined") {
       return;
     }
 
@@ -24,7 +24,7 @@ class Wysiwyg extends FormElement {
   /**
    * UI EVENTS
    * - triggerChange
-  */
+   */
   triggerChange(value) {
     this.setState({ value }, () => {
       // Validate

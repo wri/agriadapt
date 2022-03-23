@@ -1,11 +1,11 @@
 // import { createSlice } from '@reduxjs/toolkit';
 
 // constants
-import { BASEMAPS, LABELS } from 'components/map/constants';
+import { BASEMAPS, LABELS } from "components/map/constants";
 
 // utils
-import { logEvent } from 'utils/analytics';
-import { sortLayers } from 'utils/layers';
+import { logEvent } from "utils/analytics";
+import { sortLayers } from "utils/layers";
 
 export const miniExploreState = {
   viewport: {
@@ -32,7 +32,7 @@ export const miniExploreState = {
 };
 
 export const miniExploreSlice = createSlice({
-  name: 'mini-explore',
+  name: "mini-explore",
   reducers: {
     // map management
     setViewport: (state, { payload }) => ({
@@ -78,7 +78,8 @@ export const miniExploreSlice = createSlice({
           applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS].layerOrder &&
           publishedLayers.length > 1
         ) {
-          const { layerOrder } = applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS];
+          const { layerOrder } =
+            applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS];
           publishedLayers = sortLayers(publishedLayers, layerOrder);
         }
 
@@ -114,7 +115,8 @@ export const miniExploreSlice = createSlice({
         applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS].layerOrder &&
         layers.length > 1
       ) {
-        const { layerOrder } = applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS];
+        const { layerOrder } =
+          applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS];
         layers = sortLayers(layers, layerOrder);
       }
 
@@ -127,9 +129,9 @@ export const miniExploreSlice = createSlice({
         });
         if (layerGroups[0].layers.length) {
           logEvent(
-            'Mini Explore Map',
-            'Add layer',
-            `${layerGroups[0].layers[0].name} [${layerGroups[0].layers[0].id}]`,
+            "Mini Explore Map",
+            "Add layer",
+            `${layerGroups[0].layers[0].name} [${layerGroups[0].layers[0].id}]`
           );
         }
       } else {
@@ -166,7 +168,10 @@ export const miniExploreSlice = createSlice({
       const { dataset, opacity } = payload;
       const layerGroups = state.layerGroups.map((lg) => {
         if (lg.id !== dataset.id) return lg;
-        const layers = lg.layers.map((l) => ({ ...l, layerConfig: { ...l.layerConfig, opacity } }));
+        const layers = lg.layers.map((l) => ({
+          ...l,
+          layerConfig: { ...l.layerConfig, opacity },
+        }));
         return {
           ...lg,
           layers,
@@ -204,7 +209,7 @@ export const miniExploreSlice = createSlice({
 
       // Sort by new order
       layerGroups.sort((a, b) =>
-        datasetIds.indexOf(a.dataset) > datasetIds.indexOf(b.dataset) ? 1 : -1,
+        datasetIds.indexOf(a.dataset) > datasetIds.indexOf(b.dataset) ? 1 : -1
       );
 
       return {
@@ -267,8 +272,10 @@ export const miniExploreSlice = createSlice({
     resetMapLayerGroupsInteraction: (state) => ({
       ...state,
       layerGroupsInteraction: miniExploreState.layerGroupsInteraction,
-      layerGroupsInteractionLatLng: miniExploreState.layerGroupsInteractionLatLng,
-      layerGroupsInteractionSelected: miniExploreState.layerGroupsInteractionSelected,
+      layerGroupsInteractionLatLng:
+        miniExploreState.layerGroupsInteractionLatLng,
+      layerGroupsInteractionSelected:
+        miniExploreState.layerGroupsInteractionSelected,
     }),
   },
   initialState: miniExploreState,

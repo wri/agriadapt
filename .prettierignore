@@ -1,0 +1,21 @@
+# Vendors
+/node_modules
+
+# Compiled files
+/.next
+out
+
+# Environmental variables
+.env
+.env*.local
+
+# coverage
+.nyc_output
+coverage
+coverage.json
+
+# storybook
+.storybook
+storybook-static
+
+/public

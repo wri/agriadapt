@@ -15,10 +15,14 @@ $switch-margin: 1px;
       &.-active {
         background-color: $sea-blue;
 
-        & > span { background-color: $white; }
+        & > span {
+          background-color: $white;
+        }
       }
 
-      & > span { background-color: $white; }
+      & > span {
+        background-color: $white;
+      }
     }
   }
 

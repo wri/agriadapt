@@ -1,27 +1,26 @@
-import { useState, useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
-import debounce from 'lodash/debounce';
-import { useRouter } from 'next/router';
+import { useState, useEffect, useRef } from "react";
+import PropTypes from "prop-types";
+import debounce from "lodash/debounce";
+import { useRouter } from "next/router";
 
 // Components
-import Spinner from 'components/ui/Spinner';
-import RadioGroup from 'components/form/RadioGroup';
-import Field from 'components/form/Field';
-import Input from 'components/form/Input';
+import Spinner from "components/ui/Spinner";
+import RadioGroup from "components/form/RadioGroup";
+import Field from "components/form/Field";
+import Input from "components/form/Input";
 
 function CountrySelector(props) {
-  const {
-    loading,
-    countries,
-    onCountrySelected,
-    selectedCountry,
-  } = props;
+  const { loading, countries, onCountrySelected, selectedCountry } = props;
   const router = useRouter();
   const [filteredCountries, setFilteredCountries] = useState(countries);
   const inputRef = useRef(null);
   const onSearchChange = debounce((search) => {
     if (search && search.length > 1) {
-      setFilteredCountries(countries.filter((c) => c.label.toLowerCase().indexOf(search.toLowerCase()) >= 0));
+      setFilteredCountries(
+        countries.filter(
+          (c) => c.label.toLowerCase().indexOf(search.toLowerCase()) >= 0
+        )
+      );
     } else {
       setFilteredCountries(countries);
     }
@@ -37,9 +36,9 @@ function CountrySelector(props) {
         className="search-input"
         onChange={(value) => onSearchChange(value)}
         properties={{
-          name: 'search',
-          type: 'text',
-          placeholder: 'Search',
+          name: "search",
+          type: "text",
+          placeholder: "Search",
           ref: inputRef,
         }}
       >

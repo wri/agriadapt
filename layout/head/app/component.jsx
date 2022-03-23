@@ -1,15 +1,18 @@
-import PropTypes from 'prop-types';
-import HeadNext from 'next/head';
+import PropTypes from "prop-types";
+import HeadNext from "next/head";
 
 export default function HeadApp({ title, description, thumbnail }) {
-
   const url =
-    typeof window !== 'undefined' ? `${window.location.origin}${window.location.pathname}` : '';
+    typeof window !== "undefined"
+      ? `${window.location.origin}${window.location.pathname}`
+      : "";
 
   return (
     <>
       <HeadNext>
-        <title>{title ? `${title} | Climate Risk Tool` : 'Climate Risk Tool'}</title>
+        <title>
+          {title ? `${title} | Climate Risk Tool` : "Climate Risk Tool"}
+        </title>
 
         <meta property="og:url" content={url} />
         <meta name="description" content={description} />
@@ -26,7 +29,7 @@ export default function HeadApp({ title, description, thumbnail }) {
 HeadApp.defaultProps = {
   title: null,
   description: null,
-  thumbnail: 'https://resourcewatch.org/static/images/social-big.jpg',
+  thumbnail: "https://resourcewatch.org/static/images/social-big.jpg",
 };
 
 HeadApp.propTypes = {

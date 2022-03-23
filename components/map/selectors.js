@@ -1,9 +1,13 @@
-import { createSelector } from 'reselect';
-import moment from 'moment';
+import { createSelector } from "reselect";
+import moment from "moment";
 
 // utils
-import { reduceParams, reduceSqlParams, getTimelineParams } from 'utils/layers/params-parser';
-import { getInteractiveLayers } from 'components/map/utils';
+import {
+  reduceParams,
+  reduceSqlParams,
+  getTimelineParams,
+} from "utils/layers/params-parser";
+import { getInteractiveLayers } from "components/map/utils";
 
 // The next selectors are factories: provide them the needed data before using them.
 // Otherwise, they won't work. You can check some examples in:
@@ -23,7 +27,7 @@ export const getUpdatedLayerGroups = (statePointer) =>
                 ...acc,
                 [curr.key]: curr.default,
               }),
-              {},
+              {}
             )),
         });
 
@@ -33,10 +37,12 @@ export const getUpdatedLayerGroups = (statePointer) =>
             // all params should go under timeline_config attribute
             timelineParams,
           }),
-          ...(_layer.layerConfig.layerType && { layerType: _layer.layerConfig.layerType }),
+          ...(_layer.layerConfig.layerType && {
+            layerType: _layer.layerConfig.layerType,
+          }),
         };
       }),
-    })),
+    }))
   );
 
 export const getActiveLayers = (statePointer) =>
@@ -45,15 +51,17 @@ export const getActiveLayers = (statePointer) =>
       .filter((lg) => lg.layers.length > 0)
       .map((lg) => ({
         ...lg.layers.find((l) => l.active),
-        opacity: typeof lg.opacity !== 'undefined' ? lg.opacity : 1,
-        visibility: typeof lg.visibility !== 'undefined' ? lg.visibility : true,
+        opacity: typeof lg.opacity !== "undefined" ? lg.opacity : 1,
+        visibility: typeof lg.visibility !== "undefined" ? lg.visibility : true,
       }));
 
     return activeLayers;
   });
 
 export const getActiveInteractiveLayers = (statePointer) =>
-  createSelector([statePointer], (_activeLayers) => getInteractiveLayers(_activeLayers));
+  createSelector([statePointer], (_activeLayers) =>
+    getInteractiveLayers(_activeLayers)
+  );
 
 export const getUpdatedLayers = (activeLayersPointer, parametrizationPointer) =>
   createSelector(
@@ -62,10 +70,12 @@ export const getUpdatedLayers = (activeLayersPointer, parametrizationPointer) =>
       if (!Object.keys(_parametrization).length) {
         return _activeLayers.map((_activeLayer) => {
           // User Area of Interest (Currently being used in the GEDC Energy dashboard)
-          if (_activeLayer.id === 'user_area') {
+          if (_activeLayer.id === "user_area") {
             return _activeLayer;
           }
-          const reducedDecodeParams = reduceParams(_activeLayer.layerConfig.decode_config);
+          const reducedDecodeParams = reduceParams(
+            _activeLayer.layerConfig.decode_config
+          );
           const { startDate, endDate } = reducedDecodeParams || {};
 
           return {
@@ -104,7 +114,9 @@ export const getUpdatedLayers = (activeLayersPointer, parametrizationPointer) =>
       }
 
       Object.keys(_parametrization).forEach((layerId) => {
-        const indexLayer = _activeLayers.findIndex((_layer) => _layer.id === layerId);
+        const indexLayer = _activeLayers.findIndex(
+          (_layer) => _layer.id === layerId
+        );
 
         if (indexLayer === -1) return;
         let currentLayer = _activeLayers[indexLayer];
@@ -164,7 +176,7 @@ export const getUpdatedLayers = (activeLayersPointer, parametrizationPointer) =>
       });
 
       return [..._activeLayers];
-    },
+    }
   );
 
 export default {

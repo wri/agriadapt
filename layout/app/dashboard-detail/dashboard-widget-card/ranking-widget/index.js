@@ -1,3 +1,3 @@
-import RankingWidgetCard from './component';
+import RankingWidgetCard from "./component";
 
 export default RankingWidgetCard;

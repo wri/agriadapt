@@ -1,9 +1,9 @@
 @use "sass:math";
-@import 'css/settings';
+@import "css/settings";
 
 @keyframes fadeIn {
   0% {
-    opacity: 0
+    opacity: 0;
   }
 
   50% {
@@ -34,7 +34,7 @@
     height: 32px;
     padding: math.div($space, 2);
     border-radius: 3px;
-    box-shadow: 0 1px 1px 0 rgba($black, .5);
+    box-shadow: 0 1px 1px 0 rgba($black, 0.5);
     background-color: $white;
     cursor: pointer;
 

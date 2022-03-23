@@ -10,7 +10,9 @@
   > * {
     margin: 0 0 0 4px;
 
-    &:first-child { margin: 0 }
+    &:first-child {
+      margin: 0;
+    }
   }
 
   &.-primary {

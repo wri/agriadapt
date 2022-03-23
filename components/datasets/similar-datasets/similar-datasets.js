@@ -1,12 +1,12 @@
-import { Component, createElement } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { Component, createElement } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
-import * as actions from './similar-datasets-actions';
-import * as reducers from './similar-datasets-reducers';
-import initialState from './similar-datasets-initial-state';
+import * as actions from "./similar-datasets-actions";
+import * as reducers from "./similar-datasets-reducers";
+import initialState from "./similar-datasets-initial-state";
 
-import SimilarDatasetsComponent from './similar-datasets-component';
+import SimilarDatasetsComponent from "./similar-datasets-component";
 
 class SimilarDatasetsContainer extends Component {
   static propTypes = {
@@ -38,5 +38,5 @@ export { actions, reducers, initialState };
 
 export default connect(
   (state) => ({ ...state.similarDatasets }),
-  actions,
+  actions
 )(SimilarDatasetsContainer);

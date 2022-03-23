@@ -1,7 +1,7 @@
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
 // actions
-import * as actions from 'layout/explore/actions';
+import * as actions from "layout/explore/actions";
 
 // selectors
 import {
@@ -9,10 +9,10 @@ import {
   exploreMapGetUpdatedLayerGroups,
   exploreMapGetUpdatedLayers,
   exploreMapGetActiveInteractiveLayers,
-} from './selectors';
+} from "./selectors";
 
 // components
-import ExploreMap from './component';
+import ExploreMap from "./component";
 
 export default connect(
   (state) => ({
@@ -25,5 +25,5 @@ export default connect(
     layerGroups: exploreMapGetUpdatedLayerGroups(state),
     ...getMapProps(state),
   }),
-  actions,
+  actions
 )(ExploreMap);

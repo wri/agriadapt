@@ -7,7 +7,7 @@
   height: 45px;
 
   &:after {
-    content: '';
+    content: "";
     width: 0;
     height: 0;
     border-left: 5px solid transparent;
@@ -27,7 +27,7 @@
 
   &.-disabled {
     pointer-events: none;
-    opacity: .4;
+    opacity: 0.4;
 
     .clear-button,
     &:after {
@@ -83,7 +83,7 @@
     z-index: 1;
 
     .c-icon {
-      fill: rgba($dove-grey, .5);
+      fill: rgba($dove-grey, 0.5);
     }
   }
 
@@ -98,7 +98,8 @@
     color: palette(blue);
     background-color: $white;
     font-size: $font-size-normal;
-    box-shadow: 0 -2px 4px 0 rgba(33, 62, 118, 0.09), 0 2px 4px 0 rgba(33, 62, 118, 0.09);
+    box-shadow: 0 -2px 4px 0 rgba(33, 62, 118, 0.09),
+      0 2px 4px 0 rgba(33, 62, 118, 0.09);
   }
 
   .custom-select-text {
@@ -144,7 +145,8 @@
     min-width: 100%;
     background-color: $white;
     z-index: 999;
-    box-shadow: 0 -2px 3px 0 rgba(33, 62, 118, 0.09), 0 2px 3px 0 rgba(33, 62, 118, 0.09);
+    box-shadow: 0 -2px 3px 0 rgba(33, 62, 118, 0.09),
+      0 2px 3px 0 rgba(33, 62, 118, 0.09);
     max-height: 400px;
     margin: 0;
     padding: 0 0;
@@ -180,12 +182,12 @@
       }
 
       &:hover {
-        background-color: rgba($charcoal-grey, .05);
+        background-color: rgba($charcoal-grey, 0.05);
         color: $sea-blue;
       }
 
       &.-selected {
-        background-color: rgba($charcoal-grey, .05);
+        background-color: rgba($charcoal-grey, 0.05);
       }
 
       &[aria-selected="true"] {
@@ -205,7 +207,7 @@
         cursor: pointer;
 
         &:hover {
-          background-color: rgba(#4a81b9, .05);
+          background-color: rgba(#4a81b9, 0.05);
         }
       }
     }
