@@ -127,11 +127,12 @@ const LayoutHome = () => {
   };
 
   const getAnalysisContainer = () => {
+    // https://flickity.metafizzy.co/options.html
     const flickityOptions = {
       freeScroll: true,
       draggable: true,
       prevNextButtons: false,
-      autoPlay: true,
+      autoPlay: false,
       pageDots: true,
       wrapAround: true
     }
