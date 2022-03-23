@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 $btn-bg-hover-color: rgba(45, 195, 70, 0.05);
-=======
-$btn-bg-hover-color: rgba(195, 45, 123, 0.05);
->>>>>>> d10ffc74bd66b47b9e522b27f639ac2adb24ad1d
 $btn-bg-hover-alt-color: rgba(255, 255, 255, 0.1);
 $btn-border-color: #D4E0CF;
 $btn-border-alt-color: rgba(255, 255, 255, 0.3);
@@ -101,11 +97,7 @@ $btn-hover-shadow: 0 20px 30px 0 rgba(0, 0, 0, 0.2);
     }
 
     &[disabled] {
-<<<<<<< HEAD
       background: rgba($primary-green, 0.3);
-=======
-      background: rgba($dark-pink, 0.3);
->>>>>>> d10ffc74bd66b47b9e522b27f639ac2adb24ad1d
       border-color: transparent;
     }
   }

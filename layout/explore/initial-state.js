@@ -1,10 +1,6 @@
 // import { TOPICS, DATA_TYPES, FREQUENCIES, TIME_PERIODS } from 'utils/concepts';
 import { BASEMAPS, LABELS } from "components/map/constants";
-<<<<<<< HEAD
 import { EXPLORE_SECTIONS, EXPLORE_TABS } from "layout/explore/constants";
-=======
-import { EXPLORE_SECTIONS } from "layout/explore/constants";
->>>>>>> d10ffc74bd66b47b9e522b27f639ac2adb24ad1d
 
 export default {
   // Datasets

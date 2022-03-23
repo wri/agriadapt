@@ -212,7 +212,6 @@ export const setSortIsUserSelected = createAction(
 export const resetFiltersSort = createAction("EXPLORE/resetFiltersSort");
 
 // SIDEBAR
-<<<<<<< HEAD
 export const setSidebarOpen = createAction('EXPLORE/setSidebarOpen');
 export const setSidebarAnchor = createAction('EXPLORE/setSidebarAnchor');
 export const setSidebarSection = createAction('EXPLORE/setSidebarSection');
@@ -220,20 +219,6 @@ export const setSidebarSubsection = createAction('EXPLORE/setSidebarSubsection')
 export const setSidebarSelectedCollection = createAction('EXPLORE/setSidebarSelectedCollection');
 export const clearSidebarSubsection = createAction('EXPLORE/clearSidebarSubsection');
 export const setSidebarSelectedTab = createAction("EXPLORE/setSidebarSelectedTab");
-=======
-export const setSidebarOpen = createAction("EXPLORE/setSidebarOpen");
-export const setSidebarAnchor = createAction("EXPLORE/setSidebarAnchor");
-export const setSidebarSection = createAction("EXPLORE/setSidebarSection");
-export const setSidebarSubsection = createAction(
-  "EXPLORE/setSidebarSubsection"
-);
-export const setSidebarSelectedCollection = createAction(
-  "EXPLORE/setSidebarSelectedCollection"
-);
-export const clearSidebarSubsection = createAction(
-  "EXPLORE/clearSidebarSubsection"
-);
->>>>>>> d10ffc74bd66b47b9e522b27f639ac2adb24ad1d
 
 // TAGS TOOLTIP
 export const setTags = createAction("EXPLORE/setTags");
