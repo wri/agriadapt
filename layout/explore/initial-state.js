@@ -13,21 +13,20 @@ export default {
     total: 0,
     selected: null,
   },
+  search: {
+    search: '',
+    value_chains: [],
+    advanced: {
+      open: true,
+      timescale: [],
+      region: [],
+      emission_scenario: [],
+      supply_chain_node: [],
+    },
+  },
   filters: {
     open: false,
     search: "",
-    tab: "topics",
-    options: {
-      // topics: TOPICS,
-      // data_types: DATA_TYPES,
-      // frequencies: FREQUENCIES,
-      // time_periods: TIME_PERIODS,
-      custom: {
-        label: "Others",
-        value: "custom",
-        list: [],
-      },
-    },
     selected: {
       topics: [],
       data_types: [],

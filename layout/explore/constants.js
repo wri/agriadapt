@@ -19,3 +19,22 @@ export const EXPLORE_TABS = {
 export const EXPLORE_SUBSECTIONS = {
   NEW_AREA: "area/new",
 };
+
+export const EXPLORE_FILTERS = {
+  VALUE_CHAINS: {
+    placeholder: 'Value Chains',
+    options: ['Rice', 'Cotton', 'Coffee'],
+  },
+  TIMESCALE: {
+    placeholder: 'Timescale',
+  },
+  REGION: {
+    placeholder: 'Region',
+  },
+  EMISSION_SCENARIO: {
+    placeholder: 'Emission Scenario',
+  },
+  SUPPLY_CHAIN_NODE: {
+    placeholder: 'Supply Chain Node',
+  },
+};

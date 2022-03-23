@@ -12,7 +12,6 @@ export default connect(
     // Store
     datasets: state.explore.datasets,
     list: getUpdatedDatasets(state),
-    ...state.explore.filters,
     selectedTags: getSelectedTagsWithData(state),
     loading: state.explore.datasets.loading,
   }),
