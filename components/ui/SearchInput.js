@@ -96,7 +96,7 @@ class SearchInput extends PureComponent {
               value={value || ""}
               type="search"
             />
-            {!isHeader && <Icon name="icon-search" className="-small" />}
+            {!isHeader && <Icon name="icon-search-slim" className="-small" />}
           </div>
         </div>
 

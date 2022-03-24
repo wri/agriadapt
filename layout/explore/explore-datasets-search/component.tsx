@@ -1,7 +1,9 @@
 import classNames from 'classnames';
+import RadioGroup from 'components/form/RadioGroup';
+import Select from 'react-select';
 import SearchInput from 'components/ui/SearchInput';
-import SearchSelect from 'components/ui/SearchSelect';
 import { EXPLORE_FILTERS } from '../constants';
+import Field from 'components/form/Field';
 
 const ExploreDatasetsSearch = ({
   search,
@@ -26,19 +28,33 @@ const ExploreDatasetsSearch = ({
   return (
     <>
       {/* TODO: Translate */}
-      <>Search Layers</>
-      <SearchInput
+      <>Start Exploring</>
+      <Field
+        properties={{
+          label: 'Search Layers',
+          default: '',
+        }}
+        onSearch={() => {}}
         input={{
           value: search,
           placeholder: 'Search Layers', // TODO: Translate
         }}
-      />
+      >
+        {SearchInput}
+      </Field>
       {/* TODO: Translate */}
-      <>Filter Layers by Value Chain</>
-      <SearchSelect
+      <Field
+        properties={{
+          label: 'Filter Layers by Value Chain',
+          default: '',
+        }}
         options={VALUE_CHAINS.options}
+        value={''}
+        className={'Select--large'}
         placeholder={'Value Chain'} // TODO: Translate
-      />
+      >
+        {Select}
+      </Field>
       {/* TODO: Translate */}
       {!advOpen && (
         <div>
@@ -50,11 +66,27 @@ const ExploreDatasetsSearch = ({
           {Object.entries(EXPLORE_FILTERS.ADVANCED).map(([k, v]) => (
             <div id={k}>
               {/* TODO: Translate */}
-              <div>Filter Layers by {v['placeholder']}</div>
-              <SearchSelect
-                options={[]}
-                placeholder={v.placeholder} // TODO: Translate
-              />
+              <Field
+                properties={{
+                  label: `Filter Layers by ${v.placeholder}`,
+                  default: '',
+                }}
+                {...(v.type === 'select' && {
+                  placeholder: v.placeholder, // TODO: Translate
+                  options: [],
+                })}
+                value={''}
+                {...(v.type === 'radio' && {
+                  options: v.options,
+                })}
+                className={v.type === 'select' ? 'Select--large': false}
+              >
+                {v.type === 'select'
+                  ? Select
+                  : v.type === 'radio'
+                  ? RadioGroup
+                  : null}
+              </Field>
             </div>
           ))}
           <div>
