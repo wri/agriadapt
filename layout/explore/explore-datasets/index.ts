@@ -10,6 +10,7 @@ export default connect(
     // Store
     datasets: state.explore.datasets,
     loading: state.explore.datasets.loading,
+    advOpen: state.explore.filters.advanced.open,
   }),
   actions
 )(ExploreDatasetsComponent);

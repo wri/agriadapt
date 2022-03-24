@@ -28,7 +28,7 @@ const ExploreDatasetsSearch = ({
   return (
     <>
       {/* TODO: Translate */}
-      <>Start Exploring</>
+      <h4>Start Exploring</h4>
       <Field
         properties={{
           label: 'Search Layers',
@@ -58,7 +58,7 @@ const ExploreDatasetsSearch = ({
       {/* TODO: Translate */}
       {!advOpen && (
         <div>
-          <a onClick={handleClickAdvanced}>{'Advanced Search'}</a>
+          <a className="advanced-link" onClick={handleClickAdvanced}>{'Advanced Search'}</a>
         </div>
       )}
       {advOpen && (
@@ -89,7 +89,7 @@ const ExploreDatasetsSearch = ({
               </Field>
             </div>
           ))}
-          <div>
+          <div className="c-explore-search-actions">
             <button
               className={classNames({
                 'c-button': true,

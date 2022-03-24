@@ -4,6 +4,18 @@
   position: relative;
   margin: 0px 4 * $space 0px 3 * $space;
 
+  .advanced-link {
+    font-size: $font-size-small;
+    color: $sea-blue;
+    font-weight: 700;
+    line-height: 15.6px;
+
+    &:hover {
+      cursor: pointer;
+      text-decoration: none;
+    }
+  }
+
   .explore-datasets-header {
     display: flex;
     justify-content: space-between;
@@ -17,7 +29,7 @@
       background: white;
       box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.3);
       padding: 8px;
-      margin: 0 auto;
+      margin: 6px auto 10px;
   
       display: flex;
 
@@ -33,7 +45,7 @@
   
       button {
         &:not(:last-child) {
-          margin-right: $space;
+          margin-right: $space-1;
         }
       }
     }
@@ -60,6 +72,19 @@
         .c-icon {
           margin-left: 2 * $space;
         }
+      }
+    }
+  }
+
+  .c-explore-search-actions {
+    display: flex;
+    justify-content: flex-end;
+    .c-button {
+      width: 88px;
+      height: 30px;
+
+      &:not(:last-child) {
+        margin-right: $space-1;
       }
     }
   }

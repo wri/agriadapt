@@ -20,6 +20,7 @@ export default function ExploreDatasets(props) {
     datasets: { selected, list, total, limit, page, loading },
     setDatasetsPage,
     fetchDatasets,
+    advOpen,
   } = props;
 
   const fetchDatasetsPerPage = useCallback(
@@ -64,34 +65,38 @@ export default function ExploreDatasets(props) {
         </div>
       )}
 
-      <DatasetList
-        loading={loading}
-        numberOfPlaceholders={20}
-        list={list}
-        actions={<ExploreDatasetsActions />}
-      />
+      {!advOpen && (
+        <>
+          <DatasetList
+            loading={loading}
+            numberOfPlaceholders={20}
+            list={list}
+            actions={<ExploreDatasetsActions />}
+          />
+          {!!list.length && total > limit && (
+            <Paginator
+              options={{
+                page,
+                limit,
+                size: total,
+              }}
+              onChange={(p) => {
+                // ------- Scroll to the top of the list -------------------
+                const sidebarContent =
+                  document.querySelector('.sidebar-content');
+                if (window.scrollTo) {
+                  window.scrollTo(0, 0);
+                }
+                if (sidebarContent && sidebarContent.scrollTo) {
+                  sidebarContent.scrollTo(0, 0);
+                }
+                // ------------------------------------------------
 
-      {!!list.length && total > limit && (
-        <Paginator
-          options={{
-            page,
-            limit,
-            size: total,
-          }}
-          onChange={(p) => {
-            // ------- Scroll to the top of the list -------------------
-            const sidebarContent = document.querySelector(".sidebar-content");
-            if (window.scrollTo) {
-              window.scrollTo(0, 0);
-            }
-            if (sidebarContent && sidebarContent.scrollTo) {
-              sidebarContent.scrollTo(0, 0);
-            }
-            // ------------------------------------------------
-
-            fetchDatasetsPerPage(p);
-          }}
-        />
+                fetchDatasetsPerPage(p);
+              }}
+            />
+          )}
+        </>
       )}
     </div>
   );
