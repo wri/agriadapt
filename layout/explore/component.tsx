@@ -1,6 +1,5 @@
 import Layout from 'layout/layout/layout-app';
-import { useEffect, useRef, useState } from 'react';
-import mapboxgl from 'mapbox-gl';
+import { useState } from 'react';
 import ExploreSidebar from 'layout/explore/explore-sidebar';
 import ExploreMap from 'layout/explore/explore-map';
 import ExploreDatasets from 'layout/explore/explore-datasets';
@@ -26,19 +25,14 @@ interface ExploreProps {
 }
 
 const Explore = (props: ExploreProps): JSX.Element => {
-  useEffect(() => {
-    console.log(props);
-  }, []);
-
   const {
     explore: {
       datasets: { selected },
       sidebar: { subsection },
     },
   } = props;
-  // const map = useRef<mapboxgl.Map | null>(null);
   const [sideBarOpen, setSideBarOpen] = useState(true);
-  const [dataset, setDataset] = useState(null);
+  const [_dataset, setDataset] = useState(null);
 
   const getSidebarLayout = () => (
     <>
