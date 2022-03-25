@@ -41,13 +41,13 @@ class LayoutApp extends Component {
   componentDidMount() {
     const { router, updateIsLoading } = this.props;
 
-    router.events.on("routeChangeStart", () => {
-      // updateIsLoading(true);
+    router.events.on('routeChangeStart', () => {
+      updateIsLoading(true);
       if (Progress && Progress.Component.instance) Progress.show();
     });
 
-    router.events.on("routeChangeComplete", () => {
-      // updateIsLoading(false);
+    router.events.on('routeChangeComplete', () => {
+      updateIsLoading(false);
       if (Progress && Progress.Component.instance) Progress.hideAll();
     });
 
@@ -106,7 +106,7 @@ class LayoutApp extends Component {
 
         <Header pageHeader={pageHeader} />
 
-        {/* <Progress.Component /> */}
+        <Progress.Component />
 
         {children}
 

@@ -1,6 +1,6 @@
 // import { TOPICS, DATA_TYPES, FREQUENCIES, TIME_PERIODS } from 'utils/concepts';
 import { BASEMAPS, LABELS } from "components/map/constants";
-import { EXPLORE_SECTIONS } from "layout/explore/constants";
+import { EXPLORE_SECTIONS, EXPLORE_TABS } from "layout/explore/constants";
 
 export default {
   // Datasets
@@ -14,26 +14,14 @@ export default {
     selected: null,
   },
   filters: {
-    open: false,
-    search: "",
-    tab: "topics",
-    options: {
-      // topics: TOPICS,
-      // data_types: DATA_TYPES,
-      // frequencies: FREQUENCIES,
-      // time_periods: TIME_PERIODS,
-      custom: {
-        label: "Others",
-        value: "custom",
-        list: [],
-      },
-    },
-    selected: {
-      topics: [],
-      data_types: [],
-      frequencies: [],
-      time_periods: [],
-      custom: [],
+    search: '',
+    value_chains: '',
+    advanced: {
+      open: false,
+      timescale: [],
+      region: [],
+      emission_scenario: [],
+      supply_chain_node: [],
     },
   },
   sort: {
@@ -99,6 +87,7 @@ export default {
     subsection: null,
     selected: null,
     selectedCollection: null,
+    selectedTab: EXPLORE_TABS.LAYERS,
   },
 
   tags: {

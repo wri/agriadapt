@@ -57,7 +57,7 @@ export default createReducer(initialState, (builder) => {
       },
     }))
     .addCase(actions.setDatasetsMode, (state, { payload }) => {
-      logEvent("Explore Menu", "Change dataset view", payload);
+      logEvent('Explore Menu', 'Change dataset view', payload);
 
       return {
         ...state,
@@ -75,68 +75,21 @@ export default createReducer(initialState, (builder) => {
       },
     }))
     // filters
-    .addCase(actions.setFiltersOpen, (state, { payload }) => ({
+    .addCase(actions.setFiltersAdvancedOpen, (state, { payload }) => ({
       ...state,
       filters: {
         ...state.filters,
-        open: payload,
+        advanced: {
+          ...state.filters.advanced,
+          open: payload,
+        },
       },
     }))
-    .addCase(actions.setFiltersTab, (state, { payload }) => ({
+    .addCase(actions.setFiltersValueChains, (state, { payload }) => ({
       ...state,
       filters: {
         ...state.filters,
-        tab: payload,
-      },
-    }))
-    .addCase(actions.setFiltersSearch, (state, { payload }) => ({
-      ...state,
-      filters: {
-        ...state.filters,
-        search: payload,
-      },
-    }))
-    .addCase(actions.setFiltersTags, (state, { payload }) => ({
-      ...state,
-      filters: {
-        ...state.filters,
-        tags: payload,
-      },
-    }))
-    .addCase(actions.setFiltersSelected, (state, { payload }) => {
-      const { key, list } = payload;
-      const selected = { ...state.filters.selected, [key]: list };
-      const filters = { ...state.filters, selected };
-
-      return {
-        ...state,
-        filters,
-      };
-    })
-    .addCase(actions.toggleFiltersSelected, (state, { payload }) => {
-      const { tab, tag } = payload;
-      const arr = [...state.filters.selected[tab]];
-
-      if (!arr.includes(tag.id)) {
-        arr.push(tag.id);
-      } else {
-        const index = arr.findIndex((s) => s === tag.id);
-        arr.splice(index, 1);
-      }
-
-      const selected = { ...state.filters.selected, [tab]: arr };
-      const filters = { ...state.filters, selected };
-      return {
-        ...state,
-        filters,
-      };
-    })
-    .addCase(actions.resetFiltersSelected, (state) => ({
-      ...state,
-      filters: {
-        ...state.filters,
-        search: initialState.filters.search,
-        selected: initialState.filters.selected,
+        value_chains: payload,
       },
     }))
     // sort
@@ -277,8 +230,8 @@ export default createReducer(initialState, (builder) => {
         });
         if (layerGroups[0].layers.length) {
           logEvent(
-            "Explore Map",
-            "Add layer",
+            'Explore Map',
+            'Add layer',
             `${layerGroups[0].layers[0].name} [${layerGroups[0].layers[0].id}]`
           );
         }
@@ -533,6 +486,13 @@ export default createReducer(initialState, (builder) => {
       sidebar: {
         ...state.sidebar,
         subsection: initialState.sidebar.subsection,
+      },
+    }))
+    .addCase(actions.setSidebarSelectedTab, (state, { payload }) => ({
+      ...state,
+      sidebar: {
+        ...state.sidebar,
+        selectedTab: payload,
       },
     }))
     // tags
