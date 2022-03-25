@@ -31,7 +31,7 @@ export default function WidgetInfo({ widget, className }) {
             <h4>Links</h4>
             <ul>
               {widgetLinks.map((link) => (
-                <li>
+                <li key={link.name}>
                   <a href={link.link} target="_blank" rel="noopener noreferrer">
                     {link.name}
                   </a>

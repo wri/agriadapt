@@ -6,7 +6,7 @@ import Link from "next/link";
 import Title from "components/ui/Title";
 
 // Utils
-import { logEvent } from "utils/analytics";
+// import { logEvent } from "utils/analytics";
 
 function CardApp({
   background,
@@ -61,6 +61,7 @@ function CardApp({
             <a
               href={link.route}
               target="_blank"
+              rel="noreferrer"
               className={`c-button ${buttonClasses} -fullwidth`}
               onClick={() => {
                 if (logEvent) {

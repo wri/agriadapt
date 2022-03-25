@@ -378,9 +378,11 @@ export default class SliderSelect extends React.Component {
 
     // We wait for the confirmation to select this option
     return (
-      new Promise(async (resolve, reject) => {
+      // new Promise(async (resolve, reject) => {
+      new Promise((resolve, reject) => {
         this.setState({ waitingConfirmation: true });
-        const res = await this.props.onValueChange(
+        // const res = await this.props.onValueChange(
+        const res = this.props.onValueChange(
           item,
           path.map((it) => it.value),
           "vocabulary"

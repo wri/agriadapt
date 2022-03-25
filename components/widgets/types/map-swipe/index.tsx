@@ -21,6 +21,7 @@ import SwipeTypeWidget from "./component";
 
 import type { Bounds } from "components/map/types";
 import type { APIWidgetSpec } from "types/widget";
+import { APILayerSpec } from "types/layer";
 
 const CustomErrorFallback = (_props) => (
   <ErrorFallback {..._props} title="Something went wrong loading the widget" />
@@ -91,7 +92,7 @@ const SwipeTypeWidgetContainer = ({
       queryKey: ["fetch-layer", layerId],
       queryFn: () => fetchLayer(layerId),
       placeholderData: null,
-      select: (_layer: Object) => ({
+      select: (_layer: APILayerSpec) => ({
         ..._layer,
         params,
       }),
@@ -103,7 +104,7 @@ const SwipeTypeWidgetContainer = ({
       queryKey: ["fetch-layer", layerId],
       queryFn: () => fetchLayer(layerId),
       placeholderData: null,
-      select: (_layer: Object) => ({
+      select: (_layer: APILayerSpec) => ({
         ..._layer,
         params,
       }),

@@ -15,58 +15,60 @@ import CollectionsPanel from "components/collections-panel";
 // } from 'hooks/user';
 
 // utils
-import { logEvent } from "utils/analytics";
+// import { logEvent } from "utils/analytics";
 
 const MiniExploreDatasetsActions = (props) => {
   const { dataset, layer, handleAddMap } = props;
-  const { data: user } = useMe();
-  const { isInACollection, refetch } = useBelongsToCollection(
-    dataset.id,
-    user?.token
-  );
+  // const { data: user } = useMe();
+  // const { isInACollection, refetch } = useBelongsToCollection(
+  //   dataset.id,
+  //   user?.token
+  // );
 
-  const handleToggleFavorite = useCallback(
-    (isFavorite, resource) => {
-      const datasetName = resource?.metadata[0]?.info?.name;
+  const isInACollection = false;
 
-      if (isFavorite) {
-        logEvent("Mini Explore Menu", "Add dataset to favorites", datasetName);
-      } else {
-        logEvent(
-          "Mini Explore Menu",
-          "Remove dataset from favorites",
-          datasetName
-        );
-      }
-      refetch();
-    },
-    [refetch]
-  );
+  // const handleToggleFavorite = useCallback(
+  //   (isFavorite, resource) => {
+  //     const datasetName = resource?.metadata[0]?.info?.name;
 
-  const handleToggleCollection = useCallback(
-    (isAdded, resource) => {
-      const datasetName = resource?.metadata[0]?.info?.name;
+  //     if (isFavorite) {
+  //       logEvent("Mini Explore Menu", "Add dataset to favorites", datasetName);
+  //     } else {
+  //       logEvent(
+  //         "Mini Explore Menu",
+  //         "Remove dataset from favorites",
+  //         datasetName
+  //       );
+  //     }
+  //     refetch();
+  //   },
+  //   [refetch]
+  // );
 
-      if (isAdded) {
-        logEvent(
-          "Mini Explore Menu",
-          "Add dataset to a collection",
-          datasetName
-        );
-      } else {
-        logEvent(
-          "Mini Explore Menu",
-          "Remove dataset from a collection",
-          datasetName
-        );
-      }
-      refetch();
-    },
-    [refetch]
-  );
+  // const handleToggleCollection = useCallback(
+  //   (isAdded, resource) => {
+  //     const datasetName = resource?.metadata[0]?.info?.name;
 
-  const userIsLoggedIn = user?.token;
-  const datasetName = dataset?.metadata[0]?.info?.name;
+  //     if (isAdded) {
+  //       logEvent(
+  //         "Mini Explore Menu",
+  //         "Add dataset to a collection",
+  //         datasetName
+  //       );
+  //     } else {
+  //       logEvent(
+  //         "Mini Explore Menu",
+  //         "Remove dataset from a collection",
+  //         datasetName
+  //       );
+  //     }
+  //     refetch();
+  //   },
+  //   [refetch]
+  // );
+
+  // const userIsLoggedIn = user?.token;
+  // const datasetName = dataset?.metadata[0]?.info?.name;
 
   const starIconName = classnames({
     "icon-star-full": isInACollection,
@@ -91,65 +93,54 @@ const MiniExploreDatasetsActions = (props) => {
     <div className="c-datasets-actions">
       <button
         className={classnames({
-          "c-button": true,
-          "-secondary": !dataset.active,
-          "-primary": dataset.active,
-          "-compressed": true,
-          "-disable": !layer,
-          "-fullwidth": true,
+          'c-button': true,
+          '-secondary': !dataset.active,
+          '-primary': dataset.active,
+          '-compressed': true,
+          '-disable': !layer,
+          '-fullwidth': true,
         })}
         type="button"
         disabled={!layer}
         onClick={onHandleMap}
       >
-        {dataset.active ? "Active" : "Add to map"}
+        {dataset.active ? 'Active' : 'Add to map'}
       </button>
       {/* Favorite dataset icon */}
-      <LoginRequired
-        redirect={false}
-        clickCallback={() => {
-          if (!userIsLoggedIn) {
-            logEvent(
-              "Mini Explore Menu",
-              "Anonymous user Clicks Star",
-              datasetName
-            );
-          }
-        }}
+      <Tooltip
+        overlay={
+          <CollectionsPanel
+            resource={dataset}
+            resourceType="dataset"
+            onClick={(e) => e.stopPropagation()}
+            onKeyPress={(e) => e.stopPropagation()}
+            onToggleFavorite={null}
+            // onToggleFavorite={handleToggleFavorite}
+            onToggleCollection={null}
+            // onToggleCollection={handleToggleCollection}
+          />
+        }
+        overlayClassName="c-rc-tooltip"
+        placement="bottomRight"
+        trigger="click"
       >
-        <Tooltip
-          overlay={
-            <CollectionsPanel
-              resource={dataset}
-              resourceType="dataset"
-              onClick={(e) => e.stopPropagation()}
-              onKeyPress={(e) => e.stopPropagation()}
-              onToggleFavorite={handleToggleFavorite}
-              onToggleCollection={handleToggleCollection}
-            />
-          }
-          overlayClassName="c-rc-tooltip"
-          placement="bottomRight"
-          trigger="click"
+        <button
+          type="button"
+          className="c-button -secondary -compressed"
+          tabIndex={-1}
+          onClick={() => {
+            // if (userIsLoggedIn) {
+            //   logEvent(
+            //     'Mini Explore Menu',
+            //     'Authenticated user Clicks Star',
+            //     datasetName
+            //   );
+            // }
+          }}
         >
-          <button
-            type="button"
-            className="c-button -secondary -compressed"
-            tabIndex={-1}
-            onClick={() => {
-              if (userIsLoggedIn) {
-                logEvent(
-                  "Mini Explore Menu",
-                  "Authenticated user Clicks Star",
-                  datasetName
-                );
-              }
-            }}
-          >
-            <Icon name={starIconName} className={starIconClass} />
-          </button>
-        </Tooltip>
-      </LoginRequired>
+          <Icon name={starIconName} className={starIconClass} />
+        </button>
+      </Tooltip>
     </div>
   );
 };

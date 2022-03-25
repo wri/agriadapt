@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import PropTypes from "prop-types";
 
 // components
@@ -7,44 +7,44 @@ import Icon from "components/ui/icon";
 import Modal from "components/modal/modal-component";
 import ShareModal from "components/modal/share-modal";
 import { Tooltip } from "vizzuality-components";
-import CollectionsPanel from "components/collections-panel";
+// import CollectionsPanel from "components/collections-panel";
 import { getTooltipContainer } from "utils/tooltip";
 
 // utils
 import { logEvent } from "utils/analytics";
 
 export default function ExploreDetailHeader({
-  dataset,
+  // dataset,
   setSelectedDataset,
-  userIsLoggedIn,
+  // userIsLoggedIn,
   isSidebarOpen,
 }) {
   const [showShareModal, setShowShareModal] = useState(false);
-  const handleToggleFavorite = useCallback((isFavorite, resource) => {
-    const datasetName = resource?.metadata[0]?.info?.name;
-    if (isFavorite) {
-      logEvent("Explore Menu", "Add dataset to favorites", datasetName);
-    } else {
-      logEvent("Explore Menu", "Remove dataset from favorites", datasetName);
-    }
-  }, []);
+  // const handleToggleFavorite = useCallback((isFavorite, resource) => {
+  //   const datasetName = resource?.metadata[0]?.info?.name;
+  //   if (isFavorite) {
+  //     logEvent("Explore Menu", "Add dataset to favorites", datasetName);
+  //   } else {
+  //     logEvent("Explore Menu", "Remove dataset from favorites", datasetName);
+  //   }
+  // }, []);
 
-  const handleToggleCollection = useCallback((isAdded, resource) => {
-    const datasetName = resource?.metadata[0]?.info?.name;
-    if (isAdded) {
-      logEvent("Explore Menu", "Add dataset to a collection", datasetName);
-    } else {
-      logEvent("Explore Menu", "Remove dataset from a collection", datasetName);
-    }
-  }, []);
+  // const handleToggleCollection = useCallback((isAdded, resource) => {
+  //   const datasetName = resource?.metadata[0]?.info?.name;
+  //   if (isAdded) {
+  //     logEvent("Explore Menu", "Add dataset to a collection", datasetName);
+  //   } else {
+  //     logEvent("Explore Menu", "Remove dataset from a collection", datasetName);
+  //   }
+  // }, []);
 
   const location = typeof window !== "undefined" && window.location;
-  const datasetName =
-    dataset &&
-    dataset.metadata &&
-    dataset.metadata[0] &&
-    dataset.metadata[0].info &&
-    dataset.metadata[0].info.name;
+  // const datasetName =
+  //   dataset &&
+  //   dataset.metadata &&
+  //   dataset.metadata[0] &&
+  //   dataset.metadata[0].info &&
+  //   dataset.metadata[0].info.name;
 
   return (
     <div
@@ -70,14 +70,14 @@ export default function ExploreDetailHeader({
           }}
         > */}
         <Tooltip
-          overlay={
-            <CollectionsPanel
-              resource={dataset}
-              resourceType="dataset"
-              onToggleFavorite={handleToggleFavorite}
-              onToggleCollection={handleToggleCollection}
-            />
-          }
+          // overlay={
+          //   <CollectionsPanel
+          //     resource={dataset}
+          //     resourceType="dataset"
+          //     onToggleFavorite={handleToggleFavorite}
+          //     onToggleCollection={handleToggleCollection}
+          //   />
+          // }
           overlayClassName="c-rc-tooltip"
           placement="bottomRight"
           trigger="click"

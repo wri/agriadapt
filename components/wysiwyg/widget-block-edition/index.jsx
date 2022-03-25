@@ -9,17 +9,17 @@ import { fetchWidgets } from "services/widget";
 // utils
 import { hasValidConfiguration } from "utils/widget";
 
-// import {
-//   setWidgets,
-//   setTab,
-//   setPage,
-//   setSearch,
-//   setLoading,
-//   setError,
-//   setTotal,
-//   setPages,
-// } from './actions';
-// import reducer from './reducer';
+import {
+  setWidgets,
+  setTab,
+  setPage,
+  setSearch,
+  setLoading,
+  setError,
+  setTotal,
+  setPages,
+} from './actions';
+import reducer from './reducer';
 import initialState from "./initial-state";
 import WidgetBlockEditionComponent from "./component";
 
