@@ -260,7 +260,7 @@
 }
 
 .learn-more-container {
-	height: 0vh;
+	height: 40vh;
 	display: flex;
 	flex-direction: row;
 
@@ -293,6 +293,15 @@
 
 	button {
 		background-color: $primary-green !important;
+	}
+
+	.learn-more-image-container {
+		height: 323px;
+		width: 484px;
+		left: -54px;
+		top: -9px;
+		border-radius: 0px;
+
 	}
 }
 

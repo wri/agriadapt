@@ -13,7 +13,9 @@ const LearnMoreContainerHome = () => {
                     About [Project Name]
                 </button>
             </div>
-            <img src ='static/images/components/layout/learn-more.svg' alt ='about-image' />
+            <div className='learn-more-image-container'>
+                <img className='learm-more-image' src='static/images/components/layout/learn-more.svg' alt ='about-image' />
+            </div>
         </div>
     )
 };
