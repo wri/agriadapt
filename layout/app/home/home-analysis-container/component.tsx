@@ -33,19 +33,31 @@ const AnalysisContainerHome = () => {
         );
     };
     return (
-        <div className='analysis-container'>
-            <div className='analysis-text-container'>
-                <h2>Here's a more compelling header for the map experience.</h2>
-                <h3>Here's a subheader that provides additional contextual information.</h3>
-                <div className="c-carousel">
-                    {/* <Carousel {...settings}> */}
-                    <Carousel slidesToShow={3} cellAlign="right">
-                        {[getAnalysisCard(), getAnalysisCard(), getAnalysisCard(), getAnalysisCard()].map((item) => item)}
-                    </Carousel>
-                </div>
-            </div>
+      <div className="analysis-container">
+        <div className="analysis-text-container">
+          <h2>Here's a more compelling header for the map experience.</h2>
+          <h3>
+            Here's a subheader that provides additional contextual information.
+          </h3>
+          <div className="c-carousel">
+            {/* <Carousel {...settings}> */}
+            <Carousel
+              renderCenterLeftControls={() => {}}
+              renderCenterRightControls={() => {}}
+              slidesToShow={3}
+              cellAlign="right"
+            >
+              {[
+                getAnalysisCard(),
+                getAnalysisCard(),
+                getAnalysisCard(),
+                getAnalysisCard(),
+              ].map((item) => item)}
+            </Carousel>
+          </div>
         </div>
-    )
+      </div>
+    );
 };
 
 export default AnalysisContainerHome;
