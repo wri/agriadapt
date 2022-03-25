@@ -563,9 +563,9 @@
   "resolved" "https://registry.npmjs.org/@next/react-refresh-utils/-/react-refresh-utils-12.0.7.tgz"
   "version" "12.0.7"
 
-"@next/swc-darwin-x64@12.0.7":
-  "integrity" "sha512-km+6Rx6TvbraoQ1f0MXa69ol/x0RxzucFGa2OgZaYJERas0spy0iwW8hpASsGcf597D8VRW1x+R2C7ZdjVBSTw=="
-  "resolved" "https://registry.npmjs.org/@next/swc-darwin-x64/-/swc-darwin-x64-12.0.7.tgz"
+"@next/swc-darwin-arm64@12.0.7":
+  "integrity" "sha512-vhAyW2rDEUcQesRVaj0z1hSoz7QhDzzGd0V1/5/5i9YJOfOtyrPsVJ82tlf7BfXl6/Ep+eKNfWVIb5/Jv89EKg=="
+  "resolved" "https://registry.npmjs.org/@next/swc-darwin-arm64/-/swc-darwin-arm64-12.0.7.tgz"
   "version" "12.0.7"
 
 "@nodelib/fs.scandir@2.1.5":
@@ -2469,6 +2469,11 @@
     "inherits" "^2.0.1"
     "minimalistic-assert" "^1.0.0"
 
+"desandro-matches-selector@^2.0.0":
+  "integrity" "sha1-cXvu1NwT59jzdi9wem1YpndCGOE="
+  "resolved" "https://registry.npmjs.org/desandro-matches-selector/-/desandro-matches-selector-2.0.2.tgz"
+  "version" "2.0.2"
+
 "detect-newline@2.X":
   "integrity" "sha1-9B8cEL5LAOh7XxPaaAdZ8sW/0+I="
   "resolved" "https://registry.npmjs.org/detect-newline/-/detect-newline-2.1.0.tgz"
@@ -2764,6 +2769,11 @@
   "resolved" "https://registry.npmjs.org/etag/-/etag-1.8.1.tgz"
   "version" "1.8.1"
 
+"ev-emitter@^1.0.0", "ev-emitter@^1.0.1", "ev-emitter@^1.1.1":
+  "integrity" "sha512-ipiDYhdQSCZ4hSbX4rMW+XzNKMD1prg/sTvoVmSLkuQ1MVlwjJQQA+sW8tMYR3BLUr9KjodFV4pvzunvRhd33Q=="
+  "resolved" "https://registry.npmjs.org/ev-emitter/-/ev-emitter-1.1.1.tgz"
+  "version" "1.1.1"
+
 "event-emitter@^0.3.5":
   "integrity" "sha1-34xp7vFkeSPHFXuc6DhAYQsCzDk="
   "resolved" "https://registry.npmjs.org/event-emitter/-/event-emitter-0.3.5.tgz"
@@ -3015,10 +3025,29 @@
   "resolved" "https://registry.npmjs.org/first-chunk-stream/-/first-chunk-stream-1.0.0.tgz"
   "version" "1.0.0"
 
+"fizzy-ui-utils@^2.0.7":
+  "integrity" "sha512-CZXDVXQ1If3/r8s0T+v+qVeMshhfcuq0rqIFgJnrtd+Bu8GmDmqMjntjUePypVtjHXKJ6V4sw9zeyox34n9aCg=="
+  "resolved" "https://registry.npmjs.org/fizzy-ui-utils/-/fizzy-ui-utils-2.0.7.tgz"
+  "version" "2.0.7"
+  dependencies:
+    "desandro-matches-selector" "^2.0.0"
+
 "flatstr@^1.0.12", "flatstr@^1.0.9":
   "integrity" "sha512-4zPxDyhCyiN2wIAtSLI6gc82/EjqZc1onI4Mz/l0pWrAlsSfYH/2ZIcU+e3oA2wDwbzIWNKwa23F8rh6+DRWkw=="
   "resolved" "https://registry.npmjs.org/flatstr/-/flatstr-1.0.12.tgz"
   "version" "1.0.12"
+
+"flickity@^2.2.1":
+  "integrity" "sha512-x4cJBVywsaCWmId3I6wvBYJtWk3gcr+gz8UJQ48P57W5G7ER5OUgc3GUK0rtTrbMy/HYB9wL6u+I7EC4qrLO8g=="
+  "resolved" "https://registry.npmjs.org/flickity/-/flickity-2.3.0.tgz"
+  "version" "2.3.0"
+  dependencies:
+    "desandro-matches-selector" "^2.0.0"
+    "ev-emitter" "^1.1.1"
+    "fizzy-ui-utils" "^2.0.7"
+    "get-size" "^2.0.3"
+    "unidragger" "^2.4.0"
+    "unipointer" "^2.4.0"
 
 "follow-redirects@^1.14.0", "follow-redirects@^1.14.4":
   "integrity" "sha512-MQDfihBQYMcyy5dhRDJUHcw7lb2Pv/TuE6xP1vyraLukNDHKbDxDNaOE3NbCAdKQApno+GPRyo1YAp89yCjK4w=="
@@ -3109,6 +3138,11 @@
   "version" "1.1.2"
   dependencies:
     "stream-parser" "^0.3.1"
+
+"get-size@^2.0.3":
+  "integrity" "sha512-lXNzT/h/dTjTxRbm9BXb+SGxxzkm97h/PCIKtlN/CBCxxmkkIVV21udumMS93MuVTDX583gqc94v3RjuHmI+2Q=="
+  "resolved" "https://registry.npmjs.org/get-size/-/get-size-2.0.3.tgz"
+  "version" "2.0.3"
 
 "get-stream@^4.0.0":
   "integrity" "sha512-GMat4EJ5161kIy2HevLlr4luNjBgvmj413KaQA7jt4V8B4RDsfpHk7WQ9GVqfYyyx8OS/L66Kox+rJRNklLK7w=="
@@ -3549,6 +3583,13 @@
   "version" "1.0.0"
   dependencies:
     "queue" "6.0.2"
+
+"imagesloaded@^4.1.4":
+  "integrity" "sha512-ltiBVcYpc/TYTF5nolkMNsnREHW+ICvfQ3Yla2Sgr71YFwQ86bDwV9hgpFhFtrGPuwEx5+LqOHIrdXBdoWwwsA=="
+  "resolved" "https://registry.npmjs.org/imagesloaded/-/imagesloaded-4.1.4.tgz"
+  "version" "4.1.4"
+  dependencies:
+    "ev-emitter" "^1.0.0"
 
 "immer@^8.0.1":
   "integrity" "sha512-jMfL18P+/6P6epANRvRk6q8t+3gGhqsJ9EuJ25AXE+9bNTYtssvzeYbEd0mXRYWCmmXSIbnlpz6vd6iJlmGGGQ=="
@@ -5878,6 +5919,14 @@
   dependencies:
     "@babel/runtime" "^7.12.5"
 
+"react-flickity-component@^3.6.2":
+  "integrity" "sha512-mrBVHvoYi6aEKdmqT2UIHi2qRtjloAugLMODBRIScwqV9l4CZpIOixZRvIeSnv9Y9Pe9uJsMVAzp/9fpdcxX0g=="
+  "resolved" "https://registry.npmjs.org/react-flickity-component/-/react-flickity-component-3.6.2.tgz"
+  "version" "3.6.2"
+  dependencies:
+    "imagesloaded" "^4.1.4"
+    "prop-types" "^15.7.2"
+
 "react-form@2.16.2":
   "integrity" "sha512-HhuBcgBX+I8BDWYrrbZv1iBMcHliS+dUXu1U6s9/NwmkYhNJ2R2D/eA86l0NByLGcaWiDM9rTvT6Pu6ooA1FEg=="
   "resolved" "https://registry.npmjs.org/react-form/-/react-form-2.16.2.tgz"
@@ -7446,6 +7495,13 @@
     "inherits" "^2.0.0"
     "xtend" "^4.0.0"
 
+"unidragger@^2.4.0":
+  "integrity" "sha512-MueZK2oXuGE6OAlGKIrSXK2zCq+8yb1QUZgqyTDCSJzvwYL0g2Llrad+TtoQTYxtFnNyxxSw0IMnKNIgEMia1w=="
+  "resolved" "https://registry.npmjs.org/unidragger/-/unidragger-2.4.0.tgz"
+  "version" "2.4.0"
+  dependencies:
+    "unipointer" "^2.4.0"
+
 "unified@^6.1.5":
   "integrity" "sha512-1k+KPhlVtqmG99RaTbAv/usu85fcSRu3wY8X+vnsEhIxNP5VbVIDiXnLqyKIG+UMdyTg0ZX9EI6k2AfjJkHPtA=="
   "resolved" "https://registry.npmjs.org/unified/-/unified-6.2.0.tgz"
@@ -7457,6 +7513,13 @@
     "trough" "^1.0.0"
     "vfile" "^2.0.0"
     "x-is-string" "^0.1.0"
+
+"unipointer@^2.4.0":
+  "integrity" "sha512-VjzDLPjGK7aYpQKH7bnDZS8X4axF5AFU/LQi+NQe1oyEHfaz6lWKhaQ7n4o7vJ1iJ4i2T0quCIfrQM139p05Sw=="
+  "resolved" "https://registry.npmjs.org/unipointer/-/unipointer-2.4.0.tgz"
+  "version" "2.4.0"
+  dependencies:
+    "ev-emitter" "^1.0.1"
 
 "unique-stream@^2.0.2":
   "integrity" "sha512-2nY4TnBE70yoxHkDli7DMazpWiP7xMdCYqU2nBRO0UB+ZpEkGsSija7MvmvnZFUeC+mrgiUfcHSr3LmRFIg4+A=="
