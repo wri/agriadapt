@@ -23,7 +23,7 @@ const HeaderMenu = () => {
             "-active": item["pages"] && item["pages"].includes(pathname),
           });
           let DropdownMenu;
-          // if (item.id !== 'blog') {
+          // if (item.id === 'value-chains') {
           //   DropdownMenu = dynamic(() => header[item.id]);
           // }
 
