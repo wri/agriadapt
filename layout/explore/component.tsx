@@ -1,10 +1,10 @@
-import Layout from "layout/layout/layout-app";
-import { useEffect, useRef, useState } from "react";
-import mapboxgl from "mapbox-gl";
-import ExploreSidebar from "layout/explore/explore-sidebar";
-import ExploreMap from "layout/explore/explore-map";
-import ExploreDatasets from "layout/explore/explore-datasets";
-import ExploreDetail from "layout/explore/explore-detail";
+import Layout from 'layout/layout/layout-app';
+import { useEffect, useRef, useState } from 'react';
+import mapboxgl from 'mapbox-gl';
+import ExploreSidebar from 'layout/explore/explore-sidebar';
+import ExploreMap from 'layout/explore/explore-map';
+import ExploreDatasets from 'layout/explore/explore-datasets';
+import ExploreDetail from 'layout/explore/explore-detail';
 
 interface ExploreProps {
   explore: {
