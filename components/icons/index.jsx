@@ -3,10 +3,10 @@ export default function Icons() {
     <svg
       aria-hidden="true"
       style={{
-        position: "absolute",
+        position: 'absolute',
         width: 0,
         height: 0,
-        overflow: "hidden",
+        overflow: 'hidden',
       }}
     >
       <defs>
@@ -115,7 +115,7 @@ export default function Icons() {
             strokeMiterlimit="4"
             strokeLinecap="butt"
             strokeLinejoin="miter"
-            style={{ stroke: "var(--color1, #c32d7b)" }}
+            style={{ stroke: 'var(--color1, #c32d7b)' }}
             d="M30.4 20.8v6.4c0 1.767-1.433 3.2-3.2 3.2h-23.2c-1.767 0-3.2-1.433-3.2-3.2v-23.2c0-1.767 1.433-3.2 3.2-3.2h6.4"
           />
           <path
@@ -125,7 +125,7 @@ export default function Icons() {
             strokeMiterlimit="4"
             strokeLinecap="butt"
             strokeLinejoin="miter"
-            style={{ stroke: "var(--color1, #c32d7b)" }}
+            style={{ stroke: 'var(--color1, #c32d7b)' }}
             d="M20 0.8h10.4v10.4"
           />
           <path
@@ -135,7 +135,7 @@ export default function Icons() {
             strokeMiterlimit="4"
             strokeLinecap="butt"
             strokeLinejoin="miter"
-            style={{ stroke: "var(--color1, #c32d7b)" }}
+            style={{ stroke: 'var(--color1, #c32d7b)' }}
             d="M30.4 0.8l-15.2 15.2"
           />
         </symbol>
@@ -148,7 +148,7 @@ export default function Icons() {
             strokeMiterlimit="4"
             strokeLinecap="square"
             strokeLinejoin="miter"
-            style={{ stroke: "var(--color1, #c32d7b)" }}
+            style={{ stroke: 'var(--color1, #c32d7b)' }}
             d="M16 0.8v19.2"
           />
           <path
@@ -158,7 +158,7 @@ export default function Icons() {
             strokeMiterlimit="4"
             strokeLinecap="square"
             strokeLinejoin="miter"
-            style={{ stroke: "var(--color1, #c32d7b)" }}
+            style={{ stroke: 'var(--color1, #c32d7b)' }}
             d="M27.6 10l-11.6 11.621-11.6-11.621"
           />
           <path
@@ -168,7 +168,7 @@ export default function Icons() {
             strokeMiterlimit="4"
             strokeLinecap="butt"
             strokeLinejoin="miter"
-            style={{ stroke: "var(--color1, #c32d7b)" }}
+            style={{ stroke: 'var(--color1, #c32d7b)' }}
             d="M30.4 20.8v6.4c0 1.767-1.433 3.2-3.2 3.2h-22.4c-1.767 0-3.2-1.433-3.2-3.2v-6.4"
           />
         </symbol>
@@ -181,7 +181,7 @@ export default function Icons() {
             strokeMiterlimit="4"
             strokeLinecap="square"
             strokeLinejoin="miter"
-            style={{ stroke: "var(--color1, #c32d7b)" }}
+            style={{ stroke: 'var(--color1, #c32d7b)' }}
             d="M4 4h24c1.767 0 3.2 1.433 3.2 3.2v17.6c0 1.767-1.433 3.2-3.2 3.2h-24c-1.767 0-3.2-1.433-3.2-3.2v-17.6c0-1.767 1.433-3.2 3.2-3.2z"
           />
           <path
@@ -191,7 +191,7 @@ export default function Icons() {
             strokeMiterlimit="4"
             strokeLinecap="square"
             strokeLinejoin="miter"
-            style={{ stroke: "var(--color1, #c32d7b)" }}
+            style={{ stroke: 'var(--color1, #c32d7b)' }}
             d="M5.6 8.8l10.424 8.8 10.376-8.8"
           />
         </symbol>
@@ -660,6 +660,12 @@ export default function Icons() {
           <path
             fill="#0f4573"
             d="M16.893 11.328c0.506 0 0.939-0.167 1.298-0.502s0.539-0.739 0.539-1.214c0-0.475-0.18-0.881-0.539-1.219s-0.792-0.506-1.298-0.506c-0.506 0-0.941 0.169-1.303 0.506s-0.544 0.744-0.544 1.219c0 0.475 0.181 0.88 0.544 1.214s0.797 0.502 1.303 0.502zM15.562 22.653c0.488 0 0.916-0.064 1.284-0.192s0.863-0.314 1.481-0.558v0l0.206-0.844c-0.106 0.050-0.278 0.108-0.516 0.173s-0.45 0.098-0.637 0.098c-0.4 0-0.681-0.066-0.844-0.197s-0.244-0.378-0.244-0.741c0-0.144 0.025-0.356 0.075-0.637s0.106-0.531 0.169-0.75v0l0.769-2.728c0.075-0.25 0.127-0.525 0.155-0.825s0.042-0.509 0.042-0.628c0-0.575-0.202-1.042-0.605-1.402s-0.977-0.539-1.72-0.539c-0.412 0-0.85 0.073-1.313 0.22s-0.947 0.323-1.453 0.53v0l-0.206 0.844c0.15-0.056 0.33-0.116 0.539-0.178s0.414-0.094 0.614-0.094c0.406 0 0.681 0.069 0.825 0.206s0.216 0.381 0.216 0.731c0 0.194-0.023 0.408-0.070 0.642s-0.105 0.483-0.173 0.745v0l-0.769 2.738c-0.069 0.288-0.119 0.545-0.15 0.773s-0.047 0.452-0.047 0.67c0 0.563 0.208 1.027 0.623 1.392s0.998 0.548 1.748 0.548z"
+          />
+        </symbol>
+        <symbol id="icon-search-slim" viewBox="0 0 13 13">
+          <path
+            d="M8.97917 7.91667H8.41958L8.22125 7.72542C8.91542 6.91792 9.33333 5.86958 9.33333 4.72917C9.33333 2.18625 7.27208 0.125 4.72917 0.125C2.18625 0.125 0.125 2.18625 0.125 4.72917C0.125 7.27208 2.18625 9.33333 4.72917 9.33333C5.86958 9.33333 6.91792 8.91542 7.72542 8.22125L7.91667 8.41958V8.97917L11.4583 12.5138L12.5138 11.4583L8.97917 7.91667ZM4.72917 7.91667C2.96542 7.91667 1.54167 6.49292 1.54167 4.72917C1.54167 2.96542 2.96542 1.54167 4.72917 1.54167C6.49292 1.54167 7.91667 2.96542 7.91667 4.72917C7.91667 6.49292 6.49292 7.91667 4.72917 7.91667Z"
+            fill="#266510"
           />
         </symbol>
       </defs>

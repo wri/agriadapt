@@ -10,29 +10,18 @@ import { logEvent } from "utils/analytics";
 import Paginator from "components/ui/Paginator";
 import Icon from "components/ui/icon";
 // import { TOPICS } from 'layout/explore/explore-topics/constants';
-import ExploreDatasetsSort from "layout/explore/explore-datasets-header/explore-datasets-sort";
+import ExploreSwitch from "../explore-switch";
 import DatasetList from "./list";
 import ExploreDatasetsActions from "./explore-datasets-actions";
+import ExploreSearch from '../explore-datasets-search';
 
 export default function ExploreDatasets(props) {
   const {
     datasets: { selected, list, total, limit, page, loading },
-    selectedTags,
-    search,
     setDatasetsPage,
     fetchDatasets,
+    advOpen,
   } = props;
-
-  // const relatedDashboards = useMemo(
-  //   () => TOPICS.filter((topic) => selectedTags.find((tag) => tag.id === topic.id))
-  //     .map((_dashboard) => ({
-  //       ..._dashboard,
-  //       ..._dashboard.slug === 'ocean-watch' && {
-  //         label: 'Ocean Watch',
-  //       },
-  //     })),
-  //   [selectedTags],
-  // );
 
   const fetchDatasetsPerPage = useCallback(
     (_page) => {
@@ -54,84 +43,11 @@ export default function ExploreDatasets(props) {
   return (
     <div className={classValue}>
       <div className="explore-datasets-header">
-        <div className="left-container">
-          <ExploreDatasetsSort />
-          <div className="tags-container">
-            {selectedTags.length > 0 &&
-              selectedTags.map((t) => (
-                <button
-                  key={t.id}
-                  className="c-button -primary -compressed"
-                  onClick={() => {
-                    props.toggleFiltersSelected({ tag: t, tab: "topics" });
-                    fetchDatasetsPerPage(1);
-                  }}
-                >
-                  <span className="button-text" title={t.label.toUpperCase()}>
-                    {t.label.toUpperCase()}
-                  </span>
-                  <Icon name="icon-cross" className="-tiny" />
-                </button>
-              ))}
-            {search && (
-              <button
-                key="text-filter"
-                className="c-button -primary -compressed"
-                onClick={() => {
-                  props.resetFiltersSort();
-                  props.setFiltersSearch("");
-                  fetchDatasetsPerPage(1);
-                }}
-              >
-                <span
-                  className="button-text"
-                  title={`TEXT: ${search.toUpperCase()}`}
-                >
-                  {`TEXT: ${search.toUpperCase()}`}
-                </span>
-                <Icon name="icon-cross" className="-tiny" />
-              </button>
-            )}
-          </div>
-        </div>
-        <div className="number-of-datasets">
-          {`${total} ${total === 1 ? "DATASET" : "DATASETS"}`}
-        </div>
+        <ExploreSwitch />
       </div>
-
-      {/* {relatedDashboards.length > 0
-        && (
-        <div className="related-dashboards">
-          <div className="header">
-            <h4>Related dashboards</h4>
-            <Link href="/dashboards">
-              <a className="header-button">
-                SEE ALL
-              </a>
-            </Link>
-          </div>
-          {relatedDashboards.map((dashboard) => (
-            <Link href={`/dashboards/${dashboard.slug}`}>
-              <div
-                className="dashboard-button"
-                style={{
-                  background: `linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.30)),url(${dashboard.backgroundURL})`,
-                  'background-position': 'center',
-                  'background-size': 'cover',
-                }}
-                onClick={() => logEvent('Explore Menu', 'Select Dashboard', dashboard.label)}
-                role="button"
-                tabIndex={0}
-                onKeyPress={() => {}}
-              >
-                <div className="dashboard-title">
-                  {dashboard.label}
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-        )} */}
+      <div className="explore-datasets-search">
+        <ExploreSearch />
+      </div>
 
       {!list.length && !loading && (
         <div className="request-data-container">
@@ -149,34 +65,38 @@ export default function ExploreDatasets(props) {
         </div>
       )}
 
-      <DatasetList
-        loading={loading}
-        numberOfPlaceholders={20}
-        list={list}
-        actions={<ExploreDatasetsActions />}
-      />
+      {!advOpen && (
+        <>
+          <DatasetList
+            loading={loading}
+            numberOfPlaceholders={20}
+            list={list}
+            actions={<ExploreDatasetsActions />}
+          />
+          {!!list.length && total > limit && (
+            <Paginator
+              options={{
+                page,
+                limit,
+                size: total,
+              }}
+              onChange={(p) => {
+                // ------- Scroll to the top of the list -------------------
+                const sidebarContent =
+                  document.querySelector('.sidebar-content');
+                if (window.scrollTo) {
+                  window.scrollTo(0, 0);
+                }
+                if (sidebarContent && sidebarContent.scrollTo) {
+                  sidebarContent.scrollTo(0, 0);
+                }
+                // ------------------------------------------------
 
-      {!!list.length && total > limit && (
-        <Paginator
-          options={{
-            page,
-            limit,
-            size: total,
-          }}
-          onChange={(p) => {
-            // ------- Scroll to the top of the list -------------------
-            const sidebarContent = document.querySelector(".sidebar-content");
-            if (window.scrollTo) {
-              window.scrollTo(0, 0);
-            }
-            if (sidebarContent && sidebarContent.scrollTo) {
-              sidebarContent.scrollTo(0, 0);
-            }
-            // ------------------------------------------------
-
-            fetchDatasetsPerPage(p);
-          }}
-        />
+                fetchDatasetsPerPage(p);
+              }}
+            />
+          )}
+        </>
       )}
     </div>
   );

@@ -15,13 +15,13 @@ import { logger } from "utils/logs";
  * be included in the response or not.
  * @returns {Array} Array of serialized datasets.
  */
-export const fetchDatasets = (params = {}, headers = {}, _meta = false) => {
+export const fetchDatasets = (ids = [], params = {}, headers = {}, _meta = false) => {
   const newParams = {
     env: process.env.NEXT_PUBLIC_API_ENV,
     application: process.env.NEXT_PUBLIC_APPLICATIONS,
     ...params,
   };
-  return WRIAPI.get("/v1/dataset", {
+  const config = {
     headers: {
       ...WRIAPI.defaults.headers,
       // TO-DO: forces the API to not cache, this should be removed at some point
@@ -36,7 +36,15 @@ export const fetchDatasets = (params = {}, headers = {}, _meta = false) => {
         meta,
       })
     ),
-  })
+  }
+
+  const request = () => {
+    return ids.length
+      ? WRIAPI.post('/v1/dataset/find-by-ids', { ids: ids }, config)
+      : WRIAPI.get('/v1/dataset', config);
+  };
+
+  return request()
     .then((response) => {
       const { status, statusText, data } = response;
       const { datasets, meta } = data;

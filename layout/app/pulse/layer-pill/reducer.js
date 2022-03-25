@@ -1,6 +1,8 @@
+import { createReducer } from "@reduxjs/toolkit";
 import * as actions from "./actions";
+import initialState from "./initial-state";
 
-export default {
+const reducers = createReducer(initialState, {
   [actions.setContextLayers]: (state, { payload }) => ({
     ...state,
     contextLayers: payload,
@@ -18,4 +20,6 @@ export default {
     ...state,
     error: payload,
   }),
-};
+});
+
+export default reducers;

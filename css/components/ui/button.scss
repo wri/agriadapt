@@ -1,6 +1,6 @@
-$btn-bg-hover-color: rgba(195, 45, 123, 0.05);
+$btn-bg-hover-color: rgba(45, 195, 70, 0.05);
 $btn-bg-hover-alt-color: rgba(255, 255, 255, 0.1);
-$btn-border-color: rgba(195, 45, 123, 0.3);
+$btn-border-color: #D4E0CF;
 $btn-border-alt-color: rgba(255, 255, 255, 0.3);
 $btn-hover-shadow: 0 20px 30px 0 rgba(0, 0, 0, 0.2);
 
@@ -15,8 +15,8 @@ $btn-hover-shadow: 0 20px 30px 0 rgba(0, 0, 0, 0.2);
   border-radius: 4px;
   outline: none;
   background: none;
-  color: $dark-pink;
-  fill: $dark-pink;
+  color: $primary-green;
+  fill: $primary-green;
   font-size: $font-size-medium;
   font-weight: $font-weight-regular;
   font-family: inherit;
@@ -79,7 +79,7 @@ $btn-hover-shadow: 0 20px 30px 0 rgba(0, 0, 0, 0.2);
   &.-primary {
     color: $white;
     fill: $white;
-    background-color: $dark-pink;
+    background-color: $primary-green;
 
     &:hover {
       box-shadow: $btn-hover-shadow;
@@ -88,8 +88,8 @@ $btn-hover-shadow: 0 20px 30px 0 rgba(0, 0, 0, 0.2);
 
     &.-alt {
       background-color: $white;
-      color: $dark-pink;
-      fill: $dark-pink;
+      color: $primary-green;
+      fill: $primary-green;
 
       &:hover {
         box-shadow: $btn-hover-shadow;
@@ -97,15 +97,15 @@ $btn-hover-shadow: 0 20px 30px 0 rgba(0, 0, 0, 0.2);
     }
 
     &[disabled] {
-      background: rgba($dark-pink, 0.3);
+      background: rgba($primary-green, 0.3);
       border-color: transparent;
     }
   }
 
   &.-b,
   &.-secondary {
-    color: $dark-pink;
-    fill: $dark-pink;
+    color: $primary-green;
+    fill: $primary-green;
     background-color: $white;
     border-color: $btn-border-color;
 
