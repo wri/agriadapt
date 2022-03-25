@@ -151,6 +151,7 @@ export const fetchMapLayerGroups = createThunkAction(
 
 // FILTERS
 export const setFiltersAdvancedOpen = createAction("EXPLORE/setFiltersAdvancedOpen");
+export const setFiltersValueChains = createAction("EXPLORE/setFiltersValueChains");
 
 // SORT
 export const setSortSelected = createAction("EXPLORE/setSortSelected");

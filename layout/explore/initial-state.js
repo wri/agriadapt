@@ -15,7 +15,7 @@ export default {
   },
   filters: {
     search: '',
-    value_chains: [],
+    value_chains: '',
     advanced: {
       open: false,
       timescale: [],

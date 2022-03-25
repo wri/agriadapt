@@ -85,6 +85,13 @@ export default createReducer(initialState, (builder) => {
         },
       },
     }))
+    .addCase(actions.setFiltersValueChains, (state, { payload }) => ({
+      ...state,
+      filters: {
+        ...state.filters,
+        value_chains: payload,
+      },
+    }))
     // sort
     .addCase(actions.setSortSelected, (state, { payload }) => ({
       ...state,

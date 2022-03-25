@@ -7,8 +7,10 @@ import Field from 'components/form/Field';
 
 const ExploreDatasetsSearch = ({
   search,
+  value_chains: selectedChains,
   advanced,
   setFiltersAdvancedOpen,
+  setFiltersValueChains,
 }): JSX.Element => {
   const { VALUE_CHAINS } = EXPLORE_FILTERS;
   const { open: advOpen } = advanced;
@@ -22,7 +24,7 @@ const ExploreDatasetsSearch = ({
   };
 
   const handleClickAdvanced = () => {
-    setFiltersAdvancedOpen(true);
+    setFiltersAdvancedOpen(!advOpen);
   };
 
   return (
@@ -30,6 +32,7 @@ const ExploreDatasetsSearch = ({
       {/* TODO: Translate */}
       <h4>Start Exploring</h4>
       <Field
+        id="search"
         properties={{
           label: 'Search Layers',
           default: '',
@@ -44,50 +47,53 @@ const ExploreDatasetsSearch = ({
       </Field>
       {/* TODO: Translate */}
       <Field
+        id="VALUE_CHAINS"
         properties={{
           label: 'Filter Layers by Value Chain',
           default: '',
         }}
         options={VALUE_CHAINS.options}
-        value={''}
         className={'Select--large'}
         placeholder={'Value Chain'} // TODO: Translate
+        value={selectedChains}
+        onChange={setFiltersValueChains}
+        // isSearchable={false}
+        // isClearable={false}
       >
         {Select}
       </Field>
       {/* TODO: Translate */}
-      {!advOpen && (
-        <div>
-          <a className="advanced-link" onClick={handleClickAdvanced}>{'Advanced Search'}</a>
-        </div>
-      )}
+      <div>
+        <a className="advanced-link" onClick={handleClickAdvanced}>
+          {'Advanced Search'}
+        </a>
+      </div>
       {advOpen && (
         <>
           {Object.entries(EXPLORE_FILTERS.ADVANCED).map(([k, v]) => (
-            <div id={k}>
-              {/* TODO: Translate */}
-              <Field
-                properties={{
-                  label: `Filter Layers by ${v.placeholder}`,
-                  default: '',
-                }}
-                {...(v.type === 'select' && {
-                  placeholder: v.placeholder, // TODO: Translate
-                  options: [],
-                })}
-                value={''}
-                {...(v.type === 'radio' && {
-                  options: v.options,
-                })}
-                className={v.type === 'select' ? 'Select--large': false}
-              >
-                {v.type === 'select'
-                  ? Select
-                  : v.type === 'radio'
-                  ? RadioGroup
-                  : null}
-              </Field>
-            </div>
+            <Field
+              id={k}
+              properties={{
+                // TODO: Translate
+                label: `Filter Layers by ${v.placeholder}`,
+                default: '',
+              }}
+              {...(v.type === 'select' && {
+                placeholder: v.placeholder, // TODO: Translate
+                options: [],
+              })}
+              value={''}
+              {...(v.type === 'radio' && {
+                options: v.options,
+              })}
+              className={v.type === 'select' ? 'Select--large' : ''}
+            >
+              {v.type === 'select'
+                ? Select
+                : v.type === 'radio'
+                ? RadioGroup
+                : null}
+            </Field>
           ))}
           <div className="c-explore-search-actions">
             <button

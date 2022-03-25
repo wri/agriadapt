@@ -122,7 +122,8 @@
 .Select-placeholder,
 .Select--single > .Select-control .Select-value {
   bottom: 0;
-  color: $blue-grey;
+  color: $light-grey;
+  font-size: $font-size-medium;
   left: 0;
   line-height: 42px;
   padding-left: 15px;
@@ -257,7 +258,9 @@
   padding-right: 15px;
 }
 .Select-arrow {
-  @include arrow(8px, 2px, $dark-pink, "down");
+  @include arrow(8px, 2px, $primary-green, "down");
+  position: relative;
+  bottom: 3px;
 }
 .is-open .Select-arrow,
 .Select-arrow-zone:hover > .Select-arrow {
