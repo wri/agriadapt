@@ -27,10 +27,6 @@ export const fetchDatasets = createThunkAction(
   () => (dispatch, getState) => {
     const { explore, common } = getState();
 
-    const concepts = Object.keys(explore.filters.selected)
-      .map((s) => explore.filters.selected[s])
-      .filter((selected) => selected.length);
-
     const params = {
       language: common.locale,
       includes: "layer,metadata,vocabulary,widget",
@@ -39,20 +35,6 @@ export const fetchDatasets = createThunkAction(
       published: true,
       // Search
       ...(explore.filters.search && { search: explore.filters.search }),
-      // Concepts
-      ...concepts.reduce(
-        (o, s, i) => ({
-          ...o,
-          ...s.reduce(
-            (o2, s2, j) => ({
-              ...o2,
-              [`concepts[${i}][${j}]`]: s2,
-            }),
-            {}
-          ),
-        }),
-        {}
-      ),
       // Page
       "page[number]": explore.datasets.page,
       "page[size]": explore.datasets.limit,
@@ -168,40 +150,8 @@ export const fetchMapLayerGroups = createThunkAction(
 );
 
 // FILTERS
-export const setFiltersOpen = createAction("EXPLORE/setFiltersOpen");
-export const setFiltersTab = createAction("EXPLORE/setFiltersTab");
-export const setFiltersSearch = createAction("EXPLORE/setFiltersSearch");
-export const setFiltersTags = createAction("EXPLORE/setFiltersTags");
-export const setFiltersSelected = createAction("EXPLORE/setFiltersSelected");
-export const toggleFiltersSelected = createAction(
-  "EXPLORE/toggleFiltersSelected"
-);
-export const resetFiltersSelected = createAction(
-  "EXPLORE/resetFiltersSelected"
-);
-
-export const fetchFiltersTags = createThunkAction(
-  "EXPLORE/fetchFiltersTags",
-  () => (dispatch) =>
-    fetchAllTags()
-      .then((data) => {
-        dispatch(
-          setFiltersTags(
-            data.filter((tag) => {
-              const isBlack = TAGS_BLACKLIST.includes(tag.id);
-              const isGeography =
-                !!tag.labels[1] && tag.labels[1] === "GEOGRAPHY";
-              const hasDatasets = !!tag.numberOfDatasetsTagged;
-
-              return !isBlack && !isGeography && hasDatasets;
-            })
-          )
-        );
-      })
-      .catch((err) => {
-        console.error(err);
-      })
-);
+export const setFiltersAdvancedOpen = createAction("EXPLORE/setFiltersAdvancedOpen");
+export const setFiltersValueChains = createAction("EXPLORE/setFiltersValueChains");
 
 // SORT
 export const setSortSelected = createAction("EXPLORE/setSortSelected");
@@ -212,18 +162,13 @@ export const setSortIsUserSelected = createAction(
 export const resetFiltersSort = createAction("EXPLORE/resetFiltersSort");
 
 // SIDEBAR
-export const setSidebarOpen = createAction("EXPLORE/setSidebarOpen");
-export const setSidebarAnchor = createAction("EXPLORE/setSidebarAnchor");
-export const setSidebarSection = createAction("EXPLORE/setSidebarSection");
-export const setSidebarSubsection = createAction(
-  "EXPLORE/setSidebarSubsection"
-);
-export const setSidebarSelectedCollection = createAction(
-  "EXPLORE/setSidebarSelectedCollection"
-);
-export const clearSidebarSubsection = createAction(
-  "EXPLORE/clearSidebarSubsection"
-);
+export const setSidebarOpen = createAction('EXPLORE/setSidebarOpen');
+export const setSidebarAnchor = createAction('EXPLORE/setSidebarAnchor');
+export const setSidebarSection = createAction('EXPLORE/setSidebarSection');
+export const setSidebarSubsection = createAction('EXPLORE/setSidebarSubsection');
+export const setSidebarSelectedCollection = createAction('EXPLORE/setSidebarSelectedCollection');
+export const clearSidebarSubsection = createAction('EXPLORE/clearSidebarSubsection');
+export const setSidebarSelectedTab = createAction("EXPLORE/setSidebarSelectedTab");
 
 // TAGS TOOLTIP
 export const setTags = createAction("EXPLORE/setTags");

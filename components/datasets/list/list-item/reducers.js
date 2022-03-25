@@ -1,7 +1,8 @@
+import { createReducer } from "@reduxjs/toolkit";
 import * as actions from "./actions";
 import initialState from "./initial-state";
 
-export default {
+const reducers = createReducer(initialState, {
   [actions.setTagsTooltip]: (state, { payload }) => ({
     ...state,
     tooltip: payload,
@@ -18,4 +19,6 @@ export default {
     error: payload,
   }),
   [actions.resetTags]: () => initialState,
-};
+});
+
+export default reducers;

@@ -5,7 +5,7 @@
     text-transform: none;
     position: relative;
     padding-left: 20px;
-    font-size: $font-size-normal;
+    font-size: $font-size-medium;
     line-height: 1;
     cursor: pointer;
     width: auto;
@@ -14,6 +14,7 @@
     transform: none;
     text-align: left;
     color: $charcoal-grey;
+    font-weight: normal;
 
     &:hover {
       color: lighten($charcoal-grey, 12.5%);
@@ -25,7 +26,7 @@
       left: 0;
       width: 14px;
       height: 14px;
-      border: 1px solid $sea-blue;
+      border: 1px solid $light-grey;
       border-radius: 50%;
       transform: translate(0, -50%);
 
@@ -51,6 +52,7 @@
 
   input[type="radio"]:checked + label {
     span {
+      border: 1px solid $sea-blue;
       &:after {
         transform: translate(-50%, -50%) scale(1);
       }

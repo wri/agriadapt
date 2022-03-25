@@ -1,6 +1,8 @@
+import { createReducer } from "@reduxjs/toolkit";
 import * as actions from "./actions";
+import initialState from "./initial-state";
 
-export default {
+const reducer = createReducer(initialState, {
   [actions.setMobileOpened]: (state, action) => ({
     ...state,
     mobileOpened: action.payload,
@@ -13,4 +15,6 @@ export default {
     ...state,
     searchTerm: action.payload,
   }),
-};
+});
+
+export default reducer;

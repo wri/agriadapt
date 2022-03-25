@@ -1,3 +1,4 @@
+import { RootState } from "lib/store";
 import { connect } from "react-redux";
 import * as actions from "./actions";
 
@@ -5,7 +6,7 @@ import * as actions from "./actions";
 import LayoutExplorer from "./component";
 
 export default connect(
-  (state: any) => ({
+  (state: RootState) => ({
     explore: state.explore,
   }),
   actions

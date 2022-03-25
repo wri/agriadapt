@@ -1,6 +1,8 @@
+import { createReducer } from "@reduxjs/toolkit";
 import * as actions from "./actions";
+import initialState from "./initial-state";
 
-export default {
+const reducers = createReducer(initialState, {
   //
   // TOOLS
   //
@@ -17,4 +19,6 @@ export default {
     ...state,
     error: action.payload,
   }),
-};
+});
+
+export default reducers;
