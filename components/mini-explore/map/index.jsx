@@ -5,8 +5,8 @@ import compact from "lodash/compact";
 import { useDebouncedCallback } from "use-debounce";
 
 // hooks
-// import { useFetchDatasets } from 'hooks/dataset/fetch-datasets';
-// import { useGeostore } from 'hooks/geostore';
+import { useFetchDatasets } from 'hooks/dataset/fetch-datasets';
+import { useGeostore } from 'hooks/geostore';
 
 // constants
 import {

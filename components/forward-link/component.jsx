@@ -16,4 +16,6 @@ ForwardLink.propTypes = {
   ]).isRequired,
 };
 
+ForwardLink.displayName = 'ForwardLink';
+
 export default ForwardLink;

@@ -1,10 +1,10 @@
 module.exports = {
   reactStrictMode: true,
 
-  eslint: {
-    // Will remove one day
-    ignoreDuringBuilds: true,
-  },
+  // eslint: {
+  //   // Will remove one day
+  //   ignoreDuringBuilds: true,
+  // },
 
   async redirects() {
     return [

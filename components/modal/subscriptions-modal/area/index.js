@@ -45,7 +45,7 @@ class AreaSubscriptionsModalContainer extends Component {
     const {
       activeArea,
       setUserSelection,
-      getAreas,
+      // getAreas,
       getDatasets,
       getUserSubscriptions,
       getUserAreas,

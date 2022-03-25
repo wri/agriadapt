@@ -8,7 +8,7 @@ import Icon from "components/ui/icon";
 
 // Tooltip
 import { Tooltip } from "vizzuality-components";
-import CollectionsPanel from "components/collections-panel";
+// import CollectionsPanel from "components/collections-panel";
 import { getTooltipContainer } from "utils/tooltip";
 
 // // hooks
@@ -16,14 +16,14 @@ import { getTooltipContainer } from "utils/tooltip";
 // import useFetchCollection from 'hooks/collection/fetch-collection';
 
 // Utils
-import { logEvent } from "utils/analytics";
+// import { logEvent } from "utils/analytics";
 
 const ExploreDatasetsActions = (props) => {
   const {
     dataset,
     layer,
     // user,
-    selectedCollection,
+    // selectedCollection,
     layerGroups,
     toggleMapLayerGroup,
     resetMapLayerGroupsInteraction,
@@ -74,7 +74,7 @@ const ExploreDatasetsActions = (props) => {
   // }, [selectedCollection, refetch]);
 
   // const userIsLoggedIn = user.token;
-  const datasetName = dataset?.metadata[0]?.info?.name;
+  // const datasetName = dataset?.metadata[0]?.info?.name;
 
   const starIconName = classnames({
     "icon-star-full": isInACollection,
@@ -112,18 +112,18 @@ const ExploreDatasetsActions = (props) => {
         }}
       > */}
       <Tooltip
-        overlay={
-          <CollectionsPanel
-            resource={dataset}
-            resourceType="dataset"
-            onClick={(e) => e.stopPropagation()}
-            onKeyPress={(e) => e.stopPropagation()}
-            // onToggleFavorite={handleToggleFavorite}
-            onToggleFavorite={() => {}}
-            // onToggleCollection={handleToggleCollection}
-            onToggleCollection={() => {}}
-          />
-        }
+        // overlay={
+        //   <CollectionsPanel
+        //     resource={dataset}
+        //     resourceType="dataset"
+        //     onClick={(e) => e.stopPropagation()}
+        //     onKeyPress={(e) => e.stopPropagation()}
+        //     // onToggleFavorite={handleToggleFavorite}
+        //     onToggleFavorite={() => {}}
+        //     // onToggleCollection={handleToggleCollection}
+        //     onToggleCollection={() => {}}
+        //   />
+        // }
         overlayClassName="c-rc-tooltip"
         placement="bottomRight"
         trigger="click"

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { ErrorBoundary } from "react-error-boundary";
 
 // components
-// import ErrorFallback from 'components/error-fallback';
+import ErrorFallback from 'components/error-fallback';
 import MiniExplore from "components/mini-explore";
 
 function MiniExploreBlock({ item }) {

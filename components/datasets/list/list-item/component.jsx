@@ -7,7 +7,7 @@ import { Tooltip } from "vizzuality-components";
 // components
 import Icon from "components/ui/icon";
 // import LoginRequired from 'components/ui/login-required';
-import CollectionsPanel from "components/collections-panel";
+// import CollectionsPanel from "components/collections-panel";
 import WidgetChart from "components/charts/widget-chart";
 import MapThumbnail from "components/map/thumbnail";
 import PlaceholderChart from "components/charts/placeholder-chart";
@@ -24,7 +24,7 @@ import { getDateConsideringTimeZone } from "utils/utils";
 import { Media } from "lib/media";
 
 const DatasetListItem = (props) => {
-  const { dataset, widget, layer, mode, user, actions, tags, metadata } = props;
+  const { dataset, widget, layer, mode, actions, tags, metadata } = props;
   // const { isInACollection } = useBelongsToCollection(dataset.id, user.token);
   const isInACollection = false;
   const renderChart = useCallback(() => {
@@ -98,9 +98,9 @@ const DatasetListItem = (props) => {
               {/* Favorite dataset icon */}
               {/* <LoginRequired> */}
               <Tooltip
-                overlay={
-                  <CollectionsPanel resource={dataset} resourceType="dataset" />
-                }
+                // overlay={
+                //   <CollectionsPanel resource={dataset} resourceType="dataset" />
+                // }
                 overlayClassName="c-rc-tooltip"
                 placement="bottomRight"
                 trigger="click"

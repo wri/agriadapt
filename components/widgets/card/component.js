@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { useRouter } from "next/router";
 import truncate from "lodash/truncate";
 import classnames from "classnames";
-// import { toastr } from 'react-redux-toastr';
+import { toastr } from 'react-redux-toastr';
 import { Tooltip } from "vizzuality-components";
 
 // services
@@ -53,7 +53,8 @@ const WidgetCard = (props) => {
   const router = useRouter();
   const [state, dispatch] = useReducer(REDUCER, INITIAL_STATE);
   const { loading, mapLoading, layer, error, tooltip } = state;
-  const { isInACollection } = useBelongsToCollection(widget.id, user.token);
+  // const { isInACollection } = useBelongsToCollection(widget.id, user.token);
+  const isInACollection = false;
 
   const handleRemoveVisualization = () => {
     const {
@@ -306,7 +307,7 @@ const WidgetCard = (props) => {
     <div
       className={mainClassname}
       {...(clickable && { tabIndex: -1 })}
-      {...(clickable && { role: "button" })}
+      {...(clickable && { role: 'button' })}
       {...(clickable && {
         onClick: () => onWidgetClick && onWidgetClick(widget),
       })}
@@ -322,30 +323,28 @@ const WidgetCard = (props) => {
           <p>
             {truncate(widget.description, {
               length: limitChar,
-              separator: " ",
-              omission: "...",
+              separator: ' ',
+              omission: '...',
             })}
           </p>
           {showFavorite && (
-            <LoginRequired>
-              <Tooltip
-                overlay={
-                  <CollectionsPanel resource={widget} resourceType="widget" />
-                }
-                overlayClassName="c-rc-tooltip"
-                overlayStyle={{ color: "#fff" }}
-                placement="bottomLeft"
-                trigger="click"
+            <Tooltip
+              overlay={
+                <CollectionsPanel resource={widget} resourceType="widget" />
+              }
+              overlayClassName="c-rc-tooltip"
+              overlayStyle={{ color: '#fff' }}
+              placement="bottomLeft"
+              trigger="click"
+            >
+              <button
+                type="button"
+                className="c-btn favourite-button"
+                tabIndex={-1}
               >
-                <button
-                  type="button"
-                  className="c-btn favourite-button"
-                  tabIndex={-1}
-                >
-                  <Icon name={starIconName} className="-star -small" />
-                </button>
-              </Tooltip>
-            </LoginRequired>
+                <Icon name={starIconName} className="-star -small" />
+              </button>
+            </Tooltip>
           )}
         </div>
 

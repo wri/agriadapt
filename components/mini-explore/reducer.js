@@ -1,4 +1,4 @@
-// import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 // constants
 import { BASEMAPS, LABELS } from "components/map/constants";

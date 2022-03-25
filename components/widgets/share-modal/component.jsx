@@ -40,17 +40,17 @@ export default function WidgetShareModal({
       });
 
       if (widgetThumbnail) {
-        saveAs(
-          widgetThumbnail,
-          `${widget.slug}-${dateFnsFormat(
-            Date.now(),
-            "yyyy-MM-dd'T'HH:mm:ss"
-          )}.png`
-        );
+        // saveAs(
+        //   widgetThumbnail,
+        //   `${widget.slug}-${dateFnsFormat(
+        //     Date.now(),
+        //     "yyyy-MM-dd'T'HH:mm:ss"
+        //   )}.png`
+        // );
         setWebshotLoading(false);
       }
     } catch (e) {
-      logger.error(`widget webshot: ${e.message}`);
+      // logger.error(`widget webshot: ${e.message}`);
       setWebshotLoading(false);
     }
   }, [widget, params]);

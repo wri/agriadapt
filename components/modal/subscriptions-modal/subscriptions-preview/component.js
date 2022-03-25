@@ -47,7 +47,7 @@ class SubscriptionsPreview extends PureComponent {
         </div>
         <div className="preview-table">
           {data.map((_d) => (
-            <AlertsTable alerts={_d} />
+            <AlertsTable key={_d} alerts={_d} />
           ))}
         </div>
         <div className="preview-buttons">

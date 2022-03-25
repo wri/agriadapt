@@ -1,14 +1,14 @@
 import Layout from "layout/layout/layout-app";
 import { ValueChainPageProps } from "types/value-chain";
-import WidgetBlock from "components/wysiwyg/widget-block";
+// import WidgetBlock from "components/wysiwyg/widget-block";
 
-const LayoutRice = ({ cid, widgets }: ValueChainPageProps) => {
+const LayoutRice = ({ cid }: ValueChainPageProps) => {
   return (
     <Layout>
       Rice: {cid}
-      <div style={{ width: 500, margin: "0 auto" }}>
+      {/* <div style={{ width: 500, margin: "0 auto" }}>
         {widgets.map((w) => w && <WidgetBlock widget={w} />)}
-      </div>
+      </div> */}
     </Layout>
   );
 };
