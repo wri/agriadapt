@@ -1,0 +1,27 @@
+.image-container {
+    background-color: rgba($primary-green, 0.2);
+
+    // arbirtrary image dimensions
+    height: 500px;
+    width: 60%;
+}
+
+.info-container {
+    background-color: rgb(white, 0.4);
+    // positioning the info container
+    @media screen and (min-width: map-get($breakpoints, small)) {
+        position: relative;
+        top: $space * -10;
+        margin: 0 $margin-size-small;
+
+        h2 {
+            font-size: $font-size-h2; // may need to look at h2 sizing on mobile
+        }
+    }
+    @media screen and (min-width: map-get($breakpoints, medium)) {
+        width: 500px;
+        position: absolute;
+        top: 200px;
+        right: 200px;
+      }
+}
