@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import classnames from 'classnames';
 
 // Utils
@@ -7,12 +7,15 @@ import { logEvent } from 'utils/analytics';
 // Components
 import Icon from 'components/ui/icon';
 
-const ExploreSidebarComponent = (props: any): JSX.Element => {
+const ExploreSidebarComponent = ({
+  open,
+  setSidebarOpen,
+  children,
+}): JSX.Element => {
   /**
    * UI EVENTS
    * - triggerToggle
    */
-  const { open, setSidebarOpen, children } = props;
   const triggerToggle = () => {
     // Toggle sidebar
     setSidebarOpen(!open);
@@ -24,10 +27,6 @@ const ExploreSidebarComponent = (props: any): JSX.Element => {
       logEvent('Explore Map', 'Sidebar', 'Collapse sidebar');
     }
   };
-
-  useEffect(() => {
-    console.log(props);
-  }, []);
 
   return (
     <aside
@@ -47,7 +46,11 @@ const ExploreSidebarComponent = (props: any): JSX.Element => {
         />
       </button>
       <div
-        className="sidebar-content explore-sidebar"
+        className={classnames({
+          'sidebar-content': true,
+          'explore-sidebar': true,
+          '-open': open,
+        })}
         // onScroll={() => this.handleScroll()}
       >
         {children}

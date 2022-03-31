@@ -11,6 +11,7 @@ export default connect(
     datasets: state.explore.datasets,
     loading: state.explore.datasets.loading,
     advOpen: state.explore.filters.advanced.open,
+    sidebarOpen: state.explore.sidebar.open,
   }),
   actions
 )(ExploreDatasetsComponent);

@@ -1,6 +1,6 @@
 $max-width-sidebar: 330px;
 $min-width-sidebar: 330px;
-$min-width-sidebar-closed: 10px;
+$min-width-sidebar-closed: 40px;
 
 .c-sidebar {
   width: 100%;
@@ -24,16 +24,59 @@ $min-width-sidebar-closed: 10px;
     }
   }
 
+  .explore-sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    margin: 2 * $space 0px;
+    position: sticky;
+    top: 2 * $space;
+    z-index: 999;
+
+    .tags-container {
+      width: 230px;
+      display: flex;
+      flex-wrap: wrap;
+
+      .c-button {
+        display: flex;
+        align-items: center;
+        margin: 0px $space $space 0px;
+        max-width: 230px;
+
+        .button-text {
+          text-overflow: ellipsis;
+          overflow: hidden;
+          font-size: $font-size-tiny;
+          line-height: 10px;
+          font-weight: bold;
+        }
+
+        .c-icon {
+          margin-left: 2 * $space;
+        }
+      }
+    }
+  }
+
+  .explore-sidebar-content {
+    &.-hidden {
+      display: none;
+    }
+  }
+
   .sidebar-content {
     position: relative;
     overflow-x: hidden;
     overflow-y: auto;
     width: 100%;
     height: 100%;
-
-    @media screen and (min-width: map-get($breakpoints, medium)) {
-      padding: 0;
+    
+    &.-open {
+      padding: 0px $space 0px 18px;
     }
+    // @media screen and (min-width: map-get($breakpoints, medium)) {
+    //   padding: 0;
+    // }
 
     &:after {
       content: "";

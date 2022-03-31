@@ -4,6 +4,8 @@ import ExploreSidebar from 'layout/explore/explore-sidebar';
 import ExploreMap from 'layout/explore/explore-map';
 import ExploreDatasets from 'layout/explore/explore-datasets';
 import ExploreDetail from 'layout/explore/explore-detail';
+import ExploreSwitch from './explore-switch';
+import classnames from 'classnames';
 
 interface ExploreProps {
   explore: {
@@ -13,6 +15,7 @@ interface ExploreProps {
     sidebar: {
       section: string;
       subsection: string;
+      open: boolean;
     };
     // map: {
     //   drawer: {
@@ -28,19 +31,23 @@ const Explore = (props: ExploreProps): JSX.Element => {
   const {
     explore: {
       datasets: { selected },
-      sidebar: { subsection },
+      sidebar: { open, subsection },
     },
   } = props;
-  const [sideBarOpen, setSideBarOpen] = useState(true);
   const [_dataset, setDataset] = useState(null);
 
   const getSidebarLayout = () => (
     <>
+      <div className="explore-sidebar-header">
+        <ExploreSwitch />
+      </div>
       {!subsection && !selected && (
         <>
-          {/* <ExploreMenu /> */}
           <div
-            className="explore-sidebar-content"
+            className={classnames({
+              'explore-sidebar-content': true,
+              '-hidden': !open,
+            })}
             id="sidebar-content-container"
           >
             <ExploreDatasets />
@@ -57,9 +64,9 @@ const Explore = (props: ExploreProps): JSX.Element => {
   );
 
   return (
-    <Layout title="Home" className="l-home" updateIsLoading={() => {}}>
+    <Layout title="Home" className="l-home" updateIsLoading={null}>
       <div className="c-page-explore">
-        <ExploreSidebar open={sideBarOpen} setSidebarOpen={setSideBarOpen}>
+        <ExploreSidebar>
           {getSidebarLayout()}
         </ExploreSidebar>
         <ExploreMap />
