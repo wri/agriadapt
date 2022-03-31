@@ -1,11 +1,61 @@
 @import "css/settings";
 
+
+
+// @media screen and (min-width: map-get($breakpoints, small)) {
+
+// }
+
+// @media screen and (min-width: map-get($breakpoints, medium)) {
+
+// }
+
+// @media screen and (min-width: map-get($breakpoints, large)) {
+
+// }
+
 .intro-container {
-  height: 90vh;
+	height: 90vh;
+	z-index: 0;
+
+	.intro-image {
+		position: absolute;
+		top: 0px;
+
+		// img {
+			// position: absolute;
+			// top: 0px;
+			// @media screen and (min-width: map-get($breakpoints, small)) {
+			// 	position: absolute;
+			// 	// width: 882px;
+			// 	// height: 629px;
+			// 	// left: -494px;
+			// 	// top: -114px;
+			// 	top: 0px;
+			// }
+			
+			// @media screen and (min-width: map-get($breakpoints, medium)) {
+			// 	position: absolute;
+			// 	// width: 1130px;
+			// 	// height: 805px;
+			// 	// left: -565px;
+			// 	// top: -176px;
+			// 	top: 0px;
+			// }
+			
+			// @media screen and (min-width: map-get($breakpoints, large)) {
+			// 	position: absolute;
+			// 	// width: 1597.95px;
+			// 	// height: 1139.02px;
+			// 	// left: -681px;
+			// 	// top: -238.51px;
+			// 	top: 0px;
+			// }
+		// }
+	}
 
   .intro-text-container {
-		display: flex;
-		flex-direction: 'column';
+		z-index: 1;
 
 		h2 {
 			// font-family: Lato;
@@ -14,13 +64,31 @@
 			font-weight: 300;
 			line-height: 50px;
 			letter-spacing: -0.7499998807907104px;
-			text-align: left;
 			position: absolute;
-			width: 520px;
-			height: 200px;
-			left: 650px;
-			top: 337px;
 
+			@media screen and (min-width: map-get($breakpoints, small)) {
+				text-align: center;
+				height: 254px;
+				width: 340px;
+				left: 18px;
+				top: 462px;
+			}
+
+			@media screen and (min-width: map-get($breakpoints, medium)) {
+				text-align: left;
+				height: 200px;
+				width: 415px;
+				left: 363px;
+				top: 263px;
+			}
+
+			@media screen and (min-width: map-get($breakpoints, large)) {
+				text-align: left;
+				width: 520px;
+				height: 200px;
+				left: 650px;
+				top: 337px;
+			}
 		}
 
 		h3 {
@@ -30,36 +98,69 @@
 			font-weight: 300;
 			line-height: 35px;
 			letter-spacing: -0.46428561210632324px;
-			text-align: left;
 			color: $charcoal-grey;
 			position: absolute;
-			width: 430px;
-			height: 37px;
-			left: 650px;
-			top: 553px;
 
+			@media screen and (min-width: map-get($breakpoints, small)) {
+				height: 72px;
+				width: 340px;
+				left: 18px;
+				top: 740px;
+				text-align: center;
+			}
+
+			@media screen and (min-width: map-get($breakpoints, medium)) {
+				height: 37px;
+				width: 430px;
+				left: 363px;
+				top: 479px;
+				text-align: left;
+				white-space: nowrap;
+			}
+
+			@media screen and (min-width: map-get($breakpoints, large)) {
+				height: 37px;
+				width: 430px;
+				left: 650px;
+				top: 553px;
+				text-align: left;
+				white-space: nowrap;
+			}
 		}
 
 		.intro-button-container {
-				position: absolute;
-				width: 205px;
-				height: 45px;
-				left: 650px;
-				top: 610px;
 
 			button {
 				background-color: $primary-green;
+				position: absolute;
+				height: 45px;
+				width: 205px;
+				border-radius: 4px;
+				padding: 22px, 20px, 22px, 20px;
+	
+				@media screen and (min-width: map-get($breakpoints, small)) {
+					left: 85px;
+					top: 836px;
+				}
+	
+				@media screen and (min-width: map-get($breakpoints, medium)) {
+					left: 363px;
+					top: 540px;
+				}
+	
+				@media screen and (min-width: map-get($breakpoints, large)) {
+					left: 650px;
+					top: 610px;
+				}
 			}
 		}
-  }
+  	}
 }
 
 .map-container {
-  height: 90vh;
+  	height: 110vh;
 
-  .map-text-container {
-    display: flex;
-    flex-direction: column;
+	.map-text-container {
 
 		h2 {
 			// font-family: Lato;
@@ -69,49 +170,28 @@
 			line-height: 50px;
 			letter-spacing: -0.7499998807907104px;
 			text-align: left;
-		}
+			position: absolute;
 
-		h3 {
-			// font-family: Lato;
-			font-size: 26px;
-			font-style: normal;
-			font-weight: 300;
-			line-height: 35px;
-			letter-spacing: -0.46428561210632324px;
-			text-align: left;
-			color: $charcoal-grey
+			@media screen and (min-width: map-get($breakpoints, small)) {
+				height: 200px;
+				width: 340px;
+				left: 18px;
+				top: 1021px;
+			}
 
-		}
-    
-    .intro-button-container {
-      width: 50%; 
+			@media screen and (min-width: map-get($breakpoints, medium)) {
+				height: 100px;
+				width: 610px;
+				left: 56px;
+				top: 768px;
+			}
 
-      button {
-        background-color: $primary-green
-      }
-    }
-  }
-}
-
-.value-chains-container {
-  height: 90vh; 
-  width: 100vw;
-
-	.value-chains-text-container {
-		display: flex;
-		flex-direction: column;
-
-		h2 {
-			// font-family: Lato;
-			font-size: 42px;
-			font-style: normal;
-			font-weight: 300;
-			line-height: 50px;
-			letter-spacing: -0.7499998807907104px;
-			text-align: left;
-			width: 610px;
-			height:100px;
-			
+			@media screen and (min-width: map-get($breakpoints, large)) {
+				height: 100px;
+				width: 610px;
+				left: 110px;
+				top: 981px;
+			}
 		}
 
 		h3 {
@@ -123,44 +203,240 @@
 			letter-spacing: -0.46428561210632324px;
 			text-align: left;
 			color: $charcoal-grey;
-			width: 520px;
-			height: 72px;
+			position: absolute;
 
-		}
-
-		.value-chain-cards-container {
-			display: flex;
-			// flex-direction: row;
-			// text-align: 'center';
-
-			.value-chain-card-mobile {
-				width: '100vw'; 
-				text-align: 'center';
-
-				button {
-					color: $primary-green;
-					background-color: $white;
-					border: 1px solid #D4E0CF
-				}
+			@media screen and (min-width: map-get($breakpoints, small)) {
+				height: 106px;
+				width: 340px;
+				left: 18px;
+				top: 1245px;
 			}
 
-			.value-chain-card {
-				width: 318px;
-				height: 411px;
+			@media screen and (min-width: map-get($breakpoints, medium)) {
+				height: 72px;
+				width: 520px;
+				left: 56px;
+				top: 892px;
+			}
 
-				.value-chain-card-text-container {
-					display: flex;
-					flex-direction: column;
+			@media screen and (min-width: map-get($breakpoints, large)) {
+				height: 72px;
+				width: 520px;
+				left: 110px;
+				top: 1105px;
+			}
+		}
+    
+		.intro-button-container {
 
-					.value-chain-card-button-container {
-						width: 100%;
-						text-align: 'center';
+			button {
+				background-color: $primary-green;
+				height: 45px;
+				width: 293px;
+				border-radius: 4px;
+				padding: 22px, 20px, 22px, 20px;
+				position: absolute;
 
-						button {
-							color: $primary-green;
-							background-color: $white;
-							border: 1px solid #D4E0CF
-						}
+				@media screen and (min-width: map-get($breakpoints, small)) {
+					left: 18px;
+					top: 1375px;
+				}
+
+				@media screen and (min-width: map-get($breakpoints, medium)) {
+					left: 56px;
+					top: 988px;
+				}
+
+				@media screen and (min-width: map-get($breakpoints, large)) {
+					left: 110px;
+					top: 1201px;
+				}
+			}
+		}
+	}
+
+	.map-image-container {
+		img {
+			height: 628px;
+			width: 1060px;
+			left: 110px;
+			top: 1302px;
+			position: absolute;
+		}
+	}
+}
+
+.value-chains-container {
+	height: 90vh; 
+	width: 100vw;
+
+	.value-chains-text-container {
+		h2 {
+			// font-family: Lato;
+			font-size: 42px;
+			font-style: normal;
+			font-weight: 300;
+			line-height: 50px;
+			letter-spacing: -0.7499998807907104px;
+			text-align: left;
+			position: absolute;
+
+			@media screen and (min-width: map-get($breakpoints, small)) {
+				height: 202px;
+				width: 340px;
+				left: 18px;
+				top: 2050px;
+			}
+
+			@media screen and (min-width: map-get($breakpoints, medium)) {
+				height: 100px;
+				width: 610px;
+				left: 56px;
+				top: 1715px;
+			}
+
+			@media screen and (min-width: map-get($breakpoints, large)) {
+				height: 100px;
+				width: 610px;
+				left: 110px;
+				top: 2134px;
+			}
+		}
+
+		h3 {
+			// font-family: Lato;
+			font-size: 26px;
+			font-style: normal;
+			font-weight: 300;
+			line-height: 35px;
+			letter-spacing: -0.46428561210632324px;
+			text-align: left;
+			color: $charcoal-grey;
+			position: absolute;
+			
+			@media screen and (min-width: map-get($breakpoints, small)) {
+				height: 107px;
+				width: 340px;
+				left: 18px;
+				top: 2276px;
+			}
+
+			@media screen and (min-width: map-get($breakpoints, medium)) {
+				height: 72px;
+				width: 520px;
+				left: 56px;
+				top: 1839px;
+			}
+
+			@media screen and (min-width: map-get($breakpoints, large)) {
+				height: 72px;
+				width: 520px;
+				left: 110px;
+				top: 2258px;
+			}
+		}
+	}
+
+	.value-chain-cards-container {
+		display: flex;
+		top: 2386px;
+		border-radius: 16px;
+		position: absolute;
+		left: 110px;
+
+		.value-chain-card-mobile {
+			// width: '100vw'; 
+			// text-align: 'center';
+
+			button {
+				color: $primary-green;
+				background-color: $white;
+				border: 1px solid #D4E0CF
+			}
+		}
+
+		.value-chain-card-Rice {
+			height: 411px;
+			width: 318px;
+			filter: drop-shadow(0px 0px 60px rgba(0, 0, 0, 0.12));
+			border-radius: 16px;
+			background: #FFFFFF;
+			position: relative;
+			margin-right: 53px;
+
+			.value-chain-card-text-container {
+				height: 50px;
+				width: 123px;
+				left: 20px;
+				top: 276px;
+				position: absolute;
+
+				.value-chain-card-button-container {
+					width: 100%;
+					text-align: 'center';
+
+					button {
+						color: $primary-green;
+						background-color: $white;
+						border: 1px solid #D4E0CF
+					}
+				}
+			}
+		}
+
+		.value-chain-card-Cotton {
+			height: 411px;
+			width: 318px;
+			filter: drop-shadow(0px 0px 60px rgba(0, 0, 0, 0.12));
+			border-radius: 16px;
+			background: #FFFFFF;
+			position: relative;
+			margin-right: 53px;
+
+			.value-chain-card-text-container {
+				height: 50px;
+				width: 123px;
+				left: 20px;
+				top: 276px;
+				position: absolute;
+
+				.value-chain-card-button-container {
+					width: 100%;
+					text-align: 'center';
+
+					button {
+						color: $primary-green;
+						background-color: $white;
+						border: 1px solid #D4E0CF
+					}
+				}
+			}
+		}
+
+		.value-chain-card-Coffee {
+			height: 411px;
+			width: 318px;
+			filter: drop-shadow(0px 0px 60px rgba(0, 0, 0, 0.12));
+			border-radius: 16px;
+			background: #FFFFFF;
+			position: relative;
+
+			.value-chain-card-text-container {
+				position: absolute;
+				height: 50px;
+				width: 74px;
+				left: 20px;
+				top: 282px;
+
+
+				.value-chain-card-button-container {
+					width: 100%;
+					text-align: 'center';
+
+					button {
+						color: $primary-green;
+						background-color: $white;
+						border: 1px solid #D4E0CF
 					}
 				}
 			}
@@ -169,11 +445,9 @@
 }
 
 .analysis-container {
-	height: 70vh;
+	height: 90vh;
 
 	.analysis-text-container {
-		display: flex;
-		flex-direction: column;
 
 		h2 {
 			// font-family: Lato;
@@ -183,12 +457,16 @@
 			line-height: 50px;
 			letter-spacing: -0.7499998807907104px;
 			text-align: left;
-			width: 610px;
 			height: 100px;
+			width: 610px;
+			left: 110px;
+			top: 3001px;
+			position: absolute;
 		}
 
 		h3 {
 			// font-family: Lato;
+			position: absolute;
 			font-size: 26px;
 			font-style: normal;
 			font-weight: 300;
@@ -196,39 +474,85 @@
 			letter-spacing: -0.46428561210632324px;
 			text-align: left;
 			color: $charcoal-grey;
-			width: 520px;
 			height: 72px;
+			width: 520px;
+			left: 110px;
+			top: 3125px;
+
 		}
 
-		.analysis-card-container {
-			h3 {
-				// font-family: Lato;
-				font-size: 26px;
-				font-style: normal;
-				font-weight: 300;
-				line-height: 35px;
-				letter-spacing: -0.46428561210632324px;
-				text-align: left;
+		.c-carousel {
+			top: 3253px;
+			position: absolute;
+			height: 500px;
+			width: 100%;
+			filter: drop-shadow(0px 0px 60px rgba(0, 0, 0, 0.12));
+
+			.slider-frame {
+				left: 110px;
 			}
 
-			.analysis-card-button-container {
-				width: 100%;
-				text-align: 'center';
-				display: flex;
-				flex-direction: column;
-
-				button {
-					color: $primary-green !important;
-					background-color: $white;
-					border: 1px solid #D4E0CF;
+			.analysis-card-container {
+				width: 430px;
+				height: 450px;
+				border-radius: 16px;
+				position: relative;
+				background: #FFFFFF;
+	
+				h3 {
+					font-size: 26px;
+					font-style: normal;
+					font-weight: 300;
+					line-height: 35px;
+					letter-spacing: -0.46428561210632324px;
+					text-align: left;
+					height: 104px;
+					width: 366px;
+					left: 32px;
+					top: 32px;
+					position: absolute;
 				}
+	
+				.analysis-card-button-container {
+					text-align: 'center';
+					display: flex;
+					flex-direction: column;
+					height: 45px;
+					width: 174px;
+					left: 32px;
+					top: 152px;
+					border-radius: 4px;
+					padding: 22px, 20px, 22px, 20px;
+					position: absolute;
+					
+					button {
+						color: $primary-green !important;
+						background-color: $white;
+						border: 1px solid #D4E0CF;
+					}
+				}
+
+				img {
+					position: absolute;
+					width: 459px;
+					height: 258px;
+					top: 213px;
+					filter: drop-shadow(0px 0px 60px rgba(0, 0, 0, 0.12));
+					border-radius: 16px;
+				}
+			}
+
+			.slider-control-bottomcenter {
+				top: 500px;
+				left: 50%;
+				position: absolute;
 			}
 		}
 	}
 }
 
 .learn-more-container {
-	height: 40vh;
+	height: 110vh;
 	display: flex;
 	flex-direction: row;
 
@@ -243,6 +567,7 @@
 		line-height: 50px;
 		letter-spacing: -0.75px;
 		color: $charcoal-grey;
+		position: absolute;
 	}
 
 	h3 {
@@ -257,18 +582,30 @@
 		line-height: 35px;
 		letter-spacing: -0.464286px;
 		color: $charcoal-grey;
+		position: absolute;
 	}
 
 	button {
 		background-color: $primary-green !important;
+		height: 45px;
+		width: 193px;
+		left: 110px;
+		top: 4170px;
+		border-radius: 4px;
+		padding: 22px, 20px, 22px, 20px;
+		position: absolute;
+
 	}
 
 	.learn-more-image-container {
-		height: 323px;
-		width: 484px;
-		left: -54px;
-		top: -9px;
-		border-radius: 0px;
+		img {
+			height: 314px;
+			width: 430px;
+			left: 740px;
+			top: 3949px;
+			border-radius: 8px;
+			position: absolute;
+		}
 	}
 }
 

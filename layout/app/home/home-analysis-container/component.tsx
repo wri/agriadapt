@@ -3,22 +3,23 @@ import Carousel from 'nuka-carousel';
 
 const AnalysisContainerHome = () => {
 
-    const settings = {
-        // slidesToShow: 3,
-        // slidesToScroll: 3,
-        cellAlign: "right",
-        // dragging: true,
-        // autoplay: true,
-        // autoplayInterval: 3500,
-        // initialSlideHeight: 56,
-        // wrapAround: true,
-        // renderTopCenterControls: () => { },
-        // renderCenterLeftControls: () => { },
-        // renderCenterRightControls: () => { },
-        // renderBottomCenterControls: ({ previousSlide, currentSlide, nextSlide }) => (
-        //     <button onClick={currentSlide}>Current</button>
-        // ),
-    }
+    // const settings = {
+    //     // slidesToShow: 3,
+    //     // slidesToScroll: 3,
+    //     cellAlign: "right",
+    //     speed: 3000,
+    //     // dragging: true,
+    //     // autoplay: true,
+    //     // autoplayInterval: 3500,
+    //     // initialSlideHeight: 56,
+    //     // wrapAround: true,
+    //     // renderTopCenterControls: () => { },
+    //     // renderCenterLeftControls: () => { },
+    //     // renderCenterRightControls: () => { },
+    //     // renderBottomCenterControls: ({ previousSlide, currentSlide, nextSlide }) => (
+    //     //     <button onClick={currentSlide}>Current</button>
+    //     // ),
+    // }
     const getAnalysisCard = () => {
         return (
             <div className='analysis-card-container'>
@@ -35,17 +36,18 @@ const AnalysisContainerHome = () => {
     return (
       <div className="analysis-container">
         <div className="analysis-text-container">
-          <h2>Here's a more compelling header for the map experience.</h2>
+          <h2>Here's a more compelling header for the analysis experience.</h2>
           <h3>
             Here's a subheader that provides additional contextual information.
           </h3>
           <div className="c-carousel">
-            {/* <Carousel {...settings}> */}
             <Carousel
               renderCenterLeftControls={() => {}}
               renderCenterRightControls={() => {}}
               slidesToShow={3}
               cellAlign="right"
+              autoplay={true}
+              wrapAround= {true}
             >
               {[
                 getAnalysisCard(),
