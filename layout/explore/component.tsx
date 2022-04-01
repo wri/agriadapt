@@ -64,7 +64,7 @@ const Explore = (props: ExploreProps): JSX.Element => {
   );
 
   return (
-    <Layout title="Home" className="l-home" updateIsLoading={null}>
+    <Layout title="Home" className="l-home">
       <div className="c-page-explore">
         <ExploreSidebar>
           {getSidebarLayout()}
