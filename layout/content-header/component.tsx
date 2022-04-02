@@ -26,7 +26,7 @@ const ContentHeader = ({ id = 'LANDING', countries = null, image, blob, title = 
           <Image src={image} alt="image" />
         </div>
         <div className="blob-container">
-          <Image src={blob} alt="image" />
+          <Image loader={({ src }) => src} src={blob} alt="image" />
         </div>
       </div>
       {/* The info stuff... */}
