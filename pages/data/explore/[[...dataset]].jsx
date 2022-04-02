@@ -16,7 +16,8 @@ import { EXPLORE_DATASETS_IDS } from 'constants/app';
 
 // components
 import Explore from 'layout/explore';
-import { RootState } from 'lib/store';
+// import { RootState } from 'lib/store';
+import { fetchDatasets } from 'services/dataset';
 
 class ExplorePage extends PureComponent {
   componentDidMount() {
@@ -181,10 +182,12 @@ export const getStaticProps = () => {
     };
 }
 
-export const getStaticPaths = () => {
-    console.log(EXPLORE_DATASETS_IDS.map((id) => ({ dataset: [id] })));
+export const getStaticPaths = async () => {
+  const datas = await fetchDatasets(EXPLORE_DATASETS_IDS);
+  const slugs = datas.map(({ slug }) => slug);
+ 
   return {
-    paths: EXPLORE_DATASETS_IDS.map((id) => ({ params: { dataset: [id] } })),
+    paths: slugs.map((s) => ({ params: { dataset: [s] } })),
     fallback: false,
   };
 };
@@ -305,7 +308,7 @@ ExplorePage.propTypes = {
 };
 
 export default connect(
-  (state: RootState) => ({ explore: state.explore }),
+  (state) => ({ explore: state.explore }),
   {
     ...actions,
     setIsServer: setServerAction,
