@@ -5,12 +5,11 @@ import { ABOUT } from 'layout/content-header/constants';
 const LayoutAbout = () => {
   return (
     <Layout>
-      <ContentHeader {...ABOUT}/>
+      <ContentHeader {...ABOUT} />
+      <div>Lorem ipsum text</div>
       <div>
-        Lorem ipsum text
-      </div>
-      <div>
-        Other content that naturally pushes the page height further down without manually specifying
+        Other content that naturally pushes the page height further down without
+        manually specifying
       </div>
     </Layout>
   );

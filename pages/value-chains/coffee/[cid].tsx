@@ -18,7 +18,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths: [{ params: { cid: "colombia" } }],
+    paths: [{ params: { cid: 'colombia' } }],
     fallback: false,
   };
 };

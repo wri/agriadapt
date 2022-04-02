@@ -1,19 +1,79 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+import Image from "next/image";
+import classnames from "classnames";
+import Field from "components/form/Field";
+import Select from 'react-select';
 
-const ContentHeader = ({ title = '', subheader = '', description = [''] }) => {
+const ContentHeader = ({ id = 'LANDING', countries = null, image, blob, title = '', subtitle = '', description = [''] }) => {
   return (
-    <>
+    <div className="c-header">
       {/* the image stuff...  */}
-      <div className="image-container" />
-      {/* The info stuff... */}
-      <div className="info-container">
-        <h2>{title}</h2>
-        <h3>{subheader}</h3>
-        {description.map((d, i) => (
-          <p key={`desc-${i}`}>{d}</p>
-        ))}
+      <div
+        className={classnames({
+          'visual-container': true,
+          '-right': id !== 'LANDING',
+        })}
+      >
+        <div
+          className={classnames({
+            'image-container': true,
+            '-landing': id === 'LANDING',
+            '-about': id === 'ABOUT',
+            '-rice': id === 'RICE',
+            '-coffee': id === 'COFFEE',
+            '-cotton': id === 'COTTON',
+          })}
+        >
+          <Image src={image} alt="image" />
+        </div>
+        <div className="blob-container">
+          <Image src={blob} alt="image" />
+        </div>
       </div>
-    </>
+      {/* The info stuff... */}
+      <div
+        className={classnames({
+          'info-container': true,
+          '-right': id === 'LANDING',
+          '-landing': id === 'LANDING',
+          '-about': id === 'ABOUT',
+        })}
+      >
+        <h2>{title}</h2>
+        <h3>{subtitle}</h3>
+        {description.map((d, i) => (
+          <p key={`desc-${i}`} className="description">
+            {d}
+          </p>
+        ))}
+        {id === 'LANDING' && (
+          <button
+            className={classnames({
+              'c-button': true,
+              '-primary': true,
+            })}
+          >
+            {/* TODO: Translate */}
+            {'Explore the Latest Data'}
+          </button>
+        )}
+        {countries && (
+          <Field
+            id="VALUE_CHAINS"
+            properties={{
+              label: 'Select Country',
+              default: '',
+            }}
+            options={countries}
+            className={'Select'}
+            placeholder={'Select Country'} // TODO: Translate
+            // isSearchable={false}
+            // isClearable={false}
+          >
+            {Select}
+          </Field>
+        )}
+      </div>
+    </div>
   );
 };
 
