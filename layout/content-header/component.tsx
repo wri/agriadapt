@@ -23,7 +23,7 @@ const ContentHeader = ({ id = 'LANDING', countries = null, image, blob, title = 
             '-cotton': id === 'COTTON',
           })}
         >
-          <Image src={image} alt="image" />
+          <Image loader={({ src }) => src} src={image} alt="image" />
         </div>
         <div className="blob-container">
           <Image loader={({ src }) => src} src={blob} alt="image" />
