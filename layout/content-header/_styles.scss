@@ -1,0 +1,99 @@
+.c-header {
+    position: relative;
+    z-index: 0;
+
+    h3 {
+        color: $charcoal-grey
+    }
+}
+
+.visual-container {
+    position: relative;
+    &.-right {
+        text-align: right;
+        margin-left: auto;
+        .blob-container {
+            right: 0px;
+        }
+    }
+    @media screen and (min-width: map-get($breakpoints, medium)) {
+        max-width: 70%;
+    }
+    @media screen and (min-width: map-get($breakpoints, large)) {
+        max-width: 100%;
+    }
+}
+
+.image-container {
+    position: relative;
+    margin: 0 0 auto auto;
+    // formula: calc(95% container x image_svg_width / blob_svg_width)
+    &.-landing {
+        max-width: calc(95% * 734/937);
+        margin: 0 auto auto 0;
+    }
+    &.-about {
+        max-width: calc(95% * 542/719);
+    }
+    &.-rice {
+        max-width: calc(95% * 622/799);
+    }
+    &.-coffee {
+        max-width: calc(95% * 622/799);
+    }
+    &.-cotton {
+        max-width: calc(95% * 622/799);
+    }
+}
+
+.blob-container {
+    position: absolute;
+    top: 0px;
+    z-index: -1;
+    max-width: 95%;
+}
+
+.country-selector {
+    max-width: 340px;
+}
+
+.info-container {
+    max-width: 429px;
+
+    @media screen and (min-width: map-get($breakpoints, small)) {
+        position: relative;
+        top: $space * -10;
+        margin: 0 $margin-size-small;
+        text-align: center;
+
+        h2 {
+            font-size: $font-size-h2; // may need to look at h2 sizing on mobile
+        }
+    }
+    @media screen and (min-width: map-get($breakpoints, medium)) {
+        width: 50%;
+        position: absolute;
+        top: 200px;
+        margin: 0 $margin-size;
+        text-align: left;
+        &.-right {
+            right: 0px;
+        }
+        .description {
+            max-width: 444px;
+        }
+    }
+
+    @media screen and (min-width: map-get($breakpoints, large)) {
+        margin: 0 $margin-size * 2;
+        &.-landing {
+            max-width: 540px;
+        }
+        &.-about {
+            max-width: 615px;
+            .description {
+                max-width: 540px;
+            }
+        }
+    }
+}

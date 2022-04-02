@@ -25,10 +25,6 @@ const ExploreSidebarComponent = (props: any): JSX.Element => {
     }
   };
 
-  useEffect(() => {
-    console.log(props);
-  }, []);
-
   return (
     <aside
       className={classnames({
