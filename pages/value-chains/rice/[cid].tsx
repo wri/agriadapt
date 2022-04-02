@@ -4,7 +4,7 @@ import { GetStaticProps, GetStaticPaths } from "next";
 import { ValueChainPageProps } from "types/value-chain";
 // import { APIWidgetSpec } from "types/widget";
 
-const RicePage = (props: ValueChainPageProps) => {
+const RiceCountryPage = (props: ValueChainPageProps) => {
   return <LayoutRice {...props} />;
 };
 
@@ -37,4 +37,4 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export default RicePage;
+export default RiceCountryPage;

@@ -2,7 +2,7 @@ import LayoutCoffee from "layout/value-chains/coffee";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { ValueChainPageProps } from "types/value-chain";
 
-const CoffeePage = (props: ValueChainPageProps) => {
+const CoffeeCountryPage = (props: ValueChainPageProps) => {
   return <LayoutCoffee {...props} />;
 };
 
@@ -23,4 +23,4 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export default CoffeePage;
+export default CoffeeCountryPage;

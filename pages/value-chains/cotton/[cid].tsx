@@ -2,7 +2,7 @@ import LayoutCotton from "layout/value-chains/cotton";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { ValueChainPageProps } from "types/value-chain";
 
-const CottonPage = (props: ValueChainPageProps) => {
+const CottonCountryPage = (props: ValueChainPageProps) => {
   return <LayoutCotton {...props} />;
 };
 
@@ -23,4 +23,4 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export default CottonPage;
+export default CottonCountryPage;
