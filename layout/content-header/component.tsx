@@ -57,20 +57,22 @@ const ContentHeader = ({ id = 'LANDING', countries = null, image, blob, title = 
           </button>
         )}
         {countries && (
-          <Field
-            id="VALUE_CHAINS"
-            properties={{
-              label: 'Select Country',
-              default: '',
-            }}
-            options={countries}
-            className={'Select'}
-            placeholder={'Select Country'} // TODO: Translate
-            // isSearchable={false}
-            // isClearable={false}
-          >
-            {Select}
-          </Field>
+          <div className="country-selector">
+            <Field
+              id="VALUE_CHAINS"
+              properties={{
+                label: 'Select Country',
+                default: '',
+              }}
+              options={countries}
+              className={'Select--large'}
+              placeholder={'Select Country'} // TODO: Translate
+              // isSearchable={false}
+              // isClearable={false}
+            >
+              {Select}
+            </Field>
+          </div>
         )}
       </div>
     </div>
