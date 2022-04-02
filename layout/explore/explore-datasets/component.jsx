@@ -1,16 +1,15 @@
-import { useEffect, useMemo, useCallback } from "react";
+import { useEffect, useCallback } from "react";
 import PropTypes from "prop-types";
-import Link from "next/link";
-import classnames from "classnames";
+// import Link from "next/link";
+import classnames from 'classnames';
 
 // utils
-import { logEvent } from "utils/analytics";
+// import { logEvent } from "utils/analytics";
 
 // components
 import Paginator from "components/ui/Paginator";
-import Icon from "components/ui/icon";
+// import Icon from "components/ui/icon";
 // import { TOPICS } from 'layout/explore/explore-topics/constants';
-import ExploreSwitch from "../explore-switch";
 import DatasetList from "./list";
 import ExploreDatasetsActions from "./explore-datasets-actions";
 import ExploreSearch from '../explore-datasets-search';
@@ -42,9 +41,6 @@ export default function ExploreDatasets(props) {
 
   return (
     <div className={classValue}>
-      <div className="explore-datasets-header">
-        <ExploreSwitch />
-      </div>
       <div className="explore-datasets-search">
         <ExploreSearch />
       </div>
