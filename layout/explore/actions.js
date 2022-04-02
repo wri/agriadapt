@@ -3,7 +3,7 @@ import { createThunkAction } from "redux-tools";
 import sortBy from "lodash/sortBy";
 
 // Constants
-import { EXPLORE_DATASETS_IDS } from "./constants";
+import { EXPLORE_DATASETS_IDS } from "constants/app";
 
 // Services
 import { fetchDatasets as fetchDatasetsService } from "services/dataset";

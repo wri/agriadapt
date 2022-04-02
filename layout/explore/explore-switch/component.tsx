@@ -1,26 +1,35 @@
-import classNames from 'classnames';
+import classnames from 'classnames';
 import Icon from 'components/ui/icon';
 import { EXPLORE_TABS } from '../constants';
 
-const ExploreSwitch = ({ selectedTab, setSidebarSelectedTab }) => {
+const ExploreSwitch = ({ open, selectedTab, setSidebarSelectedTab }) => {
   return (
-    <div className="c-explore-switch-container">
+    <div
+      className={classnames({
+        'c-explore-switch-container': true,
+        '-open': open,
+      })}
+    >
       {Object.entries(EXPLORE_TABS).map(([key, value]) => {
-        const iconName = classNames({
+        const iconName = classnames({
           'icon-layers': key === 'LAYERS',
           'icon-widget': key === 'ANALYSIS',
         });
         return (
           <button
-            className={classNames({
+            key={key}
+            className={classnames({
               'c-button': true,
-              '-primary': selectedTab === value,
-              '-tertiary': selectedTab !== value,
+              '-primary': selectedTab === value && open,
+              '-tertiary': selectedTab !== value || !open,
             })}
             onClick={() => setSidebarSelectedTab(value)}
           >
-            <Icon name={iconName} className="c-icon -small" />
-            <span className="button-text">{value}</span>
+            <Icon
+              name={iconName}
+              className={classnames({ 'c-icon': true, '-small': open })}
+            />
+            {open && <span className="button-text">{value}</span>}
           </button>
         );
       })}
