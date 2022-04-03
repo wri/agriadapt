@@ -23,6 +23,10 @@
         max-width: 70%;
     }
 
+    @media screen and (max-width: map-get($breakpoints, medium)) and (orientation: landscape) {
+        max-width: 70%;
+    }
+    
     @media screen and (min-width: map-get($breakpoints, large)) {
         max-width: 100%;
     }
@@ -67,7 +71,16 @@
 }
 
 .info-container {
-    max-width: 429px;
+    @media screen and (min-width: map-get($breakpoints, small)) {
+        position: relative;
+        top: $space * -10;
+        margin: 0 $margin-size-small;
+    }
+
+    @media screen and (max-width: map-get($breakpoints, medium)) and (orientation: landscape) {
+        top: $space * -50;
+        max-width: min(429px, 45%);
+    }
 
     @media screen and (max-width: map-get($breakpoints, medium)) {
         &.-landing {
@@ -75,14 +88,8 @@
         }
     }
 
-    @media screen and (min-width: map-get($breakpoints, small)) {
-        position: relative;
-        top: $space * -10;
-        margin: 0 $margin-size-small;
-    }
-
     @media screen and (min-width: map-get($breakpoints, medium)) {
-        width: 50%;
+        max-width: min(429px, 45%);
         position: absolute;
         top: 200px;
         margin: 0 $margin-size;
