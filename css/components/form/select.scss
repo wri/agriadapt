@@ -176,6 +176,9 @@
   padding-left: 10px;
   padding-right: 10px;
   vertical-align: middle;
+  @media screen and (max-width: map-get($breakpoints, medium)) {
+    font-size: 16px;
+  }
 }
 .Select-input > input {
   width: 100%;
@@ -310,6 +313,10 @@
   z-index: 10;
   -webkit-overflow-scrolling: touch;
   font-size: $font-size-normal;
+
+  @media screen and (max-width: map-get($breakpoints, medium)) {
+    font-size: 16px;
+  }
 }
 .Select-menu {
   max-height: 198px;

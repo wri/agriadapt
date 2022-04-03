@@ -64,7 +64,9 @@
         position: relative;
         top: $space * -10;
         margin: 0 $margin-size-small;
-        text-align: center;
+        &.-landing {
+            text-align: center;
+        }
 
         h2 {
             font-size: $font-size-h2; // may need to look at h2 sizing on mobile
