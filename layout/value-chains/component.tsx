@@ -1,4 +1,4 @@
-import ContentHeader from "layout/content-header";
+import IntroHeader from "layout/intro-header";
 import HazardsFlow from "./content/flow-diagram";
 import HazardsIntro from "./content/hazards-intro";
 import ItemInfos from "./content/item-infos";
@@ -11,7 +11,7 @@ const LayoutCrop = ({ header, user_stories }) => {
     // TODO: Translate
     <Layout title={'Value Chains'}>
       <div className="l-crop">
-        <ContentHeader {...header} />
+        <IntroHeader {...header} />
         <UserStories {...user_stories} />
         <HazardsIntro />
         <HazardsFlow />

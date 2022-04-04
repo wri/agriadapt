@@ -3,7 +3,7 @@ import classnames from "classnames";
 import Field from "components/form/Field";
 import Select from 'react-select';
 
-const ContentHeader = ({
+const IntroHeader = ({
   id = 'LANDING',
   countries = null,
   image,
@@ -13,7 +13,7 @@ const ContentHeader = ({
   description = [''],
 }) => {
   return (
-    <div className="c-content-header">
+    <div className="c-intro-header">
       <div
         className={classnames({
           'visual-container': true,
@@ -85,4 +85,4 @@ const ContentHeader = ({
   );
 };
 
-export default ContentHeader;
+export default IntroHeader;

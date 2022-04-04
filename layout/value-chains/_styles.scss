@@ -1,21 +1,21 @@
 .l-crop {
     @media screen and (min-width: map-get($breakpoints, small)) {
         margin: 0 $margin-size-small;
-        .c-content-header {
+        .c-intro-header {
             margin: 0 $margin-size-small * -1;
         }
     }
 
     @media screen and (min-width: map-get($breakpoints, medium)) {
         margin: 0 $margin-size;
-        .c-content-header {
+        .c-intro-header {
             margin: 0 $margin-size * -1;
         }
     }
 
     @media screen and (min-width: map-get($breakpoints, large)) {
         margin: 0 $margin-size * 2;
-        .c-content-header {
+        .c-intro-header {
             margin: 0 $margin-size * -2;
         }
     }

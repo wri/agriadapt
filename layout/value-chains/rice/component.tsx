@@ -1,4 +1,4 @@
-import { RICE } from "layout/content-header/constants";
+import { RICE } from "layout/intro-header/constants";
 import { ValueChainPageProps } from "types/value-chain";
 import LayoutCrop from "../component";
 

@@ -1,4 +1,4 @@
-import { COTTON } from "layout/content-header/constants";
+import { COTTON } from "layout/intro-header/constants";
 import { ValueChainPageProps } from "types/value-chain";
 import LayoutCrop from "../component";
 

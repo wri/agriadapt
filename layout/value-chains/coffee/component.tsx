@@ -1,4 +1,4 @@
-import { COFFEE } from "layout/content-header/constants";
+import { COFFEE } from "layout/intro-header/constants";
 import LayoutCrop from "layout/value-chains";
 import { ValueChainPageProps } from "types/value-chain";
 
