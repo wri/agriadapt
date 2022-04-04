@@ -3,34 +3,34 @@ const chain_items = [
     id: 'inputs',
     label: { text: 'Inputs', icon: 'icon-inputs' },
     options: [
-      { id: 'land_suitability', label: 'Land Suitability', icon: null },
-      { id: 'seedlings', label: 'Seedlings', icon: null },
-      { id: 'fertilizer', label: 'Fertilizer', icon: null },
-      { id: 'labor', label: 'Labor', icon: null },
+      { id: 'land_suitability', label: 'Land Suitability', icon: 'icon-land-suitability' },
+      { id: 'seedlings', label: 'Seedlings', icon: 'icon-seedlings' },
+      { id: 'fertilizer', label: 'Fertilizer', icon: 'icon-fertilizer' },
+      { id: 'labor', label: 'Labor', icon: 'icon-labor' },
     ],
   },
   {
     id: 'production',
     label: { text: 'Production', icon: 'icon-production' },
     options: [
-      { id: 'change_in_yield', label: 'Change in Yield', icon: null },
-      { id: 'pests_and_diseases', label: 'Pests & Diseases', icon: null },
+      { id: 'change_in_yield', label: 'Change in Yield', icon: 'icon-change-in-yield' },
+      { id: 'pests_and_diseases', label: 'Pests & Diseases', icon: 'icon-pests-and-diseases' },
     ],
   },
   {
     id: 'processing',
     label: { text: 'Processing', icon: 'icon-processing' },
     options: [
-      { id: 'lorem_ipsum', label: 'Lorem ipsum', icon: null },
-      { id: 'lorem_ipsum', label: 'Lorem ipsum', icon: null },
+      { id: 'lorem_ipsum', label: 'Lorem ipsum', icon: 'icon-labor' },
+      { id: 'lorem_ipsum', label: 'Lorem ipsum', icon: 'icon-labor' },
     ],
   },
   {
     id: 'trade',
     label: {text: 'Trade', icon: 'icon-trade'},
     options: [
-      { id: 'lorem_ipsum', label: 'Lorem ipsum', icon: null },
-      { id: 'lorem_ipsum', label: 'Lorem ipsum', icon: null },
+      { id: 'lorem_ipsum', label: 'Lorem ipsum', icon: 'icon-labor' },
+      { id: 'lorem_ipsum', label: 'Lorem ipsum', icon: 'icon-labor' },
     ],
   },
 ];
@@ -51,19 +51,19 @@ const chains = {
     inputs: {
       land_suitability: {
         info: 'Soil salinity, texture, organic matter, pH, water quality, rainfall and temperature are among the most important attributes that could be used to determine the suitable parcel of land for rice cultivation.',
-        widget: null,
+        widget: 'icon-',
       },
       seedlings: {
         info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in dolor vitae sem hendrerit ultrices id at urna. Integer lectus lectus, accumsan sed libero in, mollis dapibus justo. Mauris auctor lectus ullamcorper dolor elementum feugiat. Integer et condimentum mi. ',
-        widget: null,
+        widget: 'icon-',
       },
       fertilizer: {
         info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in dolor vitae sem hendrerit ultrices id at urna. Integer lectus lectus, accumsan sed libero in, mollis dapibus justo. Mauris auctor lectus ullamcorper dolor elementum feugiat. Integer et condimentum mi. ',
-        widget: null,
+        widget: 'icon-',
       },
       labor: {
         info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in dolor vitae sem hendrerit ultrices id at urna. Integer lectus lectus, accumsan sed libero in, mollis dapibus justo. Mauris auctor lectus ullamcorper dolor elementum feugiat. Integer et condimentum mi. ',
-        widget: null,
+        widget: 'icon-',
       },
     },
     production: {

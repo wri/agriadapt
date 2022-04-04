@@ -1,6 +1,7 @@
 import { chain_items } from '../constants';
 import classnames from 'classnames';
 import FlowButton from 'layout/value-chains/content/flow-diagram/flow-button';
+import StepItem from './step-item/component';
 
 const FlowDiagram = ({ activeItem }) => {
   return (
@@ -20,7 +21,9 @@ const FlowDiagram = ({ activeItem }) => {
           />
           <ul className="c-item-list">
             {item.options.map((o, i) => (
-              <li key={i}>{o.label}</li>
+              <li key={i}>
+                <StepItem {...o} />
+              </li>
             ))}
           </ul>
         </div>
