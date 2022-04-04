@@ -30,33 +30,6 @@ const ValueChainsContainerHome = () => {
     }
 
     const getValueChainCardContainer = (breakpoint: string) => {
-        // let grid = {}
-        // if (breakpoint === 'sm') {
-        //     grid = {
-        //         width: '100%',
-        //         display: 'grid',
-        //         gridTemplateColumns: '100%',
-        //         gridRow: 'auto',
-        //         gridRowGap: '3%'
-        //     };
-        // } else if (breakpoint === 'md') {
-        //     grid = {
-        //         width: '100%',
-        //         display: 'grid',
-        //         gridTemplateColumns: '50% 50%',
-        //         gridRow: 'auto auto',
-        //         gridColumnGap: '10%'
-        //     };
-        // } else {
-        //     grid = {
-        //         width: '100%',
-        //         display: 'grid',
-        //         gridTemplateColumns: '30% 30% 30%',
-        //         gridRow: 'auto auto auto',
-        //         gridColumnGap: '3%'
-        //     };
-        // }
-
         return (
             <div className='value-chain-cards-container'>
                 {getValueChainCard('Rice', breakpoint)}
@@ -65,6 +38,7 @@ const ValueChainsContainerHome = () => {
             </div>
         )
     }
+    
     return (
         <div className='value-chains-container'>
             <div className='value-chains-text-container'>
