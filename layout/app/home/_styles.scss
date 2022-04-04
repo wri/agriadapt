@@ -835,6 +835,7 @@
 
 	.learn-more-image-container {
 		position: absolute;
+		overflow: hidden;
 
 		@media screen and (min-width: map-get($breakpoints, small)) {
 			height: 314px;
@@ -849,7 +850,9 @@
 			width: 722px;
 			left: 56px;
 			top: 4229px;
-			border-radius: 8px;			
+			border-radius: 8px;	
+			
+			
 		}
 
 		@media screen and (min-width: map-get($breakpoints, large)) {
@@ -859,9 +862,29 @@
 			top: 3949px;
 			border-radius: 8px;
 		}
-		// img {
 
-		// }
+		img {
+			@media screen and (min-width: map-get($breakpoints, small)) {
+				height: 321px;
+				width: 481px;
+				left: -133px;
+				top: -7px;
+			}
+
+			@media screen and (min-width: map-get($breakpoints, medium)) {
+				height: 518px;
+				width: 776px;
+				left: -54px;
+				top: -60px;
+			}
+
+			@media screen and (min-width: map-get($breakpoints, large)) {
+				height: 323px;
+				width: 484px;
+				left: -54px;
+				top: -9px;
+			}
+		}
 	}
 }
 
