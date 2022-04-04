@@ -1,0 +1,57 @@
+$small-picture-size: 162px;
+$picture-size: 250px;
+
+.c-user-stories {
+    // width: 100%;
+    margin: 158px auto;
+    @media screen and (min-width: map-get($breakpoints, medium)) {
+        margin: 204px auto;
+    }
+
+    @media screen and (min-width: map-get($breakpoints, large)) {
+        margin: 0 auto 276px;
+    }
+
+    .c-user-stories-body {
+        max-width: 1010px;
+        margin: 0 auto;
+
+        .c-user-story {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin: 0 auto;
+
+            @media screen and (min-width: map-get($breakpoints, medium)) {
+                flex-direction: row;
+            }
+
+            .user-picture {
+                width: $picture-size;
+                height: $picture-size;
+                background: rgb($primary-green, 0.2);
+                margin: 0 auto;
+
+                @media screen and (min-width: map-get($breakpoints, medium)) {
+                    width: $small-picture-size;
+                    height: $small-picture-size;
+                }
+
+                @media screen and (min-width: map-get($breakpoints, large)) {
+                    width: $picture-size;
+                    height: $picture-size;
+                }
+            }
+
+            .c-user-info {
+                @media screen and (min-width: map-get($breakpoints, medium)) {
+                    max-width: 371px;
+                }
+
+                @media screen and (min-width: map-get($breakpoints, large)) {
+                    max-width: 520px;
+                }
+            }
+        }
+    }
+}

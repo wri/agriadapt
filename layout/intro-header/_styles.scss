@@ -20,7 +20,7 @@
     }
 
     @media screen and (min-width: map-get($breakpoints, medium)) {
-        max-width: 70%;
+        max-width: 65%;
     }
 
     @media screen and (max-width: map-get($breakpoints, medium)) and (orientation: landscape) {
@@ -97,6 +97,9 @@
 
         &.-right {
             right: 0px;
+        }
+        &.-landing {
+            max-width: 450px;
         }
 
         .description {
