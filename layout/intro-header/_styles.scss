@@ -79,7 +79,7 @@
 
     @media screen and (max-width: map-get($breakpoints, medium)) and (orientation: landscape) {
         top: $space * -50;
-        max-width: min(429px, 45%);
+        max-width: 429px;
     }
 
     @media screen and (max-width: map-get($breakpoints, medium)) {
@@ -89,7 +89,7 @@
     }
 
     @media screen and (min-width: map-get($breakpoints, medium)) {
-        max-width: min(429px, 45%);
+        max-width: 429px;
         position: absolute;
         top: 200px;
         text-align: left;
