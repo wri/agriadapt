@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Media } from "lib/media";
 
 const LearnMoreContainerHome = () => {
 
@@ -14,7 +14,7 @@ const LearnMoreContainerHome = () => {
                 </button>
             </div>
             <div className='learn-more-image-container'>
-                <img src='static/images/components/layout/learn-more.svg' alt ='about-image' />
+                <img src='static/images/components/layout/learn-more.svg' alt='about-image' />
             </div>
         </div>
     )

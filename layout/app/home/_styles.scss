@@ -17,18 +17,6 @@
 .intro-container {
 	z-index: 0;
 
-	@media screen and (min-width: map-get($breakpoints, small)) {
-		height: 950px;
-	}
-
-	@media screen and (min-width: map-get($breakpoints, medium)) {
-		height: 625px;
-	}
-
-	@media screen and (min-width: map-get($breakpoints, large)) {
-		height: 850px;
-	}
-
 	.intro-image {
 		@media screen and (min-width: map-get($breakpoints, small)) {
 			height: 430px;
@@ -50,19 +38,17 @@
 		z-index: 1;
 
 		h2 {
-			// font-family: Lato;
 			font-size: 42px;
 			font-style: normal;
 			font-weight: 300;
 			line-height: 50px;
 			letter-spacing: -0.7499998807907104px;
-			position: absolute;
 
 			@media screen and (min-width: map-get($breakpoints, small)) {
 				text-align: center;
 				height: 254px;
 				width: 340px;
-				left: 18px;
+				margin-left: 18px;
 				top: 462px;
 			}
 
@@ -70,7 +56,7 @@
 				text-align: left;
 				height: 200px;
 				width: 415px;
-				left: 363px;
+				margin-left: 363px;
 				top: 263px;
 			}
 
@@ -78,25 +64,23 @@
 				text-align: left;
 				width: 520px;
 				height: 200px;
-				left: 650px;
+				margin-left: 650px;
 				top: 337px;
 			}
 		}
 
 		h3 {
-			// font-family: Lato;
 			font-size: 26px;
 			font-style: normal;
 			font-weight: 300;
 			line-height: 35px;
 			letter-spacing: -0.46428561210632324px;
 			color: $charcoal-grey;
-			position: absolute;
 
 			@media screen and (min-width: map-get($breakpoints, small)) {
 				height: 72px;
 				width: 340px;
-				left: 18px;
+				margin-left: 18px;
 				top: 740px;
 				text-align: center;
 			}
@@ -104,7 +88,7 @@
 			@media screen and (min-width: map-get($breakpoints, medium)) {
 				height: 37px;
 				width: 430px;
-				left: 363px;
+				margin-left: 363px;
 				top: 479px;
 				text-align: left;
 				white-space: nowrap;
@@ -113,7 +97,7 @@
 			@media screen and (min-width: map-get($breakpoints, large)) {
 				height: 37px;
 				width: 430px;
-				left: 650px;
+				margin-left: 650px;
 				top: 553px;
 				text-align: left;
 				white-space: nowrap;
@@ -121,84 +105,66 @@
 		}
 
 		.intro-button-container {
+			background-color: $primary-green;
+			height: 45px;
+			width: 205px;
+			border-radius: 4px;
+			padding: 22px, 20px, 22px, 20px;
 
-			button {
-				background-color: $primary-green;
-				position: absolute;
-				height: 45px;
-				width: 205px;
-				border-radius: 4px;
-				padding: 22px, 20px, 22px, 20px;
-	
-				@media screen and (min-width: map-get($breakpoints, small)) {
-					left: 85px;
-					top: 836px;
-				}
-	
-				@media screen and (min-width: map-get($breakpoints, medium)) {
-					left: 363px;
-					top: 540px;
-				}
-	
-				@media screen and (min-width: map-get($breakpoints, large)) {
-					left: 650px;
-					top: 610px;
-				}
+			@media screen and (min-width: map-get($breakpoints, small)) {
+				margin-left: 85px;
+				top: 836px;
+			}
+
+			@media screen and (min-width: map-get($breakpoints, medium)) {
+				margin-left: 363px;
+				top: 540px;
+			}
+
+			@media screen and (min-width: map-get($breakpoints, large)) {
+				margin-left: 650px;
+				top: 610px;
 			}
 		}
   	}
 }
 
 .map-container {
-  	
-	@media screen and (min-width: map-get($breakpoints, small)) {
-		height: 950px;
-	}
-
-	@media screen and (min-width: map-get($breakpoints, medium)) {
-		height: 820px;
-	}
-
-	@media screen and (min-width: map-get($breakpoints, large)) {
-		height: 1100px;
-	}
+  	margin-bottom: 154px;
 
 	.map-text-container {
 
 		h2 {
-			// font-family: Lato;
 			font-size: 42px;
 			font-style: normal;
 			font-weight: 300;
 			line-height: 50px;
 			letter-spacing: -0.7499998807907104px;
 			text-align: left;
-			position: absolute;
 
 			@media screen and (min-width: map-get($breakpoints, small)) {
 				height: 200px;
 				width: 340px;
-				left: 18px;
+				margin-left: 18px;
 				top: 1021px;
 			}
 
 			@media screen and (min-width: map-get($breakpoints, medium)) {
 				height: 100px;
 				width: 610px;
-				left: 56px;
+				margin-left: 56px;
 				top: 768px;
 			}
 
 			@media screen and (min-width: map-get($breakpoints, large)) {
 				height: 100px;
 				width: 610px;
-				left: 110px;
+				margin-left: 110px;
 				top: 981px;
 			}
 		}
 
 		h3 {
-			// font-family: Lato;
 			font-size: 26px;
 			font-style: normal;
 			font-weight: 300;
@@ -206,133 +172,114 @@
 			letter-spacing: -0.46428561210632324px;
 			text-align: left;
 			color: $charcoal-grey;
-			position: absolute;
 
 			@media screen and (min-width: map-get($breakpoints, small)) {
+				
 				height: 106px;
 				width: 340px;
-				left: 18px;
+				margin-left: 18px;
 				top: 1245px;
 			}
 
 			@media screen and (min-width: map-get($breakpoints, medium)) {
 				height: 72px;
 				width: 520px;
-				left: 56px;
+				margin-left: 56px;
 				top: 892px;
 			}
 
 			@media screen and (min-width: map-get($breakpoints, large)) {
 				height: 72px;
 				width: 520px;
-				left: 110px;
+				margin-left: 110px;
 				top: 1105px;
 			}
 		}
     
 		.intro-button-container {
+			background-color: $primary-green;
+			height: 45px;
+			width: 293px;
+			border-radius: 4px;
+			padding: 22px, 20px, 22px, 20px;
 
-			button {
-				background-color: $primary-green;
-				height: 45px;
-				width: 293px;
-				border-radius: 4px;
-				padding: 22px, 20px, 22px, 20px;
-				position: absolute;
+			@media screen and (min-width: map-get($breakpoints, small)) {
+				margin-left: 18px;
+				top: 1375px;
+			}
 
-				@media screen and (min-width: map-get($breakpoints, small)) {
-					left: 18px;
-					top: 1375px;
-				}
+			@media screen and (min-width: map-get($breakpoints, medium)) {
+				margin-left: 56px;
+				top: 988px;
+			}
 
-				@media screen and (min-width: map-get($breakpoints, medium)) {
-					left: 56px;
-					top: 988px;
-				}
-
-				@media screen and (min-width: map-get($breakpoints, large)) {
-					left: 110px;
-					top: 1201px;
-				}
+			@media screen and (min-width: map-get($breakpoints, large)) {
+				margin-left: 110px;
+				top: 1201px;
 			}
 		}
 	}
 
 	.map-image-container {
-		position: absolute;
 
 		@media screen and (min-width: map-get($breakpoints, small)) {
 			height: 434px;
 			max-width: 340px;
-			left: 18px;
+			margin-left: 18px;
 			top: 1476px;
 		}
 	
 		@media screen and (min-width: map-get($breakpoints, medium)) {
 			height: 472px;
 			max-width: 722px;
-			left: 56px;
+			margin-left: 56px;
 			top: 1089px;
 		}
 	
 		@media screen and (min-width: map-get($breakpoints, large)) {
 			height: 628px;
 			max-width: 1060px;
-			left: 110px;
+			margin-left: 110px;
 			top: 1302px;
 		}
 	}
 }
 
 .value-chains-container {
-
-	@media screen and (min-width: map-get($breakpoints, small)) {
-		height: 700px;
-	}
-
-	@media screen and (min-width: map-get($breakpoints, medium)) {
-		height: 1400px;
-	}
-
-	@media screen and (min-width: map-get($breakpoints, large)) {
-		height: 900px;
-	}
+	margin-bottom: 100px;
 
 	.value-chains-text-container {
 		h2 {
-			// font-family: Lato;
 			font-size: 42px;
 			font-style: normal;
 			font-weight: 300;
 			line-height: 50px;
 			letter-spacing: -0.7499998807907104px;
 			text-align: left;
-			position: absolute;
 
 			@media screen and (min-width: map-get($breakpoints, small)) {
 				height: 202px;
 				width: 340px;
-				left: 18px;
+				margin-left: 18px;
 				top: 2050px;
 			}
 
 			@media screen and (min-width: map-get($breakpoints, medium)) {
 				height: 100px;
 				width: 610px;
-				left: 56px;
+				margin-left: 56px;
 				top: 1715px;
 			}
 
 			@media screen and (min-width: map-get($breakpoints, large)) {
 				height: 100px;
 				width: 610px;
-				left: 110px;
+				margin-left: 110px;
 				top: 2134px;
 			}
 		}
 
 		h3 {
-			// font-family: Lato;
 			font-size: 26px;
 			font-style: normal;
 			font-weight: 300;
@@ -340,26 +287,25 @@
 			letter-spacing: -0.46428561210632324px;
 			text-align: left;
 			color: $charcoal-grey;
-			position: absolute;
 			
 			@media screen and (min-width: map-get($breakpoints, small)) {
 				height: 107px;
 				width: 340px;
-				left: 18px;
+				margin-left: 18px;
 				top: 2276px;
 			}
 
 			@media screen and (min-width: map-get($breakpoints, medium)) {
 				height: 72px;
 				width: 520px;
-				left: 56px;
+				margin-left: 56px;
 				top: 1839px;
 			}
 
 			@media screen and (min-width: map-get($breakpoints, large)) {
 				height: 72px;
 				width: 520px;
-				left: 110px;
+				margin-left: 110px;
 				top: 2258px;
 			}
 		}
@@ -367,7 +313,7 @@
 
 	.value-chain-cards-container {
 		border-radius: 16px;
-		position: absolute;
+		margin-top: 50px;
 		
 		@media screen and (min-width: map-get($breakpoints, small)) {
 			display: flex;
@@ -381,14 +327,14 @@
 			flex-direction: row;
 			grid-row-gap: 56px;
 			top: 1967px;
-			left: 110px;
+			margin-left: 110px;
 		}
 	
 		@media screen and (min-width: map-get($breakpoints, large)) {
 			display: flex;
 			flex-direction: row;
 			top: 2386px;
-			left: 110px;
+			margin-left: 110px;
 		}
 
 		.value-chain-card-mobile {
@@ -417,7 +363,7 @@
 			.value-chain-card-text-container {
 				height: 50px;
 				width: 123px;
-				left: 20px;
+				margin-left: 20px;
 				top: 276px;
 				position: absolute;
 
@@ -446,7 +392,7 @@
 			.value-chain-card-text-container {
 				height: 50px;
 				width: 123px;
-				left: 20px;
+				margin-left: 20px;
 				top: 276px;
 				position: absolute;
 
@@ -475,7 +421,7 @@
 				position: absolute;
 				height: 50px;
 				width: 74px;
-				left: 20px;
+				margin-left: 20px;
 				top: 282px;
 
 
@@ -495,33 +441,21 @@
 }
 
 .analysis-container {
-	@media screen and (min-width: map-get($breakpoints, small)) {
-		height: 1200px;
-	}
-
-	@media screen and (min-width: map-get($breakpoints, medium)) {
-		height: 900px;
-	}
-
-	@media screen and (min-width: map-get($breakpoints, large)) {
-		height: 900px;
-	}
+	margin-bottom: 200px;
 
 	.analysis-text-container {
 
 		h2 {
-			// font-family: Lato;
 			font-size: 42px;
 			font-weight: 300;
 			line-height: 50px;
 			letter-spacing: -0.7499998807907104px;
 			text-align: left;
-			position: absolute;
 			
 			@media screen and (min-width: map-get($breakpoints, small)) {
 				height: 203px;
 				width: 342px;
-				left: 16px;
+				margin-left: 16px;
 				top: 2842px;
 			}
 			
@@ -529,21 +463,19 @@
 			@media screen and (min-width: map-get($breakpoints, medium)) {
 				height: 100px;
 				width: 610px;
-				left: 56px;
+				margin-left: 56px;
 				top: 2999px;
 			}
 
 			@media screen and (min-width: map-get($breakpoints, large)) {
 				height: 100px;
 				width: 610px;
-				left: 110px;
+				margin-left: 110px;
 				top: 3001px;
 			}
 		}
 
 		h3 {
-			// font-family: Lato;
-			position: absolute;
 			font-size: 26px;
 			font-weight: 300;
 			line-height: 35px;
@@ -553,27 +485,26 @@
 			@media screen and (min-width: map-get($breakpoints, small)) {
 				height: 106px;
 				width: 340px;
-				left: 18px;
+				margin-left: 18px;
 				top: 3069px;
 			}
 
 			@media screen and (min-width: map-get($breakpoints, medium)) {
 				height: 72px;
 				width: 520px;
-				left: 56px;
+				margin-left: 56px;
 				top: 3123px;
 			}
 
 			@media screen and (min-width: map-get($breakpoints, large)) {
 				height: 72px;
 				width: 520px;
-				left: 110px;
+				margin-left: 110px;
 				top: 3125px;
 			}
 		}
 
 		.c-carousel {
-			position: absolute;
 			height: 500px;
 			filter: drop-shadow(0px 0px 60px rgba(0, 0, 0, 0.12));
 			border-radius: 16px;
@@ -589,20 +520,6 @@
 
 			@media screen and (min-width: map-get($breakpoints, large)) {
 				top: 3253px;
-			}
-
-			.slider-frame {
-				@media screen and (min-width: map-get($breakpoints, small)) {
-					left: 18px;
-				}
-	
-				@media screen and (min-width: map-get($breakpoints, medium)) {
-					left: 56px;
-				}
-	
-				@media screen and (min-width: map-get($breakpoints, large)) {
-					left: 110px;
-				}
 			}
 
 			.analysis-card-container {
@@ -631,25 +548,26 @@
 					letter-spacing: -0.46428561210632324px;
 					text-align: left;
 					position: absolute;
+					
 
 					@media screen and (min-width: map-get($breakpoints, small)) {
 						height: 138px;
 						width: 292px;
-						left: 24px;
+						margin-left: 24px;
 						top: 24px;
 					}
 
 					@media screen and (min-width: map-get($breakpoints, medium)) {
 						height: 104px;
 						width: 366px;
-						left: 32px;
+						margin-left: 32px;
 						top: 32px;
 					}
 
 					@media screen and (min-width: map-get($breakpoints, large)) {
 						height: 104px;
 						width: 366px;
-						left: 32px;
+						margin-left: 32px;
 						top: 32px;
 					}
 				}
@@ -694,7 +612,7 @@
 					@media screen and (min-width: map-get($breakpoints, small)) {
 						height: 258px;
 						width: 459px;
-						top: 243px;
+						top: 213px;
 					}
 
 					@media screen and (min-width: map-get($breakpoints, medium)) {
@@ -716,26 +634,19 @@
 			.slider-control-bottomcenter {
 				top: 500px;
 				left: 50%;
-				position: absolute;
 			}
 		}
 	}
 }
 
 .learn-more-container {
-	display: flex;
-	flex-direction: row;
-
-	@media screen and (min-width: map-get($breakpoints, small)) {
-		height: 800px;
-	}
-
-	@media screen and (min-width: map-get($breakpoints, medium)) {
-		height: 900px;
-	}
+	margin-bottom: 100px;
 
 	@media screen and (min-width: map-get($breakpoints, large)) {
-		height: 500px;
+		display: flex;
+		flex-direction: row;
+		margin-left: 110px;
+		margin-right: 110px
 	}
 
 	h2 {
@@ -745,27 +656,23 @@
 		letter-spacing: -0.7499998807907104px;
 		text-align: left;
 		color: $charcoal-grey;
-		position: absolute;
 
 		@media screen and (min-width: map-get($breakpoints, small)) {
 			height: 100px;
 			width: 321px;
-			left: 18px;
-			top: 3855px;			
+			margin-left: 18px;
 		}
 
 		@media screen and (min-width: map-get($breakpoints, medium)) {
 			height: 50px;
 			width: 605px;
-			left: 56px;
-			top: 3935px;			
+			margin-left: 56px;
 		}
 
 		@media screen and (min-width: map-get($breakpoints, large)) {
 			height: 50px;
 			width: 605px;
-			left: 110px;
-			top: 3977px;
+			margin-left: 0px;
 		}
 	}
 
@@ -776,113 +683,82 @@
 		line-height: 35px;
 		letter-spacing: -0.464286px;
 		color: $charcoal-grey;
-		position: absolute;
 		text-align: left;
 
 		@media screen and (min-width: map-get($breakpoints, small)) {
 			height: 212px;
 			width: 340px;
-			left: 18px;
-			top: 3979px;
+			margin-left: 18px;
 		}
 
 		@media screen and (min-width: map-get($breakpoints, medium)) {
 			height: 111px;
 			width: 605px;
-			left: 56px;
-			top: 4001px;
+			margin-left: 56px;
 		}
 
 		@media screen and (min-width: map-get($breakpoints, large)) {
 			height: 111px;
 			width: 605px;
-			left: 110px;
-			top: 4043px;
+			margin-left: 0px;
 		}
 	}
 
 	button {
 		background-color: $primary-green !important;
-		position: absolute;
 
 		@media screen and (min-width: map-get($breakpoints, small)) {
 			height: 45px;
 			width: 193px;
-			left: 18px;
-			top: 4215px;
+			margin-left: 18px;
 			border-radius: 4px;
 			padding: 22px, 20px, 22px, 20px;
+			margin-bottom: 50px;
 		}
 
 		@media screen and (min-width: map-get($breakpoints, medium)) {
 			height: 45px;
 			width: 193px;
-			left: 56px;
-			top: 4128px;
+			margin-left: 56px;
 			border-radius: 4px;
 			padding: 22px, 20px, 22px, 20px;
+			margin-bottom: 50px;
 		}
 
 		@media screen and (min-width: map-get($breakpoints, large)) {
 			height: 45px;
 			width: 193px;
-			left: 110px;
-			top: 4170px;
+			margin-left: 0px;
 			border-radius: 4px;
 			padding: 22px, 20px, 22px, 20px;
 		}
 	}
 
 	.learn-more-image-container {
-		position: absolute;
-		overflow: hidden;
-
-		@media screen and (min-width: map-get($breakpoints, small)) {
-			height: 314px;
-			width: 340px;
-			left: 18px;
-			top: 4284px;
-			border-radius: 8px;
-		}
-
-		@media screen and (min-width: map-get($breakpoints, medium)) {
-			height: 399px;
-			width: 722px;
-			left: 56px;
-			top: 4229px;
-			border-radius: 8px;	
-			
-			
-		}
-
-		@media screen and (min-width: map-get($breakpoints, large)) {
-			height: 314px;
-			width: 430px;
-			left: 740px;
-			top: 3949px;
-			border-radius: 8px;
-		}
 
 		img {
+
 			@media screen and (min-width: map-get($breakpoints, small)) {
 				height: 321px;
 				width: 481px;
-				left: -133px;
-				top: -7px;
+				padding-left: 18px;
+				padding-right: 18px;
+				display: block;
 			}
 
 			@media screen and (min-width: map-get($breakpoints, medium)) {
 				height: 518px;
 				width: 776px;
-				left: -54px;
-				top: -60px;
+				padding-left: 56px;
+				padding-right: 56px;
+				display: block;
 			}
 
 			@media screen and (min-width: map-get($breakpoints, large)) {
 				height: 323px;
 				width: 484px;
-				left: -54px;
-				top: -9px;
+				padding-left: 0px;
+				padding-right: 0px;
 			}
 		}
 	}
