@@ -1,0 +1,30 @@
+.c-flow-step {
+    position: relative;
+
+    &-.active {
+        box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.12);
+    }
+}
+
+.c-step-label {
+    position: absolute;
+    left: 42px;
+    top: 16px;
+    display: flex;
+    align-items: center;
+
+    &.-start {
+        left: 16px;
+    }
+
+    .c-icon {
+        margin-right: 16px;
+    }
+    
+    .label-text {
+        line-height: 1.35;
+        font-weight: 300;
+        font-size: $font-size-h3;
+        letter-spacing: -0.464286px;
+    }
+}

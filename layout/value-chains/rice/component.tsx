@@ -1,13 +1,10 @@
-import ContentHeader from "layout/content-header";
 import { RICE } from "layout/content-header/constants";
-import Layout from "layout/layout/layout-app";
 import { ValueChainPageProps } from "types/value-chain";
+import LayoutCrop from "../component";
 
 const LayoutRice = ({ cid }: ValueChainPageProps) => {
   return (
-    <Layout>
-      <ContentHeader {...RICE} />
-    </Layout>
+      <LayoutCrop header={RICE} user_stories={null} />
   );
 };
 
