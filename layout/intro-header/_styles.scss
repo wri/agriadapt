@@ -1,4 +1,4 @@
-.c-header {
+.c-intro-header {
     position: relative;
     z-index: 0;
 
@@ -92,7 +92,6 @@
         max-width: min(429px, 45%);
         position: absolute;
         top: 200px;
-        margin: 0 $margin-size;
         text-align: left;
 
         &.-right {

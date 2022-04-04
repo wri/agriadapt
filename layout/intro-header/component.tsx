@@ -3,10 +3,17 @@ import classnames from "classnames";
 import Field from "components/form/Field";
 import Select from 'react-select';
 
-const ContentHeader = ({ id = 'LANDING', countries = null, image, blob, title = '', subtitle = '', description = [''] }) => {
+const IntroHeader = ({
+  id = 'LANDING',
+  countries = null,
+  image,
+  blob,
+  title = '',
+  subtitle = '',
+  description = [''],
+}) => {
   return (
-    <div className="c-header">
-      {/* the image stuff...  */}
+    <div className="c-intro-header">
       <div
         className={classnames({
           'visual-container': true,
@@ -29,7 +36,6 @@ const ContentHeader = ({ id = 'LANDING', countries = null, image, blob, title = 
           <Image loader={({ src }) => src} src={blob} alt="image" />
         </div>
       </div>
-      {/* The info stuff... */}
       <div
         className={classnames({
           'info-container': true,
@@ -79,4 +85,4 @@ const ContentHeader = ({ id = 'LANDING', countries = null, image, blob, title = 
   );
 };
 
-export default ContentHeader;
+export default IntroHeader;
