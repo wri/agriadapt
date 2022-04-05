@@ -1,13 +1,16 @@
-import classnames from "classnames";
+import classnames from 'classnames';
+import { user_stories } from '../constants';
 
-const UserStories = ({user_stories = []}) => {
-    return (
-      <div className="c-user-stories">
-        {!!user_stories.length && (
-            // TODO: Translate
-          <h2>{'Applicable Header e.g. "Hear From..."'}</h2>
-        )}
-        {user_stories.map((s, i) => (
+const UserStories = () => {
+  const { header, stories } = user_stories;
+  return (
+    <div className="c-user-stories">
+      {!!stories.length && (
+        // TODO: Translate
+        <h2>{header}</h2>
+      )}
+      <div className="c-user-stories-body">
+        {stories.map((s, i) => (
           <div key={i} className="c-user-story">
             <div className="user-picture">{/* img */}</div>
             <div className="c-user-info">
@@ -26,7 +29,8 @@ const UserStories = ({user_stories = []}) => {
           </div>
         ))}
       </div>
-    );
-}
+    </div>
+  );
+};
 
 export default UserStories;

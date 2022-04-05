@@ -1,39 +1,45 @@
-const chain_items = [
-  {
-    id: 'inputs',
+const chain_items = {
+  inputs: {
     label: { text: 'Inputs', icon: 'icon-inputs' },
-    options: [
-      { id: 'land_suitability', label: 'Land Suitability', icon: 'icon-land-suitability' },
-      { id: 'seedlings', label: 'Seedlings', icon: 'icon-seedlings' },
-      { id: 'fertilizer', label: 'Fertilizer', icon: 'icon-fertilizer' },
-      { id: 'labor', label: 'Labor', icon: 'icon-labor' },
-    ],
+    options: {
+      land_suitability: {
+        label: 'Land Suitability',
+        icon: 'icon-land-suitability',
+      },
+      seedlings: { label: 'Seedlings', icon: 'icon-seedlings' },
+      fertilizer: { label: 'Fertilizer', icon: 'icon-fertilizer' },
+      labor: { label: 'Labor', icon: 'icon-labor' },
+    },
   },
-  {
-    id: 'production',
+  production: {
     label: { text: 'Production', icon: 'icon-production' },
-    options: [
-      { id: 'change_in_yield', label: 'Change in Yield', icon: 'icon-change-in-yield' },
-      { id: 'pests_and_diseases', label: 'Pests & Diseases', icon: 'icon-pests-and-diseases' },
-    ],
+    options: {
+      change_in_yield: {
+        label: 'Change in Yield',
+        icon: 'icon-change-in-yield',
+      },
+
+      pests_and_diseases: {
+        label: 'Pests & Diseases',
+        icon: 'icon-pests-and-diseases',
+      },
+    },
   },
-  {
-    id: 'processing',
+  processing: {
     label: { text: 'Processing', icon: 'icon-processing' },
-    options: [
-      { id: 'lorem_ipsum', label: 'Lorem ipsum', icon: 'icon-labor' },
-      { id: 'lorem_ipsum', label: 'Lorem ipsum', icon: 'icon-labor' },
-    ],
+    options: {
+      lorem_ipsum: { label: 'Lorem ipsum', icon: 'icon-labor' },
+      lorem_ipsum_2: { label: 'Lorem ipsum', icon: 'icon-labor' },
+    },
   },
-  {
-    id: 'trade',
-    label: {text: 'Trade', icon: 'icon-trade'},
-    options: [
-      { id: 'lorem_ipsum', label: 'Lorem ipsum', icon: 'icon-labor' },
-      { id: 'lorem_ipsum', label: 'Lorem ipsum', icon: 'icon-labor' },
-    ],
+  trade: {
+    label: { text: 'Trade', icon: 'icon-trade' },
+    options: {
+      lorem_ipsum: { label: 'Lorem ipsum', icon: 'icon-labor' },
+      lorem_ipsum_2: { label: 'Lorem ipsum', icon: 'icon-labor' },
+    },
   },
-];
+};
 
 const intros = {
   inputs: {
@@ -51,19 +57,19 @@ const chains = {
     inputs: {
       land_suitability: {
         info: 'Soil salinity, texture, organic matter, pH, water quality, rainfall and temperature are among the most important attributes that could be used to determine the suitable parcel of land for rice cultivation.',
-        widget: 'icon-',
+        widget: null,
       },
       seedlings: {
         info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in dolor vitae sem hendrerit ultrices id at urna. Integer lectus lectus, accumsan sed libero in, mollis dapibus justo. Mauris auctor lectus ullamcorper dolor elementum feugiat. Integer et condimentum mi. ',
-        widget: 'icon-',
+        widget: null,
       },
       fertilizer: {
         info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in dolor vitae sem hendrerit ultrices id at urna. Integer lectus lectus, accumsan sed libero in, mollis dapibus justo. Mauris auctor lectus ullamcorper dolor elementum feugiat. Integer et condimentum mi. ',
-        widget: 'icon-',
+        widget: null,
       },
       labor: {
         info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in dolor vitae sem hendrerit ultrices id at urna. Integer lectus lectus, accumsan sed libero in, mollis dapibus justo. Mauris auctor lectus ullamcorper dolor elementum feugiat. Integer et condimentum mi. ',
-        widget: 'icon-',
+        widget: null,
       },
     },
     production: {
@@ -73,6 +79,20 @@ const chains = {
     processing: {},
     trade: {},
   },
+  COFFEE: {},
+  COTTON: {},
 };
 
-export { intros, chain_items, chains };
+const user_stories = {
+  header: 'Applicable Header e.g. “Hear From...”',
+  stories: [
+    {
+      person: 'Daniel',
+      location: 'Colombia',
+      quote:
+        'When my crops were devastated by the extreme rainfalls last summer, I was fortunate to have CRT data to demonstrate the loss and facilitate the process to claim the insurance.',
+    },
+  ],
+};
+
+export { intros, chain_items, chains, user_stories };

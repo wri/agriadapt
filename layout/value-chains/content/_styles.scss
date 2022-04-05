@@ -3,14 +3,15 @@
 }
 
 .c-value-chain-flow {
-    display: flex;
-    flex-direction: row;
-    // Temporary styling probably
-    width: 100%;
-    justify-content: space-between;
     margin: $margin-size 0;
+    overflow: hidden;
 }
 
 .c-value-chain-item-intro {
     max-width: 610px;
+    margin: $margin-size 0;
+}
+
+.c-step-details {
+    margin: calc($margin-size + 20px) 0;
 }

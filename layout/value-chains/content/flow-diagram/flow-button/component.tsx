@@ -37,7 +37,7 @@ const FlowButton = ({
             })}
             name={icon}
           />
-          <span className="label-text">{label}</span>
+          <h3>{label}</h3>
         </div>
       </a>
     </div>
