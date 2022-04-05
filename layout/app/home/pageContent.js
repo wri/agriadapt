@@ -15,23 +15,11 @@ const MAP = {
 const VALUECHAINS = {
     title: 'Here’s a more compelling header for the narrative experience.',
     subTitle: 'Here’s a subheader that provides additional contextual information.',
-    chains: {
-        rice: {
-            title: 'Rice',
-            button: 'Explore the Rice Value Chain'
-        },
-        cotton: {
-            title: 'Cotton',
-            button: 'Explore the Cotton Value Chain'
-        },
-        coffee: {
-            title: 'Coffee',
-            button: 'Explore the Coffee Value Chain'
-        }
-    }
 };
 
 const ANALYSIS = {
+    title: "Here's a more compelling header for the narrative eexperience.",
+    subTitle: "Here's a subheader that provides additional contextual information",
     card1: {
         title: 'Understand how climate hazards affect coffee production around the world',
         button: 'Check out the data',

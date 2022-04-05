@@ -263,11 +263,13 @@
 
 .value-chains-container {
 	margin-bottom: 100px;
+
 	@media screen and (min-width: map-get($breakpoints, small)) {
 		position: relative;
 		margin-top: 100px;
 		margin-bottom: 200px;
 	}
+
 	.value-chains-text-container {
 		h2 {
 			font-size: 42px;
@@ -393,6 +395,10 @@
 			position: relative;
 			margin-right: auto;
 
+			img {
+				border-radius: 16px;
+			}
+
 			.value-chain-card-text-container {
 				height: 50px;
 				width: 123px;
@@ -422,6 +428,10 @@
 			position: relative;
 			margin-right: auto;
 
+			img {
+				border-radius: 16px;
+			}
+
 			.value-chain-card-text-container {
 				height: 50px;
 				width: 123px;
@@ -450,13 +460,16 @@
 			background: #FFFFFF;
 			position: relative;
 
+			img {
+				border-radius: 16px;
+			}
+
 			.value-chain-card-text-container {
 				position: absolute;
 				height: 50px;
 				width: 74px;
 				margin-left: 20px;
 				top: 282px;
-
 
 				.value-chain-card-button-container {
 					width: 100%;

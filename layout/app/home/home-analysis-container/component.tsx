@@ -1,16 +1,19 @@
 import React from 'react'
 import Carousel from 'nuka-carousel';
 import { Media } from "lib/media";
+import { ANALYSIS } from '../pageContent';
 
 const AnalysisContainerHome = () => {
 
-  const getAnalysisCard = () => {
+  const cards = ['card1', 'card2', 'card3', 'card4'];
+
+  const getAnalysisCard = (item) => {
     return (
       <div className='analysis-card-container'>
-        <h3>Understand how climate hazards affect coffee production around the world</h3>
+        <h3>{ANALYSIS[item].title}</h3>
         <div className='analysis-card-button-container'>
           <button className="c-button -primary">
-            Check out the data
+            {ANALYSIS[item].button}
           </button>
         </div>
         <img src='static/images/components/layout/analysis-map.svg' alt='analysis-map' />
@@ -21,13 +24,11 @@ const AnalysisContainerHome = () => {
   return (
     <div className="analysis-container">
       <div className="analysis-text-container">
-        <h2>Here's a more compelling header for the analysis experience.</h2>
-        <h3>
-          Here's a subheader that provides additional contextual information.
-        </h3>
+        <h2>{ANALYSIS.title}</h2>
+        <h3>{ANALYSIS.subTitle}</h3>
         <div className="c-carousel">
           <Media at='sm'>
-          <Carousel
+            <Carousel
               renderCenterLeftControls={() => { }}
               renderCenterRightControls={() => { }}
               slidesToShow={1}
@@ -35,16 +36,11 @@ const AnalysisContainerHome = () => {
               autoplay={true}
               wrapAround={true}
             >
-              {[
-                getAnalysisCard(),
-                getAnalysisCard(),
-                getAnalysisCard(),
-                getAnalysisCard(),
-              ].map((item) => item)}
+              {cards.map((item) => getAnalysisCard(item))}
             </Carousel>
           </Media>
           <Media at='md'>
-          <Carousel
+            <Carousel
               renderCenterLeftControls={() => { }}
               renderCenterRightControls={() => { }}
               slidesToShow={2}
@@ -52,12 +48,7 @@ const AnalysisContainerHome = () => {
               autoplay={true}
               wrapAround={true}
             >
-              {[
-                getAnalysisCard(),
-                getAnalysisCard(),
-                getAnalysisCard(),
-                getAnalysisCard(),
-              ].map((item) => item)}
+              {cards.map((item) => getAnalysisCard(item))}
             </Carousel>
           </Media>
           <Media greaterThanOrEqual='lg'>
@@ -69,12 +60,7 @@ const AnalysisContainerHome = () => {
               autoplay={true}
               wrapAround={true}
             >
-              {[
-                getAnalysisCard(),
-                getAnalysisCard(),
-                getAnalysisCard(),
-                getAnalysisCard(),
-              ].map((item) => item)}
+              {cards.map((item) => getAnalysisCard(item))}
             </Carousel>
           </Media>
 

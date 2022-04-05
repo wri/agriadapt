@@ -1,16 +1,15 @@
 import React from 'react'
-import { Media } from "lib/media";
+import { LEARN } from '../pageContent'
 
 const LearnMoreContainerHome = () => {
-
 
     return (
         <div className='learn-more-container'>
             <div>
-                <h2>Learn more about the project</h2>
-                <h3>The climate risk tool project is a initialtive by World Resource Institute. The beta version of the tool has been funded by Walmart Foundation.</h3>
+                <h2>{LEARN.title}</h2>
+                <h3>{LEARN.subTitle}</h3>
                 <button className="c-button -primary">
-                    About [Project Name]
+                    {LEARN.button}
                 </button>
             </div>
             <div className='learn-more-image-container'>

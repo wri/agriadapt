@@ -1,5 +1,6 @@
 import React from 'react'
 import { Media } from "lib/media";
+import { VALUECHAINS } from '../pageContent';
 
 const ValueChainsContainerHome = () => {
 
@@ -47,8 +48,8 @@ const ValueChainsContainerHome = () => {
     return (
         <div className='value-chains-container'>
             <div className='value-chains-text-container'>
-                <h2>Here's a more compelling header for the narrative experience.</h2>
-                <h3>Here's a subheader that provides additional contextual information.</h3>
+                <h2>{VALUECHAINS.title}</h2>
+                <h3>{VALUECHAINS.subTitle}</h3>
             </div>
             <Media at='sm'>
                 {getValueChainCardContainer('sm')}
