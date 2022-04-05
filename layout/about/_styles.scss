@@ -30,6 +30,15 @@
                 display: block;
                 margin-top: 148px;
             }
+
+            &:first-child {
+                @media screen and (min-width: map-get($breakpoints, large)) {
+                    h2::before {
+                        content: none;
+                    }
+                }
+            }
+
             h3 {
                 margin-bottom: 24px;
             }
