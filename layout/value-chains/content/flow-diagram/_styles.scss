@@ -1,12 +1,17 @@
 .c-flow {
     width: 1060px;
-    @media screen and (min-width: map-get($breakpoints, large)) {
-        width: 100%;
-    }
     display: flex;
     flex-direction: row;
-    // Temporary styling probably
-    justify-content: space-between;
+    justify-content: space-around;
+    margin: 0 $margin-size-small;
+
+    @media screen and (min-width: map-get($breakpoints, medium)) {
+        margin: 0 $margin-size;
+    }
+
+    @media screen and (min-width: map-get($breakpoints, large)) {
+        margin: 0 auto;
+    }
     .c-flow-step {
         position: relative;
 

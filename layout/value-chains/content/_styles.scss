@@ -3,8 +3,10 @@
 }
 
 .c-value-chain-flow {
-    margin: $margin-size 0;
-    overflow: hidden;
+    margin-top: $margin-size;
+    margin-bottom: $margin-size;
+    // TODO: implement carousel instead
+    overflow-x: auto;
 }
 
 .c-value-chain-item-intro {

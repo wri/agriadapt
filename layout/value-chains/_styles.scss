@@ -1,22 +1,40 @@
 .l-crop {
     @media screen and (min-width: map-get($breakpoints, small)) {
         margin: 0 $margin-size-small;
+
         .c-intro-header {
             margin: 0 $margin-size-small * -1;
+        }
+
+        .c-value-chain-flow {
+            margin-left: $margin-size-small * -1;
+            margin-right: $margin-size-small * -1;
         }
     }
 
     @media screen and (min-width: map-get($breakpoints, medium)) {
         margin: 0 $margin-size;
+
         .c-intro-header {
             margin: 0 $margin-size * -1;
+        }
+
+        .c-value-chain-flow {
+            margin-left: $margin-size * -1;
+            margin-right: $margin-size * -1;
         }
     }
 
     @media screen and (min-width: map-get($breakpoints, large)) {
         margin: 0 $margin-size * 2;
+
         .c-intro-header {
             margin: 0 $margin-size * -2;
+        }
+
+        .c-value-chain-flow {
+            margin-left: 0;
+            margin-right: 0;
         }
     }
 }
