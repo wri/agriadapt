@@ -27,18 +27,23 @@ const ValueChainsContainerHome = () => {
                 </div>
             )
         }
-    }
+    };
 
     const getValueChainCardContainer = (breakpoint: string) => {
         return (
-            <div className='value-chain-cards-container'>
-                {getValueChainCard('Rice', breakpoint)}
-                {getValueChainCard('Cotton', breakpoint)}
-                {getValueChainCard('Coffee', breakpoint)}
-            </div>
+            <>
+                <div className='value-chains-mobile-image-container'>
+                    {breakpoint === 'sm' && <img src='static/images/components/layout/valuechain-blob.svg' alt='valuechain-blob' />}
+                </div>
+                <div className='value-chain-cards-container'>
+                    {getValueChainCard('Rice', breakpoint)}
+                    {getValueChainCard('Cotton', breakpoint)}
+                    {getValueChainCard('Coffee', breakpoint)}
+                </div>
+            </>
         )
-    }
-    
+    };
+
     return (
         <div className='value-chains-container'>
             <div className='value-chains-text-container'>
