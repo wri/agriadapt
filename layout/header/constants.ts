@@ -43,9 +43,8 @@ export const APP_HEADER_ITEMS = [
   },
   {
     id: 'language',
-    label: 'English',
+    label: 'Language',
     href: '',
-    mobile: false,
     children: [
       {
         label: 'English',

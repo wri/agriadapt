@@ -57,7 +57,6 @@ const HeaderMenuMobile = ({
 
               // If admin user is defined and is not equal to the current token
               // if (typeof item.admin !== 'undefined' && item.admin !== isUserAdmin) return null;
-              if (!item.mobile && item.mobile !== false) {
                 const activeClassName = classnames({
                   "-active": item.pages && item.pages.includes(pathname),
                 });
@@ -69,25 +68,28 @@ const HeaderMenuMobile = ({
                     {item.children && (
                       <ul>
                         {item.children.map((c) => {
-                          return (
-                            <li key={c.label}>
-                              {c.href && (
-                                <Link href={c.href}>
-                                  <a>{c.label}</a>
-                                </Link>
-                              )}
-  
-                              {c.href && c.external && (
-                                <a href={c.href}>{c.label}</a>
-                              )}
-                            </li>
-                          );
+                          if (item.id === 'language') {
+                            return (
+                              <li key={c.label} onClick={null}>
+                                {c.label}
+                              </li>
+                            );
+                          } else {
+                            return (
+                              <li key={c.label}>
+                                {c.href && (
+                                  <Link href={c.href}>
+                                    <a>{c.label}</a>
+                                  </Link>
+                                )}
+                              </li>
+                            );
+                          }
                         })}
                       </ul>
                     )}
                   </li>
                 );
-              }
             })}
           </ul>
         </nav>
