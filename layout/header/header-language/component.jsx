@@ -1,20 +1,26 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useDebouncedCallback } from 'use-debounce';
 import Tether from 'react-tether';
 
 import { APP_HEADER_ITEMS } from "layout/header/constants";
-// hooks
-// import { useFeaturedDashboards } from 'hooks/dashboard';
 
-export default function HeaderValueChains() {
+export default function HeaderLanguage() {
     const [isVisible, setVisibility] = useState(false);
+    const [prefLanguage, setPrefLanguage] = useState('English'); // UPDATE WITH REDUCER
     const toggleDropdown = useDebouncedCallback((_isVisible) => {
         setVisibility(_isVisible);
     }, 50);
 
+    const changeLanguage = (language) => {
+        setPrefLanguage(language);
+        // add api call
+        // api response text should update entire website text via reducers 
+        // each page should request text from reducers
+    }
 
-    const featuredDashboards = APP_HEADER_ITEMS[0].children;
+    // TO DO: might need to update element iteration with additional nav links
+    const featuredDashboards = APP_HEADER_ITEMS[APP_HEADER_ITEMS.length - 1].children;
 
     return (
         <Tether
@@ -32,7 +38,7 @@ export default function HeaderValueChains() {
                         onMouseEnter={() => toggleDropdown(true)}
                         onMouseLeave={() => toggleDropdown(false)}
                     >
-                        Value Chains
+                        {prefLanguage}
                     </a>
                 </Link>
             )}
@@ -47,10 +53,8 @@ export default function HeaderValueChains() {
                         onMouseLeave={() => toggleDropdown(false)}
                     >
                         {featuredDashboards.map(({ id, label, href }) => (
-                            <li className="header-dropdown-list-item" key={id}>
-                                <Link href={href}>
-                                    <a>{label}</a>
-                                </Link>
+                            <li className="header-dropdown-list-item" key={id} onClick={(e) => { changeLanguage(e.target.innerText); }}>
+                                <a>{label}</a>
                             </li>
                         ))}
                     </ul>

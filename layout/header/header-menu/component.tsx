@@ -8,7 +8,8 @@ import Link from "next/link";
 import { APP_HEADER_ITEMS } from "layout/header/constants";
 
 const header = {
-  menu: import("."),
+  'value-chains': import("../header-valuechains"),
+  'language': import("../header-language")
 };
 
 const HeaderMenu = () => {
@@ -18,14 +19,13 @@ const HeaderMenu = () => {
     <nav className="header-menu">
       <ul>
         {APP_HEADER_ITEMS.map((item) => {
-          // console.log('item', item)
           const activeClassName = classnames({
             "-active": item["pages"] && item["pages"].includes(pathname),
           });
           let DropdownMenu;
-          // if (item.id === 'value-chains') {
-          //   DropdownMenu = dynamic(() => header[item.id]);
-          // }
+          if (item.id === 'value-chains' || item.id === 'language') {
+            DropdownMenu = dynamic(() => header[item.id]);
+          }
 
           return (
             <li key={item.label} className={activeClassName}>

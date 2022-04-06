@@ -797,12 +797,14 @@
 	}
 
 	.learn-more-image-container {
-
+		width: 100%;
 		img {
 
 			@media screen and (min-width: map-get($breakpoints, small)) {
 				height: 321px;
 				width: 481px;
+				margin-left: auto;
+				margin-right: auto;
 				padding-left: 18px;
 				padding-right: 18px;
 				display: block;
@@ -811,8 +813,8 @@
 			@media screen and (min-width: map-get($breakpoints, medium)) {
 				height: 518px;
 				width: 776px;
-				padding-left: 56px;
-				padding-right: 56px;
+				margin-left: auto;
+				margin-right: auto;
 				display: block;
 			}
 

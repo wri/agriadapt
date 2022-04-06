@@ -41,6 +41,30 @@ export const APP_HEADER_ITEMS = [
       },
     ],
   },
+  {
+    id: 'language',
+    label: 'English',
+    href: '',
+    mobile: false,
+    children: [
+      {
+        label: 'Spanish',
+        href: ''
+      },
+      {
+        label: 'Hindi',
+        href: ''
+      },
+      {
+        label: 'Tamil',
+        href: ''
+      },
+      {
+        label: 'Telugu',
+        href: ''
+      },
+    ]
+  }
 ];
 
 export default { APP_HEADER_ITEMS };

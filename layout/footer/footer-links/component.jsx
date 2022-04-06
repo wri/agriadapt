@@ -50,13 +50,41 @@ export default function FooterLinks() {
       <div className="l-container">
         <div className="row">
           <div className="column small-12">
-            <Media at="sm">{getMenuItems()}</Media>
+            <Media at="sm">
+              {getMenuItems()}
+              </Media>
             <Media greaterThanOrEqual="md">
-              <div className="c-compound-menu-wrapper">{getMenuItems()}</div>
+              <div className="c-compound-menu-wrapper">
+                {getMenuItems()}
+              </div>
             </Media>
+            <div className="footer-related-sites">
+              <div className='related-sites-title-container'>
+                <h3>Related Sites</h3>
+              </div>
+              <div className='related-sites-images-conatiner'>
+                <img src='static/images/components/layout/footer/resourceWatchLogo.svg' alt='resource-watch'/>
+                <img src='static/images/components/layout/footer/wriAqueductLogo.svg' alt='aqueduct'/>
+                <img src='static/images/components/layout/footer/prepLogo.svg' alt='prep'/>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </nav>
   );
 }
+
+
+// <div className="footer-related-sites">
+// <div className='related-sites-title-container'>
+//   <h3>Related Sites</h3>
+// </div>
+// <div className='related-sites-images-conatiner'>
+//   <ul className="subMenu">
+//     <li className='item'> <img src='static/images/components/layout/footer/resourceWatchLogo.svg' alt='resource-watch'/> </li>
+//     <li className='item'> <img src='static/images/components/layout/footer/wriAqueductLogo.svg' alt='aqueduct'/> </li>
+//     <li className='item'> <img src='static/images/components/layout/footer/prepLogo.svg' alt='prep'/> </li>
+//   </ul>
+// </div>
+// </div>
