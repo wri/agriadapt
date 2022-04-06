@@ -48,6 +48,10 @@ export const APP_HEADER_ITEMS = [
     mobile: false,
     children: [
       {
+        label: 'English',
+        href: ''
+      },
+      {
         label: 'Spanish',
         href: ''
       },

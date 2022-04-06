@@ -52,8 +52,11 @@ export default function FooterLinks() {
           <div className="column small-12">
             <Media at="sm">
               {getMenuItems()}
-              </Media>
-            <Media greaterThanOrEqual="md">
+            </Media>
+            <Media at="md">
+              {getMenuItems()}
+            </Media>
+            <Media greaterThanOrEqual="lg">
               <div className="c-compound-menu-wrapper">
                 {getMenuItems()}
               </div>
@@ -74,17 +77,3 @@ export default function FooterLinks() {
     </nav>
   );
 }
-
-
-// <div className="footer-related-sites">
-// <div className='related-sites-title-container'>
-//   <h3>Related Sites</h3>
-// </div>
-// <div className='related-sites-images-conatiner'>
-//   <ul className="subMenu">
-//     <li className='item'> <img src='static/images/components/layout/footer/resourceWatchLogo.svg' alt='resource-watch'/> </li>
-//     <li className='item'> <img src='static/images/components/layout/footer/wriAqueductLogo.svg' alt='aqueduct'/> </li>
-//     <li className='item'> <img src='static/images/components/layout/footer/prepLogo.svg' alt='prep'/> </li>
-//   </ul>
-// </div>
-// </div>

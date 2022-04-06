@@ -31,7 +31,7 @@ const HeaderMenu = () => {
             <li key={item.label} className={activeClassName}>
               {!DropdownMenu && item.href && (
                 <Link href={item.href}>
-                  <a>{item.label}</a>
+                    <a>{item.label}</a>
                 </Link>
               )}
 
@@ -45,3 +45,5 @@ const HeaderMenu = () => {
 };
 
 export default HeaderMenu;
+{/* <img src='static/images/components/layouts/language-globe.svg' alt='language-globe' />
+<img src='static/images/components/layouts/language-dropdown.svg' alt='language-dropdown' /> */}

@@ -20,8 +20,7 @@ export default function HeaderLanguage() {
     }
 
     // TO DO: might need to update element iteration with additional nav links
-    const featuredDashboards = APP_HEADER_ITEMS[APP_HEADER_ITEMS.length - 1].children;
-
+    const featuredLanguages = APP_HEADER_ITEMS[APP_HEADER_ITEMS.length - 1].children;
     return (
         <Tether
             attachment="top center"
@@ -38,12 +37,14 @@ export default function HeaderLanguage() {
                         onMouseEnter={() => toggleDropdown(true)}
                         onMouseLeave={() => toggleDropdown(false)}
                     >
+                        <img className='dropdown-link-image' src='static/images/components/layout/language-globe.svg' alt='language-globe' />
                         {prefLanguage}
+                        <img className='dropdown-link-image' src='static/images/components/layout/language-dropdown.svg' alt='language-dropdown' /> 
                     </a>
                 </Link>
             )}
             renderElement={(ref) => {
-                if (!isVisible || !featuredDashboards.length) return null;
+                if (!isVisible || !featuredLanguages.length) return null;
 
                 return (
                     <ul
@@ -52,7 +53,7 @@ export default function HeaderLanguage() {
                         onMouseEnter={() => toggleDropdown(true)}
                         onMouseLeave={() => toggleDropdown(false)}
                     >
-                        {featuredDashboards.map(({ id, label, href }) => (
+                        {featuredLanguages.map(({ id, label, href }) => (
                             <li className="header-dropdown-list-item" key={id} onClick={(e) => { changeLanguage(e.target.innerText); }}>
                                 <a>{label}</a>
                             </li>
