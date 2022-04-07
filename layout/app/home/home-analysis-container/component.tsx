@@ -36,7 +36,7 @@ const AnalysisContainerHome = () => {
               renderCenterRightControls={() => { }}
               slidesToShow={1}
               cellAlign="right"
-              // autoplay={true}
+              autoplay={true}
               wrapAround={true}
             >
               {cards.map((item) => getAnalysisCard(item))}
@@ -48,7 +48,7 @@ const AnalysisContainerHome = () => {
               renderCenterRightControls={() => { }}
               slidesToShow={2}
               cellAlign="right"
-              // autoplay={true}
+              autoplay={true}
               wrapAround={true}
             >
               {cards.map((item) => getAnalysisCard(item))}
@@ -60,7 +60,7 @@ const AnalysisContainerHome = () => {
               renderCenterRightControls={() => { }}
               slidesToShow={3}
               cellAlign="right"
-              // autoplay={true}
+              autoplay={true}
               wrapAround={true}
             >
               {cards.map((item) => getAnalysisCard(item))}
