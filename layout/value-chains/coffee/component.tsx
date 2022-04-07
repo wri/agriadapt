@@ -1,13 +1,11 @@
-import ContentHeader from "layout/content-header";
-import { COFFEE } from "layout/content-header/constants";
-import Layout from "layout/layout/layout-app";
+import { COFFEE } from "layout/intro-header/constants";
+import LayoutCrop from "layout/value-chains";
 import { ValueChainPageProps } from "types/value-chain";
+import { chains } from "../content/constants";
 
 const LayoutCoffee = ({ cid }: ValueChainPageProps) => {
   return (
-    <Layout>
-      <ContentHeader {...COFFEE} />
-    </Layout>
+    <LayoutCrop header={COFFEE} details={chains.COFFEE}/>
   );
 };
 

@@ -1,14 +1,10 @@
-import ContentHeader from "layout/content-header";
-import { COTTON } from "layout/content-header/constants";
-import Layout from "layout/layout/layout-app";
+import { COTTON } from "layout/intro-header/constants";
 import { ValueChainPageProps } from "types/value-chain";
+import LayoutCrop from "../component";
+import { chains } from "../content/constants";
 
 const LayoutCotton = ({ cid }: ValueChainPageProps) => {
-  return (
-    <Layout>
-      <ContentHeader {...COTTON} />
-    </Layout>
-  );
+  return <LayoutCrop header={COTTON} details={chains.COTTON} />;
 };
 
 export default LayoutCotton;

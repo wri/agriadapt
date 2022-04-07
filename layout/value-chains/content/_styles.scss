@@ -1,0 +1,19 @@
+.c-hazards-intro {
+    max-width: 610px;
+}
+
+.c-value-chain-flow {
+    margin-top: $margin-size;
+    margin-bottom: $margin-size;
+    // TODO: implement carousel instead
+    overflow-x: auto;
+}
+
+.c-value-chain-item-intro {
+    max-width: 610px;
+    margin: $margin-size 0;
+}
+
+.c-step-details {
+    margin: calc($margin-size + 20px) 0;
+}

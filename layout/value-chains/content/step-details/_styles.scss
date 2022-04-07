@@ -1,0 +1,32 @@
+.c-detail-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 92px;
+    justify-content: space-between;
+
+    @media screen and (min-width: map-get($breakpoints, medium)) {
+        flex-direction: row;
+    }
+
+    .c-detail-item-info {
+        max-width: 505px;
+        display: flex;
+        flex-direction: row;
+
+        h3 {
+            line-height: 38px;
+        }
+    }
+
+    .c-widget {
+        background-color: rgb($primary-green, 0.2);
+        width: 100%;
+        height: 456px;
+
+        @media screen and (min-width: map-get($breakpoints, medium)) {
+            &.-side {
+                width: 430px;
+            }
+        }
+    }
+}
