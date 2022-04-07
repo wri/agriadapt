@@ -1,8 +1,8 @@
 
 
 const INTRO = {
-    title: 'Helping farmers and agriculture businesses around the world adapt to climage change.',
-    subTitle: 'Data and tools for agricultureal resilience',
+    title: 'Helping farmers and agriculture businesses around the world adapt to climate change.',
+    subTitle: 'Data and tools for agricultural resilience',
     button: 'Explore the Latest Data'
 };
 
@@ -18,7 +18,7 @@ const VALUECHAINS = {
 };
 
 const ANALYSIS = {
-    title: "Here's a more compelling header for the narrative eexperience.",
+    title: "Here's a more compelling header for the narrative experience.",
     subTitle: "Here's a subheader that provides additional contextual information",
     card1: {
         title: 'Understand how climate hazards affect coffee production around the world',
