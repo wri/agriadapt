@@ -16,7 +16,10 @@ const AnalysisContainerHome = () => {
             {ANALYSIS[item].button}
           </button>
         </div>
-        <img src='static/images/components/layout/analysis-map.svg' alt='analysis-map' />
+        <div className='analysis-card-image-container'>
+          <img src='static/images/components/layout/analysis-map.svg' alt='analysis-map' />
+        </div>
+        
       </div>
     );
   };
@@ -33,7 +36,7 @@ const AnalysisContainerHome = () => {
               renderCenterRightControls={() => { }}
               slidesToShow={1}
               cellAlign="right"
-              autoplay={true}
+              // autoplay={true}
               wrapAround={true}
             >
               {cards.map((item) => getAnalysisCard(item))}
@@ -45,7 +48,7 @@ const AnalysisContainerHome = () => {
               renderCenterRightControls={() => { }}
               slidesToShow={2}
               cellAlign="right"
-              autoplay={true}
+              // autoplay={true}
               wrapAround={true}
             >
               {cards.map((item) => getAnalysisCard(item))}
@@ -57,7 +60,7 @@ const AnalysisContainerHome = () => {
               renderCenterRightControls={() => { }}
               slidesToShow={3}
               cellAlign="right"
-              autoplay={true}
+              // autoplay={true}
               wrapAround={true}
             >
               {cards.map((item) => getAnalysisCard(item))}

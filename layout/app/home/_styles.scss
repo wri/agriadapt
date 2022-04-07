@@ -651,31 +651,18 @@
 					}
 				}
 
-				img {
-					position: absolute;
-					filter: drop-shadow(0px 0px 60px rgba(0, 0, 0, 0.12));
-					border-radius: 16px;
+				.analysis-card-image-container {
 
-					@media screen and (min-width: map-get($breakpoints, small)) {
+					img {
+						position: absolute;
+						filter: drop-shadow(0px 0px 60px rgba(0, 0, 0, 0.12));
+						border-radius: 16px;
+						top: 192px;
 						height: 258px;
 						width: 459px;
-						top: 213px;
-					}
-
-					@media screen and (min-width: map-get($breakpoints, medium)) {
-						height: 258px;
-						width: 459px;
-						left: -24px;
-						top: 213px;
-					}
-
-					@media screen and (min-width: map-get($breakpoints, large)) {
-						height: 258px;
-						width: 459px;
-						left: -24px;
-						top: 213px;
 					}
 				}
+
 			}
 
 			.slider-control-bottomcenter {

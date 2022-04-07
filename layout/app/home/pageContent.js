@@ -18,7 +18,7 @@ const VALUECHAINS = {
 };
 
 const ANALYSIS = {
-    title: "Here's a more compelling header for the narrative experience.",
+    title: "Here's a more compelling header for the analysis experience.",
     subTitle: "Here's a subheader that provides additional contextual information",
     card1: {
         title: 'Understand how climate hazards affect coffee production around the world',

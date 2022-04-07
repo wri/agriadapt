@@ -66,9 +66,9 @@ export default function FooterLinks() {
                 <h3>Related Sites</h3>
               </div>
               <div className='related-sites-images-conatiner'>
-                <img src='static/images/components/layout/footer/resourceWatchLogo.svg' alt='resource-watch'/>
-                <img src='static/images/components/layout/footer/wriAqueductLogo.svg' alt='aqueduct'/>
-                <img src='static/images/components/layout/footer/prepLogo.svg' alt='prep'/>
+                <Link href='https://resourcewatch.org'><img src='static/images/components/layout/footer/resourceWatchLogo.svg' alt='resource-watch'/></Link>
+                <Link href='https://www.wri.org/aqueduct'><img src='static/images/components/layout/footer/wriAqueductLogo.svg' alt='aqueduct'/></Link>
+                <Link href='https://www.prepdata.org'><img src='static/images/components/layout/footer/prepLogo.svg' alt='prep'/></Link>
               </div>
             </div>
           </div>

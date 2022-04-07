@@ -72,11 +72,13 @@ export default function Footer() {
                   </div>
                   <div className="footer-item">
                     <span>Powered by</span>
-                    <img
-                      className={"rw-logo"}
-                      alt={"Resource Watch"}
-                      src="/static/images/Logo-RW.svg"
-                    />
+                    <Link href='https://resourcewatch.org' >
+                      <img
+                        className={"rw-logo"}
+                        alt={"Resource Watch"}
+                        src="/static/images/Logo-RW.svg"
+                      />
+                    </Link>
                   </div>
                 </div>
               </div>
