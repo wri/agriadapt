@@ -8,6 +8,9 @@
 		.c-intro-header {
 			margin: 0 $margin-size-small * -1;
 		}
+		.c-mobile-blob {
+			margin: 0 $margin-size-small * -1;
+		}
 	}
 
 	@media screen and (min-width: map-get($breakpoints, medium)) {
@@ -95,12 +98,13 @@
 	}
 
 	.c-value-chain-cards {
+		position: relative;
 		margin: 50px auto 0;
 		width: 100%;
 		max-width: 1060px;
-		padding-top: 75px;
 		display: flex;
 		flex-direction: column;
+		row-gap: 26px;
 
 		@media screen and (min-width: map-get($breakpoints, medium)) {
 			display: grid;
@@ -133,6 +137,14 @@
 				top: 276px;
 				position: absolute;
 			}
+		}
+
+		.c-mobile-blob {
+			position: absolute;
+			width: 332px;
+			height: 305px;
+			z-index: 0;
+			top: -50px;
 		}
 	}
 }

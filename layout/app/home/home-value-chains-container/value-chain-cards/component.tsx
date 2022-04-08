@@ -10,13 +10,15 @@ export const ValueChainCards = () => {
       <>
         <Media at="sm">
           <div className="c-value-chain-cards">
-            <Image
-              unoptimized
-              loader={loader}
-              layout="fill"
-              src={valueChainBlob}
-              alt="valuechain-blob"
-            />
+            <div className="c-mobile-blob">
+              <Image
+                unoptimized
+                loader={loader}
+                layout="fill"
+                src={valueChainBlob}
+                alt="valuechain-blob"
+              />
+            </div>
             {VALUECHAINS.chains.map((c) => (
               <button key={c.label} className="c-button -secondary">
                 {`Explore the ${c.label} Value Chain`}
