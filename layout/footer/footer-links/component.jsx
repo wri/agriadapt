@@ -4,7 +4,9 @@ import Link from "next/link";
 import { Media } from "lib/media";
 
 // constants
-import { FOOTER_LINKS } from "./constants";
+import { FOOTER_LINKS, RELATED_SITES } from "./constants";
+import Image from "next/image";
+import loader from "lib/imageLoader";
 
 export default function FooterLinks() {
   const footerMenu = useMemo(
@@ -50,25 +52,30 @@ export default function FooterLinks() {
       <div className="l-container">
         <div className="row">
           <div className="column small-12">
-            <Media at="sm">
-              {getMenuItems()}
-            </Media>
-            <Media at="md">
-              {getMenuItems()}
-            </Media>
+            <Media at="sm">{getMenuItems()}</Media>
+            <Media at="md">{getMenuItems()}</Media>
             <Media greaterThanOrEqual="lg">
-              <div className="c-compound-menu-wrapper">
-                {getMenuItems()}
-              </div>
+              <div className="c-compound-menu-wrapper">{getMenuItems()}</div>
             </Media>
             <div className="footer-related-sites">
-              <div className='related-sites-title-container'>
+              <div className="related-sites-title-container">
                 <h3>Related Sites</h3>
               </div>
-              <div className='related-sites-images-conatiner'>
-                <Link href='https://resourcewatch.org'><img src='static/images/components/layout/footer/resourceWatchLogo.svg' alt='resource-watch'/></Link>
-                <Link href='https://www.wri.org/aqueduct'><img src='static/images/components/layout/footer/wriAqueductLogo.svg' alt='aqueduct'/></Link>
-                <Link href='https://www.prepdata.org'><img src='static/images/components/layout/footer/prepLogo.svg' alt='prep'/></Link>
+              <div className="related-sites-images-conatiner">
+                {RELATED_SITES.map((s) => (
+                  <a key={s.alt}>
+                    <Link href={s.href} passHref>
+                      <div className="c-image">
+                        <Image
+                          loader={loader}
+                          unoptimized
+                          src={s.image}
+                          alt={s.alt}
+                        />
+                      </div>
+                    </Link>
+                  </a>
+                ))}
               </div>
             </div>
           </div>
