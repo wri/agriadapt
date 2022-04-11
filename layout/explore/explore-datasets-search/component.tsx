@@ -10,7 +10,6 @@ const ExploreDatasetsSearch = ({
   value_chains: selectedChains,
   advanced,
   setFiltersAdvancedOpen,
-  setFiltersValueChains,
 }): JSX.Element => {
   const { VALUE_CHAINS } = EXPLORE_FILTERS;
   const { open: advOpen } = advanced;
@@ -37,7 +36,7 @@ const ExploreDatasetsSearch = ({
           label: 'Search Layers',
           default: '',
         }}
-        onSearch={() => {}}
+        onSearch={() => undefined}
         input={{
           value: search,
           placeholder: 'Search Layers', // TODO: Translate
@@ -46,25 +45,29 @@ const ExploreDatasetsSearch = ({
         {SearchInput}
       </Field>
       {/* TODO: Translate */}
-      <Field
-        id="VALUE_CHAINS"
-        properties={{
-          label: 'Filter Layers by Value Chain',
-          default: '',
-        }}
-        options={VALUE_CHAINS.options}
-        className={'Select--large'}
-        placeholder={'Value Chain'} // TODO: Translate
-        value={selectedChains}
-        onChange={setFiltersValueChains}
-        // isSearchable={false}
-        // isClearable={false}
-      >
-        {Select}
-      </Field>
+      {Object.entries(EXPLORE_FILTERS.STANDARD).map(([k, v]) => (
+        <Field
+        // TODO: Translate
+          key={k}
+          id={k}
+          properties={{
+            label: v.label,
+            default: '',
+            tooltip: v.tooltip,
+          }}
+          options={[]}
+          hint={v.hint}
+          placeholder={v.placeholder}
+          className={'Select--large'}        
+          // isSearchable={false}
+          // isClearable={false}
+        >
+          {Select}
+        </Field>
+      ))}
       {/* TODO: Translate */}
-      <div>
-        <a className="advanced-link" onClick={handleClickAdvanced}>
+      <div className="advanced-link">
+        <a onClick={handleClickAdvanced}>
           {'Advanced Search'}
         </a>
       </div>
@@ -72,6 +75,7 @@ const ExploreDatasetsSearch = ({
         <>
           {Object.entries(EXPLORE_FILTERS.ADVANCED).map(([k, v]) => (
             <Field
+              key={k}
               id={k}
               properties={{
                 // TODO: Translate

@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
+import Icon from "components/ui/icon";
 
 class Field extends PureComponent {
   static propTypes = {
@@ -57,7 +58,10 @@ class Field extends PureComponent {
       <div className={`c-field ${fieldClasses}`}>
         {properties.label && (
           <label htmlFor={`input-${properties.name}`} className="label">
-            {properties.label}{" "}
+            {properties.label}{' '}
+            {properties.tooltip && (
+              <Icon name="icon-help" className="c-icon -small" />
+            )}
             {properties.required && <abbr title="required">*</abbr>}
           </label>
         )}
@@ -68,7 +72,7 @@ class Field extends PureComponent {
 
         <div className="field-container">
           {React.isValidElement(children) && children}
-          {children && typeof children === "function" && (
+          {children && typeof children === 'function' && (
             <this.props.children
               {...this.props}
               ref={(c) => {
