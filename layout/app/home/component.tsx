@@ -10,14 +10,14 @@ import { LANDING } from "layout/intro-header/constants";
 const LayoutHome = () => {
 
   return (
-    <Layout title="Home" className="l-home">
-      <main>
+    <Layout title="Home">
+      <div className="l-home">
         <IntroHeader {...LANDING} />
         <MapContainerHome />
         <ValueChainsContainerHome />
         <AnalysisContainerHome />
         <LearnMoreContainerHome />
-      </main>
+      </div>
     </Layout>
   );
 };

@@ -56,4 +56,28 @@
     //   margin-bottom: 0;
     // }
   }
+
+  .footer-related-sites {
+    .related-sites-images-conatiner {
+      display: flex;
+      width: fit-content;
+
+      @media screen and (min-width: map-get($breakpoints, small)) {
+        flex-direction: column;
+      }
+
+      @media screen and (min-width: map-get($breakpoints, medium)) {
+        flex-direction: column;
+      }
+
+      @media screen and (min-width: map-get($breakpoints, large)) {
+        flex-direction: row;
+      }
+
+      .c-image {
+        margin-bottom: 15px;
+        margin-right: 20px;
+      }
+    }
+  }
 }

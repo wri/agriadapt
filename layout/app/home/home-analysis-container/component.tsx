@@ -1,63 +1,45 @@
-import React from 'react'
+import React from 'react';
 import Carousel from 'nuka-carousel';
+import { Media } from 'lib/media';
+import { ANALYSIS } from '../constants';
+import AnalysisCard from './analysis-card/component';
 
 const AnalysisContainerHome = () => {
-
-    const settings = {
-        // slidesToShow: 3,
-        // slidesToScroll: 3,
-        cellAlign: "right",
-        // dragging: true,
-        // autoplay: true,
-        // autoplayInterval: 3500,
-        // initialSlideHeight: 56,
-        // wrapAround: true,
-        // renderTopCenterControls: () => { },
-        // renderCenterLeftControls: () => { },
-        // renderCenterRightControls: () => { },
-        // renderBottomCenterControls: ({ previousSlide, currentSlide, nextSlide }) => (
-        //     <button onClick={currentSlide}>Current</button>
-        // ),
-    }
-    const getAnalysisCard = () => {
-        return (
-            <div className='analysis-card-container'>
-                <h3>Understand how climate hazards affect coffee production around the world</h3>
-                <div className='analysis-card-button-container'>
-                    <button className="c-button -primary">
-                        Check out the data
-                    </button>
-                </div>
-                <img src ='static/images/components/layout/analysis-map.svg' alt='analysis-map' />
+  return (
+    <div className="analysis-container">
+      <div className="analysis-text-container">
+        <h2>{ANALYSIS.title}</h2>
+        <h3>{ANALYSIS.subTitle}</h3>
+        {['sm', 'md', 'lg'].map((b: 'sm' | 'md' | 'lg', i) => (
+          <Media
+            key={b}
+            {...(['sm', 'md'].includes(b)
+              ? { at: b }
+              : { greaterThanOrEqual: b })}
+          >
+            <div className="c-carousel">
+              <Carousel
+                renderCenterLeftControls={() => undefined}
+                renderCenterRightControls={() => undefined}
+                slidesToShow={i + 1}
+                cellAlign="left"
+                autoplay={true}
+                wrapAround={true}
+              >
+                {ANALYSIS.cards.map((c) => (
+                  <AnalysisCard
+                    key={i}
+                    image_alt={ANALYSIS.image_alt}
+                    {...c}
+                  />
+                ))}
+              </Carousel>
             </div>
-        );
-    };
-    return (
-      <div className="analysis-container">
-        <div className="analysis-text-container">
-          <h2>Here's a more compelling header for the map experience.</h2>
-          <h3>
-            Here's a subheader that provides additional contextual information.
-          </h3>
-          <div className="c-carousel">
-            {/* <Carousel {...settings}> */}
-            <Carousel
-              renderCenterLeftControls={() => {}}
-              renderCenterRightControls={() => {}}
-              slidesToShow={3}
-              cellAlign="right"
-            >
-              {[
-                getAnalysisCard(),
-                getAnalysisCard(),
-                getAnalysisCard(),
-                getAnalysisCard(),
-              ].map((item) => item)}
-            </Carousel>
-          </div>
-        </div>
+          </Media>
+        ))}
       </div>
-    );
+    </div>
+  );
 };
 
 export default AnalysisContainerHome;

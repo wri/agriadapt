@@ -4,7 +4,9 @@ import Link from "next/link";
 import { Media } from "lib/media";
 
 // constants
-import { FOOTER_LINKS } from "./constants";
+import { FOOTER_LINKS, RELATED_SITES } from "./constants";
+import Image from "next/image";
+import loader from "lib/imageLoader";
 
 export default function FooterLinks() {
   const footerMenu = useMemo(
@@ -51,9 +53,31 @@ export default function FooterLinks() {
         <div className="row">
           <div className="column small-12">
             <Media at="sm">{getMenuItems()}</Media>
-            <Media greaterThanOrEqual="md">
+            <Media at="md">{getMenuItems()}</Media>
+            <Media greaterThanOrEqual="lg">
               <div className="c-compound-menu-wrapper">{getMenuItems()}</div>
             </Media>
+            <div className="footer-related-sites">
+              <div className="related-sites-title-container">
+                <h3>Related Sites</h3>
+              </div>
+              <div className="related-sites-images-conatiner">
+                {RELATED_SITES.map((s) => (
+                  <a key={s.alt}>
+                    <Link href={s.href} passHref>
+                      <div className="c-image">
+                        <Image
+                          loader={loader}
+                          unoptimized
+                          src={s.image}
+                          alt={s.alt}
+                        />
+                      </div>
+                    </Link>
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>

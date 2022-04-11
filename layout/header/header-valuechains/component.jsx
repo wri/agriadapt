@@ -3,28 +3,18 @@ import Link from 'next/link';
 import { useDebouncedCallback } from 'use-debounce';
 import Tether from 'react-tether';
 
+import { APP_HEADER_ITEMS } from "layout/header/constants";
 // hooks
-import { useFeaturedDashboards } from 'hooks/dashboard';
+// import { useFeaturedDashboards } from 'hooks/dashboard';
 
-export default function HeaderDashboards() {
+export default function HeaderValueChains() {
     const [isVisible, setVisibility] = useState(false);
     const toggleDropdown = useDebouncedCallback((_isVisible) => {
         setVisibility(_isVisible);
     }, 50);
 
-    const { data: featuredDashboards } = useFeaturedDashboards(
-        { env: process.env.NEXT_PUBLIC_ENVS_SHOW },
-        {
-            select: (_dashboards) =>
-                _dashboards.map(({ id, name, slug }) => ({
-                    id: slug === 'ocean' ? 'ocean-watch' : id,
-                    label: slug === 'ocean' ? 'Ocean Watch' : name,
-                    href: slug === 'ocean' ? '/dashboards/ocean-watch' : `/dashboards/${slug}`,
-                })),
-            placeholderData: [],
-            refetchOnWindowFocus: false,
-        },
-    );
+
+    const featuredDashboards = APP_HEADER_ITEMS[0].children;
 
     return (
         <Tether
@@ -36,13 +26,13 @@ export default function HeaderDashboards() {
             ]}
             classes={{ element: 'c-header-dropdown' }}
             renderTarget={(ref) => (
-                <Link href="/dashboards">
+                <Link href="/">
                     <a
                         ref={ref}
                         onMouseEnter={() => toggleDropdown(true)}
                         onMouseLeave={() => toggleDropdown(false)}
                     >
-                        Dashboards
+                        Value Chains
                     </a>
                 </Link>
             )}
