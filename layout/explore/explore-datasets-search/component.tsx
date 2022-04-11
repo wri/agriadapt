@@ -7,11 +7,10 @@ import Field from 'components/form/Field';
 
 const ExploreDatasetsSearch = ({
   search,
-  value_chains: selectedChains,
   advanced,
   setFiltersAdvancedOpen,
 }): JSX.Element => {
-  const { VALUE_CHAINS } = EXPLORE_FILTERS;
+  const { STANDARD, ADVANCED } = EXPLORE_FILTERS;
   const { open: advOpen } = advanced;
 
   const handleCancel = () => {
@@ -45,7 +44,7 @@ const ExploreDatasetsSearch = ({
         {SearchInput}
       </Field>
       {/* TODO: Translate */}
-      {Object.entries(EXPLORE_FILTERS.STANDARD).map(([k, v]) => (
+      {Object.entries(STANDARD).map(([k, v]) => (
         <Field
         // TODO: Translate
           key={k}
@@ -73,7 +72,7 @@ const ExploreDatasetsSearch = ({
       </div>
       {advOpen && (
         <>
-          {Object.entries(EXPLORE_FILTERS.ADVANCED).map(([k, v]) => (
+          {Object.entries(ADVANCED).map(([k, v]) => (
             <Field
               key={k}
               id={k}
