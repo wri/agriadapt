@@ -44,9 +44,8 @@ export default function HeaderLanguage() {
               />
               {prefLanguage}
               <Icon
-                style={{margin: '20px 0px 10px 5px'}}
                 name="down-caret"
-                className="c-icon dropdown-link-image -small"
+                className="c-icon dropdown-link-image -smaller"
               />
             </a>
           </Link>
