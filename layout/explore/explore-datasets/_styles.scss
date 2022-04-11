@@ -5,20 +5,25 @@
   // margin: 0px 4 * $space 0px 3 * $space;
 
   .advanced-link {
-    font-size: $font-size-small;
-    color: $sea-blue;
-    font-weight: 700;
-    line-height: 15.6px;
-
-    &:hover {
-      cursor: pointer;
-      text-decoration: none;
+    margin-top: -15px;
+    margin-bottom: 12px;
+    a {
+      font-size: $font-size-small;
+      color: $sea-blue;
+      font-weight: 700;
+      line-height: 15.6px;
+  
+      &:hover {
+        cursor: pointer;
+        text-decoration: none;
+      }
     }
   }
 
   .c-explore-search-actions {
     display: flex;
     justify-content: flex-end;
+    margin-bottom: 30px;
     .c-button {
       width: 88px;
       height: 30px;
