@@ -98,4 +98,13 @@
       }
     }
   }
+
+  .row {
+    @media screen and (min-width: map-get($breakpoints, large)) {
+      max-width: 100%;
+      margin-left: 110px;
+      margin-right: 110px;
+    }
+  
+  }
 }

@@ -38,10 +38,4 @@
 
 .row {
   flex: 1;
-  @media screen and (min-width: map-get($breakpoints, large)) {
-    max-width: 100% !important;
-    margin-left: 110px !important;
-    margin-right: 110px !important;
-  }
-  
 }
