@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import { useDebouncedCallback } from 'use-debounce';
 import Tether from 'react-tether';
 
 import { APP_HEADER_ITEMS } from "layout/header/constants";
+import Icon from 'components/ui/icon';
 
 export default function HeaderLanguage() {
     const [isVisible, setVisibility] = useState(false);
@@ -22,45 +23,57 @@ export default function HeaderLanguage() {
     // TO DO: might need to update element iteration with additional nav links
     const featuredLanguages = APP_HEADER_ITEMS[APP_HEADER_ITEMS.length - 1].children;
     return (
-        <Tether
-            attachment="top center"
-            constraints={[
-                {
-                    to: 'window',
-                },
-            ]}
-            classes={{ element: 'c-header-dropdown' }}
-            renderTarget={(ref) => (
-                <Link href="/">
-                    <a
-                        ref={ref}
-                        onMouseEnter={() => toggleDropdown(true)}
-                        onMouseLeave={() => toggleDropdown(false)}
-                    >
-                        <img className='dropdown-link-image' src='static/images/components/layout/language-globe.svg' alt='language-globe' />
-                        {prefLanguage}
-                        <img className='dropdown-link-image' src='static/images/components/layout/language-dropdown.svg' alt='language-dropdown' /> 
-                    </a>
-                </Link>
-            )}
-            renderElement={(ref) => {
-                if (!isVisible || !featuredLanguages.length) return null;
+      <Tether
+        attachment="top center"
+        constraints={[
+          {
+            to: 'window',
+          },
+        ]}
+        classes={{ element: 'c-header-dropdown' }}
+        renderTarget={(ref) => (
+          <Link href="/">
+            <a
+              ref={ref}
+              onMouseEnter={() => toggleDropdown(true)}
+              onMouseLeave={() => toggleDropdown(false)}
+            >
+              <Icon
+                name="language-globe"
+                className="c-icon dropdown-link-image -small"
+              />
+              {prefLanguage}
+              <Icon
+                name="down-caret"
+                className="c-icon dropdown-link-image -small"
+              />
+            </a>
+          </Link>
+        )}
+        renderElement={(ref) => {
+          if (!isVisible || !featuredLanguages.length) return null;
 
-                return (
-                    <ul
-                        ref={ref}
-                        className="header-dropdown-list"
-                        onMouseEnter={() => toggleDropdown(true)}
-                        onMouseLeave={() => toggleDropdown(false)}
-                    >
-                        {featuredLanguages.map(({ id, label, href }) => (
-                            <li className="header-dropdown-list-item" key={id} onClick={(e) => { changeLanguage(e.target.innerText); }}>
-                                <a>{label}</a>
-                            </li>
-                        ))}
-                    </ul>
-                );
-            }}
-        />
+          return (
+            <ul
+              ref={ref}
+              className="header-dropdown-list"
+              onMouseEnter={() => toggleDropdown(true)}
+              onMouseLeave={() => toggleDropdown(false)}
+            >
+              {featuredLanguages.map(({ id, label }) => (
+                <li
+                  className="header-dropdown-list-item"
+                  key={id}
+                  onClick={(e) => {
+                    changeLanguage(e.target.innerText);
+                  }}
+                >
+                  <a>{label}</a>
+                </li>
+              ))}
+            </ul>
+          );
+        }}
+      />
     );
 }

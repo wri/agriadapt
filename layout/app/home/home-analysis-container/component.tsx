@@ -1,73 +1,42 @@
-import React from 'react'
+import React from 'react';
 import Carousel from 'nuka-carousel';
-import { Media } from "lib/media";
-import { ANALYSIS } from '../pageContent';
+import { Media } from 'lib/media';
+import { ANALYSIS } from '../constants';
+import AnalysisCard from './analysis-card/component';
 
 const AnalysisContainerHome = () => {
-
-  const cards = ['card1', 'card2', 'card3', 'card4'];
-
-  const getAnalysisCard = (item) => {
-    return (
-      <div className='analysis-card-container'>
-        <h3>{ANALYSIS[item].title}</h3>
-        <div className='analysis-card-button-container'>
-          <button className="c-button -primary">
-            {ANALYSIS[item].button}
-          </button>
-        </div>
-        <div className='analysis-card-image-container'>
-          <img src='static/images/components/layout/analysis-map.svg' alt='analysis-map' />
-        </div>
-        
-      </div>
-    );
-  };
-
   return (
     <div className="analysis-container">
       <div className="analysis-text-container">
         <h2>{ANALYSIS.title}</h2>
         <h3>{ANALYSIS.subTitle}</h3>
-        <div className="c-carousel">
-          <Media at='sm'>
-            <Carousel
-              renderCenterLeftControls={() => { }}
-              renderCenterRightControls={() => { }}
-              slidesToShow={1}
-              cellAlign="right"
-              autoplay={true}
-              wrapAround={true}
-            >
-              {cards.map((item) => getAnalysisCard(item))}
-            </Carousel>
+        {['sm', 'md', 'lg'].map((b: 'sm' | 'md' | 'lg', i) => (
+          <Media
+            key={b}
+            {...(['sm', 'md'].includes(b)
+              ? { at: b }
+              : { greaterThanOrEqual: b })}
+          >
+            <div className="c-carousel">
+              <Carousel
+                renderCenterLeftControls={() => undefined}
+                renderCenterRightControls={() => undefined}
+                slidesToShow={i + 1}
+                cellAlign="left"
+                autoplay={true}
+                wrapAround={true}
+              >
+                {ANALYSIS.cards.map((c) => (
+                  <AnalysisCard
+                    key={i}
+                    image_alt={ANALYSIS.image_alt}
+                    {...c}
+                  />
+                ))}
+              </Carousel>
+            </div>
           </Media>
-          <Media at='md'>
-            <Carousel
-              renderCenterLeftControls={() => { }}
-              renderCenterRightControls={() => { }}
-              slidesToShow={2}
-              cellAlign="right"
-              autoplay={true}
-              wrapAround={true}
-            >
-              {cards.map((item) => getAnalysisCard(item))}
-            </Carousel>
-          </Media>
-          <Media greaterThanOrEqual='lg'>
-            <Carousel
-              renderCenterLeftControls={() => { }}
-              renderCenterRightControls={() => { }}
-              slidesToShow={3}
-              cellAlign="right"
-              autoplay={true}
-              wrapAround={true}
-            >
-              {cards.map((item) => getAnalysisCard(item))}
-            </Carousel>
-          </Media>
-
-        </div>
+        ))}
       </div>
     </div>
   );
