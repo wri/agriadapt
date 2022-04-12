@@ -16,7 +16,6 @@ const DetailItem = ({ label: { icon, label }, info, widget }) => {
               name={icon}
               className={classnames({
                 'c-icon': true,
-                '-big': true,
               })}
             />
           </div>
