@@ -19,7 +19,10 @@
     }
 
     .c-widget {
-        background-color: rgb($primary-green, 0.2);
+        &.-placeholder {
+            background-color: rgb($primary-green, 0.2);
+        }
+
         width: 100%;
         height: 456px;
 

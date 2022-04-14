@@ -1,12 +1,12 @@
 import PropTypes from "prop-types";
 import classnames from "classnames";
-import { Tooltip } from "vizzuality-components";
+// import { Tooltip } from "vizzuality-components";
 
 // components
 // import LoginRequired from 'components/ui/login-required';
 import Icon from "components/ui/icon";
 import Title from "components/ui/Title";
-import CollectionsPanel from "components/collections-panel";
+// import CollectionsPanel from "components/collections-panel";
 
 export default function WidgetHeader({
   widget,
@@ -43,7 +43,7 @@ export default function WidgetHeader({
             </li>
             <li>
               {/* <LoginRequired redirect={false}> */}
-              <Tooltip
+              {/* <Tooltip
                 overlay={
                   <CollectionsPanel resource={widget} resourceType="widget" />
                 }
@@ -51,11 +51,11 @@ export default function WidgetHeader({
                 overlayStyle={{ color: "#fff" }}
                 placement="bottomLeft"
                 trigger="click"
-              >
+              > */}
                 <button type="button" className="c-btn -clean" tabIndex={-1}>
                   <Icon name={starIconName} className="-star -small" />
                 </button>
-              </Tooltip>
+              {/* </Tooltip> */}
               {/* </LoginRequired> */}
             </li>
             <li>

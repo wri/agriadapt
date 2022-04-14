@@ -1,7 +1,12 @@
 import classnames from 'classnames';
 import Icon from 'components/ui/icon';
+import WidgetBlock from 'components/wysiwyg/widget-block/component';
+import { useFetchWidget } from 'hooks/widget';
 
-const DetailItem = ({ label: { icon, label }, info, widget }) => {
+const DetailItem = ({ label: { icon, label }, info, widgetId }) => {
+
+  const { data: widget } = useFetchWidget(widgetId);
+
   return (
     <>
       <div className="c-detail-item">
@@ -28,8 +33,11 @@ const DetailItem = ({ label: { icon, label }, info, widget }) => {
           className={classnames({
             'c-widget': true,
             '-side': true,
+            '-placeholder': !widgetId
           })}
-        ></div>
+        >
+          <WidgetBlock widget={widget} />
+        </div>
       </div>
     </>
   );
