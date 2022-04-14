@@ -4,5 +4,4 @@ const Explore = () => {
   return <LayoutExplore />;
 };
 
-
 export default Explore;
