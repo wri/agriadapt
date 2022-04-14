@@ -27,7 +27,7 @@ function LayerInfoModal(props) {
           <button
             className="c-btn -primary"
             onClick={() => {
-              router.push(`/data/explore/${slug}`);
+              router.push(`/explore/${slug}`);
 
               if (props.onRequestClose) {
                 props.onRequestClose();

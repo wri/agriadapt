@@ -51,7 +51,7 @@ const DatasetListItem = (props) => {
 
     return (
       <div className="list-item-chart">
-        <Link href={`/data/explore/${dataset.slug}`} passHref>
+        <Link href={`/explore/${dataset.slug}`} passHref>
           <ForwardLink>
             <PlaceholderChart />
           </ForwardLink>
@@ -79,7 +79,7 @@ const DatasetListItem = (props) => {
 
       {/* CHART MOBILE */}
       <Media at="sm">
-        <Link href={`/data/explore/${dataset.slug}`}>{renderChart()}</Link>
+        <Link href={`/explore/${dataset.slug}`}>{renderChart()}</Link>
       </Media>
 
       {/* INFO */}
@@ -88,7 +88,7 @@ const DatasetListItem = (props) => {
           {/* Title */}
           <div className="title-container">
             <h4>
-              <Link href={`/data/explore/${dataset.slug}`} passHref>
+              <Link href={`/explore/${dataset.slug}`} passHref>
                 <ForwardLink>
                   {(metadata && metadata.info && metadata.info.name) ||
                     dataset.name}

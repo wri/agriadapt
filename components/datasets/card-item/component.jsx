@@ -39,7 +39,7 @@ export default function DatasetCardItem(props) {
 
     if (layer || isWidgetMap) {
       return (
-        <Link href={`/data/explore/${dataset.slug}`}>
+        <Link href={`/explore/${dataset.slug}`}>
           <a>
             <div className={classNameValue}>
               <MapThumbnail layer={layer} />
@@ -51,7 +51,7 @@ export default function DatasetCardItem(props) {
 
     return (
       <div className={classNameValue}>
-        <Link href={`/data/explore/${dataset.slug}`}>
+        <Link href={`/explore/${dataset.slug}`}>
           <a>
             <PlaceholderChart />
           </a>
