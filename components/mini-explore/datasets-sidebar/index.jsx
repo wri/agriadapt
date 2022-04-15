@@ -62,7 +62,7 @@ export default function DatasetsSidebarContainer({
         ...dataset,
         active: activeDatasets.includes(dataset.id),
         hrefLink: {
-          pathname: "/explore/[dataset]",
+          pathname: "/explore/[[...dataset]]",
           query: {
             dataset: [dataset.slug],
           },

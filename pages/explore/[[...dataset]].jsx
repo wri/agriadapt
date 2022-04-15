@@ -26,15 +26,16 @@ class ExplorePage extends PureComponent {
     } = this.props;
 
     setIsServer(false);
-
-    const { dataset } = this.props.router.query;
-    const { setSelectedDataset } = this.props;
-    if (dataset) setSelectedDataset(dataset);
   }
 
   componentDidUpdate(prevProps) {
     if (this.shouldUpdateUrl(prevProps)) {
       this.setExploreURL();
+    }
+    if (this.props.router.query.dataset != prevProps.router.query.dataset) {
+      const { dataset } = this.props.router.query;
+      const { setSelectedDataset } = this.props;
+      setSelectedDataset(dataset);
     }
   }
 
@@ -109,8 +110,7 @@ class ExplorePage extends PureComponent {
     if (typeof window !== 'undefined') {
       router.replace(
         {
-          // pathname: '/data/explore/[[...dataset]]',
-          pathname: '/explore/[dataset]',
+          pathname: '/explore/[[...dataset]]',
           query,
         },
         {},
@@ -192,7 +192,10 @@ export const getStaticPaths = async () => {
   const slugs = datas.map(({ slug }) => slug);
  
   return {
-    paths: slugs.map((s) => ({ params: { dataset: s } })),
+    paths: [
+      ...slugs.map((s) => ({ params: { dataset: [s] } })),
+      { params: { dataset: [] } },
+    ],
     fallback: false,
   };
 };
