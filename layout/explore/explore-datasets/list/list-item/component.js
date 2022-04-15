@@ -32,7 +32,7 @@ class DatasetListItem extends React.Component {
 
     if (widget && !isWidgetMap && !isEmbedWidget) {
       return (
-        <Link href={`/data/explore/${dataset.slug}`} passHref>
+        <Link href={`/explore/${dataset.slug}`} passHref>
           <div className={classNameValue}>
             <WidgetChart widget={widget} thumbnail />
           </div>
@@ -41,7 +41,7 @@ class DatasetListItem extends React.Component {
     }
     if (layer || isWidgetMap) {
       return (
-        <Link href={`/data/explore/${dataset.slug}`} passHref>
+        <Link href={`/explore/${dataset.slug}`} passHref>
           <div className={classNameValue}>
             <MapThumbnail layer={layer} />
           </div>
@@ -51,7 +51,7 @@ class DatasetListItem extends React.Component {
 
     return (
       <div className={classNameValue}>
-        <Link href={`/data/explore/${dataset.slug}`}>
+        <Link href={`/explore/${dataset.slug}`}>
           <a>
             <PlaceholderChart />
           </a>
@@ -70,7 +70,7 @@ class DatasetListItem extends React.Component {
       router,
     } = this.props;
 
-    router.push(`/data/explore/${dataset.slug}`);
+    router.push(`/explore/${dataset.slug}`);
 
     // Add default layer to the map only if not active already
     if (!this.props.active && layer) {
@@ -97,7 +97,7 @@ class DatasetListItem extends React.Component {
         <Media greaterThanOrEqual="md">{this.renderChart()}</Media>
 
         <Media at="sm">
-          <Link href={`/data/explore/${dataset.slug}`}>
+          <Link href={`/explore/${dataset.slug}`}>
             {this.renderChart()}
           </Link>
         </Media>
@@ -116,7 +116,7 @@ class DatasetListItem extends React.Component {
           {/* Title */}
           <div className="title-actions">
             <h4>
-              <Link href={`/data/explore/${dataset.slug}`}>
+              <Link href={`/explore/${dataset.slug}`}>
                 <a className="line-clamp-2">
                   {(metadata && metadata.info && metadata.info.name) ||
                     dataset.name}

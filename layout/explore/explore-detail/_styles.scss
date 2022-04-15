@@ -1,10 +1,11 @@
 @import "css/settings";
 
 .c-explore-detail {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 330px;
+  // position: absolute;
+  // top: 0px;
+  // left: 0px;
+  // width: 330px;
+  // width: 640px;
   min-height: 100%;
 
   @media screen and (max-width: map-get($breakpoints, medium)) {
@@ -13,12 +14,12 @@
   }
 
   .content {
-    background-color: $color-12;
+    // background-color: $color-12;
 
     .metadata-section {
       background-color: white;
       margin-bottom: 2 * $space;
-      padding: 8 * $space 8 * $space 8 * $space 8 * $space;
+      // padding: 8 * $space 8 * $space 8 * $space 8 * $space;
 
       .metadata-field {
         ul {

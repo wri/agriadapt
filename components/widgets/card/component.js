@@ -127,7 +127,7 @@ const WidgetCard = (props) => {
   const handleGoToDataset = () => {
     const { dataset } = widget;
 
-    router.push(`/data/explore/${dataset}`);
+    router.push(`/explore/${dataset}`);
   };
 
   const handleDownloadPDF = () => {

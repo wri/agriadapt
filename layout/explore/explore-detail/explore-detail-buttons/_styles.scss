@@ -7,7 +7,8 @@
   > .dataset-actions {
     display: flex;
     justify-content: space-between;
-    margin: ($space * 4) 0 0;
+    margin: ($space * 4) auto 0;
+    max-width: 465px;
 
     > *:not(:first-child) {
       margin: 0 0 0 ($space * 2);

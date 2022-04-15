@@ -41,34 +41,32 @@ const Explore = (props: ExploreProps): JSX.Element => {
       <div className="explore-sidebar-header">
         <ExploreSwitch />
       </div>
-      {!subsection && !selected && (
-        <>
-          <div
-            className={classnames({
-              'explore-sidebar-content': true,
-              '-hidden': !open,
-            })}
-            id="sidebar-content-container"
-          >
+      <div
+        className={classnames({
+          'explore-sidebar-content': true,
+          '-hidden': !open,
+        })}
+        id="sidebar-content-container"
+      >
+        {!subsection && !selected && (
+          <>
             <ExploreDatasets />
-          </div>
-        </>
-      )}
-      {selected && (
-        <ExploreDetail
-          key={selected}
-          onDatasetLoaded={(_dataset) => setDataset(_dataset)}
-        />
-      )}
+          </>
+        )}
+        {selected && (
+          <ExploreDetail
+            key={selected}
+            onDatasetLoaded={(_dataset) => setDataset(_dataset)}
+          />
+        )}
+      </div>
     </>
   );
 
   return (
     <Layout title="Explore">
       <div className="c-page-explore">
-        <ExploreSidebar>
-          {getSidebarLayout()}
-        </ExploreSidebar>
+        <ExploreSidebar>{getSidebarLayout()}</ExploreSidebar>
         <ExploreMap />
       </div>
     </Layout>

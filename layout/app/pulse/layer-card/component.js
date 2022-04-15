@@ -193,10 +193,10 @@ class LayerCardComponent extends PureComponent {
                 key={widget.id}
                 className="widget-card"
                 onClick={() => {
-                  router.push(`/data/explore/${widget.dataset}`);
+                  router.push(`/explore/${widget.dataset}`);
                 }}
                 onKeyDown={() => {
-                  router.push(`/data/explore/${widget.dataset}`);
+                  router.push(`/explore/${widget.dataset}`);
                 }}
                 role="button"
                 tabIndex={-1}
@@ -209,7 +209,7 @@ class LayerCardComponent extends PureComponent {
           )}
           <div className="card-buttons">
             {datasetId && (
-              <Link href={`/data/explore/${datasetId}`}>
+              <Link href={`/explore/${datasetId}`}>
                 <a className="c-button -tertiary link_button">Details</a>
               </Link>
             )}

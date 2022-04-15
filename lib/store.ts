@@ -1,4 +1,7 @@
 import { createWrapper } from 'next-redux-wrapper';
+import {
+  reducers as WEReducers,
+} from '@widget-editor/widget-editor';
 
 // todo: move redactions to modules
 import * as reducers from 'redactions';
@@ -25,13 +28,15 @@ import { reducers as layerMenuReducers } from 'layout/app/pulse/layer-menu';
 import { reducers as layerPillReducers } from 'layout/app/pulse/layer-pill';
 import { reducers as labelsPillsReducers } from 'layout/app/pulse/labels-pill';
 import { reducers as globeCesiumReducers } from 'components/vis/globe-cesium';
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, Reducer } from '@reduxjs/toolkit';
+
+const WERed: Reducer<{ editor: unknown; AnyAction }> = WEReducers;
 
 const store = configureStore({
   reducer: {
     ...reducers,
     ...modules,
-    // ...WEReducers,
+    ...WERed,
     // Header
     header: headerReducers,
 

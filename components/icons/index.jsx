@@ -89,7 +89,7 @@ export default function Icons() {
         <symbol id="icon-email" viewBox="0 0 43 32">
           <title>email</title>
           <path
-            fill="#c32d7b"
+            fill="#266510"
             d="M.748 0h41.17L21.333 16.468.748 0zm41.919 4.865v23.728l-8.24-10.259-3.326 2.672L39.931 32H2.73l8.781-11.003-3.335-2.661L0 28.581V4.866l21.333 17.067L42.666 4.866z"
           />
         </symbol>
@@ -110,32 +110,32 @@ export default function Icons() {
           <title>learn-more</title>
           <path
             fill="none"
-            stroke="#c32d7b"
+            stroke="#266510"
             strokeWidth="1.6"
             strokeMiterlimit="4"
             strokeLinecap="butt"
             strokeLinejoin="miter"
-            style={{ stroke: 'var(--color1, #c32d7b)' }}
+            style={{ stroke: 'var(--color1, #266510)' }}
             d="M30.4 20.8v6.4c0 1.767-1.433 3.2-3.2 3.2h-23.2c-1.767 0-3.2-1.433-3.2-3.2v-23.2c0-1.767 1.433-3.2 3.2-3.2h6.4"
           />
           <path
             fill="none"
-            stroke="#c32d7b"
+            stroke="#266510"
             strokeWidth="1.6"
             strokeMiterlimit="4"
             strokeLinecap="butt"
             strokeLinejoin="miter"
-            style={{ stroke: 'var(--color1, #c32d7b)' }}
+            style={{ stroke: 'var(--color1, #266510)' }}
             d="M20 0.8h10.4v10.4"
           />
           <path
             fill="none"
-            stroke="#c32d7b"
+            stroke="#266510"
             strokeWidth="1.6"
             strokeMiterlimit="4"
             strokeLinecap="butt"
             strokeLinejoin="miter"
-            style={{ stroke: 'var(--color1, #c32d7b)' }}
+            style={{ stroke: 'var(--color1, #266510)' }}
             d="M30.4 0.8l-15.2 15.2"
           />
         </symbol>
@@ -143,32 +143,32 @@ export default function Icons() {
           <title>download</title>
           <path
             fill="none"
-            stroke="#c32d7b"
+            stroke="#266510"
             strokeWidth="1.6"
             strokeMiterlimit="4"
             strokeLinecap="square"
             strokeLinejoin="miter"
-            style={{ stroke: 'var(--color1, #c32d7b)' }}
+            style={{ stroke: 'var(--color1, #266510)' }}
             d="M16 0.8v19.2"
           />
           <path
             fill="none"
-            stroke="#c32d7b"
+            stroke="#266510"
             strokeWidth="1.6"
             strokeMiterlimit="4"
             strokeLinecap="square"
             strokeLinejoin="miter"
-            style={{ stroke: 'var(--color1, #c32d7b)' }}
+            style={{ stroke: 'var(--color1, #266510)' }}
             d="M27.6 10l-11.6 11.621-11.6-11.621"
           />
           <path
             fill="none"
-            stroke="#c32d7b"
+            stroke="#266510"
             strokeWidth="1.6"
             strokeMiterlimit="4"
             strokeLinecap="butt"
             strokeLinejoin="miter"
-            style={{ stroke: 'var(--color1, #c32d7b)' }}
+            style={{ stroke: 'var(--color1, #266510)' }}
             d="M30.4 20.8v6.4c0 1.767-1.433 3.2-3.2 3.2h-22.4c-1.767 0-3.2-1.433-3.2-3.2v-6.4"
           />
         </symbol>
@@ -176,22 +176,22 @@ export default function Icons() {
           <title>subscription</title>
           <path
             fill="none"
-            stroke="#c32d7b"
+            stroke="#266510"
             strokeWidth="1.6"
             strokeMiterlimit="4"
             strokeLinecap="square"
             strokeLinejoin="miter"
-            style={{ stroke: 'var(--color1, #c32d7b)' }}
+            style={{ stroke: 'var(--color1, #266510)' }}
             d="M4 4h24c1.767 0 3.2 1.433 3.2 3.2v17.6c0 1.767-1.433 3.2-3.2 3.2h-24c-1.767 0-3.2-1.433-3.2-3.2v-17.6c0-1.767 1.433-3.2 3.2-3.2z"
           />
           <path
             fill="none"
-            stroke="#c32d7b"
+            stroke="#266510"
             strokeWidth="1.6"
             strokeMiterlimit="4"
             strokeLinecap="square"
             strokeLinejoin="miter"
-            style={{ stroke: 'var(--color1, #c32d7b)' }}
+            style={{ stroke: 'var(--color1, #266510)' }}
             d="M5.6 8.8l10.424 8.8 10.376-8.8"
           />
         </symbol>

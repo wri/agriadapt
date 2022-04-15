@@ -49,7 +49,7 @@ function InfoTooltip(props) {
             <button
               className="c-button -primary -compressed -fs-tiny"
               onClick={() => {
-                router.push(`/data/explore/${datasetID}`);
+                router.push(`/explore/${datasetID}`);
               }}
             >
               More info

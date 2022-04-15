@@ -11,7 +11,6 @@ import { logEvent } from "utils/analytics";
 
 // Explore detail components
 import ExploreDetailHeader from "./explore-detail-header";
-import ExploreDetailFooter from "./explore-detail-footer";
 import FurtherInformation from "./further-information";
 import ExploreDetailButtons from "./explore-detail-buttons";
 import ExploreDetailTags from "./explore-detail-tags";
@@ -117,7 +116,6 @@ class ExploreDetailComponent extends React.Component {
                 <RelatedContent datasetID={dataset.id} />
               </div>
             </div>
-            <ExploreDetailFooter />
           </>
         )}
         {!metadata && !datasetLoading && (
