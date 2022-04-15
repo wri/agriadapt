@@ -11,6 +11,7 @@ const ExploreSidebarComponent = ({
   open,
   setSidebarOpen,
   children,
+  selectedDataset,
 }): JSX.Element => {
   /**
    * UI EVENTS
@@ -33,6 +34,7 @@ const ExploreSidebarComponent = ({
       className={classnames({
         'c-sidebar': true,
         '-open': open,
+        '-details': !!selectedDataset,
       })}
     >
       <button type="button" className="btn-toggle" onClick={triggerToggle}>

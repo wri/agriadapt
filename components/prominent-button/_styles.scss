@@ -21,13 +21,13 @@
 
   &:active,
   &:focus {
-    border-color: $dark-pink;
+    border-color: $primary-green;
   }
 
   svg {
     height: 40px;
     width: 40px;
-    stroke: $dark-pink;
+    stroke: $primary-green;
   }
 
   span {

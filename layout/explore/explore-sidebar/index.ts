@@ -6,6 +6,9 @@ import ExploreSidebarComponent from './component';
 import { RootState } from 'lib/store';
 
 export default connect(
-  (state: RootState) => ({ ...state.explore.sidebar }),
+  (state: RootState) => ({
+    ...state.explore.sidebar,
+    selectedDataset: state.explore.datasets.selected,
+  }),
   actions
 )(ExploreSidebarComponent);

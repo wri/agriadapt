@@ -1,4 +1,7 @@
 import { createWrapper } from 'next-redux-wrapper';
+import {
+  reducers as WEReducers,
+} from '@widget-editor/widget-editor';
 
 // todo: move redactions to modules
 import * as reducers from 'redactions';
@@ -31,7 +34,7 @@ const store = configureStore({
   reducer: {
     ...reducers,
     ...modules,
-    // ...WEReducers,
+    ...WEReducers,
     // Header
     header: headerReducers,
 

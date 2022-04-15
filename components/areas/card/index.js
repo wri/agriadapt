@@ -11,7 +11,7 @@ import AreaCard from "./component";
 
 export default connect(
   (state, props) => ({
-    token: state.user.token,
+    // token: state.user.token,
     activeAlerts: getActiveAlerts(state, props),
   }),
   {

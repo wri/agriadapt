@@ -26,6 +26,10 @@ class ExplorePage extends PureComponent {
     } = this.props;
 
     setIsServer(false);
+
+    const { dataset } = this.props.router.query;
+    const { setSelectedDataset } = this.props;
+    if (dataset) setSelectedDataset(dataset);
   }
 
   componentDidUpdate(prevProps) {

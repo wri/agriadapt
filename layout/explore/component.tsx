@@ -55,10 +55,18 @@ const Explore = (props: ExploreProps): JSX.Element => {
         </>
       )}
       {selected && (
-        <ExploreDetail
-          key={selected}
-          onDatasetLoaded={(_dataset) => setDataset(_dataset)}
-        />
+        <div
+          className={classnames({
+            'explore-sidebar-content': true,
+            '-hidden': !open,
+          })}
+          id="sidebar-content-container"
+        >
+          <ExploreDetail
+            key={selected}
+            onDatasetLoaded={(_dataset) => setDataset(_dataset)}
+          />
+        </div>
       )}
     </>
   );
