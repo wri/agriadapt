@@ -1,9 +1,9 @@
 import map_sm from 'public/static/images/components/layout/landing/map-container-image-mobile.svg';
 import map_md from 'public/static/images/components/layout/landing/map-container-image.svg';
 import aboutImage from 'public/static/images/components/layout/landing/learn-more.svg';
-import riceImage from 'public/static/images/components/layout/landing/valuechain-rice.svg';
-import cottonImage from 'public/static/images/components/layout/landing/valuechain-cotton.svg';
-import coffeeImage from 'public/static/images/components/layout/landing/valuechain-coffee.svg';
+import riceImage from 'public/static/images/components/layout/landing/value-chain-cards/rice.png';
+import cottonImage from 'public/static/images/components/layout/landing/value-chain-cards/cotton.png';
+import coffeeImage from 'public/static/images/components/layout/landing/value-chain-cards/coffee.png';
 // import analysisImage from 'public/static/images/components/layout/landing/analysis-map.png';
 
 const INTRO = {
@@ -31,14 +31,17 @@ const VALUECHAINS = {
     {
       label: 'Rice',
       image: riceImage,
+      href: 'rice',
     },
     {
       label: 'Coffee',
       image: coffeeImage,
+      href: 'coffee',
     },
     {
       label: 'Cotton',
       image: cottonImage,
+      href: 'cotton',
     },
   ],
 };

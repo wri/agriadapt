@@ -46,7 +46,7 @@
 	}
 }
 
-.map-container {
+.c-map-experience {
 	margin-top: 140px;
 	margin-bottom: 154px;
 
@@ -57,20 +57,6 @@
 
 		h3 {
 			color: $charcoal-grey;
-		}
-	}
-
-	.map-image-container {
-		width: 100%;
-		max-width: 340px;
-		margin: 0 auto;
-
-		@media screen and (min-width: map-get($breakpoints, medium)) {
-			max-width: 722px;
-		}
-
-		@media screen and (min-width: map-get($breakpoints, large)) {
-			max-width: 1060px;
 		}
 	}
 }
@@ -91,102 +77,6 @@
 
 		h3 {
 			color: $charcoal-grey;
-		}
-	}
-
-	.value-chains-mobile-image-container {
-		position: absolute;
-	}
-
-	.c-value-chain-cards {
-		position: relative;
-		margin: 50px auto 0;
-		width: 100%;
-		max-width: 1060px;
-		display: flex;
-		flex-direction: column;
-		row-gap: 26px;
-
-		@media screen and (min-width: map-get($breakpoints, medium)) {
-			display: grid;
-			grid-template-columns: 1fr 1fr;
-			grid-row-gap: 56px;
-		}
-
-		@media screen and (min-width: map-get($breakpoints, large)) {
-			display: flex;
-			flex-direction: row;
-			justify-content: space-between;
-		}
-
-		.value-chain-card {
-			background: #FFFFFF;
-			position: relative;
-			filter: drop-shadow(0px 0px 60px rgba(0, 0, 0, 0.12));
-			height: 411px;
-			width: 318px;
-			border-radius: 16px;
-
-			img {
-				border-radius: 16px;
-			}
-
-			.value-chain-card-text-container {
-				height: 50px;
-				width: 123px;
-				margin-left: 20px;
-				top: 276px;
-				position: absolute;
-			}
-		}
-
-		.c-mobile-blob {
-			position: absolute;
-			width: 332px;
-			height: 305px;
-			z-index: 0;
-			top: -50px;
-		}
-	}
-}
-
-.analysis-container {
-	margin-bottom: 200px;
-
-	.analysis-text-container {
-
-		.c-carousel {
-			height: 500px;
-			filter: drop-shadow(0px 0px 60px rgba(0, 0, 0, 0.12));
-			margin-top: 50px;
-			// border-radius: 16px;
-
-			.c-analysis-card {
-				background: #FFFFFF;
-				overflow: hidden;
-				position: relative;
-				// box-shadow:0px 0px 60px rgba(0, 0, 0, 0.12);
-				height: 450px;
-				border-radius: 16px;
-				padding: 32px;
-				width: 340px;
-				z-index: 1;
-
-				@media screen and (min-width: map-get($breakpoints, medium)) {
-					width: 430px;
-				}
-
-				.c-analysis-card-image {
-					position: absolute;
-					margin: -32px -32px 0;
-					bottom: -16px;
-				}
-			}
-
-			.slider-control-bottomcenter {
-				top: 500px;
-				left: 50%;
-			}
 		}
 	}
 }

@@ -30,7 +30,12 @@ const IntroHeader = ({
             '-cotton': id === 'COTTON',
           })}
         >
-          <Image loader={({ src }) => src} src={image} alt="image" />
+          <Image
+            className="image"
+            loader={({ src }) => src}
+            src={image}
+            alt="image"
+          />
         </div>
         <div className="blob-container">
           <Image loader={({ src }) => src} src={blob} alt="image" />
