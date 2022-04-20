@@ -4,8 +4,8 @@
 	.c-analysis-text {
 
 		.c-carousel {
-			height: 500px;
-			margin-top: 50px;
+            padding-top: 60px;
+			padding-bottom: 120px;
 
 			.c-analysis-card {
 				background: #FFFFFF;
@@ -16,7 +16,6 @@
 				border-radius: 16px;
 				padding: 32px;
 				width: 340px;
-				z-index: 1;
 
 				@media screen and (min-width: map-get($breakpoints, medium)) {
 					width: 430px;

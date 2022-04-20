@@ -22,8 +22,10 @@ const AnalysisContainerHome = () => {
                 renderCenterLeftControls={() => undefined}
                 renderCenterRightControls={() => undefined}
                 slidesToShow={i + 1}
-                cellAlign="left"
-                autoplay={true}
+                // cellAlign="left"
+                slidesToScroll={1}
+                cellSpacing={20}
+                autoplay={false}
                 wrapAround={false}
               >
                 {ANALYSIS.cards.map((c) => (

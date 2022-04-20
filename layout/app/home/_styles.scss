@@ -11,6 +11,12 @@
 		.c-mobile-blob {
 			margin: 0 $margin-size-small * -1;
 		}
+		.c-carousel {
+			overflow: hidden;
+			padding-left: $margin-size-small;
+			padding-right: $margin-size-small;
+			margin: 0 $margin-size-small * -1;
+		}
 	}
 
 	@media screen and (min-width: map-get($breakpoints, medium)) {
@@ -19,13 +25,10 @@
 		.c-intro-header {
 			margin: 0 $margin-size * -1;
 		}
-
 		.c-carousel {
+			padding-left: $margin-size;
+			padding-right: $margin-size;
 			margin: 0 $margin-size * -1;
-
-			.slider .silder-frame {
-				padding-left: $margin-size;
-			}
 		}
 	}
 
@@ -35,13 +38,10 @@
 		.c-intro-header {
 			margin: 0 $margin-size * -2;
 		}
-
 		.c-carousel {
+			padding-left: $margin-size * 2;
+			padding-right: $margin-size * 2;
 			margin: 0 $margin-size * -2;
-
-			.silder-frame {
-				padding-left: $margin-size * 2;
-			}
 		}
 	}
 }
