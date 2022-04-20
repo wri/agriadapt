@@ -4,23 +4,23 @@
   width: 100%;
   position: relative;
   // max-width: $grid-row-width;
+  margin: 0 auto;
 
 
   /// footer margin change auto to media query based values
 
 
   box-sizing: border-box;
-  // padding: 0 math.div(map-get($grid-column-gutter, medium), 2);
+  padding: 0 math.div(map-get($grid-column-gutter, medium), 2);
 
   @media screen and (min-width: map-get($breakpoints, medium)) {
-    // max-width: map-get($breakpoints, medium);
-    // padding: 0 math.div(map-get($grid-column-gutter, small), 2);
+    max-width: map-get($breakpoints, medium);
+    padding: 0 math.div(map-get($grid-column-gutter, small), 2);
   }
 
   @media screen and (min-width: map-get($breakpoints, large)) {
-    // max-width: map-get($breakpoints, large);
-    // padding: 0 math.div(map-get($grid-column-gutter, medium), 2);
-    // margin: 0 100px;
+    max-width: map-get($breakpoints, large);
+    padding: 0 math.div(map-get($grid-column-gutter, medium), 2);
   }
 
   // @media screen and (min-width: map-get($breakpoints, xlarge)) {

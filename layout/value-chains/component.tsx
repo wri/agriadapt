@@ -12,11 +12,35 @@ const LayoutCrop = ({ header, details }) => {
     <Layout title={'Value Chains'}>
       <div className="l-crop">
         <IntroHeader {...header} />
-        <UserStories />
-        <HazardsIntro />
-        <HazardsFlow />
-        <ItemIntro />
-        <StepDetails {...details} />
+        <div className="l-container">
+          <div className="row">
+            <div className="column small-12">
+              <UserStories />
+            </div>
+          </div>
+        </div>
+        <div className="l-container">
+          <div className="row">
+            <HazardsIntro />
+          </div>
+        </div>
+        <div className="l-container">
+          <div className="row">
+            <HazardsFlow />
+          </div>
+        </div>
+        <div className="l-container">
+          <div className="row">
+            <ItemIntro />
+          </div>
+        </div>
+        <div className="l-container">
+          <div className="row">
+            <div className="column small-12">
+              <StepDetails {...details} />
+            </div>
+          </div>
+        </div>
       </div>
     </Layout>
   );

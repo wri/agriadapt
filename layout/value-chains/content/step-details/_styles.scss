@@ -28,6 +28,11 @@
 
         @media screen and (min-width: map-get($breakpoints, medium)) {
             &.-side {
+                width: 340px;
+            }
+        }
+        @media screen and (min-width: map-get($breakpoints, large)) {
+            &.-side {
                 width: 430px;
             }
         }

@@ -27,19 +27,21 @@ export default function Header({ className, header, pageHeader }) {
                   <a>
                     {/* <Icon name="icon-rw-logo" className="brand-logo" style={undefined} /> */}
                     <div
-                      style={{ backgroundColor: "white", borderRadius: 4 }}
+                      style={{ backgroundColor: 'white', borderRadius: 4 }}
                       className="brand-logo"
                     ></div>
                     <h1 className="brand-title">Climate Risk Tool</h1>
                   </a>
                 </Link>
               </div>
-              <Media at="sm">
-                <HeaderMenuMobile />
-              </Media>
-              <Media greaterThanOrEqual="md">
-                <HeaderMenu />
-              </Media>
+              <div className="c-nav">
+                <Media at="sm">
+                  <HeaderMenuMobile />
+                </Media>
+                <Media greaterThanOrEqual="md">
+                  <HeaderMenu />
+                </Media>
+              </div>
             </div>
           </div>
         </div>

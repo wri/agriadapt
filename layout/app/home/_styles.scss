@@ -3,14 +3,6 @@
 // TODO: look at using l-page instead
 .l-home {
 	@media screen and (min-width: map-get($breakpoints, small)) {
-		margin: 0 $margin-size-small;
-
-		.c-intro-header {
-			margin: 0 $margin-size-small * -1;
-		}
-		.c-mobile-blob {
-			margin: 0 $margin-size-small * -1;
-		}
 		.c-carousel {
 			overflow: hidden;
 			padding-left: $margin-size-small;
@@ -20,11 +12,6 @@
 	}
 
 	@media screen and (min-width: map-get($breakpoints, medium)) {
-		margin: 0 $margin-size;
-
-		.c-intro-header {
-			margin: 0 $margin-size * -1;
-		}
 		.c-carousel {
 			padding-left: $margin-size;
 			padding-right: $margin-size;
@@ -33,11 +20,6 @@
 	}
 
 	@media screen and (min-width: map-get($breakpoints, large)) {
-		margin: 0 $margin-size * 2;
-
-		.c-intro-header {
-			margin: 0 $margin-size * -2;
-		}
 		.c-carousel {
 			padding-left: $margin-size * 2;
 			padding-right: $margin-size * 2;
@@ -61,7 +43,8 @@
 	}
 }
 
-.value-chains-container {
+.c-value-chains {
+	width: 100%;
 	margin-bottom: 100px;
 
 	@media screen and (min-width: map-get($breakpoints, small)) {
@@ -82,93 +65,21 @@
 }
 
 .learn-more-container {
+	display: flex;
+	flex-direction: column;
 	margin-bottom: 100px;
+	width: 100%;
 
-	@media screen and (min-width: map-get($breakpoints, large)) {
-		display: flex;
-		flex-direction: row;
-		padding-left: 110px;
-		padding-right: 110px;
-		width: 100%;
+	h2, h3 {
+		color: $charcoal-grey;
 	}
 
-	div {
-		@media screen and (min-width: map-get($breakpoints, small)) {
-			margin-right: 0;
-		}
-
-		@media screen and (min-width: map-get($breakpoints, medium)) {
-			margin-right: auto;
-		}
-
-		@media screen and (min-width: map-get($breakpoints, large)) {
-			margin-right: auto;
-		}
-
-		h2 {
-			color: $charcoal-grey;
-		}
-
-		button {
-			background-color: $primary-green !important;
-
-			@media screen and (min-width: map-get($breakpoints, small)) {
-				height: 45px;
-				width: 193px;
-				margin-left: 18px;
-				border-radius: 4px;
-				padding: 22px, 20px, 22px, 20px;
-				margin-bottom: 50px;
-			}
-
-			@media screen and (min-width: map-get($breakpoints, medium)) {
-				height: 45px;
-				width: 193px;
-				margin-left: 56px;
-				border-radius: 4px;
-				padding: 22px, 20px, 22px, 20px;
-				margin-bottom: 50px;
-			}
-
-			@media screen and (min-width: map-get($breakpoints, large)) {
-				height: 45px;
-				width: 193px;
-				margin-left: 0px;
-				border-radius: 4px;
-				padding: 22px, 20px, 22px, 20px;
-			}
-		}
+	@media screen and (min-width: map-get($breakpoints, large)) {
+		flex-direction: row;
+		column-gap: 50px;
 	}
 
 	.learn-more-image-container {
 		width: 100%;
-
-		img {
-
-			@media screen and (min-width: map-get($breakpoints, small)) {
-				height: 321px;
-				width: 481px;
-				margin-left: auto;
-				margin-right: auto;
-				padding-left: 18px;
-				padding-right: 18px;
-				display: block;
-			}
-
-			@media screen and (min-width: map-get($breakpoints, medium)) {
-				height: 518px;
-				width: 776px;
-				margin-left: auto;
-				margin-right: auto;
-				display: block;
-			}
-
-			@media screen and (min-width: map-get($breakpoints, large)) {
-				height: 323px;
-				width: 484px;
-				padding-left: 0px;
-				padding-right: 0px;
-			}
-		}
 	}
 }
