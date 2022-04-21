@@ -51,7 +51,7 @@
   }
 
   .c-nav {
-    @media screen and (min-width: map-get($breakpoints, medium)) {
+    @media screen and (min-width: map-get($breakpoints, large)) {
       width: calc(80% - 200px);
     }
   }

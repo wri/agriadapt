@@ -35,10 +35,10 @@ export default function Header({ className, header, pageHeader }) {
                 </Link>
               </div>
               <div className="c-nav">
-                <Media at="sm">
+                <Media lessThan="lg">
                   <HeaderMenuMobile />
                 </Media>
-                <Media greaterThanOrEqual="md">
+                <Media greaterThanOrEqual="lg">
                   <HeaderMenu />
                 </Media>
               </div>

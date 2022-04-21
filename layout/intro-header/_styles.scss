@@ -35,16 +35,16 @@ $about-vector-mask: url('/static/images/components/layout/intro-header/about-vec
     }
 
     @media screen and (min-width: map-get($breakpoints, medium)) {
-        max-width: 65%;
+        max-width: 70%;
     }
 
     // @media screen and (max-width: map-get($breakpoints, medium)) and (orientation: landscape) {
     //     max-width: 70%;
     // }
 
-    @media screen and (min-width: map-get($breakpoints, large)) {
-        max-width: 100%;
-    }
+    // @media screen and (min-width: map-get($breakpoints, large)) {
+    //     max-width: 100%;
+    // }
 }
 
 .image-container {
