@@ -19,19 +19,21 @@ const HeaderMenu = () => {
     <nav className="header-menu">
       <ul>
         {APP_HEADER_ITEMS.map((item) => {
-          const activeClassName = classnames({
-            "-active": item["pages"] && item["pages"].includes(pathname),
-          });
           let DropdownMenu;
           if (item.id === 'value-chains' || item.id === 'language') {
             DropdownMenu = dynamic(() => header[item.id]);
           }
 
           return (
-            <li key={item.label} className={activeClassName}>
+            <li
+              key={item.label}
+              className={classnames({
+                '-active': pathname.startsWith(item.root),
+              })}
+            >
               {!DropdownMenu && item.href && (
                 <Link href={item.href}>
-                    <a>{item.label}</a>
+                  <a>{item.label}</a>
                 </Link>
               )}
 

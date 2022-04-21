@@ -3,6 +3,7 @@ export const APP_HEADER_ITEMS = [
     id: "value-chains",
     label: "Value Chains",
     href: "/",
+    root: '/value-chains',
     children: [
       {
         label: "Rice",
@@ -23,6 +24,7 @@ export const APP_HEADER_ITEMS = [
     id: "explorer",
     label: "Climate Risk Explorer",
     href: "/explore",
+    root: '/explore',
     children: [
       {
         label: "Explore the Map",
@@ -34,6 +36,7 @@ export const APP_HEADER_ITEMS = [
     id: "about",
     label: "About",
     href: "/about",
+    root: '/about',
     children: [
       {
         label: "About the Project",
