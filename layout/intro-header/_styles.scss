@@ -14,11 +14,15 @@ $about-vector-mask: url('/static/images/components/layout/intro-header/about-vec
 .c-content {
     position: relative;
     width: 100%;
-    top: 30%;
     z-index: 1;
-
+    
     @media screen and (min-width: map-get($breakpoints, medium)) {
         position: absolute;
+        top: 40%;
+    }
+    @media screen and (min-width: map-get($breakpoints, large)) {
+        position: absolute;
+        top: 30%;
     }
 }
 

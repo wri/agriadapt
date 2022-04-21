@@ -14,7 +14,9 @@ const LayoutHome = () => {
         <IntroHeader {...LANDING} />
         <div className="l-container">
           <div className="row">
-            <MapContainerHome />
+            <div className="column">
+              <MapContainerHome />
+            </div>
           </div>
         </div>
         <div className="l-container">
@@ -24,7 +26,7 @@ const LayoutHome = () => {
         </div>
         <div className="l-container">
           <div className="row">
-            {/* <AnalysisContainerHome /> */}
+            <AnalysisContainerHome />
           </div>
         </div>
         <div className="l-container">
