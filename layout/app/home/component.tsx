@@ -1,5 +1,4 @@
 import Layout from 'layout/layout/layout-app';
-// import IntroContainerHome from './home-intro-container/component';
 import MapContainerHome from './home-map-experience/component';
 import ValueChainsContainerHome from './home-value-chains/component';
 import AnalysisContainerHome from './home-analysis/component';
