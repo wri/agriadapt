@@ -10,37 +10,40 @@ const AnalysisContainerHome = () => {
       <div className="l-container">
         <div className="row">
           <div className="column">
-              <h2>{ANALYSIS.title}</h2>
-              <h3>{ANALYSIS.subTitle}</h3>
+            <h2>{ANALYSIS.title}</h2>
+            <h3>{ANALYSIS.subTitle}</h3>
+            {['sm', 'md', 'lg'].map((b: 'sm' | 'md' | 'lg', i) => (
+              <Media
+                key={b}
+                {...(['sm', 'md'].includes(b)
+                  ? { at: b }
+                  : { greaterThanOrEqual: b })}
+              >
+                <div className="c-carousel">
+                  <Carousel
+                    renderCenterLeftControls={() => undefined}
+                    renderCenterRightControls={() => undefined}
+                    slidesToShow={i + 1}
+                    // cellAlign="left"
+                    slidesToScroll={1}
+                    cellSpacing={20}
+                    autoplay={false}
+                    wrapAround={false}
+                  >
+                    {ANALYSIS.cards.map((c) => (
+                      <AnalysisCard
+                        key={i}
+                        image_alt={ANALYSIS.image_alt}
+                        {...c}
+                      />
+                    ))}
+                  </Carousel>
+                </div>
+              </Media>
+            ))}
           </div>
         </div>
       </div>
-
-      {['sm', 'md', 'lg'].map((b: 'sm' | 'md' | 'lg', i) => (
-        <Media
-          key={b}
-          {...(['sm', 'md'].includes(b)
-            ? { at: b }
-            : { greaterThanOrEqual: b })}
-        >
-          <div className="c-carousel">
-            <Carousel
-              renderCenterLeftControls={() => undefined}
-              renderCenterRightControls={() => undefined}
-              slidesToShow={i + 1}
-              // cellAlign="left"
-              slidesToScroll={1}
-              // cellSpacing={20}
-              // autoplay={false}
-              // wrapAround={false}
-            >
-              {ANALYSIS.cards.map((c) => (
-                <AnalysisCard key={i} image_alt={ANALYSIS.image_alt} {...c} />
-              ))}
-            </Carousel>
-          </div>
-        </Media>
-      ))}
     </div>
   );
 };
