@@ -24,11 +24,7 @@ const LayoutHome = () => {
             <ValueChainsContainerHome />
           </div>
         </div>
-        <div className="l-container">
-          <div className="row">
-            <AnalysisContainerHome />
-          </div>
-        </div>
+        <AnalysisContainerHome />
         <div className="l-container">
           <div className="row">
             <LearnMoreContainerHome />
