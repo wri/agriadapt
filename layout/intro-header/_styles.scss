@@ -11,6 +11,17 @@ $about-vector-mask: url('/static/images/components/layout/intro-header/about-vec
     }
 }
 
+.c-content {
+    position: relative;
+    width: 100%;
+    top: 30%;
+    z-index: 1;
+
+    @media screen and (min-width: map-get($breakpoints, medium)) {
+        position: absolute;
+    }
+}
+
 .visual-container {
     position: relative;
 
@@ -24,16 +35,16 @@ $about-vector-mask: url('/static/images/components/layout/intro-header/about-vec
     }
 
     @media screen and (min-width: map-get($breakpoints, medium)) {
-        max-width: 65%;
+        max-width: 70%;
     }
 
     // @media screen and (max-width: map-get($breakpoints, medium)) and (orientation: landscape) {
     //     max-width: 70%;
     // }
 
-    @media screen and (min-width: map-get($breakpoints, large)) {
-        max-width: 100%;
-    }
+    // @media screen and (min-width: map-get($breakpoints, large)) {
+    //     max-width: 100%;
+    // }
 }
 
 .image-container {
@@ -97,8 +108,8 @@ $about-vector-mask: url('/static/images/components/layout/intro-header/about-vec
 .info-container {
     @media screen and (min-width: map-get($breakpoints, small)) {
         position: relative;
-        top: $space * -10;
-        margin: 0 $margin-size-small;
+        // top: $space * -10;
+        // margin: 0 $margin-size-small;
     }
 
     // @media screen and (max-width: map-get($breakpoints, medium)) and (orientation: landscape) {
@@ -114,13 +125,13 @@ $about-vector-mask: url('/static/images/components/layout/intro-header/about-vec
 
     @media screen and (min-width: map-get($breakpoints, medium)) {
         max-width: 429px;
-        position: absolute;
-        top: 200px;
+        // position: absolute;
+        // top: 200px;
         text-align: left;
-        margin: 0 $margin-size;
+        // margin: 0 $margin-size;
 
         &.-right {
-            right: 0px;
+            margin-left: auto;
         }
 
         &.-landing {
@@ -133,7 +144,7 @@ $about-vector-mask: url('/static/images/components/layout/intro-header/about-vec
     }
 
     @media screen and (min-width: map-get($breakpoints, large)) {
-        margin: 0 $margin-size * 2;
+        // margin: 0 $margin-size * 2;
 
         &.-landing {
             max-width: 540px;

@@ -4,7 +4,7 @@ import { ValueChainCards } from './value-chain-cards/component';
 
 const ValueChainsContainerHome = () => {
   return (
-    <div className="value-chains-container">
+    <div className="c-value-chains">
       <div className="value-chains-text-container">
         <h2>{VALUECHAINS.title}</h2>
         <h3>{VALUECHAINS.subTitle}</h3>

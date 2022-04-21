@@ -1,3 +1,5 @@
+@use "sass:math";
+
 .c-value-chain-cards {
     position: relative;
     margin: 50px auto 0;
@@ -42,6 +44,7 @@
     }
 
     .c-mobile-blob {
+        margin: 0 math.div(map-get($grid-column-gutter, medium), -2);
         position: absolute;
         width: 332px;
         height: 305px;
