@@ -3,7 +3,6 @@
 	overflow: hidden;
 	
 	.c-carousel {
-		overflow: visible;
 		padding-top: 60px;
 		padding-bottom: 120px;
 
@@ -15,11 +14,8 @@
 			height: 450px;
 			border-radius: 16px;
 			padding: 32px;
-			width: 340px;
-
-			@media screen and (min-width: map-get($breakpoints, medium)) {
-				width: 430px;
-			}
+			width: 100%;
+			max-width: 430px;
 
 			.c-analysis-card-image {
 				position: absolute;

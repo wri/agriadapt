@@ -12,10 +12,10 @@ const AnalysisContainerHome = () => {
           <div className="column">
             <h2>{ANALYSIS.title}</h2>
             <h3>{ANALYSIS.subTitle}</h3>
-            {['sm', 'md', 'lg'].map((b: 'sm' | 'md' | 'lg', i) => (
+            {['sm', 'md', 'lg', 'xl'].map((b: 'sm' | 'md' | 'lg' | 'xl', i) => (
               <Media
                 key={b}
-                {...(['sm', 'md'].includes(b)
+                {...(['sm', 'md', 'lg'].includes(b)
                   ? { at: b }
                   : { greaterThanOrEqual: b })}
               >
@@ -23,7 +23,7 @@ const AnalysisContainerHome = () => {
                   <Carousel
                     renderCenterLeftControls={() => undefined}
                     renderCenterRightControls={() => undefined}
-                    slidesToShow={i + 1}
+                    slidesToShow={['sm', 'md'].includes(b) ? i + 1 : i}
                     // cellAlign="left"
                     slidesToScroll={1}
                     cellSpacing={20}
