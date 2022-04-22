@@ -1,32 +1,32 @@
 @import "css/settings";
 
 // TODO: look at using l-page instead
-.l-home {
-	@media screen and (min-width: map-get($breakpoints, small)) {
-		.c-carousel {
-			overflow: hidden;
-			padding-left: $margin-size-small;
-			padding-right: $margin-size-small;
-			margin: 0 $margin-size-small * -1;
-		}
-	}
+// .l-home {
+// 	@media screen and (min-width: map-get($breakpoints, small)) {
+// 		.c-carousel {
+// 			overflow: hidden;
+// 			padding-left: $margin-size-small;
+// 			padding-right: $margin-size-small;
+// 			margin: 0 $margin-size-small * -1;
+// 		}
+// 	}
 
-	@media screen and (min-width: map-get($breakpoints, medium)) {
-		.c-carousel {
-			padding-left: $margin-size;
-			padding-right: $margin-size;
-			margin: 0 $margin-size * -1;
-		}
-	}
+// 	@media screen and (min-width: map-get($breakpoints, medium)) {
+// 		.c-carousel {
+// 			padding-left: $margin-size;
+// 			padding-right: $margin-size;
+// 			margin: 0 $margin-size * -1;
+// 		}
+// 	}
 
-	@media screen and (min-width: map-get($breakpoints, large)) {
-		.c-carousel {
-			padding-left: $margin-size * 2;
-			padding-right: $margin-size * 2;
-			margin: 0 $margin-size * -2;
-		}
-	}
-}
+// 	@media screen and (min-width: map-get($breakpoints, large)) {
+// 		.c-carousel {
+// 			padding-left: $margin-size * 2;
+// 			padding-right: $margin-size * 2;
+// 			margin: 0 $margin-size * -2;
+// 		}
+// 	}
+// }
 
 .c-map-experience {
 	margin-top: 140px;

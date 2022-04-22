@@ -1,5 +1,4 @@
 import Layout from 'layout/layout/layout-app';
-// import IntroContainerHome from './home-intro-container/component';
 import MapContainerHome from './home-map-experience/component';
 import ValueChainsContainerHome from './home-value-chains/component';
 import AnalysisContainerHome from './home-analysis/component';
@@ -14,7 +13,9 @@ const LayoutHome = () => {
         <IntroHeader {...LANDING} />
         <div className="l-container">
           <div className="row">
-            <MapContainerHome />
+            <div className="column">
+              <MapContainerHome />
+            </div>
           </div>
         </div>
         <div className="l-container">
@@ -22,11 +23,7 @@ const LayoutHome = () => {
             <ValueChainsContainerHome />
           </div>
         </div>
-        <div className="l-container">
-          <div className="row">
-            {/* <AnalysisContainerHome /> */}
-          </div>
-        </div>
+        <AnalysisContainerHome />
         <div className="l-container">
           <div className="row">
             <LearnMoreContainerHome />

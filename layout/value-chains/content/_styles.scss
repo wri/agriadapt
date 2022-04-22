@@ -3,8 +3,7 @@
 }
 
 .c-value-chain-flow {
-    margin-top: $margin-size;
-    margin-bottom: $margin-size;
+    margin: $margin-size auto;
     // TODO: implement carousel instead
     overflow-x: auto;
 }
