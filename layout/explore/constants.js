@@ -1,23 +1,6 @@
-export const EXPLORE_SECTIONS = {
-  DISCOVER: 'Discover',
-  ALL_DATA: 'All data',
-  NEAR_REAL_TIME: 'Near Real-Time',
-  TOPICS: 'Topics',
-  AREAS_OF_INTEREST: 'Areas of Interest',
-  COLLECTIONS: 'Collections',
-  FAVORITES: 'Favorites',
-  ...(!process.env.NEXT_PUBLIC_FEATURE_FLAG_MY_DATA && {
-    MY_DATA: 'My Data',
-  }),
-};
-
 export const EXPLORE_TABS = {
   LAYERS: 'Layers',
   ANALYSIS: 'Analysis',
-};
-
-export const EXPLORE_SUBSECTIONS = {
-  NEW_AREA: 'area/new',
 };
 
 export const EXPLORE_FILTERS = {
@@ -62,3 +45,14 @@ export const EXPLORE_FILTERS = {
     },
   },
 };
+
+export const EXPLORE_ANALYSIS = {
+  LOCATION_CONFIG: {
+    options: [
+      { label: 'Select point on map', value: 'point' },
+      { label: 'Use my current location', value: 'current' },
+      { label: 'Search by address', value: 'search' },
+      { label: 'Choose my location', value: 'dropdown' },
+    ],
+  }
+}

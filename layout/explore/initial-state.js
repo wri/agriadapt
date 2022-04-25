@@ -1,8 +1,8 @@
 // import { TOPICS, DATA_TYPES, FREQUENCIES, TIME_PERIODS } from 'utils/concepts';
 import { BASEMAPS, LABELS } from "components/map/constants";
-import { EXPLORE_SECTIONS, EXPLORE_TABS } from "layout/explore/constants";
+import { EXPLORE_TABS } from "layout/explore/constants";
 
-export default {
+const initialState = {
   // Datasets
   datasets: {
     list: [],
@@ -23,6 +23,12 @@ export default {
       emission_scenario: [],
       supply_chain_node: [],
     },
+  },
+  analysis: {
+    locations: {
+      list: [],
+      formOpen: false,
+    }
   },
   sort: {
     selected: "most-viewed",
@@ -83,7 +89,6 @@ export default {
   sidebar: {
     open: true,
     anchor: null,
-    section: EXPLORE_SECTIONS.DISCOVER,
     subsection: null,
     selected: null,
     selectedCollection: null,
@@ -97,3 +102,5 @@ export default {
     error: null,
   },
 };
+
+export default initialState;

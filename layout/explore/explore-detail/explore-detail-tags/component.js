@@ -5,7 +5,6 @@ import PropTypes from "prop-types";
 import { logEvent } from "utils/analytics";
 
 // Constants
-import { EXPLORE_SECTIONS } from "layout/explore/constants";
 
 function ExploreDetailTags(props) {
   const { tags } = props;
@@ -33,14 +32,14 @@ function ExploreDetailTags(props) {
       <div className="tags">
         {tags.map((tag) => (
           <button
+            key={tag.id}
             className="c-button -secondary -compressed"
             onClick={() => {
               props.setSelectedDataset(null);
-              props.setSidebarSection(EXPLORE_SECTIONS.ALL_DATA);
               props.setFiltersSelected(getFilterObject(tag));
               props.setDatasetsPage(1);
               props.fetchDatasets();
-              logEvent("Explore (Detail)", "Clicks Tag", tag.id);
+              logEvent('Explore (Detail)', 'Clicks Tag', tag.id);
             }}
           >
             {tag.label}

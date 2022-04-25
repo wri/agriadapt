@@ -2,6 +2,7 @@ import Image from 'next/image';
 import classnames from 'classnames';
 import Field from 'components/form/Field';
 import Select from 'react-select';
+import Link from 'next/link';
 
 const IntroHeader = ({
   id = 'LANDING',
@@ -61,15 +62,17 @@ const IntroHeader = ({
                   </p>
                 ))}
                 {id === 'LANDING' && (
-                  <button
-                    className={classnames({
-                      'c-button': true,
-                      '-primary': true,
-                    })}
-                  >
-                    {/* TODO: Translate */}
-                    {'Explore the Latest Data'}
-                  </button>
+                  <Link href="/explore" passHref>
+                    <button
+                      className={classnames({
+                        'c-button': true,
+                        '-primary': true,
+                      })}
+                    >
+                      {/* TODO: Translate */}
+                      {'Explore the Latest Data'}
+                    </button>
+                  </Link>
                 )}
                 {countries && (
                   <div className="country-selector">

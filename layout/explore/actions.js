@@ -7,7 +7,7 @@ import { EXPLORE_DATASETS_IDS } from "constants/app";
 
 // Services
 import { fetchDatasets as fetchDatasetsService } from "services/dataset";
-import { fetchAllTags, fetchInferredTags } from "services/graph";
+import { fetchInferredTags } from "services/graph";
 
 // Utils
 import { TAGS_BLACKLIST } from "utils/tags";
@@ -179,6 +179,11 @@ export const setTagsTooltip = createAction("EXPLORE/setTagsTooltip");
 export const setTagsLoading = createAction("EXPLORE/setTagsLoading");
 export const setTagsError = createAction("EXPLORE/setTagsError");
 export const resetTags = createAction("EXPLORE/resetTags");
+
+// ANALYSIS LOCATION
+export const addLocation = createAction("EXPLORE/addLocation");
+export const removeLocation = createAction("EXPLORE/removeLocation");
+export const setFormOpen = createAction("EXPLORE/setFormOpen");
 
 // Async actions
 export const fetchTags = createThunkAction(

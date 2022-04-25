@@ -1,0 +1,61 @@
+.c-analysis-location {
+    display: flex;
+    position: relative;
+    align-items: center;
+    // z-index: 1;
+    background: $white;
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.12);
+    
+    // // Trying to deal with box-shadow darkening surrounding location containers
+    // &::after {
+    //     content: "";
+    //     width: 100%;
+    //     height: 100%;
+    //     position: absolute;
+    //     z-index: -1;
+    //     border-radius: 8px;
+    //     padding: 10px;
+    //     box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.12);
+    // }
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    .c-icon {
+        width: 15px;
+        height: 15px;
+    }
+
+    .c-location-label {
+        font-family: 'Lato';
+        font-style: normal;
+        font-weight: 400;
+        margin-left: 8px;
+        font-size: 16px;
+        line-height: 25px;
+        color: $charcoal-grey
+    }
+}
+
+.c-add-location {
+    display: flex;
+    align-items: center;
+    color: $primary-green;
+    margin: 16px 0;
+
+    .c-icon {
+        width: 15px;
+        height: 15px;
+        margin: 0 10px;
+    }
+
+    &:hover {
+        text-decoration: none;
+        cursor: pointer;
+    }
+}

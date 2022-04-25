@@ -739,6 +739,12 @@ export default function Icons() {
         <symbol id="down-caret" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M0 0.5L4 4.5L8 0.5H0Z" fill="white"/>
         </symbol>
+        <symbol id="icon-ellipsis" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fillRule="evenodd" clipRule="evenodd" d="M9 2.5C9 3.32843 8.32843 4 7.5 4C6.67157 4 6 3.32843 6 2.5C6 1.67157 6.67157 1 7.5 1C8.32843 1 9 1.67157 9 2.5ZM9 7.5C9 8.32843 8.32843 9 7.5 9C6.67157 9 6 8.32843 6 7.5C6 6.67157 6.67157 6 7.5 6C8.32843 6 9 6.67157 9 7.5ZM7.5 14C8.32843 14 9 13.3284 9 12.5C9 11.6716 8.32843 11 7.5 11C6.67157 11 6 11.6716 6 12.5C6 13.3284 6.67157 14 7.5 14Z" fill="#393F44"/>
+        </symbol>
+        <symbol id="icon-circle-plus" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8.125 4.375H6.875V6.875H4.375V8.125H6.875V10.625H8.125V8.125H10.625V6.875H8.125V4.375ZM7.5 1.25C4.05 1.25 1.25 4.05 1.25 7.5C1.25 10.95 4.05 13.75 7.5 13.75C10.95 13.75 13.75 10.95 13.75 7.5C13.75 4.05 10.95 1.25 7.5 1.25ZM7.5 12.5C4.74375 12.5 2.5 10.2563 2.5 7.5C2.5 4.74375 4.74375 2.5 7.5 2.5C10.2563 2.5 12.5 4.74375 12.5 7.5C12.5 10.2563 10.2563 12.5 7.5 12.5Z" fill="#266510"/>
+        </symbol>
       </defs>
     </svg>
   );

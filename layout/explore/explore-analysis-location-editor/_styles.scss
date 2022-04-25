@@ -1,0 +1,31 @@
+.c-analysis-location-editor {
+    border-radius: 8px;
+    box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.12);
+    background-color: $white;
+    overflow: visible;
+    padding: 20px;
+    position: relative;
+
+    .c-location-form {
+        max-width: 340px;
+
+        .c-field {
+            margin: 10px 0 0;
+        }
+    }
+
+    .c-location-actions {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 24px;
+
+        .c-button {
+            padding: 0 20px;
+            height: 30px;
+
+            &:not(:last-child) {
+                margin-right: $space-1;
+            }
+        }
+    }
+}

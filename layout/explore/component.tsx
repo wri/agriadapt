@@ -6,34 +6,15 @@ import ExploreDatasets from 'layout/explore/explore-datasets';
 import ExploreDetail from 'layout/explore/explore-detail';
 import ExploreSwitch from './explore-switch';
 import classnames from 'classnames';
+import { EXPLORE_TABS } from './constants';
+import ExploreAnalysis from 'layout/explore/explore-analysis';
 
-interface ExploreProps {
+const Explore = ({
   explore: {
-    datasets: {
-      selected: string;
-    };
-    sidebar: {
-      section: string;
-      subsection: string;
-      open: boolean;
-    };
-    // map: {
-    //   drawer: {
-    //     isDrawing: boolean,
-    //   }
-    // }
-  };
-  // userIsLoggedIn: PropTypes.bool.isRequired,
-  // stopDrawing: PropTypes.func.isRequired,
-}
-
-const Explore = (props: ExploreProps): JSX.Element => {
-  const {
-    explore: {
-      datasets: { selected },
-      sidebar: { open, subsection },
-    },
-  } = props;
+    datasets: { selected },
+    sidebar: { open, selectedTab },
+  },
+}): JSX.Element => {
   const [_dataset, setDataset] = useState(null);
 
   const getSidebarLayout = () => (
@@ -48,17 +29,19 @@ const Explore = (props: ExploreProps): JSX.Element => {
         })}
         id="sidebar-content-container"
       >
-        {!subsection && !selected && (
+        {selectedTab === EXPLORE_TABS.LAYERS && (
           <>
-            <ExploreDatasets />
+            {!selected ? (
+              <ExploreDatasets />
+            ) : (
+              <ExploreDetail
+                key={selected}
+                onDatasetLoaded={(_dataset) => setDataset(_dataset)}
+              />
+            )}
           </>
         )}
-        {selected && (
-          <ExploreDetail
-            key={selected}
-            onDatasetLoaded={(_dataset) => setDataset(_dataset)}
-          />
-        )}
+        {selectedTab === EXPLORE_TABS.ANALYSIS && <ExploreAnalysis />}
       </div>
     </>
   );

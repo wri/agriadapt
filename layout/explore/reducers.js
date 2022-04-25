@@ -122,6 +122,41 @@ export default createReducer(initialState, (builder) => {
         direction: initialState.sort.direction,
       },
     }))
+    // analysis
+    .addCase(actions.addLocation, (state, { payload }) => ({
+      ...state,
+      analysis: {
+        ...state.analysis,
+        locations: {
+          ...state.analysis.locations,
+          list: [...state.analysis.locations.list, payload],
+        },
+      },
+    }))
+    .addCase(actions.removeLocation, (state, { payload }) => ({
+      ...state,
+      analysis: {
+        ...state.analysis,
+        locations: {
+          ...state.analysis.locations,
+          list: [
+            ...state.analysis.locations.list.filter(
+              ({ id }) => id !== payload.id
+            ),
+          ],
+        },
+      },
+    }))
+    .addCase(actions.setFormOpen, (state, { payload }) => ({
+      ...state,
+      analysis: {
+        ...state.analysis,
+        locations: {
+          ...state.analysis.locations,
+          formOpen: payload,
+        },
+      },
+    }))
     // map
     .addCase(actions.setViewport, (state, { payload }) => ({
       ...state,

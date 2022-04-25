@@ -53,16 +53,6 @@ $this: "c-search-input";
       > input {
         padding-left: ($space * 6);
       }
-
-      &::placeholder {
-        color: $light-grey;
-        font-size: $font-size-medium;
-      }
-
-      ::-webkit-input-placeholder {
-        color: $light-grey;
-        font-size: $font-size-medium;
-      }
     }
 
     svg {

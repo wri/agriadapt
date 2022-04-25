@@ -76,7 +76,7 @@
       box-shadow: none;
       outline: none;
       font-size: $font-size-medium;
-      padding: math.div($margin-size-extra-small, 2) 10px;
+      padding: math.div($margin-size-extra-small, 2) 15px;
       margin: 0;
       width: 100%;
 
@@ -101,7 +101,9 @@
     > textarea::placeholder,
     > select::placeholder,
     .input::placeholder {
-      color: rgba($charcoal-grey, 0.6);
+      color: $light-grey;
+      font-size: $font-size-medium;
+      line-height: 26px;
     }
   }
 

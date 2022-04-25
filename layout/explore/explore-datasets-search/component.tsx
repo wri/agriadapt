@@ -46,7 +46,7 @@ const ExploreDatasetsSearch = ({
       {/* TODO: Translate */}
       {Object.entries(STANDARD).map(([k, v]) => (
         <Field
-        // TODO: Translate
+          // TODO: Translate
           key={k}
           id={k}
           properties={{
@@ -57,7 +57,7 @@ const ExploreDatasetsSearch = ({
           options={[]}
           hint={v.hint}
           placeholder={v.placeholder}
-          className={'Select--large'}        
+          className={'Select--large'}
           // isSearchable={false}
           // isClearable={false}
         >
@@ -66,9 +66,7 @@ const ExploreDatasetsSearch = ({
       ))}
       {/* TODO: Translate */}
       <div className="advanced-link">
-        <a onClick={handleClickAdvanced}>
-          {'Advanced Search'}
-        </a>
+        <a onClick={handleClickAdvanced}>{'Advanced Search'}</a>
       </div>
       {advOpen && (
         <>
@@ -99,21 +97,12 @@ const ExploreDatasetsSearch = ({
             </Field>
           ))}
           <div className="c-explore-search-actions">
-            <button
-              className={classNames({
-                'c-button': true,
-                '-secondary': true,
-              })}
-              onClick={handleCancel}
-            >
+            <button className="c-button -secondary" onClick={handleCancel}>
               {/* TODO: Translate */}
               {'Cancel'}
             </button>
             <button
-              className={classNames({
-                'c-button': true,
-                '-primary': true,
-              })}
+              className="c-button -primary"
               onClick={handleSearch}
             >
               {/* TODO: Translate */}

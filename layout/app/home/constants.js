@@ -6,13 +6,6 @@ import cottonImage from 'public/static/images/components/layout/landing/value-ch
 import coffeeImage from 'public/static/images/components/layout/landing/value-chain-cards/coffee.png';
 // import analysisImage from 'public/static/images/components/layout/landing/analysis-map.png';
 
-const INTRO = {
-  title:
-    'Helping farmers and agriculture businesses around the world adapt to climate change.',
-  subTitle: 'Data and tools for agricultural resilience',
-  button: 'Explore the Latest Data',
-};
-
 const MAP = {
   title: 'Here’s a more compelling header for the map experience.',
   subTitle:
@@ -84,4 +77,4 @@ const LEARN = {
   image: aboutImage,
 };
 
-export { INTRO, MAP, VALUECHAINS, ANALYSIS, LEARN };
+export { MAP, VALUECHAINS, ANALYSIS, LEARN };

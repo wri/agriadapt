@@ -6,12 +6,14 @@ import { logEvent } from 'utils/analytics';
 
 // Components
 import Icon from 'components/ui/icon';
+import { EXPLORE_TABS } from '../constants';
 
 const ExploreSidebarComponent = ({
   open,
   setSidebarOpen,
   children,
   selectedDataset,
+  selectedTab,
 }): JSX.Element => {
   /**
    * UI EVENTS
@@ -35,6 +37,7 @@ const ExploreSidebarComponent = ({
         'c-sidebar': true,
         '-open': open,
         '-details': !!selectedDataset,
+        '-wider': open && selectedTab === EXPLORE_TABS.ANALYSIS,
       })}
     >
       <button type="button" className="btn-toggle" onClick={triggerToggle}>

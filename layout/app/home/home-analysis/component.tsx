@@ -6,7 +6,7 @@ import AnalysisCard from './analysis-card/component';
 
 const AnalysisContainerHome = () => {
   return (
-    <div className="c-analysis">
+    <div className="c-home-analysis">
       <div className="l-container">
         <div className="row">
           <div className="column">
