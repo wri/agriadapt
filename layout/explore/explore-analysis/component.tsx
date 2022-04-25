@@ -22,7 +22,7 @@ const ExploreAnalysis = ({
         <ExploreAnalysisLocation {...loc} key={i} />
       ))}
 
-      {formOpen ? (
+      {formOpen || !locations.length ? (
         <ExploreAnalysisLocationEditor />
       ) : (
         <a onClick={handleAddLocation} className="c-add-location">

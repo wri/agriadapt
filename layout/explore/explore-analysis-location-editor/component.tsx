@@ -5,7 +5,7 @@ import Select from 'react-select';
 import useRadio from 'hooks/form/useRadio';
 import { useState } from 'react';
 
-const ExploreAnalysisLocationEditor = ({ addLocation, setFormOpen }) => {
+const ExploreAnalysisLocationEditor = ({ list: locations, addLocation, setFormOpen }) => {
   const { LOCATION_CONFIG } = EXPLORE_ANALYSIS;
   const locationType = useRadio('');
   const [country, setCountry] = useState('');
@@ -102,9 +102,11 @@ const ExploreAnalysisLocationEditor = ({ addLocation, setFormOpen }) => {
         </div>
       </div>
       <div className="c-location-actions">
-        <button onClick={onCancel} className="c-button -secondary">
-          Cancel
-        </button>
+        {locations.length > 0 && (
+          <button onClick={onCancel} className="c-button -secondary">
+            Cancel
+          </button>
+        )}
         <button onClick={onSubmit} className="c-button -primary">
           Add Location
         </button>
