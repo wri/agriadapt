@@ -22,7 +22,7 @@ export default function ExploreDetailHeader({
         onClick={() => setSelectedDataset(null)}
       >
         <Icon className="-small" name="icon-arrow-left-2" />
-        <span>All Datasets</span>
+        <span>Back</span>
       </button>
     </div>
   );

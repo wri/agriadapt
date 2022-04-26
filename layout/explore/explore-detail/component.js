@@ -15,7 +15,7 @@ import FurtherInformation from "./further-information";
 import ExploreDetailButtons from "./explore-detail-buttons";
 import ExploreDetailTags from "./explore-detail-tags";
 import DatasetLayers from "./dataset-layers";
-import RelatedContent from "./related-content";
+// import RelatedContent from "./related-content";
 import ExploreDetailVisualization from "./explore-detail-visualization";
 
 // Constants
@@ -112,9 +112,9 @@ class ExploreDetailComponent extends React.Component {
               <div id="further_information" className="metadata-section">
                 <FurtherInformation metadata={metadata} />
               </div>
-              <div id="related_content" className="metadata-section">
+              {/* <div id="related_content" className="metadata-section">
                 <RelatedContent datasetID={dataset.id} />
-              </div>
+              </div> */}
             </div>
           </>
         )}
