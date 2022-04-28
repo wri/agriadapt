@@ -16,7 +16,7 @@ import ExploreDetailButtons from "./explore-detail-buttons";
 import ExploreDetailTags from "./explore-detail-tags";
 import DatasetLayers from "./dataset-layers";
 // import RelatedContent from "./related-content";
-import ExploreDetailVisualization from "./explore-detail-visualization";
+// import ExploreDetailVisualization from "./explore-detail-visualization";
 
 // Constants
 import { DEFAULT_LIMIT_CHAR_FOR_METADATA_FIELDS } from "./constants";
@@ -49,10 +49,10 @@ class ExploreDetailComponent extends React.Component {
     const dateLastUpdated = getDateConsideringTimeZone(
       dataset && dataset.dataLastUpdated
     );
-    const defaultWidget =
-      dataset &&
-      dataset.widget &&
-      dataset.widget.find((w) => w.defaultEditableWidget);
+    // const defaultWidget =
+    //   dataset &&
+    //   dataset.widget &&
+    //   dataset.widget.find((w) => w.defaultEditableWidget);
     const showLayersSection =
       dataset && dataset.layer && dataset.layer.length > 0;
     const showTags = tags && tags.length > 0;
@@ -103,12 +103,12 @@ class ExploreDetailComponent extends React.Component {
                   <DatasetLayers layers={layers} dataset={dataset} />
                 </div>
               )}
-              <div id="visualization" className="metadata-section">
+              {/* <div id="visualization" className="metadata-section">
                 <ExploreDetailVisualization
                   datasetId={dataset.id}
                   widgetId={defaultWidget && defaultWidget.id}
                 />
-              </div>
+              </div> */}
               <div id="further_information" className="metadata-section">
                 <FurtherInformation metadata={metadata} />
               </div>
