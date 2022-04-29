@@ -211,7 +211,7 @@ class SaveWidgetModal extends React.Component {
             <div className="icon-container">
               <img
                 alt="Widget saved"
-                src="/static/images/components/modal/widget-saved.svg"
+                src="/images/components/modal/widget-saved.svg"
               />
             </div>
             <div className="buttons-widget-saved">
