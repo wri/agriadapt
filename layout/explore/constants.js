@@ -5,23 +5,22 @@ export const EXPLORE_TABS = {
 
 export const EXPLORE_FILTERS = {
   STANDARD: {
-    EMISSION_SCENARIO: {
-      label: 'Filter Layers by Emission Scenario',
-      hint: 'Select a pathway for forward-looking data.',
-      placeholder: 'Emission Scenario',
-      type: 'select',
-      tooltip: 'More information about the filter'
-    },
-  },
-  ADVANCED: {
     VALUE_CHAINS: {
       placeholder: 'Value Chains',
+      hint: 'Select a pathway for forward-looking data.',
       type: 'select',
       options: [
         { label: 'Rice', value: 'rice' },
         { label: 'Cotton', value: 'cotton' },
         { label: 'Coffee', value: 'coffee' },
       ],
+    },
+  },
+  ADVANCED: {
+    EMISSION_SCENARIO: {
+      placeholder: 'Emission Scenario',
+      type: 'select',
+      tooltip: 'More information about the filter'
     },
     REGION: {
       placeholder: 'Region',

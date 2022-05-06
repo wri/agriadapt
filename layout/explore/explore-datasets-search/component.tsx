@@ -50,7 +50,8 @@ const ExploreDatasetsSearch = ({
           key={k}
           id={k}
           properties={{
-            label: v.label,
+            // TODO: Translate
+            label: `Filter Layers by ${v.placeholder}`,
             default: '',
             tooltip: v.tooltip,
           }}
