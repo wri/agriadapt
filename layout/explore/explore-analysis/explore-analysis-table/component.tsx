@@ -41,13 +41,13 @@ const AnalysisTable = () => {
   return (
     <div
       className={classnames(
-        'c-widget c-analysis-table border rounded border-gray-light ',
+        'c-widget c-analysis-table border rounded border-gray-light',
         {
           '-is-embed': isEmbed,
         }
       )}
     >
-      <div className="p-4 border-b-0 widget-header-container">
+      <div className="p-4 border-b border-gray-light widget-header-container">
         <WidgetHeader widget={{ name: 'Layer Analysis Table' }} />
       </div>
       <div className="c-a-table">
