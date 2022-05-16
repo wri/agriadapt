@@ -13,8 +13,12 @@ $picture-size: 250px;
     }
 
     .c-user-stories-body {
-        max-width: 1010px;
+        // max-width: 1010px;
         margin: 0 auto;
+
+        .c-carousel {
+            width: 100%;
+        }
 
         .c-user-story {
             display: flex;
@@ -27,10 +31,12 @@ $picture-size: 250px;
             }
 
             .user-picture {
-                width: $picture-size;
-                height: $picture-size;
-                background: rgb($primary-green, 0.2);
                 margin: 0 auto;
+                border: 3px solid #A8C19F;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
 
                 @media screen and (min-width: map-get($breakpoints, medium)) {
                     width: $small-picture-size;
@@ -41,9 +47,16 @@ $picture-size: 250px;
                     width: $picture-size;
                     height: $picture-size;
                 }
+
+                span {
+                    border-radius: 50%;
+                    text-align: center;
+                }
             }
 
             .c-user-info {
+                margin: 0px 30px 0px 30px;
+
                 @media screen and (min-width: map-get($breakpoints, medium)) {
                     max-width: 371px;
                 }

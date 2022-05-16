@@ -1,3 +1,4 @@
+import React, {useMemo} from 'react';
 import IntroHeader from 'layout/intro-header';
 import HazardsFlow from './content/flow-diagram';
 import HazardsIntro from './content/hazards-intro';
@@ -5,8 +6,20 @@ import StepDetails from './content/step-details/component';
 import ItemIntro from './content/item-intro';
 import UserStories from './content/user-stories';
 import Layout from 'layout/layout/layout-app';
+import { riceQuotes, coffeeQuotes, cottonQuotes } from './content/constants';
 
 const LayoutCrop = ({ header, details }) => {
+  const quotes = useMemo(() =>  { 
+    const valueChain = header?.title?.toLowerCase();
+    if (valueChain === 'rice') {
+      return riceQuotes;
+    } else if (valueChain === 'coffee') {
+      return coffeeQuotes;
+    } else if (valueChain === 'cotton') {
+      return cottonQuotes;
+    }
+  }, [header]);
+
   return (
     // TODO: Translate
     <Layout title={'Value Chains'}>
@@ -15,7 +28,7 @@ const LayoutCrop = ({ header, details }) => {
         <div className="l-container">
           <div className="row">
             <div className="column small-12">
-              <UserStories />
+              <UserStories quotes={quotes} />
             </div>
           </div>
         </div>
