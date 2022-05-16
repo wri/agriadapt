@@ -2,6 +2,7 @@ import Icon from 'components/ui/icon';
 import { useEffect } from 'react';
 import ExploreAnalysisLocation from '../explore-analysis-location';
 import ExploreAnalysisLocationEditor from '../explore-analysis-location-editor';
+import AnalysisTable from './explore-analysis-table';
 
 const ExploreAnalysis = ({
   locations: { list: locations, formOpen },
@@ -30,6 +31,7 @@ const ExploreAnalysis = ({
           Add a Location
         </a>
       )}
+      <AnalysisTable />
     </div>
   );
 };
