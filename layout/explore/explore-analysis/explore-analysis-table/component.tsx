@@ -1,35 +1,35 @@
 import classnames from 'classnames';
 import Icon from 'components/ui/icon';
 import WidgetHeader from 'components/widgets/header';
+import { useMemo } from 'react';
+import AnalysisDropdownMenu from '../dropdown-menu/component';
 
-const AnalysisTable = () => {
+interface Location {
+  id: number
+  label: string;
+  country: string;
+  type: string;
+  geo: unknown;
+}
+
+const AnalysisTable = ({ list }: { list: Location[] }) => {
   const isEmbed = false;
-  const rows = [
-    {
-      col1: 'Value',
-      col2: 'Value',
-      col3: 'Value',
-      col4: 'Value',
-      col5: 'Value',
-      col6: 'Value',
-    },
-    {
-      col1: 'Value',
-      col2: 'Value',
-      col3: 'Value',
-      col4: 'Value',
-      col5: 'Value',
-      col6: 'Value',
-    },
-    {
-      col1: 'Value',
-      col2: 'Value',
-      col3: 'Value',
-      col4: 'Value',
-      col5: 'Value',
-      col6: 'Value',
-    },
-  ];
+  const rows = useMemo(
+    () =>
+      list.map((l) => ({
+        name: `${l.label} ${l.id}`,
+        attributes: {
+          col1: 'Value',
+          col2: 'Value',
+          col3: 'Value',
+          col4: 'Value',
+          col5: 'Value',
+          col6: 'Value',
+        },
+      })),
+    [list]
+  );
+
   const columns = [
     { field: 'col1', label: 'Column' },
     { field: 'col2', label: 'Column' },
@@ -38,6 +38,12 @@ const AnalysisTable = () => {
     { field: 'col5', label: 'Column' },
     { field: 'col6', label: 'Column' },
   ];
+
+  const options = [
+    {id: 'change-column-name', label: 'Change Column Name'},
+    {id: 'sort-a-z', label: 'Sort by Column A-Z'},
+    {id: 'delete', label: 'Delete'},
+]
   return (
     <div
       className={classnames(
@@ -55,17 +61,13 @@ const AnalysisTable = () => {
           <thead>
             <tr>
               <th>
-                <span className="align-middle">
-                  <Icon name="icon-ellipsis" className="table-action" />
-                </span>
+                <AnalysisDropdownMenu options={options} />
                 Name
               </th>
               {columns.map((c, i) => (
                 <th key={i}>
                   <div className="flex items-start">
-                    <span className="align-middle">
-                      <Icon name="icon-ellipsis" className="table-action" />
-                    </span>
+                    <AnalysisDropdownMenu options={options} />
                     <div className="w-full text-ellipsis overflow-x-hidden">
                       <span className="float-right">
                         <Icon name="icon-info" className="table-action" />
@@ -80,9 +82,9 @@ const AnalysisTable = () => {
           <tbody>
             {rows.map((r, i) => (
               <tr key={i}>
-                <td>Location Name</td>
-                {Object.entries(r).map(([k, v], i) => (
-                  <td key={k}>{`${v}${i ? ' ' + i : ''}`}</td>
+                <td>{r.name}</td>
+                {Object.entries(r.attributes).map(([k, v], i) => (
+                  <td key={k}>{`${v} ${i + 1}`}</td>
                 ))}
               </tr>
             ))}

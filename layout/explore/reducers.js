@@ -129,7 +129,10 @@ export default createReducer(initialState, (builder) => {
         ...state.analysis,
         locations: {
           ...state.analysis.locations,
-          list: [...state.analysis.locations.list, payload],
+          list: [
+            ...state.analysis.locations.list,
+            { ...payload, id: state.analysis.locations.list.at(-1)?.id + 1 || 0 },
+          ],
         },
       },
     }))
@@ -140,9 +143,7 @@ export default createReducer(initialState, (builder) => {
         locations: {
           ...state.analysis.locations,
           list: [
-            ...state.analysis.locations.list.filter(
-              ({ id }) => id !== payload.id
-            ),
+            ...state.analysis.locations.list.filter(({ id }) => id !== payload),
           ],
         },
       },

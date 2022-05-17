@@ -1,4 +1,3 @@
-// import { TOPICS, DATA_TYPES, FREQUENCIES, TIME_PERIODS } from 'utils/concepts';
 import { BASEMAPS, LABELS } from "components/map/constants";
 import { EXPLORE_TABS } from "layout/explore/constants";
 
