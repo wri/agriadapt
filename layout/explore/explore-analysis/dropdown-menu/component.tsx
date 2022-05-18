@@ -25,7 +25,7 @@ const AnalysisDropdownMenu = ({options}) => {
       renderTarget={(ref) => (
         <a
           ref={ref as React.LegacyRef<HTMLAnchorElement>}
-          onClick={() => toggleDropdown(true)}
+          onClick={() => toggleDropdown(!isVisible)}
           onMouseLeave={() => toggleDropdown(false)}
           className="align-middle cursor-pointer"
         >

@@ -172,6 +172,9 @@ export default function Icons() {
             d="M30.4 20.8v6.4c0 1.767-1.433 3.2-3.2 3.2h-22.4c-1.767 0-3.2-1.433-3.2-3.2v-6.4"
           />
         </symbol>
+        <symbol id="download-2" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fillRule="evenodd" clipRule="evenodd" d="M6.89187 5.03346V9.06688L5.26664 7.60242L3.64138 6.13793L3.205 6.53235L2.76863 6.92673L5.13434 9.05887L7.5 11.191L9.86566 9.05887L12.2314 6.92673L11.795 6.53235L11.3586 6.13793L9.73336 7.60242L8.10813 9.06688V5.03346V1H7.5H6.89187V5.03346ZM1.00981 11.9361L1.01961 14H7.5H13.9804L13.9902 11.9361L14 9.8722H13.3726H12.7451V11.3794V12.8867H7.5H2.25488V11.3794V9.8722H1.62744H1L1.00981 11.9361Z" fill="#393F44"/>
+</symbol>
         <symbol id="icon-subscription" viewBox="0 0 32 32">
           <title>subscription</title>
           <path

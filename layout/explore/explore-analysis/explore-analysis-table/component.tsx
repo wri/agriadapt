@@ -54,7 +54,7 @@ const AnalysisTable = ({ list }: { list: Location[] }) => {
       )}
     >
       <div className="p-4 border-b border-gray-light widget-header-container">
-        <WidgetHeader widget={{ name: 'Layer Analysis Table' }} />
+        <WidgetHeader download widget={{ name: 'Layer Analysis Table' }} />
       </div>
       <div className="c-a-table">
         <table>
