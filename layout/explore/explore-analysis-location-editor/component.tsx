@@ -3,7 +3,7 @@ import Input from 'components/form/Input';
 import { EXPLORE_ANALYSIS } from '../constants';
 import Select from 'react-select';
 import useRadio from 'hooks/form/useRadio';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 const ExploreAnalysisLocationEditor = ({
   list: locations,
@@ -18,6 +18,13 @@ const ExploreAnalysisLocationEditor = ({
   const [country, setCountry] = useState('');
   const [geo] = useState(null);
 
+  const loc = useMemo(() => ({
+    label: `Location ${editIndex} (${locationType.value})`,
+    country: country,
+    type: locationType.value,
+    geo: geo,
+  }), [editIndex, locationType, country, geo]);
+
   const onChangeCountry = (c) => {
     setCountry(c?.value || '');
   };
@@ -27,23 +34,13 @@ const ExploreAnalysisLocationEditor = ({
   };
 
   const onSubmit = () => {
-    addLocation({
-      label: `Location ${editIndex} (${locationType.value})`,
-      country: country,
-      type: locationType.value,
-      geo: geo,
-    });
+    addLocation(loc);
   };
 
   const onSubmitEdit = () => {
     editLocation({
       index: editIndex,
-      edit: {
-        label: `Location ${editIndex} (${locationType.value})`,
-        country: country,
-        type: locationType.value,
-        geo: geo,
-      },
+      edit: loc,
     });
   };
 
@@ -125,7 +122,10 @@ const ExploreAnalysisLocationEditor = ({
             Cancel
           </button>
         )}
-        <button onClick={editing ? onSubmitEdit : onSubmit} className="c-button -primary">
+        <button
+          onClick={editing ? onSubmitEdit : onSubmit}
+          className="c-button -primary"
+        >
           {editing ? 'Edit Location' : 'Add Location'}
         </button>
       </div>

@@ -137,6 +137,9 @@ export default createReducer(initialState, (builder) => {
       state.analysis.locations.list.splice(index, 1, edit);
       state.analysis.locations.editIndex = -1;
     })
+    .addCase(actions.renameLocation, (state, { payload: { index, rename } }) => {
+      state.analysis.locations.list[index].label = rename;
+    })
     .addCase(actions.removeLocation, (state, { payload }) => {
       state.analysis.locations.list.splice(payload, 1);
     })

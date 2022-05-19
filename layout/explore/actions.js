@@ -183,6 +183,7 @@ export const resetTags = createAction("EXPLORE/resetTags");
 // ANALYSIS LOCATION
 export const addLocation = createAction("EXPLORE/addLocation");
 export const editLocation = createAction("EXPLORE/editLocation");
+export const renameLocation = createAction("EXPLORE/renameLocation");
 export const removeLocation = createAction("EXPLORE/removeLocation");
 export const setEditIndex = createAction("EXPLORE/setEditIndex");
 
