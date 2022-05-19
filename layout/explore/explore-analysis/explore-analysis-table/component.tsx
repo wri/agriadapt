@@ -2,17 +2,10 @@ import classnames from 'classnames';
 import Icon from 'components/ui/icon';
 import WidgetHeader from 'components/widgets/header';
 import { useMemo } from 'react';
+import { AnalysisLocation } from 'types/analysis';
 import AnalysisDropdownMenu from '../dropdown-menu/component';
 
-interface Location {
-  id: number
-  label: string;
-  country: string;
-  type: string;
-  geo: unknown;
-}
-
-const AnalysisTable = ({ list }: { list: Location[] }) => {
+const AnalysisTable = ({ list }: { list: AnalysisLocation[] }) => {
   const isEmbed = false;
   const rows = useMemo(
     () =>
