@@ -1,10 +1,10 @@
 import AnalysisDropdownMenu from '../explore-analysis/dropdown-menu/component';
 
-const ExploreAnalysisLocation = ({ label, id, removeLocation }) => {
-  const handleEdit = () => undefined;
+const ExploreAnalysisLocation = ({ label, index, removeLocation, setEditIndex }) => {
+  const handleEdit = () => setEditIndex(index);
   const handleRename = () => undefined;
   const handleDelete = () => {
-    removeLocation(id);
+    removeLocation(index);
   };
 
   const options = [
@@ -12,11 +12,12 @@ const ExploreAnalysisLocation = ({ label, id, removeLocation }) => {
     { id: 'customize-name', label: <div>Customize Name</div>, onClick: handleRename },
     { id: 'delete', label: <div>Delete Location</div>, onClick: handleDelete },
   ];
+
   return (
     <div className="c-analysis-location">
       <AnalysisDropdownMenu options={options} />
       <div className="c-location-label">
-        {label} {id}
+        {label}
       </div>
     </div>
   );

@@ -27,6 +27,7 @@ const initialState = {
     locations: {
       list: [],
       formOpen: false,
+      editIndex: -1,
     }
   },
   sort: {

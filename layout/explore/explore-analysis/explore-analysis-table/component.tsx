@@ -16,8 +16,8 @@ const AnalysisTable = ({ list }: { list: Location[] }) => {
   const isEmbed = false;
   const rows = useMemo(
     () =>
-      list.map((l) => ({
-        name: `${l.label} ${l.id}`,
+      list.map((l, i) => ({
+        name: l.label,
         attributes: {
           col1: 'Value',
           col2: 'Value',

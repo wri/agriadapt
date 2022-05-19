@@ -5,7 +5,14 @@ import Select from 'react-select';
 import useRadio from 'hooks/form/useRadio';
 import { useState } from 'react';
 
-const ExploreAnalysisLocationEditor = ({ list: locations, addLocation, setFormOpen }) => {
+const ExploreAnalysisLocationEditor = ({
+  list: locations,
+  addLocation,
+  editLocation,
+  setEditIndex,
+  editIndex,
+  editing = false,
+}) => {
   const { LOCATION_CONFIG } = EXPLORE_ANALYSIS;
   const locationType = useRadio('');
   const [country, setCountry] = useState('');
@@ -16,17 +23,28 @@ const ExploreAnalysisLocationEditor = ({ list: locations, addLocation, setFormOp
   };
 
   const onCancel = () => {
-    setFormOpen(false);
+    setEditIndex(-1);
   };
 
   const onSubmit = () => {
     addLocation({
-      label: 'Location',
+      label: `Location ${editIndex} (${locationType.value})`,
       country: country,
-      type: locationType,
+      type: locationType.value,
       geo: geo,
     });
-    setFormOpen(false);
+  };
+
+  const onSubmitEdit = () => {
+    editLocation({
+      index: editIndex,
+      edit: {
+        label: `Location ${editIndex} (${locationType.value})`,
+        country: country,
+        type: locationType.value,
+        geo: geo,
+      },
+    });
   };
 
   return (
@@ -107,8 +125,8 @@ const ExploreAnalysisLocationEditor = ({ list: locations, addLocation, setFormOp
             Cancel
           </button>
         )}
-        <button onClick={onSubmit} className="c-button -primary">
-          Add Location
+        <button onClick={editing ? onSubmitEdit : onSubmit} className="c-button -primary">
+          {editing ? 'Edit Location' : 'Add Location'}
         </button>
       </div>
     </div>

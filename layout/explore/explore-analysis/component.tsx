@@ -5,21 +5,25 @@ import AnalysisTable from './explore-analysis-table';
 import AnalysisVisuals from './explore-analysis-vis';
 
 const ExploreAnalysis = ({
-  locations: { list: locations, formOpen },
-  setFormOpen,
+  locations: { list: locations, editIndex = -1 },
+  setEditIndex,
 }) => {
-
   const handleAddLocation = () => {
-    setFormOpen(true);
+    setEditIndex(locations.length);
   };
 
   return (
     <div className="c-analysis">
-      {locations.map((loc, i: number) => (
-        <ExploreAnalysisLocation {...loc} key={i} />
+      {locations.map((loc, i) => (
+        <>
+          {editIndex !== i ? (
+            <ExploreAnalysisLocation {...loc} index={i} key={i} />
+          ) : (
+            <ExploreAnalysisLocationEditor editing />
+          )}
+        </>
       ))}
-
-      {formOpen || !locations.length ? (
+      {editIndex === locations.length ? (
         <ExploreAnalysisLocationEditor />
       ) : (
         <a onClick={handleAddLocation} className="c-add-location">
