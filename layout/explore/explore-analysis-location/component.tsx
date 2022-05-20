@@ -1,4 +1,3 @@
-import Field from 'components/form/Field';
 import Icon from 'components/ui/icon';
 import useRadio from 'hooks/form/useRadio';
 import { useCallback, useEffect, useRef, useState } from 'react';
@@ -18,8 +17,10 @@ const ExploreAnalysisLocation = ({
   const handleEdit = () => setEditIndex(index);
   const handleDelete = () => removeLocation(index);
   const handleRename = useCallback(() => {
-    renameLocation({ index, rename: newName.value });
-    setRenaming(false);
+    if (newName.value.trim().length) {
+      renameLocation({ index, rename: newName.value });
+      setRenaming(false);
+    }
   }, [index, renameLocation, newName.value]);
 
   const options = [
@@ -39,7 +40,7 @@ const ExploreAnalysisLocation = ({
       id: 'customize-name',
       label: (
         <div className="c-analysis-icon-option">
-        <span className="align-middle">
+          <span className="align-middle">
             <Icon name="icon-marker" className="" />
           </span>
           <span>Customize Name</span>
@@ -61,14 +62,27 @@ const ExploreAnalysisLocation = ({
     },
   ];
 
-  const handleClickAway = useCallback((e) => {
-    if (renameRef.current && renameRef.current !== e.target)
-      handleRename();
-  }, [renameRef, handleRename]);
+  useEffect(() => {
+    if (renaming && renameRef.current) renameRef.current.select();
+  }, [renaming]);
+
+  const handleClickAway = useCallback(
+    (e) => {
+      if (renameRef.current && renameRef.current !== e.target) handleRename();
+      setRenaming(false);
+    },
+    [renameRef, handleRename]
+  );
+
+  const handleSubmit = (e) => {
+    handleRename();
+    e.preventDefault();
+  };
 
   useEffect(() => {
     document.addEventListener('mousedown', handleClickAway, true);
-    return () => document.removeEventListener('mousedown', handleClickAway, true);
+    return () =>
+      document.removeEventListener('mousedown', handleClickAway, true);
   }, [handleClickAway]);
 
   return (
@@ -76,11 +90,10 @@ const ExploreAnalysisLocation = ({
       <AnalysisDropdownMenu options={options} />
       {!renaming && <div className="c-location-label">{label}</div>}
       {renaming && (
-        <form className="c-rename" onSubmit={handleRename}>
+        <form className="c-rename" onSubmit={handleSubmit}>
           <input ref={renameRef} {...newName} />
         </form>
       )}
-      {/* {renaming && <div className="c-location-rename"><input /></div>} */}
     </div>
   );
 };
