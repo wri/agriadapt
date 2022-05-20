@@ -62,10 +62,6 @@ const ExploreAnalysisLocation = ({
     },
   ];
 
-  useEffect(() => {
-    if (renaming && renameRef.current) renameRef.current.select();
-  }, [renaming]);
-
   const handleClickAway = useCallback(
     (e) => {
       if (renameRef.current && renameRef.current !== e.target) handleRename();
@@ -78,6 +74,10 @@ const ExploreAnalysisLocation = ({
     handleRename();
     e.preventDefault();
   };
+
+  useEffect(() => {
+    if (renaming && renameRef.current) renameRef.current.select();
+  }, [renaming]);
 
   useEffect(() => {
     document.addEventListener('mousedown', handleClickAway, true);
