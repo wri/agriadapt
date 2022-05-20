@@ -4,6 +4,7 @@ import { ABOUT } from 'layout/intro-header/constants';
 import acknowledgements from 'layout/about/constants';
 import Image from 'next/image';
 import classnames from 'classnames';
+import Link from 'next/link';
 
 const LayoutAbout = () => {
   return (
@@ -25,14 +26,22 @@ const LayoutAbout = () => {
                   {content.map((c) =>
                     c.image ? (
                       <div className="c-logo">
-                        <Image
-                          loader={({ src }) => src}
-                          src={c.image}
-                          alt={c.name}
-                        />
+                        <Link href={c.href} passHref>
+                          <a target="_blank">
+                            <Image
+                              loader={({ src }) => src}
+                              src={c.image}
+                              alt={c.name}
+                            />
+                          </a>
+                        </Link>
                       </div>
                     ) : (
-                      <p>{c.name}</p>
+                      <p>
+                        <Link href={c.href} passHref>
+                          <a target="_blank">{c.name}</a>
+                        </Link>
+                      </p>
                     )
                   )}
                 </div>
