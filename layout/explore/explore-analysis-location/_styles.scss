@@ -9,7 +9,7 @@
     border-radius: 8px;
     margin-bottom: 8px;
     box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.12);
-    
+
     // // Trying to deal with box-shadow darkening surrounding location containers
     // &::after {
     //     content: "";
@@ -40,6 +40,13 @@
         line-height: 25px;
         color: $charcoal-grey
     }
+
+    .c-rename {
+        input {
+            border-radius: 4px;
+            border: 1px solid $border-color-2;
+        }
+    }
 }
 
 .c-add-location {
@@ -62,6 +69,7 @@
 
 .c-analysis-icon-option {
     margin: 4px;
+
     .c-icon {
         width: 15px;
         height: 15px;
