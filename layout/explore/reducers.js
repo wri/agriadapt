@@ -1,12 +1,12 @@
-import { createReducer } from "@reduxjs/toolkit";
-import { HYDRATE } from "next-redux-wrapper";
+import { createReducer } from '@reduxjs/toolkit';
+import { HYDRATE } from 'next-redux-wrapper';
 
 // utils
-import { logEvent } from "utils/analytics";
-import { sortLayers } from "utils/layers";
+import { logEvent } from 'utils/analytics';
+import { sortLayers } from 'utils/layers';
 
-import * as actions from "./actions";
-import initialState from "./initial-state";
+import * as actions from './actions';
+import initialState from './initial-state';
 
 export default createReducer(initialState, (builder) => {
   builder
@@ -123,40 +123,26 @@ export default createReducer(initialState, (builder) => {
       },
     }))
     // analysis
-    .addCase(actions.addLocation, (state, { payload }) => ({
-      ...state,
-      analysis: {
-        ...state.analysis,
-        locations: {
-          ...state.analysis.locations,
-          list: [...state.analysis.locations.list, payload],
-        },
-      },
-    }))
-    .addCase(actions.removeLocation, (state, { payload }) => ({
-      ...state,
-      analysis: {
-        ...state.analysis,
-        locations: {
-          ...state.analysis.locations,
-          list: [
-            ...state.analysis.locations.list.filter(
-              ({ id }) => id !== payload.id
-            ),
-          ],
-        },
-      },
-    }))
-    .addCase(actions.setFormOpen, (state, { payload }) => ({
-      ...state,
-      analysis: {
-        ...state.analysis,
-        locations: {
-          ...state.analysis.locations,
-          formOpen: payload,
-        },
-      },
-    }))
+    .addCase(actions.addLocation, (state, { payload }) => {
+      state.analysis.locations = {
+        ...state.analysis.locations,
+        list: [...state.analysis.locations.list, payload],
+        editIndex: -1,
+      };
+    })
+    .addCase(actions.setEditIndex, (state, { payload }) => {
+      state.analysis.locations.editIndex = payload;
+    })
+    .addCase(actions.editLocation, (state, { payload: { index, edit} }) => {
+      state.analysis.locations.list.splice(index, 1, edit);
+      state.analysis.locations.editIndex = -1;
+    })
+    .addCase(actions.renameLocation, (state, { payload: { index, rename } }) => {
+      state.analysis.locations.list[index].label = rename;
+    })
+    .addCase(actions.removeLocation, (state, { payload }) => {
+      state.analysis.locations.list.splice(payload, 1);
+    })
     // map
     .addCase(actions.setViewport, (state, { payload }) => ({
       ...state,
