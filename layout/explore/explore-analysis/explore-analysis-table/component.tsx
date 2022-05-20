@@ -33,10 +33,14 @@ const AnalysisTable = ({ list }: { list: AnalysisLocation[] }) => {
   ];
 
   const options = [
-    {id: 'change-column-name', label: 'Change Column Name'},
-    {id: 'sort-a-z', label: 'Sort by Column A-Z'},
-    {id: 'delete', label: 'Delete'},
-]
+    {
+      id: 'change-column-name',
+      label: 'Change Column Name',
+      onClick: () => undefined,
+    },
+    { id: 'sort-a-z', label: 'Sort by Column A-Z', onClick: () => undefined },
+    { id: 'delete', label: 'Delete', onClick: () => undefined },
+  ];
   return (
     <div
       className={classnames(
