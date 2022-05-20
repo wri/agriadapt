@@ -67,8 +67,8 @@ const ExploreAnalysisLocation = ({
   }, [renameRef, handleRename]);
 
   useEffect(() => {
-    document.addEventListener('click', handleClickAway, true);
-    return () => document.removeEventListener('click', handleClickAway, true);
+    document.addEventListener('mousedown', handleClickAway, true);
+    return () => document.removeEventListener('mousedown', handleClickAway, true);
   }, [handleClickAway]);
 
   return (
