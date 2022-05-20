@@ -14,11 +14,12 @@ const AnalysisDropdownMenu = ({ options }) => {
 
   const handleClickAway = useCallback(
     (e) => {
-      if (dropdownRef.current && dropdownRef.current !== e.target)
-        setVisibility(false);
-      e.stopPropagation();
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        e.stopPropagation();
+        toggleDropdown(false);
+      }
     },
-    [dropdownRef]
+    [dropdownRef, toggleDropdown]
   );
 
   useEffect(() => {
@@ -37,7 +38,6 @@ const AnalysisDropdownMenu = ({ options }) => {
           pin: true,
         },
       ]}
-      ref={dropdownRef}
       className={classnames('c-header-dropdown', 'c-analysis-menu-dropdown')}
       offset="0 -5px"
       renderTarget={(ref) => (
@@ -52,26 +52,28 @@ const AnalysisDropdownMenu = ({ options }) => {
       renderElement={(ref) => {
         if (!isVisible) return null;
         return (
-          <ul
-            ref={ref as React.LegacyRef<HTMLUListElement>}
-            className="header-dropdown-list"
-            onMouseEnter={() => toggleDropdown(true)}
-          >
-            {options.map((o) => (
-              <li
-                key={o.id}
-                onClick={() => {
-                  o.onClick();
-                  toggleDropdown(false);
-                }}
-                className={classnames('header-dropdown-list-item', {
-                  delete: o.id === 'delete',
-                })}
-              >
-                <a>{o.label}</a>
-              </li>
-            ))}
-          </ul>
+          <div ref={dropdownRef}>
+            <ul
+              ref={ref as React.LegacyRef<HTMLUListElement>}
+              className="header-dropdown-list"
+              onMouseEnter={() => toggleDropdown(true)}
+            >
+              {options.map((o) => (
+                <li
+                  key={o.id}
+                  onClick={() => {
+                    o.onClick();
+                    toggleDropdown(false);
+                  }}
+                  className={classnames('header-dropdown-list-item', {
+                    delete: o.id === 'delete',
+                  })}
+                >
+                  <a>{o.label}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
         );
       }}
     />
