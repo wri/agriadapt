@@ -14,8 +14,9 @@ const ExploreAnalysisLocationEditor = ({
   editing = false,
 }) => {
   const { LOCATION_CONFIG } = EXPLORE_ANALYSIS;
-  const locationType = useRadio('');
-  const [country, setCountry] = useState('');
+  const current = locations[editIndex] || {};
+  const locationType = useRadio(current.type || '');
+  const [country, setCountry] = useState(current.country || '');
   const [geo] = useState(null);
 
   const loc = useMemo(() => ({
@@ -125,6 +126,7 @@ const ExploreAnalysisLocationEditor = ({
         <button
           onClick={editing ? onSubmitEdit : onSubmit}
           className="c-button -primary"
+          disabled={!locationType.value}
         >
           {editing ? 'Edit Location' : 'Add Location'}
         </button>
