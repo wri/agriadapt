@@ -2,7 +2,7 @@ import Field from 'components/form/Field';
 import Input from 'components/form/Input';
 import { EXPLORE_ANALYSIS } from '../constants';
 import Select from 'react-select';
-import useRadio from 'hooks/form/useRadio';
+import useInput from 'hooks/form/useInput';
 import { useMemo, useState } from 'react';
 
 const ExploreAnalysisLocationEditor = ({
@@ -15,7 +15,7 @@ const ExploreAnalysisLocationEditor = ({
 }) => {
   const { LOCATION_CONFIG } = EXPLORE_ANALYSIS;
   const current = locations[editIndex] || {};
-  const locationType = useRadio(current.type || '');
+  const locationType = useInput(current.type || '');
   const [country, setCountry] = useState(current.country || '');
   const [geo] = useState(null);
 

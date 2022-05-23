@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const useRadio = (initial) => {
+const useInput = (initial) => {
   const [value, setValue] = useState(initial);
 
   const onChange = ({ target }) => {
@@ -10,4 +10,4 @@ const useRadio = (initial) => {
   return { value, onChange };
 };
 
-export default useRadio;
+export default useInput;

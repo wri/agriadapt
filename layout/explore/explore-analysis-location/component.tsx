@@ -1,7 +1,7 @@
 import Icon from 'components/ui/icon';
-import useRadio from 'hooks/form/useRadio';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useState } from 'react';
 import AnalysisDropdownMenu from '../explore-analysis/dropdown-menu/component';
+import RenameField from '../explore-analysis/rename-field/component';
 
 const ExploreAnalysisLocation = ({
   label,
@@ -11,17 +11,16 @@ const ExploreAnalysisLocation = ({
   setEditIndex,
 }) => {
   const [renaming, setRenaming] = useState(false);
-  const newName = useRadio(label);
-  const renameRef = useRef(null);
 
   const handleEdit = () => setEditIndex(index);
   const handleDelete = () => removeLocation(index);
-  const handleRename = useCallback(() => {
-    if (newName.value.trim().length) {
-      renameLocation({ index, rename: newName.value });
+  const handleRename = useCallback((newName, e) => {
+    if (newName.trim().length) {
+      renameLocation({ index, rename: newName.trim() });
       setRenaming(false);
     }
-  }, [index, renameLocation, newName.value]);
+    else if (e.type !== 'submit') setRenaming(false);
+  }, [index, renameLocation,]);
 
   const options = [
     {
@@ -62,37 +61,12 @@ const ExploreAnalysisLocation = ({
     },
   ];
 
-  const handleClickAway = useCallback(
-    (e) => {
-      if (renameRef.current && renameRef.current !== e.target) handleRename();
-      setRenaming(false);
-    },
-    [renameRef, handleRename]
-  );
-
-  const handleSubmit = (e) => {
-    handleRename();
-    e.preventDefault();
-  };
-
-  useEffect(() => {
-    if (renaming && renameRef.current) renameRef.current.select();
-  }, [renaming]);
-
-  useEffect(() => {
-    document.addEventListener('mousedown', handleClickAway, true);
-    return () =>
-      document.removeEventListener('mousedown', handleClickAway, true);
-  }, [handleClickAway]);
-
   return (
     <div className="c-analysis-location">
       <AnalysisDropdownMenu options={options} />
       {!renaming && <div className="c-location-label">{label}</div>}
       {renaming && (
-        <form className="c-rename" onSubmit={handleSubmit}>
-          <input ref={renameRef} {...newName} />
-        </form>
+        <RenameField handleRename={handleRename} defaultVal={label} />
       )}
     </div>
   );
