@@ -5,7 +5,7 @@ import AnalysisTable from './explore-analysis-table';
 import AnalysisVisuals from './explore-analysis-vis';
 
 const ExploreAnalysis = ({
-  locations: { list: locations, editIndex = -1 },
+  locations: { list: locations, editIndex },
   setEditIndex,
 }) => {
   const handleAddLocation = () => {
@@ -19,7 +19,7 @@ const ExploreAnalysis = ({
           {editIndex !== i ? (
             <ExploreAnalysisLocation {...loc} index={i} key={i} />
           ) : (
-            <ExploreAnalysisLocationEditor editing />
+            <ExploreAnalysisLocationEditor key={i} editing />
           )}
         </>
       ))}

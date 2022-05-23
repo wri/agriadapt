@@ -26,8 +26,7 @@ const initialState = {
   analysis: {
     locations: {
       list: [],
-      formOpen: false,
-      editIndex: -1,
+      editIndex: 0,
     }
   },
   sort: {
