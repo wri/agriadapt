@@ -100,7 +100,7 @@ export default function ExploreDatasets(props) {
 
 ExploreDatasets.propTypes = {
   datasets: PropTypes.shape({
-    selected: PropTypes.string.isRequired,
+    // selected: PropTypes.string.isRequired,
     list: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.string.isRequired,
@@ -111,11 +111,11 @@ ExploreDatasets.propTypes = {
     page: PropTypes.number.isRequired,
     loading: PropTypes.bool.isRequired,
   }).isRequired,
-  selectedTags: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-  search: PropTypes.string.isRequired,
+  // selectedTags: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  // search: PropTypes.string.isRequired,
   fetchDatasets: PropTypes.func.isRequired,
   setDatasetsPage: PropTypes.func.isRequired,
-  toggleFiltersSelected: PropTypes.func.isRequired,
-  resetFiltersSort: PropTypes.func.isRequired,
-  setFiltersSearch: PropTypes.func.isRequired,
+  // toggleFiltersSelected: PropTypes.func.isRequired,
+  // resetFiltersSort: PropTypes.func.isRequired,
+  // setFiltersSearch: PropTypes.func.isRequired,
 };

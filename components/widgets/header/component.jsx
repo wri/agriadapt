@@ -94,8 +94,8 @@ WidgetHeader.propTypes = {
       type: PropTypes.string,
     }),
   }).isRequired,
-  isInACollection: PropTypes.bool.isRequired,
+  // isInACollection: PropTypes.bool.isRequired,
   isInfoVisible: PropTypes.bool,
   onToggleInfo: PropTypes.func.isRequired,
-  onToggleShare: PropTypes.func.isRequired,
+  // onToggleShare: PropTypes.func.isRequired,
 };

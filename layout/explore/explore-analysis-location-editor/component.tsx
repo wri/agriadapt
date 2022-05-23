@@ -6,7 +6,6 @@ import useRadio from 'hooks/form/useRadio';
 import { useMemo, useState } from 'react';
 
 const ExploreAnalysisLocationEditor = ({
-  list: locations,
   addLocation,
   editLocation,
   setEditIndex,
@@ -117,11 +116,9 @@ const ExploreAnalysisLocationEditor = ({
         </div>
       </div>
       <div className="c-location-actions">
-        {locations.length > 0 && (
-          <button onClick={onCancel} className="c-button -secondary">
-            Cancel
-          </button>
-        )}
+        <button onClick={onCancel} className="c-button -secondary">
+          Cancel
+        </button>
         <button
           onClick={editing ? onSubmitEdit : onSubmit}
           className="c-button -primary"

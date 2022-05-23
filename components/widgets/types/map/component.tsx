@@ -205,7 +205,7 @@ const MapTypeWidget = ({
             widget={widget}
             onToggleInfo={handleInfoToggle}
             onToggleShare={handleShareToggle}
-            isInACollection={isInACollection}
+            // isInACollection={isInACollection}
             isInfoVisible={isInfoWidgetVisible}
           />
         </div>

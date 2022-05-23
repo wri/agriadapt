@@ -47,7 +47,12 @@ const AnalysisTable = ({ list }: { list: AnalysisLocation[] }) => {
       )}
     >
       <div className="p-4 border-b border-gray-light widget-header-container">
-        <WidgetHeader download widget={{ name: 'Layer Analysis Table' }} />
+        <WidgetHeader
+          download
+          widget={{ name: 'Layer Analysis Table', id: 'analysis-table' }}
+          onToggleInfo={() => undefined}
+          onToggleShare={() => undefined}
+        />
       </div>
       <div className="c-a-table">
         <table>
