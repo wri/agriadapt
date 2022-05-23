@@ -15,16 +15,17 @@ const ExploreAnalysisLocationEditor = ({
 }) => {
   const { LOCATION_CONFIG } = EXPLORE_ANALYSIS;
   const current = locations[editIndex] || {};
+  const label = current.label;
   const locationType = useInput(current.type || '');
   const [country, setCountry] = useState(current.country || '');
-  const [geo] = useState(null);
+  const [geo] = useState(current.geo || null);
 
   const loc = useMemo(() => ({
-    label: `Location ${editIndex} (${locationType.value})`,
+    label: label || `Location ${editIndex} (${locationType.value})`,
     country: country,
     type: locationType.value,
     geo: geo,
-  }), [editIndex, locationType, country, geo]);
+  }), [editIndex, label, locationType, country, geo]);
 
   const onChangeCountry = (c) => {
     setCountry(c?.value || '');
