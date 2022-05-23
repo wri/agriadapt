@@ -15,13 +15,13 @@ const ExploreAnalysis = ({
   return (
     <div className="c-analysis">
       {locations.map((loc, i) => (
-        <>
+        <div key={i}>
           {editIndex !== i ? (
-            <ExploreAnalysisLocation {...loc} index={i} key={i} />
+            <ExploreAnalysisLocation {...loc} index={i} />
           ) : (
-            <ExploreAnalysisLocationEditor key={i} editing />
+            <ExploreAnalysisLocationEditor editing />
           )}
-        </>
+        </div>
       ))}
       {editIndex === locations.length ? (
         <ExploreAnalysisLocationEditor />

@@ -6,6 +6,7 @@ import useInput from 'hooks/form/useInput';
 import { useMemo, useState } from 'react';
 
 const ExploreAnalysisLocationEditor = ({
+  list: locations,
   addLocation,
   editLocation,
   setEditIndex,
