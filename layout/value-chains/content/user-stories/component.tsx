@@ -5,7 +5,6 @@ import Image from 'next/image';
 import loader from 'lib/imageLoader';
 import Carousel from 'nuka-carousel';
 import { user_stories } from '../constants';
-import { ChevronLeft, ChevronRight } from 'react-feather';
 
 const UserStories = ({ quotes }) => {
   const { header, stories } = user_stories;
@@ -70,13 +69,27 @@ const UserStories = ({ quotes }) => {
             <div className="c-carousel">
               <Carousel
                 renderCenterLeftControls={({ currentSlide, goToSlide }) => (
-                  <button onClick={() => goToSlide(currentSlide-1)}>
-                    <ChevronLeft color="#A8C19F" />
+                  <button onClick={() => goToSlide(currentSlide - 1)}>
+                    <Image
+                      height={'25px'}
+                      width={'17px'}
+                      loader={loader}
+                      unoptimized
+                      src={user_stories.chevronLeft}
+                      alt={'left'}
+                    />
                   </button>
                 )}
-                renderCenterRightControls={({ currentSlide, goToSlide  }) => (
-                  <button onClick={() => goToSlide(currentSlide+1)}>
-                    <ChevronRight color="#A8C19F" />
+                renderCenterRightControls={({ currentSlide, goToSlide }) => (
+                  <button onClick={() => goToSlide(currentSlide + 1)}>
+                    <Image
+                      height={'25px'}
+                      width={'17px'}
+                      loader={loader}
+                      unoptimized
+                      src={user_stories.chevronRight}
+                      alt={'right'}
+                    />
                   </button>
                 )}
                 renderBottomCenterControls={() => null}

@@ -6,6 +6,8 @@ import cotton2 from 'public/static/images/quotes/cotton2.png'
 import cotton3 from 'public/static/images/quotes/cotton3.png'
 import coffee1 from 'public/static/images/quotes/coffee1.png'
 import coffee2 from 'public/static/images/quotes/coffee2.png'
+import chevronLeft from 'public/static/images/icons/chevronLeft.svg'
+import chevronRight from 'public/static/images/icons/chevronRight.svg'
 
 const chain_items = {
   inputs: {
@@ -102,6 +104,8 @@ const user_stories = {
         'When my crops were devastated by the extreme rainfalls last summer, I was fortunate to have CRT data to demonstrate the loss and facilitate the process to claim the insurance.',
     },
   ],
+  chevronLeft: chevronLeft,
+  chevronRight: chevronRight
 };
 
 const riceQuotes = [
