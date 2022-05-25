@@ -19,6 +19,7 @@ export default function ExploreDatasets(props) {
     datasets: { selected, list, total, limit, page, loading },
     setDatasetsPage,
     fetchDatasets,
+    fetchCountries,
     advOpen,
   } = props;
 
@@ -29,6 +30,11 @@ export default function ExploreDatasets(props) {
     },
     [setDatasetsPage, fetchDatasets]
   );
+
+  useEffect(() => {
+    fetchCountries();
+  }, [fetchCountries]);
+
 
   useEffect(() => {
     fetchDatasetsPerPage(1);

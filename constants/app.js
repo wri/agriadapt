@@ -16,6 +16,17 @@ export const FULLSCREEN_PAGES = [
   '/explore',
 ];
 
+const GADM_COUNTRIES_TABLENAME = 'gadm36_countries';
+const GADM_ADM1_TABLENAME = 'gadm36_adm1'
+
+export const GADM_COUNTIRES_DATASET_ID = 'a8dc9474-ba42-4ae3-a7d3-d8df5f1e78df';
+
+export const GADM_COUNTRIES_SQL = `SELECT iso, name_0 from ${GADM_COUNTRIES_TABLENAME}`;
+
+export const GADM_ADMONE_DATSET_ID = '8f22dec5-2aea-49d6-8a7b-c494dbb8095c';
+
+export const GADM_ADMONE_SQL = `SELECT name_1, gid_1 from ${GADM_ADM1_TABLENAME} where iso = `;
+
 export const EXPLORE_DATASETS_IDS = [
   '66d28bbc-1e6e-4156-9ba2-875ecab665af', // Projected Change in Extreme Precipitation Days
   'ea2db3a6-49c8-4d41-a2ab-758eb6fe4bc0', // Landslide Susceptibility

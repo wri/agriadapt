@@ -6,6 +6,7 @@ import * as actions from 'layout/explore/actions';
 export default connect(
   (state: RootState) => ({
     ...state.explore.analysis.locations,
+    countries: state.explore.filters.options.countries,
   }),
   actions
 )(ExploreAnalysisLocationEditor);
