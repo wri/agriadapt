@@ -85,7 +85,9 @@ export const fetchCountries = createThunkAction(
     .then(({ data: { data: countries } }) => {
       dispatch(
         setCountryList(
-          countries.map((c) => ({ label: c.name_0, value: c.iso }))
+          countries.map((c) => ({ label: c.name_0, value: c.iso })).sort(
+            (a, b) => (a.label < b.label ? -1 : a.label > b.label ? 1 : 0)
+          )
         )
       );
     })

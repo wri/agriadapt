@@ -61,7 +61,8 @@ class ExplorePage extends PureComponent {
           layerGroups,
           aoi,
         },
-        sidebar: { anchor, section, selectedCollection },
+        // sidebar: { anchor, section, selectedCollection },
+        sidebar: { anchor },
       },
       router,
     } = this.props;
@@ -70,8 +71,8 @@ class ExplorePage extends PureComponent {
       // dataset --> "Old" Explore Detail
       ...!!datasets && datasets.selected && { dataset: datasets.selected },
       ...!!anchor && { hash: anchor },
-      section,
-      selectedCollection,
+      // section,
+      // selectedCollection,
       // map params
       zoom: viewport.zoom,
       lat: viewport.latitude,
@@ -299,9 +300,9 @@ ExplorePage.propTypes = {
       aoi: PropTypes.string,
     }),
     sidebar: PropTypes.shape({
-      section: PropTypes.string,
+      // section: PropTypes.string,
       anchor: PropTypes.string,
-      selectedCollection: PropTypes.string,
+      // selectedCollection: PropTypes.string,
     }),
     sort: PropTypes.shape({
       selected: PropTypes.string,
