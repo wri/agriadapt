@@ -74,6 +74,13 @@ export default createReducer(initialState, (builder) => {
         selected: payload,
       },
     }))
+    // countries
+    .addCase(actions.setCountryList, (state, { payload }) => {
+      state.filters.options.countries = payload;
+    })
+    .addCase(actions.setStateList, (state, { payload }) => {
+      state.filters.options.states = payload;
+    })
     // filters
     .addCase(actions.setFiltersAdvancedOpen, (state, { payload }) => ({
       ...state,

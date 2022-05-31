@@ -22,6 +22,9 @@ const initialState = {
       emission_scenario: [],
       supply_chain_node: [],
     },
+    options: {
+      countries: [],
+    },
   },
   analysis: {
     locations: {

@@ -3,10 +3,11 @@ import { createThunkAction } from "redux-tools";
 import sortBy from "lodash/sortBy";
 
 // Constants
-import { EXPLORE_DATASETS_IDS } from "constants/app";
+import { EXPLORE_DATASETS_IDS, GADM_COUNTIRES_DATASET_ID, GADM_COUNTRIES_SQL } from "constants/app";
 
 // Services
 import { fetchDatasets as fetchDatasetsService } from "services/dataset";
+import { fetchDatasetQuery as fetchDatasetQueryService } from "services/query";
 import { fetchInferredTags } from "services/graph";
 
 // Utils
@@ -24,6 +25,10 @@ export const setDatasetsTotal = createAction("EXPLORE/setDatasetsTotal");
 export const setDatasetsLimit = createAction("EXPLORE/setDatasetsLimit");
 export const setDatasetsMode = createAction("EXPLORE/setDatasetsMode");
 export const setSelectedDataset = createAction("EXPLORE/setSelectedDataset");
+
+// COUNTRIES
+export const setCountryList = createAction("EXPLORE/setCountryList");
+export const setStateList = createAction("EXPLORE/setStateList");
 
 export const fetchDatasets = createThunkAction(
   "EXPLORE/fetchDatasets",
@@ -69,6 +74,23 @@ export const fetchDatasets = createThunkAction(
         dispatch(setDatasetsLoading(false));
         dispatch(setDatasetsError(err));
       });
+  }
+);
+
+// COUNTRIES
+export const fetchCountries = createThunkAction(
+  "EXPLORE/fetchCountries",
+  () => (dispatch) => {
+    return fetchDatasetQueryService(GADM_COUNTIRES_DATASET_ID, GADM_COUNTRIES_SQL)
+    .then(({ data: { data: countries } }) => {
+      dispatch(
+        setCountryList(
+          countries.map((c) => ({ label: c.name_0, value: c.iso })).sort(
+            (a, b) => (a.label < b.label ? -1 : a.label > b.label ? 1 : 0)
+          )
+        )
+      );
+    })
   }
 );
 

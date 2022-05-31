@@ -51,7 +51,7 @@ export const EXPLORE_ANALYSIS = {
       { label: 'Select point on map', value: 'point' },
       { label: 'Use my current location', value: 'current' },
       { label: 'Search by address', value: 'search' },
-      { label: 'Choose my location', value: 'dropdown' },
+      { label: 'Choose my location', value: 'admin' },
     ],
   }
 }

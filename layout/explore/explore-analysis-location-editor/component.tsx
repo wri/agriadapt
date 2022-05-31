@@ -3,10 +3,16 @@ import Input from 'components/form/Input';
 import { EXPLORE_ANALYSIS } from '../constants';
 import Select from 'react-select';
 import useInput from 'hooks/form/useInput';
-import { useMemo, useState } from 'react';
+// import SelectInput from 'components/form/SelectInput';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { fetchDatasetQuery } from 'services/query';
+import { GADM_ADMONE_DATSET_ID, GADM_ADMONE_SQL } from 'constants/app';
+import useSelect from 'hooks/form/useSelect';
+import { fetchGADM1Geostore } from 'services/geostore';
 
 const ExploreAnalysisLocationEditor = ({
   list: locations,
+  countries,
   addLocation,
   editLocation,
   setEditIndex,
@@ -14,37 +20,92 @@ const ExploreAnalysisLocationEditor = ({
   editing = false,
 }) => {
   const { LOCATION_CONFIG } = EXPLORE_ANALYSIS;
-  const current = locations[editIndex] || {};
+  const current = locations[editIndex] ?? {};
   const label = current.label;
-  const locationType = useInput(current.type || '');
-  const [country, setCountry] = useState(current.country || '');
-  const [geo] = useState(current.geo || null);
+  const locationType = useInput(current.type);
+  const country = useSelect(current.country);
+  const state = useSelect(current.state);
+  const [geo, setGeo] = useState(current.geo);
 
-  const loc = useMemo(() => ({
-    label: label || `Location ${editIndex} (${locationType.value})`,
-    country: country,
-    type: locationType.value,
-    geo: geo,
-  }), [editIndex, label, locationType, country, geo]);
+  const [statesList, setStatesList] = useState([]);
+  const [statesLoading, setStatesLoading] = useState(false);
 
-  const onChangeCountry = (c) => {
-    setCountry(c?.value || '');
-  };
+  const createLabel = useCallback(() => {
+    if (locationType.value === 'admin')
+      return `${state.value?.label}, ${country.value?.label}`;
+    else return `Location ${editIndex} (${locationType.value})`;
+  }, [locationType.value, state.value?.label, country.value?.label, editIndex]);
 
   const onCancel = () => {
     setEditIndex(-1);
   };
 
   const onSubmit = () => {
-    addLocation(loc);
+    const loc = {
+      label: label || createLabel(),
+      country: country.value,
+      state: state.value,
+      type: locationType.value,
+      geo: geo,
+    };
+    if (editing)
+      editLocation({
+        index: editIndex,
+        edit: loc,
+      });
+    else addLocation(loc);
   };
 
-  const onSubmitEdit = () => {
-    editLocation({
-      index: editIndex,
-      edit: loc,
-    });
-  };
+  useEffect(() => {
+    if (!country.value?.length) {
+      setStatesList([]);
+    }
+  }, [country.value]);
+
+  const isValid = useMemo(() => {
+    if (!locationType.value) return false;
+    if (locationType.value === 'admin' && !(country.value && state.value))
+      return false;
+    return true;
+  }, [locationType.value, country.value, state.value]);
+
+  // Side effect for getting state options based on country
+  useEffect(() => {
+    if (country.value) {
+      const { value: iso } = country.value;
+      if (iso) {
+        setStatesLoading(true);
+        fetchDatasetQuery(
+          GADM_ADMONE_DATSET_ID,
+          `${GADM_ADMONE_SQL} '${iso}'`
+        ).then(({ data: { data: states } }) => {
+          setStatesList(
+            states.map((s) => ({ label: s.name_1, value: s.gid_1 }))
+          );
+          setStatesLoading(false);
+        });
+      }
+    }
+  }, [country.value]);
+
+  // Sort by states TODO: Add locale modifier
+  useEffect(() => {
+    setStatesList((s) =>
+      s.sort((a, b) => (a.label < b.label ? -1 : a.label > b.label ? 1 : 0))
+    );
+  }, [statesList]);
+
+  // Side effect for getting geo data
+  useEffect(() => {
+    if (country.value) {
+      const { value: iso } = country.value;
+      const [, gadm1Id] = state.value?.value
+        ? state.value.value.match(/[A-Z]{3}\.(\d+)_1/)
+        : [];
+      if (gadm1Id)
+        fetchGADM1Geostore(iso, gadm1Id).then((data) => setGeo(data));
+    }
+  }, [country.value, state.value]);
 
   return (
     <div className="c-analysis-location-editor">
@@ -81,7 +142,7 @@ const ExploreAnalysisLocationEditor = ({
                   </div>
                 </div>
               )}
-              {o.value === 'dropdown' && (
+              {o.value === 'admin' && (
                 <div style={{ display: 'flex', flexDirection: 'row' }}>
                   <span style={{ paddingLeft: 20 }} />
                   <div style={{ flex: 1 }}>
@@ -89,25 +150,25 @@ const ExploreAnalysisLocationEditor = ({
                       properties={{
                         default: '',
                         disabled: locationType.value !== o.value,
+                        placeholder: 'Country',
                       }}
-                      placeholder="Country"
+                      {...country}
                       className="Select--large"
-                      options={[
-                        { label: 'Colombia', value: 'colombia' },
-                        { label: 'India', value: 'india' },
-                      ]}
-                      value={country}
-                      onChange={onChangeCountry}
+                      options={countries}
                     >
                       {Select}
                     </Field>
                     <Field
                       properties={{
                         default: '',
-                        disabled: !country || locationType.value !== o.value,
+                        disabled:
+                          !country.value || locationType.value !== o.value,
+                        placeholder: 'State',
                       }}
-                      placeholder="State"
+                      {...state}
                       className="Select--large"
+                      isLoading={statesLoading}
+                      options={statesList}
                     >
                       {Select}
                     </Field>
@@ -123,9 +184,9 @@ const ExploreAnalysisLocationEditor = ({
           Cancel
         </button>
         <button
-          onClick={editing ? onSubmitEdit : onSubmit}
+          onClick={onSubmit}
           className="c-button -primary"
-          disabled={!locationType.value}
+          disabled={!isValid}
         >
           {editing ? 'Edit Location' : 'Add Location'}
         </button>
