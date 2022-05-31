@@ -24,7 +24,7 @@ const ExploreAnalysisLocationEditor = ({
   const label = current.label;
   const locationType = useInput(current.type);
   const country = useSelect(current.country);
-  const state = useSelect(current.state);
+  const [selectedState, setSelectedState] = useState(current.state);
   const [geo, setGeo] = useState(current.geo);
 
   const [statesList, setStatesList] = useState([]);
@@ -32,9 +32,9 @@ const ExploreAnalysisLocationEditor = ({
 
   const createLabel = useCallback(() => {
     if (locationType.value === 'admin')
-      return `${state.value?.label}, ${country.value?.label}`;
+      return `${selectedState?.label}, ${country.value?.label}`;
     else return `Location ${editIndex} (${locationType.value})`;
-  }, [locationType.value, state.value?.label, country.value?.label, editIndex]);
+  }, [locationType.value, selectedState?.label, country.value?.label, editIndex]);
 
   const onCancel = () => {
     setEditIndex(-1);
@@ -44,7 +44,7 @@ const ExploreAnalysisLocationEditor = ({
     const loc = {
       label: label || createLabel(),
       country: country.value,
-      state: state.value,
+      state: selectedState,
       type: locationType.value,
       geo: geo,
     };
@@ -62,12 +62,20 @@ const ExploreAnalysisLocationEditor = ({
     }
   }, [country.value]);
 
+  useEffect(() => {
+    setSelectedState(null);
+  }, [country.value]);
+
   const isValid = useMemo(() => {
     if (!locationType.value) return false;
-    if (locationType.value === 'admin' && !(country.value && state.value))
+    if (locationType.value === 'admin' && !(country.value && selectedState))
       return false;
     return true;
-  }, [locationType.value, country.value, state.value]);
+  }, [locationType.value, country.value, selectedState]);
+
+  const handleSelectedStateChange = (obj) => {
+    setSelectedState(obj);
+  }
 
   // Side effect for getting state options based on country
   useEffect(() => {
@@ -97,15 +105,15 @@ const ExploreAnalysisLocationEditor = ({
 
   // Side effect for getting geo data
   useEffect(() => {
-    if (country.value) {
+    if (country.value && selectedState) {
       const { value: iso } = country.value;
-      const [, gadm1Id] = state.value?.value
-        ? state.value.value.match(/[A-Z]{3}\.(\d+)_1/)
+      const [, gadm1Id] = selectedState?.value
+        ? selectedState.value.match(/[A-Z]{3}\.(\d+)_1/)
         : [];
       if (gadm1Id)
         fetchGADM1Geostore(iso, gadm1Id).then((data) => setGeo(data));
     }
-  }, [country.value, state.value]);
+  }, [country.value, selectedState]);
 
   return (
     <div className="c-analysis-location-editor">
@@ -165,7 +173,8 @@ const ExploreAnalysisLocationEditor = ({
                           !country.value || locationType.value !== o.value,
                         placeholder: 'State',
                       }}
-                      {...state}
+                      value={selectedState}
+                      onChange={handleSelectedStateChange}
                       className="Select--large"
                       isLoading={statesLoading}
                       options={statesList}
