@@ -27,7 +27,7 @@ const ExploreAnalysisLocationEditor = ({
 
   const id = current.id;
   const label = current.label;
-  const locationType = useInput(current.type);
+  const locationType = useInput(current.type || 'point');
   const country = useSelect(current.country);
   const [selectedState, setSelectedState] = useState(current.state);
   const [geo, setGeo] = useState(current.geo);
@@ -36,9 +36,13 @@ const ExploreAnalysisLocationEditor = ({
   const [statesLoading, setStatesLoading] = useState(false);
 
   useEffect(() => {
-    if (locationType.value === 'point' && !current.editing) setIsDrawing(true);
+    if (
+      locationType.value === 'point' &&
+      !(current.latitude || current.longitude)
+    )
+      setIsDrawing(true);
     else setIsDrawing(false);
-  }, [locationType.value, setIsDrawing, current.editing]);
+  }, [locationType.value, setIsDrawing, current.latitude, current.longitude]);
 
   const createLabel = useCallback(() => {
     if (locationType.value === 'admin')
