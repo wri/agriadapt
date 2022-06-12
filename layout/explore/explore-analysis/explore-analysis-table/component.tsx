@@ -5,11 +5,11 @@ import { useMemo } from 'react';
 import { AnalysisLocation } from 'types/analysis';
 import AnalysisDropdownMenu from '../dropdown-menu/component';
 
-const AnalysisTable = ({ list }: { list: AnalysisLocation[] }) => {
+const AnalysisTable = ({ map: locations }) => {
   const isEmbed = false;
   const rows = useMemo(
     () =>
-      list.map((l, i) => ({
+      Object.values(locations).map((l: AnalysisLocation) => ({
         name: l.label,
         attributes: {
           col1: 'Value',
@@ -20,7 +20,7 @@ const AnalysisTable = ({ list }: { list: AnalysisLocation[] }) => {
           col6: 'Value',
         },
       })),
-    [list]
+    [locations]
   );
 
   const columns = [

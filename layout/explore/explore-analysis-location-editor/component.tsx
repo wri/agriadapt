@@ -9,18 +9,23 @@ import { fetchDatasetQuery } from 'services/query';
 import { GADM_ADMONE_DATSET_ID, GADM_ADMONE_SQL } from 'constants/app';
 import useSelect from 'hooks/form/useSelect';
 import { fetchGADM1Geostore } from 'services/geostore';
+import { AnalysisLocation } from 'types/analysis';
 
 const ExploreAnalysisLocationEditor = ({
-  list: locations,
   countries,
   addLocation,
   editLocation,
-  setEditIndex,
-  editIndex,
-  editing = false,
+  setIsAdding,
+  isAdding,
+  current = {} as AnalysisLocation,
+  setEditing,
+  setIsDrawing,
+  data: lngLat,
+  setDataDrawing,
 }) => {
   const { LOCATION_CONFIG } = EXPLORE_ANALYSIS;
-  const current = locations[editIndex] ?? {};
+
+  const id = current.id;
   const label = current.label;
   const locationType = useInput(current.type);
   const country = useSelect(current.country);
@@ -30,30 +35,57 @@ const ExploreAnalysisLocationEditor = ({
   const [statesList, setStatesList] = useState([]);
   const [statesLoading, setStatesLoading] = useState(false);
 
+  useEffect(() => {
+    if (locationType.value === 'point' && !current.editing) setIsDrawing(true);
+    else setIsDrawing(false);
+  }, [locationType.value, setIsDrawing, current.editing]);
+
   const createLabel = useCallback(() => {
     if (locationType.value === 'admin')
       return `${selectedState?.label}, ${country.value?.label}`;
-    else return `Location ${editIndex} (${locationType.value})`;
-  }, [locationType.value, selectedState?.label, country.value?.label, editIndex]);
+    else if (locationType.value === 'point')
+      return `(${lngLat[1]}, ${lngLat[0]})`;
+    else return `Location ${id} (${locationType.value})`;
+  }, [
+    locationType.value,
+    selectedState?.label,
+    country.value?.label,
+    id,
+    lngLat,
+  ]);
 
   const onCancel = () => {
-    setEditIndex(-1);
+    if (!isAdding) setEditing({ id, editing: false });
+    else setIsAdding(false);
+    setDataDrawing(null);
+    setIsDrawing(false);
   };
 
   const onSubmit = () => {
     const loc = {
+      id,
       label: label || createLabel(),
-      country: country.value,
-      state: selectedState,
       type: locationType.value,
+      ...(locationType.value === 'admin' && {
+        country: country.value,
+        state: selectedState,
+      }),
+      ...(locationType.value === 'point' && {
+        longitude: lngLat[0],
+        latitude: lngLat[1],
+      }),
       geo: geo,
+      editing: false,
     };
-    if (editing)
+    if (current.editing)
       editLocation({
-        index: editIndex,
+        id,
         edit: loc,
       });
     else addLocation(loc);
+
+    setIsDrawing(false);
+    setDataDrawing(null);
   };
 
   useEffect(() => {
@@ -68,14 +100,15 @@ const ExploreAnalysisLocationEditor = ({
 
   const isValid = useMemo(() => {
     if (!locationType.value) return false;
+    if (locationType.value === 'point' && !lngLat) return false;
     if (locationType.value === 'admin' && !(country.value && selectedState))
       return false;
     return true;
-  }, [locationType.value, country.value, selectedState]);
+  }, [locationType.value, country.value, selectedState, lngLat]);
 
   const handleSelectedStateChange = (obj) => {
     setSelectedState(obj);
-  }
+  };
 
   // Side effect for getting state options based on country
   useEffect(() => {
@@ -197,7 +230,7 @@ const ExploreAnalysisLocationEditor = ({
           className="c-button -primary"
           disabled={!isValid}
         >
-          {editing ? 'Edit Location' : 'Add Location'}
+          {current.editing ? 'Edit Location' : 'Add Location'}
         </button>
       </div>
     </div>

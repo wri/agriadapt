@@ -1,29 +1,30 @@
 import Icon from 'components/ui/icon';
-import ExploreAnalysisLocation from '../explore-analysis-location';
+import { AnalysisLocation } from 'types/analysis';
+import Location from '../explore-analysis-location';
 import ExploreAnalysisLocationEditor from '../explore-analysis-location-editor';
 import AnalysisTable from './explore-analysis-table';
 import AnalysisVisuals from './explore-analysis-vis';
 
 const ExploreAnalysis = ({
-  locations: { list: locations, editIndex },
-  setEditIndex,
+  locations: { map: locations, isAdding },
+  setIsAdding,
 }) => {
   const handleAddLocation = () => {
-    setEditIndex(locations.length);
+    setIsAdding(true);
   };
 
   return (
     <div className="c-analysis">
-      {locations.map((loc, i) => (
-        <div key={i}>
-          {editIndex !== i ? (
-            <ExploreAnalysisLocation {...loc} index={i} />
+      {Object.values(locations).map((loc: AnalysisLocation) => (
+        <div key={loc.id}>
+          {!loc.editing ? (
+            <Location label={loc.label} id={loc.id} />
           ) : (
-            <ExploreAnalysisLocationEditor editing />
+            <ExploreAnalysisLocationEditor current={loc} />
           )}
         </div>
       ))}
-      {editIndex === locations.length ? (
+      {isAdding ? (
         <ExploreAnalysisLocationEditor />
       ) : (
         <a onClick={handleAddLocation} className="c-add-location">
