@@ -12,8 +12,8 @@ const PointEdit = ({ map, data: lngLat, isDrawing }) => {
       {isDrawing && lngLat && (
         <LocationMarker
           location={{
-            longitude: lngLat[0],
-            latitude: lngLat[1],
+            longitude: lngLat.lng,
+            latitude: lngLat.lat,
             editing: isDrawing,
           }}
         />

@@ -114,13 +114,6 @@ export default createReducer(initialState, (builder) => {
         isSetFromDefaultState: false,
       },
     }))
-    .addCase(actions.setSortDirection, (state, { payload }) => ({
-      ...state,
-      sort: {
-        ...state.sort,
-        direction: payload,
-      },
-    }))
     .addCase(actions.resetFiltersSort, (state) => ({
       ...state,
       sort: {

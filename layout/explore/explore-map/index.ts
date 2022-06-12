@@ -13,9 +13,10 @@ import {
 
 // components
 import ExploreMap from "./component";
+import { RootState } from "lib/store";
 
 export default connect(
-  (state) => ({
+  (state: RootState) => ({
     ...state.explore.sidebar,
     ...state.explore.map,
     // token: state.user.token,

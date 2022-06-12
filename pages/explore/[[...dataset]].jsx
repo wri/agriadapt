@@ -96,7 +96,7 @@ class ExplorePage extends PureComponent {
       // Datasets
       page: datasets.page,
       sort: sort.selected,
-      sortDirection: sort.direction,
+      // sortDirection: sort.direction,
       ...filters.search && { search: filters.search },
     //   ...!!filters.selected.topics.length
     //     && { topics: encodeURIComponent(JSON.stringify(filters.selected.topics)) },

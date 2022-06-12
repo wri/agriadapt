@@ -9,9 +9,9 @@ const LocationMarker = ({
   const [marker, setMarker] = useState({ latitude, longitude });
 
   const onMarkerDragEnd = useCallback(
-    ({ lngLat }) => {
-      setDataDrawing(lngLat);
-      setMarker({ latitude: lngLat[1], longitude: lngLat[0] });
+    ({ lngLat: { lng, lat } }) => {
+      setDataDrawing({ lng, lat });
+      setMarker({ latitude: lat, longitude: lng });
     },
     [setDataDrawing]
   );
@@ -20,25 +20,13 @@ const LocationMarker = ({
     <Marker
       longitude={marker.longitude}
       latitude={marker.latitude}
-      // anchor="top"
+      anchor="bottom"
+      offset={[0, -10]}
       draggable={editing}
       // onDragStart={onMarkerDragStart}
       // onDrag={onMarkerDrag}
       onDragEnd={onMarkerDragEnd}
     >
-      {label && (
-        <div
-          style={{
-            color: 'white',
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -60%)',
-          }}
-        >
-          {label}
-        </div>
-      )}
       <Pin size={50} />
     </Marker>
   );

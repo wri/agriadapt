@@ -44,7 +44,7 @@ const ExploreAnalysisLocationEditor = ({
     if (locationType.value === 'admin')
       return `${selectedState?.label}, ${country.value?.label}`;
     else if (locationType.value === 'point')
-      return `(${lngLat[1]}, ${lngLat[0]})`;
+      return `(${lngLat.lat}, ${lngLat.lng})`;
     else return `Location ${id} (${locationType.value})`;
   }, [
     locationType.value,
@@ -71,8 +71,8 @@ const ExploreAnalysisLocationEditor = ({
         state: selectedState,
       }),
       ...(locationType.value === 'point' && {
-        longitude: lngLat[0],
-        latitude: lngLat[1],
+        longitude: lngLat.lng,
+        latitude: lngLat.lat,
       }),
       geo: geo,
       editing: false,

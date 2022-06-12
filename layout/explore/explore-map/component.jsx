@@ -219,8 +219,8 @@ const ExploreMap = (props) => {
   );
 
   const onDropMarker = useCallback(
-    ({ lngLat }) => {
-      setDataDrawing(lngLat);
+    ({ lngLat: { lng, lat } }) => {
+      setDataDrawing({ lng, lat });
     },
     [setDataDrawing]
   );
@@ -231,7 +231,7 @@ const ExploreMap = (props) => {
 
       // if the user clicks on a zone where there is no data in any current layer
       // we will reset the current interaction of those layers to display "no data available" message
-      if (!features.length) {
+      if (!features?.length) {
         interactions = Object.keys(layerGroupsInteraction).reduce(
           (accumulator, currentValue) => ({
             ...accumulator,
@@ -250,8 +250,8 @@ const ExploreMap = (props) => {
       }
 
       setMapLayerGroupsInteractionLatLng({
-        longitude: lngLat[0],
-        latitude: lngLat[1],
+        longitude: lngLat.lng,
+        latitude: lngLat.lat,
       });
       setMapLayerGroupsInteraction(interactions);
 
@@ -467,8 +467,6 @@ const ExploreMap = (props) => {
         .some((l) => !!l) && <Spinner isLoading />}
 
       <Map
-        {...(!isDrawing && { onClick: onClickLayer })}
-        {...(isDrawing && { onMouseUp: onDropMarker })}
         interactiveLayerIds={activeInteractiveLayers}
         mapStyle={MAPSTYLES}
         viewport={viewport}
@@ -476,6 +474,9 @@ const ExploreMap = (props) => {
         basemap={basemap.value}
         labels={labels.value}
         boundaries={boundaries}
+        isDrawing={isDrawing}
+        onDropMarker={onDropMarker}
+        onClickLayer={onClickLayer}
         // getCursor={handleMapCursor}
         className={mapClass}
         onMapViewportChange={handleViewport}

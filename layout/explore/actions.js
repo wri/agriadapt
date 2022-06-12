@@ -180,7 +180,6 @@ export const setFiltersValueChains = createAction("EXPLORE/setFiltersValueChains
 
 // SORT
 export const setSortSelected = createAction("EXPLORE/setSortSelected");
-export const setSortDirection = createAction("EXPLORE/setSortDirection");
 export const setSortIsUserSelected = createAction(
   "EXPLORE/setSortIsUserSelected"
 );
