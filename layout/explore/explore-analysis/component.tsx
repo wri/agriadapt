@@ -32,7 +32,7 @@ const ExploreAnalysis = ({
           Add a Location
         </a>
       )}
-      <AnalysisTable />
+      {!!Object.values(locations).length && <AnalysisTable />}
       <AnalysisVisuals />
     </div>
   );
