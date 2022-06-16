@@ -28,7 +28,7 @@ const initialState = {
   },
   analysis: {
     locations: {
-      map: {},
+      loc_map: {},
       isAdding: false,
       genId: 0,
     }

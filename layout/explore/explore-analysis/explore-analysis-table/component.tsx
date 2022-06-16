@@ -8,7 +8,7 @@ import { AnalysisLocation } from 'types/analysis';
 import AnalysisDropdownMenu from '../dropdown-menu/component';
 import Spinner from "components/ui/Spinner";
 
-const AnalysisTable = ({ map: locations, layerGroups }) => {
+const AnalysisTable = ({ loc_map: locations, layerGroups }) => {
   const isEmbed = false;
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);

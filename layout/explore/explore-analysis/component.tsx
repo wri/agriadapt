@@ -6,7 +6,7 @@ import AnalysisTable from './explore-analysis-table';
 import AnalysisVisuals from './explore-analysis-vis';
 
 const ExploreAnalysis = ({
-  locations: { map: locations, isAdding },
+  locations: { loc_map: locations, isAdding },
   setIsAdding,
 }) => {
   const handleAddLocation = () => {

@@ -2,8 +2,8 @@ import React from 'react';
 import { AnalysisLocation, PointLocation } from 'types/analysis';
 import LocationMarker from './location-marker';
 
-const PointEdit = ({ map, data: lngLat, isDrawing }) => {
-  const points = Object.values(map).filter(
+const PointEdit = ({ loc_map: locations, data: lngLat, isDrawing }) => {
+  const points = Object.values(locations).filter(
     (l: AnalysisLocation) => l.type === 'point'
   );
 

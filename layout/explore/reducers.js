@@ -127,8 +127,8 @@ export default createReducer(initialState, (builder) => {
       const { genId } = state.analysis.locations;
       state.analysis.locations = {
         ...state.analysis.locations,
-        map: {
-          ...state.analysis.locations.map,
+        loc_map: {
+          ...state.analysis.locations.loc_map,
           [genId]: { ...payload, id: genId },
         },
         isAdding: false,
@@ -136,23 +136,23 @@ export default createReducer(initialState, (builder) => {
       };
     })
     .addCase(actions.setEditing, (state, { payload: { id, editing } }) => {
-      state.analysis.locations.map[id].editing = editing;
+      state.analysis.locations.loc_map[id].editing = editing;
     })
     .addCase(actions.setIsAdding, (state, { payload }) => {
       state.analysis.locations.isAdding = payload;
     })
     .addCase(actions.editLocation, (state, { payload: { id, edit } }) => {
-      state.analysis.locations.map[id] = edit;
-      state.analysis.locations.map[id].editing = false;
+      state.analysis.locations.loc_map[id] = edit;
+      state.analysis.locations.loc_map[id].editing = false;
     })
     .addCase(
       actions.renameLocation,
       (state, { payload: { id, rename } }) => {
-        state.analysis.locations.map[id].label = rename;
+        state.analysis.locations.loc_map[id].label = rename;
       }
     )
     .addCase(actions.removeLocation, (state, { payload }) => {
-      delete state.analysis.locations.map[payload];
+      delete state.analysis.locations.loc_map[payload];
     })
     // map
     .addCase(actions.setViewport, (state, { payload }) => ({
