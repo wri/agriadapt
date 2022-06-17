@@ -257,20 +257,20 @@ export const Map = ({
     [mapRef]
   );
 
-  const handleGetCursor = useCallback(
-    ({
-      isHovering,
-      isDragging,
-    }: {
-      isHovering: boolean;
-      isDragging: boolean;
-    }): string => {
-      if (isHovering) return 'pointer';
-      if (isDragging) return 'grabbing';
-      return 'grab';
-    },
-    []
-  );
+  // const handleGetCursor = useCallback(
+  //   ({
+  //     isHovering,
+  //     isDragging,
+  //   }: {
+  //     isHovering: boolean;
+  //     isDragging: boolean;
+  //   }): string => {
+  //     if (isHovering) return 'pointer';
+  //     if (isDragging) return 'grabbing';
+  //     return 'grab';
+  //   },
+  //   []
+  // );
 
   useEffect(() => {
     const { current: map } = mapRef;
@@ -344,18 +344,15 @@ export const Map = ({
         mapStyle={MAPSTYLES}
         {...mapboxProps}
         {...mapViewport}
-        width={width}
-        height={height}
+        style={{ width: width, height: height }}
         dragPan={!flying && dragPan}
         dragRotate={!flying && dragRotate}
         scrollZoom={!flying && scrollZoom}
-        touchZoom={!flying && touchZoom}
-        touchRotate={!flying && touchRotate}
         doubleClickZoom={!flying && doubleClickZoom}
         onMove={(e) => setViewport(e.viewState)}
         initialViewState={DEFAULT_VIEWPORT}
         onLoad={handleLoad}
-        getCursor={handleGetCursor}
+        // getCursor={handleGetCursor}
         transformRequest={(url, resourceType) => {
           // Global Fishing Watch tilers require authorization so we need to add
           // the header before Mapbox handles the request
