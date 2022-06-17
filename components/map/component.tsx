@@ -1,12 +1,7 @@
 import { useEffect, useState, useRef, useCallback } from 'react';
 import cx from 'classnames';
 import isEmpty from 'lodash/isEmpty';
-import ReactMapGL, {
-  // FlyToInterpolator,
-  // TRANSITION_EVENTS,
-  ViewportProps,
-} from 'react-map-gl';
-import { MapProps as theProps } from 'react-map-gl';
+import ReactMapGL, { MapProps as theProps } from 'react-map-gl';
 
 // constants
 import { DEFAULT_VIEWPORT, MAPSTYLES } from './constants';
@@ -22,7 +17,7 @@ export interface MapProps extends theProps {
   className?: string;
 
   /** An object that defines the viewport */
-  viewport?: Partial<ViewportProps>;
+  viewport?: Partial<any>;
 
   /** basemap displayed */
   basemap?: Basemap;
@@ -37,7 +32,7 @@ export interface MapProps extends theProps {
   bounds?: {
     bbox: number[];
     options?: Record<string, unknown>;
-    viewportOptions?: Partial<ViewportProps>;
+    viewportOptions?: Partial<any>;
   };
 
   /** A function that exposes when the map is mounted.
@@ -95,7 +90,7 @@ export const Map = ({
   const mapRef = useRef(null);
   const mapContainerRef = useRef(null);
 
-  const [mapViewport, setViewport] = useState<ViewportProps>({
+  const [mapViewport, setViewport] = useState({
     ...DEFAULT_VIEWPORT,
     ...viewport,
   });
@@ -279,7 +274,6 @@ export const Map = ({
   useEffect(() => {
     const { current: map } = mapRef;
     const handleClick = (e) => {
-      // console.log(isDrawing);
       if (!isDrawing) onClickLayer(e);
       else onDropMarker(e);
     };
