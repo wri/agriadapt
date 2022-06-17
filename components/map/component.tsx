@@ -45,10 +45,11 @@ export interface MapProps extends theProps {
   onError?: (errorMessage: any) => void;
   onDropMarker?: (e) => void;
   onClickLayer?: (e) => void;
+  onMapViewportChange?: (e) => void;
   mapStyle?: string;
   dragPan?: boolean;
   dragRotate?: boolean;
-  isDrawing: boolean;
+  isDrawing?: boolean;
   scrollZoom?: any;
   touchZoom?: any;
   touchRotate?: boolean;
@@ -81,7 +82,7 @@ export const Map = ({
   doubleClickZoom,
   width = '100%',
   height = '100%',
-  isDrawing,
+  isDrawing = false,
   // getCursor,
   onDropMarker,
   onClickLayer,
