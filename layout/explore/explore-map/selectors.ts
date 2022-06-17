@@ -1,4 +1,5 @@
 import { createSelector, createStructuredSelector } from "reselect";
+import { RootState } from "lib/store";
 
 // constants
 import { BASEMAPS, LABELS } from "components/map/constants";
@@ -10,6 +11,7 @@ import {
   getUpdatedLayerGroups,
   getActiveInteractiveLayers,
 } from "components/map/selectors";
+import { Basemap, Labels } from "components/map/types";
 
 const getLayerGroups = (state) => state.explore.map.layerGroups;
 const getParametrization = (state) => state.explore.map.parametrization;
@@ -37,7 +39,11 @@ export const getLabel = createSelector(
   (labelId) => LABELS[labelId]
 );
 
-export const getMapProps = createStructuredSelector({
+
+export const getMapProps = createStructuredSelector<
+  RootState,
+  { basemap: Basemap; labels: Labels }
+>({
   basemap: getBasemap,
   labels: getLabel,
 });

@@ -46,6 +46,9 @@ const AnalysisTable = ({ loc_map: locations, layerGroups }) => {
               });
             else return Promise.resolve({ interactions: [], output: [] });
           })
+          // TODO: Figure out why typescript does not think "value" property exists here
+          // eslint-disable-next-line
+          // @ts-ignore
         ).then((r) => ({ loc: l, data: r.map(({ value }) => value) }));
       })
     )
