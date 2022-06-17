@@ -7,6 +7,7 @@ export default connect(
   (state: RootState) => ({
     ...state.explore.analysis.locations,
     countries: state.explore.filters.options.countries,
+    data: state.explore.map.drawer.data,
   }),
   actions
 )(ExploreAnalysisLocationEditor);

@@ -28,8 +28,9 @@ const initialState = {
   },
   analysis: {
     locations: {
-      list: [],
-      editIndex: 0,
+      loc_map: {},
+      isAdding: false,
+      genId: 0,
     }
   },
   sort: {

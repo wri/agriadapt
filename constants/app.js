@@ -28,6 +28,7 @@ export const GADM_ADMONE_DATSET_ID = '8f22dec5-2aea-49d6-8a7b-c494dbb8095c';
 export const GADM_ADMONE_SQL = `SELECT name_1, gid_1 from ${GADM_ADM1_TABLENAME} where iso = `;
 
 export const EXPLORE_DATASETS_IDS = [
+  'b75d8398-34f2-447d-832d-ea570451995a', // Air Quality: Nitrogen Dioxide (NO₂) Satellite Measurements
   '66d28bbc-1e6e-4156-9ba2-875ecab665af', // Projected Change in Extreme Precipitation Days
   'ea2db3a6-49c8-4d41-a2ab-758eb6fe4bc0', // Landslide Susceptibility
   'c4b12251-2d61-458f-a2c0-096c37901ade', // Projected Change in Annual Average Maximum Temeprature

@@ -319,8 +319,8 @@ export default function MapSelection() {
                 <LayerManager map={_map} layers={layers} />
                 {tooltip.lngLat && (
                   <Popup
-                    latitude={tooltip.lngLat[1]}
-                    longitude={tooltip.lngLat[0]}
+                    latitude={tooltip.lngLat.lat}
+                    longitude={tooltip.lngLat.lng}
                     closeButton={false}
                     className="rw-ow-popup-layer"
                     offsetTop={-20}

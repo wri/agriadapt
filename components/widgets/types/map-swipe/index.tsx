@@ -1,7 +1,7 @@
 import { useMemo, useState, useCallback, CSSProperties } from "react";
 import { useQueries } from "react-query";
 import { ErrorBoundary } from "react-error-boundary";
-import type { ViewportProps } from "react-map-gl";
+// import type { ViewportProps } from "react-map-gl";
 
 // services
 import { fetchLayer } from "services/layer";
@@ -51,11 +51,11 @@ const SwipeTypeWidgetContainer = ({
   // const { isInACollection } = useBelongsToCollection(widgetId, user?.token);
   const isInACollection = false;
 
-  const onFitBoundsChange = useCallback((viewport: ViewportProps) => {
-    const { zoom } = viewport;
+  // const onFitBoundsChange = useCallback((viewport: ViewportProps) => {
+  //   const { zoom } = viewport;
 
-    setMinZoom(zoom);
-  }, []);
+  //   setMinZoom(zoom);
+  // }, []);
 
   const {
     data: widget,
@@ -184,7 +184,7 @@ const SwipeTypeWidgetContainer = ({
         isError={isError}
         isInACollection={isInACollection}
         onToggleShare={onToggleShare}
-        onFitBoundsChange={onFitBoundsChange}
+        // onFitBoundsChange={onFitBoundsChange}
       />
     </ErrorBoundary>
   );
