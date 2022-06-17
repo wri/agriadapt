@@ -39,7 +39,6 @@ export const getLabel = createSelector(
   (labelId) => LABELS[labelId]
 );
 
-
 export const getMapProps = createStructuredSelector<
   RootState,
   { basemap: Basemap; labels: Labels }
