@@ -3,7 +3,7 @@ import { createThunkAction } from "redux-tools";
 import sortBy from "lodash/sortBy";
 
 // Constants
-import { EXPLORE_DATASETS_IDS, GADM_COUNTIRES_DATASET_ID, GADM_COUNTRIES_SQL } from "constants/app";
+import { GADM_COUNTIRES_DATASET_ID, GADM_COUNTRIES_SQL } from "constants/app";
 
 // Services
 import { fetchDatasets as fetchDatasetsService } from "services/dataset";
@@ -34,7 +34,6 @@ export const fetchDatasets = createThunkAction(
   "EXPLORE/fetchDatasets",
   () => (dispatch, getState) => {
     const { explore, common } = getState();
-
     const params = {
       language: common.locale,
       includes: "layer,metadata,vocabulary,widget",
@@ -53,7 +52,7 @@ export const fetchDatasets = createThunkAction(
     dispatch(setDatasetsLoading(true));
     dispatch(setDatasetsError(null));
 
-    return fetchDatasetsService(EXPLORE_DATASETS_IDS, params, {}, true)
+    return fetchDatasetsService(params, {}, true)
       .then((response) => {
         const { meta = {}, datasets } = response;
         dispatch(setDatasetsTotal(meta["total-items"] || 0));
@@ -175,6 +174,7 @@ export const fetchMapLayerGroups = createThunkAction(
 );
 
 // FILTERS
+export const setFiltersSearch = createAction('EXPLORE/setFiltersSearch');
 export const setFiltersAdvancedOpen = createAction("EXPLORE/setFiltersAdvancedOpen");
 export const setFiltersValueChains = createAction("EXPLORE/setFiltersValueChains");
 

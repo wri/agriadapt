@@ -81,6 +81,13 @@ export default createReducer(initialState, (builder) => {
     .addCase(actions.setStateList, (state, { payload }) => {
       state.filters.options.states = payload;
     })
+    .addCase(actions.setFiltersSearch, (state, { payload }) => ({
+      ...state,
+      filters: {
+        ...state.filters,
+        search: payload,
+      },
+    }))
     // filters
     .addCase(actions.setFiltersAdvancedOpen, (state, { payload }) => ({
       ...state,
