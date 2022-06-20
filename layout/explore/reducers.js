@@ -200,26 +200,21 @@ export default createReducer(initialState, (builder) => {
         bounds: payload,
       },
     }))
-    .addCase(actions.setIsDrawing, (state, { payload }) => ({
-      ...state,
-      map: {
-        ...state.map,
-        drawer: {
-          ...state.map.drawer,
-          isDrawing: payload,
-        },
-      },
-    }))
+    .addCase(actions.setIsDrawing, (state, { payload }) => {
+      state.map.drawer.isDrawing =  payload
+    })
     .addCase(actions.setDataDrawing, (state, { payload }) => {
       state.map.drawer.data = payload;
     })
-    .addCase(actions.stopDrawing, (state) => ({
-      ...state,
-      map: {
-        ...state.map,
-        drawer: initialState.map.drawer,
-      },
-    }))
+    .addCase(actions.stopDrawing, (state) => {
+      state.map.drawer = initialState.map.drawer
+    })
+    .addCase(actions.setIsGeoLocating, (state, { payload }) => {
+      state.map.geoLocator.isGeoLocating = payload
+    })
+    .addCase(actions.setDataGeoLocator, (state, { payload }) => {
+      state.map.geoLocator.data = payload;
+    })
     .addCase(actions.setAreaOfInterest, (state, { payload }) => ({
       ...state,
       map: {

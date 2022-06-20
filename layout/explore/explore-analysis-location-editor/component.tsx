@@ -10,6 +10,7 @@ import { GADM_ADMONE_DATSET_ID, GADM_ADMONE_SQL } from 'constants/app';
 import useSelect from 'hooks/form/useSelect';
 import { fetchGADM1Geostore } from 'services/geostore';
 import { AnalysisLocation } from 'types/analysis';
+import { getUserPosition } from 'utils/user-position';
 
 const ExploreAnalysisLocationEditor = ({
   countries,
@@ -20,8 +21,11 @@ const ExploreAnalysisLocationEditor = ({
   current = {} as AnalysisLocation,
   setEditing,
   setIsDrawing,
-  data: lngLat,
   setDataDrawing,
+  drawer: { data: pointData },
+  geoLocator: { data: geoLocatorData },
+  setIsGeoLocating,
+  setDataGeoLocator,
 }) => {
   const { LOCATION_CONFIG } = EXPLORE_ANALYSIS;
 
@@ -44,18 +48,29 @@ const ExploreAnalysisLocationEditor = ({
     else setIsDrawing(false);
   }, [locationType.value, setIsDrawing, current.latitude, current.longitude]);
 
+  useEffect(() => {
+    if (locationType.value === 'current'){
+      getUserPosition((pos) => setDataGeoLocator(pos.coords));
+      setIsGeoLocating(true);
+    }
+    else setIsGeoLocating(false);
+  }, [locationType.value, setDataGeoLocator, setIsGeoLocating])
+
   const createLabel = useCallback(() => {
     if (locationType.value === 'admin')
       return `${selectedState?.label}, ${country.value?.label}`;
     else if (locationType.value === 'point')
-      return `(${lngLat.lat}, ${lngLat.lng})`;
+      return `(${pointData.lat}, ${pointData.lng})`;
+    else if (locationType.value === 'current')
+      return `(${geoLocatorData.latitude}, ${geoLocatorData.longitude})`;
     else return `Location ${id} (${locationType.value})`;
   }, [
     locationType.value,
     selectedState?.label,
     country.value?.label,
+    pointData,
+    geoLocatorData,
     id,
-    lngLat,
   ]);
 
   const onCancel = () => {
@@ -75,8 +90,12 @@ const ExploreAnalysisLocationEditor = ({
         state: selectedState,
       }),
       ...(locationType.value === 'point' && {
-        longitude: lngLat.lng,
-        latitude: lngLat.lat,
+        longitude: pointData.lng,
+        latitude: pointData.lat,
+      }),
+      ...(locationType.value === 'current' && {
+        longitude: geoLocatorData.longitude,
+        latitude: geoLocatorData.latitude,
       }),
       geo: geo,
       editing: false,
@@ -104,11 +123,12 @@ const ExploreAnalysisLocationEditor = ({
 
   const isValid = useMemo(() => {
     if (!locationType.value) return false;
-    if (locationType.value === 'point' && !lngLat) return false;
+    if (locationType.value === 'point' && !pointData) return false;
+    if (locationType.value === 'current' && !geoLocatorData) return false;
     if (locationType.value === 'admin' && !(country.value && selectedState))
       return false;
     return true;
-  }, [locationType.value, country.value, selectedState, lngLat]);
+  }, [locationType.value, pointData, geoLocatorData, country.value, selectedState]);
 
   const handleSelectedStateChange = (obj) => {
     setSelectedState(obj);
