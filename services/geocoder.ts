@@ -17,7 +17,7 @@ export const forwardGeocode = async (search: string, language = 'en') => {
     });
 };
 
-export const reverseGeocode = async (lngLat: number[], language = 'es') => {
+export const reverseGeocode = async (lngLat: number[], language = 'en') => {
   const params = {
     language,
     limit: 1,
