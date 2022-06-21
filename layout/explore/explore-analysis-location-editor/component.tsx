@@ -75,12 +75,18 @@ const ExploreAnalysisLocationEditor = ({
   }, [locationType.value, setDataGeoLocator, setIsGeoLocating]);
 
   const createLabel = useCallback(() => {
+    const accuracy = 4;
+
     if (locationType.value === 'admin')
       return `${selectedState?.label}, ${country.value?.label}`;
     else if (locationType.value === 'point')
-      return `(${pointData.lat}, ${pointData.lng})`;
+      return `(${pointData.lat.toFixed(accuracy)}, ${pointData.lng.toFixed(
+        accuracy
+      )})`;
     else if (locationType.value === 'current')
-      return `(${geoLocatorData.latitude}, ${geoLocatorData.longitude})`;
+      return `(${geoLocatorData.latitude.toFixed(
+        accuracy
+      )}, ${geoLocatorData.longitude.toFixed(accuracy)})`;
     else return `Location ${id} (${locationType.value})`;
   }, [
     locationType.value,

@@ -74,33 +74,6 @@ const AnalysisTable = ({ loc_map: locations, layerGroups }) => {
     [data]
   );
 
-  // const rows = useMemo(
-  //   () =>
-  //     Object.values(locations).map((l: AnalysisLocation) => {
-  //       return {
-  //         name: l.label,
-  //         attributes: {
-  //           col1: 'Value',
-  //           col2: 'Value',
-  //           col3: 'Value',
-  //           col4: 'Value',
-  //           col5: 'Value',
-  //           col6: 'Value',
-  //         },
-  //       };
-  //     }),
-  //   [locations]
-  // );
-
-  // const columns = [
-  //   { field: 'col1', label: 'Column' },
-  //   { field: 'col2', label: 'Column' },
-  //   { field: 'col3', label: 'Column' },
-  //   { field: 'col4', label: 'Column' },
-  //   { field: 'col5', label: 'Column' },
-  //   { field: 'col6', label: 'Column' },
-  // ];
-
   const options = [
     {
       id: 'change-column-name',
