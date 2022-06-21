@@ -1,6 +1,6 @@
 import { GEOCODEAPI } from '../utils/axios';
 
-export const forwardGeocode = async (search: string, language?: 'en') => {
+export const forwardGeocode = async (search: string, language = 'en') => {
   const params = {
     autocomplete: true,
     fuzzyMatch: true,

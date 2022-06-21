@@ -40,22 +40,12 @@ const ExploreAnalysisLocationEditor = ({
 
   const [statesList, setStatesList] = useState([]);
   const [statesLoading, setStatesLoading] = useState(false);
-  
 
-
+  /* Side effect for switiching to point or geocoded address location */
   useEffect(() => {
-    console.log('hello?', address.value?.label);
-    // forwardGeocode(address.value).then((data) => {
-    //   console.log(data);
-    //   setGeocodeResults(data);
-    // });
-  }, [address.value?.label]);
-
-  /* Side effect for switiching to point location */
-  useEffect(() => {
-    if (locationType.value === 'point') {
+    if (locationType.value === 'point' || locationType.value === 'address') {
       setIsDrawing(true);
-      if (current.type === 'point')
+      if (current.type === 'point' || current.type === 'address')
         setDataDrawing({
           lng: current.longitude,
           lat: current.latitude,
@@ -99,6 +89,7 @@ const ExploreAnalysisLocationEditor = ({
       return `(${geoLocatorData.latitude.toFixed(
         accuracy
       )}, ${geoLocatorData.longitude.toFixed(accuracy)})`;
+    else if (locationType.value === 'address') return `${address.value.label}`;
     else return `Location ${id} (${locationType.value})`;
   }, [
     locationType.value,
@@ -106,6 +97,7 @@ const ExploreAnalysisLocationEditor = ({
     country.value?.label,
     pointData,
     geoLocatorData,
+    address?.value,
     id,
   ]);
 
@@ -139,6 +131,11 @@ const ExploreAnalysisLocationEditor = ({
         longitude: geoLocatorData.longitude,
         latitude: geoLocatorData.latitude,
       }),
+      ...(locationType.value === 'address' && {
+        address: address.value,
+        longitude: pointData.lng,
+        latitude: pointData.lat,
+      }),
       geo: geo,
       editing: false,
     };
@@ -152,6 +149,7 @@ const ExploreAnalysisLocationEditor = ({
     stopEditing();
   };
 
+  /* Side effect to clear states list if no country is selected */
   useEffect(() => {
     if (!country.value?.length) {
       setStatesList([]);
@@ -167,6 +165,7 @@ const ExploreAnalysisLocationEditor = ({
     if (!locationType.value) return false;
     if (locationType.value === 'point' && !pointData) return false;
     if (locationType.value === 'current' && !geoLocatorData) return false;
+    if (locationType.value === 'address' && !address.value) return false;
     if (locationType.value === 'admin' && !(country.value && selectedState))
       return false;
     return true;
@@ -174,10 +173,35 @@ const ExploreAnalysisLocationEditor = ({
     locationType.value,
     pointData,
     geoLocatorData,
+    address.value,
     country.value,
     selectedState,
   ]);
 
+  /* Event handler for geocode autocomplete results */
+  const handleAddrSearch = (val: string) => {
+    if (val.trim().length)
+      forwardGeocode(val).then((results) => {
+        setGeocodeResults(
+          results.map(({ id, place_name, geometry: { coordinates } }) => ({
+            value: id,
+            label: place_name,
+            lngLat: { lng: coordinates[0], lat: coordinates[1] },
+          }))
+        );
+      });
+    else {
+      setGeocodeResults([]);
+    }
+  };
+
+  /* Event handler for selecting a geocoded address */
+  const handleSelectAddr = (val: { lngLat: number[] }) => {
+    address.onChange(val);
+    setDataDrawing(val.lngLat);
+  };
+
+  /* Event handler for selecting a state */
   const handleSelectedStateChange = (obj) => {
     setSelectedState(obj);
   };
@@ -249,7 +273,9 @@ const ExploreAnalysisLocationEditor = ({
                         disabled: locationType.value !== o.value,
                         placeholder: 'Search address',
                       }}
-                      {...address}
+                      value={address.value}
+                      onChange={handleSelectAddr}
+                      onInputChange={handleAddrSearch}
                       className="Select--large"
                       options={geocodeResults}
                     >

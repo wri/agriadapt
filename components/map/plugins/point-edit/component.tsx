@@ -8,7 +8,8 @@ const PointEdit = ({
   geoLocator: { data: geoLocatorData, isGeoLocating },
 }) => {
   const points = Object.values(locations).filter(
-    (l: AnalysisLocation) => ['point', 'current'].includes(l.type) && !l.editing
+    (l: AnalysisLocation) =>
+      !['admin'].includes(l.type) && !l.editing
   );
 
   return (
