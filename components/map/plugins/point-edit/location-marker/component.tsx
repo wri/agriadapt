@@ -1,12 +1,17 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Marker } from 'react-map-gl';
 import Pin from './pin';
 
 const LocationMarker = ({
-  location: { latitude, longitude, label = null, editing },
+  location: { latitude, longitude, editing },
   setDataDrawing,
 }) => {
   const [marker, setMarker] = useState({ latitude, longitude });
+
+  /* Update marker based on changed lat, long props */
+  useEffect(() => {
+    setMarker({ latitude, longitude });
+  }, [latitude, longitude]);
 
   const onMarkerDragEnd = useCallback(
     ({ lngLat: { lng, lat } }) => {

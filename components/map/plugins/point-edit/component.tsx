@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { AnalysisLocation, PointLocation } from 'types/analysis';
 import LocationMarker from './location-marker';
 
@@ -8,21 +8,20 @@ const PointEdit = ({
   geoLocator: { data: geoLocatorData, isGeoLocating },
 }) => {
   const points = Object.values(locations).filter(
-    (l: AnalysisLocation) => l.type === 'point'
+    (l: AnalysisLocation) => ['point', 'current'].includes(l.type) && !l.editing
   );
 
   return (
     <>
-      {(isDrawing && pointData) ||
-        (isGeoLocating && geoLocatorData && (
-          <LocationMarker
-            location={{
-              longitude: isDrawing ? pointData.lng : geoLocatorData.longitude,
-              latitude: isDrawing ? pointData.lat : geoLocatorData.latitude,
-              editing: isDrawing,
-            }}
-          />
-        ))}
+      {((isDrawing && !!pointData) || (isGeoLocating && !!geoLocatorData)) && (
+        <LocationMarker
+          location={{
+            longitude: isDrawing ? pointData.lng : geoLocatorData.longitude,
+            latitude: isDrawing ? pointData.lat : geoLocatorData.latitude,
+            editing: isDrawing,
+          }}
+        />
+      )}
       {points.map((l: PointLocation) => (
         <LocationMarker key={l.id} location={l} />
       ))}

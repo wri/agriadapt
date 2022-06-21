@@ -39,24 +39,40 @@ const ExploreAnalysisLocationEditor = ({
   const [statesList, setStatesList] = useState([]);
   const [statesLoading, setStatesLoading] = useState(false);
 
+  /* Side effect for switiching to point location */
   useEffect(() => {
-    if (
-      locationType.value === 'point' &&
-      !(current.latitude || current.longitude)
-    )
+    if (locationType.value === 'point') {
       setIsDrawing(true);
-    else setIsDrawing(false);
-  }, [locationType.value, setIsDrawing, current.latitude, current.longitude]);
+      if (current.type === 'point' && current.latitude && current.longitude)
+        setDataDrawing({
+          lng: current.longitude,
+          lat: current.latitude,
+        });
+    } else {
+      setIsDrawing(false);
+      setDataDrawing(null);
+    }
+  }, [
+    locationType.value,
+    current.type,
+    current.latitude,
+    current.longitude,
+    setIsDrawing,
+    setDataDrawing,
+  ]);
 
+  /* Side effect for switching to current location */
   useEffect(() => {
-    if (locationType.value === 'current'){
+    if (locationType.value === 'current') {
+      setIsGeoLocating(true);
       getUserPosition(({ coords: { longitude, latitude } }) =>
         setDataGeoLocator({ longitude, latitude })
       );
-      setIsGeoLocating(true);
+    } else {
+      setIsGeoLocating(false);
+      setDataGeoLocator(null);
     }
-    else setIsGeoLocating(false);
-  }, [locationType.value, setDataGeoLocator, setIsGeoLocating])
+  }, [locationType.value, setDataGeoLocator, setIsGeoLocating]);
 
   const createLabel = useCallback(() => {
     if (locationType.value === 'admin')
@@ -75,11 +91,17 @@ const ExploreAnalysisLocationEditor = ({
     id,
   ]);
 
+  const stopEditing = () => {
+    setIsDrawing(false);
+    setDataDrawing(null);
+    setIsGeoLocating(false);
+    setDataGeoLocator(null);
+  };
+
   const onCancel = () => {
     if (!isAdding) setEditing({ id, editing: false });
     else setIsAdding(false);
-    setDataDrawing(null);
-    setIsDrawing(false);
+    stopEditing();
   };
 
   const onSubmit = () => {
@@ -109,8 +131,7 @@ const ExploreAnalysisLocationEditor = ({
       });
     else addLocation(loc);
 
-    setIsDrawing(false);
-    setDataDrawing(null);
+    stopEditing();
   };
 
   useEffect(() => {
@@ -119,6 +140,7 @@ const ExploreAnalysisLocationEditor = ({
     }
   }, [country.value]);
 
+  /* Side effect to clear selected state when changing country */
   useEffect(() => {
     setSelectedState(null);
   }, [country.value]);
@@ -130,7 +152,13 @@ const ExploreAnalysisLocationEditor = ({
     if (locationType.value === 'admin' && !(country.value && selectedState))
       return false;
     return true;
-  }, [locationType.value, pointData, geoLocatorData, country.value, selectedState]);
+  }, [
+    locationType.value,
+    pointData,
+    geoLocatorData,
+    country.value,
+    selectedState,
+  ]);
 
   const handleSelectedStateChange = (obj) => {
     setSelectedState(obj);
