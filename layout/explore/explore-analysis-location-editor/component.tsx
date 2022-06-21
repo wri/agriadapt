@@ -77,15 +77,20 @@ const ExploreAnalysisLocationEditor = ({
     }
   }, [locationType.value, setDataGeoLocator, setIsGeoLocating]);
 
-
   useEffect(() => {
-    const data = locationType.value === 'point' ? pointData : locationType.value === 'current' ? geoLocatorData : null;
-    if (data) 
-      reverseGeocode(data).then((result) => {
+    const data =
+      locationType.value === 'point'
+        ? pointData
+        : locationType.value === 'current'
+        ? geoLocatorData
+        : null;
+    if (data) {
+      console.log(Object.values(data));
+      reverseGeocode(Object.values(data)).then((result) => {
         if (result) setGeoLabel(result.place_name);
-      })
-  }, [geoLocatorData, locationType.value, pointData])
-  
+      });
+    }
+  }, [geoLocatorData, locationType.value, pointData]);
 
   const createLabel = useCallback(() => {
     const accuracy = 4;
@@ -95,9 +100,12 @@ const ExploreAnalysisLocationEditor = ({
     else if (locationType.value === 'point')
       // return `(${pointData.lat.toFixed(accuracy)}, ${pointData.lng.toFixed(
       //   accuracy
-      return geoLabel || `(${pointData.lat.toFixed(accuracy)}, ${pointData.lng.toFixed(
-        accuracy
-      )})`;
+      return (
+        geoLabel ||
+        `(${pointData.lat.toFixed(accuracy)}, ${pointData.lng.toFixed(
+          accuracy
+        )})`
+      );
     else if (locationType.value === 'current')
       return (
         geoLabel ||
