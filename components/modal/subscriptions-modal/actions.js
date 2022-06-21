@@ -17,7 +17,7 @@ import {
 } from "services/subscriptions";
 
 import { fetchDatasets } from "services/dataset";
-import { fetchQuery } from "services/query";
+import fetchQuery from "services/query";
 
 // actions – user subscriptions
 export const setSubscriptions = createAction(
