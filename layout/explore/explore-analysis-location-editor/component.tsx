@@ -43,7 +43,7 @@ const ExploreAnalysisLocationEditor = ({
   useEffect(() => {
     if (locationType.value === 'point') {
       setIsDrawing(true);
-      if (current.type === 'point' && current.latitude && current.longitude)
+      if (current.type === 'point')
         setDataDrawing({
           lng: current.longitude,
           lat: current.latitude,
