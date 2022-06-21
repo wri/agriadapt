@@ -1,5 +1,4 @@
 import Field from 'components/form/Field';
-import Input from 'components/form/Input';
 import { EXPLORE_ANALYSIS } from '../constants';
 import Select from 'react-select';
 import useInput from 'hooks/form/useInput';
@@ -9,73 +8,203 @@ import { fetchDatasetQuery } from 'services/query';
 import { GADM_ADMONE_DATSET_ID, GADM_ADMONE_SQL } from 'constants/app';
 import useSelect from 'hooks/form/useSelect';
 import { fetchGADM1Geostore } from 'services/geostore';
+import { AnalysisLocation } from 'types/analysis';
+import { getUserPosition } from 'utils/user-position';
+import { forwardGeocode } from 'services/geocoder';
 
 const ExploreAnalysisLocationEditor = ({
-  list: locations,
   countries,
   addLocation,
   editLocation,
-  setEditIndex,
-  editIndex,
-  editing = false,
+  setIsAdding,
+  isAdding,
+  current = {} as AnalysisLocation,
+  setEditing,
+  setIsDrawing,
+  setDataDrawing,
+  drawer: { data: pointData },
+  geoLocator: { data: geoLocatorData },
+  setIsGeoLocating,
+  setDataGeoLocator,
 }) => {
   const { LOCATION_CONFIG } = EXPLORE_ANALYSIS;
-  const current = locations[editIndex] ?? {};
+
+  const id = current.id;
   const label = current.label;
-  const locationType = useInput(current.type);
+  const locationType = useInput(current.type || 'point');
+  const address = useSelect(current.address);
   const country = useSelect(current.country);
   const [selectedState, setSelectedState] = useState(current.state);
   const [geo, setGeo] = useState(current.geo);
+  const [geocodeResults, setGeocodeResults] = useState([]);
 
   const [statesList, setStatesList] = useState([]);
   const [statesLoading, setStatesLoading] = useState(false);
 
+  /* Side effect for switching to point or geocoded address location */
+  useEffect(() => {
+    if (locationType.value === 'point' || locationType.value === 'address') {
+      setIsDrawing(true);
+      if (current.type === 'point' || current.type === 'address')
+        setDataDrawing({
+          lng: current.longitude,
+          lat: current.latitude,
+        });
+    } else {
+      setIsDrawing(false);
+      setDataDrawing(null);
+    }
+  }, [
+    locationType.value,
+    current.type,
+    current.latitude,
+    current.longitude,
+    setIsDrawing,
+    setDataDrawing,
+  ]);
+
+  /* Side effect for switching to current location */
+  useEffect(() => {
+    if (locationType.value === 'current') {
+      setIsGeoLocating(true);
+      getUserPosition(({ coords: { longitude, latitude } }) =>
+        setDataGeoLocator({ longitude, latitude })
+      );
+    } else {
+      setIsGeoLocating(false);
+      setDataGeoLocator(null);
+    }
+  }, [locationType.value, setDataGeoLocator, setIsGeoLocating]);
+
   const createLabel = useCallback(() => {
+    const accuracy = 4;
+
     if (locationType.value === 'admin')
       return `${selectedState?.label}, ${country.value?.label}`;
-    else return `Location ${editIndex} (${locationType.value})`;
-  }, [locationType.value, selectedState?.label, country.value?.label, editIndex]);
+    else if (locationType.value === 'point')
+      return `(${pointData.lat.toFixed(accuracy)}, ${pointData.lng.toFixed(
+        accuracy
+      )})`;
+    else if (locationType.value === 'current')
+      return `(${geoLocatorData.latitude.toFixed(
+        accuracy
+      )}, ${geoLocatorData.longitude.toFixed(accuracy)})`;
+    else if (locationType.value === 'address') return `${address.value.label}`;
+    else return `Location ${id} (${locationType.value})`;
+  }, [
+    locationType.value,
+    selectedState?.label,
+    country.value?.label,
+    pointData,
+    geoLocatorData,
+    address?.value,
+    id,
+  ]);
+
+  const stopEditing = () => {
+    setIsDrawing(false);
+    setDataDrawing(null);
+    setIsGeoLocating(false);
+    setDataGeoLocator(null);
+  };
 
   const onCancel = () => {
-    setEditIndex(-1);
+    if (!isAdding) setEditing({ id, editing: false });
+    else setIsAdding(false);
+    stopEditing();
   };
 
   const onSubmit = () => {
     const loc = {
+      id,
       label: label || createLabel(),
-      country: country.value,
-      state: selectedState,
       type: locationType.value,
+      ...(locationType.value === 'admin' && {
+        country: country.value,
+        state: selectedState,
+      }),
+      ...(locationType.value === 'point' && {
+        longitude: pointData.lng,
+        latitude: pointData.lat,
+      }),
+      ...(locationType.value === 'current' && {
+        longitude: geoLocatorData.longitude,
+        latitude: geoLocatorData.latitude,
+      }),
+      ...(locationType.value === 'address' && {
+        address: address.value,
+        longitude: pointData.lng,
+        latitude: pointData.lat,
+      }),
       geo: geo,
+      editing: false,
     };
-    if (editing)
+    if (current.editing)
       editLocation({
-        index: editIndex,
+        id,
         edit: loc,
       });
     else addLocation(loc);
+
+    stopEditing();
   };
 
+  /* Side effect to clear states list if no country is selected */
   useEffect(() => {
     if (!country.value?.length) {
       setStatesList([]);
     }
   }, [country.value]);
 
+  /* Side effect to clear selected state when changing country */
   useEffect(() => {
     setSelectedState(null);
   }, [country.value]);
 
   const isValid = useMemo(() => {
     if (!locationType.value) return false;
+    if (locationType.value === 'point' && !pointData) return false;
+    if (locationType.value === 'current' && !geoLocatorData) return false;
+    if (locationType.value === 'address' && !address.value) return false;
     if (locationType.value === 'admin' && !(country.value && selectedState))
       return false;
     return true;
-  }, [locationType.value, country.value, selectedState]);
+  }, [
+    locationType.value,
+    pointData,
+    geoLocatorData,
+    address.value,
+    country.value,
+    selectedState,
+  ]);
 
+  /* Event handler for geocode autocomplete results */
+  const handleAddrSearch = (val: string) => {
+    if (val.trim().length)
+      forwardGeocode(val).then((results) => {
+        setGeocodeResults(
+          results.map(({ id, place_name, geometry: { coordinates } }) => ({
+            value: id,
+            label: place_name,
+            lngLat: { lng: coordinates[0], lat: coordinates[1] },
+          }))
+        );
+      });
+    else {
+      setGeocodeResults([]);
+    }
+  };
+
+  /* Event handler for selecting a geocoded address */
+  const handleSelectAddr = (val: { lngLat: number[] }) => {
+    address.onChange(val);
+    setDataDrawing(val.lngLat);
+  };
+
+  /* Event handler for selecting a state */
   const handleSelectedStateChange = (obj) => {
     setSelectedState(obj);
-  }
+  };
 
   // Side effect for getting state options based on country
   useEffect(() => {
@@ -134,18 +263,23 @@ const ExploreAnalysisLocationEditor = ({
                 <span />
                 {o.label}
               </label>
-              {o.value === 'search' && (
+              {o.value === 'address' && (
                 <div style={{ display: 'flex', flexDirection: 'row' }}>
                   <span style={{ paddingLeft: 20 }} />
                   <div style={{ flex: 1 }}>
                     <Field
-                      onChange={undefined} // TODO: Search address
                       properties={{
+                        default: '',
                         disabled: locationType.value !== o.value,
                         placeholder: 'Search address',
                       }}
+                      value={address.value}
+                      onChange={handleSelectAddr}
+                      onInputChange={handleAddrSearch}
+                      className="Select--large"
+                      options={geocodeResults}
                     >
-                      {Input}
+                      {Select}
                     </Field>
                   </div>
                 </div>
@@ -197,7 +331,7 @@ const ExploreAnalysisLocationEditor = ({
           className="c-button -primary"
           disabled={!isValid}
         >
-          {editing ? 'Edit Location' : 'Add Location'}
+          {current.editing ? 'Edit Location' : 'Add Location'}
         </button>
       </div>
     </div>

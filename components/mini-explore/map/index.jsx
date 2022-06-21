@@ -198,8 +198,8 @@ export default function MiniExploreMapContainer({
 
       dispatch(
         setMapLayerGroupsInteractionLatLng({
-          longitude: lngLat[0],
-          latitude: lngLat[1],
+          longitude: lngLat.lng,
+          latitude: lngLat.lat,
         })
       );
 

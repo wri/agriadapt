@@ -23,7 +23,6 @@ import WidgetHeader from "../../header";
 import WidgetInfo from "../../info";
 import WidgetCaption from "../../caption";
 
-import type { ViewportProps } from "react-map-gl";
 import type { APIWidgetSpec } from "types/widget";
 import type { Bounds, LayerGroup, Basemap, Labels } from "components/map/types";
 import type { SwipeTypeWidgetContainerProps } from "./index";
@@ -44,7 +43,7 @@ export interface SwipeTypeWidgetProps
   isFetching?: boolean;
   isInACollection?: boolean;
   isError?: boolean;
-  onFitBoundsChange: (viewport: ViewportProps) => void;
+  // onFitBoundsChange: (viewport: ViewportProps) => void;
 }
 
 const SwipeTypeWidget = ({
@@ -60,7 +59,7 @@ const SwipeTypeWidget = ({
   isFetching = false,
   isError = false,
   onToggleShare,
-  onFitBoundsChange,
+  // onFitBoundsChange,
 }: SwipeTypeWidgetProps): JSX.Element => {
   const [map, setMap] = useState({
     left: null,
@@ -89,12 +88,12 @@ const SwipeTypeWidget = ({
     [map]
   );
 
-  const handleFitBoundsChange = useCallback(
-    (_viewport) => {
-      onFitBoundsChange(_viewport);
-    },
-    [onFitBoundsChange]
-  );
+  // const handleFitBoundsChange = useCallback(
+  //   (_viewport) => {
+  //     onFitBoundsChange(_viewport);
+  //   },
+  //   [onFitBoundsChange]
+  // );
 
   const handleViewport = useDebouncedCallback((_viewport) => {
     setViewport(_viewport);
@@ -204,7 +203,6 @@ const SwipeTypeWidget = ({
                   scrollZoom={false}
                   viewport={viewport}
                   bounds={bounds}
-                  onFitBoundsChange={handleFitBoundsChange}
                   onMapLoad={({ map: _map }) => handleMapRefs({ left: _map })}
                 >
                   {(_map) => (

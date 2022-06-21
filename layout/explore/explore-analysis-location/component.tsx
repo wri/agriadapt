@@ -4,23 +4,29 @@ import AnalysisDropdownMenu from '../explore-analysis/dropdown-menu/component';
 import RenameField from '../explore-analysis/rename-field/component';
 
 const ExploreAnalysisLocation = ({
-  label,
-  index,
+  id,
+  label = '',
   renameLocation,
   removeLocation,
-  setEditIndex,
+  setEditing,
 }) => {
   const [renaming, setRenaming] = useState(false);
 
-  const handleEdit = () => setEditIndex(index);
-  const handleDelete = () => removeLocation(index);
-  const handleRename = useCallback((newName, e) => {
-    if (newName.trim().length) {
-      renameLocation({ index, rename: newName.trim() });
-      setRenaming(false);
-    }
-    else if (e.type !== 'submit') setRenaming(false);
-  }, [index, renameLocation,]);
+  const handleEdit = () => {
+    setEditing({ id, editing: true });
+  };
+  const handleDelete = () => {
+    removeLocation(id);
+  };
+  const handleRename = useCallback(
+    (newName, e) => {
+      if (newName.trim().length) {
+        renameLocation({ id, rename: newName.trim() });
+        setRenaming(false);
+      } else if (e.type !== 'submit') setRenaming(false);
+    },
+    [id, renameLocation]
+  );
 
   const options = [
     {

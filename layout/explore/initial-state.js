@@ -28,8 +28,9 @@ const initialState = {
   },
   analysis: {
     locations: {
-      list: [],
-      editIndex: 0,
+      loc_map: {},
+      isAdding: false,
+      genId: 0,
     }
   },
   sort: {
@@ -68,6 +69,10 @@ const initialState = {
     layerGroupsInteractionLatLng: null,
     drawer: {
       isDrawing: false,
+      data: null,
+    },
+    geoLocator: {
+      isGeoLocating: false,
       data: null,
     },
     // contains an area ID to display in the map

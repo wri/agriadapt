@@ -6,7 +6,6 @@ import { withRouter } from 'next/router';
 // actions
 import { setIsServer as setServerAction } from 'redactions/common';
 import * as actions from 'layout/explore/actions';
-import { EXPLORE_DATASETS_IDS } from 'constants/app';
 
 // // hoc
 // import {
@@ -96,7 +95,7 @@ class ExplorePage extends PureComponent {
       // Datasets
       page: datasets.page,
       sort: sort.selected,
-      sortDirection: sort.direction,
+      // sortDirection: sort.direction,
       ...filters.search && { search: filters.search },
     //   ...!!filters.selected.topics.length
     //     && { topics: encodeURIComponent(JSON.stringify(filters.selected.topics)) },
@@ -189,7 +188,7 @@ export const getStaticProps = () => {
 }
 
 export const getStaticPaths = async () => {
-  const datas = await fetchDatasets(EXPLORE_DATASETS_IDS);
+  const datas = await fetchDatasets();
   const slugs = datas.map(({ slug }) => slug);
  
   return {
