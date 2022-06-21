@@ -10,7 +10,7 @@ import useSelect from 'hooks/form/useSelect';
 import { fetchGADM1Geostore } from 'services/geostore';
 import { AnalysisLocation } from 'types/analysis';
 import { getUserPosition } from 'utils/user-position';
-import { forwardGeocode } from 'services/geocoder';
+import { forwardGeocode, reverseGeocode } from 'services/geocoder';
 
 const ExploreAnalysisLocationEditor = ({
   countries,
@@ -37,6 +37,7 @@ const ExploreAnalysisLocationEditor = ({
   const [selectedState, setSelectedState] = useState(current.state);
   const [geo, setGeo] = useState(current.geo);
   const [geocodeResults, setGeocodeResults] = useState([]);
+  const [geoLabel, setGeoLabel] = useState(null);
 
   const [statesList, setStatesList] = useState([]);
   const [statesLoading, setStatesLoading] = useState(false);
@@ -76,19 +77,34 @@ const ExploreAnalysisLocationEditor = ({
     }
   }, [locationType.value, setDataGeoLocator, setIsGeoLocating]);
 
+
+  useEffect(() => {
+    const data = locationType.value === 'point' ? pointData : locationType.value === 'current' ? geoLocatorData : null;
+    if (data) 
+      reverseGeocode(data).then((result) => {
+        if (result) setGeoLabel(result.place_name);
+      })
+  }, [geoLocatorData, locationType.value, pointData])
+  
+
   const createLabel = useCallback(() => {
     const accuracy = 4;
 
     if (locationType.value === 'admin')
       return `${selectedState?.label}, ${country.value?.label}`;
     else if (locationType.value === 'point')
-      return `(${pointData.lat.toFixed(accuracy)}, ${pointData.lng.toFixed(
+      // return `(${pointData.lat.toFixed(accuracy)}, ${pointData.lng.toFixed(
+      //   accuracy
+      return geoLabel || `(${pointData.lat.toFixed(accuracy)}, ${pointData.lng.toFixed(
         accuracy
       )})`;
     else if (locationType.value === 'current')
-      return `(${geoLocatorData.latitude.toFixed(
-        accuracy
-      )}, ${geoLocatorData.longitude.toFixed(accuracy)})`;
+      return (
+        geoLabel ||
+        `(${geoLocatorData.latitude.toFixed(
+          accuracy
+        )}, ${geoLocatorData.longitude.toFixed(accuracy)})`
+      );
     else if (locationType.value === 'address') return `${address.value.label}`;
     else return `Location ${id} (${locationType.value})`;
   }, [
@@ -99,6 +115,7 @@ const ExploreAnalysisLocationEditor = ({
     geoLocatorData,
     address?.value,
     id,
+    geoLabel,
   ]);
 
   const stopEditing = () => {
