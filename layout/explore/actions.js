@@ -105,6 +105,8 @@ export const setAreaOfInterest = createAction(
 export const setIsDrawing = createAction("EXPLORE-MAP__DRAWER__SET-IS-DRAWING");
 export const setDataDrawing = createAction("EXPLORE-MAP__DRAWER__SET-DATA");
 export const stopDrawing = createAction("EXPLORE-MAP__DRAWER__STOP-DRAWING");
+export const setIsGeoLocating = createAction("EXPLORE-MAP__GEOLOCATOR__SET-IS-GEOLOCATING");
+export const setDataGeoLocator = createAction("EXPLORE-MAP__GEOLOCATOR__SET-DATA");
 export const setPreviewAoi = createAction("EXPLORE-MAP__PREVIEW__SET_AOI");
 
 // LAYERS

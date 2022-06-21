@@ -1,4 +1,4 @@
-import ErrorFallback from 'components/error-fallback';
+// import ErrorFallback from 'components/error-fallback';
 import Icon from 'components/ui/icon';
 import { AnalysisLocation } from 'types/analysis';
 import Location from '../explore-analysis-location';
@@ -6,9 +6,9 @@ import ExploreAnalysisLocationEditor from '../explore-analysis-location-editor';
 import AnalysisTable from './explore-analysis-table';
 import AnalysisVisuals from './explore-analysis-vis';
 
-const CustomErrorFallback = (_props: any) => (
-  <ErrorFallback {..._props} title="Something went wrong loading the analysis table" />
-);
+// const CustomErrorFallback = (_props: any) => (
+//   <ErrorFallback {..._props} title="Something went wrong loading the analysis table" />
+// );
 
 const ExploreAnalysis = ({
   locations: { loc_map: locations, isAdding },
@@ -38,9 +38,9 @@ const ExploreAnalysis = ({
         </a>
       )}
       {!!Object.values(locations).length && (
-        <CustomErrorFallback>
+        // <CustomErrorFallback>
           <AnalysisTable />
-        </CustomErrorFallback>
+        // </CustomErrorFallback>
       )}
       <AnalysisVisuals />
     </div>
