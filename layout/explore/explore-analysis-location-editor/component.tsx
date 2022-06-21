@@ -50,7 +50,9 @@ const ExploreAnalysisLocationEditor = ({
 
   useEffect(() => {
     if (locationType.value === 'current'){
-      getUserPosition((pos) => setDataGeoLocator(pos.coords));
+      getUserPosition(({ coords: { longitude, latitude } }) =>
+        setDataGeoLocator({ longitude, latitude })
+      );
       setIsGeoLocating(true);
     }
     else setIsGeoLocating(false);
