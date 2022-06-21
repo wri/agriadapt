@@ -1,5 +1,4 @@
 import Field from 'components/form/Field';
-import Input from 'components/form/Input';
 import { EXPLORE_ANALYSIS } from '../constants';
 import Select from 'react-select';
 import useInput from 'hooks/form/useInput';
@@ -11,6 +10,7 @@ import useSelect from 'hooks/form/useSelect';
 import { fetchGADM1Geostore } from 'services/geostore';
 import { AnalysisLocation } from 'types/analysis';
 import { getUserPosition } from 'utils/user-position';
+import { forwardGeocode } from 'services/geocoder';
 
 const ExploreAnalysisLocationEditor = ({
   countries,
@@ -32,12 +32,24 @@ const ExploreAnalysisLocationEditor = ({
   const id = current.id;
   const label = current.label;
   const locationType = useInput(current.type || 'point');
+  const address = useSelect(current.address);
   const country = useSelect(current.country);
   const [selectedState, setSelectedState] = useState(current.state);
   const [geo, setGeo] = useState(current.geo);
+  const [geocodeResults, setGeocodeResults] = useState([]);
 
   const [statesList, setStatesList] = useState([]);
   const [statesLoading, setStatesLoading] = useState(false);
+  
+
+
+  useEffect(() => {
+    console.log('hello?', address.value?.label);
+    // forwardGeocode(address.value).then((data) => {
+    //   console.log(data);
+    //   setGeocodeResults(data);
+    // });
+  }, [address.value?.label]);
 
   /* Side effect for switiching to point location */
   useEffect(() => {
@@ -227,18 +239,21 @@ const ExploreAnalysisLocationEditor = ({
                 <span />
                 {o.label}
               </label>
-              {o.value === 'search' && (
+              {o.value === 'address' && (
                 <div style={{ display: 'flex', flexDirection: 'row' }}>
                   <span style={{ paddingLeft: 20 }} />
                   <div style={{ flex: 1 }}>
                     <Field
-                      onChange={undefined} // TODO: Search address
                       properties={{
+                        default: '',
                         disabled: locationType.value !== o.value,
                         placeholder: 'Search address',
                       }}
+                      {...address}
+                      className="Select--large"
+                      options={geocodeResults}
                     >
-                      {Input}
+                      {Select}
                     </Field>
                   </div>
                 </div>
