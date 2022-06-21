@@ -41,7 +41,7 @@ const ExploreAnalysisLocationEditor = ({
   const [statesList, setStatesList] = useState([]);
   const [statesLoading, setStatesLoading] = useState(false);
 
-  /* Side effect for switiching to point or geocoded address location */
+  /* Side effect for switching to point or geocoded address location */
   useEffect(() => {
     if (locationType.value === 'point' || locationType.value === 'address') {
       setIsDrawing(true);
