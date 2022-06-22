@@ -1,14 +1,18 @@
-import classNames from 'classnames';
 import RadioGroup from 'components/form/RadioGroup';
 import Select from 'react-select';
 import SearchInput from 'components/ui/SearchInput';
 import { EXPLORE_FILTERS } from '../constants';
 import Field from 'components/form/Field';
+import { useCallback, useEffect } from 'react';
+import debounce from 'lodash/debounce';
 
 const ExploreDatasetsSearch = ({
   search,
   advanced,
   setFiltersAdvancedOpen,
+  setFiltersSearch,
+  setDatasetsPage,
+  fetchDatasets,
 }): JSX.Element => {
   const { STANDARD, ADVANCED } = EXPLORE_FILTERS;
   const { open: advOpen } = advanced;
@@ -17,13 +21,28 @@ const ExploreDatasetsSearch = ({
     setFiltersAdvancedOpen(false);
   };
 
-  const handleSearch = () => {
+  const handleSubmit = () => {
     setFiltersAdvancedOpen(false);
+    loadDatasets();
   };
 
   const handleClickAdvanced = () => {
     setFiltersAdvancedOpen(!advOpen);
   };
+
+  const debouncedSetFiltersSearch = debounce((value: string) => {
+    setFiltersSearch(value);
+    if (!advOpen) loadDatasets();
+  }, 500);
+
+  const handleSearch = (value: string) => {
+    debouncedSetFiltersSearch(value);
+  }
+
+  const loadDatasets = useCallback(() => {
+    setDatasetsPage(1);
+    fetchDatasets();
+  }, [setDatasetsPage, fetchDatasets]);
 
   return (
     <>
@@ -35,7 +54,7 @@ const ExploreDatasetsSearch = ({
           label: 'Search Layers',
           default: '',
         }}
-        onSearch={() => undefined}
+        onSearch={handleSearch}
         input={{
           value: search,
           placeholder: 'Search Layers', // TODO: Translate
@@ -50,7 +69,8 @@ const ExploreDatasetsSearch = ({
           key={k}
           id={k}
           properties={{
-            label: v.label,
+            // TODO: Translate
+            label: `Filter Layers by ${v.placeholder}`,
             default: '',
             tooltip: v.tooltip,
           }}
@@ -103,7 +123,7 @@ const ExploreDatasetsSearch = ({
             </button>
             <button
               className="c-button -primary"
-              onClick={handleSearch}
+              onClick={handleSubmit}
             >
               {/* TODO: Translate */}
               {'Search'}

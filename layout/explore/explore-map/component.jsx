@@ -1,11 +1,11 @@
-import { useState, useEffect, useCallback } from "react";
-import PropTypes from "prop-types";
-import classnames from "classnames";
-import { toastr } from "react-redux-toastr";
-import debounce from "lodash/debounce";
-import isEmpty from "lodash/isEmpty";
-import { useDebouncedCallback } from "use-debounce";
-import { Popup } from "react-map-gl";
+import { useState, useEffect, useCallback } from 'react';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
+import { toastr } from 'react-redux-toastr';
+import debounce from 'lodash/debounce';
+import isEmpty from 'lodash/isEmpty';
+import { useDebouncedCallback } from 'use-debounce';
+import { Popup } from 'react-map-gl';
 import {
   Legend,
   LegendListItem,
@@ -16,41 +16,42 @@ import {
   LegendItemButtonInfo,
   LegendItemTypes,
   LegendItemTimeStep,
-} from "vizzuality-components";
-import { LegendItemTimeline } from "old-vizzuality-components";
+} from 'vizzuality-components';
+import { LegendItemTimeline } from 'old-vizzuality-components';
 
 // components
-import Modal from "components/modal/modal-component";
-import LayerInfoModal from "components/modal/layer-info-modal";
-import Spinner from "components/ui/Spinner";
-import Map from "components/map";
-import LayerManager from "components/map/layer-manager";
-import MapControls from "components/map/controls";
-import ZoomControls from "components/map/controls/zoom";
-import ShareControls from "components/map/controls/share";
-import BasemapControls from "components/map/controls/basemap";
+import Modal from 'components/modal/modal-component';
+import LayerInfoModal from 'components/modal/layer-info-modal';
+import Spinner from 'components/ui/Spinner';
+import Map from 'components/map';
+import LayerManager from 'components/map/layer-manager';
+import MapControls from 'components/map/controls';
+import ZoomControls from 'components/map/controls/zoom';
+import ShareControls from 'components/map/controls/share';
+import BasemapControls from 'components/map/controls/basemap';
 // import SearchControls from 'components/map/controls/search';
-import ResetViewControls from "components/map/controls/reset-view";
+import ResetViewControls from 'components/map/controls/reset-view';
 // import Drawer from 'components/map/plugins/drawer';
-import LayerPopup from "components/map/popup";
+import LayerPopup from 'components/map/popup';
 
 // Utils
-import { logEvent } from "utils/analytics";
-import { getUserAreaLayer } from "components/map/utils";
+import { logEvent } from 'utils/analytics';
+import { getUserAreaLayer } from 'components/map/utils';
 
 // services
-import { fetchArea } from "services/areas";
-import { fetchGeostore } from "services/geostore";
+import { fetchArea } from 'services/areas';
+import { fetchGeostore } from 'services/geostore';
 
 // constants
 import {
   MAPSTYLES,
   USER_AREA_LAYER_TEMPLATES,
   BASEMAP_LABEL_DICTIONARY,
-} from "components/map/constants";
+} from 'components/map/constants';
 
 // constants
-import { LEGEND_TIMELINE_PROPERTIES, TIMELINE_THRESHOLD } from "./constants";
+import { LEGEND_TIMELINE_PROPERTIES, TIMELINE_THRESHOLD } from './constants';
+import PointEdit from 'components/map/plugins/point-edit';
 
 const ExploreMap = (props) => {
   const {
@@ -68,7 +69,7 @@ const ExploreMap = (props) => {
     layerGroupsInteraction,
     layerGroupsInteractionSelected,
     layerGroupsInteractionLatLng,
-    // drawer: { isDrawing },
+    drawer: { isDrawing },
     // stopDrawing,
     exploreBehavior,
     onLayerInfoButtonClick,
@@ -90,7 +91,7 @@ const ExploreMap = (props) => {
     setBounds,
     setBasemap,
     setLabels,
-    // setDataDrawing,
+    setDataDrawing,
     aoi,
     previewAoi,
   } = props;
@@ -112,7 +113,7 @@ const ExploreMap = (props) => {
           onLayerInfoButtonClick(layer);
         } else {
           setSelectedDataset(layer.dataset);
-          setSidebarAnchor("layers");
+          setSidebarAnchor('layers');
         }
       }
     },
@@ -150,8 +151,8 @@ const ExploreMap = (props) => {
       });
 
       logEvent(
-        "Explore Map",
-        "Clicks Another Layer from Map Legend Tooltip",
+        'Explore Map',
+        'Clicks Another Layer from Map Legend Tooltip',
         `${l.name} [${l.id}]`
       );
     },
@@ -209,12 +210,19 @@ const ExploreMap = (props) => {
     (l) => {
       setMapLayerGroupActive({ dataset: { id: l.dataset }, active: l.id });
       logEvent(
-        "Explore Map",
-        "Clicks Another Layer from Map Legend Timeline",
+        'Explore Map',
+        'Clicks Another Layer from Map Legend Timeline',
         `${l.name} [${l.id}]`
       );
     },
     [setMapLayerGroupActive]
+  );
+
+  const onDropMarker = useCallback(
+    ({ lngLat: { lng, lat } }) => {
+      setDataDrawing({ lng, lat });
+    },
+    [setDataDrawing]
   );
 
   const onClickLayer = useCallback(
@@ -223,7 +231,7 @@ const ExploreMap = (props) => {
 
       // if the user clicks on a zone where there is no data in any current layer
       // we will reset the current interaction of those layers to display "no data available" message
-      if (!features.length) {
+      if (!features?.length) {
         interactions = Object.keys(layerGroupsInteraction).reduce(
           (accumulator, currentValue) => ({
             ...accumulator,
@@ -242,8 +250,8 @@ const ExploreMap = (props) => {
       }
 
       setMapLayerGroupsInteractionLatLng({
-        longitude: lngLat[0],
-        latitude: lngLat[1],
+        longitude: lngLat.lng,
+        latitude: lngLat.lat,
       });
       setMapLayerGroupsInteraction(interactions);
 
@@ -304,7 +312,7 @@ const ExploreMap = (props) => {
     (_basemap) => {
       const { id } = _basemap;
       setBasemap(id);
-      if (labels.value !== "none") setLabels(BASEMAP_LABEL_DICTIONARY[id]);
+      if (labels.value !== 'none') setLabels(BASEMAP_LABEL_DICTIONARY[id]);
     },
     [setBasemap, setLabels, labels]
   );
@@ -351,11 +359,10 @@ const ExploreMap = (props) => {
   const { loading, layer } = mapState;
   const { pitch, bearing } = viewport;
   const resetViewBtnClass = classnames({
-    "-with-transition": true,
-    "-visible": pitch !== 0 || bearing !== 0,
+    '-with-transition': true,
+    '-visible': pitch !== 0 || bearing !== 0,
   });
-  const isDrawing = false;
-  const mapClass = classnames({ "no-pointer-events": isDrawing });
+  const mapClass = classnames({ 'no-pointer-events': isDrawing });
 
   useEffect(() => {
     setDisplayedLayers((prevLayers) => [
@@ -380,7 +387,7 @@ const ExploreMap = (props) => {
         );
 
         if (!isPublicArea && areaUserId !== userId)
-          throw new Error("This area is private.");
+          throw new Error('This area is private.');
 
         const { id, geojson, bbox } = await fetchGeostore(geostoreId);
 
@@ -460,8 +467,6 @@ const ExploreMap = (props) => {
         .some((l) => !!l) && <Spinner isLoading />}
 
       <Map
-        // {...(!isDrawing && { onClick: onClickLayer })}
-        onClick={onClickLayer}
         interactiveLayerIds={activeInteractiveLayers}
         mapStyle={MAPSTYLES}
         viewport={viewport}
@@ -469,6 +474,9 @@ const ExploreMap = (props) => {
         basemap={basemap.value}
         labels={labels.value}
         boundaries={boundaries}
+        isDrawing={isDrawing}
+        onDropMarker={onDropMarker}
+        onClickLayer={onClickLayer}
         // getCursor={handleMapCursor}
         className={mapClass}
         onMapViewportChange={handleViewport}
@@ -483,6 +491,7 @@ const ExploreMap = (props) => {
               onEscapeKey={handleDrawEscapeKey}
               onDrawComplete={handleDrawComplete}
             /> */}
+            <PointEdit map={_map} />
 
             {/* {!isEmpty(layerGroupsInteractionLatLng) && activeLayers.length && !isDrawing && ( */}
             {!isEmpty(layerGroupsInteractionLatLng) && activeLayers.length && (

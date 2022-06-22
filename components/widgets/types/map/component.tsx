@@ -10,7 +10,7 @@ import {
   LegendItemTypes,
 } from "vizzuality-components";
 import { useErrorHandler } from "react-error-boundary";
-import type { ViewportProps } from "react-map-gl";
+// import type { ViewportProps } from "react-map-gl";
 
 // constants
 import {
@@ -60,7 +60,7 @@ export interface MapTypeWidgetProps
   isError: boolean;
   isInACollection?: boolean;
   bounds?: Bounds | null;
-  onFitBoundsChange: (viewport: ViewportProps) => void;
+  // onFitBoundsChange: (viewport: ViewportProps) => void;
 }
 
 const MapTypeWidget = ({
@@ -76,7 +76,7 @@ const MapTypeWidget = ({
   isInACollection = false,
   bounds,
   onToggleShare,
-  onFitBoundsChange,
+  // onFitBoundsChange,
 }: MapTypeWidgetProps): JSX.Element => {
   const handleError = useErrorHandler(
     isError ? new Error("something went wrong") : null
@@ -85,22 +85,22 @@ const MapTypeWidget = ({
     ...mapWidgetInitialState,
     layerGroups,
   });
-  const [viewport, setViewport] = useState<ViewportProps>({
+  const [viewport, setViewport] = useState({
     ...DEFAULT_VIEWPORT,
     height: 400,
   });
   const [isInfoWidgetVisible, setInfoWidgetVisibility] = useState(false);
 
-  const handleViewport = useCallback((_viewport: ViewportProps) => {
+  const handleViewport = useCallback((_viewport) => {
     setViewport(_viewport);
   }, []);
 
-  const handleFitBoundsChange = useCallback(
-    (_viewport: ViewportProps) => {
-      onFitBoundsChange(_viewport);
-    },
-    [onFitBoundsChange]
-  );
+  // const handleFitBoundsChange = useCallback(
+  //   (_viewport: ViewportProps) => {
+  //     onFitBoundsChange(_viewport);
+  //   },
+  //   [onFitBoundsChange]
+  // );
 
   const handleZoom = useCallback((zoom) => {
     setViewport((prevViewport) => ({
@@ -205,7 +205,7 @@ const MapTypeWidget = ({
             widget={widget}
             onToggleInfo={handleInfoToggle}
             onToggleShare={handleShareToggle}
-            isInACollection={isInACollection}
+            // isInACollection={isInACollection}
             isInfoVisible={isInfoWidgetVisible}
           />
         </div>
@@ -232,7 +232,7 @@ const MapTypeWidget = ({
               viewport={viewport}
               basemap={basemap}
               onMapViewportChange={handleViewport}
-              onFitBoundsChange={handleFitBoundsChange}
+              // onFitBoundsChange={handleFitBoundsChange}
               labels={labels}
               scrollZoom={false}
               bounds={bounds}

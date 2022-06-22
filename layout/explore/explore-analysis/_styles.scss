@@ -1,0 +1,18 @@
+.c-analysis-menu-dropdown {
+    border-radius: 8px;
+    .header-dropdown-list {
+        padding: $space-1;
+        .header-dropdown-list-item {
+            line-height: 16px;
+            margin: $space-1 0;
+
+            &.delete a {
+                color: $chart-red;
+            }
+        }
+    }
+
+    &:after {
+        content: none;
+    }
+}

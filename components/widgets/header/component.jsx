@@ -10,15 +10,16 @@ import Title from "components/ui/Title";
 
 export default function WidgetHeader({
   widget,
-  isInACollection,
+  // isInACollection,
   onToggleInfo,
   onToggleShare,
   isInfoVisible,
+  download = false,
 }) {
-  const starIconName = classnames({
-    "icon-star-full": isInACollection,
-    "icon-star-empty": !isInACollection,
-  });
+  // const starIconName = classnames({
+  //   "icon-star-full": isInACollection,
+  //   "icon-star-empty": !isInACollection,
+  // });
   const modalIcon = classnames({
     "icon-cross": isInfoVisible,
     "icon-info": !isInfoVisible,
@@ -41,9 +42,9 @@ export default function WidgetHeader({
                 <Icon name="icon-share" className="-small" />
               </button>
             </li>
-            <li>
-              {/* <LoginRequired redirect={false}> */}
-              {/* <Tooltip
+            {/* <li>
+              <LoginRequired redirect={false}>
+              <Tooltip
                 overlay={
                   <CollectionsPanel resource={widget} resourceType="widget" />
                 }
@@ -51,13 +52,20 @@ export default function WidgetHeader({
                 overlayStyle={{ color: "#fff" }}
                 placement="bottomLeft"
                 trigger="click"
-              > */}
-                <button type="button" className="c-btn -clean" tabIndex={-1}>
-                  <Icon name={starIconName} className="-star -small" />
+              >
+              <button type="button" className="c-btn -clean" tabIndex={-1}>
+                <Icon name={starIconName} className="-star -small" />
+              </button>
+              </Tooltip>
+              </LoginRequired>
+            </li> */}
+            {download && (
+              <li>
+                <button type="button" className="c-btn -clean">
+                  <Icon name="download-2" className="-small" />
                 </button>
-              {/* </Tooltip> */}
-              {/* </LoginRequired> */}
-            </li>
+              </li>
+            )}
             <li>
               <button
                 type="button"
@@ -86,8 +94,8 @@ WidgetHeader.propTypes = {
       type: PropTypes.string,
     }),
   }).isRequired,
-  isInACollection: PropTypes.bool.isRequired,
+  // isInACollection: PropTypes.bool.isRequired,
   isInfoVisible: PropTypes.bool,
   onToggleInfo: PropTypes.func.isRequired,
-  onToggleShare: PropTypes.func.isRequired,
+  // onToggleShare: PropTypes.func.isRequired,
 };

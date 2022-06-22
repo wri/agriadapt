@@ -1,4 +1,3 @@
-// import { TOPICS, DATA_TYPES, FREQUENCIES, TIME_PERIODS } from 'utils/concepts';
 import { BASEMAPS, LABELS } from "components/map/constants";
 import { EXPLORE_TABS } from "layout/explore/constants";
 
@@ -23,11 +22,15 @@ const initialState = {
       emission_scenario: [],
       supply_chain_node: [],
     },
+    options: {
+      countries: [],
+    },
   },
   analysis: {
     locations: {
-      list: [],
-      formOpen: false,
+      loc_map: {},
+      isAdding: false,
+      genId: 0,
     }
   },
   sort: {
@@ -66,6 +69,10 @@ const initialState = {
     layerGroupsInteractionLatLng: null,
     drawer: {
       isDrawing: false,
+      data: null,
+    },
+    geoLocator: {
+      isGeoLocating: false,
       data: null,
     },
     // contains an area ID to display in the map
