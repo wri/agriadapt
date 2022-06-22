@@ -71,6 +71,10 @@ const initialState = {
       isDrawing: false,
       data: null,
     },
+    geoLocator: {
+      isGeoLocating: false,
+      data: null,
+    },
     // contains an area ID to display in the map
     aoi: null,
     // contains a geostore id to preview in the map

@@ -16,6 +16,11 @@ export const localAPI = axios.create({
   headers: { "Content-Type": "application/json" },
 });
 
+export const GEOCODEAPI = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_MAPBOX_GEOCODE_API_URL,
+  headers: { 'Content-Type': 'application/json' },
+});
+
 const onResponseSuccess = (response) => response;
 
 // Any status codes that falls outside the range of 2xx cause this function to trigger
