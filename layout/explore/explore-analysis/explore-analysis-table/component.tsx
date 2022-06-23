@@ -18,23 +18,26 @@ const AnalysisTable = ({ loc_map: locations, layerGroups }) => {
 
   const interactions = useMemo(
     () =>
-      [].concat(
-        ...layerGroups.map((l) =>
-          l.layers.map((l: APILayerSpec) => ({
-            ...appConfigs[l.id],
-            dataset: l.dataset,
-          }))
-        )
-      ),
+      [].concat(...layerGroups.map((g) =>
+        g.layers.reduce((arr: APILayerSpec[], l: APILayerSpec) => {
+          if (appConfigs[l.id])
+            arr.push({
+              ...appConfigs[l.id],
+              label: l.name,
+              dataset: l.dataset,
+            });
+          return arr;
+        }, [])
+      )),
     [layerGroups]
   );
 
   const columns = useMemo(
-    () =>
+    () => 
       [].concat(
-        ...interactions.map(({ output }) => ({
+        ...interactions.map(({ output, label }) => ({
           field: output.path,
-          label: output.label,
+          label,
         }))
       ),
     [interactions]
@@ -127,11 +130,11 @@ const AnalysisTable = ({ loc_map: locations, layerGroups }) => {
                 <th key={i}>
                   <div className="flex items-start">
                     <AnalysisDropdownMenu options={options} />
-                    <div className="w-full text-ellipsis overflow-x-hidden">
+                    <div className="w-full">
                       <span className="float-right">
                         <Icon name="icon-info" className="table-action" />
                       </span>
-                      <span>{c.label}</span>
+                      <span className="line-clamp-2">{c.label}</span>
                     </div>
                   </div>
                 </th>
