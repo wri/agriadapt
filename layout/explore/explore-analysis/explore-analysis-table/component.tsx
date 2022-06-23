@@ -1,4 +1,3 @@
-import axios from 'axios';
 import classnames from 'classnames';
 import Icon from 'components/ui/icon';
 import WidgetHeader from 'components/widgets/header';
@@ -7,44 +6,70 @@ import { useEffect, useMemo, useState } from 'react';
 import { AnalysisLocation } from 'types/analysis';
 import AnalysisDropdownMenu from '../dropdown-menu/component';
 import Spinner from "components/ui/Spinner";
+import { fetchDatasetQuery } from 'services/query';
+import { APILayerSpec } from 'types/layer';
+import { appConfigs } from 'constants/app-config-template';
 
 const AnalysisTable = ({ loc_map: locations, layerGroups }) => {
   const isEmbed = false;
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const interactions = useMemo(() => {
-    return [].concat(
-      ...layerGroups.map((l) => l.layers.map((l) => l.interactionConfig))
-    );
-  }, [layerGroups]);
+  const interactions = useMemo(
+    () =>
+      [].concat(
+        ...layerGroups.map((l) =>
+          l.layers.map((l: APILayerSpec) => ({
+            ...appConfigs[l.id],
+            dataset: l.dataset,
+          }))
+        )
+      ),
+    [layerGroups]
+  );
 
   const columns = useMemo(
     () =>
       [].concat(
-        ...interactions.map(({ output }) =>
-          output.map((o) => ({
-            field: o.column,
-            label: o.property,
-          }))
-        )
+        ...interactions.map(({ output }) => ({
+          field: output.path,
+          label: output.label,
+        }))
       ),
     [interactions]
   );
 
-  /* Grabbing data with multiple promises (not ideal) */
+  const getGeoJSON = (location: AnalysisLocation) => {
+    if (location.type !== 'admin')
+      return {
+        type: 'Point',
+        coordinates: [location.longitude, location.latitude],
+      };
+  };
+
+  // useEffect(() => {
+  //   Object.values(locations).forEach((l: AnalysisLocation) => {
+  //     console.log(getGeoJSON(l));
+  //   });
+  // }, [locations]);
+
+// ✅ ?
   useEffect(() => {
     setLoading(true);
     Promise.all(
       Object.values(locations).map((l: AnalysisLocation) => {
-        const latlng = { lat: l.latitude, lng: l.longitude };
+        const geo = {
+          geojson: encodeURIComponent(JSON.stringify(getGeoJSON(l))),
+        };
+
         return Promise.allSettled(
-          interactions.map(({ config, output }) => {
-            if (config)
-              return axios.get(replace(config.url, latlng)).then(({ data }) => {
+          interactions.map(({ dataset, query, output }) => {
+            const encoded = replace(query, geo);
+            // if (query)
+              return fetchDatasetQuery(dataset, encoded).then(({ data }) => {
                 return { interactions: data.data, output: output };
               });
-            else return Promise.resolve({ interactions: [], output: [] });
+            // else return Promise.resolve({ interactions: [], output: [] });
           })
           // TODO: Figure out why typescript does not think "value" property exists here
           // eslint-disable-next-line
@@ -60,17 +85,21 @@ const AnalysisTable = ({ loc_map: locations, layerGroups }) => {
 
   const rows = useMemo(
     () =>
-        data.map((d) => {
-          return {
-            name: d.label,
-            attributes: d.data.reduce((obj, { interactions = [], output = [] }, i) => {
-              const colArr = output[i]?.column.split('.') || [];
-              const val = colArr.reduce((acc, c) => acc[c], interactions[i]) || 'N/A';
-              return obj[`col${i + 1}`] = String(val);
-            }, {}),
-          };
-        })
-      ,
+      data.map((d, i) => {
+        return {
+          name: d.label,
+          attributes: d.data.reduce(
+            (obj, { interactions = [], output }) => {
+              const colArr = output?.path.split('.') || [];
+              const val =
+                colArr.reduce((acc, c) => acc[c], interactions[0]) || 'N/A';
+              obj[`col${i + 1}`] = String(val);
+              return obj;
+            },
+            {}
+          ),
+        };
+      }),
     [data]
   );
 
