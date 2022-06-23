@@ -85,18 +85,18 @@ const AnalysisTable = ({ loc_map: locations, layerGroups }) => {
 
   const rows = useMemo(
     () =>
-      data.map((d, i) => {
+      data.map((d) => {
         return {
           name: d.label,
           attributes: d.data.reduce(
-            (obj, { interactions = [], output }) => {
+            (arr: string[], { interactions = [], output }) => {
               const colArr = output?.path.split('.') || [];
               const val =
                 colArr.reduce((acc, c) => acc[c], interactions[0]) || 'N/A';
-              obj[`col${i + 1}`] = String(val);
-              return obj;
+              arr.push(String(val));
+              return arr;
             },
-            {}
+            []
           ),
         };
       }),
@@ -157,8 +157,8 @@ const AnalysisTable = ({ loc_map: locations, layerGroups }) => {
               {rows.map((r, i) => (
                 <tr key={i}>
                   <td>{r.name}</td>
-                  {Object.entries(r.attributes).map(([k, v]) => (
-                    <td key={k}>{`${v}`}</td>
+                  {r.attributes.map((val: string, i: number) => (
+                    <td key={i}>{val}</td>
                   ))}
                 </tr>
               ))}
