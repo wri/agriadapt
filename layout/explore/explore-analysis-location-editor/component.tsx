@@ -2,7 +2,6 @@ import Field from 'components/form/Field';
 import { EXPLORE_ANALYSIS } from '../constants';
 import Select from 'react-select';
 import useInput from 'hooks/form/useInput';
-// import SelectInput from 'components/form/SelectInput';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { fetchDatasetQuery } from 'services/query';
 import { GADM_ADMONE_DATSET_ID, GADM_ADMONE_SQL } from 'constants/app';
@@ -147,6 +146,8 @@ const ExploreAnalysisLocationEditor = ({
       ...(locationType.value === 'admin' && {
         country: country.value,
         state: selectedState,
+        longitude: geocodeResults[1],
+        latitude: geocodeResults[0],
       }),
       ...(locationType.value === 'point' && {
         longitude: pointData.lng,
@@ -230,6 +231,33 @@ const ExploreAnalysisLocationEditor = ({
   const handleSelectedStateChange = (obj) => {
     setSelectedState(obj);
   };
+
+  /* Side Effect to Geocode the Country and Selected State */
+  useEffect(() => {
+    if (country.value?.label && selectedState?.label)
+      forwardGeocode(
+        `${selectedState?.label}, ${country.value?.label}`
+      ).then((results) => {
+        if (results) {
+          const lngLatArr = [
+            results[0].geometry.coordinates[1],
+            results[0].geometry.coordinates[0],
+          ];
+          setGeocodeResults(lngLatArr);
+        }
+      });
+      else {
+        setGeocodeResults([]);
+      }
+  }, [country.value?.label, selectedState]);
+    
+  /* Side Effect to place the marker at the Geocoded Coordinates */
+  useEffect (() => {
+    if (geocodeResults[0] && geocodeResults[1]) {
+      setIsDrawing(true);
+      setDataDrawing({ lng: geocodeResults[1], lat: geocodeResults[0] });
+    }
+  }, [geocodeResults, setDataDrawing, setIsDrawing])
 
   // Side effect for getting state options based on country
   useEffect(() => {
