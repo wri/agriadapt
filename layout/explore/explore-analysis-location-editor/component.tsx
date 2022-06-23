@@ -9,7 +9,7 @@ import { GADM_ADMONE_DATSET_ID, GADM_ADMONE_SQL } from 'constants/app';
 import useSelect from 'hooks/form/useSelect';
 import { fetchGADM1Geostore } from 'services/geostore';
 import { AnalysisLocation } from 'types/analysis';
-import { getUserPosition } from 'utils/user-position';
+import { getUserPosition } from 'utils/locations/user-position';
 import { forwardGeocode, reverseGeocode } from 'services/geocoder';
 
 const ExploreAnalysisLocationEditor = ({
