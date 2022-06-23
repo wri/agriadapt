@@ -9,6 +9,7 @@ import Spinner from "components/ui/Spinner";
 import { fetchDatasetQuery } from 'services/query';
 import { APILayerSpec } from 'types/layer';
 import { appConfigs } from 'constants/app-config-template';
+import { toGeoJSON } from 'utils/locations/geojson';
 
 const AnalysisTable = ({ loc_map: locations, layerGroups }) => {
   const isEmbed = false;
@@ -39,27 +40,12 @@ const AnalysisTable = ({ loc_map: locations, layerGroups }) => {
     [interactions]
   );
 
-  const getGeoJSON = (location: AnalysisLocation) => {
-    if (location.type !== 'admin')
-      return {
-        type: 'Point',
-        coordinates: [location.longitude, location.latitude],
-      };
-  };
-
-  // useEffect(() => {
-  //   Object.values(locations).forEach((l: AnalysisLocation) => {
-  //     console.log(getGeoJSON(l));
-  //   });
-  // }, [locations]);
-
-// ✅ ?
   useEffect(() => {
     setLoading(true);
     Promise.all(
       Object.values(locations).map((l: AnalysisLocation) => {
         const geo = {
-          geojson: encodeURIComponent(JSON.stringify(getGeoJSON(l))),
+          geojson: encodeURIComponent(JSON.stringify(toGeoJSON(l))),
         };
 
         return Promise.allSettled(
