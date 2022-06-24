@@ -74,6 +74,9 @@ export default createReducer(initialState, (builder) => {
         selected: payload,
       },
     }))
+    .addCase(actions.setFilteredDatasets, (state, { payload }) => {
+      state.datasets.filtered = payload;
+    })
     // countries
     .addCase(actions.setCountryList, (state, { payload }) => {
       state.filters.options.countries = payload;
@@ -99,13 +102,15 @@ export default createReducer(initialState, (builder) => {
         },
       },
     }))
-    .addCase(actions.setFiltersValueChains, (state, { payload }) => ({
-      ...state,
-      filters: {
-        ...state.filters,
-        value_chains: payload,
-      },
-    }))
+    .addCase(actions.setFiltersValueChains, (state, { payload }) => {
+      state.filters.value_chains = payload;
+    })
+    .addCase(actions.setFiltersEmissionScenario, (state, { payload }) => {
+      state.filters.emission_scenario = payload;
+    })
+    .addCase(actions.setFiltersTimescale, (state, { payload }) => {
+      state.filters.timescale = payload;
+    })
     // sort
     .addCase(actions.setSortSelected, (state, { payload }) => ({
       ...state,
@@ -152,12 +157,9 @@ export default createReducer(initialState, (builder) => {
       state.analysis.locations.loc_map[id] = edit;
       state.analysis.locations.loc_map[id].editing = false;
     })
-    .addCase(
-      actions.renameLocation,
-      (state, { payload: { id, rename } }) => {
-        state.analysis.locations.loc_map[id].label = rename;
-      }
-    )
+    .addCase(actions.renameLocation, (state, { payload: { id, rename } }) => {
+      state.analysis.locations.loc_map[id].label = rename;
+    })
     .addCase(actions.removeLocation, (state, { payload }) => {
       delete state.analysis.locations.loc_map[payload];
     })
@@ -201,16 +203,16 @@ export default createReducer(initialState, (builder) => {
       },
     }))
     .addCase(actions.setIsDrawing, (state, { payload }) => {
-      state.map.drawer.isDrawing =  payload
+      state.map.drawer.isDrawing = payload;
     })
     .addCase(actions.setDataDrawing, (state, { payload }) => {
       state.map.drawer.data = payload;
     })
     .addCase(actions.stopDrawing, (state) => {
-      state.map.drawer = initialState.map.drawer
+      state.map.drawer = initialState.map.drawer;
     })
     .addCase(actions.setIsGeoLocating, (state, { payload }) => {
-      state.map.geoLocator.isGeoLocating = payload
+      state.map.geoLocator.isGeoLocating = payload;
     })
     .addCase(actions.setDataGeoLocator, (state, { payload }) => {
       state.map.geoLocator.data = payload;

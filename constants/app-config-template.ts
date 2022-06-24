@@ -6,12 +6,9 @@ export const appConfigs = {
     output: {
       path: 'x.b1.mean',
     },
-    value_chains: [],
-    emission_scenario: '',
-    region: '',
-    timescale: '',
-    supply_chain_node: '',
-    time_frame: '',
+    value_chains: ['coffee'],
+    emission_scenario: 'rcp4.5',
+    timescale: ['historic'],
   },
   '105d8e48-784c-4e77-801d-389327d2f6dd': {
     // 2000 Projected Change in Extreme Precipitation Days
@@ -20,12 +17,9 @@ export const appConfigs = {
     output: {
       path: 'x',
     },
-    value_chains: [],
-    emission_scenario: '',
-    region: '',
+    value_chains: ['coffee'],
+    emission_scenario: 'rcp4.5',
     timescale: '',
-    supply_chain_node: '',
-    time_frame: '',
   },
   '7e544a59-8d07-4870-a087-ed45aa71140e': {
     // 2010 Projected Change in Extreme Precipitation Days
@@ -36,10 +30,7 @@ export const appConfigs = {
     },
     value_chains: [],
     emission_scenario: '',
-    region: '',
     timescale: '',
-    supply_chain_node: '',
-    time_frame: '',
   },
   'd31acf31-57d7-472e-8641-33127ede7b1c': {
     //2080  Projected Change in Extreme Precipitation Days
@@ -50,9 +41,6 @@ export const appConfigs = {
     },
     value_chains: [],
     emission_scenario: '',
-    region: '',
     timescale: '',
-    supply_chain_node: '',
-    time_frame: '',
   },
 };

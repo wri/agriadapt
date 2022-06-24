@@ -11,16 +11,15 @@ const initialState = {
     limit: 10,
     total: 0,
     selected: null,
+    filtered: [],
   },
   filters: {
     search: '',
-    value_chains: '',
+    value_chains: [],
+    timescale: 'any',
+    emission_scenario: null,
     advanced: {
       open: false,
-      timescale: [],
-      region: [],
-      emission_scenario: [],
-      supply_chain_node: [],
     },
     options: {
       countries: [],

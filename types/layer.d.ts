@@ -33,9 +33,19 @@ export interface APILayerSpec {
   thumbnailUrl: string;
   layerConfig: layerConfigSpec;
   legendConfig: Record<string, string | number | boolean | unknown>;
-  applicationConfig: Record<string, string | number | boolean | unknown>;
+  applicationConfig: APILayerAppConfig;
   interactionConfig: Record<string, string | number | boolean | unknown>;
   staticImageConfig: Record<string, string | number | boolean | unknown>;
   createdAt: string;
   updatedAt: string;
+}
+
+export interface APILayerAppConfig {
+  query: string;
+  output: {
+    path: string;
+  };
+  value_chains: string[];
+  emission_scenario?: 'rcp4.5' | 'rcp8.5',
+  timescale?: 'historic' | 'future_looking',
 }

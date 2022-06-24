@@ -13,14 +13,17 @@ import Paginator from "components/ui/Paginator";
 import DatasetList from "./list";
 import ExploreDatasetsActions from "./explore-datasets-actions";
 import ExploreSearch from '../explore-datasets-search';
+import { APILayerSpec } from "types/layer";
 
 export default function ExploreDatasets(props) {
   const {
-    datasets: { selected, list, total, limit, page, loading },
+    datasets: { selected, list, total, limit, page, loading, filtered: filteredDatasets },
+    filters,
     setDatasetsPage,
     fetchDatasets,
     fetchCountries,
     advOpen,
+    setFilteredDatasets,
   } = props;
 
   const fetchDatasetsPerPage = useCallback(
@@ -39,6 +42,33 @@ export default function ExploreDatasets(props) {
   useEffect(() => {
     fetchDatasetsPerPage(1);
   }, [fetchDatasetsPerPage]);
+
+  const filterDatasets = useCallback(() => {
+    const { timescale: fTimescale } = filters;
+    const fChains = filters.value_chains.map(({ value }) => value);
+    const fScenario = filters.emission_scenario?.value;
+    const filteredList = [];
+
+    for (let i = 0; i < list.length; i++) {
+      const layers: APILayerSpec[] = list[i].layer;
+      const match = layers.some(
+        ({ applicationConfig }) =>
+          (!fChains.length ||
+            applicationConfig?.value_chains?.some((c) =>
+              fChains.includes(c)
+            )) &&
+          (!fScenario ||
+            applicationConfig?.emission_scenario === fScenario) &&
+          (fTimescale === 'any' || applicationConfig?.timescale == fTimescale)
+      );
+      if (match) filteredList.push(list[i]);
+    }
+    setFilteredDatasets(filteredList);
+  }, [filters, list, setFilteredDatasets]);
+
+  useEffect(() => {
+    filterDatasets();
+  }, [filterDatasets]);
 
   const classValue = classnames({
     "c-explore-datasets": true,
@@ -72,7 +102,7 @@ export default function ExploreDatasets(props) {
           <DatasetList
             loading={loading}
             numberOfPlaceholders={20}
-            list={list}
+            list={filteredDatasets}
             actions={<ExploreDatasetsActions />}
           />
           {!!list.length && total > limit && (
