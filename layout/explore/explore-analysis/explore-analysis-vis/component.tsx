@@ -1,10 +1,8 @@
-
-const AnalysisVisuals = () => {
-
+const AnalysisVisuals = ({ children }) => {
   return (
-    <>
-      <div style={{ width: 200, backgroundColor: 'red' }} />
-    </>
+    <div style={{ width: '100%', minHeight: 200, backgroundColor: 'red' }}>
+      {children}
+    </div>
   );
 };
 

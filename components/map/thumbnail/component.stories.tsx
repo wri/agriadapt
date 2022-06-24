@@ -1,7 +1,7 @@
 // components
 import MapThumbnail from "./component";
 
-import type { APILayerSpec } from "types/layer";
+import type { APILayerAppConfig, APILayerSpec } from "types/layer";
 
 export default {
   title: "Map/Thumbnail",

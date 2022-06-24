@@ -5,17 +5,40 @@ import { EXPLORE_FILTERS } from '../constants';
 import Field from 'components/form/Field';
 import { useCallback, useEffect } from 'react';
 import debounce from 'lodash/debounce';
+import useSelect from 'hooks/form/useSelect';
 
 const ExploreDatasetsSearch = ({
   search,
-  advanced,
+  value_chains, emission_scenario, timescale,
+  advanced: { open: advOpen },
+  setFiltersValueChains,
+  setFiltersTimescale,
+  setFiltersEmissionScenario,
   setFiltersAdvancedOpen,
   setFiltersSearch,
   setDatasetsPage,
   fetchDatasets,
 }): JSX.Element => {
-  const { STANDARD, ADVANCED } = EXPLORE_FILTERS;
-  const { open: advOpen } = advanced;
+  const { VALUE_CHAINS, EMISSION_SCENARIO, TIMESCALE } = EXPLORE_FILTERS;
+
+  const selectedChain = useSelect(value_chains);
+  const selectedScenario = useSelect(emission_scenario);
+  const selectedTimescale = useSelect(timescale);
+
+  const handleSelectValueChain = (chains) => {
+    selectedChain.onChange(chains);
+    setFiltersValueChains(chains);
+  }
+
+  const handleSelectEmissionScenario = (scenario) => {
+    selectedScenario.onChange(scenario);
+    setFiltersEmissionScenario(scenario);
+  }
+  
+  const handleSelectTimescale = (timescale) => {
+    selectedTimescale.onChange(timescale);
+    setFiltersTimescale(timescale)
+  }
 
   const handleCancel = () => {
     setFiltersAdvancedOpen(false);
@@ -37,7 +60,7 @@ const ExploreDatasetsSearch = ({
 
   const handleSearch = (value: string) => {
     debouncedSetFiltersSearch(value);
-  }
+  };
 
   const loadDatasets = useCallback(() => {
     setDatasetsPage(1);
@@ -52,7 +75,7 @@ const ExploreDatasetsSearch = ({
         id="search"
         properties={{
           label: 'Search Layers',
-          default: '',
+          default: search,
         }}
         onSearch={handleSearch}
         input={{
@@ -62,69 +85,67 @@ const ExploreDatasetsSearch = ({
       >
         {SearchInput}
       </Field>
-      {/* TODO: Translate */}
-      {Object.entries(STANDARD).map(([k, v]) => (
-        <Field
+      <Field
+        // TODO: Translate
+        id={'VALUE_CHAINS'}
+        properties={{
           // TODO: Translate
-          key={k}
-          id={k}
-          properties={{
-            // TODO: Translate
-            label: `Filter Layers by ${v.placeholder}`,
-            default: '',
-            tooltip: v.tooltip,
-          }}
-          options={[]}
-          hint={v.hint}
-          placeholder={v.placeholder}
-          className={'Select--large'}
-          // isSearchable={false}
-          // isClearable={false}
-        >
-          {Select}
-        </Field>
-      ))}
+          label: `Filter Layers by ${VALUE_CHAINS.placeholder}`,
+          default: value_chains,
+          tooltip: VALUE_CHAINS.tooltip,
+        }}
+        value={selectedChain.value}
+        onChange={handleSelectValueChain}
+        options={VALUE_CHAINS.options}
+        hint={VALUE_CHAINS.hint}
+        placeholder={VALUE_CHAINS.placeholder}
+        className={'Select--large'}
+        isMulti={VALUE_CHAINS.multi}
+        // isSearchable={false}
+        // isClearable={false}
+      >
+        {Select}
+      </Field>
       {/* TODO: Translate */}
       <div className="advanced-link">
         <a onClick={handleClickAdvanced}>{'Advanced Search'}</a>
       </div>
       {advOpen && (
         <>
-          {Object.entries(ADVANCED).map(([k, v]) => (
-            <Field
-              key={k}
-              id={k}
-              properties={{
-                // TODO: Translate
-                label: `Filter Layers by ${v.placeholder}`,
-                default: '',
-              }}
-              {...(v.type === 'select' && {
-                placeholder: v.placeholder, // TODO: Translate
-                options: [],
-              })}
-              value={''}
-              {...(v.type === 'radio' && {
-                options: v.options,
-              })}
-              className={v.type === 'select' ? 'Select--large' : ''}
-            >
-              {v.type === 'select'
-                ? Select
-                : v.type === 'radio'
-                ? RadioGroup
-                : null}
-            </Field>
-          ))}
+          <Field
+            id={'EMISSION_SCENARIO'}
+            properties={{
+              // TODO: Translate
+              label: `Filter Layers by ${EMISSION_SCENARIO.placeholder}`,
+              default: emission_scenario,
+            }}
+            value={selectedScenario.value}
+            onChange={handleSelectEmissionScenario}
+            placeholder={EMISSION_SCENARIO.placeholder} // TODO: Translate
+            options={EMISSION_SCENARIO.options}
+            className="Select--large"
+          >
+            {Select}
+          </Field>
+          <Field
+            id={'TIMESCALE'}
+            properties={{
+              // TODO: Translate
+              label: `Filter Layers by ${TIMESCALE.placeholder}`,
+              default: timescale,
+            }}
+            value={selectedTimescale.value}
+            onChange={handleSelectTimescale}
+            options={TIMESCALE.options}
+          >
+            {RadioGroup}
+          </Field>
           <div className="c-explore-search-actions">
             <button className="c-button -secondary" onClick={handleCancel}>
               {/* TODO: Translate */}
               {'Cancel'}
             </button>
-            <button
-              className="c-button -primary"
-              onClick={handleSubmit}
-            >
+            <button className="c-button -primary" onClick={handleSubmit}>
               {/* TODO: Translate */}
               {'Search'}
             </button>

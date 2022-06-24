@@ -42,7 +42,9 @@ const ExploreAnalysis = ({
           <AnalysisTable />
         // </CustomErrorFallback>
       )}
-      <AnalysisVisuals />
+      <AnalysisVisuals>
+
+      </AnalysisVisuals>
     </div>
   );
 };
