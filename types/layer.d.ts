@@ -33,7 +33,7 @@ export interface APILayerSpec {
   thumbnailUrl: string;
   layerConfig: layerConfigSpec;
   legendConfig: Record<string, string | number | boolean | unknown>;
-  applicationConfig: APILayerAppConfig;
+  applicationConfig: APILayerAppConfig | Record<string, never>;
   interactionConfig: Record<string, string | number | boolean | unknown>;
   staticImageConfig: Record<string, string | number | boolean | unknown>;
   createdAt: string;
