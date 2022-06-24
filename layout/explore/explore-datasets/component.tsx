@@ -81,7 +81,7 @@ export default function ExploreDatasets(props) {
         <ExploreSearch />
       </div>
 
-      {!list.length && !loading && (
+      {!filteredDatasets.length && !loading && (
         <div className="request-data-container">
           <div className="request-data-text">
             Oops! We couldn&#39;t find data for your search...
