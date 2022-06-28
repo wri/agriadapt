@@ -35,7 +35,8 @@ const ExploreAnalysisLocationEditor = ({
   const country = useSelect(current.country);
   const [selectedState, setSelectedState] = useState(current.state);
   const [geo, setGeo] = useState(current.geo);
-  const [geocodeResults, setGeocodeResults] = useState([]);
+  const [autocompleteResults, setAutocompleteResults] = useState<{value: string; label: string; lngLat: Record<string, number>}[]>([]);
+  const [geocodeResults, setGeocodeResults] = useState<number[]>([]);
   const [geoLabel, setGeoLabel] = useState(null);
 
   const [statesList, setStatesList] = useState([]);
@@ -207,7 +208,7 @@ const ExploreAnalysisLocationEditor = ({
   const handleAddrSearch = (val: string) => {
     if (val.trim().length)
       forwardGeocode(val).then((results) => {
-        setGeocodeResults(
+        setAutocompleteResults(
           results.map(({ id, place_name, geometry: { coordinates } }) => ({
             value: id,
             label: place_name,
@@ -216,7 +217,7 @@ const ExploreAnalysisLocationEditor = ({
         );
       });
     else {
-      setGeocodeResults([]);
+      setAutocompleteResults([]);
     }
   };
 
@@ -238,7 +239,7 @@ const ExploreAnalysisLocationEditor = ({
         `${selectedState?.label}, ${country.value?.label}`
       ).then((results) => {
         if (results) {
-          const lngLatArr = [
+          const lngLatArr: number[] = [
             results[0].geometry.coordinates[1],
             results[0].geometry.coordinates[0],
           ];
@@ -329,7 +330,7 @@ const ExploreAnalysisLocationEditor = ({
                       onChange={handleSelectAddr}
                       onInputChange={handleAddrSearch}
                       className="Select--large"
-                      options={geocodeResults}
+                      options={autocompleteResults}
                     >
                       {Select}
                     </Field>
