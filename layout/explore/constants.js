@@ -20,7 +20,7 @@ export const EXPLORE_FILTERS = {
     type: 'select',
     tooltip: 'More information about the filter',
     options: [
-      { label: '[Adjective] RCP 4.5', value: 'rcp4.5' },
+      { label: 'Optimistic RCP 4.5', value: 'rcp4.5' },
       { label: 'Pessimistic RCP 8.5', value: 'rcp8.5' },
     ],
   },

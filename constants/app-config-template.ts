@@ -1,15 +1,23 @@
 export const appConfigs = {
-  'bb96729b-2269-4b97-9187-a6113d0b1580': {
-    // Landslide Susceptibility
+  'fdf06d8c-72e9-48a7-80f1-27bd5f19342c': {
+    // Aqueduct Baseline Water Stress
     query:
-      "select st_summarystats(rast, 'b1', false) as x from 'projects/resource-watch-gee/dis_007_landslide_susceptibility_map' where ST_INTERSECTS(ST_SetSRID(ST_GeomFromGeoJSON('{{geojson}}'),4326),the_geom)",
+      "select bws_label from 'wat_050_aqueduct_baseline_water_stress' where ST_INTERSECTS(ST_SetSRID(ST_GeomFromGeoJSON('{{geojson}}'),4326),the_geom)",
     output: {
-      path: 'x.b1.mean',
+      path: "bws_label",
     },
-    value_chains: ['coffee'],
-    emission_scenario: 'rcp4.5',
-    timescale: ['historic'],
   },
+  // 'bb96729b-2269-4b97-9187-a6113d0b1580': {
+  //   // Landslide Susceptibility
+  //   query:
+  //     "select st_summarystats(rast, 'b1', false) as x from 'projects/resource-watch-gee/dis_007_landslide_susceptibility_map' where ST_INTERSECTS(ST_SetSRID(ST_GeomFromGeoJSON('{{geojson}}'),4326),the_geom)",
+  //   output: {
+  //     path: 'x.b1.mean',
+  //   },
+  //   value_chain: 'coffee',
+  //   emission_scenario: 'rcp4.5', // not filtering, just changes what shows on map
+  //   timescale: 'historic'
+  // },
   '105d8e48-784c-4e77-801d-389327d2f6dd': {
     // 2000 Projected Change in Extreme Precipitation Days
     query:
@@ -17,7 +25,7 @@ export const appConfigs = {
     output: {
       path: 'x',
     },
-    value_chains: ['coffee'],
+    value_chain: 'coffee',
     emission_scenario: 'rcp4.5',
     timescale: '',
   },
@@ -28,7 +36,7 @@ export const appConfigs = {
     output: {
       path: 'x',
     },
-    value_chains: [],
+    value_chain: '',
     emission_scenario: '',
     timescale: '',
   },
@@ -39,7 +47,7 @@ export const appConfigs = {
     output: {
       path: 'x',
     },
-    value_chains: [],
+    value_chain: '',
     emission_scenario: '',
     timescale: '',
   },

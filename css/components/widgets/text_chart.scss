@@ -24,3 +24,26 @@
     }
   }
 }
+
+.c-text-chart-v2 {
+  // height: 206px;
+  background: $white;
+  padding: 24px;
+
+  * {
+    text-align: center;
+  }
+
+  .stat-value {
+    margin: 0;
+    color: $primary-green;
+  }
+  .stat-type {
+  
+  }
+  
+  .stat-name {
+  
+  }
+
+}
