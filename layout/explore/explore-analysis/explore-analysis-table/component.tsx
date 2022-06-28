@@ -19,13 +19,19 @@ const AnalysisTable = ({ loc_map: locations, layerGroups }) => {
   const interactions = useMemo(
     () =>
       [].concat(...layerGroups.map((g) =>
-        g.layers.reduce((arr: APILayerSpec[], l: APILayerSpec) => {
-          if (appConfigs[l.id])
+        g.layers.reduce((arr, l: APILayerSpec) => {
+          if (appConfigs[l.id]) // TODO: Remove once no longer using test app configs
             arr.push({
               ...appConfigs[l.id],
               label: l.name,
               dataset: l.dataset,
             });
+          else if (l.applicationConfig)
+            arr.push({
+              ...l.applicationConfig,
+              label: l.name,
+              dataset: l.dataset,
+            })
           return arr;
         }, [])
       )),
