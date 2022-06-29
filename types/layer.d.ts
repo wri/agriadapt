@@ -5,6 +5,9 @@ export interface Render {
 }
 
 export interface layerConfigSpec {
+  body: {
+    sldValue: string;
+  }
   render?: Render;
   source: Partial<Source>;
   [key: string]:

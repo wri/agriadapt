@@ -10,6 +10,7 @@ import { fetchDatasetQuery } from 'services/query';
 import { APILayerSpec } from 'types/layer';
 import { appConfigs } from 'constants/app-config-template';
 import { toGeoJSON } from 'utils/locations/geojson';
+import { createColorValueMap, legendConfigItem } from 'utils/layers/symbolizer';
 
 const AnalysisTable = ({ loc_map: locations, layerGroups }) => {
   const isEmbed = false;
@@ -20,18 +21,16 @@ const AnalysisTable = ({ loc_map: locations, layerGroups }) => {
     () =>
       [].concat(...layerGroups.map((g) =>
         g.layers.reduce((arr, l: APILayerSpec) => {
-          if (appConfigs[l.id]) // TODO: Remove once no longer using test app configs
-            arr.push({
-              ...appConfigs[l.id],
-              label: l.name,
-              dataset: l.dataset,
-            });
-          else if (l.applicationConfig)
-            arr.push({
-              ...l.applicationConfig,
-              label: l.name,
-              dataset: l.dataset,
-            })
+          const legendItems = l.legendConfig.items as legendConfigItem[];
+          arr.push({
+            // TODO: Remove app config template once no longer testing
+            ...(appConfigs[l.id]
+              ? { ...appConfigs[l.id] }
+              : { ...l.applicationConfig }),
+            label: l.name,
+            dataset: l.dataset,
+            ...(l.layerConfig.type == 'raster' && { valueMap: createColorValueMap(l.layerConfig.body.sldValue, legendItems )})
+          });
           return arr;
         }, [])
       )),
@@ -39,13 +38,7 @@ const AnalysisTable = ({ loc_map: locations, layerGroups }) => {
   );
 
   const columns = useMemo(
-    () => 
-      [].concat(
-        ...interactions.map(({ output, label }) => ({
-          field: output.path,
-          label,
-        }))
-      ),
+    () => [].concat(...interactions.map(({ label }) => label)),
     [interactions]
   );
 
@@ -58,13 +51,17 @@ const AnalysisTable = ({ loc_map: locations, layerGroups }) => {
         };
 
         return Promise.allSettled(
-          interactions.map(({ dataset, query, output }) => {
+          interactions.map(({ dataset, query, output, valueMap }) => {
             const encoded = replace(query, geo);
-            // if (query)
-              return fetchDatasetQuery(dataset, encoded).then(({ data }) => {
-                return { interactions: data.data, output: output };
-              });
-            // else return Promise.resolve({ interactions: [], output: [] });
+              return fetchDatasetQuery(dataset, encoded)
+                .then(({ data }) => {
+                  return {
+                    interactions: data.data,
+                    output: output,
+                    ...(valueMap && { valueMap }),
+                  };
+                })
+                .catch(() => ({ interactions: [] }));
           })
           // TODO: Figure out why typescript does not think "value" property exists here
           // eslint-disable-next-line
@@ -84,11 +81,11 @@ const AnalysisTable = ({ loc_map: locations, layerGroups }) => {
         return {
           name: d.label,
           attributes: d.data.reduce(
-            (arr: string[], { interactions = [], output }) => {
+            (arr: string[], { interactions = [], output, valueMap }) => {
               const colArr = output?.path.split('.') || [];
               const val =
                 colArr.reduce((acc, c) => acc[c], interactions[0]) || 'N/A';
-              arr.push(String(val));
+              arr.push(valueMap ? valueMap[val] : String(val));
               return arr;
             },
             []
@@ -140,7 +137,7 @@ const AnalysisTable = ({ loc_map: locations, layerGroups }) => {
                       <span className="float-right">
                         <Icon name="icon-info" className="table-action" />
                       </span>
-                      <span className="line-clamp-2">{c.label}</span>
+                      <span className="line-clamp-2">{c}</span>
                     </div>
                   </div>
                 </th>
