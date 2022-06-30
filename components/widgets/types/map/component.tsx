@@ -60,7 +60,7 @@ export interface MapTypeWidgetProps
   isError: boolean;
   isInACollection?: boolean;
   bounds?: Bounds | null;
-  // onFitBoundsChange: (viewport: ViewportProps) => void;
+  onFitBoundsChange: (viewport) => void;
 }
 
 const MapTypeWidget = ({
@@ -73,10 +73,9 @@ const MapTypeWidget = ({
   isWebshot = false,
   isFetching = false,
   isError = false,
-  isInACollection = false,
   bounds,
   onToggleShare,
-  // onFitBoundsChange,
+  onFitBoundsChange,
 }: MapTypeWidgetProps): JSX.Element => {
   const handleError = useErrorHandler(
     isError ? new Error("something went wrong") : null
@@ -95,12 +94,12 @@ const MapTypeWidget = ({
     setViewport(_viewport);
   }, []);
 
-  // const handleFitBoundsChange = useCallback(
-  //   (_viewport: ViewportProps) => {
-  //     onFitBoundsChange(_viewport);
-  //   },
-  //   [onFitBoundsChange]
-  // );
+  const handleFitBoundsChange = useCallback(
+    (_viewport) => {
+      onFitBoundsChange(_viewport);
+    },
+    [onFitBoundsChange]
+  );
 
   const handleZoom = useCallback((zoom) => {
     setViewport((prevViewport) => ({
@@ -232,7 +231,7 @@ const MapTypeWidget = ({
               viewport={viewport}
               basemap={basemap}
               onMapViewportChange={handleViewport}
-              // onFitBoundsChange={handleFitBoundsChange}
+              onFitBoundsChange={handleFitBoundsChange}
               labels={labels}
               scrollZoom={false}
               bounds={bounds}
