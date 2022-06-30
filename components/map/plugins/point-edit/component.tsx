@@ -1,5 +1,5 @@
 import React from 'react';
-import { AnalysisLocation, PointLocation } from 'types/analysis';
+import { PointLocation } from 'types/analysis';
 import LocationMarker from './location-marker';
 
 const PointEdit = ({
@@ -7,10 +7,7 @@ const PointEdit = ({
   drawer: { data: pointData, isDrawing },
   geoLocator: { data: geoLocatorData, isGeoLocating },
 }) => {
-  const points = Object.values(locations).filter(
-    (l: AnalysisLocation) =>
-      !['admin'].includes(l.type) && !l.editing
-  );
+  const points = Object.values(locations);
 
   return (
     <>

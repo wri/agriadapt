@@ -1,5 +1,5 @@
-import { BASEMAPS, LABELS } from "components/map/constants";
-import { EXPLORE_TABS } from "layout/explore/constants";
+import { BASEMAPS, LABELS } from 'components/map/constants';
+import { EXPLORE_TABS } from 'layout/explore/constants';
 
 const initialState = {
   // Datasets
@@ -11,16 +11,15 @@ const initialState = {
     limit: 10,
     total: 0,
     selected: null,
+    filtered: [],
   },
   filters: {
     search: '',
-    value_chains: '',
+    value_chains: [],
+    timescale: 'any',
+    emission_scenario: { label: 'Pessimistic RCP 8.5', value: 'rcp8.5' },
     advanced: {
       open: false,
-      timescale: [],
-      region: [],
-      emission_scenario: [],
-      supply_chain_node: [],
     },
     options: {
       countries: [],
@@ -31,18 +30,18 @@ const initialState = {
       loc_map: {},
       isAdding: false,
       genId: 0,
-    }
+    },
   },
   sort: {
-    selected: "most-viewed",
+    selected: 'most-viewed',
     direction: -1,
     isSetFromDefaultState: true,
     options: [
-      { value: "updatedAt", label: "Last modified" },
-      { value: "most-viewed", label: "Most viewed" },
-      { value: "most-favorited", label: "Most favorited" },
-      { value: "relevance", label: "Relevance" },
-      { value: "createdAt", label: "Date added" },
+      { value: 'updatedAt', label: 'Last modified' },
+      { value: 'most-viewed', label: 'Most viewed' },
+      { value: 'most-favorited', label: 'Most favorited' },
+      { value: 'relevance', label: 'Relevance' },
+      { value: 'createdAt', label: 'Date added' },
     ],
   },
 

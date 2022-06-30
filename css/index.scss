@@ -103,6 +103,7 @@
 
 @import "./components/widgets/add_widget_to_collection_tooltip";
 @import "./components/widgets/text_chart";
+@import "./components/widgets/pie_chart";
 @import "./components/widgets/widget_editor";
 @import "./components/widgets/columnbox";
 @import "./components/widgets/column_container";
@@ -247,6 +248,7 @@
 @import "./layout/explore/explore-datasets/list/styles";
 @import "./layout/explore/explore-datasets/list/list-item/styles";
 @import "./layout/explore/explore-analysis/styles";
+@import "./layout/explore/explore-analysis/explore-analysis-vis/styles";
 @import "./layout/explore/explore-analysis-location/styles";
 @import "./layout/explore/explore-analysis-location-editor/styles";
 @import "./layout/explore/explore-analysis/explore-analysis-table/styles";

@@ -1,4 +1,3 @@
-import axios from 'axios';
 import classnames from 'classnames';
 import Icon from 'components/ui/icon';
 import WidgetHeader from 'components/widgets/header';
@@ -7,44 +6,61 @@ import { useEffect, useMemo, useState } from 'react';
 import { AnalysisLocation } from 'types/analysis';
 import AnalysisDropdownMenu from '../dropdown-menu/component';
 import Spinner from "components/ui/Spinner";
+import { fetchDatasetQuery } from 'services/query';
+import { APILayerSpec } from 'types/layer';
+import { appConfigs } from 'constants/app-config-template';
+import { toGeoJSON } from 'utils/locations/geojson';
+import { createColorValueMap, legendConfigItem } from 'utils/layers/symbolizer';
 
 const AnalysisTable = ({ loc_map: locations, layerGroups }) => {
   const isEmbed = false;
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const interactions = useMemo(() => {
-    return [].concat(
-      ...layerGroups.map((l) => l.layers.map((l) => l.interactionConfig))
-    );
-  }, [layerGroups]);
+  const interactions = useMemo(
+    () =>
+      [].concat(...layerGroups.map((g) =>
+        g.layers.reduce((arr, l: APILayerSpec) => {
+          const legendItems = l.legendConfig.items as legendConfigItem[];
+          // TODO: Remove app config template once no longer testing
+          const appConfig = appConfigs[l.id] ?? l.applicationConfig;
+          arr.push({
+            ...appConfig,
+            label: l.name,
+            dataset: l.dataset,
+            ...(l.layerConfig.type == 'raster' && { valueMap: createColorValueMap(l.layerConfig.body.sldValue, legendItems )})
+          });
+          return arr;
+        }, [])
+      )),
+    [layerGroups]
+  );
 
   const columns = useMemo(
-    () =>
-      [].concat(
-        ...interactions.map(({ output }) =>
-          output.map((o) => ({
-            field: o.column,
-            label: o.property,
-          }))
-        )
-      ),
+    () => [].concat(...interactions.map(({ label }) => label)),
     [interactions]
   );
 
-  /* Grabbing data with multiple promises (not ideal) */
   useEffect(() => {
     setLoading(true);
     Promise.all(
       Object.values(locations).map((l: AnalysisLocation) => {
-        const latlng = { lat: l.latitude, lng: l.longitude };
+        const geo = {
+          geojson: encodeURIComponent(JSON.stringify(toGeoJSON(l))),
+        };
+
         return Promise.allSettled(
-          interactions.map(({ config, output }) => {
-            if (config)
-              return axios.get(replace(config.url, latlng)).then(({ data }) => {
-                return { interactions: data.data, output: output };
-              });
-            else return Promise.resolve({ interactions: [], output: [] });
+          interactions.map(({ dataset, query, output, valueMap }) => {
+            const encoded = replace(query, geo);
+              return fetchDatasetQuery(dataset, encoded)
+                .then(({ data }) => {
+                  return {
+                    interactions: data.data,
+                    output: output,
+                    ...(valueMap && { valueMap }),
+                  };
+                })
+                .catch(() => ({ interactions: [] }));
           })
           // TODO: Figure out why typescript does not think "value" property exists here
           // eslint-disable-next-line
@@ -60,17 +76,21 @@ const AnalysisTable = ({ loc_map: locations, layerGroups }) => {
 
   const rows = useMemo(
     () =>
-        data.map((d) => {
-          return {
-            name: d.label,
-            attributes: d.data.reduce((obj, { interactions = [], output = [] }, i) => {
-              const colArr = output[i]?.column.split('.') || [];
-              const val = colArr.reduce((acc, c) => acc[c], interactions[i]) || 'N/A';
-              return obj[`col${i + 1}`] = String(val);
-            }, {}),
-          };
-        })
-      ,
+      data.map((d) => {
+        return {
+          name: d.label,
+          attributes: d.data.reduce(
+            (arr: string[], { interactions = [], output, valueMap }) => {
+              const colArr = output?.path.split('.') || [];
+              const val =
+                colArr.reduce((acc, c) => acc[c], interactions[0]) || 'N/A';
+              arr.push(valueMap ? valueMap[val] : String(val));
+              return arr;
+            },
+            []
+          ),
+        };
+      }),
     [data]
   );
 
@@ -112,11 +132,11 @@ const AnalysisTable = ({ loc_map: locations, layerGroups }) => {
                 <th key={i}>
                   <div className="flex items-start">
                     <AnalysisDropdownMenu options={options} />
-                    <div className="w-full text-ellipsis overflow-x-hidden">
+                    <div className="w-full">
                       <span className="float-right">
                         <Icon name="icon-info" className="table-action" />
                       </span>
-                      <span>{c.label}</span>
+                      <span className="line-clamp-2">{c}</span>
                     </div>
                   </div>
                 </th>
@@ -128,8 +148,8 @@ const AnalysisTable = ({ loc_map: locations, layerGroups }) => {
               {rows.map((r, i) => (
                 <tr key={i}>
                   <td>{r.name}</td>
-                  {Object.entries(r.attributes).map(([k, v]) => (
-                    <td key={k}>{`${v}`}</td>
+                  {r.attributes.map((val: string, i: number) => (
+                    <td key={i}>{val}</td>
                   ))}
                 </tr>
               ))}

@@ -36,7 +36,7 @@ const DetailItem = ({ label: { icon, label }, info, widgetId }) => {
             '-placeholder': !widgetId
           })}
         >
-          <WidgetBlock widget={widget} />
+          {widget && <WidgetBlock widget={widget} />}
         </div>
       </div>
     </>

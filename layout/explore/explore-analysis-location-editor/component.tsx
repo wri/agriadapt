@@ -2,14 +2,13 @@ import Field from 'components/form/Field';
 import { EXPLORE_ANALYSIS } from '../constants';
 import Select from 'react-select';
 import useInput from 'hooks/form/useInput';
-// import SelectInput from 'components/form/SelectInput';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { fetchDatasetQuery } from 'services/query';
 import { GADM_ADMONE_DATSET_ID, GADM_ADMONE_SQL } from 'constants/app';
 import useSelect from 'hooks/form/useSelect';
 import { fetchGADM1Geostore } from 'services/geostore';
 import { AnalysisLocation } from 'types/analysis';
-import { getUserPosition } from 'utils/user-position';
+import { getUserPosition } from 'utils/locations/user-position';
 import { forwardGeocode, reverseGeocode } from 'services/geocoder';
 
 const ExploreAnalysisLocationEditor = ({
@@ -36,7 +35,8 @@ const ExploreAnalysisLocationEditor = ({
   const country = useSelect(current.country);
   const [selectedState, setSelectedState] = useState(current.state);
   const [geo, setGeo] = useState(current.geo);
-  const [geocodeResults, setGeocodeResults] = useState([]);
+  const [autocompleteResults, setAutocompleteResults] = useState<{value: string; label: string; lngLat: Record<string, number>}[]>([]);
+  const [geocodeResults, setGeocodeResults] = useState<number[]>([]);
   const [geoLabel, setGeoLabel] = useState(null);
 
   const [statesList, setStatesList] = useState([]);
@@ -85,7 +85,6 @@ const ExploreAnalysisLocationEditor = ({
         ? geoLocatorData
         : null;
     if (data) {
-      console.log(Object.values(data));
       reverseGeocode(Object.values(data)).then((result) => {
         if (result) setGeoLabel(result.place_name);
       });
@@ -147,6 +146,8 @@ const ExploreAnalysisLocationEditor = ({
       ...(locationType.value === 'admin' && {
         country: country.value,
         state: selectedState,
+        longitude: geocodeResults[1],
+        latitude: geocodeResults[0],
       }),
       ...(locationType.value === 'point' && {
         longitude: pointData.lng,
@@ -207,7 +208,7 @@ const ExploreAnalysisLocationEditor = ({
   const handleAddrSearch = (val: string) => {
     if (val.trim().length)
       forwardGeocode(val).then((results) => {
-        setGeocodeResults(
+        setAutocompleteResults(
           results.map(({ id, place_name, geometry: { coordinates } }) => ({
             value: id,
             label: place_name,
@@ -216,7 +217,7 @@ const ExploreAnalysisLocationEditor = ({
         );
       });
     else {
-      setGeocodeResults([]);
+      setAutocompleteResults([]);
     }
   };
 
@@ -230,6 +231,33 @@ const ExploreAnalysisLocationEditor = ({
   const handleSelectedStateChange = (obj) => {
     setSelectedState(obj);
   };
+
+  /* Side Effect to Geocode the Country and Selected State */
+  useEffect(() => {
+    if (country.value?.label && selectedState?.label)
+      forwardGeocode(
+        `${selectedState?.label}, ${country.value?.label}`
+      ).then((results) => {
+        if (results) {
+          const lngLatArr: number[] = [
+            results[0].geometry.coordinates[1],
+            results[0].geometry.coordinates[0],
+          ];
+          setGeocodeResults(lngLatArr);
+        }
+      });
+      else {
+        setGeocodeResults([]);
+      }
+  }, [country.value?.label, selectedState]);
+    
+  /* Side Effect to place the marker at the Geocoded Coordinates */
+  useEffect (() => {
+    if (geocodeResults[0] && geocodeResults[1]) {
+      setIsDrawing(true);
+      setDataDrawing({ lng: geocodeResults[1], lat: geocodeResults[0] });
+    }
+  }, [geocodeResults, setDataDrawing, setIsDrawing])
 
   // Side effect for getting state options based on country
   useEffect(() => {
@@ -302,7 +330,7 @@ const ExploreAnalysisLocationEditor = ({
                       onChange={handleSelectAddr}
                       onInputChange={handleAddrSearch}
                       className="Select--large"
-                      options={geocodeResults}
+                      options={autocompleteResults}
                     >
                       {Select}
                     </Field>

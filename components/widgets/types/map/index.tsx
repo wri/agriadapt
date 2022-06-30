@@ -173,7 +173,7 @@ const MapTypeWidgetContainer = ({
         isError={isError}
         isInACollection={isInACollection}
         onToggleShare={onToggleShare}
-        // onFitBoundsChange={onFitBoundsChange}
+        onFitBoundsChange={onFitBoundsChange}
       />
     </ErrorBoundary>
   );

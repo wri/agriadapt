@@ -5,6 +5,9 @@ export interface Render {
 }
 
 export interface layerConfigSpec {
+  body: {
+    sldValue: string;
+  }
   render?: Render;
   source: Partial<Source>;
   [key: string]:
@@ -33,9 +36,19 @@ export interface APILayerSpec {
   thumbnailUrl: string;
   layerConfig: layerConfigSpec;
   legendConfig: Record<string, string | number | boolean | unknown>;
-  applicationConfig: Record<string, string | number | boolean | unknown>;
+  applicationConfig: APILayerAppConfig | Record<string, never>;
   interactionConfig: Record<string, string | number | boolean | unknown>;
   staticImageConfig: Record<string, string | number | boolean | unknown>;
   createdAt: string;
   updatedAt: string;
+}
+
+export interface APILayerAppConfig {
+  query: string;
+  output: {
+    path: string;
+  };
+  value_chain: 'coffee' | 'cotton' | 'rice';
+  emission_scenario?: 'rcp4.5' | 'rcp8.5',
+  timescale?: 'historic' | 'future_looking',
 }
