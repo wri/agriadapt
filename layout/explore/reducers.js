@@ -356,14 +356,15 @@ export default createReducer(initialState, (builder) => {
 
           // sorts layers if applies
           if (
+            // TODO: Fix layer sort based on resource watch ordering.
             applicationConfig &&
-            applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS] &&
-            applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS]
+            applicationConfig['rw'] &&
+            applicationConfig['rw']
               .layerOrder &&
             layers.length > 1
           ) {
             const { layerOrder } =
-              applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS];
+              applicationConfig['rw'];
             publishedLayers = sortLayers(publishedLayers, layerOrder);
           }
 

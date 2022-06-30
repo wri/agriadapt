@@ -22,11 +22,10 @@ const AnalysisTable = ({ loc_map: locations, layerGroups }) => {
       [].concat(...layerGroups.map((g) =>
         g.layers.reduce((arr, l: APILayerSpec) => {
           const legendItems = l.legendConfig.items as legendConfigItem[];
+          // TODO: Remove app config template once no longer testing
+          const appConfig = appConfigs[l.id] ?? l.applicationConfig;
           arr.push({
-            // TODO: Remove app config template once no longer testing
-            ...(appConfigs[l.id]
-              ? { ...appConfigs[l.id] }
-              : { ...l.applicationConfig }),
+            ...appConfig,
             label: l.name,
             dataset: l.dataset,
             ...(l.layerConfig.type == 'raster' && { valueMap: createColorValueMap(l.layerConfig.body.sldValue, legendItems )})

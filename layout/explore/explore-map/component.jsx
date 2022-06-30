@@ -299,13 +299,15 @@ const ExploreMap = (props) => {
   const handleZoom = useCallback(
     (zoom) => {
       setViewport({
+        ...viewport,
+        // ...prevMapState,
         zoom,
         // transitionDuration is always set to avoid mixing
         // durations of other actions (like flying)
-        transitionDuration: 250,
+        // transitionDuration: 250,
       });
     },
-    [setViewport]
+    [setViewport, viewport]
   );
 
   const handleBasemap = useCallback(
