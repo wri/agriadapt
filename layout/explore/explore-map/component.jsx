@@ -456,10 +456,10 @@ const ExploreMap = (props) => {
       {embed && (
         <div className="embedded-rw-logo">
           <img
-            srcSet="/static/images/embed/embed-map-logo@2x.png 2x,
-                    /static/images/embed/embed-map-logo.png 1x"
+            srcSet="/images/embed/embed-map-logo@2x.png 2x,
+                    /images/embed/embed-map-logo.png 1x"
             alt="Resource Watch"
-            src=" /static/images/embed/embed-map-logo.png 1x"
+            src=" /images/embed/embed-map-logo.png 1x"
           />
         </div>
       )}

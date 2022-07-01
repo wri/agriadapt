@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // data
-import OceanWatchConfigFile from "public/static/data/ocean-watch";
+import OceanWatchConfigFile from "public/data/ocean-watch";
 
 export const fetchConfigFile = () => {
   // in development, we work with the local file
@@ -14,7 +14,7 @@ export const fetchConfigFile = () => {
 
   return axios
     .get(
-      "https://raw.githubusercontent.com/resource-watch/resource-watch/develop/public/static/data/ocean-watch.json"
+      "https://raw.githubusercontent.com/resource-watch/resource-watch/develop/public/data/ocean-watch.json"
     )
     .then(
       ({ data }) =>

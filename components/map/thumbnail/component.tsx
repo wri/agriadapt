@@ -11,7 +11,7 @@ export const MapThumbnail = ({ layer }: MapThumbnailProps): JSX.Element => {
       style={{
         backgroundImage: `url(${
           layer?.thumbnailUrl ||
-          "/static/images/placeholder-layer-thumbnail.png"
+          "/images/placeholder-layer-thumbnail.png"
         })`,
       }}
     ></div>

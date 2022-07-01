@@ -39,7 +39,7 @@
           "indicator": "opening",
           "isPlaceholder": true,
           "background": {
-            "src": "/static/images/ocean-watch/storytelling/RW-OW3D-1.jpg"
+            "src": "images/ocean-watch/storytelling/RW-OW3D-1.jpg"
           },
           "info": []
         },
@@ -57,7 +57,7 @@
           "indicator": "land-sea-interface",
           "isPlaceholder": true,
           "background": {
-            "src": "/static/images/ocean-watch/storytelling/RW-OW3D-2.jpg"
+            "src": "/images/ocean-watch/storytelling/RW-OW3D-2.jpg"
           },
           "info": [
             {
@@ -123,7 +123,7 @@
           "indicator": "oceans-climate",
           "isPlaceholder": true,
           "background": {
-            "src": "/static/images/ocean-watch/storytelling/RW-OW3D-3.jpg"
+            "src": "/images/ocean-watch/storytelling/RW-OW3D-3.jpg"
           },
           "info": [
             {
@@ -166,7 +166,7 @@
           "indicator": "biodiversity",
           "isPlaceholder": true,
           "background": {
-            "src": "/static/images/ocean-watch/storytelling/RW-OW3D-4.jpg"
+            "src": "/images/ocean-watch/storytelling/RW-OW3D-4.jpg"
           },
           "info": [
             {
@@ -209,7 +209,7 @@
           "indicator": "marine-protected-areas",
           "isPlaceholder": true,
           "background": {
-            "src": "/static/images/ocean-watch/storytelling/RW-OW3D-5.jpg"
+            "src": "/images/ocean-watch/storytelling/RW-OW3D-5.jpg"
           },
           "info": [
             {
@@ -240,7 +240,7 @@
           "indicator": "ocean-dependence",
           "isPlaceholder": true,
           "background": {
-            "src": "/static/images/ocean-watch/storytelling/RW-OW3D-5.jpg"
+            "src": "/images/ocean-watch/storytelling/RW-OW3D-5.jpg"
           },
           "info": [
             {
@@ -315,7 +315,7 @@
           "indicator": "blue-economy",
           "isPlaceholder": true,
           "background": {
-            "src": "/static/images/ocean-watch/storytelling/RW-OW3D-6.jpg"
+            "src": "/images/ocean-watch/storytelling/RW-OW3D-6.jpg"
           },
           "info": [
             {
@@ -1047,7 +1047,7 @@
           "indicator": "opening",
           "isPlaceholder": true,
           "background": {
-            "src": "/static/images/ocean-watch/storytelling/RW-OW3D-1.jpg"
+            "src": "/images/ocean-watch/storytelling/RW-OW3D-1.jpg"
           },
           "info": []
         },
@@ -1065,7 +1065,7 @@
           "indicator": "land-sea-interface",
           "isPlaceholder": true,
           "background": {
-            "src": "/static/images/ocean-watch/storytelling/RW-OW3D-2.jpg"
+            "src": "/images/ocean-watch/storytelling/RW-OW3D-2.jpg"
           },
           "info": [
             {
@@ -1131,7 +1131,7 @@
           "indicator": "oceans-climate",
           "isPlaceholder": true,
           "background": {
-            "src": "/static/images/ocean-watch/storytelling/RW-OW3D-3.jpg"
+            "src": "/images/ocean-watch/storytelling/RW-OW3D-3.jpg"
           },
           "info": [
             {
@@ -1174,7 +1174,7 @@
           "indicator": "biodiversity",
           "isPlaceholder": true,
           "background": {
-            "src": "/static/images/ocean-watch/storytelling/RW-OW3D-4.jpg"
+            "src": "/images/ocean-watch/storytelling/RW-OW3D-4.jpg"
           },
           "info": [
             {
@@ -1217,7 +1217,7 @@
           "indicator": "marine-protected-areas",
           "isPlaceholder": true,
           "background": {
-            "src": "/static/images/ocean-watch/storytelling/RW-OW3D-5.jpg"
+            "src": "/images/ocean-watch/storytelling/RW-OW3D-5.jpg"
           },
           "info": [
             {
@@ -1248,7 +1248,7 @@
           "indicator": "ocean-dependence",
           "isPlaceholder": true,
           "background": {
-            "src": "/static/images/ocean-watch/storytelling/RW-OW3D-5.jpg"
+            "src": "/images/ocean-watch/storytelling/RW-OW3D-5.jpg"
           },
           "info": [
             {
@@ -1323,7 +1323,7 @@
           "indicator": "blue-economy",
           "isPlaceholder": true,
           "background": {
-            "src": "/static/images/ocean-watch/storytelling/RW-OW3D-6.jpg"
+            "src": "/images/ocean-watch/storytelling/RW-OW3D-6.jpg"
           },
           "info": [
             {

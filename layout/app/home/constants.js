@@ -1,10 +1,10 @@
-import map_sm from 'public/static/images/components/layout/landing/map-container-image-mobile.svg';
-import map_md from 'public/static/images/components/layout/landing/map-container-image.svg';
-import aboutImage from 'public/static/images/components/layout/landing/learn-more.svg';
-import riceImage from 'public/static/images/components/layout/landing/value-chain-cards/rice.png';
-import cottonImage from 'public/static/images/components/layout/landing/value-chain-cards/cotton.png';
-import coffeeImage from 'public/static/images/components/layout/landing/value-chain-cards/coffee.png';
-// import analysisImage from 'public/static/images/components/layout/landing/analysis-map.png';
+import map_sm from 'public/images/components/layout/landing/map-container-image-mobile.svg';
+import map_md from 'public/images/components/layout/landing/map-container-image.svg';
+import aboutImage from 'public/images/components/layout/landing/learn-more.svg';
+import riceImage from 'public/images/components/layout/landing/value-chain-cards/rice.png';
+import cottonImage from 'public/images/components/layout/landing/value-chain-cards/cotton.png';
+import coffeeImage from 'public/images/components/layout/landing/value-chain-cards/coffee.png';
+// import analysisImage from 'public/images/components/layout/landing/analysis-map.png';
 
 const MAP = {
   title: 'Here’s a more compelling header for the map experience.',

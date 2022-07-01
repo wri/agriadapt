@@ -2,7 +2,7 @@ import loader from 'lib/imageLoader';
 import { Media } from 'lib/media';
 import Image from 'next/image';
 import Link from 'next/link';
-import mobileBlob from 'public/static/images/components/layout/landing/value-chain-cards/mobile-blob.svg';
+import mobileBlob from 'public/images/components/layout/landing/value-chain-cards/mobile-blob.svg';
 
 import { VALUECHAINS } from '../../constants';
 

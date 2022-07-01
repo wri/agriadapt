@@ -1,6 +1,6 @@
-import climaLogo from 'public/static/images/about/clima-y-cafe-logo.png';
-import nationalAgroLogo from 'public/static/images/about/national-agro-logo.png';
-import walmartFoundationLogo from 'public/static/images/about/walmart-foundation-logo.png';
+import climaLogo from 'public/images/about/clima-y-cafe-logo.png';
+import nationalAgroLogo from 'public/images/about/national-agro-logo.png';
+import walmartFoundationLogo from 'public/images/about/walmart-foundation-logo.png';
 
 const acknowledgements = {
   contributors: {

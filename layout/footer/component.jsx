@@ -20,7 +20,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noreferrer noopener"
                   >
-                    <img src="/static/images/wri-logo.svg" alt="WRI logo" />
+                    <img src="images/wri-logo.svg" alt="WRI logo" />
                   </a>
                 </div>
                 <div className="footer-item">
@@ -56,7 +56,7 @@ export default function Footer() {
                     <img
                       className="rw-logo"
                       alt={"Resource Watch"}
-                      src="/static/images/Logo-RW.svg"
+                      src="/images/Logo-RW.svg"
                     />
                   </div>
                 </div>
@@ -76,7 +76,7 @@ export default function Footer() {
                       <img
                         className={"rw-logo"}
                         alt={"Resource Watch"}
-                        src="/static/images/Logo-RW.svg"
+                        src="/images/Logo-RW.svg"
                       />
                     </Link>
                   </div>
