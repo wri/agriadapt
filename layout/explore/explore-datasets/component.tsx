@@ -1,5 +1,5 @@
-import { useEffect, useCallback } from "react";
-import PropTypes from "prop-types";
+import { useEffect, useCallback } from 'react';
+import PropTypes from 'prop-types';
 // import Link from "next/link";
 import classnames from 'classnames';
 
@@ -7,20 +7,31 @@ import classnames from 'classnames';
 // import { logEvent } from "utils/analytics";
 
 // components
-import Paginator from "components/ui/Paginator";
+import Paginator from 'components/ui/Paginator';
 // import Icon from "components/ui/icon";
 // import { TOPICS } from 'layout/explore/explore-topics/constants';
-import DatasetList from "./list";
-import ExploreDatasetsActions from "./explore-datasets-actions";
+import DatasetList from './list';
+import ExploreDatasetsActions from './explore-datasets-actions';
 import ExploreSearch from '../explore-datasets-search';
+import { APILayerSpec } from 'types/layer';
 
 export default function ExploreDatasets(props) {
   const {
-    datasets: { selected, list, total, limit, page, loading },
+    datasets: {
+      selected,
+      list,
+      total,
+      limit,
+      page,
+      loading,
+      filtered: filteredDatasets,
+    },
+    filters,
     setDatasetsPage,
     fetchDatasets,
     fetchCountries,
     advOpen,
+    setFilteredDatasets,
   } = props;
 
   const fetchDatasetsPerPage = useCallback(
@@ -35,14 +46,36 @@ export default function ExploreDatasets(props) {
     fetchCountries();
   }, [fetchCountries]);
 
-
   useEffect(() => {
     fetchDatasetsPerPage(1);
   }, [fetchDatasetsPerPage]);
 
+  const filterDatasets = useCallback(() => {
+    const { timescale: fTimescale } = filters;
+    const fChains = filters.value_chains.map(({ value }) => value);
+    // const fScenario = filters.emission_scenario?.value;
+    const filteredList = [];
+
+    for (let i = 0; i < list.length; i++) {
+      const layers: APILayerSpec[] = list[i].layer;
+      const match = layers.some(
+        ({ applicationConfig }) =>
+          (!fChains.length ||
+            fChains.includes(applicationConfig?.value_chain)) &&
+          (fTimescale === 'any' || applicationConfig?.timescale == fTimescale)
+      );
+      if (match) filteredList.push(list[i]);
+    }
+    setFilteredDatasets(filteredList);
+  }, [filters, list, setFilteredDatasets]);
+
+  useEffect(() => {
+    filterDatasets();
+  }, [filterDatasets]);
+
   const classValue = classnames({
-    "c-explore-datasets": true,
-    "-hidden": selected,
+    'c-explore-datasets': true,
+    '-hidden': selected,
   });
 
   return (
@@ -51,7 +84,7 @@ export default function ExploreDatasets(props) {
         <ExploreSearch />
       </div>
 
-      {!list.length && !loading && (
+      {!filteredDatasets.length && !loading && (
         <div className="request-data-container">
           <div className="request-data-text">
             Oops! We couldn&#39;t find data for your search...
@@ -72,7 +105,7 @@ export default function ExploreDatasets(props) {
           <DatasetList
             loading={loading}
             numberOfPlaceholders={20}
-            list={list}
+            list={filteredDatasets}
             actions={<ExploreDatasetsActions />}
           />
           {!!list.length && total > limit && (

@@ -2,11 +2,12 @@ import { useEffect, useState, useRef, useCallback } from 'react';
 import cx from 'classnames';
 import isEmpty from 'lodash/isEmpty';
 import ReactMapGL, { MapProps as theProps } from 'react-map-gl';
-
+import { fitBounds } from '@math.gl/web-mercator';
 // constants
 import { DEFAULT_VIEWPORT, MAPSTYLES } from './constants';
 
 import { Basemap, Labels } from './types';
+import { useDebouncedCallback } from 'use-debounce';
 
 export interface MapProps extends theProps {
   /** A function that returns the map instance */
@@ -61,7 +62,7 @@ export interface MapProps extends theProps {
   /** A function that exposes the viewport */
   // onMapViewportChange?: (viewport: Partial<ViewportProps>) => void;
   /** Optional callback when bounds are changed  */
-  // onFitBoundsChange?: (viewport: Partial<ViewportProps>) => void;
+  onFitBoundsChange?: (viewport) => void;
 }
 
 export const Map = ({
@@ -74,6 +75,7 @@ export const Map = ({
   boundaries = false,
   onMapReady,
   onMapLoad,
+  onMapViewportChange,
   dragPan,
   dragRotate,
   scrollZoom,
@@ -82,6 +84,7 @@ export const Map = ({
   doubleClickZoom,
   width = '100%',
   height = '100%',
+  onFitBoundsChange,
   isDrawing = false,
   // getCursor,
   onDropMarker,
@@ -105,6 +108,15 @@ export const Map = ({
       onMapLoad({ map: mapRef.current, mapContainer: mapContainerRef.current });
   }, [onMapLoad]);
 
+  const debouncedOnMapViewportChange = useDebouncedCallback((v) => {
+    if (onMapViewportChange) onMapViewportChange(v);
+  }, 250);
+
+  const handleOnMove = (e) => {
+    setViewport(e.viewState);
+    debouncedOnMapViewportChange(e.viewState);
+  }
+
   const handleFitBounds = useCallback(() => {
     const { bbox, options = {}, viewportOptions = {} } = bounds;
     const { transitionDuration = 0 } = viewportOptions;
@@ -116,20 +128,37 @@ export const Map = ({
       throw new Error("mapContainerRef doesn't have any dimensions");
     }
 
+    const { longitude, latitude, zoom } = fitBounds({
+      width: mapContainerRef.current.offsetWidth,
+      height: mapContainerRef.current.offsetHeight,
+      bounds: [
+        [bbox[0], bbox[1]],
+        [bbox[2], bbox[3]],
+      ],
+      ...options,
+    });
+
+    const newViewport = {
+      longitude,
+      latitude,
+      zoom,
+      transitionDuration,
+      // transitionInterruption: TRANSITION_EVENTS.UPDATE,
+      ...viewportOptions,
+    };
+
     setFlight(true);
-    // setViewport((prevViewport) => ({
-    //   ...prevViewport,
-    //   ...newViewport,
-    // }));
-    // debouncedOnMapViewportChange(newViewport);
-    // if (onFitBoundsChange) onFitBoundsChange(newViewport);
+    setViewport((prevViewport) => ({
+      ...prevViewport,
+      ...newViewport,
+    }));
+    debouncedOnMapViewportChange(newViewport);
+    if (onFitBoundsChange) onFitBoundsChange(newViewport);
 
     return setTimeout(() => {
       setFlight(false);
     }, +transitionDuration);
-  }, [bounds]);
-  // }, [bounds, onFitBoundsChange]);
-  // }, [bounds, debouncedOnMapViewportChange, onFitBoundsChange]);
+  }, [bounds, debouncedOnMapViewportChange, onFitBoundsChange]);
 
   const handleBasemap = useCallback(
     (basemap: Basemap) => {
@@ -349,7 +378,7 @@ export const Map = ({
         dragRotate={!flying && dragRotate}
         scrollZoom={!flying && scrollZoom}
         doubleClickZoom={!flying && doubleClickZoom}
-        onMove={(e) => setViewport(e.viewState)}
+        onMove={handleOnMove}
         initialViewState={DEFAULT_VIEWPORT}
         onLoad={handleLoad}
         // getCursor={handleGetCursor}

@@ -25,6 +25,7 @@ export const setDatasetsTotal = createAction("EXPLORE/setDatasetsTotal");
 export const setDatasetsLimit = createAction("EXPLORE/setDatasetsLimit");
 export const setDatasetsMode = createAction("EXPLORE/setDatasetsMode");
 export const setSelectedDataset = createAction("EXPLORE/setSelectedDataset");
+export const setFilteredDatasets = createAction("EXPLORE/setFilteredDatasetsList");
 
 // COUNTRIES
 export const setCountryList = createAction("EXPLORE/setCountryList");
@@ -59,10 +60,14 @@ export const fetchDatasets = createThunkAction(
         return datasets;
       })
       .then((data) => {
-        // Show only published layers
+        // Show only published layers and extract correct applicationConfig
         const datasets = data.map((d) => ({
           ...d,
-          layer: d.layer.filter((l) => l.published),
+          layer: d.layer.reduce((arr, l) => {
+            if (l.published)
+              arr.push({...l, applicationConfig: l.applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS]});
+              return arr
+          }, []),
         }));
 
         dispatch(setDatasetsLoading(false));
@@ -179,6 +184,8 @@ export const fetchMapLayerGroups = createThunkAction(
 export const setFiltersSearch = createAction('EXPLORE/setFiltersSearch');
 export const setFiltersAdvancedOpen = createAction("EXPLORE/setFiltersAdvancedOpen");
 export const setFiltersValueChains = createAction("EXPLORE/setFiltersValueChains");
+export const setFiltersEmissionScenario = createAction("EXPLORE/setFiltersEmissionScenario");
+export const setFiltersTimescale = createAction("EXPLORE/setFiltersTimescale");
 
 // SORT
 export const setSortSelected = createAction("EXPLORE/setSortSelected");

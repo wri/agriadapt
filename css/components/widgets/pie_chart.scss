@@ -1,0 +1,13 @@
+.c-pie-chart-v2 {
+    background: $white;
+    padding: 24px;
+
+    * {
+        text-align: center;
+    }
+
+    .stat-value {
+        margin: 0;
+        color: $primary-green;
+    }
+}

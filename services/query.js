@@ -38,7 +38,7 @@ export const fetchQuery = (token, sql, params = {}) => {
     });
 };
 
-export const fetchDatasetQuery = (id, sql) => {
+export const fetchDatasetQuery = async (id, sql) => {
   if (!id) return null;
   if (!sql) return null;
 
@@ -53,5 +53,3 @@ export const fetchDatasetQuery = (id, sql) => {
       throw err;
     });
 };
-
-export default { fetchQuery };
