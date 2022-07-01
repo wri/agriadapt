@@ -12,7 +12,7 @@ import { useCountryV2 } from "hooks/country";
 // services
 import { fetchCountryPowerExplorerConfig } from "services/config";
 
-import CountryEnergyExplorerConfig from "public/static/data/CountryEnergyExplorer.json";
+import CountryEnergyExplorerConfig from "public/data/CountryEnergyExplorer.json";
 
 // Components
 import CountrySelector from "./country-selector";

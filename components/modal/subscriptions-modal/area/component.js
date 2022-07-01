@@ -145,7 +145,7 @@ class AreaSubscriptionsModal extends PureComponent {
           <div className="icon-container">
             <img
               alt="success"
-              src="/static/images/components/modal/widget-saved.svg"
+              src="/images/components/modal/widget-saved.svg"
             />
           </div>
         )}

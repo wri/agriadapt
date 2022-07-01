@@ -5,7 +5,7 @@ export interface Render {
 }
 
 export interface layerConfigSpec {
-  body: {
+  body?: {
     sldValue: string;
   }
   render?: Render;

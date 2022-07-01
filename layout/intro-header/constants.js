@@ -1,13 +1,13 @@
-import landingImage from 'public/static/images/components/layout/intro-header/landing/intro-landing-image.jpg';
-import landingBlob from 'public/static/images/components/layout/intro-header/landing/intro-landing-blob.svg';
-import aboutImage from 'public/static/images/components/layout/intro-header/about/intro-about-image.jpg';
-import aboutBlob from 'public/static/images/components/layout/intro-header/about/intro-about-blob.svg';
-import riceImage from 'public/static/images/components/layout/intro-header/rice/intro-rice-image.jpg';
-import riceBlob from 'public/static/images/components/layout/intro-header/rice/intro-rice-blob.svg';
-import coffeeImage from 'public/static/images/components/layout/intro-header/coffee/intro-coffee-image.jpg';
-import coffeeBlob from 'public/static/images/components/layout/intro-header/coffee/intro-coffee-blob.svg';
-import cottonImage from 'public/static/images/components/layout/intro-header/cotton/intro-cotton-image.jpg';
-import cottonBlob from 'public/static/images/components/layout/intro-header/cotton/intro-cotton-blob.svg';
+import landingImage from 'public/images/components/layout/intro-header/landing/intro-landing-image.jpg';
+import landingBlob from 'public/images/components/layout/intro-header/landing/intro-landing-blob.svg';
+import aboutImage from 'public/images/components/layout/intro-header/about/intro-about-image.jpg';
+import aboutBlob from 'public/images/components/layout/intro-header/about/intro-about-blob.svg';
+import riceImage from 'public/images/components/layout/intro-header/rice/intro-rice-image.jpg';
+import riceBlob from 'public/images/components/layout/intro-header/rice/intro-rice-blob.svg';
+import coffeeImage from 'public/images/components/layout/intro-header/coffee/intro-coffee-image.jpg';
+import coffeeBlob from 'public/images/components/layout/intro-header/coffee/intro-coffee-blob.svg';
+import cottonImage from 'public/images/components/layout/intro-header/cotton/intro-cotton-image.jpg';
+import cottonBlob from 'public/images/components/layout/intro-header/cotton/intro-cotton-blob.svg';
 
 const ABOUT = {
   id: 'ABOUT',

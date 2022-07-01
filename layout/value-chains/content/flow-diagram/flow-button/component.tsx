@@ -1,7 +1,7 @@
 import Image from "next/image";
-import flowStep from 'public/static/images/components/flow-button/flow-step.svg';
-import flowStepStart from 'public/static/images/components/flow-button/flow-step-start.svg';
-import flowStepEnd from 'public/static/images/components/flow-button/flow-step-end.svg';
+import flowStep from 'public/images/components/flow-button/flow-step.svg';
+import flowStepStart from 'public/images/components/flow-button/flow-step-start.svg';
+import flowStepEnd from 'public/images/components/flow-button/flow-step-end.svg';
 import classnames from "classnames";
 import Icon from "components/ui/icon";
 

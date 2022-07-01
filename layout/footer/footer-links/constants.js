@@ -1,6 +1,6 @@
-import rwImage from 'public/static/images/components/layout/footer/resourceWatchLogo.svg';
-import aqueductImage from 'public/static/images/components/layout/footer/wriAqueductLogo.svg';
-import prepImage from 'public/static/images/components/layout/footer/prepLogo.svg';
+import rwImage from 'public/images/components/layout/footer/resourceWatchLogo.svg';
+import aqueductImage from 'public/images/components/layout/footer/wriAqueductLogo.svg';
+import prepImage from 'public/images/components/layout/footer/prepLogo.svg';
 
 export const FOOTER_LINKS = [
   {
