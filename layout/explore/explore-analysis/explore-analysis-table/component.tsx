@@ -55,12 +55,12 @@ const AnalysisTable = ({ loc_map: locations, layerGroups }) => {
               return fetchDatasetQuery(dataset, encoded)
                 .then(({ data }) => {
                   return {
-                    interactions: data.data,
+                    interaction: data.data[0],
                     output: output,
                     ...(valueMap && { valueMap }),
                   };
                 })
-                .catch(() => ({ interactions: [] }));
+                .catch(() => ({ interaction: 'N/A' }));
           })
           // TODO: Figure out why typescript does not think "value" property exists here
           // eslint-disable-next-line
@@ -80,11 +80,11 @@ const AnalysisTable = ({ loc_map: locations, layerGroups }) => {
         return {
           name: d.label,
           attributes: d.data.reduce(
-            (arr: string[], { interactions = [], output, valueMap }) => {
+            (arr: string[], { interaction = {}, output, valueMap }) => {
               const colArr = output?.path.split('.') || [];
               const val =
-                colArr.reduce((acc, c) => acc[c], interactions[0]) || 'N/A';
-              arr.push(valueMap ? valueMap[val] : String(val));
+                colArr.reduce((acc, c) => acc[c], interaction);
+              arr.push(val && valueMap ? valueMap[val] : val ? String(val) : 'N/A');
               return arr;
             },
             []
