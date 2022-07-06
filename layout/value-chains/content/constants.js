@@ -57,7 +57,7 @@ const chains = {
     inputs: {
       land_suitability: {
         info: 'Soil salinity, texture, organic matter, pH, water quality, rainfall and temperature are among the most important attributes that could be used to determine the suitable parcel of land for rice cultivation.',
-        widgetId: '2635dac0-17ad-43f7-bf93-dfb6aa7bc1c4',
+        widgetId: '043440a2-b3fd-493e-93a9-362eac5637c7',
       },
       seedlings: {
         info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in dolor vitae sem hendrerit ultrices id at urna. Integer lectus lectus, accumsan sed libero in, mollis dapibus justo. Mauris auctor lectus ullamcorper dolor elementum feugiat. Integer et condimentum mi. ',
