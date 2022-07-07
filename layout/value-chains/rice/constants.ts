@@ -36,7 +36,7 @@ const production = {
       '5c601744-1e1a-4164-b6af-7830357c2947',
     ],
   },
-  //   pests_and_diseases: {
+  //   pests_and_disease: {
   //     info: '',
   //     widgetId: '',
   //   },

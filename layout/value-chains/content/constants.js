@@ -22,7 +22,7 @@ const chain_items = {
         label: 'Production',
         icon: 'icon-production',
       },
-      pests_and_diseases: {
+      pests_and_disease: {
         label: 'Pest and Disease',
         icon: 'icon-pests-and-diseases',
       },

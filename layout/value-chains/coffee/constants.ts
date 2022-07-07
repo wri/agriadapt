@@ -14,7 +14,7 @@ const production = {
         info: 'Explore our data visualizations to better understand where the main coffee growing regions in [country] are and how much coffee is currently produced.',
         widgetId: ['f44edefe-e3eb-4598-bb37-692d70a21d23','ef4cc300-9d92-492a-9252-457a1964a5d1'], //TODO: Additional Callout
     },
-    pests_and_diseases: {
+    pests_and_disease: {
         info: 'The coffee berry borer and coffee leaf rust are the most threatening pest and disease to the health of coffee trees. In general, increased temperatures will increase the spread of pests and diseases in coffee trees. However, projected decreased rainfall in certain regions may decrease the spread of pest and disease.',
         widgetId: '8cdfd430-0f19-4f3d-ab4f-9d2474f15299',
     },
