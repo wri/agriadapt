@@ -37,10 +37,10 @@ export const fetchDatasets = createThunkAction(
     const { explore, common } = getState();
     const params = {
       language: common.locale,
-      includes: "layer,metadata,vocabulary,widget",
+      includes: "layer,metadata,vocabulary",
       sort: `${explore.sort.direction < 0 ? "-" : ""}${explore.sort.selected}`,
-      status: "saved",
-      published: true,
+      // status: "saved",
+      // published: true,
       // Search
       ...(explore.filters.search && { search: explore.filters.search }),
       // Page
