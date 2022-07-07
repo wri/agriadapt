@@ -1,9 +1,9 @@
 import { chain_items } from '../constants';
 import classnames from 'classnames';
-import FlowButton from 'layout/value-chains/content/flow-diagram/flow-button';
+import FlowButton from 'layout/value-chains/content/navigation-controls/flow-button';
 import StepItem from './step-item/component';
 
-const FlowDiagram = ({ activeItem }) => {
+const NavigationControls = ({ activeItem }) => {
   return (
     <div className="c-value-chain-flow">
       <div className="c-flow">
@@ -34,4 +34,4 @@ const FlowDiagram = ({ activeItem }) => {
   );
 };
 
-export default FlowDiagram;
+export default NavigationControls;

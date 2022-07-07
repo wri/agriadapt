@@ -1,5 +1,5 @@
 import IntroHeader from 'layout/intro-header';
-import HazardsFlow from './content/flow-diagram';
+import NavigationControls from './content/navigation-controls';
 import HazardsIntro from './content/hazards-intro';
 import StepDetails from './content/step-details/component';
 import ItemIntro from './content/item-intro';
@@ -36,7 +36,7 @@ const LayoutCrop = ({ header, details }: LayoutCropProps) => {
         </div>
         <div className="l-container">
           <div className="row">
-            <HazardsFlow />
+            <NavigationControls />
           </div>
         </div>
         <div className="l-container">
