@@ -15,10 +15,10 @@ const coffeeLayers = [
   'foo_005_rw1_crop_area_production_spam2010V2r0_global_Y_RCOF_A'
 ]
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+// export const getServerSideProps: GetServerSideProps = async (context) => {
   
-  return { props: {} };
-};
+//   return { props: {} };
+// };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const cid = params?.cid;

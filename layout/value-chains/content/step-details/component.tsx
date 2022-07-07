@@ -17,7 +17,7 @@ interface StepDetailsProps {
   }
 }
 
-const StepDetails = ({ activeItem = 'inputs', details }: StepDetailsProps) => {
+const StepDetails = ({ activeItem, details }: StepDetailsProps) => {
   const items = chain_items[activeItem].options;
 
   return (
