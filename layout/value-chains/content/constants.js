@@ -7,7 +7,7 @@ const chain_items = {
         icon: 'icon-land-suitability',
       },
       seedlings: { label: 'Seedlings', icon: 'icon-seedlings' },
-      fertilizer: { label: 'Fertilizer', icon: 'icon-fertilizer' },
+      // fertilizer: { label: 'Fertilizer', icon: 'icon-fertilizer' },
       labor: { label: 'Labor', icon: 'icon-labor' },
     },
   },
@@ -18,25 +18,37 @@ const chain_items = {
         label: 'Change in Yield',
         icon: 'icon-change-in-yield',
       },
-
+      production: {
+        label: 'Production',
+        icon: 'icon-production',
+      },
       pests_and_diseases: {
-        label: 'Pests & Diseases',
+        label: 'Pest and Disease',
+        icon: 'icon-pests-and-diseases',
+      },
+      production_volume: {
+        label: 'Production Volume',
+        icon: 'icon-pests-and-diseases',
+      },
+      changing_rainfall: {
+        label: 'Changing Rainfall',
         icon: 'icon-pests-and-diseases',
       },
     },
   },
-  processing: {
-    label: { text: 'Processing', icon: 'icon-processing' },
-    options: {
-      lorem_ipsum: { label: 'Lorem ipsum', icon: 'icon-labor' },
-      lorem_ipsum_2: { label: 'Lorem ipsum', icon: 'icon-labor' },
-    },
-  },
+  // processing: {
+  //   label: { text: 'Processing', icon: 'icon-processing' },
+  //   options: {
+  //     lorem_ipsum: { label: 'Lorem ipsum', icon: 'icon-labor' },
+  //     lorem_ipsum_2: { label: 'Lorem ipsum', icon: 'icon-labor' },
+  //   },
+  // },
   trade: {
     label: { text: 'Trade', icon: 'icon-trade' },
     options: {
-      lorem_ipsum: { label: 'Lorem ipsum', icon: 'icon-labor' },
-      lorem_ipsum_2: { label: 'Lorem ipsum', icon: 'icon-labor' },
+      policies_and_price: { label: 'Lorem ipsum', icon: 'icon-labor' },
+      food_vulnerability: { label: 'Lorem ipsum', icon: 'icon-labor' },
+      export_and_import: { label: 'Lorem ipsum', icon: 'icon-labor' },
     },
   },
 };
@@ -53,33 +65,6 @@ const intros = {
 };
 
 const chains = {
-  RICE: {
-    inputs: {
-      land_suitability: {
-        info: 'Soil salinity, texture, organic matter, pH, water quality, rainfall and temperature are among the most important attributes that could be used to determine the suitable parcel of land for rice cultivation.',
-        widgetId: '043440a2-b3fd-493e-93a9-362eac5637c7',
-      },
-      seedlings: {
-        info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in dolor vitae sem hendrerit ultrices id at urna. Integer lectus lectus, accumsan sed libero in, mollis dapibus justo. Mauris auctor lectus ullamcorper dolor elementum feugiat. Integer et condimentum mi. ',
-        widgetId: 'a009abe8-96da-4665-9457-8b1941ba0e25',
-        // widgetId: null,
-      },
-      fertilizer: {
-        info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in dolor vitae sem hendrerit ultrices id at urna. Integer lectus lectus, accumsan sed libero in, mollis dapibus justo. Mauris auctor lectus ullamcorper dolor elementum feugiat. Integer et condimentum mi. ',
-        widgetId: 'a009abe8-96da-4665-9457-8b1941ba0e25',
-      },
-      labor: {
-        info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in dolor vitae sem hendrerit ultrices id at urna. Integer lectus lectus, accumsan sed libero in, mollis dapibus justo. Mauris auctor lectus ullamcorper dolor elementum feugiat. Integer et condimentum mi. ',
-        widgetId: 'a009abe8-96da-4665-9457-8b1941ba0e25',
-      },
-    },
-    production: {
-      change_in_yield: {},
-      pests_and_diseases: {},
-    },
-    processing: {},
-    trade: {},
-  },
   COFFEE: {},
   COTTON: {},
 };
