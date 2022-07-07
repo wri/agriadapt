@@ -3,7 +3,16 @@ import Icon from 'components/ui/icon';
 import WidgetBlock from 'components/wysiwyg/widget-block/component';
 import { useFetchWidget } from 'hooks/widget';
 
-const DetailItem = ({ label: { icon, label }, info, widgetId }) => {
+interface DetailItemProps {
+  label: {
+    icon: string;
+    label: string;
+  };
+  info: string;
+  widgetId?: string;
+}
+
+const DetailItem = ({ label: { icon, label }, info, widgetId = '' }: DetailItemProps) => {
 
   const { data: widget } = useFetchWidget(widgetId);
 

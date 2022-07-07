@@ -36,7 +36,7 @@ const LayoutCrop = ({ header, details }: LayoutCropProps) => {
         </div>
         <div className="l-container">
           <div className="row">
-            <NavigationControls />
+            <NavigationControls details={details}/>
           </div>
         </div>
         <div className="l-container">

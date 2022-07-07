@@ -1,7 +1,7 @@
 const inputs = {
   land_suitability: {
     info: 'Rice cultivation is highly vulnerable to climate fluctuations. Explore the visualizations below to learn more about how land suitability for rice production may change in the future due to climate change.',
-    widgetId: '043440a2-b3fd-493e-93a9-362eac5637c7',
+    widgetId: '043440a2-b3fd-493e-93a9-362eac5637c7', // TODO: Additional Stacked Bar Visual
   },
   seedlings: {
     info: 'Rice seeds are the most sensitive to drought and high temperature during early seed development. The earlier plant drought occurs, the greater the damage to subsequent seed quality. (Rahman, Ellis, 2019).',
@@ -23,7 +23,9 @@ const production = {
     widgetId: [
       '3118a9fb-e5fd-4dac-814b-be8a901140ef',
       'fb28562b-be9c-4630-b3a3-1440dd1e1bf9',
-    ],
+    ], // TODO: These ID's are from separate cells on the Google sheets
+    // TODO: Additional Callout
+
   },
   production: {
     info: 'Studies suggest that changes in rainfall patterns and distribution could lead to substantial impacts on land and water resources for rice production.',
@@ -34,12 +36,8 @@ const production = {
     widgetId: [
       'c98ace8b-0e9d-44e6-91ff-8dafec5a75cb',
       '5c601744-1e1a-4164-b6af-7830357c2947',
-    ],
+    ], // TODO: Additional Callout
   },
-  //   pests_and_disease: {
-  //     info: '',
-  //     widgetId: '',
-  //   },
 };
 
 // const processing = {};
@@ -47,12 +45,15 @@ const production = {
 const trade = {
   policies_and_price: {
     info: 'The Nominal Rate of Protection measures the extent to which agricultural policies affect the market price of a commodity. It computes the difference between the price a farmer receives versus the price a farmer would receive without these policies in place.',
-  },
+    // TODO: Additional Callout
+  }, 
   food_vulnerability: {
     info: 'The Food Vulnerability Score shows a country’s vulnerability to climate change on a scale of 0 to 1. Lower scores indicate that countries that are less vulnerable. The Food score incorporates six indicators (projected change of cereal yields, projected population growth, food import dependency, rural population, agricultural capacity, and child malnutrition) to capture its vulnerability with regard to food production and demand, nutrition, and rural population.',
+    // TODO: Additional Callout
   },
   export_and_import: {
     info: 'The rice market is highly exposed to climate change. Climate change not only creates risks for producing countries but also transmits those risks through agricultural commodity trade to consumers of all kinds, and can do so over significant distances.',
+    // TODO: Additional Graphical Visual
   },
 };
 

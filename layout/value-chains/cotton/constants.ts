@@ -16,21 +16,22 @@ const inputs = {
 const production = {
   production_volume: {
     info: 'Explore our data visualizations to better understand where the main cotton growing regions in [country] are and how much cotton is currently produced.',
-    widgetId: '8cf03ba0-a517-4a43-b5b4-e677ccc6099c', //TODO: Additional Callout
+    widgetId: '8cf03ba0-a517-4a43-b5b4-e677ccc6099c', 
+    //TODO: Additional Callout
   },
   pests_and_disease: {
     info: 'Changes to climate can result in the continuous evolution of pests, making them harder to contain, which can significantly influence yield and quality. Suitable temperature, humidity, low rainfall, low wind speed, suitable sunshine time and low evaporation are more likely to cause cotton pests and diseases. (Xiao, Q., Li, W., Kai, Y. et al.)',
-    widgetId: '', //TODO: Missing WidgetID
+    widgetId: '', //TODO: Missing WidgetID (N/A)
   },
 };
 const trade = {
   policies_and_price: {
     info: 'The Nominal Rate of Protection measures the extent to which agricultural policies affect the market price of a commodity. It computes the difference between the price a farmer receives versus the price a farmer would receive without these policies in place.',
-    widgetId: '', //TODO: Callout
+    //TODO: Callout
   },
   export_and_import: {
     info: 'Cotton is a very important cash crop which has a growing demand for domestic and international market. Disruptions to cotton production can result in an uncertain market for farmers and ripple effects can be seen throughout the entire value chain (Cotton 2040, 2021). Production constraints will impact global markets by effecting product availabilty, quality, and price.',
-    widgetId: '', //TODO: Additional Chart Visual
+    //TODO: Additional Chart Visual
   },
 };
 
