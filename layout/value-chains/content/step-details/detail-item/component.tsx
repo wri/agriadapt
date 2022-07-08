@@ -10,9 +10,10 @@ interface DetailItemProps {
   };
   info: string;
   widgetId?: string;
+  country: { label: string; value: string };
 }
 
-const DetailItem = ({ label: { icon, label }, info, widgetId = '' }: DetailItemProps) => {
+const DetailItem = ({ label: { icon, label }, info, widgetId = '', country }: DetailItemProps) => {
 
   const { data: widget } = useFetchWidget(widgetId);
 
@@ -42,10 +43,15 @@ const DetailItem = ({ label: { icon, label }, info, widgetId = '' }: DetailItemP
           className={classnames({
             'c-widget': true,
             '-side': true,
-            '-placeholder': !widgetId
+            '-placeholder': !widgetId,
           })}
         >
-          {widget && <WidgetBlock widget={widget} />}
+          {widget && (
+            <WidgetBlock
+              {...(country && { areaOfInterest: country.value })}
+              widget={widget}
+            />
+          )}
         </div>
       </div>
     </>

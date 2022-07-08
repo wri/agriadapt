@@ -8,6 +8,11 @@ import Layout from 'layout/layout/layout-app';
 
 interface LayoutCropProps {
   header: any;
+  countries: {
+    label: string;
+    value: string;
+    geostore: string;
+  }[];
   details: {
     inputs: any;
     production: any;
@@ -16,12 +21,12 @@ interface LayoutCropProps {
   }
 }
 
-const LayoutCrop = ({ header, details }: LayoutCropProps) => {
+const LayoutCrop = ({ header, details, countries }: LayoutCropProps) => {
   return (
     // TODO: Translate
     <Layout title={'Value Chains'}>
       <div className="l-crop">
-        <IntroHeader {...header} />
+        <IntroHeader {...header} countries={countries} />
         <div className="l-container">
           <div className="row">
             <div className="column small-12">

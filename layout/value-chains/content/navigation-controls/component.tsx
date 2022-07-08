@@ -11,13 +11,11 @@ interface NavigationControlsProps {
     processing?: any;
     trade: any;
   }
-  activeChain?: 'rice' | 'coffee' | 'cotton';
   activeItem: 'inputs' | 'production' | 'processing' | 'trade';
   setActiveItem: (id: 'inputs' | 'production' | 'processing' | 'trade') => void;
 }
 
 const NavigationControls = ({
-  activeChain = 'rice',
   details,
   activeItem,
   setActiveItem,

@@ -1,5 +1,5 @@
 import { item_labels } from '../constants';
-import DetailItem from './detail-item/component';
+import DetailItem from './detail-item';
 
 interface StepDetail {
   info: string;

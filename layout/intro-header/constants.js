@@ -34,7 +34,7 @@ const RICE = {
   title: 'Rice',
   subtitle: 'Climate Risk in Rice Value Chains',
   description: [
-    'Temperature increases, rising sea levels, and changes in rainfall patterns and distribution could lead to substantial impacts on land and water resources for rice production. Continuous groundwater extraction for rice paddy irrigation is already resulting in a steep decline in groundwater across {{country}} (Oo 2018).',
+    'Temperature increases, rising sea levels, and changes in rainfall patterns and distribution could lead to substantial impacts on land and water resources for rice production. Continuous groundwater extraction for rice paddy irrigation is already resulting in a steep decline in groundwater across India (Oo 2018).',
   ],
   image: riceImage,
   blob: riceBlob,
@@ -45,7 +45,7 @@ const COTTON = {
   title: 'Cotton',
   subtitle: 'Climate Risk in Cotton Value Chains',
   description: [
-    `The cotton value chain is likely to experience disruptions due to climate change impacts such as water availability, changing rainfall patterns, and rising temperatures. Cotton's lengthy growing season (approximately 150-180 days) already makes the crop quite vulnerable to pests and diseases. A warmer climate will only increase cotton's susceptibility (Cotton 2040, 2021).`,
+    "The cotton value chain is likely to experience disruptions due to climate change impacts such as water availability, changing rainfall patterns, and rising temperatures. Cotton's lengthy growing season (approximately 150-180 days) already makes the crop quite vulnerable to pests and diseases. A warmer climate will only increase cotton's susceptibility (Cotton 2040, 2021).",
   ],
   image: cottonImage,
   blob: cottonBlob,

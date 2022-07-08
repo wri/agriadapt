@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
-    geostore: '',
+    country: null,
     activeItem: 'inputs',
 }
 
@@ -9,8 +9,8 @@ export const slice = createSlice({
     name: 'valuechains',
     initialState,
     reducers: {
-        setGeostore: (state, { payload }) => {
-            state.geostore = payload;
+        setCountry: (state, { payload }) => {
+            state.country = payload;
         },
         setActiveItem: (state, { payload }) => {
             state.activeItem = payload;

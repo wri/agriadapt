@@ -1,3 +1,7 @@
 export interface ValueChainPageProps {
-  cid: string | null;
+  countries: {
+    label: string;
+    value: string;
+    geostore: string;
+  }[];
 }

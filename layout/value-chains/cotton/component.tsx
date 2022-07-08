@@ -3,8 +3,8 @@ import { ValueChainPageProps } from 'types/value-chain';
 import LayoutCrop from '../component';
 import details from './constants';
 
-const LayoutCotton = ({ cid }: ValueChainPageProps) => {
-  return <LayoutCrop header={COTTON} details={details} />;
+const LayoutCotton = ({ countries }: ValueChainPageProps) => {
+  return <LayoutCrop header={COTTON} details={details} countries={countries} />;
 };
 
 export default LayoutCotton;

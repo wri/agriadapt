@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import Field from 'components/form/Field';
 import Select from 'react-select';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const IntroHeader = ({
   id = 'LANDING',
@@ -11,8 +12,21 @@ const IntroHeader = ({
   blob,
   title = '',
   subtitle = '',
-  description = [''],
+  description = [],
+  country,
+  setCountry,
 }) => {
+  const router = useRouter();
+
+  const handleSelectCountry = (c) => {
+    setCountry(c);
+    router.push({
+      query: {
+        cid: c.value,
+      }
+    })
+  }
+
   return (
     <div className="c-intro-header">
       <div
@@ -80,10 +94,12 @@ const IntroHeader = ({
                       id="VALUE_CHAINS"
                       properties={{
                         label: 'Select Country',
-                        default: '',
+                        default: country,
                       }}
                       options={countries}
                       className={'Select--large'}
+                      onChange={handleSelectCountry}
+                      value={country}
                       placeholder={'Select Country'} // TODO: Translate
                       // isSearchable={false}
                       // isClearable={false}
