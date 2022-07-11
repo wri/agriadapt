@@ -25,14 +25,13 @@ const production = {
       'fb28562b-be9c-4630-b3a3-1440dd1e1bf9',
     ], // TODO: These ID's are from separate cells on the Google sheets
     // TODO: Additional Callout
-
   },
   production: {
     info: 'Studies suggest that changes in rainfall patterns and distribution could lead to substantial impacts on land and water resources for rice production.',
     widgetId: 'd95ad48d-e14e-42cd-a5fb-1d8054c258d9',
   },
   production_volume: {
-    info: 'Explore our data visualizations to better understand where the main rice growing regions in [country] are and how much rice is currently produced.',
+    info: (country: string) => `Explore our data visualizations to better understand where the main rice growing regions in ${country} are and how much rice is currently produced.`,
     widgetId: [
       'c98ace8b-0e9d-44e6-91ff-8dafec5a75cb',
       '5c601744-1e1a-4164-b6af-7830357c2947',

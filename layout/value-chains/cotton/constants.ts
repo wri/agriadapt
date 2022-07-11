@@ -15,7 +15,7 @@ const inputs = {
 };
 const production = {
   production_volume: {
-    info: 'Explore our data visualizations to better understand where the main cotton growing regions in [country] are and how much cotton is currently produced.',
+    info: (country: string) => `Explore our data visualizations to better understand where the main cotton growing regions in ${country} are and how much cotton is currently produced.`,
     widgetId: '8cf03ba0-a517-4a43-b5b4-e677ccc6099c', 
     //TODO: Additional Callout
   },

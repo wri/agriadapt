@@ -12,7 +12,7 @@ const inputs = {
 
 const production = {
     production_volume: {
-        info: 'Explore our data visualizations to better understand where the main coffee growing regions in [country] are and how much coffee is currently produced.',
+        info: (country: string) => `Explore our data visualizations to better understand where the main coffee growing regions in ${country} are and how much coffee is currently produced.`,
         widgetId: ['f44edefe-e3eb-4598-bb37-692d70a21d23','ef4cc300-9d92-492a-9252-457a1964a5d1'],
         // TODO: Additional Callout
     },
