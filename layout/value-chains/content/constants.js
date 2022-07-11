@@ -1,47 +1,62 @@
-const chain_items = {
+export const item_labels = {
+  land_suitability: {
+    label: 'Land Suitability',
+    icon: 'icon-land-suitability',
+  },
+  seedlings: { label: 'Seedlings', icon: 'icon-seedlings' },
+  // fertilizer: { label: 'Fertilizer', icon: 'icon-fertilizer' },
+  labor: { label: 'Labor', icon: 'icon-labor' },
+  change_in_yield: {
+    label: 'Change in Yield',
+    icon: 'icon-change-in-yield',
+  },
+  production: {
+    label: 'Production',
+    icon: 'icon-production',
+  },
+  pests_and_disease: {
+    label: 'Pest and Disease',
+    icon: 'icon-pests-and-diseases',
+  },
+  production_volume: {
+    label: 'Production Volume',
+    icon: 'icon-pests-and-diseases',
+  },
+  changing_rainfall: {
+    label: 'Changing Rainfall',
+    icon: 'icon-pests-and-diseases',
+  },
+  policies_and_price: { label: 'Policies & Price', icon: 'icon-labor' },
+  food_vulnerability: { label: 'Food Vulnerability', icon: 'icon-labor' },
+  export_and_import: { label: 'Export & Import', icon: 'icon-labor' },
+}
+
+
+export const chain_items = {
   inputs: {
     label: { text: 'Inputs', icon: 'icon-inputs' },
-    options: {
-      land_suitability: {
-        label: 'Land Suitability',
-        icon: 'icon-land-suitability',
-      },
-      seedlings: { label: 'Seedlings', icon: 'icon-seedlings' },
-      fertilizer: { label: 'Fertilizer', icon: 'icon-fertilizer' },
-      labor: { label: 'Labor', icon: 'icon-labor' },
-    },
+    options: [
+      'land_suitability',
+      'seedlings',
+      // 'fertilizer',
+      'labor',
+    ],
   },
   production: {
     label: { text: 'Production', icon: 'icon-production' },
-    options: {
-      change_in_yield: {
-        label: 'Change in Yield',
-        icon: 'icon-change-in-yield',
-      },
-
-      pests_and_diseases: {
-        label: 'Pests & Diseases',
-        icon: 'icon-pests-and-diseases',
-      },
-    },
+    options: ['change_in_yield', 'production', 'pests_and_disease', 'production_volume', 'changing_rainfall'],
   },
-  processing: {
-    label: { text: 'Processing', icon: 'icon-processing' },
-    options: {
-      lorem_ipsum: { label: 'Lorem ipsum', icon: 'icon-labor' },
-      lorem_ipsum_2: { label: 'Lorem ipsum', icon: 'icon-labor' },
-    },
-  },
+  // processing: {
+  //   label: { text: 'Processing', icon: 'icon-processing' },
+  //   options: ['lorem_ipsum']
+  // },
   trade: {
     label: { text: 'Trade', icon: 'icon-trade' },
-    options: {
-      lorem_ipsum: { label: 'Lorem ipsum', icon: 'icon-labor' },
-      lorem_ipsum_2: { label: 'Lorem ipsum', icon: 'icon-labor' },
-    },
+    options: ['poliies_and_price', 'food_vulnerability', 'export_and_import'],
   },
 };
 
-const intros = {
+export const intros = {
   inputs: {
     header: 'Do we need an inputs intro?',
     description:
@@ -52,39 +67,12 @@ const intros = {
   trade: {},
 };
 
-const chains = {
-  RICE: {
-    inputs: {
-      land_suitability: {
-        info: 'Soil salinity, texture, organic matter, pH, water quality, rainfall and temperature are among the most important attributes that could be used to determine the suitable parcel of land for rice cultivation.',
-        widgetId: '2635dac0-17ad-43f7-bf93-dfb6aa7bc1c4',
-      },
-      seedlings: {
-        info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in dolor vitae sem hendrerit ultrices id at urna. Integer lectus lectus, accumsan sed libero in, mollis dapibus justo. Mauris auctor lectus ullamcorper dolor elementum feugiat. Integer et condimentum mi. ',
-        widgetId: 'a009abe8-96da-4665-9457-8b1941ba0e25',
-        // widgetId: null,
-      },
-      fertilizer: {
-        info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in dolor vitae sem hendrerit ultrices id at urna. Integer lectus lectus, accumsan sed libero in, mollis dapibus justo. Mauris auctor lectus ullamcorper dolor elementum feugiat. Integer et condimentum mi. ',
-        widgetId: 'a009abe8-96da-4665-9457-8b1941ba0e25',
-      },
-      labor: {
-        info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in dolor vitae sem hendrerit ultrices id at urna. Integer lectus lectus, accumsan sed libero in, mollis dapibus justo. Mauris auctor lectus ullamcorper dolor elementum feugiat. Integer et condimentum mi. ',
-        widgetId: 'a009abe8-96da-4665-9457-8b1941ba0e25',
-      },
-    },
-    production: {
-      change_in_yield: {},
-      pests_and_diseases: {},
-    },
-    processing: {},
-    trade: {},
-  },
+export const chains = {
   COFFEE: {},
   COTTON: {},
 };
 
-const user_stories = {
+export const user_stories = {
   header: 'Applicable Header e.g. “Hear From...”',
   stories: [
     {
@@ -95,5 +83,3 @@ const user_stories = {
     },
   ],
 };
-
-export { intros, chain_items, chains, user_stories };

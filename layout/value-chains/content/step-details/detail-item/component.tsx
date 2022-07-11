@@ -3,7 +3,17 @@ import Icon from 'components/ui/icon';
 import WidgetBlock from 'components/wysiwyg/widget-block/component';
 import { useFetchWidget } from 'hooks/widget';
 
-const DetailItem = ({ label: { icon, label }, info, widgetId }) => {
+interface DetailItemProps {
+  label: {
+    icon: string;
+    label: string;
+  };
+  info: string;
+  widgetId?: string;
+  country: { label: string; value: string };
+}
+
+const DetailItem = ({ label: { icon, label }, info, widgetId = '', country }: DetailItemProps) => {
 
   const { data: widget } = useFetchWidget(widgetId);
 
@@ -33,10 +43,15 @@ const DetailItem = ({ label: { icon, label }, info, widgetId }) => {
           className={classnames({
             'c-widget': true,
             '-side': true,
-            '-placeholder': !widgetId
+            '-placeholder': !widgetId,
           })}
         >
-          {widget && <WidgetBlock widget={widget} />}
+          {widget && (
+            <WidgetBlock
+              {...(country && { areaOfInterest: country.value })}
+              widget={widget}
+            />
+          )}
         </div>
       </div>
     </>
