@@ -304,7 +304,7 @@ export const Map = ({
   useEffect(() => {
     const { current: map } = mapRef;
     const handleClick = (e) => {
-      if (!isDrawing) onClickLayer(e);
+      if (!isDrawing) onClickLayer && onClickLayer(e);
       else onDropMarker(e);
     };
     if (loaded) {
