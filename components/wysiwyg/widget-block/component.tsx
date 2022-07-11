@@ -18,7 +18,7 @@ const WidgetShareModal = dynamic(
 
 export interface WidgetBlockProps {
   widget: APIWidgetSpec;
-  areaOfInterest: string;
+  areaOfInterest?: string;
 }
 
 const WidgetBlock = ({ widget, areaOfInterest = undefined }: WidgetBlockProps): JSX.Element => {
