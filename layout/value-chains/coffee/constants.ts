@@ -22,7 +22,7 @@ const production = {
     },
     changing_rainfall: {
         info: 'Temperature and rainfall conditions are considered to be important factors in defining potential coffee yield. Both factors interfere in the crop phenology, and consequently in productivity and quality.',
-        widgetId: '', //TODO: Missing WidgetID
+        widgetId: 'd95ad48d-e14e-42cd-a5fb-1d8054c258d9', //TODO: Missing WidgetID
     },
 }
 
