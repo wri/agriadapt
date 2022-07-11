@@ -1,11 +1,11 @@
 import { actions } from 'layout/value-chains/reducers';
 import { RootState } from 'lib/store';
 import { connect } from 'react-redux';
-import IntroHeader from './component';
+import FlowButton from './component';
 
 export default connect(
-  (state: RootState) => ({
-    country: state.value_chains.country,
+  (state: RootState, ownProps: { id: string }) => ({
+    active: ownProps.id === state.value_chains.activeItem,
   }),
   actions
-)(IntroHeader);
+)(FlowButton);

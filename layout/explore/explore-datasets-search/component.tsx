@@ -3,7 +3,7 @@ import Select from 'react-select';
 import SearchInput from 'components/ui/SearchInput';
 import { EXPLORE_FILTERS } from '../constants';
 import Field from 'components/form/Field';
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 import debounce from 'lodash/debounce';
 import useSelect from 'hooks/form/useSelect';
 

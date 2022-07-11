@@ -18,9 +18,10 @@ const WidgetShareModal = dynamic(
 
 export interface WidgetBlockProps {
   widget: APIWidgetSpec;
+  areaOfInterest?: string;
 }
 
-const WidgetBlock = ({ widget }: WidgetBlockProps): JSX.Element => {
+const WidgetBlock = ({ widget, areaOfInterest = undefined }: WidgetBlockProps): JSX.Element => {
   const [showModal, setShowModal] = useState(false);
 
   const openShareModal = useCallback(() => {
@@ -45,8 +46,7 @@ const WidgetBlock = ({ widget }: WidgetBlockProps): JSX.Element => {
                 <MapWidget
                   widgetId={widget.id}
                   onToggleShare={openShareModal}
-                  // This informs the AOI, the selected country
-                  areaOfInterest={'45d0f6f887a18df373fa69c3eb6f13c7'} // India
+                  areaOfInterest={areaOfInterest}
                 />
               )}
             </div>

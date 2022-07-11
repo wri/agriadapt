@@ -3,5 +3,5 @@ import { connect } from "react-redux";
 import ItemIntro from "./component";
 
 export default connect((state: RootState) => ({
-    activeItem: 'inputs'
+    activeItem: state.value_chains.activeItem
 }))(ItemIntro);

@@ -1,17 +1,32 @@
 import IntroHeader from 'layout/intro-header';
-import HazardsFlow from './content/flow-diagram';
+import NavigationControls from './content/navigation-controls';
 import HazardsIntro from './content/hazards-intro';
-import StepDetails from './content/step-details/component';
+import StepDetails from './content/step-details';
 import ItemIntro from './content/item-intro';
 import UserStories from './content/user-stories';
 import Layout from 'layout/layout/layout-app';
 
-const LayoutCrop = ({ header, details }) => {
+interface LayoutCropProps {
+  header: any;
+  countries: {
+    label: string;
+    value: string;
+    geostore: string;
+  }[];
+  details: {
+    inputs: any;
+    production: any;
+    processing?: any;
+    trade: any;
+  }
+}
+
+const LayoutCrop = ({ header, details, countries }: LayoutCropProps) => {
   return (
     // TODO: Translate
     <Layout title={'Value Chains'}>
       <div className="l-crop">
-        <IntroHeader {...header} />
+        <IntroHeader {...header} countries={countries} />
         <div className="l-container">
           <div className="row">
             <div className="column small-12">
@@ -26,7 +41,7 @@ const LayoutCrop = ({ header, details }) => {
         </div>
         <div className="l-container">
           <div className="row">
-            <HazardsFlow />
+            <NavigationControls details={details}/>
           </div>
         </div>
         <div className="l-container">
@@ -37,7 +52,7 @@ const LayoutCrop = ({ header, details }) => {
         <div className="l-container">
           <div className="row">
             <div className="column small-12">
-              <StepDetails {...details} />
+              <StepDetails details={details} />
             </div>
           </div>
         </div>
