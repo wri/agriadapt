@@ -41,6 +41,7 @@ export interface APILayerSpec {
   staticImageConfig: Record<string, string | number | boolean | unknown>;
   createdAt: string;
   updatedAt: string;
+  active?: boolean;
 }
 
 export interface APILayerAppConfig {

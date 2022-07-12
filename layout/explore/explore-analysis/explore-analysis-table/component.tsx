@@ -8,7 +8,7 @@ import AnalysisDropdownMenu from '../dropdown-menu/component';
 import Spinner from "components/ui/Spinner";
 import { fetchDatasetQuery } from 'services/query';
 import { APILayerSpec } from 'types/layer';
-import { appConfigs } from 'constants/app-config-template';
+// import { appConfigs } from 'constants/app-config-template';
 import { toGeoJSON } from 'utils/locations/geojson';
 import { createColorValueMap, legendConfigItem } from 'utils/layers/symbolizer';
 
@@ -21,9 +21,11 @@ const AnalysisTable = ({ loc_map: locations, layerGroups }) => {
     () =>
       [].concat(...layerGroups.map((g) =>
         g.layers.reduce((arr, l: APILayerSpec) => {
+          if (!l.active)
+            return arr;
           const legendItems = l.legendConfig.items as legendConfigItem[];
           // TODO: Remove app config template once no longer testing
-          const appConfig = appConfigs[l.id] ?? l.applicationConfig;
+          const appConfig = l.applicationConfig;
           arr.push({
             ...appConfig,
             label: l.name,
@@ -74,6 +76,26 @@ const AnalysisTable = ({ loc_map: locations, layerGroups }) => {
       .finally(() => setLoading(false));
   }, [interactions, locations]);
 
+  const formatValue = (
+    val: number | undefined,
+    output = null,
+    valueMap = null
+  ) => {
+    let result = '';
+    if (!val) result = 'N/A';
+    if (!output) return String(val);
+    if (valueMap && output.type === 'string') result = valueMap[val];
+
+    if (output.type === 'number') {
+      const places = output.format.split('.')[1].length;
+      result = val.toFixed(places);
+    }
+
+    if (output.prefix) result = `${output.prefix}${result}`;
+    if (output.suffix) result = `${result}${output.suffix}`;
+    return result;
+  };
+
   const rows = useMemo(
     () =>
       data.map((d) => {
@@ -84,7 +106,7 @@ const AnalysisTable = ({ loc_map: locations, layerGroups }) => {
               const colArr = output?.path.split('.') || [];
               const val =
                 colArr.reduce((acc, c) => acc[c], interaction);
-              arr.push(val && valueMap ? valueMap[val] : val ? String(val) : 'N/A');
+              arr.push(formatValue(val, output, valueMap));
               return arr;
             },
             []
