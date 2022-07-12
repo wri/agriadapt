@@ -5,7 +5,9 @@
     justify-content: space-between;
 
     @media screen and (min-width: map-get($breakpoints, medium)) {
-        flex-direction: row;
+        &.-side {
+            flex-direction: row;
+        }
     }
 
     .c-detail-item-info {
@@ -24,6 +26,8 @@
         }
 
         width: 100%;
+        max-width: 880px;
+        margin: 0 auto;
         height: 456px;
 
         @media screen and (min-width: map-get($breakpoints, medium)) {

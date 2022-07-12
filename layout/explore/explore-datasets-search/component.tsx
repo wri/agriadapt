@@ -9,7 +9,9 @@ import useSelect from 'hooks/form/useSelect';
 
 const ExploreDatasetsSearch = ({
   search,
-  value_chains, emission_scenario, timescale,
+  value_chains,
+  emission_scenario,
+  timescale,
   advanced: { open: advOpen },
   setFiltersValueChains,
   setFiltersTimescale,
@@ -28,17 +30,17 @@ const ExploreDatasetsSearch = ({
   const handleSelectValueChain = (chains) => {
     selectedChain.onChange(chains);
     setFiltersValueChains(chains);
-  }
+  };
 
   const handleSelectEmissionScenario = (scenario) => {
     selectedScenario.onChange(scenario);
     setFiltersEmissionScenario(scenario);
-  }
-  
+  };
+
   const handleSelectTimescale = (timescale) => {
     selectedTimescale.onChange(timescale);
-    setFiltersTimescale(timescale)
-  }
+    setFiltersTimescale(timescale);
+  };
 
   const handleCancel = () => {
     setFiltersAdvancedOpen(false);
@@ -86,23 +88,18 @@ const ExploreDatasetsSearch = ({
         {SearchInput}
       </Field>
       <Field
-        // TODO: Translate
-        id={'VALUE_CHAINS'}
+        id={'EMISSION_SCENARIO'}
         properties={{
           // TODO: Translate
-          label: `Filter Layers by ${VALUE_CHAINS.placeholder}`,
-          default: value_chains,
-          tooltip: VALUE_CHAINS.tooltip,
+          label: `Filter Layers by ${EMISSION_SCENARIO.placeholder}`,
+          default: emission_scenario,
         }}
-        value={selectedChain.value}
-        onChange={handleSelectValueChain}
-        options={VALUE_CHAINS.options}
+        value={selectedScenario.value}
+        onChange={handleSelectEmissionScenario}
+        placeholder={EMISSION_SCENARIO.placeholder} // TODO: Translate
+        options={EMISSION_SCENARIO.options}
         hint={VALUE_CHAINS.hint}
-        placeholder={VALUE_CHAINS.placeholder}
-        className={'Select--large'}
-        isMulti={VALUE_CHAINS.multi}
-        // isSearchable={false}
-        // isClearable={false}
+        className="Select--large"
       >
         {Select}
       </Field>
@@ -113,17 +110,22 @@ const ExploreDatasetsSearch = ({
       {advOpen && (
         <>
           <Field
-            id={'EMISSION_SCENARIO'}
+            // TODO: Translate
+            id={'VALUE_CHAINS'}
             properties={{
               // TODO: Translate
-              label: `Filter Layers by ${EMISSION_SCENARIO.placeholder}`,
-              default: emission_scenario,
+              label: `Filter Layers by ${VALUE_CHAINS.placeholder}`,
+              default: value_chains,
+              tooltip: VALUE_CHAINS.tooltip,
             }}
-            value={selectedScenario.value}
-            onChange={handleSelectEmissionScenario}
-            placeholder={EMISSION_SCENARIO.placeholder} // TODO: Translate
-            options={EMISSION_SCENARIO.options}
-            className="Select--large"
+            value={selectedChain.value}
+            onChange={handleSelectValueChain}
+            options={VALUE_CHAINS.options}
+            placeholder={VALUE_CHAINS.placeholder}
+            className={'Select--large'}
+            isMulti={VALUE_CHAINS.multi}
+            // isSearchable={false}
+            // isClearable={false}
           >
             {Select}
           </Field>

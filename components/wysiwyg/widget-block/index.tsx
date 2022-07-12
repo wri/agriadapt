@@ -2,23 +2,37 @@ import { useFetchWidget } from "hooks/widget";
 
 import WidgetBlock from "./component";
 
-import type { WYSIWYGItem } from "types/wysiwyg";
+// import type { WYSIWYGItem } from "types/wysiwyg";
+import { connect } from "react-redux";
+import { RootState } from "lib/store";
 
 export interface WidgetBlockContainerProps {
-  item: WYSIWYGItem;
+  // item: WYSIWYGItem;
+  widgetId: string;
+  country: {
+    label: string;
+    value: string;
+  }
 }
 
-const WidgetBlockContainer = ({ item }: WidgetBlockContainerProps): JSX.Element => {
+const WidgetBlockContainer = ({ widgetId, country }: WidgetBlockContainerProps): JSX.Element => {
   const { data: widget } = useFetchWidget(
-    item?.content?.widgetId,
+    widgetId,
     { includes: 'metadata' },
     {
-      enabled: Boolean(item?.content?.widgetId),
+      enabled: true,
       refetchOnWindowFocus: false,
     },
   );
 
-  return <WidgetBlock widget={widget} />;
+  return (
+    <WidgetBlock
+      {...(country && { areaOfInterest: country.value })}
+      widget={widget}
+    />
+  );
 };
 
-export default WidgetBlockContainer;
+export default connect((state: RootState) => ({
+  country: state.value_chains.country,
+}))(WidgetBlockContainer);
