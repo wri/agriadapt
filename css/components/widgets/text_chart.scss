@@ -30,6 +30,7 @@
   background: $white;
   padding: 24px;
   position: relative;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
   
   &::after {
     content: ''; 
@@ -37,7 +38,6 @@
     // width: set in js
     // height: set in js
     z-index: -1;
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
   }
 
   * {

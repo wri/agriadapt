@@ -3,7 +3,7 @@ import DetailItem from './detail-item';
 
 interface StepDetail {
   info: string;
-  widgetIds?: string[];
+  widgets?: { id: string; fullWidth?: boolean }[];
 }
 
 interface StepDetailsProps {

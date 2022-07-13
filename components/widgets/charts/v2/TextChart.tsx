@@ -1,10 +1,18 @@
+interface TextChartProps {
+  value?: number;
+  format?: 'deg' | string;
+  unit?: 'celsius' | string;
+  type?: 'Average' | string;
+  name?: string | ((str: string) => string);
+}
+
 const TextChart = ({
   value = 4.1,
   format = 'deg',
   unit = 'celsius',
   type = 'Average',
   name = '2030 Projected Change in Annual Average Temperature',
-}) => {
+}: TextChartProps) => {
   const valueString =
     format === 'deg'
       ? `${value}\u00B0 ${unit === 'celsius' ? 'C' : 'F'}`

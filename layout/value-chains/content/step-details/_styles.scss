@@ -5,8 +5,27 @@
     justify-content: space-between;
 
     @media screen and (min-width: map-get($breakpoints, medium)) {
-        &.-side {
-            flex-direction: row;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: auto;
+        gap: 20px;
+    }
+
+    .c-detail-section {
+        &.-full {
+            grid-column: 1 / 3;
+
+            .c-widget {
+                max-width: 880px;
+            }
+        }
+
+        &.-left {
+            grid-column: 1;
+        }
+
+        &.-right {
+            grid-column: 2;
         }
     }
 
@@ -26,19 +45,18 @@
         }
 
         width: 100%;
-        max-width: 880px;
-        margin: 0 auto;
+        margin: auto;
         height: 456px;
 
+        > .c-text-chart-v2 {
+            margin: auto;
+        }
+
         @media screen and (min-width: map-get($breakpoints, medium)) {
-            &.-side {
-                width: 340px;
-            }
+            max-width: 340px;
         }
         @media screen and (min-width: map-get($breakpoints, large)) {
-            &.-side {
-                width: 430px;
-            }
+            max-width: 430px;
         }
     }
 }

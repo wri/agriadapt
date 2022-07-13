@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import classnames from "classnames";
+import { replace } from "layer-manager";
 // import { Tooltip } from "vizzuality-components";
 
 // components
@@ -8,14 +9,50 @@ import Icon from "components/ui/icon";
 import Title from "components/ui/Title";
 // import CollectionsPanel from "components/collections-panel";
 
+
+// WidgetHeader.propTypes = {
+//   widget: PropTypes.shape({
+//     id: PropTypes.string.isRequired,
+//     name: PropTypes.string.isRequired,
+//     widgetConfig: PropTypes.shape({
+//       type: PropTypes.string,
+//     }),
+//   }).isRequired,
+//   // isInACollection: PropTypes.bool.isRequired,
+//   isInfoVisible: PropTypes.bool,
+//   onToggleInfo: PropTypes.func.isRequired,
+//   // onToggleShare: PropTypes.func.isRequired,
+// };
+
+
+interface WidgetHeaderProps {
+  widget: {
+    id: string;
+    name: string,
+    widgetConfig?: {
+      type?: string;
+    };
+  }
+  // isInACollection: boolean,
+  isInfoVisible?: boolean,
+  onToggleInfo: () => void,
+  onToggleShare: () => void,
+  download?: boolean;
+  country?: {
+    label: string;
+    value: string;
+  }
+}
+
 export default function WidgetHeader({
   widget,
   // isInACollection,
   onToggleInfo,
   onToggleShare,
-  isInfoVisible,
+  isInfoVisible = false,
   download = false,
-}) {
+  country = null,
+}: WidgetHeaderProps) {
   // const starIconName = classnames({
   //   "icon-star-full": isInACollection,
   //   "icon-star-empty": !isInACollection,
@@ -25,11 +62,19 @@ export default function WidgetHeader({
     "icon-info": !isInfoVisible,
   });
 
+  const replacement = {
+    country_name: country?.label || 'the world',
+  }
+
+  const name = widget?.name.includes('{{country_name}}')
+    ? replace(widget?.name, replacement)
+    : widget.name;
+
   return (
     <header className="c-widget-header">
       <div className="header-container">
         <div className="title-container">
-          <Title className="-default">{widget?.name}</Title>
+          <Title className="-default">{name}</Title>
         </div>
         <div className="button-list">
           <ul>
@@ -81,21 +126,3 @@ export default function WidgetHeader({
     </header>
   );
 }
-
-WidgetHeader.defaultProps = {
-  isInfoVisible: false,
-};
-
-WidgetHeader.propTypes = {
-  widget: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    widgetConfig: PropTypes.shape({
-      type: PropTypes.string,
-    }),
-  }).isRequired,
-  // isInACollection: PropTypes.bool.isRequired,
-  isInfoVisible: PropTypes.bool,
-  onToggleInfo: PropTypes.func.isRequired,
-  // onToggleShare: PropTypes.func.isRequired,
-};
