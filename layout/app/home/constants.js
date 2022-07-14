@@ -73,7 +73,7 @@ const LEARN = {
   title: 'Learn more about the project',
   subTitle:
     'The climate risk tool project is an initiative by World Resources Institute. The beta version of the tool has been funded by the Walmart Foundation.',
-  button: 'About [Project Name]',
+  button: 'About AgriAdapt',
   image: aboutImage,
 };
 

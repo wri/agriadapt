@@ -18,7 +18,7 @@ const production = {
     info: (country: string) =>
       `Explore our data visualizations to better understand where the main cotton growing regions in ${country} are and how much cotton is currently produced.`,
     widgets: [{ id: '8cf03ba0-a517-4a43-b5b4-e677ccc6099c' }],
-    //TODO: Additional Callout
+    //TODO: Additional Callout - Unable to query dataset for information
     analysis: {
       query: null,
       type: 'Total',

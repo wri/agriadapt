@@ -31,9 +31,8 @@ const DetailItem = ({
 }: DetailItemProps) => {
   const params = {
     crop: capitalizeFirstLetter(crop),
-    country: country?.label || 'India',
-    year: 2020,
-    iso: country?.iso || 'IND',
+    country: country?.label,
+    iso: country?.iso,
   }
   return (
     <>
@@ -91,7 +90,7 @@ const DetailItem = ({
           <div className="c-widget">
             <TextChart
               analysis={analysis}
-              query={analysis.query(params)}
+              query={analysis.query ? analysis.query(params) : undefined}
               name={
                 typeof analysis.name === 'function'
                   ? analysis.name(params)
