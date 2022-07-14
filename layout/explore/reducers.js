@@ -1,12 +1,12 @@
-import { createReducer } from "@reduxjs/toolkit";
-import { HYDRATE } from "next-redux-wrapper";
+import { createReducer } from '@reduxjs/toolkit';
+import { HYDRATE } from 'next-redux-wrapper';
 
 // utils
-import { logEvent } from "utils/analytics";
-import { sortLayers } from "utils/layers";
+import { logEvent } from 'utils/analytics';
+import { sortLayers } from 'utils/layers';
 
-import * as actions from "./actions";
-import initialState from "./initial-state";
+import * as actions from './actions';
+import initialState from './initial-state';
 
 export default createReducer(initialState, (builder) => {
   builder
@@ -74,6 +74,23 @@ export default createReducer(initialState, (builder) => {
         selected: payload,
       },
     }))
+    .addCase(actions.setFilteredDatasets, (state, { payload }) => {
+      state.datasets.filtered = payload;
+    })
+    // countries
+    .addCase(actions.setCountryList, (state, { payload }) => {
+      state.filters.options.countries = payload;
+    })
+    .addCase(actions.setStateList, (state, { payload }) => {
+      state.filters.options.states = payload;
+    })
+    .addCase(actions.setFiltersSearch, (state, { payload }) => ({
+      ...state,
+      filters: {
+        ...state.filters,
+        search: payload,
+      },
+    }))
     // filters
     .addCase(actions.setFiltersAdvancedOpen, (state, { payload }) => ({
       ...state,
@@ -85,13 +102,15 @@ export default createReducer(initialState, (builder) => {
         },
       },
     }))
-    .addCase(actions.setFiltersValueChains, (state, { payload }) => ({
-      ...state,
-      filters: {
-        ...state.filters,
-        value_chains: payload,
-      },
-    }))
+    .addCase(actions.setFiltersValueChains, (state, { payload }) => {
+      state.filters.value_chains = payload;
+    })
+    .addCase(actions.setFiltersEmissionScenario, (state, { payload }) => {
+      state.filters.emission_scenario = payload;
+    })
+    .addCase(actions.setFiltersTimescale, (state, { payload }) => {
+      state.filters.timescale = payload;
+    })
     // sort
     .addCase(actions.setSortSelected, (state, { payload }) => ({
       ...state,
@@ -107,13 +126,6 @@ export default createReducer(initialState, (builder) => {
         isSetFromDefaultState: false,
       },
     }))
-    .addCase(actions.setSortDirection, (state, { payload }) => ({
-      ...state,
-      sort: {
-        ...state.sort,
-        direction: payload,
-      },
-    }))
     .addCase(actions.resetFiltersSort, (state) => ({
       ...state,
       sort: {
@@ -123,40 +135,34 @@ export default createReducer(initialState, (builder) => {
       },
     }))
     // analysis
-    .addCase(actions.addLocation, (state, { payload }) => ({
-      ...state,
-      analysis: {
-        ...state.analysis,
-        locations: {
-          ...state.analysis.locations,
-          list: [...state.analysis.locations.list, payload],
+    .addCase(actions.addLocation, (state, { payload }) => {
+      const { genId } = state.analysis.locations;
+      state.analysis.locations = {
+        ...state.analysis.locations,
+        loc_map: {
+          ...state.analysis.locations.loc_map,
+          [genId]: { ...payload, id: genId },
         },
-      },
-    }))
-    .addCase(actions.removeLocation, (state, { payload }) => ({
-      ...state,
-      analysis: {
-        ...state.analysis,
-        locations: {
-          ...state.analysis.locations,
-          list: [
-            ...state.analysis.locations.list.filter(
-              ({ id }) => id !== payload.id
-            ),
-          ],
-        },
-      },
-    }))
-    .addCase(actions.setFormOpen, (state, { payload }) => ({
-      ...state,
-      analysis: {
-        ...state.analysis,
-        locations: {
-          ...state.analysis.locations,
-          formOpen: payload,
-        },
-      },
-    }))
+        isAdding: false,
+        genId: genId + 1,
+      };
+    })
+    .addCase(actions.setEditing, (state, { payload: { id, editing } }) => {
+      state.analysis.locations.loc_map[id].editing = editing;
+    })
+    .addCase(actions.setIsAdding, (state, { payload }) => {
+      state.analysis.locations.isAdding = payload;
+    })
+    .addCase(actions.editLocation, (state, { payload: { id, edit } }) => {
+      state.analysis.locations.loc_map[id] = edit;
+      state.analysis.locations.loc_map[id].editing = false;
+    })
+    .addCase(actions.renameLocation, (state, { payload: { id, rename } }) => {
+      state.analysis.locations.loc_map[id].label = rename;
+    })
+    .addCase(actions.removeLocation, (state, { payload }) => {
+      delete state.analysis.locations.loc_map[payload];
+    })
     // map
     .addCase(actions.setViewport, (state, { payload }) => ({
       ...state,
@@ -196,33 +202,21 @@ export default createReducer(initialState, (builder) => {
         bounds: payload,
       },
     }))
-    .addCase(actions.setIsDrawing, (state, { payload }) => ({
-      ...state,
-      map: {
-        ...state.map,
-        drawer: {
-          ...state.map.drawer,
-          isDrawing: payload,
-        },
-      },
-    }))
-    .addCase(actions.setDataDrawing, (state, { payload }) => ({
-      ...state,
-      map: {
-        ...state.map,
-        drawer: {
-          ...state.map.drawer,
-          data: payload,
-        },
-      },
-    }))
-    .addCase(actions.stopDrawing, (state) => ({
-      ...state,
-      map: {
-        ...state.map,
-        drawer: initialState.map.drawer,
-      },
-    }))
+    .addCase(actions.setIsDrawing, (state, { payload }) => {
+      state.map.drawer.isDrawing = payload;
+    })
+    .addCase(actions.setDataDrawing, (state, { payload }) => {
+      state.map.drawer.data = payload;
+    })
+    .addCase(actions.stopDrawing, (state) => {
+      state.map.drawer = initialState.map.drawer;
+    })
+    .addCase(actions.setIsGeoLocating, (state, { payload }) => {
+      state.map.geoLocator.isGeoLocating = payload;
+    })
+    .addCase(actions.setDataGeoLocator, (state, { payload }) => {
+      state.map.geoLocator.data = payload;
+    })
     .addCase(actions.setAreaOfInterest, (state, { payload }) => ({
       ...state,
       map: {
@@ -362,14 +356,15 @@ export default createReducer(initialState, (builder) => {
 
           // sorts layers if applies
           if (
+            // TODO: Fix layer sort based on resource watch ordering.
             applicationConfig &&
-            applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS] &&
-            applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS]
+            applicationConfig['rw'] &&
+            applicationConfig['rw']
               .layerOrder &&
             layers.length > 1
           ) {
             const { layerOrder } =
-              applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS];
+              applicationConfig['rw'];
             publishedLayers = sortLayers(publishedLayers, layerOrder);
           }
 

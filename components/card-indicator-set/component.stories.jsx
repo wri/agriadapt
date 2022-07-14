@@ -282,7 +282,7 @@ const commonConfig = {
   containerStyles: {
     padding: 50,
     backgroundImage:
-      "url('/static/images/components/layout/header-bg-texture.png'), linear-gradient(137.52deg, #c32d7b 0%, #0F4573 100%)",
+      "url('/images/components/layout/header-bg-texture.png'), linear-gradient(137.52deg, #c32d7b 0%, #0F4573 100%)",
   },
   theme: "primary",
 };

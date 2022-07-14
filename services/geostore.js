@@ -111,3 +111,20 @@ export const fetchCountryV2 = (iso) => {
     WRISerializer(data)
   );
 };
+
+/**
+ * Fetch country
+ * @param {String} iso Country Code
+ * @param {String} id GADM Admin Level 1 ID
+ * @returns {Object} Serialized Geostore Object
+ */
+export const fetchGADM1Geostore = (iso, id) => {
+  logger.info(`Fetch GADM Level 1 Boundary ${iso}${id}`);
+  return WRIAPI.get(`/v2/geostore/admin/${iso}/${id}`).then(({ data }) =>
+    WRISerializer(data)
+  ).catch((response) => {
+    const { status, statusText } = response;
+    logger.error(`Error fetching GADM Level 1 boundary ${iso}/${id}: ${status}: ${statusText}`);
+    throw new Error(`Error fetching GADM Level 1 boundary ${iso}/${id}: ${status}: ${statusText}`);
+  });
+};

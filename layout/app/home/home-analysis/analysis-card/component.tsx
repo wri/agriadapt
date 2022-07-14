@@ -1,6 +1,6 @@
 import loader from "lib/imageLoader";
 import Image from "next/image";
-import mapImage from 'public/static/images/components/layout/landing/analysis-map.png';
+import mapImage from 'public/images/components/layout/landing/analysis-map.png';
 
 const AnalysisCard = ({ title, button, image_alt }) => {
   return (

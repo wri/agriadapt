@@ -10,7 +10,7 @@ import {
   LegendItemTypes,
 } from "vizzuality-components";
 import { useErrorHandler } from "react-error-boundary";
-import type { ViewportProps } from "react-map-gl";
+// import type { ViewportProps } from "react-map-gl";
 
 // constants
 import {
@@ -60,7 +60,7 @@ export interface MapTypeWidgetProps
   isError: boolean;
   isInACollection?: boolean;
   bounds?: Bounds | null;
-  onFitBoundsChange: (viewport: ViewportProps) => void;
+  onFitBoundsChange: (viewport) => void;
 }
 
 const MapTypeWidget = ({
@@ -73,7 +73,6 @@ const MapTypeWidget = ({
   isWebshot = false,
   isFetching = false,
   isError = false,
-  isInACollection = false,
   bounds,
   onToggleShare,
   onFitBoundsChange,
@@ -85,18 +84,18 @@ const MapTypeWidget = ({
     ...mapWidgetInitialState,
     layerGroups,
   });
-  const [viewport, setViewport] = useState<ViewportProps>({
+  const [viewport, setViewport] = useState({
     ...DEFAULT_VIEWPORT,
     height: 400,
   });
   const [isInfoWidgetVisible, setInfoWidgetVisibility] = useState(false);
 
-  const handleViewport = useCallback((_viewport: ViewportProps) => {
+  const handleViewport = useCallback((_viewport) => {
     setViewport(_viewport);
   }, []);
 
   const handleFitBoundsChange = useCallback(
-    (_viewport: ViewportProps) => {
+    (_viewport) => {
       onFitBoundsChange(_viewport);
     },
     [onFitBoundsChange]
@@ -205,7 +204,7 @@ const MapTypeWidget = ({
             widget={widget}
             onToggleInfo={handleInfoToggle}
             onToggleShare={handleShareToggle}
-            isInACollection={isInACollection}
+            // isInACollection={isInACollection}
             isInfoVisible={isInfoWidgetVisible}
           />
         </div>

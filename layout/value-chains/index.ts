@@ -1,3 +1,5 @@
+import { connect } from "react-redux";
 import LayoutCrop from "./component";
+import { actions } from "./reducers";
 
-export default LayoutCrop;
+export default connect(null, actions)(LayoutCrop);

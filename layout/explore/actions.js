@@ -3,10 +3,11 @@ import { createThunkAction } from "redux-tools";
 import sortBy from "lodash/sortBy";
 
 // Constants
-import { EXPLORE_DATASETS_IDS } from "constants/app";
+import { GADM_COUNTIRES_DATASET_ID, GADM_COUNTRIES_SQL } from "constants/app";
 
 // Services
 import { fetchDatasets as fetchDatasetsService } from "services/dataset";
+import { fetchDatasetQuery as fetchDatasetQueryService } from "services/query";
 import { fetchInferredTags } from "services/graph";
 
 // Utils
@@ -24,18 +25,22 @@ export const setDatasetsTotal = createAction("EXPLORE/setDatasetsTotal");
 export const setDatasetsLimit = createAction("EXPLORE/setDatasetsLimit");
 export const setDatasetsMode = createAction("EXPLORE/setDatasetsMode");
 export const setSelectedDataset = createAction("EXPLORE/setSelectedDataset");
+export const setFilteredDatasets = createAction("EXPLORE/setFilteredDatasetsList");
+
+// COUNTRIES
+export const setCountryList = createAction("EXPLORE/setCountryList");
+export const setStateList = createAction("EXPLORE/setStateList");
 
 export const fetchDatasets = createThunkAction(
   "EXPLORE/fetchDatasets",
   () => (dispatch, getState) => {
     const { explore, common } = getState();
-
     const params = {
       language: common.locale,
-      includes: "layer,metadata,vocabulary,widget",
+      includes: "layer,metadata,vocabulary",
       sort: `${explore.sort.direction < 0 ? "-" : ""}${explore.sort.selected}`,
-      status: "saved",
-      published: true,
+      // status: "saved",
+      // published: true,
       // Search
       ...(explore.filters.search && { search: explore.filters.search }),
       // Page
@@ -48,17 +53,21 @@ export const fetchDatasets = createThunkAction(
     dispatch(setDatasetsLoading(true));
     dispatch(setDatasetsError(null));
 
-    return fetchDatasetsService(EXPLORE_DATASETS_IDS, params, {}, true)
+    return fetchDatasetsService(params, {}, true)
       .then((response) => {
         const { meta = {}, datasets } = response;
         dispatch(setDatasetsTotal(meta["total-items"] || 0));
         return datasets;
       })
       .then((data) => {
-        // Show only published layers
+        // Show only published layers and extract correct applicationConfig
         const datasets = data.map((d) => ({
           ...d,
-          layer: d.layer.filter((l) => l.published),
+          layer: d.layer.reduce((arr, l) => {
+            if (l.published)
+              arr.push({...l, applicationConfig: l.applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS]});
+              return arr
+          }, []),
         }));
 
         dispatch(setDatasetsLoading(false));
@@ -69,6 +78,23 @@ export const fetchDatasets = createThunkAction(
         dispatch(setDatasetsLoading(false));
         dispatch(setDatasetsError(err));
       });
+  }
+);
+
+// COUNTRIES
+export const fetchCountries = createThunkAction(
+  "EXPLORE/fetchCountries",
+  () => (dispatch) => {
+    return fetchDatasetQueryService(GADM_COUNTIRES_DATASET_ID, GADM_COUNTRIES_SQL)
+    .then(({ data: { data: countries } }) => {
+      dispatch(
+        setCountryList(
+          countries.map((c) => ({ label: c.name_0, value: c.iso })).sort(
+            (a, b) => (a.label < b.label ? -1 : a.label > b.label ? 1 : 0)
+          )
+        )
+      );
+    })
   }
 );
 
@@ -84,6 +110,8 @@ export const setAreaOfInterest = createAction(
 export const setIsDrawing = createAction("EXPLORE-MAP__DRAWER__SET-IS-DRAWING");
 export const setDataDrawing = createAction("EXPLORE-MAP__DRAWER__SET-DATA");
 export const stopDrawing = createAction("EXPLORE-MAP__DRAWER__STOP-DRAWING");
+export const setIsGeoLocating = createAction("EXPLORE-MAP__GEOLOCATOR__SET-IS-GEOLOCATING");
+export const setDataGeoLocator = createAction("EXPLORE-MAP__GEOLOCATOR__SET-DATA");
 export const setPreviewAoi = createAction("EXPLORE-MAP__PREVIEW__SET_AOI");
 
 // LAYERS
@@ -153,12 +181,14 @@ export const fetchMapLayerGroups = createThunkAction(
 );
 
 // FILTERS
+export const setFiltersSearch = createAction('EXPLORE/setFiltersSearch');
 export const setFiltersAdvancedOpen = createAction("EXPLORE/setFiltersAdvancedOpen");
 export const setFiltersValueChains = createAction("EXPLORE/setFiltersValueChains");
+export const setFiltersEmissionScenario = createAction("EXPLORE/setFiltersEmissionScenario");
+export const setFiltersTimescale = createAction("EXPLORE/setFiltersTimescale");
 
 // SORT
 export const setSortSelected = createAction("EXPLORE/setSortSelected");
-export const setSortDirection = createAction("EXPLORE/setSortDirection");
 export const setSortIsUserSelected = createAction(
   "EXPLORE/setSortIsUserSelected"
 );
@@ -182,8 +212,11 @@ export const resetTags = createAction("EXPLORE/resetTags");
 
 // ANALYSIS LOCATION
 export const addLocation = createAction("EXPLORE/addLocation");
+export const editLocation = createAction("EXPLORE/editLocation");
+export const renameLocation = createAction("EXPLORE/renameLocation");
 export const removeLocation = createAction("EXPLORE/removeLocation");
-export const setFormOpen = createAction("EXPLORE/setFormOpen");
+export const setEditing = createAction("EXPLORE/setEditing");
+export const setIsAdding = createAction("EXPLORE/setIsAdding");
 
 // Async actions
 export const fetchTags = createThunkAction(

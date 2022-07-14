@@ -5,6 +5,8 @@ import Image from 'next/image';
 import loader from 'lib/imageLoader';
 import Carousel from 'nuka-carousel';
 import { user_stories } from '../constants';
+import chevronLeft from 'public/images/icons/chevronLeft.svg'
+import chevronRight from 'public/images/icons/chevronRight.svg'
 
 const UserStories = ({ quotes }) => {
   const { header, stories } = user_stories;
@@ -45,7 +47,7 @@ const UserStories = ({ quotes }) => {
               '-primary': true,
             })}
           >
-            {'Find Out More in Our Map'}
+            {'Find Out More in the Map'}
           </button>
         </div>
       </div>
@@ -75,7 +77,7 @@ const UserStories = ({ quotes }) => {
                       width={'17px'}
                       loader={loader}
                       unoptimized
-                      src={user_stories.chevronLeft}
+                      src={chevronLeft}
                       alt={'left'}
                     />
                   </button>
@@ -87,7 +89,7 @@ const UserStories = ({ quotes }) => {
                       width={'17px'}
                       loader={loader}
                       unoptimized
-                      src={user_stories.chevronRight}
+                      src={chevronRight}
                       alt={'right'}
                     />
                   </button>

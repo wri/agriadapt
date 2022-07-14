@@ -1,4 +1,4 @@
-import { WRIAPI } from "utils/axios";
+import { WRIAPI } from 'utils/axios';
 
 /**
  * Send GET request to /query
@@ -10,16 +10,16 @@ import { WRIAPI } from "utils/axios";
 export const fetchQuery = (token, sql, params = {}) => {
   if (!token) {
     console.error(
-      "This is an authorized endpoint. A token need to be provided."
+      'This is an authorized endpoint. A token need to be provided.'
     );
     return null;
   }
   if (!sql) {
-    console.error("A SQL query is mandatory to perform this fetching.");
+    console.error('A SQL query is mandatory to perform this fetching.');
     return null;
   }
 
-  return WRIAPI.get("/v1/query", {
+  return WRIAPI.get('/v1/query', {
     headers: {
       ...WRIAPI.defaults.headers,
       Authorization: token,
@@ -38,4 +38,18 @@ export const fetchQuery = (token, sql, params = {}) => {
     });
 };
 
-export default { fetchQuery };
+export const fetchDatasetQuery = async (id, sql) => {
+  if (!id) return null;
+  if (!sql) return null;
+
+  return WRIAPI.get(`/v1/query/${id}`, {
+    params: { sql },
+  })
+    .then((response) => {
+      if (response.status === 200) return response;
+      throw response;
+    })
+    .catch((err) => {
+      throw err;
+    });
+};

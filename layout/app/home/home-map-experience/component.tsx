@@ -3,9 +3,9 @@ import { MAP } from '../constants';
 import { Media } from 'lib/media';
 import Image from 'next/image';
 import loader from 'lib/imageLoader';
-import mapImage from 'public/static/images/components/layout/landing/map.png';
-import layerPanelImage from 'public/static/images/components/layout/landing/layer-panel.png';
-import legendImage from 'public/static/images/components/layout/landing/legend.svg';
+import mapImage from 'public/images/components/layout/landing/map.png';
+import layerPanelImage from 'public/images/components/layout/landing/layer-panel.png';
+import legendImage from 'public/images/components/layout/landing/legend.svg';
 
 const MapContainerHome = () => {
   return (

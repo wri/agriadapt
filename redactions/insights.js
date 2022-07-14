@@ -13,9 +13,9 @@ const INSIGHTS_DATA = [
     source: {
       name: "Resource Watch",
       path: "http://www.resourcewatch.org/",
-      img: "/static/images/logo-no-text.svg",
+      img: "/images/logo-no-text.svg",
     },
-    background: "url(/static/tempImages/backgrounds/rw_welcome.jpg) top",
+    background: "url(/tempImages/backgrounds/rw_welcome.jpg) top",
     body: "",
   },
   {
@@ -27,10 +27,10 @@ const INSIGHTS_DATA = [
     source: {
       name: "Resource Watch",
       path: "http://www.resourcewatch.org/",
-      img: "/static/images/logo-no-text.svg",
+      img: "/images/logo-no-text.svg",
     },
     background:
-      "url(/static/tempImages/backgrounds/BLEACHED-American-Samoa-2-February-2015.jpg)",
+      "url(/tempImages/backgrounds/BLEACHED-American-Samoa-2-February-2015.jpg)",
     body: "",
   },
   {
@@ -41,9 +41,9 @@ const INSIGHTS_DATA = [
     source: {
       name: "Resource Watch",
       path: "http://www.resourcewatch.org/",
-      img: "/static/images/logo-no-text.svg",
+      img: "/images/logo-no-text.svg",
     },
-    background: "url(/static/tempImages/backgrounds/rw_powerwatch.jpg)",
+    background: "url(/tempImages/backgrounds/rw_powerwatch.jpg)",
     body: "",
   },
 ];

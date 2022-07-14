@@ -1,30 +1,60 @@
-import React, {useMemo} from 'react';
+import React from 'react';
 import IntroHeader from 'layout/intro-header';
-import HazardsFlow from './content/flow-diagram';
+import NavigationControls from './content/navigation-controls';
 import HazardsIntro from './content/hazards-intro';
-import StepDetails from './content/step-details/component';
-import ItemIntro from './content/item-intro';
+import StepDetails from './content/step-details';
 import UserStories from './content/user-stories';
 import Layout from 'layout/layout/layout-app';
-import { riceQuotes, coffeeQuotes, cottonQuotes } from './content/constants';
+import { useEffect } from 'react';
 
-const LayoutCrop = ({ header, details }) => {
-  const quotes = useMemo(() =>  { 
-    const valueChain = header?.title?.toLowerCase();
-    if (valueChain === 'rice') {
-      return riceQuotes;
-    } else if (valueChain === 'coffee') {
-      return coffeeQuotes;
-    } else if (valueChain === 'cotton') {
-      return cottonQuotes;
-    }
-  }, [header]);
+interface LayoutCropProps {
+  header: any;
+  countries: {
+    label: string;
+    value: string;
+    iso: string;
+  }[];
+  details: {
+    inputs: any;
+    production: any;
+    processing?: any;
+    trade: any;
+  };
+  quotes: Record<string, any>[];
+  crop: 'rice' | 'cotton' | 'coffee';
+  setActiveCrop: (crop: 'rice' | 'cotton' | 'coffee') => void;
+  setCountry: (country: Record<'label' | 'value' | 'iso', string>) => void;
+}
 
+const LayoutCrop = ({
+  header,
+  details,
+  countries,
+  crop,
+  quotes,
+  setActiveCrop,
+  setCountry,
+}: LayoutCropProps) => {
+  useEffect(() => {
+    setActiveCrop(crop);
+    if (['rice', 'cotton'].includes(crop))
+      setCountry({
+        label: 'India',
+        value: '45d0f6f887a18df373fa69c3eb6f13c7',
+        iso: 'IND',
+      });
+    else
+      setCountry({
+        label: 'Colombia',
+        value: '298fc2cf079fb1439a4ad816d258a965',
+        iso: 'COL',
+      });
+  }, [crop, setActiveCrop, setCountry]);
   return (
     // TODO: Translate
     <Layout title={'Value Chains'}>
       <div className="l-crop">
-        <IntroHeader {...header} />
+        <IntroHeader {...header} countries={countries} />
         <div className="l-container">
           <div className="row">
             <div className="column small-12">
@@ -39,18 +69,18 @@ const LayoutCrop = ({ header, details }) => {
         </div>
         <div className="l-container">
           <div className="row">
-            <HazardsFlow />
+            <NavigationControls details={details} />
           </div>
         </div>
-        <div className="l-container">
+        {/* <div className="l-container">
           <div className="row">
             <ItemIntro />
           </div>
-        </div>
+        </div> */}
         <div className="l-container">
           <div className="row">
             <div className="column small-12">
-              <StepDetails {...details} />
+              <StepDetails details={details} />
             </div>
           </div>
         </div>

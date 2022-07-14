@@ -12,7 +12,7 @@ export const fetchExploreConfig = () =>
 
     axios
       .get(
-        "https://raw.githubusercontent.com/resource-watch/resource-watch/develop/public/static/data/ExploreConfig.json"
+        "https://raw.githubusercontent.com/resource-watch/resource-watch/develop/public/data/ExploreConfig.json"
       )
       .then((response) => resolve(response.data))
       .catch((error) =>
@@ -31,7 +31,7 @@ export const fetchCountryPowerExplorerConfig = () =>
 
     axios
       .get(
-        "https://raw.githubusercontent.com/resource-watch/resource-watch/develop/public/static/data/CountryEnergyExplorer.json"
+        "https://raw.githubusercontent.com/resource-watch/resource-watch/develop/public/data/CountryEnergyExplorer.json"
       )
       .then((response) => resolve(response.data))
       .catch((error) =>

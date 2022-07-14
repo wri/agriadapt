@@ -1,11 +1,10 @@
-import WRISerializer from "wri-json-api-serializer";
+import WRISerializer from 'wri-json-api-serializer';
 
 // utils
-import { WRIAPI } from "utils/axios";
-import { logger } from "utils/logs";
+import { WRIAPI } from 'utils/axios';
+import { logger } from 'utils/logs';
 
 // API docs: https://resource-watch.github.io/doc-api/index-rw.html#dataset
-
 /**
  * Fetchs datasets according to params.
  * Check out the API docs for this endpoint {@link https://resource-watch.github.io/doc-api/index-rw.html#getting-all-datasets|here}
@@ -15,17 +14,17 @@ import { logger } from "utils/logs";
  * be included in the response or not.
  * @returns {Array} Array of serialized datasets.
  */
-export const fetchDatasets = (ids = [], params = {}, headers = {}, _meta = false) => {
+export const fetchDatasets = (params = {}, headers = {}, _meta = false) => {
   const newParams = {
     env: process.env.NEXT_PUBLIC_API_ENV,
     application: process.env.NEXT_PUBLIC_APPLICATIONS,
     ...params,
   };
-  const config = {
+  return WRIAPI.get('/v1/dataset', {
     headers: {
       ...WRIAPI.defaults.headers,
       // TO-DO: forces the API to not cache, this should be removed at some point
-      "Upgrade-Insecure-Requests": 1,
+      'Upgrade-Insecure-Requests': 1,
       ...headers,
     },
     params: newParams,
@@ -36,21 +35,13 @@ export const fetchDatasets = (ids = [], params = {}, headers = {}, _meta = false
         meta,
       })
     ),
-  }
-
-  const request = () => {
-    return ids.length
-      ? WRIAPI.post('/v1/dataset/find-by-ids', { ids: ids }, config)
-      : WRIAPI.get('/v1/dataset', config);
-  };
-
-  return request()
+  })
     .then((response) => {
       const { status, statusText, data } = response;
       const { datasets, meta } = data;
 
       if (status >= 300) {
-        logger.error("Error fetching datasets:", `${status}: ${statusText}`);
+        logger.error('Error fetching datasets:', `${status}: ${statusText}`);
         throw new Error(statusText);
       }
 
@@ -79,14 +70,14 @@ export const fetchDatasets = (ids = [], params = {}, headers = {}, _meta = false
  * @returns {Object} serialized specified dataset.
  */
 export const fetchDataset = (id, params = {}) => {
-  if (!id) throw Error("dataset id is mandatory to perform this fetching.");
+  if (!id) throw Error('dataset id is mandatory to perform this fetching.');
   logger.info(`Fetch dataset: ${id}`);
 
   return WRIAPI.get(`/v1/dataset/${id}`, {
     headers: {
       ...WRIAPI.defaults.headers,
       // TO-DO: forces the API to not cache, this should be removed at some point
-      "Upgrade-Insecure-Requests": 1,
+      'Upgrade-Insecure-Requests': 1,
     },
     params: {
       env: process.env.NEXT_PUBLIC_API_ENV,
@@ -126,7 +117,7 @@ export const fetchDataset = (id, params = {}) => {
 export const fetchDatasetTags = (datasetId, params = {}) => {
   logger.info(`Fetch dataset tags: ${datasetId}`);
   return WRIAPI.get(`/v1/dataset/${datasetId}/vocabulary`, {
-    headers: { "Upgrade-Insecure-Requests": 1 },
+    headers: { 'Upgrade-Insecure-Requests': 1 },
     params: {
       env: process.env.NEXT_PUBLIC_API_ENV,
       ...params,
@@ -193,10 +184,10 @@ export const deleteDataset = (id, token) => {
  * @returns {Object}
  */
 export const createDataset = (token, params = {}, headers) => {
-  logger.info("Create dataset");
+  logger.info('Create dataset');
 
   return WRIAPI.post(
-    "/v1/dataset",
+    '/v1/dataset',
     {
       env: process.env.NEXT_PUBLIC_API_ENV,
       ...params,

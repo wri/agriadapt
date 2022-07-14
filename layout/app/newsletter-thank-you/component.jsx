@@ -62,7 +62,7 @@ export default function LayoutNewsletterThankYou() {
             <div className="column small-12">
               <Banner
                 className="-text-center"
-                bgImage="/static/images/backgrounds/partners-02@2x.jpg"
+                bgImage="/images/backgrounds/partners-02@2x.jpg"
               >
                 <p className="-claim">
                   Let&rsquo;s build a more sustainable
