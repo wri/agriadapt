@@ -33,7 +33,7 @@ const NavigationControls = ({
             key={key}
             className={classnames({
               'c-chain-item': true,
-              '-active': key === activeItem,
+              '-inactive': key !== activeItem,
             })}
           >
             <FlowButton

@@ -5,4 +5,5 @@ import AnalysisTable from './component';
 export default connect((state: RootState) => ({
   ...state.explore.analysis.locations,
   ...state.explore.map,
+  ...state.explore.filters,
 }))(AnalysisTable);

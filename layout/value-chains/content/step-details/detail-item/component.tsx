@@ -2,6 +2,7 @@ import classnames from 'classnames';
 import Icon from 'components/ui/icon';
 import TextChart from 'components/widgets/charts/v2/TextChart';
 import WidgetBlock from 'components/wysiwyg/widget-block';
+import { capitalizeFirstLetter } from 'utils/utils';
 
 interface DetailItemProps {
   label: {
@@ -10,21 +11,30 @@ interface DetailItemProps {
   };
   info: string | ((string: string) => string);
   widgets?: { id: string; fullWidth?: boolean }[];
-  country: { label: string; value: string };
+  country: { label: string; value: string; iso: string };
   analysis?: {
-    query: string;
-    type: string;
-    name: string | ((string: string) => string);
+    query: (params: Record<string, string | number>) => string;
+    dataset: string;
+    type?: string;
+    name: string | ((params: Record<string, string | number>) => string);
   };
+  crop: 'rice' | 'cotton' | 'coffee';
 }
 
 const DetailItem = ({
   label: { icon, label },
   info,
   widgets = [],
-  country,
+  country = null,
   analysis = null,
+  crop = 'rice',
 }: DetailItemProps) => {
+  const params = {
+    crop: capitalizeFirstLetter(crop),
+    country: country?.label || 'India',
+    year: 2020,
+    iso: country?.iso || 'IND',
+  }
   return (
     <>
       <div className="c-detail-item">
@@ -79,7 +89,16 @@ const DetailItem = ({
         ))}
         {analysis && (
           <div className="c-widget">
-            <TextChart value={20.2} name={analysis.name} type={analysis.type} />
+            <TextChart
+              analysis={analysis}
+              query={analysis.query(params)}
+              name={
+                typeof analysis.name === 'function'
+                  ? analysis.name(params)
+                  : analysis.name
+              }
+              type={analysis.type}
+            />
           </div>
         )}
       </div>

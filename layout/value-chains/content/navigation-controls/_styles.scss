@@ -12,9 +12,16 @@
     @media screen and (min-width: map-get($breakpoints, large)) {
         margin: 0 auto;
     }
+    .c-chain-item {
+        &.-inactive {
+            .c-step-item {
+                opacity: 0.5;
+            }
+        }
+    }
+
     .c-flow-step {
         position: relative;
-        
         &:hover {
             cursor: pointer;
         }
@@ -45,6 +52,7 @@
     }
 
     .c-step-item {
+        opacity: 1;
         display: flex;
         align-items: center;
         margin: 12px;

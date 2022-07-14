@@ -1,3 +1,5 @@
+import { capitalizeFirstLetter } from "utils/utils";
+
 const inputs = {
   land_suitability: {
     info: 'Rice cultivation is highly vulnerable to climate fluctuations. Explore the visualizations below to learn more about how land suitability for rice production may change in the future due to climate change.',
@@ -25,7 +27,7 @@ const production = {
       { id: 'fb28562b-be9c-4630-b3a3-1440dd1e1bf9' },
     ], // TODO: These ID's are from separate cells on the Google sheets
     // TODO: Additional Callout
-    analysis: true,
+    analysis: false,
   },
   production: {
     info: 'Studies suggest that changes in rainfall patterns and distribution could lead to substantial impacts on land and water resources for rice production.',
@@ -38,7 +40,7 @@ const production = {
       { id: 'c98ace8b-0e9d-44e6-91ff-8dafec5a75cb' },
       { id: '5c601744-1e1a-4164-b6af-7830357c2947' },
     ], // TODO: Additional Callout
-    analysis: true,
+    analysis: false,
   },
 };
 
@@ -48,12 +50,34 @@ const trade = {
   policies_and_price: {
     info: 'The Nominal Rate of Protection measures the extent to which agricultural policies affect the market price of a commodity. It computes the difference between the price a farmer receives versus the price a farmer would receive without these policies in place.',
     // TODO: Additional Callout
-    analysis: true,
+    analysis: {
+      dataset: '641c0a35-f2e5-4198-8ed9-576ea7e9685a',
+      query: ({ iso }: { iso: string }) =>
+        `select nrp as x from data where countrycode='${iso}' order by year desc limit 1`,
+      format: '0.00',
+      name: ({
+        crop,
+        country,
+      }: {
+        crop: 'rice' | 'cotton' | 'coffee';
+        country: string;
+      }) =>
+        `Nominal rate of protection, ${capitalizeFirstLetter(
+          crop
+        )} in ${country} in 2018`,
+    },
   },
   food_vulnerability: {
     info: 'The Food Vulnerability Score shows a country’s vulnerability to climate change on a scale of 0 to 1. Lower scores indicate that countries that are less vulnerable. The Food score incorporates six indicators (projected change of cereal yields, projected population growth, food import dependency, rural population, agricultural capacity, and child malnutrition) to capture its vulnerability with regard to food production and demand, nutrition, and rural population.',
     // TODO: Additional Callout
-    analysis: true,
+    analysis: {
+      dataset: '7e98607d-23d8-42f8-9662-5658f349bf0f',
+      query: ({ country }: { country: string }) =>
+        `select cri_score / 100 as x from data where country='${country}'`,
+      format: '0.00',
+      // type: 'Total',
+      name: `Food vulnerability score in 2018`,
+    },
   },
   export_and_import: {
     info: 'The rice market is highly exposed to climate change. Climate change not only creates risks for producing countries but also transmits those risks through agricultural commodity trade to consumers of all kinds, and can do so over significant distances.',

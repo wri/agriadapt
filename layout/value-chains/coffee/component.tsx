@@ -4,7 +4,7 @@ import { ValueChainPageProps } from 'types/value-chain';
 import details from './constants';
 
 const LayoutCoffee = ({ countries }: ValueChainPageProps) => {
-  return <LayoutCrop header={COFFEE} details={details} countries={countries} />;
+  return <LayoutCrop crop='coffee' header={COFFEE} details={details} countries={countries} />;
 };
 
 export default LayoutCoffee;

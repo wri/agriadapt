@@ -19,7 +19,7 @@ const production = {
       { id: 'ef4cc300-9d92-492a-9252-457a1964a5d1' },
     ],
     // TODO: Additional Callout
-    analysis: true,
+    analysis: false,
   },
   pests_and_disease: {
     info: 'The coffee berry borer and coffee leaf rust are the most threatening pest and disease to the health of coffee trees. In general, increased temperatures will increase the spread of pests and diseases in coffee trees. However, projected decreased rainfall in certain regions may decrease the spread of pest and disease.',

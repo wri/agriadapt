@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
     country: null,
+    crop: 'rice',
     activeItem: 'inputs',
 }
 
@@ -11,6 +12,9 @@ export const slice = createSlice({
     reducers: {
         setCountry: (state, { payload }) => {
             state.country = payload;
+        },
+        setActiveCrop: (state, { payload }) => {
+            state.crop = payload;
         },
         setActiveItem: (state, { payload }) => {
             state.activeItem = payload;

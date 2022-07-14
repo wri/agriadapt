@@ -7,12 +7,12 @@ import { chartData as barChart } from "components/widgets/charts/v2/test-bar-cha
 const AnalysisVisuals = () => {
   return (
     <div className="c-analysis-visuals">
-      <PieChart widgetConfig={chartData} />
+      {/* <PieChart widgetConfig={chartData} />
       <PieChart widgetConfig={chartData2} />
       <PieChart widgetConfig={barChart} />
       <TextChart />
       <TextChart />
-      <TextChart />
+      <TextChart /> */}
     </div>
   );
 };

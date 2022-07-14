@@ -12,7 +12,7 @@ import { APILayerSpec } from 'types/layer';
 import { toGeoJSON } from 'utils/locations/geojson';
 import { createColorValueMap, legendConfigItem } from 'utils/layers/symbolizer';
 
-const AnalysisTable = ({ loc_map: locations, layerGroups }) => {
+const AnalysisTable = ({ loc_map: locations, layerGroups, emission_scenario }) => {
   const isEmbed = false;
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -87,7 +87,7 @@ const AnalysisTable = ({ loc_map: locations, layerGroups }) => {
     if (valueMap && output.type === 'string') result = valueMap[val];
 
     if (output.type === 'number') {
-      const places = output.format.split('.')[1].length;
+      const places = output.format?.split('.')[1].length || 2;
       result = val.toFixed(places);
     }
 
@@ -103,9 +103,13 @@ const AnalysisTable = ({ loc_map: locations, layerGroups }) => {
           name: d.label,
           attributes: d.data.reduce(
             (arr: string[], { interaction = {}, output, valueMap }) => {
-              const colArr = output?.path.split('.') || [];
-              const val =
-                colArr.reduce((acc, c) => acc[c], interaction);
+              let val: number;
+              if (Array.isArray(output?.path))
+                val = emission_scenario === 'rcp4.5' ? interaction['rcp45'] : interaction['rcp85'];
+              else {
+                const colArr = output?.path.split('.') || [];
+                val = colArr.reduce((acc, c) => acc[c], interaction);
+              }
               arr.push(formatValue(val, output, valueMap));
               return arr;
             },
