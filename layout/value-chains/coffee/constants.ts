@@ -35,7 +35,8 @@ const production = {
 const trade = {
   export_and_import: {
     info: 'Coffee is one of the most important commercially traded commodities in the international market, as well as the most popular beverage around the world. ',
-    widgets: [{ id: '96622815-7e6b-4d15-97cc-3ca3bc1a5c98' }],
+    // TODO: Custom widget
+    // widgets: [{ id: '96622815-7e6b-4d15-97cc-3ca3bc1a5c98' }],
     // TODO: Additional Graphical Visual
   },
 };
