@@ -26,9 +26,14 @@ const production = {
   change_in_yield: {
     info: 'The vast majority of climate change impacts on rice production result from variations in temperature and rainfall that lead to flooding, water  scarcity, and increases in pests, diseases, and weeds. Despite significant uncertainty in predicted future climate conditions, it is important to measure the potential effects of climate change on global rice production as these insights can identify areas that are vulnerable to climate change and inform the development of adaptation strategies. Considering changes in rice yields is also valuable for ensuring future food security under the pressures of an increasing population and a growing rice demand.',
     widgets: [
-      { id: '3118a9fb-e5fd-4dac-814b-be8a901140ef', fullWidth: true },
-      { id: 'fb28562b-be9c-4630-b3a3-1440dd1e1bf9' },
-    ], // TODO: These ID's are from separate cells on the Google sheets
+      // Make embed/map-swipe
+      {
+        id: (country: string) =>
+          ['India', 'Colombia'].includes(country)
+            ? '3118a9fb-e5fd-4dac-814b-be8a901140ef'
+            : 'fb28562b-be9c-4630-b3a3-1440dd1e1bf9',
+      },
+    ],
     // TODO: Additional Callout
     analysis: false,
   },
@@ -41,7 +46,7 @@ const production = {
       `Explore our data visualizations to better understand where the main rice growing regions in ${country} are and how much rice is currently produced.`,
     widgets: [
       { id: 'c98ace8b-0e9d-44e6-91ff-8dafec5a75cb' },
-      { id: '5c601744-1e1a-4164-b6af-7830357c2947' },
+      { id: '5c601744-1e1a-4164-b6af-7830357c2947', fullWidth: true },
     ], // TODO: Additional Callout
     analysis: false,
   },

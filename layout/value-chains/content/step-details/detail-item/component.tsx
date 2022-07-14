@@ -10,7 +10,10 @@ interface DetailItemProps {
     label: string;
   };
   info: string | ((string: string) => string);
-  widgets?: { id: string; fullWidth?: boolean }[];
+  widgets?: {
+    id: string | ((country: string) => string);
+    fullWidth?: boolean;
+  }[];
   country: { label: string; value: string; iso: string };
   analysis?: {
     query: (params: Record<string, string | number>) => string;
@@ -80,7 +83,7 @@ const DetailItem = ({
               })}
             >
               <WidgetBlock
-                widgetId={w.id}
+                widgetId={typeof w.id === 'function' ? w.id(country.label) : w.id}
                 {...(country && { areaOfInterest: country.value })}
               />
             </div>
