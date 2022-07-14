@@ -23,12 +23,17 @@ const production = {
       `Explore our data visualizations to better understand where the main cotton growing regions in ${country} are and how much cotton is currently produced.`,
     widgets: [{ id: '8cf03ba0-a517-4a43-b5b4-e677ccc6099c' }],
     //TODO: Additional Callout - Unable to query dataset for information
-    analysis: {
-      query: null,
-      type: 'Total',
-      name: (crop: string, country: string, year: number) =>
-        `${crop} production in ${country} in ${year}`,
-    },
+    // analysis: {
+    //   query: null,
+    //   type: 'Total',
+    //   name: ({
+    //     crop,
+    //     country,
+    //   }: {
+    //     crop: string;
+    //     country: string;
+    //   }) => `${crop} production in ${country} in 2010`,
+    // },
   },
   pests_and_disease: {
     info: 'Changes to climate can result in the continuous evolution of pests, making them harder to contain, which can significantly influence yield and quality. Suitable temperature, humidity, low rainfall, low wind speed, suitable sunshine time and low evaporation are more likely to cause cotton pests and diseases. (Xiao, Q., Li, W., Kai, Y. et al.)',
