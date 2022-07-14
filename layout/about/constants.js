@@ -19,16 +19,16 @@ const acknowledgements = {
     ],
   },
 
-  committee_members: {
-    subheader: 'Technical Advisory Committee Members',
-    content: [
-      {
-        name: 'United Nations Food and Agriculture Organization',
-        href: 'https://www.fao.org/home/en',
-      },
-      { name: 'World Food Programme', href: 'https://www.wfp.org/' },
-    ],
-  },
+  // committee_members: {
+  //   subheader: 'Technical Advisory Committee Members',
+  //   content: [
+  //     {
+  //       name: 'United Nations Food and Agriculture Organization',
+  //       href: 'https://www.fao.org/home/en',
+  //     },
+  //     { name: 'World Food Programme', href: 'https://www.wfp.org/' },
+  //   ],
+  // },
 
   funders: {
     header: 'Our Funders',
