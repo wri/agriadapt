@@ -4,6 +4,7 @@ export interface AnalysisLocation {
   type: 'point' | 'admin' | 'address' | 'current';
   country?: string;
   state?: { label: string; value: string };
+  iso: string;
   address: string;
   longitude?: number;
   latitude?: number;

@@ -21,6 +21,7 @@
     "bitly": "^7.1.2",
     "brace": "^0.10.0",
     "classnames": "^2.2.5",
+    "i18n-iso-countries": "^7.5.0",
     "mapbox-gl": "^2.7.0",
     "next": "12.0.7",
     "next-redux-wrapper": "^7.0.2",

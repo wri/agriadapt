@@ -2,6 +2,7 @@ import Field from 'components/form/Field';
 import { EXPLORE_ANALYSIS } from '../constants';
 import Select from 'react-select';
 import useInput from 'hooks/form/useInput';
+import i18nIso from 'i18n-iso-countries';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { fetchDatasetQuery } from 'services/query';
 import { GADM_ADMONE_DATSET_ID, GADM_ADMONE_SQL } from 'constants/app';
@@ -10,6 +11,7 @@ import { fetchGADM1Geostore } from 'services/geostore';
 import { AnalysisLocation } from 'types/analysis';
 import { getUserPosition } from 'utils/locations/user-position';
 import { forwardGeocode, reverseGeocode } from 'services/geocoder';
+import isoJSON from "i18n-iso-countries/langs/en.json";
 
 const ExploreAnalysisLocationEditor = ({
   countries,
@@ -33,6 +35,7 @@ const ExploreAnalysisLocationEditor = ({
   const locationType = useInput(current.type || 'point');
   const address = useSelect(current.address);
   const country = useSelect(current.country);
+  const [iso, setIso] = useState(current.iso);
   const [selectedState, setSelectedState] = useState(current.state);
   const [geo, setGeo] = useState(current.geo);
   const [autocompleteResults, setAutocompleteResults] = useState<{value: string; label: string; lngLat: Record<string, number>}[]>([]);
@@ -41,6 +44,11 @@ const ExploreAnalysisLocationEditor = ({
 
   const [statesList, setStatesList] = useState([]);
   const [statesLoading, setStatesLoading] = useState(false);
+
+  /* Register locales */
+  useEffect(() => {
+    i18nIso.registerLocale(isoJSON);
+  }, []);
 
   /* Side effect for switching to point or geocoded address location */
   useEffect(() => {
@@ -85,11 +93,14 @@ const ExploreAnalysisLocationEditor = ({
         ? geoLocatorData
         : null;
     if (data) {
-      reverseGeocode(Object.values(data)).then((result) => {
-        if (result) setGeoLabel(result.place_name);
+      reverseGeocode(Object.values(data)).then((results) => {
+        if (results) {
+          setGeoLabel(results[0].place_name);
+          setIso(i18nIso.getAlpha3Code(results.at(-1).place_name, 'en'));
+        };
       });
     }
-  }, [geoLocatorData, locationType.value, pointData]);
+  }, [countries, geoLocatorData, locationType.value, pointData]);
 
   const createLabel = useCallback(() => {
     const accuracy = 4;
@@ -143,6 +154,7 @@ const ExploreAnalysisLocationEditor = ({
       id,
       label: label || createLabel(),
       type: locationType.value,
+      iso,
       ...(locationType.value === 'admin' && {
         country: country.value,
         state: selectedState,
@@ -209,9 +221,10 @@ const ExploreAnalysisLocationEditor = ({
     if (val.trim().length)
       forwardGeocode(val).then((results) => {
         setAutocompleteResults(
-          results.map(({ id, place_name, geometry: { coordinates } }) => ({
+          results.map(({ id, place_name, context, geometry: { coordinates } }) => ({
             value: id,
             label: place_name,
+            country: context?.at(-1).text,
             lngLat: { lng: coordinates[0], lat: coordinates[1] },
           }))
         );
@@ -222,8 +235,9 @@ const ExploreAnalysisLocationEditor = ({
   };
 
   /* Event handler for selecting a geocoded address */
-  const handleSelectAddr = (val: { lngLat: number[] }) => {
+  const handleSelectAddr = (val: { country: string, lngLat: number[] }) => {
     address.onChange(val);
+    setIso(i18nIso.getAlpha3Code(val.country, 'en'));
     setDataDrawing(val.lngLat);
   };
 

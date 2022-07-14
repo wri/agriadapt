@@ -12,10 +12,7 @@ import { APILayerSpec } from 'types/layer';
 import { toGeoJSON } from 'utils/locations/geojson';
 import { createColorValueMap, legendConfigItem } from 'utils/layers/symbolizer';
 
-const AnalysisTable = ({
-  loc_map: locations,
-  layerGroups,
-}) => {
+const AnalysisTable = ({ loc_map: locations, layerGroups }) => {
   const isEmbed = false;
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -27,12 +24,12 @@ const AnalysisTable = ({
           g.layers.reduce((arr, l: APILayerSpec) => {
             if (!l.active) return arr;
             const legendItems = l.legendConfig.items as legendConfigItem[];
-            // TODO: Remove app config template once no longer testing
             const appConfig = l.applicationConfig;
             arr.push({
               ...appConfig,
               label: l.name,
               dataset: l.dataset,
+              year: l.layerConfig.order,
               ...(l.layerConfig.type == 'raster' && {
                 valueMap: createColorValueMap(
                   l.layerConfig.body.sldValue,
@@ -56,13 +53,14 @@ const AnalysisTable = ({
     setLoading(true);
     Promise.all(
       Object.values(locations).map((l: AnalysisLocation) => {
-        const geo = {
+        const params = {
           geojson: encodeURIComponent(JSON.stringify(toGeoJSON(l))),
+          iso: l.iso,
         };
 
         return Promise.allSettled(
-          interactions.map(({ dataset, query, output, valueMap }) => {
-            const encoded = replace(query, geo);
+          interactions.map(({ dataset, query, output, valueMap, year }) => {
+            const encoded = replace(query, { ...params, year });
             return fetchDatasetQuery(dataset, encoded)
               .then(({ data }) => {
                 return {
@@ -100,8 +98,8 @@ const AnalysisTable = ({
       result = val.toFixed(places);
     }
 
-    if (output.prefix) result = `${output.prefix}${result}`;
-    if (output.suffix) result = `${result}${output.suffix}`;
+    if (output['prefix?']) result = `${output['prefix?']}${result}`;
+    if (output['suffix?']) result = `${result}${output['suffix?']}`;
     return result;
   };
 
