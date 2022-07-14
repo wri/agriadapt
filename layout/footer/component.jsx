@@ -2,6 +2,10 @@
 import FooterLinks from "./footer-links";
 import Link from "next/link";
 import { Media } from "lib/media";
+import Image from "next/image";
+import wriLogo from 'public/images/wri-logo.svg';
+import loader from 'lib/imageLoader';
+
 export default function Footer() {
   return (
     <footer className="l-footer">
@@ -20,7 +24,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noreferrer noopener"
                   >
-                    <img src="images/wri-logo.svg" alt="WRI logo" />
+                    <Image src={wriLogo} loader={loader} alt="WRI logo" />
                   </a>
                 </div>
                 <div className="footer-item">
