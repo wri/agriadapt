@@ -31,7 +31,6 @@ export const item_labels = {
   export_and_import: { label: 'Export & Import', icon: 'icon-labor' },
 }
 
-
 export const chain_items = {
   inputs: {
     label: { text: 'Inputs', icon: 'icon-inputs' },
@@ -56,16 +55,16 @@ export const chain_items = {
   },
 };
 
-export const intros = {
-  inputs: {
-    header: 'Do we need an inputs intro?',
-    description:
-      'Lörem ipsum koldioxidbanta flitbonus pamäbel då vimiren pasamma. Exogisk höbelt, i preplastisk. Nys ultravigisk us emedan äd sisat. Lasat inat morotsmobb har påprest misade. Vass popregt. ',
-  },
-  production: {},
-  processing: {},
-  trade: {},
-};
+// export const intros = {
+//   inputs: {
+//     header: 'Do we need an inputs intro?',
+//     description:
+//       'Lörem ipsum koldioxidbanta flitbonus pamäbel då vimiren pasamma. Exogisk höbelt, i preplastisk. Nys ultravigisk us emedan äd sisat. Lasat inat morotsmobb har påprest misade. Vass popregt. ',
+//   },
+//   production: {},
+//   processing: {},
+//   trade: {},
+// };
 
 export const chains = {
   COFFEE: {},
@@ -73,7 +72,7 @@ export const chains = {
 };
 
 export const user_stories = {
-  header: 'Applicable Header e.g. “Hear From...”',
+  header: 'Hear from Our Users',
   stories: [
     {
       person: 'Daniel',
@@ -83,3 +82,4 @@ export const user_stories = {
     },
   ],
 };
+

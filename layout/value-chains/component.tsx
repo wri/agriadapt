@@ -1,8 +1,8 @@
+import React from 'react';
 import IntroHeader from 'layout/intro-header';
 import NavigationControls from './content/navigation-controls';
 import HazardsIntro from './content/hazards-intro';
 import StepDetails from './content/step-details';
-import ItemIntro from './content/item-intro';
 import UserStories from './content/user-stories';
 import Layout from 'layout/layout/layout-app';
 import { useEffect } from 'react';
@@ -20,6 +20,7 @@ interface LayoutCropProps {
     processing?: any;
     trade: any;
   };
+  quotes: Record<string, any>[];
   crop: 'rice' | 'cotton' | 'coffee';
   setActiveCrop: (crop: 'rice' | 'cotton' | 'coffee') => void;
   setCountry: (country: Record<'label' | 'value' | 'iso', string>) => void;
@@ -30,6 +31,7 @@ const LayoutCrop = ({
   details,
   countries,
   crop,
+  quotes,
   setActiveCrop,
   setCountry,
 }: LayoutCropProps) => {
@@ -56,7 +58,7 @@ const LayoutCrop = ({
         <div className="l-container">
           <div className="row">
             <div className="column small-12">
-              <UserStories />
+              <UserStories quotes={quotes} />
             </div>
           </div>
         </div>

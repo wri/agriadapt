@@ -1,3 +1,6 @@
+import rice1 from 'public/images/quotes/rice1.png'
+import rice2 from 'public/images/quotes/rice2.png'
+import rice3 from 'public/images/quotes/rice3.png'
 import { capitalizeFirstLetter } from "utils/utils";
 
 const inputs = {
@@ -84,6 +87,28 @@ const trade = {
     // TODO: Additional Graphical Visual
   },
 };
+
+export const quotes = [
+  {
+    location: 'Chengalpet Dt, Tamilnadu',
+    image: rice1,
+    title: 'Mr. V. Prabhu',
+    quote: 'Climate hazards left us in bankruptcy and led us to close down many rice mill units. With the information in this platform, however, I now understand how climate change is affecting the business and can better decide upon our operational plan and make the appropriate investments to prevent future climate risks.'
+  },
+  {
+    location: 'Coimbatore, Tamilnadu, India',
+    image: rice2,
+    title: 'Asst Prof',
+    quote: 'The Climate Risk Tool will help us to provide all stakeholders in the paddy value chain with the appropriate climate information they need to prepare against possible climate hazards'
+  },
+  {
+    location: 'Kanchipuram Dt, Tamilnadu, India',
+    image: rice3,
+    title: 'Ricemill Owner Association',
+    quote: 'An abnormal rise in temperature and unprecedented rainfall has drastically changed the processing methods of rice over the years, but the policies for rice mill units under small scale industry remain unchanged. With this new climate risk data, we hope to influence decision makers and adjust the policies on subsidies to support small scale workers in a shifting climate.'
+  },
+];
+
 
 const details = { inputs, production, trade };
 

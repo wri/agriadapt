@@ -1,3 +1,6 @@
+import coffee1 from 'public/images/quotes/coffee1.png'
+import coffee2 from 'public/images/quotes/coffee2.png'
+
 const inputs = {
   land_suitability: {
     info: 'Coffee arabica production is highly sensitive to climate change. Significant reductions in climate suitability are expected for most coffee growing regions.',
@@ -42,5 +45,20 @@ const trade = {
 };
 
 const details = { inputs, production, trade };
+
+export const quotes = [
+  {
+    location: 'Risaralda, Colombia',
+    image: coffee1,
+    title: 'Producer, Asociación Asocafé Tatamá',
+    quote: 'The CRT helps producers obtain the climate risk maps that are required by coffee certifications.'
+  },
+  {
+    location: 'Bolivar, Colombia',
+    image: coffee2,
+    title: 'Coffee association representative, Asociación De Jóvenes Cafeteros De Ciudad Bolivar',
+    quote: 'The tool would help coffee associations to revise the climatic risk in their lands.'
+  },
+]
 
 export default details;
