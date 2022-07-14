@@ -1,40 +1,49 @@
 import classnames from 'classnames';
 import Icon from 'components/ui/icon';
 import WidgetHeader from 'components/widgets/header';
-import { replace } from "layer-manager";
+import { replace } from 'layer-manager';
 import { useEffect, useMemo, useState } from 'react';
 import { AnalysisLocation } from 'types/analysis';
 import AnalysisDropdownMenu from '../dropdown-menu/component';
-import Spinner from "components/ui/Spinner";
+import Spinner from 'components/ui/Spinner';
 import { fetchDatasetQuery } from 'services/query';
 import { APILayerSpec } from 'types/layer';
 // import { appConfigs } from 'constants/app-config-template';
 import { toGeoJSON } from 'utils/locations/geojson';
 import { createColorValueMap, legendConfigItem } from 'utils/layers/symbolizer';
 
-const AnalysisTable = ({ loc_map: locations, layerGroups, emission_scenario }) => {
+const AnalysisTable = ({
+  loc_map: locations,
+  layerGroups,
+}) => {
   const isEmbed = false;
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const interactions = useMemo(
     () =>
-      [].concat(...layerGroups.map((g) =>
-        g.layers.reduce((arr, l: APILayerSpec) => {
-          if (!l.active)
+      [].concat(
+        ...layerGroups.map((g) =>
+          g.layers.reduce((arr, l: APILayerSpec) => {
+            if (!l.active) return arr;
+            const legendItems = l.legendConfig.items as legendConfigItem[];
+            // TODO: Remove app config template once no longer testing
+            const appConfig = l.applicationConfig;
+            arr.push({
+              ...appConfig,
+              label: l.name,
+              dataset: l.dataset,
+              ...(l.layerConfig.type == 'raster' && {
+                valueMap: createColorValueMap(
+                  l.layerConfig.body.sldValue,
+                  legendItems
+                ),
+              }),
+            });
             return arr;
-          const legendItems = l.legendConfig.items as legendConfigItem[];
-          // TODO: Remove app config template once no longer testing
-          const appConfig = l.applicationConfig;
-          arr.push({
-            ...appConfig,
-            label: l.name,
-            dataset: l.dataset,
-            ...(l.layerConfig.type == 'raster' && { valueMap: createColorValueMap(l.layerConfig.body.sldValue, legendItems )})
-          });
-          return arr;
-        }, [])
-      )),
+          }, [])
+        )
+      ),
     [layerGroups]
   );
 
@@ -54,15 +63,15 @@ const AnalysisTable = ({ loc_map: locations, layerGroups, emission_scenario }) =
         return Promise.allSettled(
           interactions.map(({ dataset, query, output, valueMap }) => {
             const encoded = replace(query, geo);
-              return fetchDatasetQuery(dataset, encoded)
-                .then(({ data }) => {
-                  return {
-                    interaction: data.data[0],
-                    output: output,
-                    ...(valueMap && { valueMap }),
-                  };
-                })
-                .catch(() => ({ interaction: 'N/A' }));
+            return fetchDatasetQuery(dataset, encoded)
+              .then(({ data }) => {
+                return {
+                  interaction: data.data[0],
+                  output: output,
+                  ...(valueMap && { valueMap }),
+                };
+              })
+              .catch(() => ({ interaction: 'N/A' }));
           })
           // TODO: Figure out why typescript does not think "value" property exists here
           // eslint-disable-next-line
@@ -103,13 +112,11 @@ const AnalysisTable = ({ loc_map: locations, layerGroups, emission_scenario }) =
           name: d.label,
           attributes: d.data.reduce(
             (arr: string[], { interaction = {}, output, valueMap }) => {
-              let val: number;
-              if (Array.isArray(output?.path))
-                val = emission_scenario === 'rcp4.5' ? interaction['rcp45'] : interaction['rcp85'];
-              else {
-                const colArr = output?.path.split('.') || [];
-                val = colArr.reduce((acc, c) => acc[c], interaction);
-              }
+              const colArr = output?.path.split('.') || [];
+              const val = colArr.reduce(
+                (acc: Record<string, any>, c: string) => acc[c],
+                interaction
+              );
               arr.push(formatValue(val, output, valueMap));
               return arr;
             },
