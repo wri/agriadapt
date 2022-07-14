@@ -9,7 +9,7 @@ $picture-size: 250px;
     }
 
     @media screen and (min-width: map-get($breakpoints, large)) {
-        margin: 0 auto 276px;
+        margin: 0 auto;
     }
 
     .c-user-stories-body {
