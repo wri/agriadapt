@@ -6,11 +6,7 @@ import { capitalizeFirstLetter } from "utils/utils";
 const inputs = {
   land_suitability: {
     info: 'Rice cultivation is highly vulnerable to climate fluctuations. Explore the visualizations below to learn more about how land suitability for rice production may change in the future due to climate change.',
-    widgets: [{ id: '043440a2-b3fd-493e-93a9-362eac5637c7' }], // TODO: Additional Stacked Bar Visual
-  },
-  seedlings: {
-    info: 'Rice seeds are the most sensitive to drought and high temperature during early seed development. The earlier plant drought occurs, the greater the damage to subsequent seed quality. (Rahman, Ellis, 2019).',
-    widgets: [{ id: '9529e2a9-112c-4c77-b893-5b5a4d983be7' }],
+    widgets: [{ id: '043440a2-b3fd-493e-93a9-362eac5637c7', fullWidth: true }], // TODO: Additional Stacked Bar Visual
   },
   //   fertilizer: {
   //     info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in dolor vitae sem hendrerit ultrices id at urna. Integer lectus lectus, accumsan sed libero in, mollis dapibus justo. Mauris auctor lectus ullamcorper dolor elementum feugiat. Integer et condimentum mi. ',
@@ -18,13 +14,44 @@ const inputs = {
   //   },
   labor: {
     info: 'Agricultural workers are especially vulnerable to increased heat stress, which affects the health of individuals and reduces labour productivity. The Universal Thermal Climate Index identifies outdoor conditions that cause discomfort to people using a combination of temperature, humidity, wind, and radiation to determine the stress (sweating, shivering, skin wetness, etc.) a person undergoes when exposed to outdoor conditions.',
-    widgets: [{ id: '4cecc183-2ae4-4045-a7ad-c664ee1c368e' }],
+    widgets: [{ id: '4cecc183-2ae4-4045-a7ad-c664ee1c368e', fullWidth: true }],
+  },
+  seedlings: {
+    info: 'Rice seeds are the most sensitive to drought and high temperature during early seed development. The earlier plant drought occurs, the greater the damage to subsequent seed quality. (Rahman, Ellis, 2019).',
+    widgets: [{ id: '9529e2a9-112c-4c77-b893-5b5a4d983be7' }],
   },
 };
 
 const production = {
+  production_volume: {
+    info: (country: string) =>
+      `Explore our data visualizations to better understand where the main rice growing regions in ${country} are and how much rice is currently produced.`,
+    fullWidth: true,
+      widgets: [
+      { id: '5c601744-1e1a-4164-b6af-7830357c2947' },
+      { id: 'c98ace8b-0e9d-44e6-91ff-8dafec5a75cb' },
+    ], // TODO: Additional Callout - Having issue using geostore to get stats. Need to try geojson
+    analysis: {
+      name: ({
+        crop,
+        country,
+        year = 2010,
+      }: {
+        crop: string;
+        country: string;
+        year: number;
+      }) => `${crop} production in ${country} in ${year}`,
+      suffix: 'MT',
+      type: 'Total'
+    },
+  },
+  production: {
+    info: 'Studies suggest that changes in rainfall patterns and distribution could lead to substantial impacts on land and water resources for rice production.',
+    widgets: [{ id: 'd95ad48d-e14e-42cd-a5fb-1d8054c258d9' }],
+  },
   change_in_yield: {
     info: 'The vast majority of climate change impacts on rice production result from variations in temperature and rainfall that lead to flooding, water  scarcity, and increases in pests, diseases, and weeds. Despite significant uncertainty in predicted future climate conditions, it is important to measure the potential effects of climate change on global rice production as these insights can identify areas that are vulnerable to climate change and inform the development of adaptation strategies. Considering changes in rice yields is also valuable for ensuring future food security under the pressures of an increasing population and a growing rice demand.',
+    fullWidth: true,
     widgets: [
       // Make embed/map-swipe
       {
@@ -35,20 +62,13 @@ const production = {
       },
     ],
     // TODO: Additional Callout
-    analysis: false,
-  },
-  production: {
-    info: 'Studies suggest that changes in rainfall patterns and distribution could lead to substantial impacts on land and water resources for rice production.',
-    widgets: [{ id: 'd95ad48d-e14e-42cd-a5fb-1d8054c258d9' }],
-  },
-  production_volume: {
-    info: (country: string) =>
-      `Explore our data visualizations to better understand where the main rice growing regions in ${country} are and how much rice is currently produced.`,
-    widgets: [
-      { id: 'c98ace8b-0e9d-44e6-91ff-8dafec5a75cb' },
-      { id: '5c601744-1e1a-4164-b6af-7830357c2947', fullWidth: true },
-    ], // TODO: Additional Callout
-    analysis: false,
+    analysis: {
+      dataset: 'd17e6978-0848-4a13-ba05-6f4af04ac7d1',
+      query: ({ iso }: { iso: string }) =>
+        `select avg(rcp85_median) as x from data where country='${iso}' and year=2050`,
+      format: '0.00',
+      name: ({ crop }) => `Projected change in ${crop} yield by 2050`,
+    },
   },
 };
 
@@ -63,6 +83,7 @@ const trade = {
       query: ({ iso }: { iso: string }) =>
         `select nrp as x from data where countrycode='${iso}' order by year desc limit 1`,
       format: '0.00',
+      suffix: '%',
       name: ({
         crop,
         country,

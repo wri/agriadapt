@@ -78,7 +78,7 @@ export const user_stories = {
       person: 'Daniel',
       location: 'Colombia',
       quote:
-        'When my crops were devastated by the extreme rainfalls last summer, I was fortunate to have CRT data to demonstrate the loss and facilitate the process to claim the insurance.',
+        'When my crops were devastated by the extreme rainfalls last summer, I was fortunate to have AgriAdapt data to demonstrate the loss and facilitate the process to claim the insurance.',
     },
   ],
 };

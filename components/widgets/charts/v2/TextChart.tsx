@@ -14,22 +14,23 @@ interface TextChartProps {
     // query?: string | ((str: string) => string);
   }
   query?: string;
+  suffix?: string;
 }
 
 const TextChart = ({
   query = null,
   analysis = null,
   value = 0.0,
-  format = 'deg',
-  unit = 'celsius',
-  type = 'Average',
+  // format = 'deg',
+  // unit = 'celsius',
+  type = null,
   name = '2030 Projected Change in Annual Average Temperature',
+  suffix = null,
 }: TextChartProps) => {
-  const valueString =
-    format === 'deg'
-      ? `${value}\u00B0 ${unit === 'celsius' ? 'C' : 'F'}`
-      : value;
-
+  // const valueString =
+  //   format === 'deg'
+  //     ? `${value}\u00B0 ${unit === 'celsius' ? 'C' : 'F'}`
+  //     : value;
   const [result, setResult] = useState<number | string>(value);
 
   const formatValue = useCallback((val: number) => {
@@ -38,8 +39,10 @@ const TextChart = ({
       const places = analysis.format.split('.')[1].length;
       result = val.toFixed(places);
     }
+    if (suffix)
+      result = `${result}${suffix}`;
     return result;
-  }, [analysis.format]);
+  }, [analysis.format, suffix]);
 
   useEffect(() => {
     if (query && analysis) {
@@ -47,22 +50,23 @@ const TextChart = ({
         setResult(formatValue(data.data[0].x));
       });
     }
-  }, [analysis, analysis.dataset, formatValue, query, result]);
+    else setResult(formatValue(value))
+  }, [analysis, analysis.dataset, formatValue, query, result, value]);
 
   return (
-    <InView triggerOnce threshold={0.25}>
-      {({ ref, inView }) => (
-        <div ref={ref} className="w-full h-full">
-          {inView && (
+    // <InView triggerOnce threshold={0.25}>
+      // {({ ref, inView }) => (
+        <div className="w-full h-full flex">
+          {/* {inView && ( */}
             <div className="c-text-chart-v2">
               <h1 className="stat-value">{result}</h1>
-              <h3 className="stat-type">{type}</h3>
+              {type && <h3 className="stat-type">{type}</h3>}
               <div className="stat-name">{name}</div>
             </div>
-          )}
+          {/* )} */}
         </div>
-      )}
-    </InView>
+      // )}
+    // </InView>
   );
 };
 

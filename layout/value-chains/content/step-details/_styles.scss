@@ -19,18 +19,10 @@
                 max-width: 880px;
             }
         }
-
-        &.-left {
-            grid-column: 1;
-        }
-
-        &.-right {
-            grid-column: 2;
-        }
     }
 
     .c-detail-item-info {
-        max-width: 505px;
+        max-width: 620px;
         display: flex;
         flex-direction: row;
 
@@ -48,7 +40,7 @@
         margin: auto;
         height: 456px;
 
-        > .c-text-chart-v2 {
+        .c-text-chart-v2 {
             margin: auto;
         }
 

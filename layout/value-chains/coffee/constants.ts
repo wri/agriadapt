@@ -4,7 +4,7 @@ import coffee2 from 'public/images/quotes/coffee2.png'
 const inputs = {
   land_suitability: {
     info: 'Coffee arabica production is highly sensitive to climate change. Significant reductions in climate suitability are expected for most coffee growing regions.',
-    widgets: [{ id: '00b89bc8-b8c1-413f-ba55-2c4e7308133a' }],
+    widgets: [{ id: '00b89bc8-b8c1-413f-ba55-2c4e7308133a', fullWidth: true }],
     // TODO: Additional Graphical Visual
   },
   labor: {
@@ -22,7 +22,19 @@ const production = {
       { id: 'ef4cc300-9d92-492a-9252-457a1964a5d1' },
     ],
     // TODO: Additional Callout
-    analysis: false,
+    analysis: {
+      name: ({
+        crop,
+        country,
+        year = 2010,
+      }: {
+        crop: string;
+        country: string;
+        year: number;
+      }) => `${crop} production in ${country} in ${year}`,
+      suffix: 'MT',
+      type: 'Total'
+    },
   },
   pests_and_disease: {
     info: 'The coffee berry borer and coffee leaf rust are the most threatening pest and disease to the health of coffee trees. In general, increased temperatures will increase the spread of pests and diseases in coffee trees. However, projected decreased rainfall in certain regions may decrease the spread of pest and disease.',
@@ -51,7 +63,7 @@ export const quotes = [
     location: 'Risaralda, Colombia',
     image: coffee1,
     title: 'Producer, Asociación Asocafé Tatamá',
-    quote: 'The CRT helps producers obtain the climate risk maps that are required by coffee certifications.'
+    quote: 'AgriAdapt helps producers obtain the climate risk maps that are required by coffee certifications.'
   },
   {
     location: 'Bolivar, Colombia',

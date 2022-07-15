@@ -89,17 +89,17 @@ const AnalysisTable = ({ loc_map: locations, layerGroups }) => {
     valueMap = null
   ) => {
     let result = '';
-    if (!val) result = 'N/A';
+    if (!val) return 'N/A';
     if (!output) return String(val);
     if (valueMap && output.type === 'string') result = valueMap[val];
 
     if (output.type === 'number') {
-      const places = output.format?.split('.')[1].length || 2;
+      const places = output.format?.split('.')[1]?.length || 0;
       result = val.toFixed(places);
     }
 
-    if (output['prefix?']) result = `${output['prefix?']}${result}`;
-    if (output['suffix?']) result = `${result}${output['suffix?']}`;
+    if (output.prefix) result = `${output.prefix}${result}`;
+    if (output.suffix) result = `${result}${output.suffix}`;
     return result;
   };
 

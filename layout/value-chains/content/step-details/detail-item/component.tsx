@@ -20,8 +20,11 @@ interface DetailItemProps {
     dataset: string;
     type?: string;
     name: string | ((params: Record<string, string | number>) => string);
+    format?: string;
+    suffix?: string;
   };
   crop: 'rice' | 'cotton' | 'coffee';
+  fullWidth: boolean;
 }
 
 const DetailItem = ({
@@ -31,6 +34,7 @@ const DetailItem = ({
   country = null,
   analysis = null,
   crop = 'rice',
+  fullWidth = false,
 }: DetailItemProps) => {
   const params = {
     crop: capitalizeFirstLetter(crop),
@@ -42,7 +46,7 @@ const DetailItem = ({
       <div className="c-detail-item">
         <div
           className={classnames('c-detail-section', {
-            '-half': true,
+            '-full': fullWidth,
           })}
         >
           <div className="c-detail-item-info">
@@ -72,8 +76,6 @@ const DetailItem = ({
             key={i}
             className={classnames('c-detail-section', {
               '-full': w.fullWidth,
-              // '-left': !w.fullWidth && ,
-              '-right': !w.fullWidth && i === 0,
             })}
           >
             <div
@@ -100,6 +102,8 @@ const DetailItem = ({
                   : analysis.name
               }
               type={analysis.type}
+              format={analysis.format}
+              suffix={analysis.suffix}
             />
           </div>
         )}
