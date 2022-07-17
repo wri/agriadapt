@@ -51,6 +51,7 @@ const ExploreSidebarComponent = ({
         />
       </button>
       <div
+        id="explore-sidebar"
         className={classnames({
           'sidebar-content': true,
           'explore-sidebar': true,

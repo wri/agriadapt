@@ -13,6 +13,7 @@ export default connect(
     advOpen: state.explore.filters.advanced.open,
     sidebarOpen: state.explore.sidebar.open,
     filters: state.explore.filters,
+    hasMoreDatasets: state.explore.datasets.hasMore,
   }),
   actions
 )(ExploreDatasetsComponent);

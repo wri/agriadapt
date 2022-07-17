@@ -12,6 +12,7 @@ const initialState = {
     total: 0,
     selected: null,
     filtered: [],
+    hasMore: true,
   },
   filters: {
     search: '',

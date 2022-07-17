@@ -49,6 +49,9 @@ export default createReducer(initialState, (builder) => {
         total: payload,
       },
     }))
+    .addCase(actions.setHasMoreDatasets, (state, { payload }) => {
+      state.datasets.hasMore = payload;
+    })
     .addCase(actions.setDatasetsLimit, (state, { payload }) => ({
       ...state,
       datasets: {

@@ -20,6 +20,7 @@ export const resetExplore = createAction("EXPLORE/resetExplore");
 export const setDatasets = createAction("EXPLORE/setDatasetsList");
 export const setDatasetsLoading = createAction("EXPLORE/setDatasetsLoading");
 export const setDatasetsError = createAction("EXPLORE/setDatasetsError");
+export const setHasMoreDatasets = createAction("EXPLORE/setHasMoreDatasets");
 export const setDatasetsPage = createAction("EXPLORE/setDatasetsPage");
 export const setDatasetsTotal = createAction("EXPLORE/setDatasetsTotal");
 export const setDatasetsLimit = createAction("EXPLORE/setDatasetsLimit");
@@ -35,6 +36,21 @@ export const fetchDatasets = createThunkAction(
   "EXPLORE/fetchDatasets",
   () => (dispatch, getState) => {
     const { explore, common } = getState();
+
+    const isMatch = (dataset) => {
+      const { timescale: fTimescale, value_chains } = explore.filters;
+      const fChains = value_chains.map(({ value }) => value);
+      // const fScenario = filters.emission_scenario?.value;
+      const layers = dataset.layer;
+      const match = layers.some(
+        ({ applicationConfig }) =>
+          (!fChains.length ||
+            fChains.includes(applicationConfig?.value_chain)) &&
+          (fTimescale === 'any' || applicationConfig?.timescale == fTimescale)
+      );
+      return match;
+    };
+
     const params = {
       language: common.locale,
       includes: "layer,metadata,vocabulary",
@@ -57,22 +73,38 @@ export const fetchDatasets = createThunkAction(
       .then((response) => {
         const { meta = {}, datasets } = response;
         dispatch(setDatasetsTotal(meta["total-items"] || 0));
+        dispatch(setHasMoreDatasets(explore.datasets.page !== meta["total-pages"] || false));
         return datasets;
       })
       .then((data) => {
         // Show only published layers and extract correct applicationConfig
-        const datasets = data.map((d) => ({
-          ...d,
-          layer: d.layer.reduce((arr, l) => {
-            if (l.published)
-              arr.push({...l, applicationConfig: l.applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS]});
-              return arr
-          }, []),
-        }));
+        const datasets = data.reduce((arr, d) => {
+          const formatted = {
+            ...d,
+            layer: d.layer.reduce((arr, l) => {
+              if (l.published)
+                arr.push({
+                  ...l,
+                  applicationConfig:
+                    l.applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS],
+                });
+              return arr;
+            }, []),
+          }
+          if (isMatch(formatted))
+            arr.push(formatted);
+          return arr;
+        }, []);
 
         dispatch(setDatasetsLoading(false));
         dispatch(setDatasetsError(null));
-        dispatch(setDatasets(datasets));
+        dispatch(
+          setDatasets(
+            explore.datasets.page === 1
+              ? datasets
+              : explore.datasets.list.concat(datasets)
+          )
+        );
       })
       .catch((err) => {
         dispatch(setDatasetsLoading(false));
