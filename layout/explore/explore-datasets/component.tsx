@@ -15,7 +15,17 @@ import ExploreDatasetsActions from './explore-datasets-actions';
 import ExploreSearch from '../explore-datasets-search';
 // import { APILayerSpec } from 'types/layer';
 
-export default function ExploreDatasets(props) {
+interface ExploreDatasetsProps {
+  datasets: {
+    selected: any;
+    list: any;
+    loading: boolean;
+  }
+  fetchCountries: () => void;
+  advOpen: boolean
+}
+
+export default function ExploreDatasets(props: ExploreDatasetsProps) {
   const {
     datasets: {
       selected,

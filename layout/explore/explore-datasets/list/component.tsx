@@ -37,7 +37,6 @@ const DatasetList = ({
   }
 
   const fetchNextDatasets = useCallback(() => {
-    // console.log('hello?');
     setDatasetsPage(page + 1);
     fetchDatasets();
   }, [fetchDatasets, page, setDatasetsPage]);
@@ -49,7 +48,7 @@ const DatasetList = ({
 
   return (
     <div className="c-explore-dataset-list">
-      {/* <Spinner isLoading={loading} className="-light" /> */}
+      <Spinner isLoading={loading} className="-light" />
       <div className="l-row row">
         <InfiniteScroll
           dataLength={list.length}
