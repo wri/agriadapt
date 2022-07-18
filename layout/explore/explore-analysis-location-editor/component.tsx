@@ -35,7 +35,7 @@ const ExploreAnalysisLocationEditor = ({
   const locationType = useInput(current.type || 'point');
   const address = useSelect(current.address);
   const country = useSelect(current.country);
-  const [iso, setIso] = useState(current.iso);
+  const [countryAndIso, setCountryAndIso] = useState({country: current.country, iso: current.iso});
   const [selectedState, setSelectedState] = useState(current.state);
   const [geo, setGeo] = useState(current.geo);
   const [autocompleteResults, setAutocompleteResults] = useState<{value: string; label: string; lngLat: Record<string, number>}[]>([]);
@@ -96,7 +96,11 @@ const ExploreAnalysisLocationEditor = ({
       reverseGeocode(Object.values(data)).then((results) => {
         if (results) {
           setGeoLabel(results[0].place_name);
-          setIso(i18nIso.getAlpha3Code(results.at(-1).place_name, 'en'));
+          const country = results.at(-1).place_name
+          setCountryAndIso({
+            country,
+            iso: i18nIso.getAlpha3Code(country, 'en'),
+          });
         };
       });
     }
@@ -150,11 +154,13 @@ const ExploreAnalysisLocationEditor = ({
   };
 
   const onSubmit = () => {
+    console.log(countryAndIso.country);
     const loc = {
       id,
       label: label || createLabel(),
       type: locationType.value,
-      iso,
+      iso: countryAndIso.iso,
+      country: countryAndIso.country,
       ...(locationType.value === 'admin' && {
         country: country.value,
         state: selectedState,
@@ -237,7 +243,7 @@ const ExploreAnalysisLocationEditor = ({
   /* Event handler for selecting a geocoded address */
   const handleSelectAddr = (val: { country: string, lngLat: number[] }) => {
     address.onChange(val);
-    setIso(i18nIso.getAlpha3Code(val.country, 'en'));
+    setCountryAndIso({ iso: i18nIso.getAlpha3Code(val.country, 'en'), country: val.country });
     setDataDrawing(val.lngLat);
   };
 

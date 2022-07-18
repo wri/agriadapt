@@ -56,6 +56,7 @@ const AnalysisTable = ({ loc_map: locations, layerGroups }) => {
         const params = {
           geojson: encodeURIComponent(JSON.stringify(toGeoJSON(l))),
           iso: l.iso,
+          country: l.country,
         };
 
         return Promise.allSettled(
