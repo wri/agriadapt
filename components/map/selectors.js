@@ -50,7 +50,7 @@ export const getActiveLayers = (statePointer) =>
     const activeLayers = _layerGroups
       .filter((lg) => lg.layers.length > 0)
       .map((lg) => ({
-        ...lg.layers.find((l) => l.active),
+        ...lg.layers.find((l) => l.active) || lg.layers[0],
         opacity: typeof lg.opacity !== "undefined" ? lg.opacity : 1,
         visibility: typeof lg.visibility !== "undefined" ? lg.visibility : true,
       }));
@@ -69,6 +69,7 @@ export const getUpdatedLayers = (activeLayersPointer, parametrizationPointer) =>
     (_activeLayers = [], _parametrization) => {
       if (!Object.keys(_parametrization).length) {
         return _activeLayers.map((_activeLayer) => {
+          console.log(_activeLayer);
           // User Area of Interest (Currently being used in the GEDC Energy dashboard)
           if (_activeLayer.id === "user_area") {
             return _activeLayer;
