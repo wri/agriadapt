@@ -105,14 +105,11 @@ export const fetchDatasets = createThunkAction(
             return arr;
           }, []);
 
-          console.log('bool', !datasets.length && hasMore);
           if (!datasets.length && hasMore) {
             params['page[number]'] = params['page[number]'] + 1;
             continued = true;
             return recursiveFetch();
           }
-
-          console.log('page', params['page[number]']);
 
           dispatch(setDatasetsLoading(false));
           dispatch(setDatasetsError(null));

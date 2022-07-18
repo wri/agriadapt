@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
 // import Link from "next/link";
 import classnames from 'classnames';
@@ -21,6 +21,7 @@ interface ExploreDatasetsProps {
     list: any;
     loading: boolean;
   }
+  filters: any;
   fetchCountries: () => void;
   advOpen: boolean
 }
@@ -36,7 +37,7 @@ export default function ExploreDatasets(props: ExploreDatasetsProps) {
       loading,
       // filtered: filteredDatasets,
     },
-    // filters,
+    filters,
     // setDatasetsPage,
     // fetchDatasets,
     fetchCountries,
@@ -52,6 +53,18 @@ export default function ExploreDatasets(props: ExploreDatasetsProps) {
     'c-explore-datasets': true,
     '-hidden': selected,
   });
+
+  const relevantList = useMemo(
+    () =>
+      list.filter(({ layer }) =>
+        layer.some(
+          ({ applicationConfig: { emission_scenario } }) =>
+            !emission_scenario ||
+            emission_scenario === filters.emission_scenario.value
+        )
+      ),
+    [filters.emission_scenario.value, list]
+  );
 
   return (
     <div className={classValue}>
@@ -80,7 +93,7 @@ export default function ExploreDatasets(props: ExploreDatasetsProps) {
           <DatasetList
             loading={loading}
             numberOfPlaceholders={10}
-            list={list}
+            list={relevantList}
             actions={<ExploreDatasetsActions />}
           />
         </>
