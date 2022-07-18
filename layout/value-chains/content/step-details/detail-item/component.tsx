@@ -44,7 +44,6 @@ const DetailItem = ({
   useEffect(() => {
     if (country?.value)
     fetchGeostore(country.value).then(({ geojson }) => {
-      console.log(geojson);
       // setGeoJson(encodeURIComponent(JSON.stringify(geojson)))
       setGeoJson(JSON.stringify(geojson))
     }

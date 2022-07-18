@@ -69,7 +69,6 @@ export const getUpdatedLayers = (activeLayersPointer, parametrizationPointer) =>
     (_activeLayers = [], _parametrization) => {
       if (!Object.keys(_parametrization).length) {
         return _activeLayers.map((_activeLayer) => {
-          console.log(_activeLayer);
           // User Area of Interest (Currently being used in the GEDC Energy dashboard)
           if (_activeLayer.id === "user_area") {
             return _activeLayer;
