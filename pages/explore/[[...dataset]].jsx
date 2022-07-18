@@ -87,7 +87,7 @@ class ExplorePage extends PureComponent {
             dataset: lg.dataset,
             opacity: lg.opacity || 1,
             visible: lg.visible,
-            layer: lg.layers.find((l) => l.active === true).id,
+            layer: lg.layers.find((l) => l.active === true)?.id,
           })))),
         },
       aoi,
@@ -141,14 +141,14 @@ class ExplorePage extends PureComponent {
       dataset: lg.dataset,
       opacity: lg.opacity || 1,
       visible: lg.visible,
-      layer: lg.layers.find((l) => l.active === true).id,
+      layer: lg.layers.find((l) => l.active === true)?.id,
     }))));
 
     const prevLayers = encodeURIComponent(JSON.stringify(prevMap.layerGroups.map((lg) => ({
       dataset: lg.dataset,
       opacity: lg.opacity || 1,
       visible: lg.visible,
-      layer: lg.layers.find((l) => l.active === true).id,
+      layer: lg.layers.find((l) => l.active === true)?.id,
     }))));
 
     return (

@@ -240,7 +240,13 @@ export default createReducer(initialState, (builder) => {
       const { dataset, toggle } = payload;
       const { applicationConfig, layer: layers } = dataset;
 
-      let datasetLayers = layers;
+      let datasetLayers = layers?.filter(
+        (l) =>
+          // Apply emission scenario filter
+          !l.applicationConfig.emission_scenario ||
+          l.applicationConfig.emission_scenario ===
+            state.filters.emission_scenario.value
+      );
 
       // sorts layers if applies
       if (
