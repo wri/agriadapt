@@ -45,6 +45,7 @@ export const fetchDatasetQuery = async (id, sql) => {
   return WRIAPI.get(`/v1/query/${id}`, {
     params: { sql },
   })
+  // return WRIAPI.post(`/v1/query/${id}`, { sql })
     .then((response) => {
       if (response.status === 200) return response;
       throw response;

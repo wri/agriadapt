@@ -104,13 +104,14 @@ export default function WidgetHeader({
               </Tooltip>
               </LoginRequired>
             </li> */}
-            {download && (
+            {/* TODO: Implement download report */}
+            {/* {download && (
               <li>
                 <button type="button" className="c-btn -clean">
                   <Icon name="download-2" className="-small" />
                 </button>
               </li>
-            )}
+            )} */}
             <li>
               <button
                 type="button"
