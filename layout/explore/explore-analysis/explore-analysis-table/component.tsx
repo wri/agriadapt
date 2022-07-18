@@ -24,7 +24,10 @@ const AnalysisTable = ({ loc_map: locations, layerGroups }) => {
           g.layers.reduce((arr, l: APILayerSpec) => {
             if (!l.active) return arr;
             const legendItems = l.legendConfig.items as legendConfigItem[];
-            const appConfig = l.applicationConfig;
+            // TODO: Find out why time slider does not destructure out correct appConfig
+            const appConfig =
+              l.applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS] ||
+              l.applicationConfig;
             arr.push({
               ...appConfig,
               label: l.name,
@@ -43,6 +46,10 @@ const AnalysisTable = ({ loc_map: locations, layerGroups }) => {
       ),
     [layerGroups]
   );
+
+  useEffect(() => {
+    console.log(interactions);
+  }, [interactions])
 
   const columns = useMemo(
     () => [].concat(...interactions.map(({ label }) => label)),

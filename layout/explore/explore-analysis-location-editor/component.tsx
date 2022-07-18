@@ -154,7 +154,6 @@ const ExploreAnalysisLocationEditor = ({
   };
 
   const onSubmit = () => {
-    console.log(countryAndIso.country);
     const loc = {
       id,
       label: label || createLabel(),
