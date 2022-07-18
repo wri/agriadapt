@@ -84,7 +84,7 @@ const AnalysisTable = ({ loc_map: locations, layerGroups }) => {
   }, [interactions, locations]);
 
   const formatValue = (
-    val: number | undefined,
+    val: number | string | undefined,
     output = null,
     valueMap = null
   ) => {
@@ -92,8 +92,9 @@ const AnalysisTable = ({ loc_map: locations, layerGroups }) => {
     if (!val) return 'N/A';
     if (!output) return String(val);
     if (valueMap && output.type === 'string') result = valueMap[val];
+    else if (output.type === 'string' && typeof val === 'string') result = val;
 
-    if (output.type === 'number') {
+    if (output.type === 'number' && typeof val === 'number') {
       const places = output.format?.split('.')[1]?.length || 0;
       result = val.toFixed(places);
     }
@@ -114,7 +115,7 @@ const AnalysisTable = ({ loc_map: locations, layerGroups }) => {
               const val = colArr.reduce(
                 (acc: Record<string, any>, c: string) => acc[c],
                 interaction
-              );
+              ) || interaction[output.path];
               arr.push(formatValue(val, output, valueMap));
               return arr;
             },

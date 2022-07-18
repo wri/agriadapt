@@ -1,5 +1,7 @@
+import Layout404 from "layout/404/component"
+
 const Custom404 = () => {
-  return <div style={{ textAlign: 'center' }}>{'//TODO: Make a 404 page'}</div>;
+  return <Layout404 />;
 };
 
 export default Custom404;

@@ -2,6 +2,8 @@ import classnames from 'classnames';
 import Icon from 'components/ui/icon';
 import TextChart from 'components/widgets/charts/v2/TextChart';
 import WidgetBlock from 'components/wysiwyg/widget-block';
+import { useEffect, useMemo, useState } from 'react';
+import { fetchGeostore } from 'services/geostore';
 import { capitalizeFirstLetter } from 'utils/utils';
 
 interface DetailItemProps {
@@ -36,11 +38,25 @@ const DetailItem = ({
   crop = 'rice',
   fullWidth = false,
 }: DetailItemProps) => {
-  const params = {
+
+  const [geojson, setGeoJson] = useState('');
+
+  useEffect(() => {
+    if (country?.value)
+    fetchGeostore(country.value).then(({ geojson }) => {
+      console.log(geojson);
+      // setGeoJson(encodeURIComponent(JSON.stringify(geojson)))
+      setGeoJson(JSON.stringify(geojson))
+    }
+    );
+  }, [country?.value]);
+
+  const params = useMemo(() => ({
     crop: capitalizeFirstLetter(crop),
     country: country?.label,
     iso: country?.iso,
-  }
+    geojson,
+  }), [country, crop, geojson]);
   return (
     <>
       <div className="c-detail-item">

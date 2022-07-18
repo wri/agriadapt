@@ -27,7 +27,7 @@ const production = {
     info: (country: string) =>
       `Explore our data visualizations to better understand where the main rice growing regions in ${country} are and how much rice is currently produced.`,
     fullWidth: true,
-      widgets: [
+    widgets: [
       { id: '5c601744-1e1a-4164-b6af-7830357c2947' },
       { id: 'c98ace8b-0e9d-44e6-91ff-8dafec5a75cb' },
     ], // TODO: Additional Callout - Having issue using geostore to get stats. Need to try geojson
@@ -41,8 +41,11 @@ const production = {
         country: string;
         year: number;
       }) => `${crop} production in ${country} in ${year}`,
+      dataset: '54af072c-7bb5-4bb1-af84-ea7ba0b4fc22',
+      query: ({ geojson }: { geojson: string }) =>
+        `select count(b1) as x from data where ST_INTERSECTS(ST_SetSRID(ST_GeomFromGeoJSON(${geojson})), 4326) and system:index='foo_005_rw1_crop_area_production_spam2010V2r0_global_H_ACOF_A'`,
       suffix: 'MT',
-      type: 'Total'
+      type: 'Total',
     },
   },
   production: {
@@ -105,7 +108,7 @@ const trade = {
         `select cri_score / 100 as x from data where country='${country}'`,
       format: '0.00',
       // type: 'Total',
-      name: `Food vulnerability score in 2018`,
+      name: `Food vulnerability score in 2019`,
     },
   },
   export_and_import: {

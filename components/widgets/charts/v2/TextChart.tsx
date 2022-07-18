@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { fetchDatasetQuery } from "services/query";
-import InView from "components/in-view";
+// import InView from "components/in-view";
 
 interface TextChartProps {
   value?: number;
@@ -46,9 +46,10 @@ const TextChart = ({
 
   useEffect(() => {
     if (query && analysis) {
-      fetchDatasetQuery(analysis.dataset, query).then(({ data }) => {
-        setResult(formatValue(data.data[0].x));
-      });
+      fetchDatasetQuery(analysis.dataset, query)
+        .then(({ data }) => {
+          setResult(formatValue(data.data[0].x));
+        })
     }
     else setResult(formatValue(value))
   }, [analysis, analysis.dataset, formatValue, query, result, value]);

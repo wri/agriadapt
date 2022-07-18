@@ -16,7 +16,7 @@ import * as actions from 'layout/explore/actions';
 // components
 import Explore from 'layout/explore';
 // import { RootState } from 'lib/store';
-import { fetchDatasets } from 'services/dataset';
+// import { fetchDatasets } from 'services/dataset';
 
 class ExplorePage extends PureComponent {
   componentDidMount() {
@@ -187,10 +187,32 @@ export const getStaticProps = () => {
     };
 }
 
+// Revise to fetch all slugs, not just the first page
 export const getStaticPaths = async () => {
-  const datas = await fetchDatasets();
-  const slugs = datas.map(({ slug }) => slug);
- 
+  // const datas = await fetchDatasets({"page[number]": 2});
+  // const slugs = datas.map(({ slug }) => slug);
+  const slugs = [
+    'wat006-Projected-Water-Stress_replacement',
+    'Air-Quality-Measurements-TROPOMI-NO',
+    'foo005rw1-Crop-Land-Area-and-Production',
+    'dis007-Landslide-Susceptibility_replacement',
+    'cli057a-Projected-Change-in-Annual-Precipitation-RCP85',
+    'cli079rw0-Universal-thermal-climate-index',
+    'wat050-Aqueduct-Baseline-Water-Stress',
+    'foo069rw0-Relative-Change-in-Crop-Yield',
+    'foo067rw0-Crop-Suitability-Classes',
+    'cli029a-Vulnerability-to-Climate-Change-Index',
+    'com039rw0-Agricultural-Trade-Statistics',
+    'Agro-Ecological-Zones',
+    'wat053-Aqueduct-Seasonal-Variability',
+    'cli059a-Projected-Change-in-Extreme-Precipitation-Days-RCP85',
+    'cit01701-Travel-Time-to-Major-Cities',
+    'com028rw1-Effect-of-Agricultural-Policies-on-Commodity-Prices',
+    'cli050a-Projected-Average-Temperature',
+    'cli051a-Projected-Change-in-Annual-Minimum-Temperature-RCP85',
+    'cli052a-Projected-Change-in-Annual-Maximum-Temperature-RCP85',
+  ];
+
   return {
     paths: [
       ...slugs.map((s) => ({ params: { dataset: [s] } })),
