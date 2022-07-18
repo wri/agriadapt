@@ -89,7 +89,7 @@ const AnalysisTable = ({ loc_map: locations, layerGroups }) => {
     valueMap = null
   ) => {
     let result = '';
-    if (!val) return 'N/A';
+    if (val == null) return 'N/A';
     if (!output) return String(val);
     if (valueMap && output.type === 'string') result = valueMap[val];
     else if (output.type === 'string' && typeof val === 'string') result = val;
