@@ -9,7 +9,7 @@ interface TextChartProps {
   type?: 'Average' | string;
   name?: string | ((str: string) => string);
   analysis?: {
-    dataset: string;
+    dataset?: string;
     format?: string;
     // query?: string | ((str: string) => string);
   }
@@ -24,25 +24,21 @@ const TextChart = ({
   // format = 'deg',
   // unit = 'celsius',
   type = null,
-  name = '2030 Projected Change in Annual Average Temperature',
+  name,
   suffix = null,
 }: TextChartProps) => {
-  // const valueString =
-  //   format === 'deg'
-  //     ? `${value}\u00B0 ${unit === 'celsius' ? 'C' : 'F'}`
-  //     : value;
   const [result, setResult] = useState<number | string>(value);
 
   const formatValue = useCallback((val: number) => {
     let result = String(val);
-    if (analysis.format) {
+    if (analysis?.format) {
       const places = analysis.format.split('.')[1].length;
       result = val.toFixed(places);
     }
     if (suffix)
       result = `${result}${suffix}`;
     return result;
-  }, [analysis.format, suffix]);
+  }, [analysis, suffix]);
 
   useEffect(() => {
     if (query && analysis) {
@@ -52,7 +48,7 @@ const TextChart = ({
         })
     }
     else setResult(formatValue(value))
-  }, [analysis, analysis.dataset, formatValue, query, result, value]);
+  }, [analysis, formatValue, query, result, value]);
 
   return (
     // <InView triggerOnce threshold={0.25}>
@@ -61,7 +57,7 @@ const TextChart = ({
           {/* {inView && ( */}
             <div className="c-text-chart-v2">
               <h1 className="stat-value">{result}</h1>
-              {type && <h3 className="stat-type">{type}</h3>}
+              {type && <h3 className="stat-type">{type === 'avg' ? 'Average' : type}</h3>}
               <div className="stat-name">{name}</div>
             </div>
           {/* )} */}

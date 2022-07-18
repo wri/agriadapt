@@ -12,49 +12,49 @@ import { APILayerSpec } from 'types/layer';
 import { toGeoJSON } from 'utils/locations/geojson';
 import { createColorValueMap, legendConfigItem } from 'utils/layers/symbolizer';
 
-const AnalysisTable = ({ loc_map: locations, layerGroups }) => {
+const AnalysisTable = ({ loc_map: locations, layerGroups, setDomains, setVisCols, setValueMaps }) => {
   const isEmbed = false;
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const interactions = useMemo(
-    () =>
-      [].concat(
-        ...layerGroups.map((g) =>
-          g.layers.reduce((arr, l: APILayerSpec) => {
-            if (!l.active) return arr;
-            const legendItems = l.legendConfig.items as legendConfigItem[];
-            // TODO: Find out why time slider does not destructure out correct appConfig
-            const appConfig =
-              l.applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS] ||
-              l.applicationConfig;
-            arr.push({
-              ...appConfig,
-              label: l.name,
-              dataset: l.dataset,
-              year: l.layerConfig.order,
-              ...(l.layerConfig.type == 'raster' && {
-                valueMap: createColorValueMap(
-                  l.layerConfig.body.sldValue,
-                  legendItems
-                ),
-              }),
-            });
-            return arr;
-          }, [])
-        )
-      ),
-    [layerGroups]
-  );
+  const interactions = useMemo(() => {
+    const valueMaps = [];
+    const arr = [].concat(
+      ...layerGroups.map((g) =>
+        g.layers.reduce((arr, l: APILayerSpec) => {
+          if (!l.active) return arr;
+          const legendItems = l.legendConfig.items as legendConfigItem[];
+          const valueMap = createColorValueMap(
+            l.layerConfig.body.sldValue,
+            legendItems
+          );
+          valueMaps.push(l.layerConfig.type == 'raster' ? valueMap : null);
+          // TODO: Find out why time slider does not destructure out correct appConfig
+          const appConfig =
+            l.applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS] ||
+            l.applicationConfig;
+          arr.push({
+            ...appConfig,
+            label: l.name,
+            dataset: l.dataset,
+            year: l.layerConfig.order,
+            ...(l.layerConfig.type == 'raster' && {
+              valueMap,
+            }),
+          });
+          return arr;
+        }, [])
+      )
+    );
+    setValueMaps(valueMaps);
+    return arr;
+  }, [layerGroups, setValueMaps]);
 
-  useEffect(() => {
-    console.log(interactions);
-  }, [interactions])
-
-  const columns = useMemo(
-    () => [].concat(...interactions.map(({ label }) => label)),
-    [interactions]
-  );
+  const columns = useMemo(() => {
+    const cols = [].concat(...interactions.map(({ label }) => label));
+    setVisCols(cols);
+    return cols;
+  }, [interactions, setVisCols]);
 
   useEffect(() => {
     setLoading(true);
@@ -66,6 +66,7 @@ const AnalysisTable = ({ loc_map: locations, layerGroups }) => {
           country: l.country,
         };
 
+        // Evaluating application layer's config query
         return Promise.allSettled(
           interactions.map(({ dataset, query, output, valueMap, year }) => {
             const encoded = replace(query, { ...params, year });
@@ -115,24 +116,39 @@ const AnalysisTable = ({ loc_map: locations, layerGroups }) => {
   const rows = useMemo(
     () =>
       data.map((d) => {
-        return {
-          name: d.label,
-          attributes: d.data.reduce(
-            (arr: string[], { interaction = {}, output, valueMap }) => {
-              const colArr = output?.path.split('.') || [];
-              const val = colArr.reduce(
+        const attributes = d.data.reduce(
+          ({ arr = [], valArr = [] }, { interaction = {}, output, valueMap }) => {
+            const colArr = output?.path.split('.') || [];
+            const val =
+              colArr.reduce(
                 (acc: Record<string, any>, c: string) => acc[c],
                 interaction
               ) || interaction[output.path];
-              arr.push(formatValue(val, output, valueMap));
-              return arr;
-            },
-            []
-          ),
+            valArr.push(val);
+            arr.push(formatValue(val, output, valueMap));
+            return { arr, valArr };
+          },
+          {}
+        );
+        return {
+          name: d.label,
+          attributes: attributes.arr,
+          numAttributes: attributes.valArr,
         };
       }),
     [data]
   );
+
+  /* Set analysis visuals domains from rows */
+  useEffect(() => {
+    const domains = new Array(columns.length).fill([]);
+    rows.forEach(({ numAttributes} ) => {
+      for (let j = 0; j < numAttributes.length; j++) {
+        domains[j] = [...(domains[j] || []), numAttributes[j]];
+      }
+    });
+    setDomains(domains);
+  }, [columns, rows, setDomains])
 
   const options = [
     {

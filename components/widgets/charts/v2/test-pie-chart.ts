@@ -4,14 +4,8 @@ export const chartData = {
       config: {
         fields: [
           {
-            format: '.2s',
-            type: 'number',
-            property: '2014',
-            column: 'value',
-          },
-          {
             type: 'string',
-            property: 'Sector',
+            property: 'id',
             column: 'x',
           },
         ],
@@ -56,10 +50,6 @@ export const chartData = {
             field: 'x',
             scale: 'c',
           },
-          // fillOpacity: {
-          //   signal:
-          //     "(datum.x=='Agriculture' | datum.x=='Land Use Change' ?1:0.15)",
-          // },
           stroke: '#000',
           strokeOpacity: {
             value: 1,
@@ -77,14 +67,10 @@ export const chartData = {
   ],
   scales: [
     {
-      domain: [
-        'Energy',
-        'Agriculture',
-        'Land Use Change',
-        'Industry',
-        'Waste',
-        'Bunker Fuels',
-      ],
+      domain: {
+        data: 'table',
+        field: 'x'
+      },
       range: ['#B9D765', '#65B60D', '#C32D7B', '#3BB2D0', '#2C75B0', '#FAB72E'],
       type: 'ordinal',
       name: 'c',
@@ -92,11 +78,6 @@ export const chartData = {
   ],
   data: [
     {
-      format: {
-        property: 'data',
-        type: 'json',
-      },
-      url: 'https://api.resourcewatch.org/v1/query/b8a6a6ea-7d2f-4d59-bb5e-7143a2ddc1fe?sql=SELECT sector as x, year_2014 as y FROM dash_cli_008_greenhouse_gas_emissions_country_sector ORDER BY fields ASC&env=production&application=rw',
       transform: [
         {
           as: ['rank'],

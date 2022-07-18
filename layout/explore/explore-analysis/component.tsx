@@ -1,5 +1,6 @@
 // import ErrorFallback from 'components/error-fallback';
 import Icon from 'components/ui/icon';
+import { useState } from 'react';
 import { AnalysisLocation } from 'types/analysis';
 import Location from '../explore-analysis-location';
 import ExploreAnalysisLocationEditor from '../explore-analysis-location-editor';
@@ -17,6 +18,11 @@ const ExploreAnalysis = ({
   const handleAddLocation = () => {
     setIsAdding(true);
   };
+
+  // Data for analysis visualizations
+  const [domains, setDomains] = useState([]);
+  const [visCols, setVisCols] = useState([]);
+  const [valueMaps, setValueMaps] = useState([]);
 
   return (
     <div className="c-analysis">
@@ -39,10 +45,20 @@ const ExploreAnalysis = ({
       )}
       {!!Object.values(locations).length && (
         // <CustomErrorFallback>
-          <AnalysisTable />
+        <>
+          <AnalysisTable
+            setDomains={setDomains}
+            setVisCols={setVisCols}
+            setValueMaps={setValueMaps}
+          />
+          <AnalysisVisuals
+            domains={domains}
+            columns={visCols}
+            valueMaps={valueMaps}
+          />
+        </>
         // </CustomErrorFallback>
       )}
-      <AnalysisVisuals />
     </div>
   );
 };

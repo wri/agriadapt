@@ -94,7 +94,7 @@ const ExploreAnalysisLocationEditor = ({
         : null;
     if (data) {
       reverseGeocode(Object.values(data)).then((results) => {
-        if (results) {
+        if (results.length) {
           setGeoLabel(results[0].place_name);
           const country = results.at(-1).place_name
           setCountryAndIso({

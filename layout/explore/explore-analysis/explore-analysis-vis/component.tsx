@@ -1,18 +1,40 @@
-import PieChart from "components/widgets/charts/v2/PieChart";
-import TextChart from "components/widgets/charts/v2/TextChart";
-import { chartData } from "components/widgets/charts/v2/test-pie-chart";
-import { chartData as chartData2 } from "components/widgets/charts/v2/test-pie-chart2";
-import { chartData as barChart } from "components/widgets/charts/v2/test-bar-chart";
+import PieChart from 'components/widgets/charts/v2/PieChart';
+import TextChart from 'components/widgets/charts/v2/TextChart';
 
-const AnalysisVisuals = () => {
+interface AnaylsisVisualsProps {
+  domains: number[][];
+  columns: string[];
+  valueMaps: Record<string, string>[];
+}
+
+const AnalysisVisuals = ({
+  domains,
+  columns,
+  valueMaps,
+}: AnaylsisVisualsProps) => {
+  const average = (arr: number[], valueMap) => {
+    const avg = arr.reduce((a, b) => a + b, 0) / arr.length;
+    if (!valueMap)
+      return avg.toFixed(2);
+    else return valueMap[Math.round(avg)];
+  }
+
   return (
     <div className="c-analysis-visuals">
-      {/* <PieChart widgetConfig={chartData} />
-      <PieChart widgetConfig={chartData2} />
-      <PieChart widgetConfig={barChart} />
-      <TextChart />
-      <TextChart />
-      <TextChart /> */}
+      {columns.map((c, i) => {
+        const avg = average(domains[i].filter(x => x != null), valueMaps[i]);
+        return (
+          <>
+            <PieChart name={c} domain={domains[i]} />
+            <TextChart
+              value={avg}
+              // analysis={{ format: '0.00' }}
+              type={'avg'}
+              name={c}
+            />
+          </>
+        );
+      })}
     </div>
   );
 };
