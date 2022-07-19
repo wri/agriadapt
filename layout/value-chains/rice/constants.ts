@@ -6,7 +6,11 @@ import { capitalizeFirstLetter } from "utils/utils";
 const inputs = {
   land_suitability: {
     info: 'Rice cultivation is highly vulnerable to climate fluctuations. Explore the visualizations below to learn more about how land suitability for rice production may change in the future due to climate change.',
-    widgets: [{ id: '043440a2-b3fd-493e-93a9-362eac5637c7', fullWidth: true }], // TODO: Additional Stacked Bar Visual
+    fullWidth: true,
+    widgets: [
+      { id: '043440a2-b3fd-493e-93a9-362eac5637c7', fullWidth: true },
+      { id: '284fed69-50e7-4d40-92a1-5640eb02e51f', fullWidth: true },
+    ], // TODO: Additional Stacked Bar Visual
   },
   //   fertilizer: {
   //     info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in dolor vitae sem hendrerit ultrices id at urna. Integer lectus lectus, accumsan sed libero in, mollis dapibus justo. Mauris auctor lectus ullamcorper dolor elementum feugiat. Integer et condimentum mi. ',

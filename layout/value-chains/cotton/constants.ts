@@ -6,7 +6,11 @@ import { capitalizeFirstLetter } from 'utils/utils';
 const inputs = {
   land_suitability: {
     info: 'Appropriate cotton land use decisions are vital to achieve optimum productivity of the land and ensure environmental sustainability. Explore the visualizations below to learn more about how cotton land suitability may change in the future.',
-    widgets: [{ id: '2a1aab23-1c36-4a17-b5e0-b63a68531c63', fullWidth: true }],
+    fullWidth: true,
+    widgets: [
+      { id: '2a1aab23-1c36-4a17-b5e0-b63a68531c63', fullWidth: true },
+      { id: 'a5b13394-84a8-4f7c-aa2d-7fc332f5c842', fullWidth: true },
+    ],
     // TODO: Additional chart vis
   },
   labor: {

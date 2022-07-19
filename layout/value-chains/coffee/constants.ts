@@ -4,7 +4,11 @@ import coffee2 from 'public/images/quotes/coffee2.png'
 const inputs = {
   land_suitability: {
     info: 'Coffee arabica production is highly sensitive to climate change. Significant reductions in climate suitability are expected for most coffee growing regions.',
-    widgets: [{ id: '00b89bc8-b8c1-413f-ba55-2c4e7308133a', fullWidth: true }],
+    fullWidth: true,
+    widgets: [
+      { id: '00b89bc8-b8c1-413f-ba55-2c4e7308133a', fullWidth: true },
+      { id: '41612127-bb5f-4ac3-b80a-4676dd9c3a2b', fullWidth: true },
+    ],
     // TODO: Additional Graphical Visual
   },
   labor: {
