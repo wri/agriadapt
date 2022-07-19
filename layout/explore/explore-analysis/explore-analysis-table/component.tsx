@@ -32,11 +32,11 @@ const AnalysisTable = ({
         g.layers.reduce((arr: any[], l: APILayerSpec) => {
           if (!l.active) return arr;
           const legendItems = l.legendConfig.items as legendConfigItem[];
-          const valueMap = createColorValueMap(
-            l.layerConfig.body.sldValue,
-            legendItems
-          );
-          valueMaps.push(l.layerConfig.type == 'raster' ? valueMap : null);
+          const valueMap =
+            l.layerConfig.type == 'raster'
+              ? createColorValueMap(l.layerConfig.body.sldValue, legendItems)
+              : null;
+          valueMaps.push(valueMap);
           outputs.push(l.applicationConfig.output);
           // TODO: Find out why time slider does not destructure out correct appConfig
           const appConfig =
