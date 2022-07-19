@@ -100,7 +100,7 @@ const AnalysisTable = ({
         setData(r.map((d) => ({ ...d.loc, data: d.data })));
       })
       .finally(() => setLoading(false));
-  }, [interactions, locations]);
+  }, [interactions, locations, setLoading]);
 
   const formatValue = (
     val: number | string | undefined,
@@ -156,7 +156,7 @@ const AnalysisTable = ({
   useEffect(() => {
     const domains = new Array(columns.length).fill([]);
     rows.forEach(({ attributes, numAttributes }) => {
-      for (let j = 0; j < numAttributes.length; j++) {
+      for (let j = 0; j < numAttributes?.length; j++) {
         domains[j] = [
           ...(domains[j] || []),
           { label: attributes[j], value: numAttributes[j] },
@@ -217,7 +217,7 @@ const AnalysisTable = ({
               {rows.map((r, i) => (
                 <tr key={i}>
                   <td>{r.name}</td>
-                  {r.attributes.map((val: string, i: number) => (
+                  {r.attributes?.map((val: string, i: number) => (
                     <td key={i}>{val}</td>
                   ))}
                 </tr>
