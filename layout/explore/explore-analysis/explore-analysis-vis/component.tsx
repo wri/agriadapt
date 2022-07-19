@@ -49,13 +49,13 @@ const AnalysisVisuals = ({
         return (
           <>
             <PieChart name={c} domain={labelDomain}/>
-            <TextChart
+            {avg !== 'NaN' && <TextChart
               analysis={{
                 name: c,
                 type: 'avg',
               }}
               value={avg}
-            />
+            />}
           </>
         );
       })}
