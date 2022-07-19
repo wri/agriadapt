@@ -97,7 +97,18 @@ export const fetchDataset = (id, params = {}) => {
         }
         throw new Error(statusText);
       }
-      return WRISerializer(data);
+
+      const serialized = WRISerializer(data);
+
+      const dataset = {
+        ...serialized,
+        layer: serialized.layer.map((l) => ({
+          ...l,
+          applicationConfig:
+            l.applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS],
+        })),
+      };
+      return dataset;
     })
     .catch(({ response }) => {
       const { status, statusText } = response;

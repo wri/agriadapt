@@ -55,7 +55,7 @@ const ExploreDetailContainer = (props) => {
           // to that section
           const element = document.getElementById(anchor);
           if (element) {
-            element.scrollIntoView({ behavior: "smooth", block: "start" });
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
           }
 
           // Set default layer as active when Explore Detail has been
@@ -71,14 +71,14 @@ const ExploreDetailContainer = (props) => {
             data.vocabulary.find((v) => v.name === "knowledge_graph");
           const tags = knowledgeGraphVoc && knowledgeGraphVoc.tags;
           if (tags) {
-            fetchInferredTags({ concepts: tags.join(",") })
+            fetchInferredTags({ concepts: tags.join(',') })
               .then((inferredTags) => {
                 dispatch(
                   setTags(
                     inferredTags.filter(
                       (tag) =>
                         tag.labels.find(
-                          (type) => type === "TOPIC" || type === "GEOGRAPHY"
+                          (type) => type === 'TOPIC' || type === 'GEOGRAPHY'
                         ) && !TAGS_BLACKLIST.includes(tag.id)
                     )
                   )
@@ -86,7 +86,7 @@ const ExploreDetailContainer = (props) => {
                 dispatch(setTagsLoading(false));
               })
               .catch((error) => {
-                toastr.error("Error loading dataset inferred tags", error);
+                toastr.error('Error loading dataset inferred tags', error);
                 dispatch(setTagsLoading(false));
               });
           }
