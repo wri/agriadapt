@@ -2,7 +2,7 @@ export const APP_HEADER_ITEMS = [
   {
     id: "value-chains",
     label: "Value Chains",
-    href: "/",
+    href: "/value-chains/rice",
     root: '/value-chains',
     children: [
       {
@@ -47,30 +47,28 @@ export const APP_HEADER_ITEMS = [
   {
     id: 'language',
     label: 'Language',
-    href: '',
+    // href: '',
     children: [
       {
         label: 'English',
-        href: ''
+        // href: ''
       },
       {
         label: 'Spanish',
-        href: ''
+        // href: ''
       },
       {
         label: 'Hindi',
-        href: ''
+        // href: ''
       },
       {
         label: 'Tamil',
-        href: ''
+        // href: ''
       },
       {
         label: 'Telugu',
-        href: ''
+        // href: ''
       },
     ]
   }
 ];
-
-export default { APP_HEADER_ITEMS };

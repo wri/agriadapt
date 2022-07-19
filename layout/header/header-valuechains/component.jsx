@@ -11,7 +11,7 @@ export default function HeaderValueChains() {
     setVisibility(_isVisible);
   }, 50);
 
-  const pages = APP_HEADER_ITEMS[0].children;
+  const links = APP_HEADER_ITEMS[0];
 
   return (
     <Tether
@@ -23,7 +23,7 @@ export default function HeaderValueChains() {
       ]}
       classes={{ element: 'c-header-dropdown' }}
       renderTarget={(ref) => (
-        <Link href="/">
+        <Link href={links.href}>
           <a
             ref={ref}
             onMouseEnter={() => toggleDropdown(true)}
@@ -43,7 +43,7 @@ export default function HeaderValueChains() {
             onMouseEnter={() => toggleDropdown(true)}
             onMouseLeave={() => toggleDropdown(false)}
           >
-            {pages.map(({ id, label, href }) => (
+            {links.children.map(({ id, label, href }) => (
               <li className="header-dropdown-list-item" key={id}>
                 <Link href={href}>
                   <a>{label}</a>

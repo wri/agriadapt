@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Link from 'next/link';
+// import Link from 'next/link';
 import { useDebouncedCallback } from 'use-debounce';
 import Tether from 'react-tether';
 
@@ -32,7 +32,7 @@ export default function HeaderLanguage() {
         ]}
         classes={{ element: 'c-header-dropdown' }}
         renderTarget={(ref) => (
-          <Link href="/">
+          // <Link href="/">
             <a
               ref={ref}
               onMouseEnter={() => toggleDropdown(true)}
@@ -48,7 +48,7 @@ export default function HeaderLanguage() {
                 className="c-icon dropdown-link-image -smaller"
               />
             </a>
-          </Link>
+          // </Link>
         )}
         renderElement={(ref) => {
           if (!isVisible || !featuredLanguages.length) return null;
