@@ -1,5 +1,8 @@
 import PropTypes from "prop-types";
 import HeadNext from "next/head";
+import dynamic from "next/dynamic";
+
+const HotjarScript = dynamic(() => import('../../../scripts/hotjar'), { ssr: false });
 
 export default function HeadApp({ title, description, thumbnail }) {
   const url =
@@ -11,7 +14,7 @@ export default function HeadApp({ title, description, thumbnail }) {
     <>
       <HeadNext>
         <title>
-          {title ? `${title} | Climate Risk Tool` : "Climate Risk Tool"}
+          {title ? `${title} | AgriAdapt Beta` : "AgriAdapt Beta"}
         </title>
 
         <meta property="og:url" content={url} />
@@ -22,6 +25,7 @@ export default function HeadApp({ title, description, thumbnail }) {
         <meta property="og:image:secure_url" content={thumbnail} />
         <meta name="og:image:alt" content={`${title}_widget`} />
       </HeadNext>
+      {process.env.NODE_ENV === 'production' && <HotjarScript />}
     </>
   );
 }
