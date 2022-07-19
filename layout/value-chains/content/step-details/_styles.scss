@@ -26,6 +26,10 @@
         display: flex;
         flex-direction: row;
 
+        .c-step-icon {
+            flex: 1 0 auto;
+        }
+
         h3 {
             line-height: 38px;
         }
