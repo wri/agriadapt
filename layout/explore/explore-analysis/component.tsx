@@ -23,6 +23,8 @@ const ExploreAnalysis = ({
   const [domains, setDomains] = useState([]);
   const [visCols, setVisCols] = useState([]);
   const [valueMaps, setValueMaps] = useState([]);
+  const [outputs, setOutputs] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   return (
     <div className="c-analysis">
@@ -50,12 +52,18 @@ const ExploreAnalysis = ({
             setDomains={setDomains}
             setVisCols={setVisCols}
             setValueMaps={setValueMaps}
+            setOutputs={setOutputs}
+            setLoading={setLoading}
+            loading={loading}
           />
-          <AnalysisVisuals
-            domains={domains}
-            columns={visCols}
-            valueMaps={valueMaps}
-          />
+          {!loading && (
+            <AnalysisVisuals
+              domains={domains}
+              columns={visCols}
+              valueMaps={valueMaps}
+              outputs={outputs}
+            />
+          )}
         </>
         // </CustomErrorFallback>
       )}

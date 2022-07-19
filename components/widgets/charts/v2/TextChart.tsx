@@ -3,7 +3,7 @@ import { fetchDatasetQuery } from 'services/query';
 // import InView from "components/in-view";
 
 interface TextChartProps {
-  value?: number;
+  value?: number | string;
   // unit?: 'celsius' | string;
   analysis?: {
     name?: string | ((params: Record<string, any>) => string);
@@ -20,7 +20,6 @@ const TextChart = ({
   analysis: { dataset, format, suffix, query, name, type },
   params,
   value = 0.0,
-  // unit = 'celsius',
 }: TextChartProps) => {
   const [result, setResult] = useState<number | string>(value);
 
@@ -42,7 +41,7 @@ const TextChart = ({
       fetchDatasetQuery(dataset, query(params)).then(({ data }) => {
         setResult(formatValue(data.data[0].x));
       });
-    } else setResult(formatValue(value));
+    } else setResult(typeof value === 'number' ? formatValue(value) : value);
   }, [dataset, formatValue, params, query, value]);
 
   return (

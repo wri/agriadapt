@@ -12,15 +12,24 @@ import { APILayerSpec } from 'types/layer';
 import { toGeoJSON } from 'utils/locations/geojson';
 import { createColorValueMap, legendConfigItem } from 'utils/layers/symbolizer';
 
-const AnalysisTable = ({ loc_map: locations, layerGroups, setDomains, setVisCols, setValueMaps }) => {
+const AnalysisTable = ({
+  loc_map: locations,
+  layerGroups,
+  setDomains,
+  setVisCols,
+  setValueMaps,
+  setOutputs,
+  loading,
+  setLoading,
+}) => {
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(false);
 
   const interactions = useMemo(() => {
     const valueMaps = [];
+    const outputs = [];
     const arr = [].concat(
       ...layerGroups.map((g) =>
-        g.layers.reduce((arr, l: APILayerSpec) => {
+        g.layers.reduce((arr: any[], l: APILayerSpec) => {
           if (!l.active) return arr;
           const legendItems = l.legendConfig.items as legendConfigItem[];
           const valueMap = createColorValueMap(
@@ -28,6 +37,7 @@ const AnalysisTable = ({ loc_map: locations, layerGroups, setDomains, setVisCols
             legendItems
           );
           valueMaps.push(l.layerConfig.type == 'raster' ? valueMap : null);
+          outputs.push(l.applicationConfig.output);
           // TODO: Find out why time slider does not destructure out correct appConfig
           const appConfig =
             l.applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS] ||
@@ -46,8 +56,9 @@ const AnalysisTable = ({ loc_map: locations, layerGroups, setDomains, setVisCols
       )
     );
     setValueMaps(valueMaps);
+    setOutputs(outputs);
     return arr;
-  }, [layerGroups, setValueMaps]);
+  }, [layerGroups, setOutputs, setValueMaps]);
 
   const columns = useMemo(() => {
     const cols = [].concat(...interactions.map(({ label }) => label));
@@ -116,7 +127,10 @@ const AnalysisTable = ({ loc_map: locations, layerGroups, setDomains, setVisCols
     () =>
       data.map((d) => {
         const attributes = d.data.reduce(
-          ({ arr = [], valArr = [] }, { interaction = {}, output, valueMap }) => {
+          (
+            { arr = [], valArr = [] },
+            { interaction = {}, output, valueMap }
+          ) => {
             const colArr = output?.path.split('.') || [];
             const val =
               colArr.reduce(
@@ -164,7 +178,7 @@ const AnalysisTable = ({ loc_map: locations, layerGroups, setDomains, setVisCols
   return (
     <div
       className={classnames(
-        'c-widget c-analysis-table border rounded border-gray-light',
+        'c-widget c-analysis-table border rounded border-gray-light'
       )}
     >
       <div className="p-4 border-b border-gray-light widget-header-container">

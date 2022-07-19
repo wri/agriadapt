@@ -48,6 +48,7 @@ export interface APILayerAppConfig {
   query: string;
   output: {
     path: string;
+    type: 'number' | 'string';
   };
   value_chain: 'coffee' | 'cotton' | 'rice';
   emission_scenario?: 'rcp4.5' | 'rcp8.5',
