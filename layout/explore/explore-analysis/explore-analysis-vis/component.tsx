@@ -2,7 +2,10 @@ import PieChart from 'components/widgets/charts/v2/PieChart';
 import TextChart from 'components/widgets/charts/v2/TextChart';
 
 interface AnaylsisVisualsProps {
-  domains: number[][];
+  domains: {
+    label: string;
+    value: number;
+  }[][];
   columns: string[];
   valueMaps: Record<string, string>[];
 }
@@ -14,23 +17,28 @@ const AnalysisVisuals = ({
 }: AnaylsisVisualsProps) => {
   const average = (arr: number[], valueMap) => {
     const avg = arr.reduce((a, b) => a + b, 0) / arr.length;
-    if (!valueMap)
-      return avg.toFixed(2);
+    if (!valueMap) return avg.toFixed(2);
     else return valueMap[Math.round(avg)];
-  }
+  };
 
   return (
     <div className="c-analysis-visuals">
       {columns.map((c, i) => {
-        const avg = average(domains[i].filter(x => x != null), valueMaps[i]);
+        const numDomain = domains[i].map(({ value }) => value);
+        const labelDomain = domains[i].map(({ label }) => label);
+        const avg = average(
+          numDomain.filter((x) => x != null),
+          valueMaps[i]
+        );
         return (
           <>
-            <PieChart name={c} domain={domains[i]} />
+            <PieChart name={c} domain={labelDomain} />
             <TextChart
+              analysis={{
+                name: c,
+                type: 'avg',
+              }}
               value={avg}
-              // analysis={{ format: '0.00' }}
-              type={'avg'}
-              name={c}
             />
           </>
         );

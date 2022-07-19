@@ -33,12 +33,6 @@ const PieChart = ({
     }));
   }, [domain]);
 
-  // const extreme = useMemo(() => {
-
-  // }, [])
-
-
-
   const widgetConfig = useMemo(
     () => ({
       ...widgetTemplate,

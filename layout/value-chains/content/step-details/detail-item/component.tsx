@@ -38,24 +38,25 @@ const DetailItem = ({
   crop = 'rice',
   fullWidth = false,
 }: DetailItemProps) => {
-
   const [geojson, setGeoJson] = useState('');
 
   useEffect(() => {
     if (country?.value)
-    fetchGeostore(country.value).then(({ geojson }) => {
-      // setGeoJson(encodeURIComponent(JSON.stringify(geojson)))
-      setGeoJson(JSON.stringify(geojson))
-    }
-    );
+      fetchGeostore(country.value).then(({ geojson }) => {
+        // setGeoJson(encodeURIComponent(JSON.stringify(geojson)))
+        setGeoJson(JSON.stringify(geojson));
+      });
   }, [country?.value]);
 
-  const params = useMemo(() => ({
-    crop: capitalizeFirstLetter(crop),
-    country: country?.label,
-    iso: country?.iso,
-    geojson,
-  }), [country, crop, geojson]);
+  const params = useMemo(
+    () => ({
+      crop: capitalizeFirstLetter(crop),
+      country: country?.label,
+      iso: country?.iso,
+      geojson,
+    }),
+    [country, crop, geojson]
+  );
   return (
     <>
       <div className="c-detail-item">
@@ -100,7 +101,9 @@ const DetailItem = ({
               })}
             >
               <WidgetBlock
-                widgetId={typeof w.id === 'function' ? w.id(country.label) : w.id}
+                widgetId={
+                  typeof w.id === 'function' ? w.id(country.label) : w.id
+                }
                 {...(country && { areaOfInterest: country.value })}
               />
             </div>
@@ -108,18 +111,7 @@ const DetailItem = ({
         ))}
         {analysis && (
           <div className="c-widget">
-            <TextChart
-              analysis={analysis}
-              query={analysis.query ? analysis.query(params) : undefined}
-              name={
-                typeof analysis.name === 'function'
-                  ? analysis.name(params)
-                  : analysis.name
-              }
-              type={analysis.type}
-              format={analysis.format}
-              suffix={analysis.suffix}
-            />
+            <TextChart analysis={analysis} params={params} />
           </div>
         )}
       </div>

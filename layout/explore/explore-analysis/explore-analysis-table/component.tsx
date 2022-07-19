@@ -13,7 +13,6 @@ import { toGeoJSON } from 'utils/locations/geojson';
 import { createColorValueMap, legendConfigItem } from 'utils/layers/symbolizer';
 
 const AnalysisTable = ({ loc_map: locations, layerGroups, setDomains, setVisCols, setValueMaps }) => {
-  const isEmbed = false;
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -142,13 +141,16 @@ const AnalysisTable = ({ loc_map: locations, layerGroups, setDomains, setVisCols
   /* Set analysis visuals domains from rows */
   useEffect(() => {
     const domains = new Array(columns.length).fill([]);
-    rows.forEach(({ numAttributes} ) => {
+    rows.forEach(({ attributes, numAttributes }) => {
       for (let j = 0; j < numAttributes.length; j++) {
-        domains[j] = [...(domains[j] || []), numAttributes[j]];
+        domains[j] = [
+          ...(domains[j] || []),
+          { label: attributes[j], value: numAttributes[j] },
+        ];
       }
     });
     setDomains(domains);
-  }, [columns, rows, setDomains])
+  }, [columns, rows, setDomains]);
 
   const options = [
     {
@@ -163,9 +165,6 @@ const AnalysisTable = ({ loc_map: locations, layerGroups, setDomains, setVisCols
     <div
       className={classnames(
         'c-widget c-analysis-table border rounded border-gray-light',
-        {
-          '-is-embed': isEmbed,
-        }
       )}
     >
       <div className="p-4 border-b border-gray-light widget-header-container">

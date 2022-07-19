@@ -5,8 +5,13 @@ export const chartData = {
         fields: [
           {
             type: 'string',
-            property: 'id',
+            property: 'Value',
             column: 'x',
+          },
+          {
+            type: 'number',
+            property: 'Count',
+            column: 'y',
           },
         ],
       },
