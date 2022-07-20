@@ -1,21 +1,22 @@
-import PropTypes from "prop-types";
-import HeadNext from "next/head";
-import dynamic from "next/dynamic";
+import PropTypes from 'prop-types';
+import HeadNext from 'next/head';
+import dynamic from 'next/dynamic';
+import GoogleAnalyticsV4Script from 'scripts/google-analytics-v4';
 
-const HotjarScript = dynamic(() => import('../../../scripts/hotjar'), { ssr: false });
+const HotjarScript = dynamic(() => import('../../../scripts/hotjar'), {
+  ssr: false,
+});
 
 export default function HeadApp({ title, description, thumbnail }) {
   const url =
-    typeof window !== "undefined"
+    typeof window !== 'undefined'
       ? `${window.location.origin}${window.location.pathname}`
-      : "";
+      : '';
 
   return (
     <>
       <HeadNext>
-        <title>
-          {title ? `${title} | AgriAdapt Beta` : "AgriAdapt Beta"}
-        </title>
+        <title>{title ? `${title} | AgriAdapt Beta` : 'AgriAdapt Beta'}</title>
 
         <meta property="og:url" content={url} />
         <meta name="description" content={description} />
@@ -25,7 +26,12 @@ export default function HeadApp({ title, description, thumbnail }) {
         <meta property="og:image:secure_url" content={thumbnail} />
         <meta name="og:image:alt" content={`${title}_widget`} />
       </HeadNext>
-      {process.env.NODE_ENV === 'production' && <HotjarScript />}
+      {process.env.NODE_ENV === 'production' && (
+        <>
+          <HotjarScript />
+          <GoogleAnalyticsV4Script />
+        </>
+      )}
     </>
   );
 }
@@ -33,7 +39,7 @@ export default function HeadApp({ title, description, thumbnail }) {
 HeadApp.defaultProps = {
   title: null,
   description: null,
-  thumbnail: "https://resourcewatch.org/static/images/social-big.jpg",
+  thumbnail: 'https://resourcewatch.org/static/images/social-big.jpg',
 };
 
 HeadApp.propTypes = {
