@@ -1,12 +1,17 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 // Components
-import DatasetLayerCard from "./dataset-layer-card";
+import DatasetLayerCard from './dataset-layer-card';
+import { APILayerSpec } from 'types/layer';
 
-function DatasetLayers(props) {
-  const { layers, dataset, isATimeline, timelineLayerMapbox, timelineLayer } =
-    props;
+const DatasetLayers = ({
+  layers,
+  dataset,
+  isATimeline,
+  timelineLayerMapbox,
+  timelineLayer,
+}) => {
   const showTimelineMapbox = isATimeline && !!timelineLayerMapbox;
   const showTimelineOldApproach =
     isATimeline && !timelineLayerMapbox && timelineLayer;
@@ -22,13 +27,13 @@ function DatasetLayers(props) {
           <DatasetLayerCard layer={timelineLayerMapbox} dataset={dataset} />
         )}
         {!isATimeline &&
-          layers.map((layer) => (
-            <DatasetLayerCard layer={layer} dataset={dataset} />
+          layers.map((layer: APILayerSpec) => (
+            <DatasetLayerCard key={layer.id} layer={layer} dataset={dataset} />
           ))}
       </div>
     </div>
   );
-}
+};
 
 DatasetLayers.propTypes = {
   layers: PropTypes.array.isRequired,

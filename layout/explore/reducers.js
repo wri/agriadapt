@@ -360,20 +360,23 @@ export default createReducer(initialState, (builder) => {
         .map((_dataset) => {
           const { id, layer: layers, applicationConfig } = _dataset;
           const dParams = params.find((p) => p.dataset === id);
-          // gets only published layers
-          let publishedLayers = layers.filter((_layer) => _layer.published);
-
+          // gets only published layers in selected emission scenario
+          let publishedLayers = layers.filter(
+            (_layer) =>
+              _layer.published &&
+              (!_layer.applicationConfig.emission_scenario ||
+                _layer.applicationConfig.emission_scenario ===
+                  state.filters.emission_scenario.value)
+          );
           // sorts layers if applies
           if (
             // TODO: Fix layer sort based on resource watch ordering.
             applicationConfig &&
             applicationConfig['rw'] &&
-            applicationConfig['rw']
-              .layerOrder &&
+            applicationConfig['rw'].layerOrder &&
             layers.length > 1
           ) {
-            const { layerOrder } =
-              applicationConfig['rw'];
+            const { layerOrder } = applicationConfig['rw'];
             publishedLayers = sortLayers(publishedLayers, layerOrder);
           }
 
