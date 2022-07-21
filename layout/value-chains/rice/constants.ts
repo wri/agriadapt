@@ -118,6 +118,10 @@ const trade = {
   export_and_import: {
     info: 'The rice market is highly exposed to climate change. Climate change not only creates risks for producing countries but also transmits those risks through agricultural commodity trade to consumers of all kinds, and can do so over significant distances.',
     // TODO: Additional Graphical Visual
+    analysis: {
+      value: 'N/A',
+      name: 'Data Coming Soon'
+    }
   },
 };
 

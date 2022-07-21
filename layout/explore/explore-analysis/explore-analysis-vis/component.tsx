@@ -53,8 +53,8 @@ const AnalysisVisuals = ({
               analysis={{
                 name: c,
                 type: 'avg',
+                value: avg,
               }}
-              value={avg}
             />}
           </>
         );

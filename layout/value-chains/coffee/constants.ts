@@ -57,6 +57,10 @@ const trade = {
     // TODO: Custom widget
     // widgets: [{ id: '96622815-7e6b-4d15-97cc-3ca3bc1a5c98' }],
     // TODO: Additional Graphical Visual
+    analysis: {
+      value: 'N/A',
+      name: 'Data Coming Soon'
+    }
   },
 };
 

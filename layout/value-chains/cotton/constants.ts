@@ -29,6 +29,10 @@ const production = {
     fullWidth: true,
     widgets: [{ id: '8cf03ba0-a517-4a43-b5b4-e677ccc6099c' }],
     //TODO: Additional Callout - Need working query
+    analysis: {
+      value: 'N/A',
+      name: 'Data Coming Soon'
+    },
     // analysis: {
     //   name: ({
     //     crop,
@@ -74,6 +78,10 @@ const trade = {
   export_and_import: {
     info: 'Cotton is a very important cash crop which has a growing demand for domestic and international market. Disruptions to cotton production can result in an uncertain market for farmers and ripple effects can be seen throughout the entire value chain (Cotton 2040, 2021). Production constraints will impact global markets by effecting product availabilty, quality, and price.',
     //TODO: Additional Chart Visual
+    analysis: {
+      value: 'N/A',
+      name: 'Data Coming Soon'
+    }
   },
 };
 
