@@ -57,6 +57,11 @@
         align-items: center;
         margin: 12px;
     }
+
+    a.c-step-item:hover {
+        cursor: pointer;
+        text-decoration: none;
+    }
 }
 
 // TODO: Figure out proper location for this class
@@ -66,4 +71,7 @@
     border-radius: 100%;
     background: rgb($primary-green, 0.5);
     margin-right: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

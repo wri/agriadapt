@@ -11,6 +11,7 @@ interface DetailItemProps {
     icon: string;
     label: string;
   };
+  id: string;
   info: string | ((string: string) => string);
   widgets?: {
     id: string | ((country: string) => string);
@@ -31,6 +32,7 @@ interface DetailItemProps {
 
 const DetailItem = ({
   label: { icon, label },
+  id,
   info,
   widgets = [],
   country = null,
@@ -59,7 +61,7 @@ const DetailItem = ({
   );
   return (
     <>
-      <div className="c-detail-item">
+      <div id={id} className="c-detail-item">
         <div
           className={classnames('c-detail-section', {
             '-full': fullWidth,

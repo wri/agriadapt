@@ -28,24 +28,24 @@ const NavigationControls = ({
   return (
     <div className="c-value-chain-flow">
       <div className="c-flow">
-        {Object.entries(details).map(([key, item], i) => (
+        {Object.entries(details).map(([parent, item], i) => (
           <div
-            key={key}
+            key={parent}
             className={classnames({
               'c-chain-item': true,
-              '-inactive': key !== activeItem,
+              '-inactive': parent !== activeItem,
             })}
           >
             <FlowButton
               start={i === 0}
               end={i === Object.keys(details).length - 1}
-              label={chain_items[key].label}
-              id={key}
+              label={chain_items[parent].label}
+              id={parent}
             />
             <ul className="c-item-list">
               {Object.keys(item).map((key: string) => (
                 <li key={key}>
-                  <StepItem id={key} {...item_labels[key]} />
+                  <StepItem id={key} parent={parent} {...item_labels[key]} />
                 </li>
               ))}
             </ul>

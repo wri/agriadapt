@@ -20,7 +20,7 @@ interface StepDetailsProps {
 const StepDetails = ({ activeItem, details }: StepDetailsProps) => (
   <div className="c-step-details">
     {Object.entries(details[activeItem]).map(([key, val]) => (
-      <DetailItem key={key} label={item_labels[key]} {...val} />
+      <DetailItem key={key} id={key} label={item_labels[key]} {...val} />
     ))}
   </div>
 );
