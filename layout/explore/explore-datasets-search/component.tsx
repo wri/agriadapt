@@ -52,9 +52,9 @@ const ExploreDatasetsSearch = ({
     logEvent({
       action: 'test_filter',
       params: {
-        value_chain: selectedChain,
-        emission_scenario: selectedScenario,
-        timescale: selectedTimescale,
+        value_chain: selectedChain.value.value,
+        emission_scenario: selectedScenario.value.value,
+        timescale: selectedTimescale.value.value,
       },
     });
     loadDatasets();
