@@ -51,12 +51,12 @@ class LayoutApp extends Component {
       if (Progress && Progress.Component.instance) Progress.hideAll();
     });
 
-    // Google Analytics
-    if (!window.GA_INITIALIZED) {
-      initGA();
-      window.GA_INITIALIZED = true;
-    }
-    logPageView();
+    // // Google Analytics
+    // if (!window.GA_INITIALIZED) {
+    //   initGA();
+    //   window.GA_INITIALIZED = true;
+    // }
+    // logPageView();
   }
 
   // eslint-disable-next-line camelcase

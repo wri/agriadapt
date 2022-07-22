@@ -6,6 +6,7 @@ import Field from 'components/form/Field';
 import { useCallback } from 'react';
 import debounce from 'lodash/debounce';
 import useSelect from 'hooks/form/useSelect';
+import { logEvent } from 'utils/analytics';
 
 const ExploreDatasetsSearch = ({
   search,
@@ -48,6 +49,14 @@ const ExploreDatasetsSearch = ({
 
   const handleSubmit = () => {
     setFiltersAdvancedOpen(false);
+    logEvent({
+      action: 'test_filter',
+      params: {
+        value_chain: selectedChain,
+        emission_scenario: selectedScenario,
+        timescale: selectedTimescale,
+      },
+    });
     loadDatasets();
   };
 
