@@ -52,13 +52,6 @@
       background: transparent;
     }
 
-    &.-ocean-watch {
-      background-image: $header-bg-image,
-        linear-gradient(137.52deg, $dark-pink 0%, #0f4573 100%);
-      background-size: auto;
-      background-position: center;
-    }
-
     &.-admin {
       background-color: #a5177e;
       background-image: $header-bg-image,

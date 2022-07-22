@@ -14,10 +14,9 @@
 @import "base";
 @import "mixins";
 @import "layouts/container", "layouts/page", "layouts/error", "layouts/section",
-  "layouts/content", "layouts/postcontent", "layouts/row", "layouts/footer",
-  "layouts/sidebar", "layouts/static", "layouts/ocean-watch",
-  "layouts/_coral-reefs-dashboard";
-
+"layouts/content", "layouts/postcontent", "layouts/row", "layouts/footer",
+"layouts/sidebar", "layouts/static",
+"layouts/_coral-reefs-dashboard";
 @import "./components/ui/aside";
 @import "./components/ui/avatar";
 @import "./components/ui/breadcrumbs";
@@ -213,8 +212,6 @@
 @import "./layout/app/pulse/globe-tooltip/styles";
 @import "./layout/app/newsletter-thank-you/styles";
 @import "./layout/about/styles";
-@import "./layout/layout/ocean-watch/storytelling/background/styles";
-@import "./layout/layout/ocean-watch/storytelling/story-step/styles";
 @import "./layout/intro-header/styles";
 @import "./layout/value-chains/content/styles.scss";
 @import "./layout/value-chains/content/navigation-controls/styles.scss";
