@@ -4,7 +4,7 @@ import type { AppProps } from "next/app";
 import { QueryClient, QueryClientProvider } from "react-query";
 
 //lib
-import wrapper from "lib/store";
+import { wrapper } from 'lib/store';
 import MediaContextProvider from "lib/media";
 
 const queryClient = new QueryClient();

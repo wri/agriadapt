@@ -35,7 +35,7 @@ import { configureStore, Reducer } from '@reduxjs/toolkit';
 
 const WERed: Reducer<{ editor: unknown; AnyAction }> = WEReducers;
 
-const store = configureStore({
+const makeStore = () => configureStore({
   reducer: {
     ...reducers,
     ...modules,
@@ -63,6 +63,7 @@ const store = configureStore({
   },
 });
 
-export type RootState = ReturnType<typeof store.getState>;
+export type AppStore = ReturnType<typeof makeStore>;
+export type RootState = ReturnType<AppStore['getState']>;
 
-export default createWrapper(() => store);
+export const wrapper = createWrapper<AppStore>(makeStore);

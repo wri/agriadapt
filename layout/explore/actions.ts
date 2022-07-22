@@ -17,21 +17,23 @@ import { TAGS_BLACKLIST } from 'utils/tags';
 export const resetExplore = createAction('EXPLORE/resetExplore');
 
 // DATASETS
-export const setDatasets = createAction('EXPLORE/setDatasetsList');
-export const setDatasetsLoading = createAction('EXPLORE/setDatasetsLoading');
-export const setDatasetsError = createAction('EXPLORE/setDatasetsError');
-export const setHasMoreDatasets = createAction('EXPLORE/setHasMoreDatasets');
+export const setDatasets = createAction<Record<string, any>[]>('EXPLORE/setDatasetsList');
+export const setDatasetsLoading = createAction<boolean>('EXPLORE/setDatasetsLoading');
+export const setDatasetsError = createAction<any>('EXPLORE/setDatasetsError');
+export const setHasMoreDatasets = createAction<boolean>('EXPLORE/setHasMoreDatasets');
 export const setDatasetsPage = createAction('EXPLORE/setDatasetsPage');
-export const setDatasetsTotal = createAction('EXPLORE/setDatasetsTotal');
+export const setDatasetsTotal = createAction<number>('EXPLORE/setDatasetsTotal');
 export const setDatasetsLimit = createAction('EXPLORE/setDatasetsLimit');
 export const setDatasetsMode = createAction('EXPLORE/setDatasetsMode');
-export const setSelectedDataset = createAction('EXPLORE/setSelectedDataset');
+export const setSelectedDataset = createAction<string>('EXPLORE/setSelectedDataset');
 export const setFilteredDatasets = createAction(
   'EXPLORE/setFilteredDatasetsList'
 );
 
 // COUNTRIES
-export const setCountryList = createAction('EXPLORE/setCountryList');
+export const setCountryList = createAction<{ label: string; iso: string }[]>(
+  'EXPLORE/setCountryList'
+);
 export const setStateList = createAction('EXPLORE/setStateList');
 
 export const fetchDatasets = createThunkAction(
@@ -153,11 +155,11 @@ export const fetchCountries = createThunkAction(
 );
 
 // MAP
-export const setViewport = createAction('EXPLORE-MAP__SET-VIEWPORT');
-export const setBasemap = createAction('EXPLORE-MAP__SET-BASEMAP');
-export const setLabels = createAction('EXPLORE-MAP__SET-LABELS');
+export const setViewport = createAction<Record<string, any>>('EXPLORE-MAP__SET-VIEWPORT');
+export const setBasemap = createAction<string>('EXPLORE-MAP__SET-BASEMAP');
+export const setLabels = createAction<string>('EXPLORE-MAP__SET-LABELS');
 export const setBounds = createAction('EXPLORE-MAP__SET-BOUNDS');
-export const setBoundaries = createAction('EXPLORE-MAP__SET-BOUNDARIES');
+export const setBoundaries = createAction<boolean>('EXPLORE-MAP__SET-BOUNDARIES');
 export const setAreaOfInterest = createAction(
   'EXPLORE-MAP__SET_AREA_OF_INTEREST'
 );
@@ -210,7 +212,7 @@ export const resetMapLayerGroupsInteraction = createAction(
   'EXPLORE/resetMapLayerGroupsInteraction'
 );
 
-export const setMapLayerGroups = createAction('EXPLORE/setMapLayerGroups');
+export const setMapLayerGroups = createAction<{datasets: any, params: any}>('EXPLORE/setMapLayerGroups');
 export const fetchMapLayerGroups = createThunkAction(
   'EXPLORE/fetchMapLayers',
   (payload) => (dispatch, getState) => {
@@ -239,7 +241,7 @@ export const fetchMapLayerGroups = createThunkAction(
 );
 
 // FILTERS
-export const setFiltersSearch = createAction('EXPLORE/setFiltersSearch');
+export const setFiltersSearch = createAction<string>('EXPLORE/setFiltersSearch');
 export const setFiltersAdvancedOpen = createAction(
   'EXPLORE/setFiltersAdvancedOpen'
 );
@@ -271,15 +273,15 @@ export const setSidebarSelectedCollection = createAction(
 export const clearSidebarSubsection = createAction(
   'EXPLORE/clearSidebarSubsection'
 );
-export const setSidebarSelectedTab = createAction(
+export const setSidebarSelectedTab = createAction<string>(
   'EXPLORE/setSidebarSelectedTab'
 );
 
 // TAGS TOOLTIP
-export const setTags = createAction('EXPLORE/setTags');
+export const setTags = createAction<any[]>('EXPLORE/setTags');
 export const setTagsTooltip = createAction('EXPLORE/setTagsTooltip');
-export const setTagsLoading = createAction('EXPLORE/setTagsLoading');
-export const setTagsError = createAction('EXPLORE/setTagsError');
+export const setTagsLoading = createAction<boolean>('EXPLORE/setTagsLoading');
+export const setTagsError = createAction<string | null>('EXPLORE/setTagsError');
 export const resetTags = createAction('EXPLORE/resetTags');
 
 // ANALYSIS LOCATION

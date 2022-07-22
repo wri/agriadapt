@@ -1,5 +1,6 @@
 import classnames from 'classnames';
 import Icon from 'components/ui/icon';
+import { capitalizeFirstLetter } from 'utils/utils';
 import { EXPLORE_TABS } from '../constants';
 
 const ExploreSwitch = ({ open, selectedTab, setSidebarSelectedTab }) => {
@@ -29,7 +30,7 @@ const ExploreSwitch = ({ open, selectedTab, setSidebarSelectedTab }) => {
               name={iconName}
               className={classnames({ 'c-icon': true, '-small': open })}
             />
-            {open && <span className="button-text">{value}</span>}
+            {open && <span className="button-text">{capitalizeFirstLetter(value)}</span>}
           </button>
         );
       })}

@@ -1,6 +1,6 @@
 export const EXPLORE_TABS = {
-  LAYERS: 'Layers',
-  ANALYSIS: 'Analysis',
+  LAYERS: 'layers',
+  ANALYSIS: 'analysis',
 };
 
 export const EXPLORE_FILTERS = {

@@ -12,7 +12,7 @@ import { logger } from 'utils/logs';
  * @param {Object} headers Request headers.
  * @param {boolean} _meta Boolean flag indicating whether the meta object should
  * be included in the response or not.
- * @returns {Array} Array of serialized datasets.
+ * @returns {Promise<{ datasets, meta }>} Array of serialized datasets.
  */
 export const fetchDatasets = (params = {}, headers = {}, _meta = false) => {
   const newParams = {

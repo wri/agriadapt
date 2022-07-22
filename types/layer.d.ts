@@ -57,4 +57,7 @@ export interface APILayerAppConfig {
   subgroup?: string;
   emission_scenario?: 'rcp4.5' | 'rcp8.5',
   timescale?: 'historic' | 'future_looking',
+  extreme_value?: string | number;
+  extreme_direction?: 'asc' | 'desc';
+  extreme_text?: string;
 }
