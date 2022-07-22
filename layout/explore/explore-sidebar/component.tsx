@@ -23,12 +23,12 @@ const ExploreSidebarComponent = ({
     // Toggle sidebar
     setSidebarOpen(!open);
 
-    // Analytics
-    if (!open) {
-      logEvent('Explore Map', 'Sidebar', 'Expand sidebar');
-    } else {
-      logEvent('Explore Map', 'Sidebar', 'Collapse sidebar');
-    }
+    // // Analytics
+    // if (!open) {
+    //   logEvent('Explore Map', 'Sidebar', 'Expand sidebar');
+    // } else {
+    //   logEvent('Explore Map', 'Sidebar', 'Collapse sidebar');
+    // }
   };
 
   return (

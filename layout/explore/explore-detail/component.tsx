@@ -15,7 +15,6 @@ import ExploreDetailButtons from './explore-detail-buttons';
 import ExploreDetailTags from './explore-detail-tags';
 import DatasetLayers from './dataset-layers';
 // import RelatedContent from "./related-content";
-// import ExploreDetailVisualization from "./explore-detail-visualization";
 
 // Constants
 import { DEFAULT_LIMIT_CHAR_FOR_METADATA_FIELDS } from './constants';
@@ -100,12 +99,12 @@ const ExploreDetailComponent = ({
                   markdown
                   text={metadata.description}
                   limitChar={DEFAULT_LIMIT_CHAR_FOR_METADATA_FIELDS}
-                  readMoreClicked={() =>
-                    logEvent(
-                      'Explore (Detail)',
-                      'Clicks Read More',
-                      'description'
-                    )
+                  readMoreClicked={() => undefined
+                    // logEvent(
+                    //   'Explore (Detail)',
+                    //   'Clicks Read More',
+                    //   'description'
+                    // )
                   }
                 />
               </div>
@@ -116,12 +115,6 @@ const ExploreDetailComponent = ({
                 <DatasetLayers layers={layers} dataset={dataset} />
               </div>
             )}
-            {/* <div id="visualization" className="metadata-section">
-                <ExploreDetailVisualization
-                  datasetId={dataset.id}
-                  widgetId={defaultWidget && defaultWidget.id}
-                />
-              </div> */}
             <div id="further_information" className="metadata-section">
               <FurtherInformation metadata={metadata} />
             </div>
