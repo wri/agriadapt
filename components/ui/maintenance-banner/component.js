@@ -6,7 +6,7 @@ const MaintenanceBanner = ({ timeText, handleMaintenanceBanner }) => (
     <div className="l-container">
       <div className="row">
         <div className="column small-9 medium-10">
-          Resource Watch will be undergoing a bit of scheduled maintenance on{" "}
+          AgriAdapt will be undergoing a bit of scheduled maintenance on{" "}
           {timeText} and some functionality may be limited during that period of
           time. Thanks for your patience!
         </div>

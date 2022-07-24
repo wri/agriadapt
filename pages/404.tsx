@@ -1,7 +1,18 @@
-import Layout404 from "layout/404/component"
+import React from 'react';
 
-const Custom404 = () => {
-  return <Layout404 />;
+import LayoutError from 'layout/error';
+import HeadError from 'layout/head/error';
+
+const Layout404 = () => {
+  return (
+    <>
+      <HeadError title="Page Not Found" />
+      <LayoutError
+        statusCode={404}
+        description="The page could not be found"
+      />
+    </>
+  );
 };
 
-export default Custom404;
+export default Layout404;

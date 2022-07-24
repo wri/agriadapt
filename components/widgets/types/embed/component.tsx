@@ -65,7 +65,7 @@ const EmbedTypeWidget = ({
               <WidgetInfo widget={widget} className="p-4" />
             )}
             <iframe
-              title={`${widget.name} || Resource Watch`}
+              title={`${widget.name} || AgriAdapt`}
               src={widget.widgetConfig.url}
               width="100%"
               height="100%"
