@@ -6,6 +6,7 @@ import StepDetails from './content/step-details';
 import UserStories from './content/user-stories';
 import Layout from 'layout/layout/layout-app';
 import { useEffect } from 'react';
+import { capitalizeFirstLetter } from 'utils/utils';
 
 interface LayoutCropProps {
   header: any;
@@ -14,12 +15,7 @@ interface LayoutCropProps {
     value: string;
     iso: string;
   }[];
-  details: {
-    inputs: any;
-    production: any;
-    processing?: any;
-    trade: any;
-  };
+  details: any;
   quotes: Record<string, any>[];
   crop: 'rice' | 'cotton' | 'coffee';
   setActiveCrop: (crop: 'rice' | 'cotton' | 'coffee') => void;
@@ -52,7 +48,7 @@ const LayoutCrop = ({
   }, [crop, setActiveCrop, setCountry]);
   return (
     // TODO: Translate
-    <Layout title={'Value Chains'}>
+    <Layout title={capitalizeFirstLetter(crop)}>
       <div className="l-crop">
         <IntroHeader {...header} countries={countries} />
         <div className="l-container">
@@ -72,11 +68,6 @@ const LayoutCrop = ({
             <NavigationControls details={details} />
           </div>
         </div>
-        {/* <div className="l-container">
-          <div className="row">
-            <ItemIntro />
-          </div>
-        </div> */}
         <div className="l-container">
           <div className="row">
             <div className="column small-12">

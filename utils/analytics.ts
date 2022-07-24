@@ -1,4 +1,10 @@
-export const logEvent = ({ action, params }) => {
+export const logEvent = ({
+  action,
+  params,
+}: {
+  action: string;
+  params: Record<string, any>;
+}) => {
   if (process.env.NODE_ENV === 'production') {
     window.gtag('event', action, params);
   }

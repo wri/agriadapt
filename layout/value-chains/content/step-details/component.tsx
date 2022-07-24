@@ -7,7 +7,6 @@ interface StepDetail {
 }
 
 interface StepDetailsProps {
-  // activeChain: 'RICE' | 'COTTON' | 'COFFEE';
   activeItem?: 'inputs' | 'production' | 'processing' | 'trade';
   details: {
     inputs: StepDetail;

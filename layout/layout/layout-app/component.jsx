@@ -1,12 +1,12 @@
 import { Component } from "react";
 import PropTypes from "prop-types";
-import dynamic from "next/dynamic";
+// import dynamic from "next/dynamic";
 import { withRouter } from "next/router";
 import Progress from "react-progress-2";
 import classnames from "classnames";
 
 // Utils
-import { initGA, logPageView } from "utils/analytics";
+// import { initGA, logPageView } from "utils/analytics";
 import { browserSupported } from "utils/browser";
 
 // vizzuality-components
@@ -21,7 +21,7 @@ import IconsRW from "components/icons";
 import Tooltip from "components/ui/Tooltip";
 import Modal from "components/ui/Modal";
 import NoBrowserSupport from "components/app/common/Browser";
-import GDPRBanner from "components/ui/gdpr-banner";
+// import GDPRBanner from "components/ui/gdpr-banner";
 
 // utils
 import { containsString } from "utils/string";
@@ -72,15 +72,15 @@ class LayoutApp extends Component {
       title,
       description,
       pageHeader,
-      modal,
+      // modal,
       className,
       thumbnail,
       children,
-      toggleModal,
-      setModalOptions,
+      // toggleModal,
+      // setModalOptions,
       router: { pathname },
     } = this.props;
-    const { modalOpen } = this.state;
+    // const { modalOpen } = this.state;
     const componentClass = classnames("l-page", { [className]: !!className });
 
     const isFullScreen = containsString(pathname, FULLSCREEN_PAGES);

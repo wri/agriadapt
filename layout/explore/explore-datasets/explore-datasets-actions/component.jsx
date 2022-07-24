@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
-
+import { logEvent } from "utils/analytics";
 
 const ExploreDatasetsActions = (props) => {
   const {
@@ -20,6 +20,8 @@ const ExploreDatasetsActions = (props) => {
   const handleToggleLayerGroup = useCallback(
     (event) => {
       event.stopPropagation();
+      if (!isActive)
+        logEvent({ action: 'add_dataset', params: { dataset: dataset.slug } });
 
       toggleMapLayerGroup({ dataset, toggle: !isActive });
       resetMapLayerGroupsInteraction();

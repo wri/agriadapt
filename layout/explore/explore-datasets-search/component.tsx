@@ -36,6 +36,10 @@ const ExploreDatasetsSearch = ({
   const handleSelectEmissionScenario = (scenario) => {
     selectedScenario.onChange(scenario);
     setFiltersEmissionScenario(scenario);
+    logEvent({
+      action: 'filter',
+      params: { emission_scenario: scenario.value}
+    })
   };
 
   const handleSelectTimescale = (timescale) => {
@@ -50,11 +54,10 @@ const ExploreDatasetsSearch = ({
   const handleSubmit = () => {
     setFiltersAdvancedOpen(false);
     logEvent({
-      action: 'test_filter',
+      action: 'filter',
       params: {
-        value_chain: selectedChain.value.value,
-        emission_scenario: selectedScenario.value.value,
-        timescale: selectedTimescale.value.value,
+        value_chain: [...selectedChain.value].map(({value}) => value).sort().join(','),
+        timescale: selectedTimescale.value,
       },
     });
     loadDatasets();
@@ -66,7 +69,16 @@ const ExploreDatasetsSearch = ({
 
   const debouncedSetFiltersSearch = debounce((value: string) => {
     setFiltersSearch(value);
-    if (!advOpen) loadDatasets();
+    if (!advOpen) { 
+      loadDatasets();
+      value.trim().length &&
+        logEvent({
+          action: 'dataset_search',
+          params: {
+            search_term: value,
+          },
+        });
+    };
   }, 500);
 
   const handleSearch = (value: string) => {
