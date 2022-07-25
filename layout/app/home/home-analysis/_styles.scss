@@ -25,8 +25,11 @@
 		}
 
 		.slider-control-bottomcenter {
-			top: 500px;
+			bottom: -50px !important;
 			left: 50%;
+			button {
+				padding: revert;
+			}
 		}
 
 		.slider-frame {

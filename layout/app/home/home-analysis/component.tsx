@@ -24,7 +24,7 @@ const AnalysisContainerHome = () => {
                     renderCenterLeftControls={() => undefined}
                     renderCenterRightControls={() => undefined}
                     slidesToShow={['sm', 'md'].includes(b) ? i + 1 : i}
-                    // cellAlign="left"
+                    cellAlign="left"
                     slidesToScroll={1}
                     cellSpacing={20}
                     autoplay={true}

@@ -222,10 +222,20 @@ export const fetchMapLayerGroups = createThunkAction(
       language: common.locale,
       includes: 'layer',
       ids: payload.map((lg) => lg.dataset).join(','),
-      'page[size]': 999,
+        'page[size]': 999,
     };
 
     return fetchDatasetsService(params)
+      .then((data) => {
+        return data.map((d) => ({
+          ...d,
+          layer: d.layer.map((l) => ({
+            ...l,
+            applicationConfig:
+              l.applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS],
+          })),
+        }));
+      })
       .then((data) => {
         dispatch(
           setMapLayerGroups({

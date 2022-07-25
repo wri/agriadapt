@@ -2,7 +2,6 @@ import Image from 'next/image';
 import classnames from 'classnames';
 import Field from 'components/form/Field';
 import Select from 'react-select';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 const IntroHeader = ({
@@ -13,6 +12,7 @@ const IntroHeader = ({
   title = '',
   subtitle = '',
   description = [],
+  button,
   country,
   setCountry,
 }) => {
@@ -76,17 +76,16 @@ const IntroHeader = ({
                   </p>
                 ))}
                 {id === 'LANDING' && (
-                  <Link href="/explore" passHref>
-                    <button
-                      className={classnames({
-                        'c-button': true,
-                        '-primary': true,
-                      })}
-                    >
-                      {/* TODO: Translate */}
-                      {'Explore the Latest Data'}
-                    </button>
-                  </Link>
+                  <button
+                    className={classnames({
+                      'c-button': true,
+                      '-primary': true,
+                    })}
+                    onClick={() => router.push(button.url)}
+                  >
+                    {/* TODO: Translate */}
+                    {button.label}
+                  </button>
                 )}
                 {countries && (
                   <div className="country-selector">

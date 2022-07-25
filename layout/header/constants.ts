@@ -54,21 +54,21 @@ export const APP_HEADER_ITEMS = [
         // href: ''
       },
       {
-        label: 'Spanish',
+        label: 'Español',
         // href: ''
       },
       {
-        label: 'Hindi',
+        label: 'தமிழ்',
         // href: ''
       },
       {
-        label: 'Tamil',
+        label: 'తెలుగు',
         // href: ''
       },
-      {
-        label: 'Telugu',
-        // href: ''
-      },
+      // {
+      //   label: 'Telugu',
+      //   // href: ''
+      // },
     ]
   }
 ];

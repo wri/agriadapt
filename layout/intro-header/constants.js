@@ -27,6 +27,42 @@ const LANDING = {
   subtitle: 'Data and tools for agricultural resilience',
   image: landingImage,
   blob: landingBlob,
+  button: {
+    label: 'Analyze Risk in Your Supply Chain',
+    url: {
+      pathname: '/explore',
+      query: {
+        tab: 'analysis',
+        layers: JSON.stringify([
+          {
+            dataset: 'faf79d2c-5e54-4591-9d70-4bd1029c18e6',
+            opacity: 1,
+            layer: 'd555dc57-7536-484b-adb7-b2675db6b823',
+          },
+          {
+            dataset: '3d8e2e82-b33a-4898-90e5-6e4a1d007b82',
+            opacity: 1,
+            layer: '2813220d-f77c-47c3-b19f-c34bdf974a2f',
+          },
+          {
+            dataset: '66d28bbc-1e6e-4156-9ba2-875ecab665af',
+            opacity: 1,
+            layer: 'd31acf31-57d7-472e-8641-33127ede7b1c',
+          },
+          {
+            dataset: '4ca6826c-718d-457d-b4e2-e9277d7ed62c',
+            opacity: 1,
+            layer: '341735ff-5773-4cf2-abef-d4a90db10645',
+          },
+          {
+            dataset: '4d2d47c1-fed1-4484-83e3-c91c3f6f7315',
+            opacity: 1,
+            layer: '6c2a0892-87e7-41ef-b4f0-e53c89baab5c',
+          },
+        ]),
+      },
+    },
+  },
 };
 
 const RICE = {

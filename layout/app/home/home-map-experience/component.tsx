@@ -6,14 +6,19 @@ import loader from 'lib/imageLoader';
 import mapImage from 'public/images/components/layout/landing/map.png';
 import layerPanelImage from 'public/images/components/layout/landing/layer-panel.png';
 import legendImage from 'public/images/components/layout/landing/legend.svg';
+import { useRouter } from 'next/router';
 
 const MapContainerHome = () => {
+  const { button } = MAP;
+  const router = useRouter();
   return (
     <div className="c-map-experience">
       <div className="map-text-container">
         <h2>{MAP.title}</h2>
         <h3>{MAP.subTitle}</h3>
-        <button className="c-button -primary">{MAP.button}</button>
+        <button className="c-button -primary" onClick={() => router.push(button.url)}>
+          {button.label}
+        </button>
       </div>
       <Media at="sm">
         <div className="c-map-image">
