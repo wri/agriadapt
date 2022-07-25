@@ -11,10 +11,10 @@ import cottonBlob from 'public/images/components/layout/intro-header/cotton/intr
 
 const ABOUT = {
   id: 'ABOUT',
-  title: 'About the Climate Risks in Agricultural Value Chains initiative',
+  title: 'Agricultural Adaptation Tool',
   description: [
     'World Resources Institute has been building out a multifaceted program on Transforming Agriculture for Climate Resilience over the past five years. The aim of this work is to inform funders, policymakers and practitioners to integrate climate risk and resilience into plans, policies and programs.',
-    'The Climate Risks in Agricultural Value Chains initiative focuses on in-depth stakeholder engagement to bring together sectoral knowledge with technical and data expertise, underpinned by a user-centric approach to tool development.',
+    'The Agricultural Adaptation Tool is developed focusing on in-depth stakeholder engagement to bring together sectoral knowledge with technical and data expertise, underpinned by a user-centric approach to tool development.',
   ],
   image: aboutImage,
   blob: aboutBlob,
