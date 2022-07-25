@@ -12,7 +12,7 @@ const IntroHeader = ({
   title = '',
   subtitle = '',
   description = [],
-  button,
+  button = undefined,
   country,
   setCountry,
 }) => {
