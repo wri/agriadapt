@@ -124,7 +124,7 @@ const LEARN = {
   title: 'Learn more about the project',
   subTitle:
     'The Agricultural Adaptation Tool project is an initiative by World Resources Institute. The beta version of the tool has been funded by the Walmart Foundation.',
-  button: 'Read More',
+  button: { label: 'Read More', url: '/about' },
   image: aboutImage,
 };
 
