@@ -5,7 +5,6 @@ import HazardsIntro from './content/hazards-intro';
 import StepDetails from './content/step-details';
 import UserStories from './content/user-stories';
 import Layout from 'layout/layout/layout-app';
-import { useEffect } from 'react';
 import { capitalizeFirstLetter } from 'utils/utils';
 
 interface LayoutCropProps {
@@ -28,24 +27,7 @@ const LayoutCrop = ({
   countries,
   crop,
   quotes,
-  setActiveCrop,
-  setCountry,
 }: LayoutCropProps) => {
-  useEffect(() => {
-    setActiveCrop(crop);
-    if (['rice', 'cotton'].includes(crop))
-      setCountry({
-        label: 'India',
-        value: '45d0f6f887a18df373fa69c3eb6f13c7',
-        iso: 'IND',
-      });
-    else
-      setCountry({
-        label: 'Colombia',
-        value: '298fc2cf079fb1439a4ad816d258a965',
-        iso: 'COL',
-      });
-  }, [crop, setActiveCrop, setCountry]);
   return (
     // TODO: Translate
     <Layout title={capitalizeFirstLetter(crop)}>
@@ -60,7 +42,7 @@ const LayoutCrop = ({
         </div>
         <div className="l-container">
           <div className="row">
-            <HazardsIntro />
+            <HazardsIntro crop={crop} />
           </div>
         </div>
         <div className="l-container">

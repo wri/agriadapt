@@ -20,11 +20,16 @@ const IntroHeader = ({
 
   const handleSelectCountry = (c) => {
     setCountry(c);
-    router.push({
-      query: {
-        cid: c.value,
-      }
-    })
+    router.push(
+      {
+        query: {
+          ...router.query,
+          geostore: c.value,
+        },
+      },
+      {},
+      { shallow: true }
+    );
   }
 
   return (

@@ -1,8 +1,8 @@
 import classnames from 'classnames';
 import FlowButton from 'layout/value-chains/content/navigation-controls/flow-button';
 import StepItem from './step-item/component';
-import { useEffect } from 'react';
 import { chain_items, item_labels } from '../constants';
+import { useRouter } from 'next/router';
 
 interface NavigationControlsProps {
   details: {
@@ -11,19 +11,19 @@ interface NavigationControlsProps {
     processing?: any;
     trade: any;
   }
-  activeItem: 'inputs' | 'production' | 'processing' | 'trade';
-  setActiveItem: (id: 'inputs' | 'production' | 'processing' | 'trade') => void;
 }
 
 const NavigationControls = ({
   details,
-  activeItem,
-  setActiveItem,
 }: NavigationControlsProps) => {
-  // Side effect to set default item to inputs
-  useEffect(() => {
-    setActiveItem('inputs');
-  }, [setActiveItem]);
+
+  const router = useRouter();
+  const { step: stepParam } = router.query;
+  const activeItem = stepParam
+    ? Array.isArray(stepParam)
+      ? stepParam.join('')
+      : stepParam
+    : 'inputs';
 
   return (
     <div className="c-value-chain-flow">
@@ -41,6 +41,7 @@ const NavigationControls = ({
               end={i === Object.keys(details).length - 1}
               label={chain_items[parent].label}
               id={parent}
+              active={parent === activeItem}
             />
             <ul className="c-item-list">
               {Object.keys(item).map((key: string) => (

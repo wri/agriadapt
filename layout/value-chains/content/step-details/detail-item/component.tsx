@@ -7,6 +7,7 @@ import { fetchGeostore } from 'services/geostore';
 import { capitalizeFirstLetter } from 'utils/utils';
 
 interface DetailItemProps {
+  key: string;
   label: {
     icon: string;
     label: string;
@@ -27,11 +28,12 @@ interface DetailItemProps {
     suffix?: string;
   };
   crop: 'rice' | 'cotton' | 'coffee';
-  fullWidth: boolean;
+  fullWidth?: boolean;
 }
 
 const DetailItem = ({
   label: { icon, label },
+  key,
   id,
   info,
   widgets = [],
@@ -104,7 +106,7 @@ const DetailItem = ({
             >
               <WidgetBlock
                 widgetId={
-                  typeof w.id === 'function' ? w.id(country.label) : w.id
+                  typeof w.id === 'function' ? w.id(country?.label) : w.id
                 }
                 {...(country && { areaOfInterest: country.value })}
               />

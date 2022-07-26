@@ -75,6 +75,7 @@ const production = {
         `select avg(rcp85_median) as x from data where country='${iso}' and year=2050`,
       format: '0.00',
       name: ({ crop }) => `Projected change in ${crop} yield by 2050`,
+      suffix: '%',
     },
   },
 };

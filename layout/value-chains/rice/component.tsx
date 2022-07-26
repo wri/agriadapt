@@ -1,11 +1,11 @@
 import { RICE } from "layout/intro-header/constants";
-import { ValueChainPageProps } from "types/value-chain";
 import LayoutCrop from 'layout/value-chains';
-import details, { quotes } from "./constants";
+import details, { default_country, quotes } from "./constants";
 
-const LayoutRice = ({ countries }: ValueChainPageProps) => {
+const LayoutRice = ({ countries }) => {
   return (
     <LayoutCrop
+    default_country={default_country}
       crop="rice"
       header={RICE}
       details={details}

@@ -4,6 +4,7 @@ import flowStepStart from 'public/images/components/flow-button/flow-step-start.
 import flowStepEnd from 'public/images/components/flow-button/flow-step-end.svg';
 import classnames from 'classnames';
 import Icon from 'components/ui/icon';
+import { useRouter } from 'next/router';
 
 export interface FlowButtonProps {
   start: boolean;
@@ -14,7 +15,6 @@ export interface FlowButtonProps {
   };
   active: boolean;
   id: string;
-  setActiveItem: (id: string) => void;
 }
 
 const FlowButton = ({
@@ -23,10 +23,16 @@ const FlowButton = ({
   label: { icon = null, text: label = '' },
   active,
   id,
-  setActiveItem,
 }: FlowButtonProps) => {
+  const router = useRouter();
+
   const handleClick = () => {
-    !active && setActiveItem(id);
+    !active &&
+      router.push(
+        { query: { ...router.query, step: id } },
+        {},
+        { shallow: true }
+      );
   };
 
   return (

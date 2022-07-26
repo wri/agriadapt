@@ -1,13 +1,14 @@
+import { useRouter } from 'next/router';
 import { item_labels } from '../constants';
 import DetailItem from './detail-item';
 
 interface StepDetail {
   info: string;
   widgets?: { id: string; fullWidth?: boolean }[];
+  fullWidth?: boolean;
 }
 
 interface StepDetailsProps {
-  activeItem?: 'inputs' | 'production' | 'processing' | 'trade';
   details: {
     inputs: StepDetail;
     production: StepDetail;
@@ -16,12 +17,24 @@ interface StepDetailsProps {
   };
 }
 
-const StepDetails = ({ activeItem, details }: StepDetailsProps) => (
-  <div className="c-step-details">
-    {Object.entries(details[activeItem]).map(([key, val]) => (
-      <DetailItem key={key} id={key} label={item_labels[key]} {...val} />
-    ))}
-  </div>
-);
+const StepDetails = ({ details }: StepDetailsProps) => {
+  const router = useRouter();
+  const { step: stepParam } = router.query;
+  const step = stepParam
+    ? Array.isArray(stepParam)
+      ? stepParam.join('')
+      : stepParam
+    : 'inputs';
+
+  return (
+    <div className="c-step-details">
+      {Object.entries(details[step]).map(
+        ([key, val]: [string, StepDetail]) => (
+          <DetailItem key={key} id={key} label={item_labels[key]} {...val} />
+        )
+      )}
+    </div>
+  );
+};
 
 export default StepDetails;

@@ -38,8 +38,8 @@ const ExploreDatasetsSearch = ({
     setFiltersEmissionScenario(scenario);
     logEvent({
       action: 'filter',
-      params: { emission_scenario: scenario.value}
-    })
+      params: { emission_scenario: scenario.value },
+    });
   };
 
   const handleSelectTimescale = (timescale) => {
@@ -56,7 +56,10 @@ const ExploreDatasetsSearch = ({
     logEvent({
       action: 'filter',
       params: {
-        value_chain: [...selectedChain.value].map(({value}) => value).sort().join(','),
+        value_chain: [...selectedChain.value]
+          .map(({ value }) => value)
+          .sort()
+          .join(','),
         timescale: selectedTimescale.value,
       },
     });
@@ -69,7 +72,7 @@ const ExploreDatasetsSearch = ({
 
   const debouncedSetFiltersSearch = debounce((value: string) => {
     setFiltersSearch(value);
-    if (!advOpen) { 
+    if (!advOpen) {
       loadDatasets();
       value.trim().length &&
         logEvent({
@@ -78,7 +81,7 @@ const ExploreDatasetsSearch = ({
             search_term: value,
           },
         });
-    };
+    }
   }, 500);
 
   const handleSearch = (value: string) => {
@@ -93,7 +96,7 @@ const ExploreDatasetsSearch = ({
   return (
     <>
       {/* TODO: Translate */}
-      <h4>Start Exploring</h4>
+      {/* <h4>Start Exploring</h4> */}
       <Field
         id="search"
         properties={{
@@ -109,21 +112,26 @@ const ExploreDatasetsSearch = ({
         {SearchInput}
       </Field>
       <Field
-        id={'EMISSION_SCENARIO'}
+        // TODO: Translate
+        id={'VALUE_CHAINS'}
         properties={{
           // TODO: Translate
-          label: `Filter Layers by ${EMISSION_SCENARIO.placeholder}`,
-          default: emission_scenario,
+          label: `Filter Layers by ${VALUE_CHAINS.placeholder}`,
+          default: value_chains,
+          tooltip: VALUE_CHAINS.tooltip,
         }}
-        value={selectedScenario.value}
-        onChange={handleSelectEmissionScenario}
-        placeholder={EMISSION_SCENARIO.placeholder} // TODO: Translate
-        options={EMISSION_SCENARIO.options}
-        hint={VALUE_CHAINS.hint}
-        className="Select--large"
+        value={selectedChain.value}
+        onChange={handleSelectValueChain}
+        options={VALUE_CHAINS.options}
+        placeholder={VALUE_CHAINS.placeholder}
+        className={'Select--large'}
+        isMulti={VALUE_CHAINS.multi}
+        // isSearchable={false}
+        // isClearable={false}
       >
         {Select}
       </Field>
+
       {/* TODO: Translate */}
       <div className="advanced-link">
         <a onClick={handleClickAdvanced}>{'Advanced Search'}</a>
@@ -131,22 +139,18 @@ const ExploreDatasetsSearch = ({
       {advOpen && (
         <>
           <Field
-            // TODO: Translate
-            id={'VALUE_CHAINS'}
+            id={'EMISSION_SCENARIO'}
             properties={{
               // TODO: Translate
-              label: `Filter Layers by ${VALUE_CHAINS.placeholder}`,
-              default: value_chains,
-              tooltip: VALUE_CHAINS.tooltip,
+              label: `Filter Layers by ${EMISSION_SCENARIO.placeholder}`,
+              default: emission_scenario,
             }}
-            value={selectedChain.value}
-            onChange={handleSelectValueChain}
-            options={VALUE_CHAINS.options}
-            placeholder={VALUE_CHAINS.placeholder}
-            className={'Select--large'}
-            isMulti={VALUE_CHAINS.multi}
-            // isSearchable={false}
-            // isClearable={false}
+            value={selectedScenario.value}
+            onChange={handleSelectEmissionScenario}
+            placeholder={EMISSION_SCENARIO.placeholder} // TODO: Translate
+            options={EMISSION_SCENARIO.options}
+            hint={VALUE_CHAINS.hint}
+            className="Select--large"
           >
             {Select}
           </Field>

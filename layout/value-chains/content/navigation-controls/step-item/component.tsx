@@ -1,38 +1,27 @@
 import classnames from 'classnames';
 import Icon from 'components/ui/icon';
-import { actions } from 'layout/value-chains/reducers';
-import { RootState } from 'lib/store';
 import { useRouter } from 'next/router';
-import { connect } from 'react-redux';
 
 interface StepItemProps {
   id: string;
   label: string;
   icon: string;
-  crop: 'rice' | 'coffee' | 'cotton';
-  activeItem: 'inputs' | 'production' | 'trade';
   parent: 'inputs' | 'production' | 'trade';
-  setActiveItem: (item: string) => void;
 }
 
-const StepItem = ({
-  id,
-  label,
-  icon,
-  crop,
-  activeItem,
-  parent,
-  setActiveItem,
-}: StepItemProps) => {
+const StepItem = ({ parent, id, label, icon }: StepItemProps) => {
   const router = useRouter();
 
-  const handleClick = () => {
-    if (parent !== activeItem) setActiveItem(parent);
-    router.push(`/value-chains/${crop}/#${id}`);
+  const handleOnClick = () => {
+    router.push(
+      { query: { ...router.query, step: parent } },
+      {},
+      { shallow: true }
+    );
   };
 
   return (
-    <a onClick={handleClick} key={id} className="c-step-item">
+    <a key={id} onClick={handleOnClick} className="c-step-item">
       <div
         className={classnames({
           'c-step-icon': true,
@@ -49,8 +38,4 @@ const StepItem = ({
     </a>
   );
 };
-
-export default connect((state: RootState) => ({
-  crop: state.value_chains.crop,
-  activeItem: state.value_chains.activeItem,
-}), actions)(StepItem);
+export default StepItem;

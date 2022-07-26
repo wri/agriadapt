@@ -1,5 +1,11 @@
-import coffee1 from 'public/images/quotes/coffee1.png'
-import coffee2 from 'public/images/quotes/coffee2.png'
+import coffee1 from 'public/images/quotes/coffee1.png';
+import coffee2 from 'public/images/quotes/coffee2.png';
+
+export const default_country = {
+  label: 'Colombia',
+  value: '298fc2cf079fb1439a4ad816d258a965',
+  iso: 'COL',
+}
 
 const inputs = {
   land_suitability: {
@@ -59,8 +65,8 @@ const trade = {
     // TODO: Additional Graphical Visual
     analysis: {
       value: 'N/A',
-      name: 'Data Coming Soon'
-    }
+      name: 'Data Coming Soon',
+    },
   },
 };
 
@@ -71,14 +77,17 @@ export const quotes = [
     location: 'Risaralda, Colombia',
     image: coffee1,
     title: 'Producer, Asociación Asocafé Tatamá',
-    quote: 'AgriAdapt helps producers obtain the climate risk maps that are required by coffee certifications.'
+    quote:
+      'AgriAdapt helps producers obtain the climate risk maps that are required by coffee certifications.',
   },
   {
     location: 'Bolivar, Colombia',
     image: coffee2,
-    title: 'Coffee association representative, Asociación De Jóvenes Cafeteros De Ciudad Bolivar',
-    quote: 'The tool would help coffee associations to revise the climatic risk in their lands.'
+    title:
+      'Coffee association representative, Asociación De Jóvenes Cafeteros De Ciudad Bolivar',
+    quote:
+      'The tool would help coffee associations to revise the climatic risk in their lands.',
   },
-]
+];
 
 export default details;
