@@ -14,8 +14,8 @@ const StepItem = ({ parent, id, label, icon }: StepItemProps) => {
 
   const handleOnClick = () => {
     router.push(
-      { query: { ...router.query, step: parent } },
-      {},
+      { query: { ...router.query, step: parent }, hash: id },
+      undefined,
       { shallow: true }
     );
   };
@@ -25,6 +25,7 @@ const StepItem = ({ parent, id, label, icon }: StepItemProps) => {
       <div
         className={classnames({
           'c-step-icon': true,
+          '-inactive': parent !== router.query.step,
         })}
       >
         <Icon
