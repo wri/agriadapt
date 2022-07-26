@@ -6,9 +6,16 @@ import StepDetails from './content/step-details';
 import UserStories from './content/user-stories';
 import Layout from 'layout/layout/layout-app';
 import { capitalizeFirstLetter } from 'utils/utils';
+import { connect } from 'react-redux';
+import { RootState } from 'lib/store';
 
 interface LayoutCropProps {
   header: any;
+  country: {
+    label: string;
+    value: string;
+    iso: string;
+  }
   countries: {
     label: string;
     value: string;
@@ -17,20 +24,19 @@ interface LayoutCropProps {
   details: any;
   quotes: Record<string, any>[];
   crop: 'rice' | 'cotton' | 'coffee';
-  setActiveCrop: (crop: 'rice' | 'cotton' | 'coffee') => void;
-  setCountry: (country: Record<'label' | 'value' | 'iso', string>) => void;
 }
 
 const LayoutCrop = ({
   header,
   details,
+  country,
   countries,
   crop,
   quotes,
 }: LayoutCropProps) => {
   return (
     // TODO: Translate
-    <Layout title={capitalizeFirstLetter(crop)}>
+    <Layout title={`${capitalizeFirstLetter(crop)} (${country.label})`}>
       <div className="l-crop">
         <IntroHeader {...header} countries={countries} />
         <div className="l-container">
@@ -62,4 +68,6 @@ const LayoutCrop = ({
   );
 };
 
-export default LayoutCrop;
+export default connect((state: RootState) => ({
+  country: state.value_chains.country,
+}))(LayoutCrop);

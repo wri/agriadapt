@@ -28,11 +28,9 @@ const StepDetails = ({ details }: StepDetailsProps) => {
 
   return (
     <div className="c-step-details">
-      {Object.entries(details[step]).map(
-        ([key, val]: [string, StepDetail]) => (
-          <DetailItem key={key} id={key} label={item_labels[key]} {...val} />
-        )
-      )}
+      {Object.entries(details[step]).map(([key, val]: [string, StepDetail]) => (
+        <DetailItem key={key} id={key} label={item_labels[key]} {...val} />
+      ))}
     </div>
   );
 };
