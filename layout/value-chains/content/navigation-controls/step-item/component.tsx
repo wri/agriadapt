@@ -11,6 +11,7 @@ interface StepItemProps {
 
 const StepItem = ({ parent, id, label, icon }: StepItemProps) => {
   const router = useRouter();
+  const { step = 'inputs' } = router.query;
 
   const handleOnClick = () => {
     router.push(
@@ -25,7 +26,7 @@ const StepItem = ({ parent, id, label, icon }: StepItemProps) => {
       <div
         className={classnames({
           'c-step-icon': true,
-          '-inactive': parent !== router.query.step,
+          '-inactive': parent !== step,
         })}
       >
         <Icon
