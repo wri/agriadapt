@@ -10,6 +10,12 @@ const RicePage = ({ countries }: ValueChainPageProps) => {
   return <LayoutRice countries={countries} />;
 };
 
+const default_country = {
+  label: 'India',
+  value: '45d0f6f887a18df373fa69c3eb6f13c7',
+  iso: 'IND',
+};
+
 export const getServerSideProps = wrapper.getServerSideProps(
   (store) =>
     async ({ query }) => {
@@ -22,12 +28,6 @@ export const getServerSideProps = wrapper.getServerSideProps(
         value: id,
         iso,
       })).catch(() => console.error('Error fetching geostore'));
-
-      const default_country = {
-        label: 'India',
-        value: '45d0f6f887a18df373fa69c3eb6f13c7',
-        iso: 'IND',
-      };
 
       if (country) dispatch(actions.setCountry(country));
       else dispatch(actions.setCountry(default_country));

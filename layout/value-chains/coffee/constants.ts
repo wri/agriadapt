@@ -1,12 +1,6 @@
 import coffee1 from 'public/images/quotes/coffee1.png';
 import coffee2 from 'public/images/quotes/coffee2.png';
 
-export const default_country = {
-  label: 'Colombia',
-  value: '298fc2cf079fb1439a4ad816d258a965',
-  iso: 'COL',
-}
-
 const inputs = {
   land_suitability: {
     info: 'Coffee arabica production is highly sensitive to climate change. Significant reductions in climate suitability are expected for most coffee growing regions.',

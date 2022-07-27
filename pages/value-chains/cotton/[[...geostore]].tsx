@@ -9,6 +9,12 @@ const CottonPage = ({ countries }: ValueChainPageProps) => {
   return <LayoutCotton countries={countries} />;
 };
 
+const default_country = {
+  label: 'India',
+  value: '45d0f6f887a18df373fa69c3eb6f13c7',
+  iso: 'IND',
+};
+
 export const getServerSideProps: GetServerSideProps =
   wrapper.getServerSideProps((store) => async ({query}) => {
     const { geostore } = query;
@@ -20,12 +26,6 @@ export const getServerSideProps: GetServerSideProps =
       value: id,
       iso,
     })).catch(() => console.error('Error fetching geostore'));
-
-    const default_country = {
-      label: 'India',
-      value: '45d0f6f887a18df373fa69c3eb6f13c7',
-      iso: 'IND',
-    };
 
     if (country) dispatch(actions.setCountry(country));
     else dispatch(actions.setCountry(default_country));
