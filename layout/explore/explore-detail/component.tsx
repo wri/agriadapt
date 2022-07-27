@@ -41,10 +41,6 @@ const ExploreDetailComponent = ({
     return () => setSidebarAnchor(null);
   }, [setSidebarAnchor]);
 
-  useEffect(() => {
-    console.log(emission_scenario);
-  }, [emission_scenario]);
-
   const metadata =
     dataset &&
     dataset.metadata &&

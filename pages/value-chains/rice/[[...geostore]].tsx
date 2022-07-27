@@ -21,7 +21,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
         label: name,
         value: id,
         iso,
-      })).catch(() => console.log('Error fetching geostore'));
+      })).catch(() => console.error('Error fetching geostore'));
 
       const default_country = {
         label: 'India',

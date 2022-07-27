@@ -301,19 +301,10 @@ export const Map = ({
   //   []
   // );
 
-  useEffect(() => {
-    const { current: map } = mapRef;
-    const handleClick = (e) => {
-      if (!isDrawing) onClickLayer && onClickLayer(e);
-      else onDropMarker(e);
-    };
-    if (loaded) {
-      map.on('click', handleClick);
-      return () => {
-        map.off('click', handleClick);
-      };
-    }
-  }, [loaded, isDrawing, onClickLayer, onDropMarker]);
+  const handleOnClick = useCallback((e) => {
+    if (!isDrawing) onClickLayer && onClickLayer(e);
+    else onDropMarker(e);
+  }, [isDrawing, onClickLayer, onDropMarker]);
 
   useEffect(() => {
     setReady(true);
@@ -379,6 +370,7 @@ export const Map = ({
         scrollZoom={!flying && scrollZoom}
         doubleClickZoom={!flying && doubleClickZoom}
         onMove={handleOnMove}
+        onClick={handleOnClick}
         initialViewState={DEFAULT_VIEWPORT}
         onLoad={handleLoad}
         // getCursor={handleGetCursor}
