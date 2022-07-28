@@ -98,7 +98,7 @@ export const fetchDatasets = createThunkAction(
                   arr.push({
                     ...l,
                     applicationConfig:
-                      l.applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS],
+                      l.applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS] || {},
                   });
                 return arr;
               }, []),
@@ -232,7 +232,7 @@ export const fetchMapLayerGroups = createThunkAction(
           layer: d.layer.map((l) => ({
             ...l,
             applicationConfig:
-              l.applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS],
+              l.applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS] || {},
           })),
         }));
       })

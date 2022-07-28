@@ -105,7 +105,7 @@ export const fetchDataset = (id, params = {}) => {
         layer: serialized.layer.map((l) => ({
           ...l,
           applicationConfig:
-            l.applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS],
+            l.applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS] || {},
         })),
       };
       return dataset;
