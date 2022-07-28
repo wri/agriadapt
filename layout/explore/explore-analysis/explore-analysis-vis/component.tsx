@@ -39,12 +39,14 @@ const AnalysisVisuals = ({
   return (
     <div className="c-analysis-visuals">
       {columns.map((c, i) => {
+        const output = outputs[i];
+        if (!output) return;
         const numDomain = domains[i].map(({ value }) => value);
         const labelDomain = domains[i].map(({ label }) => label);
         const avg = average(
           numDomain.filter((x) => x != null),
           valueMaps[i],
-          outputs[i]
+          output
         );
         return (
           <>
