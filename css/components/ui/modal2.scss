@@ -96,6 +96,16 @@
     }
   }
 
+  &.-hide-close {
+    .modal-close {
+      display: none;
+    }
+  }
+
+  &.-large {
+    max-width: none;
+  }
+
   &.ReactModal__Content--after-open {
     transform: translateY(0px);
   }

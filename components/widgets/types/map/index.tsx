@@ -33,6 +33,8 @@ export interface MapTypeWidgetContainerProps {
   isWebshot?: boolean;
   areaOfInterest?: string | null;
   onToggleShare: (widget: APIWidgetSpec) => void;
+  onToggleEnlarge: (widget: APIWidgetSpec) => void;
+  isEnlarged?: boolean;
 }
 
 const MapTypeWidgetContainer = ({
@@ -43,6 +45,8 @@ const MapTypeWidgetContainer = ({
   isWebshot = false,
   areaOfInterest = null,
   onToggleShare,
+  onToggleEnlarge,
+  isEnlarged = false,
 }: MapTypeWidgetContainerProps): JSX.Element => {
   const [minZoom, setMinZoom] = useState(null);
   // const { data: user } = useMe();
@@ -173,7 +177,9 @@ const MapTypeWidgetContainer = ({
         isError={isError}
         isInACollection={isInACollection}
         onToggleShare={onToggleShare}
+        onToggleEnlarge={onToggleEnlarge}
         onFitBoundsChange={onFitBoundsChange}
+        isEnlarged={isEnlarged}
       />
     </ErrorBoundary>
   );
