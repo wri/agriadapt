@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import classnames from "classnames";
 import { replace } from "layer-manager";
 // import { Tooltip } from "vizzuality-components";
