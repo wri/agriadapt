@@ -8,6 +8,7 @@ import ChartWidget from "components/widgets/types/chart";
 import EmbedWidget from "components/widgets/types/embed";
 
 import type { APIWidgetSpec } from "types/widget";
+import WidgetEnlargeModal from "components/widgets/enlarge-modal/component";
 
 const WidgetShareModal = dynamic(
   () => import("../../../components/widgets/share-modal"),
@@ -23,12 +24,17 @@ export interface WidgetBlockProps {
 
 const WidgetBlock = ({ widget, areaOfInterest = undefined }: WidgetBlockProps): JSX.Element => {
   const [showModal, setShowModal] = useState(false);
+  const [enlarged, setEnlarged] = useState(false);
 
   const openShareModal = useCallback(() => {
     setShowModal(true);
   }, []);
   const closeShareModal = useCallback(() => {
     setShowModal(false);
+  }, []);
+
+  const handleEnlarge = useCallback(() => {
+    setEnlarged(e => !e);
   }, []);
 
   const widgetType = useMemo(
@@ -47,6 +53,7 @@ const WidgetBlock = ({ widget, areaOfInterest = undefined }: WidgetBlockProps): 
                   widgetId={widget.id}
                   onToggleShare={openShareModal}
                   areaOfInterest={areaOfInterest}
+                  onToggleEnlarge={handleEnlarge}
                 />
               )}
             </div>
@@ -84,7 +91,15 @@ const WidgetBlock = ({ widget, areaOfInterest = undefined }: WidgetBlockProps): 
           onClose={closeShareModal}
           params={{}}
         />
-      )}
+        )}
+
+        {/* Fullscreen Modal goes here */}
+        {enlarged && <WidgetEnlargeModal 
+          isVisible={enlarged}
+          areaOfInterest={areaOfInterest}
+          widget={widget}
+          onClose={() => setEnlarged(false)}
+        />}
     </div>
   );
 };

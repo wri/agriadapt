@@ -1,46 +1,32 @@
-import classnames from "classnames";
-import { replace } from "layer-manager";
+import classnames from 'classnames';
+import { replace } from 'layer-manager';
 // import { Tooltip } from "vizzuality-components";
 
 // components
 // import LoginRequired from 'components/ui/login-required';
-import Icon from "components/ui/icon";
-import Title from "components/ui/Title";
+import Icon from 'components/ui/icon';
+import Title from 'components/ui/Title';
 // import CollectionsPanel from "components/collections-panel";
-
-
-// WidgetHeader.propTypes = {
-//   widget: PropTypes.shape({
-//     id: PropTypes.string.isRequired,
-//     name: PropTypes.string.isRequired,
-//     widgetConfig: PropTypes.shape({
-//       type: PropTypes.string,
-//     }),
-//   }).isRequired,
-//   // isInACollection: PropTypes.bool.isRequired,
-//   isInfoVisible: PropTypes.bool,
-//   onToggleInfo: PropTypes.func.isRequired,
-//   // onToggleShare: PropTypes.func.isRequired,
-// };
-
 
 interface WidgetHeaderProps {
   widget: {
     id: string;
-    name: string,
+    name: string;
     widgetConfig?: {
       type?: string;
     };
-  }
+  };
   // isInACollection: boolean,
-  isInfoVisible?: boolean,
-  onToggleInfo: () => void,
-  onToggleShare: () => void,
+  isInfoVisible?: boolean;
+  isEnlarged?: boolean;
+  onToggleInfo: () => void;
+  onToggleShare: () => void;
+  onToggleEnlarge?: () => void;
   download?: boolean;
   country?: {
     label: string;
     value: string;
-  }
+  };
 }
 
 export default function WidgetHeader({
@@ -48,7 +34,9 @@ export default function WidgetHeader({
   // isInACollection,
   onToggleInfo,
   onToggleShare,
+  onToggleEnlarge,
   isInfoVisible = false,
+  isEnlarged = false,
   download = false,
   country = null,
 }: WidgetHeaderProps) {
@@ -57,13 +45,18 @@ export default function WidgetHeader({
   //   "icon-star-empty": !isInACollection,
   // });
   const modalIcon = classnames({
-    "icon-cross": isInfoVisible,
-    "icon-info": !isInfoVisible,
+    'icon-cross': isInfoVisible,
+    'icon-info': !isInfoVisible,
+  });
+  
+  const enlargeIcon = classnames({
+    'icon-cross': isEnlarged,
+    'icon-enlarge': !isEnlarged,
   });
 
   const replacement = {
     country_name: country?.label || 'the world',
-  }
+  };
 
   const name = widget?.name.includes('{{country_name}}')
     ? replace(widget?.name, replacement)
@@ -77,32 +70,17 @@ export default function WidgetHeader({
         </div>
         <div className="button-list">
           <ul>
-            <li>
-              <button
-                type="button"
-                className="c-btn -tertiary -clean"
-                onClick={onToggleShare}
-              >
-                <Icon name="icon-share" className="-small" />
-              </button>
-            </li>
-            {/* <li>
-              <LoginRequired redirect={false}>
-              <Tooltip
-                overlay={
-                  <CollectionsPanel resource={widget} resourceType="widget" />
-                }
-                overlayClassName="c-rc-tooltip"
-                overlayStyle={{ color: "#fff" }}
-                placement="bottomLeft"
-                trigger="click"
-              >
-              <button type="button" className="c-btn -clean" tabIndex={-1}>
-                <Icon name={starIconName} className="-star -small" />
-              </button>
-              </Tooltip>
-              </LoginRequired>
-            </li> */}
+            {!isEnlarged && (
+              <li>
+                <button
+                  type="button"
+                  className="c-btn -tertiary -clean"
+                  onClick={onToggleShare}
+                >
+                  <Icon name="icon-share" className="-small" />
+                </button>
+              </li>
+            )}
             {/* TODO: Implement download report */}
             {/* {download && (
               <li>
@@ -111,13 +89,24 @@ export default function WidgetHeader({
                 </button>
               </li>
             )} */}
+            {!isEnlarged && (
+              <li>
+                <button
+                  type="button"
+                  className="c-btn -clean"
+                  onClick={onToggleInfo}
+                  >
+                  <Icon name={modalIcon} className="-small" />
+                </button>
+              </li>
+            )}
             <li>
               <button
                 type="button"
                 className="c-btn -clean"
-                onClick={onToggleInfo}
+                onClick={onToggleEnlarge}
               >
-                <Icon name={modalIcon} className="-small" />
+                <Icon name={enlargeIcon} className="-small" />
               </button>
             </li>
           </ul>

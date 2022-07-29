@@ -60,7 +60,9 @@ export interface MapTypeWidgetProps
   isError: boolean;
   isInACollection?: boolean;
   bounds?: Bounds | null;
+  onToggleEnlarge: (widget: APIWidgetSpec) => void;
   onFitBoundsChange: (viewport) => void;
+  isEnlarged?: boolean;
 }
 
 const MapTypeWidget = ({
@@ -73,8 +75,10 @@ const MapTypeWidget = ({
   isWebshot = false,
   isFetching = false,
   isError = false,
+  isEnlarged = false,
   bounds,
   onToggleShare,
+  onToggleEnlarge,
   onFitBoundsChange,
 }: MapTypeWidgetProps): JSX.Element => {
   const handleError = useErrorHandler(
@@ -88,7 +92,9 @@ const MapTypeWidget = ({
     ...DEFAULT_VIEWPORT,
     height: 400,
   });
+
   const [isInfoWidgetVisible, setInfoWidgetVisibility] = useState(false);
+  // const [isEnlarged, setIsEnlarged] = useState(false);
 
   const handleViewport = useCallback((_viewport) => {
     setViewport(_viewport);
@@ -116,6 +122,10 @@ const MapTypeWidget = ({
   const handleShareToggle = useCallback(() => {
     onToggleShare(widget);
   }, [onToggleShare, widget]);
+
+  const handleEnlarge = useCallback(() => {
+    onToggleEnlarge(widget);
+  }, [onToggleEnlarge, widget]);
 
   const onChangeOpacity = useCallback((l, opacity) => {
     dispatch(
@@ -204,6 +214,8 @@ const MapTypeWidget = ({
             widget={widget}
             onToggleInfo={handleInfoToggle}
             onToggleShare={handleShareToggle}
+            onToggleEnlarge={handleEnlarge}
+            isEnlarged={isEnlarged}
             // isInACollection={isInACollection}
             isInfoVisible={isInfoWidgetVisible}
           />
