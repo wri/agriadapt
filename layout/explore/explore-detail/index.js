@@ -122,6 +122,7 @@ export default connect(
     anchor: state.explore.sidebar.anchor,
     layerGroups: state.explore.map.layerGroups,
     emission_scenario: state.explore.filters.emission_scenario.value,
+    value_chains: state.explore.filters.value_chains.map(({ value }) => value),
   }),
   actions
 )(ExploreDetailContainer);

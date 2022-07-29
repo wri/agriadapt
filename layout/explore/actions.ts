@@ -42,13 +42,16 @@ export const fetchDatasets = createThunkAction(
     const { explore, common } = getState();
 
     const isMatch = (dataset) => {
-      const { timescale: fTimescale, value_chains } = explore.filters;
-      const fChains = value_chains.map(({ value }) => value);
+      const {
+        timescale: fTimescale,
+        emission_scenario,
+      } = explore.filters;
       const layers = dataset.layer;
       const match = layers.some(
         ({ applicationConfig }) =>
-          (!fChains.length ||
-            fChains.includes(applicationConfig?.value_chain)) &&
+          (!emission_scenario.value ||
+            !applicationConfig?.emission_scenario ||
+            emission_scenario.value === applicationConfig?.emission_scenario) &&
           (fTimescale === 'any' || applicationConfig?.timescale == fTimescale)
       );
       return match;

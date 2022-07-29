@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import Field from 'components/form/Field';
 import Select from 'react-select';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 const IntroHeader = ({
   id = 'LANDING',
@@ -81,16 +82,17 @@ const IntroHeader = ({
                   </p>
                 ))}
                 {id === 'LANDING' && (
-                  <button
-                    className={classnames({
-                      'c-button': true,
-                      '-primary': true,
-                    })}
-                    onClick={() => router.push(button.url)}
-                  >
-                    {/* TODO: Translate */}
-                    {button.label}
-                  </button>
+                  <Link href={button.url} passHref>
+                    <a
+                      className={classnames({
+                        'c-button': true,
+                        '-primary': true,
+                      })}
+                    >
+                      {/* TODO: Translate */}
+                      {button.label}
+                    </a>
+                  </Link>
                 )}
                 {countries && (
                   <div className="country-selector">

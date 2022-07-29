@@ -1,29 +1,19 @@
 import { useEffect, useMemo } from 'react';
-import PropTypes from 'prop-types';
-// import Link from "next/link";
 import classnames from 'classnames';
 
-// utils
-// import { logEvent } from "utils/analytics";
-
-// components
-// import Paginator from 'components/ui/Paginator';
-// import Icon from "components/ui/icon";
-// import { TOPICS } from 'layout/explore/explore-topics/constants';
 import DatasetList from './list';
 import ExploreDatasetsActions from './explore-datasets-actions';
 import ExploreSearch from '../explore-datasets-search';
-// import { APILayerSpec } from 'types/layer';
 
 interface ExploreDatasetsProps {
   datasets: {
-    selected: any;
-    list: any;
+    selected: string;
+    list: Record<string, any>;
     loading: boolean;
-  }
+  };
   filters: any;
   fetchCountries: () => void;
-  advOpen: boolean
+  advOpen: boolean;
 }
 
 export default function ExploreDatasets(props: ExploreDatasetsProps) {
@@ -31,18 +21,11 @@ export default function ExploreDatasets(props: ExploreDatasetsProps) {
     datasets: {
       selected,
       list,
-      // total,
-      // limit,
-      // page,
       loading,
-      // filtered: filteredDatasets,
     },
     filters,
-    // setDatasetsPage,
-    // fetchDatasets,
     fetchCountries,
     advOpen,
-    // setFilteredDatasets,
   } = props;
 
   useEffect(() => {
@@ -51,19 +34,21 @@ export default function ExploreDatasets(props: ExploreDatasetsProps) {
 
   const classValue = classnames({
     'c-explore-datasets': true,
-    '-hidden': selected,
+    '-hidden': !!selected,
   });
 
   const relevantList = useMemo(
     () =>
       list.filter(({ layer }) =>
         layer.some(
-          ({ applicationConfig: { emission_scenario } }) =>
-            !emission_scenario ||
-            emission_scenario === filters.emission_scenario.value
+          ({ applicationConfig: { value_chain, emission_scenario } }) =>
+            (!value_chain ||
+            !filters.value_chains.length ||
+            filters.value_chains.some(({ value }) => value === value_chain)) &&
+            (!emission_scenario || emission_scenario === filters.emission_scenario.value)
         )
       ),
-    [filters.emission_scenario.value, list]
+    [filters.emission_scenario.value, filters.value_chains, list]
   );
 
   return (
@@ -101,25 +86,3 @@ export default function ExploreDatasets(props: ExploreDatasetsProps) {
     </div>
   );
 }
-
-ExploreDatasets.propTypes = {
-  datasets: PropTypes.shape({
-    // selected: PropTypes.string.isRequired,
-    list: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string.isRequired,
-      })
-    ).isRequired,
-    total: PropTypes.number.isRequired,
-    limit: PropTypes.number.isRequired,
-    page: PropTypes.number.isRequired,
-    loading: PropTypes.bool.isRequired,
-  }).isRequired,
-  // selectedTags: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-  // search: PropTypes.string.isRequired,
-  fetchDatasets: PropTypes.func.isRequired,
-  setDatasetsPage: PropTypes.func.isRequired,
-  // toggleFiltersSelected: PropTypes.func.isRequired,
-  // resetFiltersSort: PropTypes.func.isRequired,
-  // setFiltersSearch: PropTypes.func.isRequired,
-};

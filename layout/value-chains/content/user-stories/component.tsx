@@ -7,6 +7,7 @@ import Carousel from 'nuka-carousel';
 import { user_stories } from '../constants';
 import chevronLeft from 'public/images/icons/chevronLeft.svg'
 import chevronRight from 'public/images/icons/chevronRight.svg'
+import Link from 'next/link';
 
 const UserStories = ({ quotes }) => {
   const { header, stories } = user_stories;
@@ -41,14 +42,16 @@ const UserStories = ({ quotes }) => {
         <div className="c-user-info">
           <h3>{`${s.title}, ${s.location}`}</h3>
           <p>{`"${s.quote}"`}</p>
-          <button
-            className={classnames({
-              'c-button': true,
-              '-primary': true,
-            })}
-          >
-            {'Find Out More in the Map'}
-          </button>
+          <Link href="/explore" passHref>
+            <a
+              className={classnames({
+                'c-button': true,
+                '-primary': true,
+              })}
+            >
+              {'Find Out More in the Map'}
+            </a>
+          </Link>
         </div>
       </div>
     ));

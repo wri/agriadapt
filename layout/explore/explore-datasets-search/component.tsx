@@ -126,19 +126,13 @@ const ExploreDatasetsSearch = ({
         placeholder={VALUE_CHAINS.placeholder}
         className={'Select--large'}
         isMulti={VALUE_CHAINS.multi}
+        hint={VALUE_CHAINS.hint}
         // isSearchable={false}
         // isClearable={false}
       >
         {Select}
       </Field>
-
-      {/* TODO: Translate */}
-      <div className="advanced-link">
-        <a onClick={handleClickAdvanced}>{'Advanced Search'}</a>
-      </div>
-      {advOpen && (
-        <>
-          <Field
+      <Field
             id={'EMISSION_SCENARIO'}
             properties={{
               // TODO: Translate
@@ -149,11 +143,16 @@ const ExploreDatasetsSearch = ({
             onChange={handleSelectEmissionScenario}
             placeholder={EMISSION_SCENARIO.placeholder} // TODO: Translate
             options={EMISSION_SCENARIO.options}
-            hint={VALUE_CHAINS.hint}
             className="Select--large"
           >
             {Select}
           </Field>
+      {/* TODO: Translate */}
+      <div className="advanced-link">
+        <a onClick={handleClickAdvanced}>{'Advanced Search'}</a>
+      </div>
+      {advOpen && (
+        <>
           <Field
             id={'TIMESCALE'}
             properties={{

@@ -26,6 +26,7 @@ interface ExploreDetailComponentProps {
   tags: string[];
   setSidebarAnchor: (anchor: any) => void;
   emission_scenario: 'rcp4.5' | 'rcp8.5';
+  value_chains: Array<'coffee' | 'cotton' | 'rice'>;
 }
 
 const ExploreDetailComponent = ({
@@ -34,12 +35,20 @@ const ExploreDetailComponent = ({
   datasetLoading,
   tags,
   emission_scenario,
+  value_chains,
 }: ExploreDetailComponentProps) => {
   // We clear the anchor value so that next time the component is open
   // the scroll is at the top
   useEffect(() => {
     return () => setSidebarAnchor(null);
   }, [setSidebarAnchor]);
+
+  const layerFilter = (l: APILayerSpec) =>
+    (!l.applicationConfig.emission_scenario ||
+      l.applicationConfig.emission_scenario === emission_scenario) &&
+    (!value_chains.length ||
+      !l.applicationConfig.value_chain ||
+      value_chains.includes(l.applicationConfig.value_chain));
 
   const metadata =
     dataset &&
@@ -49,11 +58,7 @@ const ExploreDetailComponent = ({
   const info = metadata && metadata.info;
   const layers =
     dataset &&
-    dataset.layer.filter(
-      (l: APILayerSpec) =>
-        !l.applicationConfig.emission_scenario ||
-        l.applicationConfig.emission_scenario === emission_scenario
-    );
+    dataset.layer.filter(layerFilter);
   const dateLastUpdated = getDateConsideringTimeZone(
     dataset && dataset.dataLastUpdated
   );

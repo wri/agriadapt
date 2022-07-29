@@ -38,9 +38,9 @@ export const ValueChainCards = () => {
               <div className="c-value-chain-card-info">
                 <h2>{c.label}</h2>
                 <Link passHref href={`/value-chains/${c.href}`}>
-                  <button className="c-button -secondary -fullwidth">
+                  <a className="c-button -secondary -fullwidth">
                     {`Explore the ${c.label} Value Chain`}
-                  </button>
+                  </a>
                 </Link>
               </div>
             </div>
