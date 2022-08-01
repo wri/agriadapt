@@ -1,4 +1,4 @@
-import PieChart from 'components/widgets/charts/v2/PieChart/PieChart';
+import PieChart from 'components/widgets/charts/v2/PieChart';
 import TextChart from 'components/widgets/charts/v2/TextChart';
 import { ErrorBoundary } from 'react-error-boundary';
 import ErrorFallback from 'components/error-fallback';
