@@ -95,20 +95,22 @@ export default function WidgetHeader({
                   type="button"
                   className="c-btn -clean"
                   onClick={onToggleInfo}
-                  >
+                >
                   <Icon name={modalIcon} className="-small" />
                 </button>
               </li>
             )}
-            <li>
-              <button
-                type="button"
-                className="c-btn -clean"
-                onClick={onToggleEnlarge}
-              >
-                <Icon name={enlargeIcon} className="-small" />
-              </button>
-            </li>
+            {widget.widgetConfig?.type === 'map' && (
+              <li>
+                <button
+                  type="button"
+                  className="c-btn -clean"
+                  onClick={onToggleEnlarge}
+                >
+                  <Icon name={enlargeIcon} className="-small" />
+                </button>
+              </li>
+            )}
           </ul>
         </div>
       </div>

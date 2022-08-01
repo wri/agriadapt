@@ -1,7 +1,7 @@
 import Renderer from '@widget-editor/renderer';
 import RWAdapter from '@widget-editor/rw-adapter';
 import { useMemo } from 'react';
-import { chartData as widgetTemplate } from 'components/widgets/charts/v2/test-pie-chart';
+import { template } from 'components/widgets/charts/v2/PieChart';
 
 const Pie = ({ widgetConfig }) => (
   <div
@@ -15,8 +15,7 @@ const Pie = ({ widgetConfig }) => (
 const PieChart = ({
   // format = 'deg',
   // unit = '%',
-  type = 'of locations have extreme values',
-  name = '2030 Projected Change in Annual Average Temperature',
+  name,
   domain,
 }) => {
   const values: { x: string; y: number }[] = useMemo(() => {
@@ -35,13 +34,13 @@ const PieChart = ({
 
   const widgetConfig = useMemo(
     () => ({
-      ...widgetTemplate,
-      data: [{ ...widgetTemplate.data[0], values }],
+      ...template,
+      data: [{ ...template.data[0], values }],
     }),
     [values]
   );
 
-  const valueString = `${20}%`;
+  // const valueString = `${20}%`;
 
   return (
     <div className="c-pie-chart-v2">

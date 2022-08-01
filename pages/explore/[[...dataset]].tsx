@@ -16,6 +16,7 @@ interface ExplorePageProps {
     datasets?: Record<string, any>;
     filters?: {
       search?: string;
+      emission_scenario?: string;
     };
     map?: {
       viewport: {
@@ -115,6 +116,7 @@ class ExplorePage extends PureComponent<ExplorePageProps> {
         },
       tab: selectedTab,
       ...filters.search && { search: filters.search },
+      emission_scenario: filters.emission_scenario,
     };
 
     if (typeof window !== 'undefined') {
@@ -203,6 +205,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
         layers,
         dataset,
         tab,
+        emission_scenario,
       } = query;
 
       // let datasetData = null;
@@ -210,6 +213,14 @@ export const getServerSideProps = wrapper.getServerSideProps(
       if (tab) dispatch(actions.setSidebarSelectedTab(Array.isArray(tab) ? tab.join('') : tab));
 
       if (search) dispatch(actions.setFiltersSearch(Array.isArray(search) ? search.join('') : search));
+      if (emission_scenario)
+        dispatch(
+          actions.setFiltersEmissionScenario(
+            Array.isArray(emission_scenario)
+              ? emission_scenario.join('')
+              : emission_scenario
+          )
+        );
       if (dataset) {
         dispatch(actions.setSelectedDataset(Array.isArray(dataset) ? dataset.join('') : dataset));
         // datasetData = await fetchDataset(Array.isArray(dataset) ? dataset.join('') : dataset);

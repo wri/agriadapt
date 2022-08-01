@@ -7,6 +7,7 @@ import { useCallback } from 'react';
 import debounce from 'lodash/debounce';
 import useSelect from 'hooks/form/useSelect';
 import { logEvent } from 'utils/analytics';
+import { useRouter } from 'next/router';
 
 const ExploreDatasetsSearch = ({
   search,
@@ -23,9 +24,12 @@ const ExploreDatasetsSearch = ({
   fetchDatasets,
 }): JSX.Element => {
   const { VALUE_CHAINS, EMISSION_SCENARIO, TIMESCALE } = EXPLORE_FILTERS;
+  const router = useRouter();
 
   const selectedChain = useSelect(value_chains);
-  const selectedScenario = useSelect(emission_scenario);
+  const selectedScenario = useSelect(
+    EMISSION_SCENARIO.options.find(({ value }) => value === emission_scenario)
+  );
   const selectedTimescale = useSelect(timescale);
 
   const handleSelectValueChain = (chains) => {
@@ -35,7 +39,12 @@ const ExploreDatasetsSearch = ({
 
   const handleSelectEmissionScenario = (scenario) => {
     selectedScenario.onChange(scenario);
-    setFiltersEmissionScenario(scenario);
+    setFiltersEmissionScenario(scenario.value);
+    router.push(
+      { query: { ...router.query, emission_scenario: scenario.value } },
+      {},
+      { shallow: true }
+    );
     logEvent({
       action: 'filter',
       params: { emission_scenario: scenario.value },
@@ -133,20 +142,22 @@ const ExploreDatasetsSearch = ({
         {Select}
       </Field>
       <Field
-            id={'EMISSION_SCENARIO'}
-            properties={{
-              // TODO: Translate
-              label: `Filter Layers by ${EMISSION_SCENARIO.placeholder}`,
-              default: emission_scenario,
-            }}
-            value={selectedScenario.value}
-            onChange={handleSelectEmissionScenario}
-            placeholder={EMISSION_SCENARIO.placeholder} // TODO: Translate
-            options={EMISSION_SCENARIO.options}
-            className="Select--large"
-          >
-            {Select}
-          </Field>
+        id={'EMISSION_SCENARIO'}
+        properties={{
+          // TODO: Translate
+          label: `Filter Layers by ${EMISSION_SCENARIO.placeholder}`,
+          default: EMISSION_SCENARIO.options.find(
+            ({ value }) => value === emission_scenario 
+          ),
+        }}
+        value={selectedScenario.value}
+        onChange={handleSelectEmissionScenario}
+        placeholder={EMISSION_SCENARIO.placeholder} // TODO: Translate
+        options={EMISSION_SCENARIO.options}
+        className="Select--large"
+      >
+        {Select}
+      </Field>
       {/* TODO: Translate */}
       <div className="advanced-link">
         <a onClick={handleClickAdvanced}>{'Advanced Search'}</a>

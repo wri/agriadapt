@@ -1,5 +1,7 @@
-import PieChart from 'components/widgets/charts/v2/PieChart';
+import PieChart from 'components/widgets/charts/v2/PieChart/PieChart';
 import TextChart from 'components/widgets/charts/v2/TextChart';
+import { ErrorBoundary } from 'react-error-boundary';
+import ErrorFallback from 'components/error-fallback';
 
 interface Output {
   type: 'number' | 'string';
@@ -16,6 +18,10 @@ interface AnaylsisVisualsProps {
   valueMaps: Record<string, string>[];
   outputs: Output[];
 }
+
+const CustomErrorFallback = (_props) => (
+  <ErrorFallback {..._props} title="Something went wrong loading the widget" />
+);
 
 const AnalysisVisuals = ({
   domains,
@@ -37,31 +43,40 @@ const AnalysisVisuals = ({
   };
 
   return (
-    <div className="c-analysis-visuals">
-      {columns.map((c, i) => {
-        const output = outputs[i];
-        if (!output) return;
-        const numDomain = domains[i].map(({ value }) => value);
-        const labelDomain = domains[i].map(({ label }) => label);
-        const avg = average(
-          numDomain.filter((x) => x != null),
-          valueMaps[i],
-          output
-        );
-        return (
-          <>
-            <PieChart name={c} domain={labelDomain}/>
-            {avg !== 'NaN' && <TextChart
-              analysis={{
-                name: c,
-                type: 'avg',
-                value: avg,
-              }}
-            />}
-          </>
-        );
-      })}
-    </div>
+    <ErrorBoundary
+      FallbackComponent={CustomErrorFallback}
+      onError={(error) => {
+        console.error(error.message);
+      }}
+    >
+      <div className="c-analysis-visuals">
+        {columns.map((c, i) => {
+          const output = outputs[i];
+          if (!output) return;
+          const numDomain = domains[i].map(({ value }) => value);
+          const labelDomain = domains[i].map(({ label }) => label);
+          const avg = average(
+            numDomain.filter((x) => x != null),
+            valueMaps[i],
+            output
+          );
+          return (
+            <>
+              <PieChart name={c} domain={labelDomain} />
+              {avg !== 'NaN' && (
+                <TextChart
+                  analysis={{
+                    name: c,
+                    type: 'avg',
+                    value: avg,
+                  }}
+                />
+              )}
+            </>
+          );
+        })}
+      </div>
+    </ErrorBoundary>
   );
 };
 

@@ -18,7 +18,7 @@ const initialState = {
     search: '',
     value_chains: [],
     timescale: 'any',
-    emission_scenario: { label: 'Pessimistic RCP 8.5', value: 'rcp8.5' },
+    emission_scenario: 'rcp8.5',
     advanced: {
       open: false,
     },

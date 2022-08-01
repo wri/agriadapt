@@ -1,5 +1,6 @@
 import classnames from 'classnames';
 import Icon from 'components/ui/icon';
+import ParamChart from 'components/widgets/charts/v2/ParamChart';
 import TextChart from 'components/widgets/charts/v2/TextChart';
 import WidgetBlock from 'components/wysiwyg/widget-block';
 import { useEffect, useMemo, useState } from 'react';
@@ -15,8 +16,12 @@ interface DetailItemProps {
   id: string;
   info: string | ((string: string) => string);
   widgets?: {
-    id: string | ((country: string) => string);
+    id?: string | ((country: string) => string);
+    title?: (params: Record<string, any>) => string;
     fullWidth?: boolean;
+    type?: string | 'custom bar';
+    layers?: Record<string, string>;
+    options?: Record<'label' | 'value', string>[];
   }[];
   country: { label: string; value: string; iso: string };
   analysis?: {
@@ -104,12 +109,22 @@ const DetailItem = ({
                 '-placeholder': !w,
               })}
             >
-              <WidgetBlock
-                widgetId={
-                  typeof w.id === 'function' ? w.id(country?.label) : w.id
-                }
-                {...(country && { areaOfInterest: country.value })}
-              />
+              {!w.type && (
+                <WidgetBlock
+                  widgetId={
+                    typeof w.id === 'function' ? w.id(country?.label) : w.id
+                  }
+                  {...(country && { areaOfInterest: country.value })}
+                />
+              )}
+              {w.type === 'custom bar' && (
+                <ParamChart
+                  country={country?.label}
+                  title={w.title(params)}
+                  layers={w.layers}
+                  options={w.options}
+                />
+              )}
             </div>
           </div>
         ))}
