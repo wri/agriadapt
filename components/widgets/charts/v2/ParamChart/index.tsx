@@ -86,7 +86,7 @@ const ParamChart = ({ country = undefined, layers, options, title }) => {
   };
 
   return (
-    <div className="p-4 border border-b-0 rounded-tl rounded-tr border-gray-light">
+    <div className="p-4 border border-b-0 rounded-tl rounded-tr border-gray-light shadow-gray-light shadow-sm rounded-br rounded-bl">
       <WidgetHeader
         widget={widgetHeader}
         onToggleInfo={undefined}

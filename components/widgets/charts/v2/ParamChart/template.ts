@@ -1,5 +1,22 @@
 export const template = {
   $schema: 'https://vega.github.io/schema/vega/v5.json',
+  interaction_config: [{
+    config: {
+      fields: [
+        {
+          type: 'string',
+          property: 'Suitability Class',
+          column: 'crop_suitability_class',
+        },
+        {
+          type: 'string',
+          property: 'Value',
+          column: 'percentage',
+        },
+      ]
+    },
+    name: 'tooltip'
+  }],
   autosize: { type: 'fit', contains: 'padding' },
   background: 'white',
   padding: 5,
@@ -29,6 +46,11 @@ export const template = {
           sort: { field: ['siteOrder'], order: ['ascending'] },
           as: ['sum_value_start', 'sum_value_end'],
           offset: 'normalize',
+        },
+        {
+          type: 'formula',
+          expr: "format((datum.sum_value_end - datum.sum_value_start), '.1%')",
+          as: 'percentage',
         },
         {
           type: 'filter',
@@ -111,16 +133,16 @@ export const template = {
               from: { data: 'stack_group_main' },
               encode: {
                 update: {
-                  tooltip: {
-                    signal:
-                      '{"raster": isValid(datum["raster"]) ? datum["raster"] : ""+datum["raster"], "Sum of value": format(datum["sum_value_end"]-datum["sum_value_start"], ""), "Suitability Class": isValid(datum["crop_suitability_class"]) ? datum["crop_suitability_class"] : ""+datum["crop_suitability_class"], "siteOrder": isValid(datum["siteOrder"]) ? datum["siteOrder"] : ""+datum["siteOrder"]}',
-                  },
+                  // tooltip: {
+                  //   signal:
+                  //     '{"raster": isValid(datum["raster"]) ? datum["raster"] : ""+datum["raster"], "Sum of value": format(datum["sum_value_end"]-datum["sum_value_start"], ""), "Suitability Class": isValid(datum["crop_suitability_class"]) ? datum["crop_suitability_class"] : ""+datum["crop_suitability_class"], "siteOrder": isValid(datum["siteOrder"]) ? datum["siteOrder"] : ""+datum["siteOrder"]}',
+                  // },
                   fill: { scale: 'color', field: 'crop_suitability_class' },
                   ariaRoleDescription: { value: 'bar' },
-                  description: {
-                    signal:
-                      '"raster: " + (isValid(datum["raster"]) ? datum["raster"] : ""+datum["raster"]) + "; Sum of value: " + (format(datum["sum_value_end"]-datum["sum_value_start"], "")) + "; Suitability Class: " + (isValid(datum["crop_suitability_class"]) ? datum["crop_suitability_class"] : ""+datum["crop_suitability_class"]) + "; siteOrder: " + (isValid(datum["siteOrder"]) ? datum["siteOrder"] : ""+datum["siteOrder"])',
-                  },
+                  // description: {
+                  //   signal:
+                  //     '"raster: " + (isValid(datum["raster"]) ? datum["raster"] : ""+datum["raster"]) + "; Sum of value: " + (format(datum["sum_value_end"]-datum["sum_value_start"], "")) + "; Suitability Class: " + (isValid(datum["crop_suitability_class"]) ? datum["crop_suitability_class"] : ""+datum["crop_suitability_class"]) + "; siteOrder: " + (isValid(datum["siteOrder"]) ? datum["siteOrder"] : ""+datum["siteOrder"])',
+                  // },
                   width: { field: { group: 'width' } },
                   y: { scale: 'y', field: 'sum_value_end' },
                   y2: { scale: 'y', field: 'sum_value_start' },
@@ -203,12 +225,17 @@ export const template = {
       symbolSize: 1000,
       symbolType: 'square',
       title: 'Suitability Class',
+      titlePadding: 10,
       fill: 'color',
       legendY: 175,
       legendX: { signal: 'width - 300' },
       labelFontSize: 16,
-      titleFontSize: 12,
+      titleFontSize: 13,
       orient: 'none',
+      titleFont: 'Lato',
+      labelFont: 'Lato',
+      titleColor: '#393f44',
+      labelColor: '#393f44',
     },
   ],
   config: { style: { cell: { stroke: null } } },

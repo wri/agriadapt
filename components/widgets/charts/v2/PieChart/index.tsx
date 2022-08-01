@@ -1,109 +1,55 @@
-export const template = {
-  interaction_config: [
-    {
-      config: {
-        fields: [
-          {
-            type: 'string',
-            property: 'Value',
-            column: 'x',
-          },
-          {
-            type: 'number',
-            property: 'Count',
-            column: 'y',
-          },
-        ],
-      },
-      name: 'tooltip',
-    },
-  ],
-  marks: [
-    {
-      encode: {
-        hover: {
-          opacity: {
-            value: 0.8,
-          },
-        },
-        update: {
-          outerRadius: {
-            signal: 'width > height ? height / 2 : width / 2',
-          },
-          innerRadius: {
-            value: 0,
-            // signal: 'width > height ? height / 3 : width / 3',
-          },
-          endAngle: {
-            field: 'endAngle',
-          },
-          startAngle: {
-            field: 'startAngle',
-          },
-          opacity: {
-            value: 1,
-          },
-        },
-        enter: {
-          y: {
-            signal: 'height / 2',
-          },
-          x: {
-            signal: 'width / 2',
-          },
-          fill: {
-            field: 'x',
-            scale: 'c',
-          },
-          stroke: '#000',
-          strokeOpacity: {
-            value: 1,
-          },
-          strokeWidth: {
-            value: 9,
-          },
-        },
-      },
-      from: {
-        data: 'table',
-      },
-      type: 'arc',
-    },
-  ],
-  scales: [
-    {
-      domain: {
-        data: 'table',
-        field: 'x'
-      },
-      range: ['#B9D765', '#65B60D', '#C32D7B', '#3BB2D0', '#2C75B0', '#FAB72E'],
-      type: 'ordinal',
-      name: 'c',
-    },
-  ],
-  data: [
-    {
-      transform: [
-        {
-          as: ['rank'],
-          ops: ['row_number'],
-          type: 'window',
-        },
-        {
-          as: ['value'],
-          fields: ['y'],
-          ops: ['sum'],
-          groupby: ['x'],
-          type: 'aggregate',
-        },
-        {
-          endAngle: 6.29,
-          startAngle: 0,
-          field: 'value',
-          type: 'pie',
-        },
-      ],
-      name: 'table',
-    },
-  ],
+import Renderer from '@widget-editor/renderer';
+import RWAdapter from '@widget-editor/rw-adapter';
+import { useMemo } from 'react';
+import { template } from 'components/widgets/charts/v2/PieChart/template';
+
+const Pie = ({ widgetConfig }) => (
+  <div
+    className="relative flex overflow-y-hidden widget-container grow mb-3"
+    style={{ height: 171 }}
+  >
+    <Renderer widgetConfig={widgetConfig} adapter={RWAdapter} />
+  </div>
+);
+
+const PieChart = ({
+  // format = 'deg',
+  // unit = '%',
+  name,
+  domain,
+}) => {
+  const values: { x: string; y: number }[] = useMemo(() => {
+    const countMap = {};
+    // Counting number of values
+    domain.forEach((x: string) => {
+      if (countMap[x]) countMap[x] = countMap[x] + 1;
+      else countMap[x] = 1;
+    });
+
+    return Object.entries(countMap).map(([x, y]: [x: string, y: number]) => ({
+      x,
+      y,
+    }));
+  }, [domain]);
+
+  const widgetConfig = useMemo(
+    () => ({
+      ...template,
+      data: [{ ...template.data[0], values }],
+    }),
+    [values]
+  );
+
+  // const valueString = `${20}%`;
+
+  return (
+    <div className="c-pie-chart-v2">
+      <Pie widgetConfig={widgetConfig} />
+      {/* <h1 className="stat-value">{valueString}</h1>
+      <h3 className="stat-type">{type}</h3> */}
+      <div className="stat-name">{name}</div>
+    </div>
+  );
 };
+
+export default PieChart;
