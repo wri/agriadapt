@@ -245,7 +245,7 @@ export default createReducer(initialState, (builder) => {
           // Apply emission scenario filter
           !l.applicationConfig.emission_scenario ||
           l.applicationConfig.emission_scenario ===
-            state.filters.emission_scenario.value
+            state.filters.emission_scenario
       );
 
       // sorts layers if applies
@@ -366,7 +366,7 @@ export default createReducer(initialState, (builder) => {
               _layer.published &&
               (!_layer.applicationConfig.emission_scenario ||
                 _layer.applicationConfig.emission_scenario ===
-                  state.filters.emission_scenario.value)
+                  state.filters.emission_scenario)
           );
           // sorts layers if applies
           if (

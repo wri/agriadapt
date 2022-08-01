@@ -7,7 +7,42 @@ const inputs = {
     fullWidth: true,
     widgets: [
       { id: '00b89bc8-b8c1-413f-ba55-2c4e7308133a', fullWidth: true },
-      { id: '41612127-bb5f-4ac3-b80a-4676dd9c3a2b', fullWidth: true },
+      // { id: '41612127-bb5f-4ac3-b80a-4676dd9c3a2b', fullWidth: true },
+      {
+        title: ({ country }) => `Land Suitability for Coffee in ${country}`,
+        type: 'custom bar',
+        fullWidth: true,
+        options: [
+          { label: 'Rainfed coffee', value: 'rainfed' },
+          { label: 'Irrigated coffee', value: 'irrigated' },
+        ],
+        layers: {
+          rainfed: {
+            rcp4p5: [
+              '2020s_rcp4p5_rainfed_coffee',
+              '2050s_rcp4p5_rainfed_coffee',
+              '2000s_historic_rainfed_coffee',
+            ],
+            rcp8p5: [
+              '2020s_rcp8p5_rainfed_coffee',
+              '2050s_rcp8p5_rainfed_coffee',
+              '2000s_historic_rainfed_coffee',
+            ],
+          },
+          irrigated: {
+            rcp4p5: [
+              '2020s_rcp4p5_irrigated_coffee',
+              '2050s_rcp4p5_irrigated_coffee',
+              '2000s_historic_irrigated_coffee',
+            ],
+            rcp8p5: [
+              '2020s_rcp8p5_irrigated_coffee',
+              '2050s_rcp8p5_irrigated_coffee',
+              '2000s_historic_irrigated_coffee',
+            ],
+          },
+        }
+      }
     ],
     // TODO: Additional Graphical Visual
   },

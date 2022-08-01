@@ -24,6 +24,7 @@ const TextChart = ({
 
   const formatValue = useCallback(
     (val: number) => {
+      if (val == undefined) return 'N/A';
       let result = String(val);
       if (format) {
         const places = format.split('.')[1].length;
@@ -38,7 +39,7 @@ const TextChart = ({
   useEffect(() => {
     if (query && dataset) {
       fetchDatasetQuery(dataset, query(params)).then(({ data }) => {
-        setResult(formatValue(data.data[0].x));
+        setResult(formatValue(data.data[0]?.x));
       });
     } else setResult(typeof value === 'number' ? formatValue(value) : value);
   }, [dataset, formatValue, params, query, value]);

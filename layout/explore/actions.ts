@@ -49,9 +49,9 @@ export const fetchDatasets = createThunkAction(
       const layers = dataset.layer;
       const match = layers.some(
         ({ applicationConfig }) =>
-          (!emission_scenario.value ||
+          (!emission_scenario ||
             !applicationConfig?.emission_scenario ||
-            emission_scenario.value === applicationConfig?.emission_scenario) &&
+            emission_scenario === applicationConfig?.emission_scenario) &&
           (fTimescale === 'any' || applicationConfig?.timescale == fTimescale)
       );
       return match;
@@ -261,7 +261,7 @@ export const setFiltersAdvancedOpen = createAction(
 export const setFiltersValueChains = createAction(
   'EXPLORE/setFiltersValueChains'
 );
-export const setFiltersEmissionScenario = createAction(
+export const setFiltersEmissionScenario = createAction<string>(
   'EXPLORE/setFiltersEmissionScenario'
 );
 export const setFiltersTimescale = createAction('EXPLORE/setFiltersTimescale');

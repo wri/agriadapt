@@ -45,10 +45,10 @@ export default function ExploreDatasets(props: ExploreDatasetsProps) {
             (!value_chain ||
             !filters.value_chains.length ||
             filters.value_chains.some(({ value }) => value === value_chain)) &&
-            (!emission_scenario || emission_scenario === filters.emission_scenario.value)
+            (!emission_scenario || emission_scenario === filters.emission_scenario)
         )
       ),
-    [filters.emission_scenario.value, filters.value_chains, list]
+    [filters.emission_scenario, filters.value_chains, list]
   );
 
   return (

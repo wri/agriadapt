@@ -1,4 +1,4 @@
-export const chartData = {
+export const template = {
   interaction_config: [
     {
       config: {

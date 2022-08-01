@@ -121,7 +121,7 @@ export default connect(
     datasetID: state.explore.datasets.selected,
     anchor: state.explore.sidebar.anchor,
     layerGroups: state.explore.map.layerGroups,
-    emission_scenario: state.explore.filters.emission_scenario.value,
+    emission_scenario: state.explore.filters.emission_scenario,
     value_chains: state.explore.filters.value_chains.map(({ value }) => value),
   }),
   actions
