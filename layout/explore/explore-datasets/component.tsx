@@ -43,9 +43,10 @@ export default function ExploreDatasets(props: ExploreDatasetsProps) {
         layer.some(
           ({ applicationConfig: { value_chain, emission_scenario } }) =>
             (!value_chain ||
-            !filters.value_chains.length ||
-            filters.value_chains.some(({ value }) => value === value_chain)) &&
-            (!emission_scenario || emission_scenario === filters.emission_scenario)
+              !filters.value_chains.length ||
+              filters.value_chains.includes(value_chain)) &&
+            (!emission_scenario ||
+              emission_scenario === filters.emission_scenario)
         )
       ),
     [filters.emission_scenario, filters.value_chains, list]

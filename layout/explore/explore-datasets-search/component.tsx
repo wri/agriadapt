@@ -26,15 +26,33 @@ const ExploreDatasetsSearch = ({
   const { VALUE_CHAINS, EMISSION_SCENARIO, TIMESCALE } = EXPLORE_FILTERS;
   const router = useRouter();
 
-  const selectedChain = useSelect(value_chains);
+  const selectedChains = useSelect(
+    VALUE_CHAINS.options.filter(({ value }) => value_chains.includes(value))
+  );
+
   const selectedScenario = useSelect(
     EMISSION_SCENARIO.options.find(({ value }) => value === emission_scenario)
   );
   const selectedTimescale = useSelect(timescale);
 
-  const handleSelectValueChain = (chains) => {
-    selectedChain.onChange(chains);
-    setFiltersValueChains(chains);
+  const handleSelectValueChains = (chains) => {
+    selectedChains.onChange(chains);
+    const values = chains.map(({ value }) => value);
+    setFiltersValueChains(values);
+    router.push(
+      {
+        query: {
+          ...router.query,
+          value_chains: values.join(','),
+        },
+      },
+      {},
+      { shallow: true }
+    );
+    logEvent({
+      action: 'filter',
+      params: { value_chains: [...values].sort().join(',') },
+    });
   };
 
   const handleSelectEmissionScenario = (scenario) => {
@@ -65,10 +83,6 @@ const ExploreDatasetsSearch = ({
     logEvent({
       action: 'filter',
       params: {
-        value_chain: [...selectedChain.value]
-          .map(({ value }) => value)
-          .sort()
-          .join(','),
         timescale: selectedTimescale.value,
       },
     });
@@ -126,11 +140,11 @@ const ExploreDatasetsSearch = ({
         properties={{
           // TODO: Translate
           label: `Filter Layers by ${VALUE_CHAINS.placeholder}`,
-          default: value_chains,
+          default: VALUE_CHAINS.options.filter(({ value }) => value_chains.includes(value)),
           tooltip: VALUE_CHAINS.tooltip,
         }}
-        value={selectedChain.value}
-        onChange={handleSelectValueChain}
+        value={selectedChains.value}
+        onChange={handleSelectValueChains}
         options={VALUE_CHAINS.options}
         placeholder={VALUE_CHAINS.placeholder}
         className={'Select--large'}

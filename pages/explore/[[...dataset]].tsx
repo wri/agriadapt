@@ -16,6 +16,7 @@ interface ExplorePageProps {
     datasets?: Record<string, any>;
     filters?: {
       search?: string;
+      value_chains?: string[];
       emission_scenario?: string;
     };
     map?: {
@@ -92,8 +93,8 @@ class ExplorePage extends PureComponent<ExplorePageProps> {
 
     const query = {
       // dataset --> "Old" Explore Detail
-      ...!!datasets && datasets.selected && { dataset: datasets.selected },
-      ...!!anchor && { hash: anchor },
+      ...(!!datasets && datasets.selected && { dataset: datasets.selected }),
+      ...(!!anchor && { hash: anchor }),
       // section,
       // selectedCollection,
       // map params
@@ -104,18 +105,24 @@ class ExplorePage extends PureComponent<ExplorePageProps> {
       bearing: viewport.bearing,
       basemap,
       labels,
-      ...!!boundaries && { boundaries },
-      ...!!layerGroups.length
-        && {
-          layers: encodeURIComponent(JSON.stringify(layerGroups.map((lg) => ({
-            dataset: lg.dataset,
-            opacity: lg.opacity || 1,
-            visible: lg.visible,
-            layer: lg.layers.find((l) => l.active === true)?.id,
-          })))),
-        },
+      ...(!!boundaries && { boundaries }),
+      ...(!!layerGroups.length && {
+        layers: encodeURIComponent(
+          JSON.stringify(
+            layerGroups.map((lg) => ({
+              dataset: lg.dataset,
+              opacity: lg.opacity || 1,
+              visible: lg.visible,
+              layer: lg.layers.find((l) => l.active === true)?.id,
+            }))
+          )
+        ),
+      }),
       tab: selectedTab,
-      ...filters.search && { search: filters.search },
+      ...(filters.search && { search: filters.search }),
+      ...(filters.value_chains.length && {
+        value_chains: filters.value_chains,
+      }),
       emission_scenario: filters.emission_scenario,
     };
 
@@ -205,6 +212,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
         layers,
         dataset,
         tab,
+        value_chains,
         emission_scenario,
       } = query;
 
@@ -213,6 +221,13 @@ export const getServerSideProps = wrapper.getServerSideProps(
       if (tab) dispatch(actions.setSidebarSelectedTab(Array.isArray(tab) ? tab.join('') : tab));
 
       if (search) dispatch(actions.setFiltersSearch(Array.isArray(search) ? search.join('') : search));
+
+      if (value_chains.length)
+        dispatch(
+          actions.setFiltersValueChains(
+            Array.isArray(value_chains) ? value_chains : value_chains.split(',')
+          )
+        );
       if (emission_scenario)
         dispatch(
           actions.setFiltersEmissionScenario(

@@ -258,7 +258,7 @@ export const setFiltersSearch = createAction<string>('EXPLORE/setFiltersSearch')
 export const setFiltersAdvancedOpen = createAction(
   'EXPLORE/setFiltersAdvancedOpen'
 );
-export const setFiltersValueChains = createAction(
+export const setFiltersValueChains = createAction<string[]>(
   'EXPLORE/setFiltersValueChains'
 );
 export const setFiltersEmissionScenario = createAction<string>(
