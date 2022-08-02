@@ -222,7 +222,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
 
       if (search) dispatch(actions.setFiltersSearch(Array.isArray(search) ? search.join('') : search));
 
-      if (value_chains.length)
+      if (value_chains)
         dispatch(
           actions.setFiltersValueChains(
             Array.isArray(value_chains) ? value_chains : value_chains.split(',')
