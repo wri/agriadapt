@@ -1,17 +1,17 @@
-import { useMemo, useState, useCallback } from "react";
-import dynamic from "next/dynamic";
+import { useMemo, useState, useCallback } from 'react';
+import dynamic from 'next/dynamic';
 
 // components
-import InView from "components/in-view";
-import MapWidget from "components/widgets/types/map";
-import ChartWidget from "components/widgets/types/chart";
-import EmbedWidget from "components/widgets/types/embed";
+import InView from 'components/in-view';
+import MapWidget from 'components/widgets/types/map';
+import ChartWidget from 'components/widgets/types/chart';
+import EmbedWidget from 'components/widgets/types/embed';
 
-import type { APIWidgetSpec } from "types/widget";
-import WidgetEnlargeModal from "components/widgets/enlarge-modal/component";
+import type { APIWidgetSpec } from 'types/widget';
+import WidgetEnlargeModal from 'components/widgets/enlarge-modal/component';
 
 const WidgetShareModal = dynamic(
-  () => import("../../../components/widgets/share-modal"),
+  () => import('../../../components/widgets/share-modal'),
   {
     ssr: false,
   }
@@ -22,7 +22,10 @@ export interface WidgetBlockProps {
   areaOfInterest?: string;
 }
 
-const WidgetBlock = ({ widget, areaOfInterest = undefined }: WidgetBlockProps): JSX.Element => {
+const WidgetBlock = ({
+  widget,
+  areaOfInterest = undefined,
+}: WidgetBlockProps): JSX.Element => {
   const [showModal, setShowModal] = useState(false);
   const [enlarged, setEnlarged] = useState(false);
 
@@ -34,17 +37,17 @@ const WidgetBlock = ({ widget, areaOfInterest = undefined }: WidgetBlockProps): 
   }, []);
 
   const handleEnlarge = useCallback(() => {
-    setEnlarged(e => !e);
+    setEnlarged((e) => !e);
   }, []);
 
   const widgetType = useMemo(
-    () => widget?.widgetConfig?.type || "chart",
+    () => widget?.widgetConfig?.type || 'chart',
     [widget]
   );
 
   return (
     <div className="w-full h-full">
-      {widgetType === "map" && (
+      {widgetType === 'map' && (
         <InView triggerOnce threshold={0.25}>
           {({ ref, inView }) => (
             <div ref={ref} className="w-full h-full">
@@ -61,7 +64,7 @@ const WidgetBlock = ({ widget, areaOfInterest = undefined }: WidgetBlockProps): 
         </InView>
       )}
 
-      {widget && widgetType === "chart" && (
+      {widget && widgetType === 'chart' && (
         <ChartWidget
           widgetId={widget.id}
           onToggleShare={openShareModal}
@@ -69,7 +72,7 @@ const WidgetBlock = ({ widget, areaOfInterest = undefined }: WidgetBlockProps): 
         />
       )}
 
-      {widgetType === "embed" && (
+      {widgetType === 'embed' && (
         <InView triggerOnce threshold={0.25}>
           {({ ref, inView }) => (
             <div ref={ref} className="w-full h-full">
@@ -89,17 +92,18 @@ const WidgetBlock = ({ widget, areaOfInterest = undefined }: WidgetBlockProps): 
           isVisible
           widget={widget}
           onClose={closeShareModal}
-          params={{}}
+          params={{ aoi: areaOfInterest }}
         />
-        )}
+      )}
 
-        {/* Fullscreen Modal goes here */}
-        {enlarged && <WidgetEnlargeModal 
+      {enlarged && (
+        <WidgetEnlargeModal
           isVisible={enlarged}
           areaOfInterest={areaOfInterest}
           widget={widget}
           onClose={() => setEnlarged(false)}
-        />}
+        />
+      )}
     </div>
   );
 };

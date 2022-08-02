@@ -58,7 +58,7 @@ export default function WidgetHeader({
     country_name: country?.label || 'the world',
   };
 
-  const name = widget?.name.includes('{{country_name}}')
+  const name = widget?.name?.includes('{{country_name}}')
     ? replace(widget?.name, replacement)
     : widget.name;
 
@@ -100,7 +100,7 @@ export default function WidgetHeader({
                 </button>
               </li>
             )}
-            {widget.widgetConfig?.type === 'map' && (
+            {widget.widgetConfig?.type === 'map' && !!onToggleEnlarge && (
               <li>
                 <button
                   type="button"

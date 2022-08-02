@@ -60,7 +60,8 @@ export interface MapTypeWidgetProps
   isError: boolean;
   isInACollection?: boolean;
   bounds?: Bounds | null;
-  onToggleEnlarge: (widget: APIWidgetSpec) => void;
+  onToggleShare: (widget: APIWidgetSpec) => void;
+  onToggleEnlarge?: (widget: APIWidgetSpec) => void;
   onFitBoundsChange: (viewport) => void;
   isEnlarged?: boolean;
 }
@@ -214,7 +215,7 @@ const MapTypeWidget = ({
             widget={widget}
             onToggleInfo={handleInfoToggle}
             onToggleShare={handleShareToggle}
-            onToggleEnlarge={handleEnlarge}
+            onToggleEnlarge={!isEmbed && handleEnlarge}
             isEnlarged={isEnlarged}
             // isInACollection={isInACollection}
             isInfoVisible={isInfoWidgetVisible}

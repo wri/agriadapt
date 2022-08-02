@@ -33,7 +33,7 @@ export interface MapTypeWidgetContainerProps {
   isWebshot?: boolean;
   areaOfInterest?: string | null;
   onToggleShare: (widget: APIWidgetSpec) => void;
-  onToggleEnlarge: (widget: APIWidgetSpec) => void;
+  onToggleEnlarge?: (widget: APIWidgetSpec) => void;
   isEnlarged?: boolean;
 }
 
