@@ -28,7 +28,7 @@ const AnalysisContainerHome = () => {
                     slidesToScroll={1}
                     cellSpacing={20}
                     autoplay={true}
-                    wrapAround={true}
+                    // wrapAround={true}
                   >
                     {ANALYSIS.cards.map((c) => (
                       <AnalysisCard

@@ -12,6 +12,7 @@ import { fetchInferredTags } from 'services/graph';
 
 // Utils
 import { TAGS_BLACKLIST } from 'utils/tags';
+import { APILayerAppConfig } from 'types/layer';
 
 // RESET
 export const resetExplore = createAction('EXPLORE/resetExplore');
@@ -45,10 +46,14 @@ export const fetchDatasets = createThunkAction(
       const {
         timescale: fTimescale,
         emission_scenario,
+        value_chains
       } = explore.filters;
       const layers = dataset.layer;
       const match = layers.some(
-        ({ applicationConfig }) =>
+        ({ applicationConfig = {} as APILayerAppConfig }) =>
+          (!applicationConfig?.value_chain ||
+            !value_chains.length ||
+            value_chains.includes(applicationConfig?.value_chain)) &&
           (!emission_scenario ||
             !applicationConfig?.emission_scenario ||
             emission_scenario === applicationConfig?.emission_scenario) &&
