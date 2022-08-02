@@ -51,24 +51,20 @@ export const APP_HEADER_ITEMS = [
     children: [
       {
         label: 'English',
-        // href: ''
+        locale: 'en'
       },
       {
         label: 'Español',
-        // href: ''
+        locale: 'es'
       },
       {
         label: 'தமிழ்',
-        // href: ''
+        locale: 'ta'
       },
       {
         label: 'తెలుగు',
-        // href: ''
+        locale: 'te'
       },
-      // {
-      //   label: 'Telugu',
-      //   // href: ''
-      // },
     ]
   }
 ];

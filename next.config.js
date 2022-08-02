@@ -5,6 +5,11 @@ module.exports = {
     loader: 'custom',
   },
 
+  i18n: {
+    locales: ['en', 'es', 'ta', 'te'],
+    defaultLocale: 'en',
+  },
+
   async redirects() {
     return [
       {
