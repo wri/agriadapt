@@ -1,0 +1,44 @@
+{
+  "intro": {
+    "subtitle": "Climate Risk in Coffee Value Chains",
+    "description": [
+      "Although it is hard to be precise, it is generally accepted that climate change will affect both arabica and robusta production. Increasing average temperatures, more frequent droughts and heat waves, and inclement weather patterns threaten to upend a large portion of suitable coffee producing areas over the next decades. More coffee may need to be grown under irrigation, thereby increasing pressure on scarce water resources."
+    ]
+  },
+  "inputs": {
+    "land_suitability": {
+      "info": "Coffee arabica production is highly sensitive to climate change. Significant reductions in climate suitability are expected for most coffee growing regions."
+    },
+    "labor": {
+      "info": "Agricultural workers are especially vulnerable to increased heat stress, which affects the health of individuals and reduces labour productivity. The Universal Thermal Climate Index identifies outdoor conditions that cause discomfort to people using a combination of temperature, humidity, wind, and radiation to determine the stress (sweating, shivering, skin wetness, etc.) a person undergoes when exposed to outdoor conditions."
+    }
+  },
+  "production": {
+    "production_volume": {
+      "info": "Explore our data visualizations to better understand where the main coffee growing regions in {{country}} are and how much coffee is currently produced."
+    },
+    "pests_and_disease": {
+      "info": "The coffee berry borer and coffee leaf rust are the most threatening pest and disease to the health of coffee trees. In general, increased temperatures will increase the spread of pests and diseases in coffee trees. However, projected decreased rainfall in certain regions may decrease the spread of pest and disease."
+    },
+    "changing_rainfall": {
+      "info": "Temperature and rainfall conditions are considered to be important factors in defining potential coffee yield. Both factors interfere in the crop phenology, and consequently in productivity and quality."
+    }
+  },
+  "trade": {
+    "export_and_import": {
+      "info": "Coffee is one of the most important commercially traded commodities in the international market, as well as the most popular beverage around the world."
+    }
+  },
+  "quotes": [
+    {
+      "location": "Risaralda, Colombia",
+      "title": "Producer, Asociación Asocafé Tatamá",
+      "quote": "AgriAdapt helps producers obtain the climate risk maps that are required by coffee certifications."
+    },
+    {
+      "location": "Bolivar, Colombia",
+      "title": "Coffee association representative, Asociación De Jóvenes Cafeteros De Ciudad Bolivar",
+      "quote": "The tool would help coffee associations to revise the climatic risk in their lands."
+    }
+  ]
+}

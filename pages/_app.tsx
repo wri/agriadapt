@@ -2,6 +2,7 @@
 import "css/index.scss";
 import type { AppProps } from "next/app";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { appWithTranslation } from 'next-i18next';
 
 //lib
 import { wrapper } from 'lib/store';
@@ -9,7 +10,7 @@ import MediaContextProvider from "lib/media";
 
 const queryClient = new QueryClient();
 
-function ClimateRiskApp({ Component, pageProps }: AppProps) {
+function AgriAdaptApp({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
       <MediaContextProvider>
@@ -19,5 +20,4 @@ function ClimateRiskApp({ Component, pageProps }: AppProps) {
   );
 }
 
-// export default ClimateRiskApp;
-export default wrapper.withRedux(ClimateRiskApp);
+export default wrapper.withRedux(appWithTranslation(AgriAdaptApp));

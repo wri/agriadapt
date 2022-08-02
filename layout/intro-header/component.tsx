@@ -4,6 +4,7 @@ import Field from 'components/form/Field';
 import Select from 'react-select';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { useTranslation } from 'next-i18next';
 
 const IntroHeader = ({
   id = 'LANDING',
@@ -18,6 +19,8 @@ const IntroHeader = ({
   setCountry,
 }) => {
   const router = useRouter();
+
+  const { t } = useTranslation([id.toLowerCase(), 'common']);
 
   const handleSelectCountry = (c) => {
     setCountry(c);
@@ -55,7 +58,7 @@ const IntroHeader = ({
             className="image"
             loader={({ src }) => src}
             src={image}
-            alt="image"
+            alt={t(title)}
           />
         </div>
         <div className="blob-container">
@@ -74,11 +77,11 @@ const IntroHeader = ({
                   '-about': id === 'ABOUT',
                 })}
               >
-                <h2>{title}</h2>
-                <h3>{subtitle}</h3>
+                <h2>{t(title)}</h2>
+                <h3>{t(subtitle)}</h3>
                 {description.map((d, i) => (
                   <p key={`desc-${i}`} className="description">
-                    {d}
+                    {t(d)}
                   </p>
                 ))}
                 {id === 'LANDING' && (
@@ -89,8 +92,7 @@ const IntroHeader = ({
                         '-primary': true,
                       })}
                     >
-                      {/* TODO: Translate */}
-                      {button.label}
+                      {t(button.label)}
                     </a>
                   </Link>
                 )}
@@ -99,14 +101,14 @@ const IntroHeader = ({
                     <Field
                       id="VALUE_CHAINS"
                       properties={{
-                        label: 'Select Country',
+                        label: t('common:Select_Country'),
                         default: country,
                       }}
                       options={countries}
                       className={'Select--large'}
                       onChange={handleSelectCountry}
                       value={country}
-                      placeholder={'Select Country'} // TODO: Translate
+                      placeholder={t('common:Select_Country')}
                       // isSearchable={false}
                       // isClearable={false}
                     >

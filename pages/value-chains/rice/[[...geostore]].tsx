@@ -4,11 +4,14 @@ import { RootState, wrapper } from 'lib/store';
 import { ValueChainPageProps } from 'types/value-chain';
 import { connect } from 'react-redux';
 import { fetchGeostore } from 'services/geostore';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const RicePage = ({ countries }: ValueChainPageProps) => {
 
   return <LayoutRice countries={countries} />;
 };
+
+const CROP = 'rice';
 
 const default_country = {
   label: 'India',
@@ -18,7 +21,7 @@ const default_country = {
 
 export const getServerSideProps = wrapper.getServerSideProps(
   (store) =>
-    async ({ query }) => {
+    async ({ query, locale }) => {
       const { geostore } = query;
       const { dispatch } = store;
       const country = geostore && await fetchGeostore(
@@ -32,10 +35,11 @@ export const getServerSideProps = wrapper.getServerSideProps(
       if (country) dispatch(actions.setCountry(country));
       else dispatch(actions.setCountry(default_country));
 
-      dispatch(actions.setActiveCrop('rice'));
+      dispatch(actions.setActiveCrop(CROP));
 
       return {
         props: {
+          ...await serverSideTranslations(locale, [CROP, 'common']),
           countries: [
             {
               label: 'India',
@@ -63,4 +67,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
     }
 );
 
-export default connect((state: RootState) => ({country: state.value_chains.country}), actions)(RicePage);
+export default connect(
+  (state: RootState) => ({ country: state.value_chains.country }),
+  actions
+)(RicePage);

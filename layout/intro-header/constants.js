@@ -11,11 +11,8 @@ import cottonBlob from 'public/images/components/layout/intro-header/cotton/intr
 
 const ABOUT = {
   id: 'ABOUT',
-  title: 'Agricultural Adaptation Tool',
-  description: [
-    'World Resources Institute has been building out a multifaceted program on Transforming Agriculture for Climate Resilience over the past five years. The aim of this work is to inform funders, policymakers and practitioners to integrate climate risk and resilience into plans, policies and programs.',
-    'The Agricultural Adaptation Tool is developed focusing on in-depth stakeholder engagement to bring together sectoral knowledge with technical and data expertise, underpinned by a user-centric approach to tool development.',
-  ],
+  title: 'intro.title',
+  description: ['intro.description.0', 'intro.description.1'],
   image: aboutImage,
   blob: aboutBlob,
 };
@@ -23,12 +20,12 @@ const ABOUT = {
 const LANDING = {
   id: 'LANDING',
   title:
-    'Helping farmers and agriculture businesses around the world adapt to climate change.',
-  subtitle: 'Data and tools for agricultural resilience',
+    'intro.title',
+  subtitle: 'intro.subtitle',
   image: landingImage,
   blob: landingBlob,
   button: {
-    label: 'Analyze Risk in Your Supply Chain',
+    label: 'intro.button_label',
     url: {
       pathname: '/explore',
       query: {
@@ -67,33 +64,27 @@ const LANDING = {
 
 const RICE = {
   id: 'RICE',
-  title: 'Rice',
-  subtitle: 'Climate Risk in Rice Value Chains',
-  description: [
-    'Temperature increases, rising sea levels, and changes in rainfall patterns and distribution could lead to substantial impacts on land and water resources for rice production. Continuous groundwater extraction for rice paddy irrigation is already resulting in a steep decline in groundwater across India (Oo 2018).',
-  ],
+  title: 'common:Rice',
+  subtitle: 'intro.subtitle',
+  description: ['description.0'],
   image: riceImage,
   blob: riceBlob,
 };
 
 const COTTON = {
   id: 'COTTON',
-  title: 'Cotton',
-  subtitle: 'Climate Risk in Cotton Value Chains',
-  description: [
-    "The cotton value chain is likely to experience disruptions due to climate change impacts such as water availability, changing rainfall patterns, and rising temperatures. Cotton's lengthy growing season (approximately 150-180 days) already makes the crop quite vulnerable to pests and diseases. A warmer climate will only increase cotton's susceptibility (Cotton 2040, 2021).",
-  ],
+  title: 'common:Cotton',
+  subtitle: 'intro.subtitle',
+  description: ['description.0'],
   image: cottonImage,
   blob: cottonBlob,
 };
 
 const COFFEE = {
   id: 'COFFEE',
-  title: 'Coffee',
-  subtitle: 'Climate Risk in Coffee Value Chains',
-  description: [
-    'Although it is hard to be precise, it is generally accepted that climate change will affect both arabica and robusta production. Increasing average temperatures, more frequent droughts and heat waves, and inclement weather patterns threaten to upend a large portion of suitable coffee producing areas over the next decades. More coffee may need to be grown under irrigation, thereby increasing pressure on scarce water resources.',
-  ],
+  title: 'common:Coffee',
+  subtitle: 'intro.subtitle',
+  description: ['description.0'],
   image: coffeeImage,
   blob: coffeeBlob,
 };

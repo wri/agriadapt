@@ -3,6 +3,7 @@ import Icon from 'components/ui/icon';
 import ParamChart from 'components/widgets/charts/v2/ParamChart';
 import TextChart from 'components/widgets/charts/v2/TextChart';
 import WidgetBlock from 'components/wysiwyg/widget-block';
+import { useTranslation } from 'next-i18next';
 import { useEffect, useMemo, useState } from 'react';
 import { fetchGeostore } from 'services/geostore';
 import { capitalizeFirstLetter } from 'utils/utils';
@@ -14,7 +15,7 @@ interface DetailItemProps {
     label: string;
   };
   id: string;
-  info: string | ((string: string) => string);
+  info: string;
   widgets?: {
     id?: string | ((country: string) => string);
     title?: (params: Record<string, any>) => string;
@@ -48,6 +49,8 @@ const DetailItem = ({
   fullWidth = false,
 }: DetailItemProps) => {
   const [geojson, setGeoJson] = useState('');
+
+  const { t } = useTranslation(crop);
 
   useEffect(() => {
     if (country?.value)
@@ -91,7 +94,7 @@ const DetailItem = ({
             <div>
               <h3>{label}</h3>
               <p className="description">
-                {typeof info === 'function' ? info(country?.label) : info}
+                {t(info, { country: country?.label })}
               </p>
             </div>
           </div>

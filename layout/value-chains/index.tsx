@@ -22,7 +22,12 @@ interface LayoutCropProps {
     iso: string;
   }[];
   details: any;
-  quotes: Record<string, any>[];
+  quotes: {
+    location: string;
+    image: string;
+    title: string;
+    quote: string;
+  }[];
   crop: 'rice' | 'cotton' | 'coffee';
 }
 
@@ -38,11 +43,11 @@ const LayoutCrop = ({
     // TODO: Translate
     <Layout title={`${capitalizeFirstLetter(crop)} (${country.label})`}>
       <div className="l-crop">
-        <IntroHeader {...header} countries={countries} />
+        <IntroHeader crop={crop} {...header} countries={countries} />
         <div className="l-container">
           <div className="row">
             <div className="column small-12">
-              <UserStories quotes={quotes} />
+              <UserStories crop={crop} quotes={quotes} />
             </div>
           </div>
         </div>

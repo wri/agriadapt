@@ -8,9 +8,24 @@ import { user_stories } from '../constants';
 import chevronLeft from 'public/images/icons/chevronLeft.svg'
 import chevronRight from 'public/images/icons/chevronRight.svg'
 import Link from 'next/link';
+import { useTranslation } from 'next-i18next';
 
-const UserStories = ({ quotes }) => {
+const UserStories = ({
+  quotes,
+  crop,
+}: {
+  quotes: {
+    location: string;
+    image: string;
+    title: string;
+    quote: string;
+  }[];
+
+  crop: 'rice' | 'coffee' | 'cotton';
+}) => {
   const { header, stories } = user_stories;
+
+  const { t } = useTranslation(crop);
 
   const getImageDimensions = (b, image) => {
     if (b === 'md') {
@@ -40,8 +55,8 @@ const UserStories = ({ quotes }) => {
           />
         </div>
         <div className="c-user-info">
-          <h3>{`${s.title}, ${s.location}`}</h3>
-          <p>{`"${s.quote}"`}</p>
+          <h3>{`${t(s.title)}, ${t(s.location)}`}</h3>
+          <p>{`"${t(s.quote)}"`}</p>
           <Link href="/explore" passHref>
             <a
               className={classnames({
@@ -64,7 +79,7 @@ const UserStories = ({ quotes }) => {
         <h2>{header}</h2>
       )}
       <div className="c-user-stories-body">
-        {['sm', 'md', 'lg', 'xl'].map((b: 'sm' | 'md' | 'lg' | 'xl', i) => (
+        {['sm', 'md', 'lg', 'xl'].map((b: 'sm' | 'md' | 'lg' | 'xl') => (
           <Media
             key={b}
             {...(['sm', 'md', 'lg'].includes(b)
@@ -81,7 +96,7 @@ const UserStories = ({ quotes }) => {
                       loader={loader}
                       unoptimized
                       src={chevronLeft}
-                      alt={'left'}
+                      alt={t('common:Back')}
                     />
                   </button>
                 )}
@@ -93,7 +108,7 @@ const UserStories = ({ quotes }) => {
                       loader={loader}
                       unoptimized
                       src={chevronRight}
-                      alt={'right'}
+                      alt={t('common:Next')}
                     />
                   </button>
                 )}
