@@ -11,38 +11,42 @@ const inputs = {
       { id: '043440a2-b3fd-493e-93a9-362eac5637c7', fullWidth: true },
       // { id: '284fed69-50e7-4d40-92a1-5640eb02e51f', fullWidth: true },
       {
-        title: ({ country }: { country: string }) => `Land Suitability for Rice in ${country}`,
+        title: ({ country }: { country: string }) =>
+          `Land Suitability for Rice in ${country}`,
         type: 'custom bar',
         fullWidth: true,
         options: [
-          { label: 'Dryland rice', value: 'dryland' },
-          { label: 'Wetland rice', value: 'wetland' },
+          [
+            { label: 'Dryland rice', value: 'dryland' },
+            { label: 'Wetland rice', value: 'wetland' },
+          ],
+          [
+            { label: 'Rainfed rice', value: 'rainfed' },
+            { label: 'Irrigated rice', value: 'irrigated' },
+          ],
         ],
         layers: {
-          dryland: {
-            rcp4p5: [
-              '2020s_rcp4p5_rainfed_dryland_rice',
-              '2050s_rcp4p5_rainfed_dryland_rice',
-              '2000s_historic_rainfed_dryland_rice',
-            ],
-            rcp8p5: [
-              '2020s_rcp8p5_rainfed_dryland_rice',
-              '2050s_rcp8p5_rainfed_dryland_rice',
-              '2000s_historic_rainfed_dryland_rice',
-            ],
-          },
-          wetland: {
-            rcp4p5: [
-              '2020s_rcp4p5_rainfed_wetland_rice',
-              '2050s_rcp4p5_rainfed_wetland_rice',
-              '2000s_historic_rainfed_wetland_rice',
-            ],
-            rcp8p5: [
-              '2020s_rcp8p5_rainfed_wetland_rice',
-              '2050s_rcp8p5_rainfed_wetland_rice',
-              '2000s_historic_rainfed_wetland_rice',
-            ],
-          },
+          historic: [
+            '2000s_historic_irrigated_wetland_rice',
+            '2000s_historic_rainfed_dryland_rice',
+            '2000s_historic_rainfed_wetland_rice',
+          ],
+          rcp4p5: [
+            '2020s_rcp4p5_irrigated_wetland_rice',
+            '2020s_rcp4p5_rainfed_dryland_rice',
+            '2020s_rcp4p5_rainfed_wetland_rice',
+            '2050s_rcp4p5_irrigated_wetland_rice',
+            '2050s_rcp4p5_rainfed_dryland_rice',
+            '2050s_rcp4p5_rainfed_wetland_rice',
+          ],
+          rcp8p5: [
+            '2020s_rcp8p5_irrigated_wetland_rice',
+            '2020s_rcp8p5_rainfed_dryland_rice',
+            '2020s_rcp8p5_rainfed_wetland_rice',
+            '2050s_rcp8p5_irrigated_wetland_rice',
+            '2050s_rcp8p5_rainfed_dryland_rice',
+            '2050s_rcp8p5_rainfed_wetland_rice',
+          ],
         },
       },
     ], // TODO: Additional Stacked Bar Visual

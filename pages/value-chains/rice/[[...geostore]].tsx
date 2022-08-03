@@ -39,7 +39,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
 
       return {
         props: {
-          ...await serverSideTranslations(locale, [CROP, 'common']),
+          ...await serverSideTranslations(locale, [CROP, 'common', 'header', 'footer']),
           countries: [
             {
               label: 'India',

@@ -8,7 +8,7 @@ const AboutPage = () => {
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
-    props: { ...(await serverSideTranslations(locale, ['about'])) },
+    props: { ...(await serverSideTranslations(locale, ['about', 'common', 'header', 'footer'])) },
   };
 };
 

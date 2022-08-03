@@ -1,22 +1,24 @@
 export const template = {
   $schema: 'https://vega.github.io/schema/vega/v5.json',
-  interaction_config: [{
-    config: {
-      fields: [
-        {
-          type: 'string',
-          property: 'Suitability Class',
-          column: 'crop_suitability_class',
-        },
-        {
-          type: 'string',
-          property: 'Value',
-          column: 'percentage',
-        },
-      ]
+  interaction_config: [
+    {
+      config: {
+        fields: [
+          {
+            type: 'string',
+            property: 'Suitability Class',
+            column: 'crop_suitability_class',
+          },
+          {
+            type: 'string',
+            property: 'Value',
+            column: 'percentage',
+          },
+        ],
+      },
+      name: 'tooltip',
     },
-    name: 'tooltip'
-  }],
+  ],
   autosize: { type: 'fit', contains: 'padding' },
   background: 'white',
   padding: 5,
@@ -24,7 +26,7 @@ export const template = {
   data: [
     {
       name: 'source_0',
-      url: "https://wri-rw.carto.com/api/v2/sql?q=select raster, country, crop_suitability_class, value from foo_067_rw0_crop_suitability_class_edit WHERE raster IN ('2020s_rcp4p5_rainfed_coffee', '2050s_rcp4p5_rainfed_coffee', '2000s_historic_rainfed_coffee') AND country IN ('Colombia') AND crop_suitability_class NOT IN ('No Cultivation')",
+      // url: "https://wri-rw.carto.com/api/v2/sql?q=select raster, country, crop_suitability_class, value from foo_067_rw0_crop_suitability_class_edit WHERE raster IN ('2020s_rcp4p5_rainfed_coffee', '2050s_rcp4p5_rainfed_coffee', '2000s_historic_rainfed_coffee') AND country IN ('Colombia') AND crop_suitability_class NOT IN ('No Cultivation')",
       format: { type: 'json', property: 'rows' },
       transform: [
         {
@@ -184,14 +186,14 @@ export const template = {
         'Not Suitable',
       ],
       range: [
-        '#7c9252',
-        '#aacd65',
-        '#9ebbd7',
-        '#fbeb92',
-        '#f7bc5d',
-        '#f5863c',
-        '#caccd0',
-        '#f1ebea',
+        '#017100',
+        '#15ae0f',
+        '#ace15e',
+        '#fed800',
+        '#ce9d53',
+        '#cc6c00',
+        '#808080',
+        '#cfcfcf',
       ],
       interpolate: 'hcl',
     },

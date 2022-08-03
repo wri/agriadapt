@@ -17,32 +17,24 @@ const inputs = {
           { label: 'Irrigated coffee', value: 'irrigated' },
         ],
         layers: {
-          rainfed: {
-            rcp4p5: [
-              '2020s_rcp4p5_rainfed_coffee',
-              '2050s_rcp4p5_rainfed_coffee',
-              '2000s_historic_rainfed_coffee',
-            ],
-            rcp8p5: [
-              '2020s_rcp8p5_rainfed_coffee',
-              '2050s_rcp8p5_rainfed_coffee',
-              '2000s_historic_rainfed_coffee',
-            ],
-          },
-          irrigated: {
-            rcp4p5: [
-              '2020s_rcp4p5_irrigated_coffee',
-              '2050s_rcp4p5_irrigated_coffee',
-              '2000s_historic_irrigated_coffee',
-            ],
-            rcp8p5: [
-              '2020s_rcp8p5_irrigated_coffee',
-              '2050s_rcp8p5_irrigated_coffee',
-              '2000s_historic_irrigated_coffee',
-            ],
-          },
-        }
-      }
+          historic: [
+            '2000s_historic_irrigated_coffee',
+            '2000s_historic_rainfed_coffee',
+          ],
+          rcp4p5: [
+            '2020s_rcp4p5_irrigated_coffee',
+            '2020s_rcp4p5_rainfed_coffee',
+            '2050s_rcp4p5_irrigated_coffee',
+            '2050s_rcp4p5_rainfed_coffee',
+          ],
+          rcp8p5: [
+            '2020s_rcp8p5_irrigated_coffee',
+            '2020s_rcp8p5_rainfed_coffee',
+            '2050s_rcp8p5_irrigated_coffee',
+            '2050s_rcp8p5_rainfed_coffee',
+          ]
+        },
+      },
     ],
     // TODO: Additional Graphical Visual
   },

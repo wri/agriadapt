@@ -66,7 +66,7 @@ const RICE = {
   id: 'RICE',
   title: 'common:Rice',
   subtitle: 'intro.subtitle',
-  description: ['description.0'],
+  description: ['intro.description.0'],
   image: riceImage,
   blob: riceBlob,
 };
@@ -75,7 +75,7 @@ const COTTON = {
   id: 'COTTON',
   title: 'common:Cotton',
   subtitle: 'intro.subtitle',
-  description: ['description.0'],
+  description: ['intro.description.0'],
   image: cottonImage,
   blob: cottonBlob,
 };
@@ -84,7 +84,7 @@ const COFFEE = {
   id: 'COFFEE',
   title: 'common:Coffee',
   subtitle: 'intro.subtitle',
-  description: ['description.0'],
+  description: ['intro.description.0'],
   image: coffeeImage,
   blob: coffeeBlob,
 };

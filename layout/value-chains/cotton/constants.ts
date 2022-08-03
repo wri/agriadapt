@@ -19,30 +19,22 @@ const inputs = {
           { label: 'Irrigated cotton', value: 'irrigated' },
         ],
         layers: {
-          rainfed: {
-            rcp4p5: [
-              '2020s_rcp4p5_rainfed_cotton',
-              '2050s_rcp4p5_rainfed_cotton',
-              '2000s_historic_rainfed_cotton',
-            ],
-            rcp8p5: [
-              '2020s_rcp8p5_rainfed_cotton',
-              '2050s_rcp8p5_rainfed_cotton',
-              '2000s_historic_rainfed_cotton',
-            ],
-          },
-          irrigated: {
-            rcp4p5: [
-              '2020s_rcp4p5_irrigated_coffee',
-              '2050s_rcp4p5_irrigated_coffee',
-              '2000s_historic_irrigated_coffee',
-            ],
-            rcp8p5: [
-              '2020s_rcp8p5_irrigated_coffee',
-              '2050s_rcp8p5_irrigated_coffee',
-              '2000s_historic_irrigated_coffee',
-            ],
-          },
+          historic: [
+            '2000s_historic_irrigated_cotton',
+            '2000s_historic_rainfed_cotton',
+          ],
+          rcp4p5: [
+            '2020s_rcp4p5_irrigated_cotton',
+            '2020s_rcp4p5_rainfed_cotton',
+            '2050s_rcp4p5_irrigated_cotton',
+            '2050s_rcp4p5_rainfed_cotton',
+          ],
+          rcp8p5: [
+            '2020s_rcp8p5_irrigated_cotton',
+            '2020s_rcp8p5_rainfed_cotton',
+            '2050s_rcp8p5_irrigated_cotton',
+            '2050s_rcp8p5_rainfed_cotton',
+          ],
         },
       },
     ],

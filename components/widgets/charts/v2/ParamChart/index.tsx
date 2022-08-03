@@ -15,21 +15,31 @@ const BarChart = ({ template, country, layers, options: params }) => {
     { label: 'Optimistic (RCP 4.5)', value: 'rcp4p5' },
   ];
   const emscen = useSelect(options[0]);
-  const [cropType, setCropType] = useState(params[0].value);
+  const [radios, setRadios] = useState(
+    Array.isArray(params[0]) ? params.map((p) => p[0].value) : [params[0].value]
+  );
+  const [radioToggle, setRadioToggle] = useState(true);
 
   const handleSelectEm = (em) => {
     emscen.onChange(em);
   };
 
-  const handleSelectCropType = (c) => {
-    setCropType(c);
-    console.log(c);
+  const handleRadioSelect = (i) => (c) => {
+    setRadios(r => {
+      r[i] = c;
+      return r;
+    });
+    setRadioToggle(t => !t);
   };
 
   const config = useMemo(() => {
-    const rasters = layers[cropType][emscen.value.value]
-      .map((n) => `'${n}'`)
+    const rasters = [...layers[emscen.value.value], ...layers['historic']]
+      .reduce((arr, l) => {
+        if (radios.every((p) => l.includes(p))) arr.push(`'${l}'`);
+        return arr;
+      }, [])
       .join(',');
+    if (!rasters.length) return { ...template };
     const url = `https://wri-rw.carto.com/api/v2/sql?q=select raster, country, crop_suitability_class, value from foo_067_rw0_crop_suitability_class_edit WHERE raster IN (${rasters}) AND country IN ('${country}') AND crop_suitability_class NOT IN ('No Cultivation')`;
     return {
       ...template,
@@ -40,7 +50,7 @@ const BarChart = ({ template, country, layers, options: params }) => {
         },
       ],
     };
-  }, [country, emscen.value, layers, cropType, template]);
+  }, [country, emscen.value, layers, radios, radioToggle, template]);
 
   return (
     <div className="c-param-chart relative flex overflow-y-hidden widget-container grow mb-3 pt-6">
@@ -60,19 +70,38 @@ const BarChart = ({ template, country, layers, options: params }) => {
         >
           {Select}
         </Field>
-        <Field
-            id={'CROP_TYPE'}
+        {Array.isArray(params[0]) ? (
+          params.map((_, i) => (
+            <Field
+              key={i}
+              id={`RADIO_${i}`}
+              properties={{
+                // TODO: Translate
+                // label: `Type`,
+                default: params[i][0].value,
+              }}
+              value={radios[i]}
+              onChange={handleRadioSelect(i)}
+              options={params[i]}
+            >
+              {RadioGroup}
+            </Field>
+          ))
+        ) : (
+          <Field
+            id={'RADIO'}
             properties={{
               // TODO: Translate
-              label: `Type`,
+              // label: `Type`,
               default: params[0].value,
             }}
-            value={cropType}
-            onChange={handleSelectCropType}
+            value={radios[0]}
+            onChange={handleRadioSelect(0)}
             options={params}
           >
             {RadioGroup}
           </Field>
+        )}
       </div>
     </div>
   );

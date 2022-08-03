@@ -1,7 +1,16 @@
 .c-param-chart {
     .c-controls {
         position: absolute;
-        width: 250px;
-        right: 40px;
+        width: 257px;
+        right: 50px;
+
+        .c-radio-box {
+            display: flex;
+            // justify-content: space-between;
+            flex-wrap: wrap;
+            .c-radio {
+                padding-right: 10px;
+            }
+        }
     }
 }
