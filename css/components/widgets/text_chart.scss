@@ -43,16 +43,18 @@
     text-align: center;
   }
 
-  .stat-value {
-    margin: 0;
-    color: $primary-green;
+  .c-data {
+    max-width: 210px;
+    .stat-value {
+      margin: 10px;
+      color: $primary-green;
+    }
+    .stat-type {
+    
+    }
+    
+    .stat-name {
+    
+    }
   }
-  .stat-type {
-  
-  }
-  
-  .stat-name {
-  
-  }
-
 }

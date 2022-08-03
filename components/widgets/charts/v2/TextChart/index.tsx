@@ -37,7 +37,7 @@ const TextChart = ({
   );
 
   useEffect(() => {
-    if (query && dataset) {
+    if (query && dataset) { // For value chain pages
       fetchDatasetQuery(dataset, query(params)).then(({ data }) => {
         setResult(formatValue(data.data[0]?.x));
       });
@@ -50,7 +50,7 @@ const TextChart = ({
     <div className="w-full h-full flex">
       {/* {inView && ( */}
       <div className="c-callout-card flex">
-        <div className="m-auto">
+        <div className="c-data m-auto">
           <h1 className="stat-value">{result}</h1>
           {type && (
             <h3 className="stat-type">{type === 'avg' ? 'Average' : type}</h3>
