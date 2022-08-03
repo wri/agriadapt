@@ -5,5 +5,16 @@
       "World Resources Institute has been building out a multifaceted program on Transforming Agriculture for Climate Resilience over the past five years. The aim of this work is to inform funders, policymakers and practitioners to integrate climate risk and resilience into plans, policies and programs.",
       "The Agricultural Adaptation Tool is developed focusing on in-depth stakeholder engagement to bring together sectoral knowledge with technical and data expertise, underpinned by a user-centric approach to tool development."
     ]
+  },
+  "acknowledgements": {
+    "contributors": {
+      "header": "A special thanks to our contributors"
+    },
+    "committee_members": {
+      "subheader": "Technical Advisory Committee Members"
+    },
+    "funders": {
+      "header": "Our Funders"
+    }
   }
 }

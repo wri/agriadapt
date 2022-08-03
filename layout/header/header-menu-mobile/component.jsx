@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 import Link from "next/link";
@@ -9,6 +9,7 @@ import Icon from "components/ui/icon";
 
 // constants
 import { APP_HEADER_ITEMS } from "layout/header/constants";
+import { useTranslation } from "next-i18next";
 
 const HeaderMenuMobile = ({
   header,
@@ -16,6 +17,7 @@ const HeaderMenuMobile = ({
 }) => {
   const { pathname } = useRouter();
 
+  const { t } = useTranslation(['header', 'common']);
 
   const { mobileOpened } = header;
 
@@ -31,7 +33,7 @@ const HeaderMenuMobile = ({
         className="c-button -secondary -alt -compressed header-burger-button"
         onClick={() => setMobileOpened(true)}
       >
-        Menu
+        {t('menu')}
       </button>
 
       <div className={`header-menu-mobile-content ${classNames}`}>
@@ -63,7 +65,7 @@ const HeaderMenuMobile = ({
   
                 return (
                   <li key={item.label} className={activeClassName}>
-                    {<h2>{item.label}</h2>}
+                    {<h2>{t(item.label)}</h2>}
   
                     {item.children && (
                       <ul>
@@ -71,7 +73,7 @@ const HeaderMenuMobile = ({
                           if (item.id === 'language') {
                             return (
                               <li key={c.label} onClick={null}>
-                                {c.label}
+                                {t(c.label)}
                               </li>
                             );
                           } else {
@@ -79,7 +81,7 @@ const HeaderMenuMobile = ({
                               <li key={c.label}>
                                 {c.href && (
                                   <Link href={c.href}>
-                                    <a>{c.label}</a>
+                                    <a>{t(c.label)}</a>
                                   </Link>
                                 )}
                               </li>

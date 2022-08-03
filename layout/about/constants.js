@@ -4,7 +4,7 @@ import walmartFoundationLogo from 'public/images/about/walmart-foundation-logo.p
 
 const acknowledgements = {
   contributors: {
-    header: 'A special thanks to our contributors',
+    header: 'acknowledgements.contributors.header',
     content: [
       {
         name: 'Clima y Café',
@@ -31,7 +31,7 @@ const acknowledgements = {
   // },
 
   funders: {
-    header: 'Our Funders',
+    header: 'acknowledgements.funders.header',
     content: [
       {
         name: 'Walmart Foundation',

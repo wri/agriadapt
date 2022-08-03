@@ -4,6 +4,7 @@ import { useDebouncedCallback } from 'use-debounce';
 import Tether from 'react-tether';
 
 import { APP_HEADER_ITEMS } from 'layout/header/constants';
+import { useTranslation } from 'next-i18next';
 
 export default function HeaderValueChains() {
   const [isVisible, setVisibility] = useState(false);
@@ -12,6 +13,8 @@ export default function HeaderValueChains() {
   }, 50);
 
   const links = APP_HEADER_ITEMS[0];
+
+  const { t } = useTranslation('header');
 
   return (
     <Tether
@@ -29,7 +32,7 @@ export default function HeaderValueChains() {
             onMouseEnter={() => toggleDropdown(true)}
             onMouseLeave={() => toggleDropdown(false)}
           >
-            Value Chains
+            {t('header:value_chains')}
           </a>
         </Link>
       )}

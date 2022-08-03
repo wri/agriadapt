@@ -1,70 +1,70 @@
 export const APP_HEADER_ITEMS = [
   {
-    id: "value-chains",
-    label: "Value Chains",
-    href: "/value-chains/rice",
+    id: 'value-chains',
+    label: 'header:value_chains',
+    href: '/value-chains/rice',
     root: '/value-chains',
     children: [
       {
-        label: "Rice",
-        href: "/value-chains/rice",
+        label: 'common:Rice',
+        href: '/value-chains/rice',
       },
       {
-        label: "Coffee",
-        href: "/value-chains/coffee",
+        label: 'common:Coffee',
+        href: '/value-chains/coffee',
       },
       {
-        label: "Cotton",
-        href: "/value-chains/cotton",
+        label: 'common:Cotton',
+        href: '/value-chains/cotton',
         logEvent: true,
       },
     ],
   },
   {
-    id: "explorer",
-    label: "Climate Risk Explorer",
-    href: "/explore",
+    id: 'explorer',
+    label: 'header:climate_risk_explorer',
+    href: '/explore',
     root: '/explore',
     children: [
       {
-        label: "Explore the Map",
-        href: "/explore",
+        label: 'header:explore_the_map',
+        href: '/explore',
       },
     ],
   },
   {
-    id: "about",
-    label: "About",
-    href: "/about",
+    id: 'about',
+    label: 'header:about',
+    href: '/about',
     root: '/about',
     children: [
       {
-        label: "About the Project",
-        href: "/about",
+        label: 'header:about_the_project',
+        href: '/about',
       },
     ],
   },
   {
     id: 'language',
-    label: 'Language',
+    label: 'common:Language',
     // href: '',
     children: [
       {
         label: 'English',
-        locale: 'en'
+        locale: 'en',
       },
       {
         label: 'Español',
-        locale: 'es'
+        locale: 'es',
       },
       {
         label: 'தமிழ்',
-        locale: 'ta'
+        locale: 'ta',
       },
       {
         label: 'తెలుగు',
-        locale: 'te'
+        locale: 'te',
       },
-    ]
-  }
+    ],
+  },
 ];

@@ -7,8 +7,12 @@ import { Media } from "lib/media";
 import { FOOTER_LINKS, RELATED_SITES } from "./constants";
 import Image from "next/image";
 import loader from "lib/imageLoader";
+import { useTranslation } from "next-i18next";
 
 export default function FooterLinks() {
+
+  const { t } = useTranslation(['header', 'common', 'footer']);
+
   const footerMenu = useMemo(
     () =>
       FOOTER_LINKS.map((i) => {
@@ -26,10 +30,10 @@ export default function FooterLinks() {
             {subMenu.map((item, index) => {
               let link;
               if (item.id && item.href) {
-                link = item.label;
+                link = t(item.label);
               }
               if (item.href && !item.id) {
-                link = <Link href={item.href}>{item.label}</Link>;
+                link = <Link href={item.href}>{t(item.label)}</Link>;
               }
 
               return (
@@ -59,7 +63,7 @@ export default function FooterLinks() {
             </Media>
             <div className="footer-related-sites">
               <div className="related-sites-title-container">
-                <h3>Related Sites</h3>
+                <h3>{t('footer:related_sites')}</h3>
               </div>
               <div className="related-sites-images-conatiner">
                 {RELATED_SITES.map((s) => (
@@ -70,7 +74,7 @@ export default function FooterLinks() {
                           loader={loader}
                           unoptimized
                           src={s.image}
-                          alt={s.alt}
+                          alt={t(s.alt)}
                         />
                       </div>
                     </Link>

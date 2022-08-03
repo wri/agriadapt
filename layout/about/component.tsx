@@ -5,8 +5,12 @@ import acknowledgements from 'layout/about/constants';
 import Image from 'next/image';
 import classnames from 'classnames';
 import Link from 'next/link';
+import { useTranslation } from 'next-i18next';
 
 const LayoutAbout = () => {
+
+  const { t } = useTranslation('about');
+
   return (
     <Layout>
       <div className="l-about">
@@ -16,8 +20,8 @@ const LayoutAbout = () => {
             const { header, subheader, content } = val;
             return (
               <div key={key} className="c-acknowledgement">
-                {header && <h2>{header}</h2>}
-                {subheader && <h3>{subheader}</h3>}
+                {header && <h2>{t(header)}</h2>}
+                {subheader && <h3>{t(subheader)}</h3>}
                 <div
                   className={classnames({
                     'c-logo-container': content.every((c) => 'image' in c),

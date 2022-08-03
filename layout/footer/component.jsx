@@ -5,8 +5,11 @@ import { Media } from "lib/media";
 import Image from "next/image";
 import wriLogo from 'public/images/wri-logo.svg';
 import loader from 'lib/imageLoader';
+import { useTranslation } from "next-i18next";
 
 export default function Footer() {
+  const { t } = useTranslation('footer');
+
   return (
     <footer className="l-footer">
       <div className="footer-main">
@@ -24,15 +27,19 @@ export default function Footer() {
                     target="_blank"
                     rel="noreferrer noopener"
                   >
-                    <Image src={wriLogo} loader={loader} alt="WRI logo" />
+                    <Image
+                      src={wriLogo}
+                      loader={loader}
+                      alt={t('footer:world_resources_institute')}
+                    />
                   </a>
                 </div>
                 <div className="footer-item">
                   <Link href="#">
-                    <p>Terms of Service</p>
+                    <p>{t('footer:terms_of_service')}</p>
                   </Link>
                   <Link href="#">
-                    <p>Privacy Policy</p>
+                    <p>{t('footer:privacy_policy')}</p>
                   </Link>
                 </div>
               </div>
@@ -47,7 +54,7 @@ export default function Footer() {
               <div className="column small-12">
                 <div className="footer-container">
                   <div className="footer-item">
-                    © World Resources Institute 2022
+                    © {t('footer:world_resources_institute')} 2022
                   </div>
                 </div>
               </div>
@@ -56,10 +63,10 @@ export default function Footer() {
               <div className="column small-12">
                 <div className="footer-container">
                   <div className="footer-item">
-                    Powered by
+                    {t('footer:powered_by')}
                     <img
                       className="rw-logo"
-                      alt={"Resource Watch"}
+                      alt={'Resource Watch'}
                       src="/images/Logo-RW.svg"
                     />
                   </div>
@@ -72,14 +79,14 @@ export default function Footer() {
               <div className="column small-12">
                 <div className="footer-container">
                   <div className="footer-item">
-                    © World Resources Institute 2022
+                  © {t('footer:world_resources_institute')} 2022
                   </div>
                   <div className="footer-item">
-                    <span>Powered by</span>
-                    <Link href='https://resourcewatch.org' >
+                    <span>{t('footer:powered_by')}</span>
+                    <Link href="https://resourcewatch.org">
                       <img
-                        className={"rw-logo"}
-                        alt={"Resource Watch"}
+                        className={'rw-logo'}
+                        alt={'Resource Watch'}
                         src="/images/Logo-RW.svg"
                       />
                     </Link>

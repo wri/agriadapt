@@ -6,6 +6,7 @@ import Link from "next/link";
 
 // components
 import { APP_HEADER_ITEMS } from "layout/header/constants";
+import { useTranslation } from "next-i18next";
 
 const header = {
   'value-chains': import("../header-valuechains"),
@@ -14,6 +15,7 @@ const header = {
 
 const HeaderMenu = () => {
   const { pathname } = useRouter();
+  const { t } = useTranslation(['header', 'common']);
 
   return (
     <nav className="header-menu">
@@ -33,7 +35,7 @@ const HeaderMenu = () => {
             >
               {!DropdownMenu && item.href && (
                 <Link href={item.href}>
-                  <a>{item.label}</a>
+                  <a>{t(item.label)}</a>
                 </Link>
               )}
 

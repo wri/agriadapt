@@ -10,6 +10,7 @@ import * as actions from 'layout/explore/actions';
 import Explore from 'layout/explore';
 import { PureComponent } from 'react';
 import { RootState, wrapper } from 'lib/store';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 interface ExplorePageProps {
   explore: {
@@ -197,7 +198,7 @@ class ExplorePage extends PureComponent<ExplorePageProps> {
 
 export const getServerSideProps = wrapper.getServerSideProps(
   (store) =>
-    async ({ query }) => {
+    async ({ query, locale }) => {
       const { dispatch } = store;
       const {
         search,
@@ -271,6 +272,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
 
       return {
         props: {
+          ...(await serverSideTranslations(locale, ['explore', 'common', 'header'])) 
           // ...(datasetData && { dataset: datasetData }),
         },
       };
