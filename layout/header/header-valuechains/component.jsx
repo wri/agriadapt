@@ -14,7 +14,7 @@ export default function HeaderValueChains() {
 
   const links = APP_HEADER_ITEMS[0];
 
-  const { t } = useTranslation('header');
+  const { t } = useTranslation('header', 'common');
 
   return (
     <Tether
@@ -49,7 +49,7 @@ export default function HeaderValueChains() {
             {links.children.map(({ id, label, href }) => (
               <li className="header-dropdown-list-item" key={id}>
                 <Link href={href}>
-                  <a>{label}</a>
+                  <a>{t(label)}</a>
                 </Link>
               </li>
             ))}
