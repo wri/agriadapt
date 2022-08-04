@@ -7,7 +7,7 @@ const MaintenancePage = () => {
       <HeadError title="Maintenance" />
       <main className="l-error">
       <div className="container">
-        <p>This page is under construction</p>
+        <p>This website is under construction</p>
       </div>
     </main>
     </>
