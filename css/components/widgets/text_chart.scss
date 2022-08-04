@@ -27,7 +27,6 @@
 
 .c-callout-card {
   background: $white;
-  padding: 24px;
   position: relative;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
   
@@ -38,15 +37,16 @@
     // height: set in js
     z-index: -1;
   }
-
+  
   * {
     text-align: center;
   }
-
+  
   .c-data {
-    max-width: 210px;
+    width: 100%;
+    padding: 24px;
     .stat-value {
-      margin: 10px;
+      margin-bottom: 10px;
       color: $primary-green;
     }
     .stat-type {
