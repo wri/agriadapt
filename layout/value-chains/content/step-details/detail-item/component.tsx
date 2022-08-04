@@ -1,5 +1,6 @@
 import classnames from 'classnames';
 import Icon from 'components/ui/icon';
+import HistogramChart from 'components/widgets/charts/v2/HistogramChart';
 import ParamChart from 'components/widgets/charts/v2/ParamChart';
 import TextChart from 'components/widgets/charts/v2/TextChart';
 import WidgetBlock from 'components/wysiwyg/widget-block';
@@ -121,6 +122,14 @@ const DetailItem = ({
                   title={w.title(params)}
                   layers={w.layers}
                   options={w.options}
+                />
+              )}
+              {w.type === 'histogram' && (
+                <HistogramChart
+                  country={country?.label}
+                  title={w.title(params)}
+                  // layers={w.layers}
+                  // options={w.options}
                 />
               )}
             </div>

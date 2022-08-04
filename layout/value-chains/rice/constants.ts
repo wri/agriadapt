@@ -157,11 +157,14 @@ const trade = {
   },
   export_and_import: {
     info: 'trade.export_and_import.info',
-    // TODO: Additional Graphical Visual
-    analysis: {
-      value: 'N/A',
-      name: 'Data Coming Soon'
-    }
+    widgets: [
+      {
+        title: ({ country }: { country: string }) =>
+          `Export and Import Statistics for Rice in ${country}`,
+        type: 'histogram',
+        fullWidth: true,
+      },
+    ]
   },
 };
 

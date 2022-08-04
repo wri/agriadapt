@@ -73,20 +73,21 @@ const production = {
   changing_rainfall: {
     info: 'production.changing_rainfall.info',
     widgets: [{ id: 'd95ad48d-e14e-42cd-a5fb-1d8054c258d9' }],
-    //TODO: Missing WidgetID
   },
 };
 
 const trade = {
   export_and_import: {
     info: 'trade.export_and_import.info',
-    // TODO: Custom widget
     // widgets: [{ id: '96622815-7e6b-4d15-97cc-3ca3bc1a5c98' }],
-    // TODO: Additional Graphical Visual
-    analysis: {
-      value: 'N/A',
-      name: 'Data Coming Soon',
-    },
+    widgets: [
+      {
+        title: ({ country }: { country: string }) =>
+          `Export and Import Statistics for Coffee in ${country}`,
+        type: 'histogram',
+        fullWidth: true,
+      },
+    ]
   },
 };
 
