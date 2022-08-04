@@ -78,12 +78,7 @@ const DetailItem = ({
           })}
         >
           <div className="c-detail-item-info">
-            <div
-              className={classnames({
-                'c-step-icon': true,
-                'c-button': true,
-              })}
-            >
+            <div className="c-step-icon">
               <Icon
                 name={icon}
                 className={classnames({
