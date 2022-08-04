@@ -12,6 +12,11 @@ module.exports = {
   async redirects() {
     return [
       {
+        source: '/((?!maintenance)(?!_next)(?!static).*)',
+        destination: '/maintenance',
+        permanent: false,
+      },
+      {
         source: '/value-chains',
         destination: '/value-chains/rice',
         permanent: false,
