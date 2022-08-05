@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import { Media } from 'lib/media';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import loader from 'lib/imageLoader';
 import Carousel from 'nuka-carousel';
 import { user_stories } from '../constants';
@@ -16,7 +16,7 @@ const UserStories = ({
 }: {
   quotes: {
     location: string;
-    image: string;
+    image: StaticImageData;
     title: string;
     quote: string;
   }[];

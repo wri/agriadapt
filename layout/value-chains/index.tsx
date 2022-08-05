@@ -8,6 +8,7 @@ import Layout from 'layout/layout/layout-app';
 import { capitalizeFirstLetter } from 'utils/utils';
 import { connect } from 'react-redux';
 import { RootState } from 'lib/store';
+import { StaticImageData } from 'next/image';
 
 interface LayoutCropProps {
   header: any;
@@ -24,7 +25,7 @@ interface LayoutCropProps {
   details: any;
   quotes: {
     location: string;
-    image: string;
+    image: StaticImageData;
     title: string;
     quote: string;
   }[];
