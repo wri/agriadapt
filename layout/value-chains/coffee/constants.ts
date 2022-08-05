@@ -80,14 +80,14 @@ const trade = {
   export_and_import: {
     info: 'trade.export_and_import.info',
     // widgets: [{ id: '96622815-7e6b-4d15-97cc-3ca3bc1a5c98' }],
-    widgets: [
-      {
-        title: ({ country }: { country: string }) =>
-          `Export and Import Statistics for Coffee in ${country}`,
-        type: 'histogram',
-        fullWidth: true,
-      },
-    ]
+    // widgets: [
+    //   {
+    //     title: ({ country }: { country: string }) =>
+    //       `Export and Import Statistics for Coffee in ${country}`,
+    //     type: 'histogram',
+    //     fullWidth: true,
+    //   },
+    // ]
   },
 };
 
