@@ -157,14 +157,14 @@ const trade = {
   },
   export_and_import: {
     info: 'trade.export_and_import.info',
-    // widgets: [
-    //   {
-    //     title: ({ country }: { country: string }) =>
-    //       `Export and Import Statistics for Rice in ${country}`,
-    //     type: 'histogram',
-    //     fullWidth: true,
-    //   },
-    // ]
+    widgets: [
+      {
+        title: ({ country }: { country: string }) =>
+          `Export and Import Statistics for Rice in ${country}`,
+        type: 'histogram',
+        fullWidth: true,
+      },
+    ]
   },
 };
 
