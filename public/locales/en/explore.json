@@ -1,0 +1,15 @@
+{
+  "layer_analysis": {
+    "layers": "Layers",
+    "analysis": "analysis"
+  },
+  "search": {
+    "search_layers": "Search Layers",
+    "start_search": "Type to start search"
+  },
+  "filter": {
+    "filter_by_crops": "Filter Layers by Crop",
+    "choose_crop": "Choose Crop",
+    "advanced": "Advanced Search"    
+  }
+}

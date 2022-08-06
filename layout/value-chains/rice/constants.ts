@@ -56,7 +56,7 @@ const inputs = {
   //     widgetId: 'a009abe8-96da-4665-9457-8b1941ba0e25',
   //   },
   labor: {
-    info: 'inputs.labor.info',
+    info: ['inputs.labor.info.0', 'inputs.labor.info.1'],
     widgets: [{ id: '4cecc183-2ae4-4045-a7ad-c664ee1c368e', fullWidth: true }],
   },
   seedlings: {
@@ -90,8 +90,8 @@ const production = {
     //   type: 'Total',
     // },
   },
-  production: {
-    info: 'production.production.info',
+  changes_in_rainfall: {
+    info: 'production.changes_in_rainfall.info',
     widgets: [{ id: 'd95ad48d-e14e-42cd-a5fb-1d8054c258d9' }],
   },
   change_in_yield: {

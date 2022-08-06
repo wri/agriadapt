@@ -10,8 +10,8 @@ export const item_labels = {
     label: 'Change in Yield',
     icon: 'icon-change-in-yield',
   },
-  production: {
-    label: 'Production',
+  changes_in_rainfall: {
+    label: 'Changes in Rainfall',
     icon: 'icon-production',
   },
   pests_and_disease: {
@@ -22,10 +22,10 @@ export const item_labels = {
     label: 'Production Volume',
     icon: 'icon-pests-and-diseases',
   },
-  changing_rainfall: {
-    label: 'Changing Rainfall',
-    icon: 'icon-pests-and-diseases',
-  },
+  // changing_rainfall: {
+  //   label: 'Changing Rainfall',
+  //   icon: 'icon-pests-and-diseases',
+  // },
   policies_and_price: { label: 'Policies & Price', icon: 'icon-labor' },
   food_vulnerability: { label: 'Food Vulnerability', icon: 'icon-labor' },
   export_and_import: { label: 'Export & Import', icon: 'icon-labor' },
@@ -43,7 +43,7 @@ export const chain_items = {
   },
   production: {
     label: { text: 'Production', icon: 'icon-production' },
-    options: ['change_in_yield', 'production', 'pests_and_disease', 'production_volume', 'changing_rainfall'],
+    options: ['change_in_yield', 'changes_in_rainfall', 'pests_and_disease', 'production_volume'],
   },
   // processing: {
   //   label: { text: 'Processing', icon: 'icon-processing' },
@@ -72,7 +72,7 @@ export const chains = {
 };
 
 export const user_stories = {
-  header: 'Hear from Our Users',
+  header: 'hear_from_our_users',
   stories: [
     {
       person: 'Daniel',

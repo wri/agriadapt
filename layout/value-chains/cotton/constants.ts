@@ -41,7 +41,7 @@ const inputs = {
     // TODO: Additional chart vis
   },
   labor: {
-    info: 'inputs.labor.info',
+    info: ['inputs.labor.info.0', 'inputs.labor.info.1'],
     widgets: [{ id: '4cecc183-2ae4-4045-a7ad-c664ee1c368e' }],
   },
   seedlings: {
@@ -80,27 +80,27 @@ const production = {
   },
 };
 const trade = {
-  policies_and_price: {
-    info: 'trade.policies_and_price.info',
-    //TODO: Callout
-    analysis: {
-      dataset: '641c0a35-f2e5-4198-8ed9-576ea7e9685a',
-      query: ({ iso }: { iso: string }) =>
-        `select nrp as x from data where countrycode='${iso}' order by year desc limit 1`,
-      format: '0.00',
-      suffix: '%',
-      name: ({
-        crop,
-        country,
-      }: {
-        crop: 'rice' | 'cotton' | 'coffee';
-        country: string;
-      }) =>
-        `Nominal rate of protection, ${capitalizeFirstLetter(
-          crop
-        )} in ${country} in 2018`,
-    },
-  },
+  // policies_and_price: {
+  //   info: 'trade.policies_and_price.info',
+  //   //TODO: Callout
+  //   analysis: {
+  //     dataset: '641c0a35-f2e5-4198-8ed9-576ea7e9685a',
+  //     query: ({ iso }: { iso: string }) =>
+  //       `select nrp as x from data where countrycode='${iso}' order by year desc limit 1`,
+  //     format: '0.00',
+  //     suffix: '%',
+  //     name: ({
+  //       crop,
+  //       country,
+  //     }: {
+  //       crop: 'rice' | 'cotton' | 'coffee';
+  //       country: string;
+  //     }) =>
+  //       `Nominal rate of protection, ${capitalizeFirstLetter(
+  //         crop
+  //       )} in ${country} in 2018`,
+  //   },
+  // },
   export_and_import: {
     info: 'trade.export_and_import.info',
     widgets: [

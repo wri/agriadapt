@@ -25,7 +25,7 @@ const UserStories = ({
 }) => {
   const { header, stories } = user_stories;
 
-  const { t } = useTranslation(crop);
+  const { t } = useTranslation([crop,'common']);
 
   const getImageDimensions = (b, image) => {
     if (b === 'md') {
@@ -76,7 +76,7 @@ const UserStories = ({
     <div className="c-user-stories">
       {!!stories.length && (
         // TODO: Translate
-        <h2>{header}</h2>
+        <h2>{t(`common:${header}`)}</h2>
       )}
       <div className="c-user-stories-body">
         {['sm', 'md', 'lg', 'xl'].map((b: 'sm' | 'md' | 'lg' | 'xl') => (

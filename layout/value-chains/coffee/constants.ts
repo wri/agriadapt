@@ -39,7 +39,7 @@ const inputs = {
     // TODO: Additional Graphical Visual
   },
   labor: {
-    info: 'inputs.labor.info',
+    info: ['inputs.labor.info.0', 'inputs.labor.info.1'],
     widgets: [{ id: '4cecc183-2ae4-4045-a7ad-c664ee1c368e' }],
   },
 };
@@ -70,8 +70,8 @@ const production = {
     info: 'production.pests_and_disease.info',
     widgets: [{ id: '8cdfd430-0f19-4f3d-ab4f-9d2474f15299' }],
   },
-  changing_rainfall: {
-    info: 'production.changing_rainfall.info',
+  changes_in_rainfall: {
+    info: 'production.changes_in_rainfall.info',
     widgets: [{ id: 'd95ad48d-e14e-42cd-a5fb-1d8054c258d9' }],
   },
 };
