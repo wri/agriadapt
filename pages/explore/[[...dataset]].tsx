@@ -198,7 +198,7 @@ class ExplorePage extends PureComponent<ExplorePageProps> {
 
 export const getServerSideProps = wrapper.getServerSideProps(
   (store) =>
-    async ({ query, locale }) => {
+    async ({ query, locale, req }) => {
       const { dispatch } = store;
       const {
         search,
@@ -217,6 +217,11 @@ export const getServerSideProps = wrapper.getServerSideProps(
         emission_scenario,
       } = query;
 
+      if (req.headers && req.headers['cloudfront-viewer-country']) {
+        const viewer_iso2 = req.headers['cloudfront-viewer-country'];
+        if (viewer_iso2 === 'IN')
+          dispatch(actions.setWorldview(viewer_iso2));
+      }
       // let datasetData = null;
 
       if (tab) dispatch(actions.setSidebarSelectedTab(Array.isArray(tab) ? tab.join('') : tab));

@@ -13,6 +13,9 @@ export default createReducer(initialState, (builder) => {
     .addCase(HYDRATE, (state, { payload }) => ({ ...payload.explore }))
     // explore
     .addCase(actions.resetExplore, () => initialState)
+    .addCase(actions.setGeoEnv, (state, { payload }) => {
+      state.geo_env = payload;
+    })
     // datasets
     .addCase(actions.setDatasets, (state, { payload }) => ({
       ...state,

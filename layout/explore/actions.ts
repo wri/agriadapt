@@ -14,6 +14,9 @@ import { fetchInferredTags } from 'services/graph';
 import { TAGS_BLACKLIST } from 'utils/tags';
 import { APILayerAppConfig } from 'types/layer';
 
+// BOUNDARIES ENV
+export const setWorldview = createAction<string>('EXPLORE/setWorldview');
+
 // RESET
 export const resetExplore = createAction('EXPLORE/resetExplore');
 

@@ -20,9 +20,10 @@ const default_country = {
 
 export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(
   (store) =>
-    async ({ query, locale }) => {
+    async ({ query, locale, req }) => {
       const { geostore } = query;
       const { dispatch } = store;
+      const viewer_iso2 = req.headers['cloudfront-viewer-country'];
       const country =
         geostore &&
         (await fetchGeostore(
@@ -42,11 +43,19 @@ export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps
 
       return {
         props: {
-          ...(await serverSideTranslations(locale, [CROP, 'common', 'header', 'footer'])),
+          ...(await serverSideTranslations(locale, [
+            CROP,
+            'common',
+            'header',
+            'footer',
+          ])),
           countries: [
             {
               label: 'India',
-              value: '45d0f6f887a18df373fa69c3eb6f13c7',
+              value:
+                viewer_iso2 === 'IN'
+                  ? '1252b02f0a27cf77fd19b8298be6a8db'
+                  : '45d0f6f887a18df373fa69c3eb6f13c7',
               iso: 'IND',
             },
             {
