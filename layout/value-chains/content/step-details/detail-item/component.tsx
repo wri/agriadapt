@@ -25,7 +25,7 @@ interface DetailItemProps {
     layers?: Record<string, string>;
     options?: Record<'label' | 'value', string>[];
   }[];
-  country: { label: string; value: string; iso: string };
+  country: { label: string; sql_label?: string; value: string; iso: string };
   analysis?: {
     query: (params: Record<string, string | number>) => string;
     dataset: string;
@@ -64,7 +64,7 @@ const DetailItem = ({
   const params = useMemo(
     () => ({
       crop: capitalizeFirstLetter(crop),
-      country: country?.label,
+      country: country?.sql_label ?? country?.label,
       iso: country?.iso,
       geojson,
     }),
@@ -72,7 +72,7 @@ const DetailItem = ({
   );
   return (
     <>
-      <div id={id} className="c-detail-item">
+      <div key={key} id={id} className="c-detail-item">
         <div
           className={classnames('c-detail-section', {
             '-full': fullWidth,

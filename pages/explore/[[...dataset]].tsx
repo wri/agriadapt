@@ -277,7 +277,12 @@ export const getServerSideProps = wrapper.getServerSideProps(
 
       return {
         props: {
-          ...(await serverSideTranslations(locale, ['explore', 'common', 'header'])) 
+          ...(await serverSideTranslations(locale, [
+            'explore',
+            'common',
+            'countries',
+            'header',
+          ])),
           // ...(datasetData && { dataset: datasetData }),
         },
       };

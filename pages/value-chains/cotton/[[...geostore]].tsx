@@ -63,6 +63,7 @@ export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps
           ...(await serverSideTranslations(locale, [
             CROP,
             'common',
+            'countries',
             'header',
             'footer',
           ])),
