@@ -10,6 +10,7 @@ import Field from 'components/form/Field';
 import useSelect from 'hooks/form/useSelect';
 
 const BarChart = ({ template, country, layers, options: params }) => {
+  // TODO: Use controls JSX prop instead 
   const options = [
     { label: 'Pessimistic (RCP 8.5)', value: 'rcp8p5' },
     { label: 'Optimistic (RCP 4.5)', value: 'rcp4p5' },
@@ -71,18 +72,16 @@ const BarChart = ({ template, country, layers, options: params }) => {
           {Select}
         </Field>
         {Array.isArray(params[0]) ? (
-          params.map((_, i) => (
+          params.map((p, i) => (
             <Field
               key={i}
               id={`RADIO_${i}`}
               properties={{
-                // TODO: Translate
-                // label: `Type`,
-                default: params[i][0].value,
+                default: p[0].value,
               }}
               value={radios[i]}
               onChange={handleRadioSelect(i)}
-              options={params[i]}
+              options={p}
             >
               {RadioGroup}
             </Field>
