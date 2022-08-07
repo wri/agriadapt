@@ -180,7 +180,7 @@ export const template = {
     {
       name: 'y',
       type: 'linear',
-      range: 'height',
+      range: [{ signal: 'height' }, 100],
       nice: true,
       zero: true,
       domain: {
@@ -383,21 +383,19 @@ export const template = {
   legends: [
     {
       columnPadding: 10,
-      columns: 2,
+      columns: 1,
       rowPadding: 7,
-      symbolSize: 700,
-      symbolType: 'stroke',
-      // symbolStrokeCap: 'round',
-      symbolStrokeWidth: 10,
-      // strokeHeight: ,
-      title: 'Legend: ',
+      symbolSize: 300,
+      symbolType: 'square',
+
+      title: 'Legend',
       titlePadding: 0,
-      stroke: 'color',
+      fill: 'color',
       // legendY: 175,
       // legendX: { signal: 'width - 300' },
       labelFontSize: 16,
       titleFontSize: 13,
-      orient: 'bottom',
+      orient: 'top-right',
       titleFont: 'Lato',
       labelFont: 'Lato',
       titleColor: '#393f44',

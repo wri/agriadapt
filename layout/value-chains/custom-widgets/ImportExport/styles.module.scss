@@ -1,0 +1,13 @@
+.c_controls {
+    position: absolute;
+    width: 600px;
+    left: 20px;
+    display: flex;
+    gap: 50px;
+
+    :global {
+        .Select--large {
+            flex: 1;
+        }
+    }
+}

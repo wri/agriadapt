@@ -1,7 +1,8 @@
 import cotton1 from 'public/images/quotes/cotton1.png';
 import cotton2 from 'public/images/quotes/cotton2.png';
 import cotton3 from 'public/images/quotes/cotton3.png';
-import { capitalizeFirstLetter } from 'utils/utils';
+import LandSuitabilityControls from '../custom-widgets/LandSuitability/Controls';
+import ImportExportControls from '../custom-widgets/ImportExport/Controls';
 
 const inputs = {
   land_suitability: {
@@ -11,31 +12,34 @@ const inputs = {
       { id: '2a1aab23-1c36-4a17-b5e0-b63a68531c63', fullWidth: true },
       // { id: 'a5b13394-84a8-4f7c-aa2d-7fc332f5c842', fullWidth: true },
       {
-        title: ({ country }) => `Land Suitability for Coffee in ${country}`,
-        type: 'custom bar',
+        title: 'Land Suitability for Coffee in {{country}}',
+        type: 'custom',
         fullWidth: true,
-        options: [
-          { label: 'Rainfed cotton', value: 'rainfed' },
-          { label: 'Irrigated cotton', value: 'irrigated' },
-        ],
-        layers: {
-          historic: [
-            '2000s_historic_irrigated_cotton',
-            '2000s_historic_rainfed_cotton',
+        controls: LandSuitabilityControls,
+        controlsProps: {
+          options: [
+            { label: 'Rainfed cotton', value: 'rainfed' },
+            { label: 'Irrigated cotton', value: 'irrigated' },
           ],
-          rcp4p5: [
-            '2020s_rcp4p5_irrigated_cotton',
-            '2020s_rcp4p5_rainfed_cotton',
-            '2050s_rcp4p5_irrigated_cotton',
-            '2050s_rcp4p5_rainfed_cotton',
-          ],
-          rcp8p5: [
-            '2020s_rcp8p5_irrigated_cotton',
-            '2020s_rcp8p5_rainfed_cotton',
-            '2050s_rcp8p5_irrigated_cotton',
-            '2050s_rcp8p5_rainfed_cotton',
-          ],
-        },
+          layers: {
+            historic: [
+              '2000s_historic_irrigated_cotton',
+              '2000s_historic_rainfed_cotton',
+            ],
+            rcp4p5: [
+              '2020s_rcp4p5_irrigated_cotton',
+              '2020s_rcp4p5_rainfed_cotton',
+              '2050s_rcp4p5_irrigated_cotton',
+              '2050s_rcp4p5_rainfed_cotton',
+            ],
+            rcp8p5: [
+              '2020s_rcp8p5_irrigated_cotton',
+              '2020s_rcp8p5_rainfed_cotton',
+              '2050s_rcp8p5_irrigated_cotton',
+              '2050s_rcp8p5_rainfed_cotton',
+            ],
+          },
+        }
       },
     ],
     // TODO: Additional chart vis
@@ -89,26 +93,27 @@ const trade = {
         `select nrp as x from data where countrycode='${iso}' order by year desc limit 1`,
       format: '0.00',
       suffix: '%',
-      name: ({
-        crop,
-        country,
-      }: {
-        crop: 'rice' | 'cotton' | 'coffee';
-        country: string;
-      }) =>
-        `Nominal rate of protection, ${capitalizeFirstLetter(
-          crop
-        )} in ${country} in 2018`,
+      name: 'Nominal rate of protection, {{crop}} in {{country}} in 2018',
     },
   },
   export_and_import: {
     info: 'trade.export_and_import.info',
     widgets: [
       {
-        title: ({ country }: { country: string }) =>
-          `Export and Import Statistics for Cotton in ${country}`,
-        type: 'histogram',
+        title: 'Export and Import Statistics for Cotton in {{country}}',
+        type: 'custom',
         fullWidth: true,
+        controls: ImportExportControls,
+        controlsProps: {
+          products: [
+            { label: 'Cotton, carded, combed', value: 'Cotton, carded, combed'},
+            { label: 'Cotton lint', value: 'Cotton lint'},
+          ],
+          indicators: [
+            { label: 'Quantity', value: 'Quantity' },
+            { label: 'Value', value: 'Value' },
+          ]
+        }
       },
     ]
   },

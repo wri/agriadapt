@@ -1,7 +1,8 @@
 import rice1 from 'public/images/quotes/rice1.png'
 import rice2 from 'public/images/quotes/rice2.png'
 import rice3 from 'public/images/quotes/rice3.png'
-import { capitalizeFirstLetter } from "utils/utils";
+import ImportExportControls from '../custom-widgets/ImportExport/Controls';
+import LandSuitabilityControls from '../custom-widgets/LandSuitability/Controls';
 
 const inputs = {
   land_suitability: {
@@ -11,43 +12,45 @@ const inputs = {
       { id: '043440a2-b3fd-493e-93a9-362eac5637c7', fullWidth: true },
       // { id: '284fed69-50e7-4d40-92a1-5640eb02e51f', fullWidth: true },
       {
-        title: ({ country }: { country: string }) =>
-          `Land Suitability for Rice in ${country}`,
-        type: 'custom bar',
+        title: 'Land Suitability for Rice in {{country}}',
+        type: 'custom',
         fullWidth: true,
-        options: [
-          [
-            { label: 'Dryland rice', value: 'dryland' },
-            { label: 'Wetland rice', value: 'wetland' },
+        controls: LandSuitabilityControls,
+        controlsProps: {
+          options: [
+            [
+              { label: 'Dryland rice', value: 'dryland' },
+              { label: 'Wetland rice', value: 'wetland' },
+            ],
+            [
+              { label: 'Rainfed rice', value: 'rainfed' },
+              { label: 'Irrigated rice', value: 'irrigated' },
+            ],
           ],
-          [
-            { label: 'Rainfed rice', value: 'rainfed' },
-            { label: 'Irrigated rice', value: 'irrigated' },
-          ],
-        ],
-        layers: {
-          historic: [
-            '2000s_historic_irrigated_wetland_rice',
-            '2000s_historic_rainfed_dryland_rice',
-            '2000s_historic_rainfed_wetland_rice',
-          ],
-          rcp4p5: [
-            '2020s_rcp4p5_irrigated_wetland_rice',
-            '2020s_rcp4p5_rainfed_dryland_rice',
-            '2020s_rcp4p5_rainfed_wetland_rice',
-            '2050s_rcp4p5_irrigated_wetland_rice',
-            '2050s_rcp4p5_rainfed_dryland_rice',
-            '2050s_rcp4p5_rainfed_wetland_rice',
-          ],
-          rcp8p5: [
-            '2020s_rcp8p5_irrigated_wetland_rice',
-            '2020s_rcp8p5_rainfed_dryland_rice',
-            '2020s_rcp8p5_rainfed_wetland_rice',
-            '2050s_rcp8p5_irrigated_wetland_rice',
-            '2050s_rcp8p5_rainfed_dryland_rice',
-            '2050s_rcp8p5_rainfed_wetland_rice',
-          ],
-        },
+          layers: {
+            historic: [
+              '2000s_historic_irrigated_wetland_rice',
+              '2000s_historic_rainfed_dryland_rice',
+              '2000s_historic_rainfed_wetland_rice',
+            ],
+            rcp4p5: [
+              '2020s_rcp4p5_irrigated_wetland_rice',
+              '2020s_rcp4p5_rainfed_dryland_rice',
+              '2020s_rcp4p5_rainfed_wetland_rice',
+              '2050s_rcp4p5_irrigated_wetland_rice',
+              '2050s_rcp4p5_rainfed_dryland_rice',
+              '2050s_rcp4p5_rainfed_wetland_rice',
+            ],
+            rcp8p5: [
+              '2020s_rcp8p5_irrigated_wetland_rice',
+              '2020s_rcp8p5_rainfed_dryland_rice',
+              '2020s_rcp8p5_rainfed_wetland_rice',
+              '2050s_rcp8p5_irrigated_wetland_rice',
+              '2050s_rcp8p5_rainfed_dryland_rice',
+              '2050s_rcp8p5_rainfed_wetland_rice',
+            ],
+          },
+        }
       },
     ], // TODO: Additional Stacked Bar Visual
   },
@@ -112,7 +115,7 @@ const production = {
       query: ({ iso }: { iso: string }) =>
         `select avg(rcp85_median) as x from data where country='${iso}' and year=2050`,
       format: '0.00',
-      name: ({ crop }) => `Projected change in ${crop} yield by 2050`,
+      name: 'Projected change in {{crop}} yield by 2050',
       suffix: '%',
     },
   },
@@ -130,16 +133,7 @@ const trade = {
         `select nrp as x from data where countrycode='${iso}' order by year desc limit 1`,
       format: '0.00',
       suffix: '%',
-      name: ({
-        crop,
-        country,
-      }: {
-        crop: 'rice' | 'cotton' | 'coffee';
-        country: string;
-      }) =>
-        `Nominal rate of protection, ${capitalizeFirstLetter(
-          crop
-        )} in ${country} in 2018`,
+      name: 'Nominal rate of protection, {{crop}} in {{country}} in 2018',
     },
   },
   food_vulnerability: {
@@ -159,12 +153,23 @@ const trade = {
     info: 'trade.export_and_import.info',
     widgets: [
       {
-        title: ({ country }: { country: string }) =>
-          `Export and Import Statistics for Rice in ${country}`,
-        type: 'histogram',
+        title: 'Export and Import Statistics for Rice in {{country}}',
+        type: 'custom',
         fullWidth: true,
+        controls: ImportExportControls,
+        controlsProps: {
+          products: [
+            { label: 'Rice, husked', value: 'Rice, husked' },
+            { label: 'Rice, milled', value: 'Rice, milled' },
+            { label: 'Rice, paddy', value: 'Rice, paddy' },
+          ],
+          indicators: [
+            { label: 'Quantity', value: 'Quantity' },
+            { label: 'Value', value: 'Value' },
+          ]
+        },
       },
-    ]
+    ],
   },
 };
 

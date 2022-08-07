@@ -6,6 +6,7 @@
   "Language": "Language",
   "emission_scenarios": {
     "Emission Scenario": "Emission Scenario",
+    "Emissions_Scenario": "Emissions Scenario",
     "pessimistic": "Pessimistic (RCP 8.5)",
     "optimistic": "Optimistic (RCP 4.5)"
   },
