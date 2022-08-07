@@ -170,8 +170,9 @@ export const template = {
   scales: [
     {
       name: 'x',
-      type: 'point',
+      type: 'linear',
       range: 'width',
+      zero: false,
       domain: {
         data: 'filtered',
         field: 'x',
@@ -218,19 +219,20 @@ export const template = {
     {
       orient: 'bottom',
       scale: 'x',
-      title: 'Year',
-      labelOverlap: 'parity',
+      tickCount: 4,
+      format: 'Y',
+      labelFlush: true,
       ticks: false,
     },
     {
       orient: 'left',
       scale: 'y',
       labelOverlap: 'parity',
+      labelAngle: -90,
+      labelOffset: -15,
       format: 's',
-      titleLimit: {
-        signal: 'height',
-      },
-      title: 'Metric Tonnes',
+      tickCount: 2,
+      ticks: false,
       encode: {
         labels: {
           update: {
@@ -387,9 +389,8 @@ export const template = {
       rowPadding: 7,
       symbolSize: 300,
       symbolType: 'square',
-
       title: 'Legend',
-      titlePadding: 0,
+      titlePadding: 10,
       fill: 'color',
       // legendY: 175,
       // legendX: { signal: 'width - 300' },
