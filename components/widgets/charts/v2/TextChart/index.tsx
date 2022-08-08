@@ -1,3 +1,4 @@
+import { useTranslation } from 'next-i18next';
 import { useCallback, useEffect, useState } from 'react';
 import { fetchDatasetQuery } from 'services/query';
 // import InView from "components/in-view";
@@ -5,7 +6,7 @@ import { fetchDatasetQuery } from 'services/query';
 interface TextChartProps {
   // unit?: 'celsius' | string;
   analysis?: {
-    name?: string | ((params: Record<string, any>) => string);
+    name?: string;
     value?: number | string;
     dataset?: string;
     format?: string;
@@ -21,6 +22,8 @@ const TextChart = ({
   params,
 }: TextChartProps) => {
   const [result, setResult] = useState<number | string>(value);
+
+  const { t } = useTranslation();
 
   const formatValue = useCallback(
     (val: number) => {
@@ -56,7 +59,7 @@ const TextChart = ({
             <h3 className="stat-type">{type === 'avg' ? 'Average' : type}</h3>
           )}
           <div className="stat-name">
-            {typeof name === 'function' ? name(params) : name}
+            {t(name, params)}
           </div>
         </div>
       </div>
