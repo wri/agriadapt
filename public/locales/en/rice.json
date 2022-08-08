@@ -14,10 +14,8 @@
       "info": "Rice cultivation is highly vulnerable to climate fluctuations, especially temperature and availability of water. However, the effects vary across geography, resulting in both risks and opportunities. Explore the visualizations below to learn more about how land suitability for rice production may change in the future due to climate change."
     },
     "labor": {
-      "info": [
-        "Agricultural workers are especially vulnerable to increased heat stress, which affects the health of individuals and reduces labor productivity. The Universal Thermal Climate Index identifies outdoor conditions that cause discomfort to people using a combination of temperature, humidity, wind, and radiation to determine the stress (sweating, shivering, skin wetness, etc.) a person undergoes when exposed to outdoor conditions.", 
-        "Values between 9-26 means no thermal stress. Values above 26 are approaching heat stress, with values above 46 meaning extreme heat stress. Values below 9 are approaching cold stress, with values below -40 meaning extreme cold stress."
-      ]
+      "info":
+        "<p>Agricultural workers are especially vulnerable to increased heat stress, which affects the health of individuals and reduces labor productivity. The Universal Thermal Climate Index identifies outdoor conditions that cause discomfort to people using a combination of temperature, humidity, wind, and radiation to determine the stress (sweating, shivering, skin wetness, etc.) a person undergoes when exposed to outdoor conditions.</p><p>Values between 9-26 means no thermal stress. Values above 26 are approaching heat stress, with values above 46 meaning extreme heat stress. Values below 9 are approaching cold stress, with values below -40 meaning extreme cold stress.</p>"
     },
     "seedlings": {
       "info": "Rice seeds are the most sensitive to drought and high temperature during early seed development. The earlier plant drought occurs, the greater the damage to subsequent seed quality. (Rahman, Ellis, 2019) Additionally, seed quality in Japonica rice can reduce considerably when produced under warmer (34/26°C) rather than cooler (28/20°C) temperatures."

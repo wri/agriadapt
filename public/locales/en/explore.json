@@ -4,6 +4,7 @@
     "Add to map": "Add to map",
     "Layers": "Layers",
     "Search Layers": "Search Layers",
+    "start_search": "Type to start search",
     "Filter Layers by": "Filter Layers by",
     "value_chains": {
       "hint": "Select a pathway for forward-looking data."

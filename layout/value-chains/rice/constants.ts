@@ -59,7 +59,7 @@ const inputs = {
   //     widgetId: 'a009abe8-96da-4665-9457-8b1941ba0e25',
   //   },
   labor: {
-    info: ['inputs.labor.info.0', 'inputs.labor.info.1'],
+    info: 'inputs.labor.info',
     widgets: [{ id: '4cecc183-2ae4-4045-a7ad-c664ee1c368e', fullWidth: true }],
   },
   seedlings: {

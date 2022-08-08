@@ -1,0 +1,28 @@
+{
+  "intro": {
+    "address": "<p>10 G Street NE, Suite 800</p><p>Washington, DC 20002</p>",
+    "paragraphs": [
+      "Welcome to the WRI family of environmental data platforms. This document lets the user of these Services (“You”, “Your”) know what you get when you use our websites, and what We expect in return.",
+      "The Services available through Resource Watch, Global Forest Watch, Forest Watcher, and The Partnership for Resilience and Preparedness, AgriAdapt and their associated websites, resourcewatch.org, globalforestwatch.org, and prepdata.org, agriadapt.org (collectively referred to as the “Services”) are owned and operated by the World Resources Institute (“WRI,” “We,” “Our” or “Us”). By using the Services, You agree to be bound by these Terms of Service and any future updates (collectively, the “Terms”)."
+    ]
+  },
+  "usage": {
+    "p1": "We provide You with access to these Services in order to promote better management of natural resources for the betterment of all people.",
+    "p2": "<ol><li>Please don’t misuse Our Services. You agree to use the Services and their contents only for lawful purposes and not to defame, harass or threaten any one or to make available any obscene, pornographic or offensive material. You may not use the Services in any manner that could damage or overburden the Services or interfere with any other party’s use of the Services.</li><li>Your use of the Services does not give You any ownership rights in the intellectual property in the Services or in its contents. Some of the software used to provide the Services may be made available separately under open source licenses.</li><li>We are constantly trying to improve Our Services. We may change the features and functions of the Services, including APIs, over time. It is Your responsibility to ensure that Your use of the Services is compatible with the current version.</li></ol>"
+  },
+  "accounts_and_api_usage": {
+    "p1": "<ol><li></li></ol>"
+  },
+  "third_party_content": {
+    "p1": "<ol><li></li></ol>"
+  },
+  "disclaimers_and_limitations": {
+    "p1": "<ol><li></li></ol>"
+  },
+  "dmca_compliance": {
+    "p1": "<ol><li></li></ol>"
+  },
+  "additional_terms": {
+    "p1": "<ol><li></li></ol>"
+  }
+}

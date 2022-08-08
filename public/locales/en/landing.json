@@ -1,7 +1,45 @@
 {
   "intro": {
-    "title": "Helping farmers and agriculture businesses around the world adapt to climate change.",
-    "subtitle": "Data and tools for agricultural resilience",
-    "button_label": "Analyze Risk in Your Supply Chain"
+    "title": "How is climate change impacting agriculture? AgriAdapt helps agricultural businesses understand and face this challenge",
+    "subtitle": "Free information and tools to strengthen agriculture",
+    "button_label": "Analyze Risks in Your Location"
+  },
+  "sub-intro": {
+    "title": "Reliable, verified information to make better decisions in agriculture",
+    "subtitle": "We deliver free climate information to inform decisions for agriculture businesses – small and large – to adapt in the face of climate change.",
+    "button_label": "Explore the Map"
+  },
+  "value-chain-cards": {
+    "title": "The value chain of each crop faces unique risks",
+    "subtitle": "Learn more about how climate change affects various crops",
+    "bottons": {
+      "coffee-card": {
+        "coffee-title": "Coffee",
+        "coffee-button": "Explore the Coffee Value Chain"
+      },
+      "cotton-card": {
+        "cotton-title": "Cotton",
+        "cotton-button": "Explore the Cotton Value Chain"
+      },
+      "rice-card": {
+        "rice-title": "Rice",
+        "rice-button": "Explore the Rice Value Chain"
+      }
+    }
+  },
+  "map-analysis-carousel": {
+    "title": "Quick Start!",
+    "subtitle": "Begin exploring climate threats for agriculture with these data recommendations from our specialists",
+    "content": [
+      "Understand how cotton production is exposed to water stress.",
+      "Droughts and floods put rice in danger, impacting the entire value chain.",
+      "Coffee quality is susceptible to water stress and higher temperatures."
+    ],
+    "link_to_map_button": "View on the Map"
+  },
+  "landing-to-about": {
+    "title": "Learn more about the project",
+    "subtitle": "The Agricultural Adaptation Tool project is an initiative by World Resources Institute. The beta version of the tool has been funded by the Walmart Foundation.",
+    "button_label": "Read More"
   }
 }

@@ -5,8 +5,9 @@ import AnalysisContainerHome from './home-analysis/component';
 import LearnMoreContainerHome from './home-learn-more-container/component';
 import IntroHeader from 'layout/intro-header';
 import { LANDING } from 'layout/intro-header/constants';
+import TermsOfServiceModal from 'components/modal/tos-modal';
 
-const LayoutHome = () => {
+const LayoutHome = ({ showTermsModal = false }) => {
   return (
     <Layout title="Home">
       <div className="l-home">
@@ -30,6 +31,7 @@ const LayoutHome = () => {
           </div>
         </div>
       </div>
+      {showTermsModal && <TermsOfServiceModal />}
     </Layout>
   );
 };
