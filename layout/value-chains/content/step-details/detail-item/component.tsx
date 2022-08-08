@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import Icon from 'components/ui/icon';
 import ParamChart from 'components/widgets/charts/v2/ParamChart';
-import TextChart from 'components/widgets/charts/v2/TextChart';
+import CalloutCard from 'components/widgets/charts/v2/CalloutCard';
 import WidgetBlock from 'components/wysiwyg/widget-block';
 import { useTranslation } from 'next-i18next';
 import { useEffect, useMemo, useState } from 'react';
@@ -119,17 +119,16 @@ const DetailItem = ({
                 <ParamChart
                   title={t(w.title, params)}
                   controls={w.controls}
-                  controlsProps={ {...w.controlsProps, country: params.country}}
+                  controlsProps={{
+                    ...w.controlsProps,
+                    country: params.country,
+                  }}
                 />
               )}
             </div>
           </div>
         ))}
-        {analysis && (
-          <div className="c-widget">
-            <TextChart analysis={analysis} params={params} />
-          </div>
-        )}
+        {analysis && <CalloutCard analysis={analysis} params={params} />}
       </div>
     </>
   );
