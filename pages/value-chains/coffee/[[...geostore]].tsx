@@ -2,22 +2,14 @@ import LayoutCoffee from 'layout/value-chains/coffee';
 import { actions } from 'layout/value-chains/reducers';
 import { wrapper } from 'lib/store';
 import { GetServerSideProps } from 'next';
-import { fetchGeostore } from 'services/geostore';
+import { fetchCountries, fetchGeostore } from 'services/geostore';
 import { ValueChainPageProps } from 'types/value-chain';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-
+import DROPDOWN from 'public/data/coffee_countries.json';
+import india_worldview_geostore from 'public/data/india_worldview_geostore.json';
 const CoffeeCountryPage = (props: ValueChainPageProps) => {
   return <LayoutCoffee {...props} />;
 };
-
-// const coffeeLayers = [
-//   'foo_005_rw1_crop_area_production_spam2010V2r0_global_H_ACOF_A',
-//   'foo_005_rw1_crop_area_production_spam2010V2r0_global_H_RCOF_A',
-//   'foo_005_rw1_crop_area_production_spam2010V2r0_global_P_ACOF_A',
-//   'foo_005_rw1_crop_area_production_spam2010V2r0_global_P_RCOF_A',
-//   'foo_005_rw1_crop_area_production_spam2010V2r0_global_Y_ACOF_A',
-//   'foo_005_rw1_crop_area_production_spam2010V2r0_global_Y_RCOF_A',
-// ];
 
 const CROP = 'coffee';
 
@@ -29,9 +21,10 @@ const default_country = {
 
 export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(
   (store) =>
-    async ({ query, locale }) => {
+    async ({ query, locale, req }) => {
       const { geostore } = query;
       const { dispatch } = store;
+      const viewer_iso2 = req.headers['cloudfront-viewer-country'];
       const country =
         geostore &&
         (await fetchGeostore(
@@ -49,31 +42,26 @@ export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps
 
       dispatch(actions.setActiveCrop(CROP));
 
+      const countries = (await fetchCountries()).reduce((arr, geo) => {
+        if (!geo.name || !DROPDOWN.countries.includes(geo.name)) return arr;
+        
+        const { name: label, geostoreId: value, iso } = geo;
+        if (iso === 'IND' && viewer_iso2 === 'IN')
+          arr.push({ india_worldview_geostore });
+        else arr.push({ label, value, iso });
+        return arr;
+      }, []);
+
       return {
         props: {
-          ...(await serverSideTranslations(locale, [CROP, 'common', 'header', 'footer'])),
-          countries: [
-            {
-              label: 'India',
-              value: '45d0f6f887a18df373fa69c3eb6f13c7',
-              iso: 'IND',
-            },
-            {
-              label: 'United States',
-              value: '0d9498ae40d288424ed5d570c999007e',
-              iso: 'USA',
-            },
-            {
-              label: 'Canada',
-              value: 'c2402404ba6c37d2fde34e929700a896',
-              iso: 'CAN',
-            },
-            {
-              label: 'Colombia',
-              value: '298fc2cf079fb1439a4ad816d258a965',
-              iso: 'COL',
-            },
-          ],
+          ...(await serverSideTranslations(locale, [
+            CROP,
+            'common',
+            'countries',
+            'header',
+            'footer',
+          ])),
+          countries,
         },
       };
     }

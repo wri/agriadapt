@@ -1,11 +1,12 @@
+import { useTranslation } from 'next-i18next';
 import { useCallback, useEffect, useState } from 'react';
 import { fetchDatasetQuery } from 'services/query';
 // import InView from "components/in-view";
 
-interface TextChartProps {
+interface CalloutCardProps {
   // unit?: 'celsius' | string;
   analysis?: {
-    name?: string | ((params: Record<string, any>) => string);
+    name?: string;
     value?: number | string;
     dataset?: string;
     format?: string;
@@ -16,11 +17,13 @@ interface TextChartProps {
   params?: Record<string, string | number>;
 }
 
-const TextChart = ({
+const CalloutCard = ({
   analysis: { dataset, format, suffix, query, name, type, value = 0.0 },
   params,
-}: TextChartProps) => {
+}: CalloutCardProps) => {
   const [result, setResult] = useState<number | string>(value);
+
+  const { t } = useTranslation();
 
   const formatValue = useCallback(
     (val: number) => {
@@ -49,14 +52,14 @@ const TextChart = ({
     // {({ ref, inView }) => (
     <div className="w-full h-full flex">
       {/* {inView && ( */}
-      <div className="c-callout-card flex">
+      <div className="c-callout-card border border-b-0 border-gray-light shadow-gray-light shadow-sm flex rounded">
         <div className="c-data m-auto">
           <h1 className="stat-value">{result}</h1>
           {type && (
             <h3 className="stat-type">{type === 'avg' ? 'Average' : type}</h3>
           )}
           <div className="stat-name">
-            {typeof name === 'function' ? name(params) : name}
+            {t(name, params)}
           </div>
         </div>
       </div>
@@ -67,4 +70,4 @@ const TextChart = ({
   );
 };
 
-export default TextChart;
+export default CalloutCard;

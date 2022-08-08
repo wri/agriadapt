@@ -45,3 +45,10 @@ export const EXPLORE_ANALYSIS = {
     ],
   }
 }
+
+export const INDIA_BLACKLIST_DATASET_IDS = [
+  '2dcd7aeb-d290-414b-80a2-8d90c44ae02a',
+  '4d2d47c1-fed1-4484-83e3-c91c3f6f7315',
+  'd17e6978-0848-4a13-ba05-6f4af04ac7d1',
+  '641c0a35-f2e5-4198-8ed9-576ea7e9685a',
+];

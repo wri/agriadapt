@@ -1,8 +1,7 @@
 import classnames from 'classnames';
 import Icon from 'components/ui/icon';
-import HistogramChart from 'components/widgets/charts/v2/HistogramChart';
 import ParamChart from 'components/widgets/charts/v2/ParamChart';
-import TextChart from 'components/widgets/charts/v2/TextChart';
+import CalloutCard from 'components/widgets/charts/v2/CalloutCard';
 import WidgetBlock from 'components/wysiwyg/widget-block';
 import { useTranslation } from 'next-i18next';
 import { useEffect, useMemo, useState } from 'react';
@@ -19,18 +18,18 @@ interface DetailItemProps {
   info: string;
   widgets?: {
     id?: string | ((country: string) => string);
-    title?: (params: Record<string, any>) => string;
+    title: string;
     fullWidth?: boolean;
-    type?: string | 'custom bar';
-    layers?: Record<string, string>;
-    options?: Record<'label' | 'value', string>[];
+    type?: string | 'custom';
+    controls?: React.FunctionComponent;
+    controlsProps?: any;
   }[];
-  country: { label: string; value: string; iso: string };
+  country: { label: string; sql_label?: string; value: string; iso: string };
   analysis?: {
     query: (params: Record<string, string | number>) => string;
     dataset: string;
     type?: string;
-    name: string | ((params: Record<string, string | number>) => string);
+    name: string;
     format?: string;
     suffix?: string;
   };
@@ -64,7 +63,7 @@ const DetailItem = ({
   const params = useMemo(
     () => ({
       crop: capitalizeFirstLetter(crop),
-      country: country?.label,
+      country: country?.sql_label ?? country?.label,
       iso: country?.iso,
       geojson,
     }),
@@ -72,7 +71,7 @@ const DetailItem = ({
   );
   return (
     <>
-      <div id={id} className="c-detail-item">
+      <div key={key} id={id} className="c-detail-item">
         <div
           className={classnames('c-detail-section', {
             '-full': fullWidth,
@@ -111,35 +110,25 @@ const DetailItem = ({
               {!w.type && (
                 <WidgetBlock
                   widgetId={
-                    typeof w.id === 'function' ? w.id(country?.label) : w.id
+                    typeof w.id === 'function' ? w.id(params.country) : w.id
                   }
                   {...(country && { areaOfInterest: country.value })}
                 />
               )}
-              {w.type === 'custom bar' && (
+              {w.type === 'custom' && (
                 <ParamChart
-                  country={country?.label}
-                  title={w.title(params)}
-                  layers={w.layers}
-                  options={w.options}
-                />
-              )}
-              {w.type === 'histogram' && (
-                <HistogramChart
-                  country={country?.label}
-                  title={w.title(params)}
-                  // layers={w.layers}
-                  // options={w.options}
+                  title={t(w.title, params)}
+                  controls={w.controls}
+                  controlsProps={{
+                    ...w.controlsProps,
+                    country: params.country,
+                  }}
                 />
               )}
             </div>
           </div>
         ))}
-        {analysis && (
-          <div className="c-widget">
-            <TextChart analysis={analysis} params={params} />
-          </div>
-        )}
+        {analysis && <CalloutCard analysis={analysis} params={params} />}
       </div>
     </>
   );

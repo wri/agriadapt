@@ -1,8 +1,33 @@
 {
-  "Coffee": "Coffee",
-  "Cotton": "Cotton",
-  "Rice": "Rice",
+  "Any": "Any",
+  "Back": "Back",
+  "Cancel": "Cancel",
   "Select_Country": "Select Country",
   "Language": "Language",
+  "emission_scenarios": {
+    "Emission Scenario": "Emission Scenario",
+    "Emissions_Scenario": "Emissions Scenario",
+    "pessimistic": "Pessimistic (RCP 8.5)",
+    "optimistic": "Optimistic (RCP 4.5)"
+  },
+  "timescales": {
+    "Timescale": "Timescale",
+    "Historic": "Historic",
+    "Future Looking": "Future Looking"
+  },
+  "value_chains": {
+    "Value Chains": "Value Chains",
+    "Coffee": "Coffee",
+    "Cotton": "Cotton",
+    "Rice": "Rice"
+  },
+  "Search": "Search",
+  "Select": "Select",
+  "share": {
+    "Share": "Share",
+    "Public url to share": "Public url to share",
+    "Code to embed": "Code to embed",
+    "Copy link": "Copy link"
+  },
   "hear_from_our_users": "Hear from Our Users"
 }

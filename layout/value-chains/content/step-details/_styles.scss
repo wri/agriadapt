@@ -37,6 +37,12 @@
         }
     }
 
+    .c-callout-card {
+        width: 296px;
+        height: 206px;
+        margin: auto;
+    }
+
     .c-widget {
         &.-placeholder {
             background-color: rgb($primary-green, 0.2);
@@ -45,12 +51,6 @@
         width: 100%;
         margin: auto;
         min-height: 456px;
-
-        .c-callout-card {
-            width: 296px;
-            height: 206px;
-            margin: auto;
-        }
 
         @media screen and (min-width: map-get($breakpoints, medium)) {
             max-width: 340px;
