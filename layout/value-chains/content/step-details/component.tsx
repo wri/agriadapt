@@ -4,7 +4,7 @@ import DetailItem from './detail-item';
 
 interface StepDetail {
   info: string;
-  widgets?: { id: string; fullWidth?: boolean }[];
+  widgets?: { id: string; fullWidth?: boolean, title: string }[];
   fullWidth?: boolean;
 }
 

@@ -115,7 +115,7 @@ export const Map = ({
   const handleOnMove = (e) => {
     setViewport(e.viewState);
     debouncedOnMapViewportChange(e.viewState);
-  }
+  };
 
   const handleFitBounds = useCallback(() => {
     const { bbox, options = {}, viewportOptions = {} } = bounds;
@@ -275,6 +275,15 @@ export const Map = ({
         return boundariesGroups.includes(gr);
       });
 
+      // TODO: Determine if can/need to actually change worldview with current styles
+      // map.setFilter('admin-2', [
+      //   'all',
+      //   ['==', ['get', 'disputed'], 0],
+      //   ['==', ['get', 'maritime'], 0],
+      //   ['==', ['get', 'admin_level'], 2],
+      //   // ['match', ['get', 'worldview'], ['all', 'IN'], true, false],
+      // ]);
+
       boundariesLayers.forEach((l) => {
         map.setLayoutProperty(
           l.id,
@@ -301,10 +310,13 @@ export const Map = ({
   //   []
   // );
 
-  const handleOnClick = useCallback((e) => {
-    if (!isDrawing) onClickLayer && onClickLayer(e);
-    else onDropMarker(e);
-  }, [isDrawing, onClickLayer, onDropMarker]);
+  const handleOnClick = useCallback(
+    (e) => {
+      if (!isDrawing) onClickLayer && onClickLayer(e);
+      else onDropMarker(e);
+    },
+    [isDrawing, onClickLayer, onDropMarker]
+  );
 
   useEffect(() => {
     setReady(true);

@@ -19,5 +19,6 @@ coverage.json
 storybook-static
 
 /public/*
+!/public/data/
 !/public/locales
 !/public/locales/*

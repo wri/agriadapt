@@ -26,47 +26,13 @@ export const fetchGeostore = (id, params = {}) => {
 };
 
 /**
- * Create a Geostore
- * Check out the API docs for this endpoint {@link https://resource-watch.github.io/doc-api/index-rw.html#create-geostore|here}
- * @param {Object} geojson Geojson with your geometry
- */
-export const createGeostore = (geojson) => {
-  logger.info("Create geostore");
-  return WRIAPI.post(
-    "/v1/geostore",
-    { geojson },
-    {
-      transformResponse: [].concat(
-        WRIAPI.defaults.transformResponse,
-        ({ data }) => ({ geostore: data })
-      ),
-    }
-  )
-    .then((response) => {
-      const { status, statusText, data } = response;
-      const { geostore } = data;
-      if (status >= 300) {
-        logger.error(`Error creating geostore: ${status}: ${statusText}`);
-        throw new Error(`Error creating geostore: ${status}: ${statusText}`);
-      }
-
-      return geostore;
-    })
-    .catch(({ response }) => {
-      const { status, statusText } = response;
-      logger.error(`Error creating geostore: ${status}: ${statusText}`);
-      throw new Error(`Error creating geostore: ${status}: ${statusText}`);
-    });
-};
-
-/**
  * Fetch countries
  * Check out the API docs for this endpoint {@link https://resource-watch.github.io/doc-api/index-rw.html#geostore|here}
  * @returns {Object[]}
  */
 export const fetchCountries = () => {
   logger.info("Fetch countries");
-  return WRIAPI.get("/v1/geostore/admin/list")
+  return WRIAPI.get("/v2/geostore/admin/list")
     .then((array) =>
       array.data.data.sort((a, b) => {
         if (a.name < b.name) {
@@ -75,7 +41,6 @@ export const fetchCountries = () => {
         if (a.name > b.name) {
           return 1;
         }
-        // eslint-disable-line no-else-return
         return 0;
       })
     )

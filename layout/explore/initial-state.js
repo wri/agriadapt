@@ -2,6 +2,7 @@ import { BASEMAPS, LABELS } from 'components/map/constants';
 import { EXPLORE_TABS } from 'layout/explore/constants';
 
 const initialState = {
+  worldview: 'US',
   // Datasets
   datasets: {
     list: [],

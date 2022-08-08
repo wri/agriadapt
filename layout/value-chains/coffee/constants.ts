@@ -1,5 +1,7 @@
 import coffee1 from 'public/images/quotes/coffee1.png';
 import coffee2 from 'public/images/quotes/coffee2.png';
+import LandSuitabilityControls from '../custom-widgets/LandSuitability/Controls';
+import ImportExportControls from '../custom-widgets/ImportExport/Controls';
 
 const inputs = {
   land_suitability: {
@@ -9,30 +11,33 @@ const inputs = {
       { id: '00b89bc8-b8c1-413f-ba55-2c4e7308133a', fullWidth: true },
       // { id: '41612127-bb5f-4ac3-b80a-4676dd9c3a2b', fullWidth: true },
       {
-        title: ({ country }) => `Land Suitability for Coffee in ${country}`,
-        type: 'custom bar',
+        title: 'Land Suitability for Coffee in {{country}}',
+        type: 'custom',
         fullWidth: true,
-        options: [
-          { label: 'Rainfed coffee', value: 'rainfed' },
-          { label: 'Irrigated coffee', value: 'irrigated' },
-        ],
-        layers: {
-          historic: [
-            '2000s_historic_irrigated_coffee',
-            '2000s_historic_rainfed_coffee',
+        controls: LandSuitabilityControls,
+        controlsProps: {
+          options: [
+            { label: 'Rainfed coffee', value: 'rainfed' },
+            { label: 'Irrigated coffee', value: 'irrigated' },
           ],
-          rcp4p5: [
-            '2020s_rcp4p5_irrigated_coffee',
-            '2020s_rcp4p5_rainfed_coffee',
-            '2050s_rcp4p5_irrigated_coffee',
-            '2050s_rcp4p5_rainfed_coffee',
-          ],
-          rcp8p5: [
-            '2020s_rcp8p5_irrigated_coffee',
-            '2020s_rcp8p5_rainfed_coffee',
-            '2050s_rcp8p5_irrigated_coffee',
-            '2050s_rcp8p5_rainfed_coffee',
-          ]
+          layers: {
+            historic: [
+              '2000s_historic_irrigated_coffee',
+              '2000s_historic_rainfed_coffee',
+            ],
+            rcp4p5: [
+              '2020s_rcp4p5_irrigated_coffee',
+              '2020s_rcp4p5_rainfed_coffee',
+              '2050s_rcp4p5_irrigated_coffee',
+              '2050s_rcp4p5_rainfed_coffee',
+            ],
+            rcp8p5: [
+              '2020s_rcp8p5_irrigated_coffee',
+              '2020s_rcp8p5_rainfed_coffee',
+              '2050s_rcp8p5_irrigated_coffee',
+              '2050s_rcp8p5_rainfed_coffee',
+            ],
+          },
         },
       },
     ],
@@ -82,12 +87,22 @@ const trade = {
     // widgets: [{ id: '96622815-7e6b-4d15-97cc-3ca3bc1a5c98' }],
     widgets: [
       {
-        title: ({ country }: { country: string }) =>
-          `Export and Import Statistics for Coffee in ${country}`,
-        type: 'histogram',
+        title: 'Export and Import Statistics for Coffee in {{country}}',
+        type: 'custom',
         fullWidth: true,
+        controls: ImportExportControls,
+        controlsProps: {
+          products: [
+            { label: 'Coffee, green', value: 'Coffee, green' },
+            { label: 'Coffee, roasted', value: 'Coffee, roasted' },
+          ],
+          indicators: [
+            { label: 'Quantity', value: 'Quantity' },
+            { label: 'Value', value: 'Value' },
+          ]
+        },
       },
-    ]
+    ],
   },
 };
 
