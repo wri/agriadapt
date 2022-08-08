@@ -1,5 +1,5 @@
 import PieChart from 'components/widgets/charts/v2/PieChart';
-import TextChart from 'components/widgets/charts/v2/TextChart';
+import CalloutCard from 'components/widgets/charts/v2/CalloutCard';
 import { ErrorBoundary } from 'react-error-boundary';
 import ErrorFallback from 'components/error-fallback';
 
@@ -80,7 +80,7 @@ const AnalysisVisuals = ({
             <>
               <PieChart name={c} domain={labelDomain} />
               {avg !== 'NaN' && (
-                <TextChart
+                <CalloutCard
                   analysis={{
                     name: c,
                     type: 'avg',

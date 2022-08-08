@@ -19,7 +19,7 @@ const ParamChart = ({ controls, controlsProps, title }: ParamChartProps) => {
   const [config, setConfig] = useState(null);
 
   return (
-    <div className="p-4 border border-b-0 rounded-tl rounded-tr border-gray-light shadow-gray-light shadow-sm rounded-br rounded-bl">
+    <div className="p-4 border border-b-0 rounded border-gray-light shadow-gray-light shadow-sm">
       <WidgetHeader
         widget={widgetHeader}
         onToggleInfo={undefined}
