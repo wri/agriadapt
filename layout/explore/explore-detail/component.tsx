@@ -90,13 +90,13 @@ const ExploreDetailComponent = ({
               <div className="functions metadata-field">
                 {info && info.functions}
               </div>
-              <ExploreDetailButtons dataset={dataset} />
               <div className="description metadata-field">
                 <ReadMore
                   markdown
                   text={metadata.description}
                   limitChar={DEFAULT_LIMIT_CHAR_FOR_METADATA_FIELDS}
-                  readMoreClicked={() => undefined
+                  readMoreClicked={
+                    () => undefined
                     // logEvent(
                     //   'Explore (Detail)',
                     //   'Clicks Read More',
@@ -115,6 +115,7 @@ const ExploreDetailComponent = ({
             <div id="further_information" className="metadata-section">
               <FurtherInformation metadata={metadata} />
             </div>
+            <ExploreDetailButtons dataset={dataset} />
             {/* <div id="related_content" className="metadata-section">
                 <RelatedContent datasetID={dataset.id} />
               </div> */}
