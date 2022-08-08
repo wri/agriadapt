@@ -13,6 +13,8 @@ import { fetchInferredTags } from 'services/graph';
 // Utils
 import { TAGS_BLACKLIST } from 'utils/tags';
 import { APILayerAppConfig } from 'types/layer';
+import { RootState } from 'lib/store';
+import { INDIA_BLACKLIST_DATASET_IDS } from './constants';
 
 // BOUNDARIES ENV
 export const setWorldview = createAction<string>('EXPLORE/setWorldview');
@@ -43,7 +45,7 @@ export const setStateList = createAction('EXPLORE/setStateList');
 export const fetchDatasets = createThunkAction(
   'EXPLORE/fetchDatasets',
   () => (dispatch, getState) => {
-    const { explore, common } = getState();
+    const { explore, common }: RootState = getState();
 
     const isMatch = (dataset) => {
       const {
@@ -95,7 +97,12 @@ export const fetchDatasets = createThunkAction(
             )
           );
           return {
-            datasets,
+            datasets:
+              explore.worldview === 'IN'
+                ? datasets.filter(
+                    ({ id }) => !INDIA_BLACKLIST_DATASET_IDS.includes(id)
+                  )
+                : datasets,
             hasMore: explore.datasets.page !== meta['total-pages'] || false,
           };
         })

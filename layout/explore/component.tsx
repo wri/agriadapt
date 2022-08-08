@@ -8,14 +8,16 @@ import ExploreSwitch from './explore-switch';
 import classnames from 'classnames';
 import { EXPLORE_TABS } from './constants';
 import ExploreAnalysis from 'layout/explore/explore-analysis';
+import Head from 'next/head';
 
 const Explore = ({
   explore: {
     datasets: { selected },
     sidebar: { open, selectedTab },
   },
+  dataset: datasetData,
 }): JSX.Element => {
-  const [_dataset, setDataset] = useState(null);
+  const [dataset, setDataset] = useState(null);
 
   const getSidebarLayout = () => (
     <>
@@ -46,8 +48,28 @@ const Explore = ({
     </>
   );
 
+  const metadata = dataset && dataset.metadata && dataset.metadata[0];
+  const infoObj = metadata && metadata.info;
+  const titleSt = selected ? infoObj && infoObj.name : '';
+  const descriptionSt = selected
+    ? infoObj && infoObj.functions
+    : 'Browse more than 200 global data sets on the state of our planet.';
+
   return (
-    <Layout title="Explore">
+    <Layout title={titleSt} description={descriptionSt} className="-fullscreen" isFullScreen>
+      <Head>
+        {/* unpublished datasets are not indexed by search engines but still accessible in the application */}
+        {datasetData && !datasetData?.published && (
+          <meta name="robots" content="noindex, follow" />
+        )}
+        {/* adds canonical url to avoid content duplicity between pages with dataset slug and ID */}
+        {datasetData && (
+          <link
+            rel="canonical"
+            href={`https://agriadapt.org/explore/${datasetData.slug}`}
+          />
+        )}
+      </Head>
       <div className="c-page-explore">
         <ExploreSidebar>{getSidebarLayout()}</ExploreSidebar>
         <ExploreMap />

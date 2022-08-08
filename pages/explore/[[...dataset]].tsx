@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'next/router';
-// import { fetchDataset } from 'services/dataset';
 
 // actions
 import { setIsServer as setServerAction } from 'redactions/common';
@@ -11,6 +10,8 @@ import Explore from 'layout/explore';
 import { PureComponent } from 'react';
 import { RootState, wrapper } from 'lib/store';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { INDIA_BLACKLIST_DATASET_IDS } from 'layout/explore/constants';
+import { fetchDataset } from 'services/dataset';
 
 interface ExplorePageProps {
   explore: {
@@ -39,6 +40,7 @@ interface ExplorePageProps {
       selectedTab?: string;
     };
   };
+  dataset: Record<string, any>;
   router;
   resetExplore: () => void;
   setIsServer: (isServer: boolean) => void;
@@ -192,7 +194,7 @@ class ExplorePage extends PureComponent<ExplorePageProps> {
   }
 
   render() {
-    return (<Explore />);
+    return <Explore {...this.props} />;
   }
 }
 
@@ -217,12 +219,12 @@ export const getServerSideProps = wrapper.getServerSideProps(
         emission_scenario,
       } = query;
 
-      if (req.headers && req.headers['cloudfront-viewer-country']) {
-        const viewer_iso2 = req.headers['cloudfront-viewer-country'];
+      const viewer_iso2 = req.headers['cloudfront-viewer-country'];
+      if (req.headers && viewer_iso2) {
         if (viewer_iso2 === 'IN')
           dispatch(actions.setWorldview(viewer_iso2));
       }
-      // let datasetData = null;
+      let datasetData = null;
 
       if (tab) dispatch(actions.setSidebarSelectedTab(Array.isArray(tab) ? tab.join('') : tab));
 
@@ -244,7 +246,16 @@ export const getServerSideProps = wrapper.getServerSideProps(
         );
       if (dataset) {
         dispatch(actions.setSelectedDataset(Array.isArray(dataset) ? dataset.join('') : dataset));
-        // datasetData = await fetchDataset(Array.isArray(dataset) ? dataset.join('') : dataset);
+        datasetData = await fetchDataset(
+          Array.isArray(dataset) ? dataset.join('') : dataset
+        );
+        if (viewer_iso2 === 'IN' && INDIA_BLACKLIST_DATASET_IDS.includes(datasetData.id))
+          return {
+            redirect: {
+              destination: '/unauthorized',
+              permanent: false,
+            },
+          };
       }
       // sets map params from URL
       dispatch(
@@ -283,7 +294,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
             'countries',
             'header',
           ])),
-          // ...(datasetData && { dataset: datasetData }),
+          ...(datasetData && { dataset: datasetData }),
         },
       };
     }

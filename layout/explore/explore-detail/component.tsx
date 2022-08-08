@@ -62,10 +62,6 @@ const ExploreDetailComponent = ({
   const dateLastUpdated = getDateConsideringTimeZone(
     dataset && dataset.dataLastUpdated
   );
-  // const defaultWidget =
-  //   dataset &&
-  //   dataset.widget &&
-  //   dataset.widget.find((w) => w.defaultEditableWidget);
   const showLayersSection =
     dataset && dataset.layer && dataset.layer.length > 0;
   const showTags = tags && tags.length > 0;
