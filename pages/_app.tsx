@@ -7,6 +7,7 @@ import { appWithTranslation } from 'next-i18next';
 //lib
 import { wrapper } from 'lib/store';
 import MediaContextProvider from "lib/media";
+import MaintenancePage from "./maintenance";
 
 const queryClient = new QueryClient();
 
@@ -14,7 +15,8 @@ function AgriAdaptApp({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
       <MediaContextProvider>
-        <Component {...pageProps} />
+        {/* <Component {...pageProps} /> */}
+        <MaintenancePage />
       </MediaContextProvider>
     </QueryClientProvider>
   );
