@@ -17,10 +17,11 @@ const TermsOfServiceModal = () => {
                 <p>{t('common:world_resources_institute')}</p>
                 <Trans>
                     {t('tos:intro.address')}
+                    {t('tos:intro.paragraphs')}
                 </Trans>
-                <Trans>
-                    {t('tos:intro.paragraphs').map((p, i) => (<p key={i}>{p}</p>))}
-                </Trans>
+                {/* <Trans>
+                    {t('tos:intro.paragraphs')}
+                </Trans> */}
             </div>
         </Modal>
     )
