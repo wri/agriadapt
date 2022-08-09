@@ -69,7 +69,7 @@ export const fetchDatasets = (params = {}, headers = {}, _meta = false) => {
  * @param {Object} params - params sent to the API.
  * @returns {Object} serialized specified dataset.
  */
-export const fetchDataset = (id, params = {}) => {
+export const fetchDataset = async (id, params = {}) => {
   if (!id) throw Error('dataset id is mandatory to perform this fetching.');
   logger.info(`Fetch dataset: ${id}`);
 
@@ -102,11 +102,13 @@ export const fetchDataset = (id, params = {}) => {
 
       const dataset = {
         ...serialized,
-        layer: serialized.layer.map((l) => ({
-          ...l,
-          applicationConfig:
-            l.applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS] || {},
-        })),
+        ...(serialized.layer && {
+          layer: serialized.layer?.map((l) => ({
+            ...l,
+            applicationConfig:
+              l.applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS] || {},
+          })),
+        }),
       };
       return dataset;
     })
@@ -142,237 +144,6 @@ export const fetchDatasetTags = (datasetId, params = {}) => {
       );
       throw new Error(
         `Error fetching dataset tags ${datasetId}: ${status}: ${statusText}`
-      );
-    });
-};
-
-/**
- * Deletes a specified dataset.
- * This fetch needs authentication.
- * Check out the API docs for this endpoint {@link https://resource-watch.github.io/doc-api/index-rw.html#deleting-a-dataset|here}
- * @param {String} id - dataset ID to be deleted.
- * @param {String} token - user's token.
- * @returns {Object} fetch response.
- */
-export const deleteDataset = (id, token) => {
-  logger.info(`Delete dataset: ${id}`);
-
-  return WRIAPI.delete(`/v1/dataset/${id}`, {
-    headers: {
-      ...WRIAPI.defaults.headers,
-      Authorization: token,
-    },
-  })
-    .then((response) => {
-      const { status, statusText } = response;
-
-      if (status >= 300) {
-        if (status === 404) {
-          logger.debug(`Dataset '${id}' not found, ${status}: ${statusText}`);
-        } else {
-          logger.error(
-            `Error deleting dataset: ${id}: ${status}: ${statusText}`
-          );
-        }
-        throw new Error(statusText);
-      }
-      return response;
-    })
-    .catch(({ response }) => {
-      const { status, statusText } = response;
-
-      logger.error(`Error deleting dataset ${id}: ${status}: ${statusText}`);
-      throw new Error(`Error deleting dataset ${id}: ${status}: ${statusText}`);
-    });
-};
-
-/**
- * Create a Dataset.
- * Check out the API docs for this endpoint {@link https://resource-watch.github.io/doc-api/index-rw.html#creating-a-dataset|here}
- * @param {String} token - user's token.
- * @param {Object} params - params sent to the API.
- * @param {Object} headers - headers sent to the API.
- * @returns {Object}
- */
-export const createDataset = (token, params = {}, headers) => {
-  logger.info('Create dataset');
-
-  return WRIAPI.post(
-    '/v1/dataset',
-    {
-      env: process.env.NEXT_PUBLIC_API_ENV,
-      ...params,
-    },
-    { headers: { Authorization: token, ...headers } }
-  )
-    .then((response) => WRISerializer(response.data))
-    .catch(({ response }) => {
-      const { status, statusText } = response;
-
-      logger.error(`Error creating dataset ${status}: ${statusText}`);
-      throw new Error(`Error creating dataset ${status}: ${statusText}`);
-    });
-};
-
-/**
- * Update a Dataset.
- * Check out the API docs for this endpoint {@link https://resource-watch.github.io/doc-api/index-rw.html#updating-a-dataset|here}
- * @param {String} id - dataset id.
- * @param {String} token - user's token.
- * @param {Object} params - params sent to the API.
- * @returns {Object}
- */
-export const updateDataset = (id, token, params = {}) => {
-  logger.info(`Update dataset: ${id}`);
-
-  return WRIAPI.patch(`/v1/dataset/${id}`, params, {
-    headers: { Authorization: token },
-  })
-    .then((response) => WRISerializer(response.data))
-    .catch(({ response }) => {
-      const { status, statusText } = response;
-
-      logger.error(`Error updating dataset ${id}: ${status}: ${statusText}`);
-      throw new Error(`Error updating dataset ${id}: ${status}: ${statusText}`);
-    });
-};
-
-/**
- * Update dataset tags.
- * Check out the API docs for this endpoint {@link https://resource-watch.github.io/doc-api/index-rw.html#updating-an-existing-vocabulary-resource-relationship|here}
- * @param {String} datasetId - dataset id.
- * @param {Object[]} tags - user's token.
- * @param {String} token - user's token.
- * @param {boolean} usePatch - user's token.
- * @returns {Object}
- */
-export const updateDatasetTags = (datasetId, tags, token, usePatch = false) => {
-  logger.info(`Update dataset tags: ${datasetId}`);
-
-  if (usePatch) {
-    return WRIAPI.patch(
-      `/v1/dataset/${datasetId}/vocabulary/knowledge_graph`,
-      {
-        tags,
-        application: process.env.NEXT_PUBLIC_APPLICATIONS,
-        env: process.env.NEXT_PUBLIC_API_ENV,
-      },
-      { headers: { Authorization: token } }
-    )
-      .then((response) => WRISerializer(response.data))
-      .catch((response) => {
-        const { status, statusText } = response;
-        logger.error(
-          `Error updating dataset tags ${datasetId}: ${status}: ${statusText}`
-        );
-        throw new Error(
-          `Error updating dataset tags ${datasetId}: ${status}: ${statusText}`
-        );
-      });
-  }
-  if (tags.length > 0) {
-    return WRIAPI.post(
-      `/v1/dataset/${datasetId}/vocabulary`,
-      {
-        knowledge_graph: {
-          tags,
-          application: process.env.NEXT_PUBLIC_APPLICATIONS,
-          env: process.env.NEXT_PUBLIC_API_ENV,
-        },
-      },
-      { headers: { Authorization: token } }
-    )
-      .then((response) => WRISerializer(response.data))
-      .catch((response) => {
-        const { status, statusText } = response;
-        logger.error(
-          `Error updating dataset tags ${datasetId}: ${status}: ${statusText}`
-        );
-        throw new Error(
-          `Error updating dataset tags ${datasetId}: ${status}: ${statusText}`
-        );
-      });
-  }
-  return WRIAPI.delete(`/v1/dataset/${datasetId}/vocabulary/knowledge_graph`, {
-    headers: { Authorization: token },
-    params: {
-      application: process.env.NEXT_PUBLIC_APPLICATIONS,
-      env: process.env.NEXT_PUBLIC_API_ENV,
-    },
-  })
-    .then((response) => WRISerializer(response.data))
-    .catch((response) => {
-      const { status, statusText } = response;
-      logger.error(
-        `Error updating dataset tags ${datasetId}: ${status}: ${statusText}`
-      );
-      throw new Error(
-        `Error updating dataset tags ${datasetId}: ${status}: ${statusText}`
-      );
-    });
-};
-
-/**
- * Creates a metadata object in the specified dataset.
- * This methods requires authentication.
- * Check out the API docs for this endpoint {@link https://resource-watch.github.io/doc-api/index-rw.html#creating-a-metadata-object|here}
- * @param {String} datasetId - dataset ID where the metadata will be attached
- * @param {Object} params - metadata object
- * @param {String} token - user's token.
- * @returns {Object} serialized metadata object.
- */
-export const createMetadata = (datasetId, params = {}, token, headers = {}) => {
-  logger.info(`Create metadata for dataset ${datasetId}`);
-
-  return WRIAPI.post(
-    `/v1/dataset/${datasetId}/metadata`,
-    {
-      env: process.env.NEXT_PUBLIC_API_ENV,
-      ...params,
-    },
-    {
-      headers: {
-        Authorization: token,
-        ...headers,
-      },
-    }
-  )
-    .then(({ data }) => WRISerializer(data))
-    .catch(({ response }) => {
-      const { status, statusText } = response;
-
-      logger.error(`Error creating metadata ${status}: ${statusText}`);
-      throw new Error(`Error creating metadata ${status}: ${statusText}`);
-    });
-};
-
-/**
- * Updates a metadata object in the specified dataset.
- * This methods requires authentication.
- * Check out the API docs for this endpoint {@link https://resource-watch.github.io/doc-api/index-rw.html#updating-a-metadata|here}
- * @param {String} datasetId - dataset ID where the metadata will be attached
- * @param {Object} params - metadata object
- * @param {String} token - user's token.
- * @returns {Object} serialized metadata object.
- */
-export const updateMetadata = (datasetId, params = {}, token, headers = {}) => {
-  logger.info(`Update metadata for dataset ${datasetId}`);
-
-  return WRIAPI.patch(`/v1/dataset/${datasetId}/metadata`, params, {
-    headers: {
-      Authorization: token,
-      ...headers,
-    },
-  })
-    .then(({ data }) => WRISerializer(data))
-    .catch(({ response }) => {
-      const { status, statusText } = response;
-
-      logger.error(
-        `Error updating metadata for dataset: ${datasetId}. ${status}: ${statusText}`
-      );
-      throw new Error(
-        `Error updating metadata for dataset: ${datasetId}. ${status}: ${statusText}`
       );
     });
 };

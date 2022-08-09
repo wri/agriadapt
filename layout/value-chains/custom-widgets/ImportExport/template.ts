@@ -170,8 +170,9 @@ export const template = {
   scales: [
     {
       name: 'x',
-      type: 'point',
+      type: 'linear',
       range: 'width',
+      zero: false,
       domain: {
         data: 'filtered',
         field: 'x',
@@ -180,7 +181,7 @@ export const template = {
     {
       name: 'y',
       type: 'linear',
-      range: 'height',
+      range: [{ signal: 'height' }, 100],
       nice: true,
       zero: true,
       domain: {
@@ -218,19 +219,20 @@ export const template = {
     {
       orient: 'bottom',
       scale: 'x',
-      title: 'Year',
-      labelOverlap: 'parity',
+      tickCount: 4,
+      format: 'Y',
+      labelFlush: true,
       ticks: false,
     },
     {
       orient: 'left',
       scale: 'y',
       labelOverlap: 'parity',
+      labelAngle: -90,
+      labelOffset: -15,
       format: 's',
-      titleLimit: {
-        signal: 'height',
-      },
-      title: 'Metric Tonnes',
+      tickCount: 2,
+      ticks: false,
       encode: {
         labels: {
           update: {
@@ -380,42 +382,25 @@ export const template = {
       },
     },
   ],
-  legend: [
+  legends: [
     {
-      type: 'color',
-      label: null,
-      shape: 'square',
-      values: [
-        {
-          label: 'Export Quantity',
-          value: '#40B2CE',
-          type: 'string',
-        },
-        {
-          label: 'Import Quantity',
-          value: '#2E75AD',
-          type: 'string',
-        },
-      ],
+      columnPadding: 10,
+      columns: 1,
+      rowPadding: 7,
+      symbolSize: 300,
+      symbolType: 'square',
+      title: 'Legend',
+      titlePadding: 10,
+      fill: 'color',
+      // legendY: 175,
+      // legendX: { signal: 'width - 300' },
+      labelFontSize: 16,
+      titleFontSize: 13,
+      orient: 'top-right',
+      titleFont: 'Lato',
+      labelFont: 'Lato',
+      titleColor: '#393f44',
+      labelColor: '#393f44',
     },
-    // {
-    //   columnPadding: 10,
-    //   columns: 2,
-    //   rowPadding: 7,
-    //   symbolSize: 1000,
-    //   symbolType: 'color',
-    //   // title: 'Suitability Class',
-    //   titlePadding: 10,
-    //   fill: 'color',
-    //   // legendY: 175,
-    //   // legendX: { signal: 'width - 300' },
-    //   labelFontSize: 16,
-    //   titleFontSize: 13,
-    //   orient: 'bottom',
-    //   titleFont: 'Lato',
-    //   labelFont: 'Lato',
-    //   titleColor: '#393f44',
-    //   labelColor: '#393f44',
-    // },
   ],
 };

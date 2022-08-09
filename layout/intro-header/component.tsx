@@ -20,7 +20,7 @@ const IntroHeader = ({
 }) => {
   const router = useRouter();
 
-  const { t } = useTranslation([id.toLowerCase(), 'common']);
+  const { t } = useTranslation([id.toLowerCase(), 'common, countries']);
 
   const handleSelectCountry = (c) => {
     setCountry(c);
@@ -104,13 +104,19 @@ const IntroHeader = ({
                         label: t('common:Select_Country'),
                         default: country,
                       }}
-                      options={countries}
+                      options={countries.map((c) => ({
+                        ...c,
+                        sql_label: c.sql_label ?? c.label,
+                        label: t(`countries:${c.label}`, { keySeparator: ':' }),
+                      }))}
                       className={'Select--large'}
                       onChange={handleSelectCountry}
-                      value={country}
+                      value={{
+                        ...country,
+                        sql_label: country.sql_label ?? country.label,
+                        label: t(`${country.label}`),
+                      }}
                       placeholder={t('common:Select_Country')}
-                      // isSearchable={false}
-                      // isClearable={false}
                     >
                       {Select}
                     </Field>

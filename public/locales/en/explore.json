@@ -1,0 +1,45 @@
+{
+  "layers": {
+    "Advanced Search": "Advanced Search",
+    "Add to map": "Add to map",
+    "Layers": "Layers",
+    "Search Layers": "Search Layers",
+    "Filter Layers by": "Filter Layers by",
+    "value_chains": {
+      "hint": "Select a pathway for forward-looking data."
+    }
+  },
+  "analysis": {
+    "Analysis": "Analysis",
+    "Add a Location": "Add a Location",
+    "Add Location": "Add Location",
+    "Select a Location": "Select a Location",
+    "Select point on map": "Select point on map",
+    "Use my current location": "Use my current location",
+    "Search by address": "Search by address",
+    "Choose my location": "Choose my location"
+  },
+  "explore_detail": {
+    "Read more": "Read more",
+    "Active": "Active",
+    "Show layer": "Show layer",
+    "Overview": "Overview",
+    "Dataset layers": "Dataset layers",
+    "Further information": "Further information"
+  },
+  "map": {
+    "basemaps": {
+      "Dark": "Dark",
+      "Light": "Light",
+      "Satellite": "Satellite",
+      "Terrain": "Terrain",
+      "Hydrography": "Hydrography"
+    },
+    "labels": {
+        "No labels": "No labels",
+        "Labels light": "Labels light",
+        "Labels dark": "Labels dark"
+    },
+    "Boundaries": "Boundaries"
+  }
+}

@@ -6,15 +6,15 @@ export const APP_HEADER_ITEMS = [
     root: '/value-chains',
     children: [
       {
-        label: 'common:Rice',
+        label: 'common:value_chains.Rice',
         href: '/value-chains/rice',
       },
       {
-        label: 'common:Coffee',
+        label: 'common:value_chains.Coffee',
         href: '/value-chains/coffee',
       },
       {
-        label: 'common:Cotton',
+        label: 'common:value_chains.Cotton',
         href: '/value-chains/cotton',
         logEvent: true,
       },
