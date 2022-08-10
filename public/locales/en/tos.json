@@ -18,7 +18,9 @@
       "A": "In order to use many of the Services, You must register for an account.",
       "B": "When You use Our application program interfaces (“API(s)”), each request to an API must include one of Your Account's unique API keys.",
       "C": "Please protect the security of Your Account. You are responsible for Your use of the Services and all activity that occurs under Your Account, including any use of Your Account’s API keys.",
-      "D": "If You use Our APIs in Your own products, please credit Us. You agree to attribute our APIs in line with our Attribution Requirements, available at [{{url}}].",
+      "integrated_url_D": "If You use Our APIs in Your own products, please credit Us. You agree to attribute our APIs in line with our Attribution Requirements, available at [{{url}}].",
+      "D": "If You use Our APIs in Your own products, please credit Us. You agree to attribute our APIs in line with our Attribution Requirements, available at [",
+      "D1": "].",
       "E": "We may cancel or suspend Your access to the Services at any time and for any reason, without notice. Upon cancellation or suspension, Your right to use the Services will end. You will have the right to access to Your Content stored on the Services for a period of fifteen days following cancellation or suspension; thereafter you may not have access to Your Content stored on the Services."
     }
   },

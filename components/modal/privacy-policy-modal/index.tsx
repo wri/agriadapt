@@ -48,12 +48,29 @@ const PrivacyPolicyModal = () => {
                     <br/>
                     <h2>{t('privacy:use_of_online_tracking_technologies.title')}</h2>
                     <p>{t('privacy:use_of_online_tracking_technologies.p')}</p>
-                    <p>{t('privacy:use_of_online_tracking_technologies.p1', {url1: "http://tools.google.com/dlpage/gaoptout"})}
+                    <p>
+                        {t('privacy:use_of_online_tracking_technologies.text1')}
+                        <a href="http://tools.google.com/dlpage/gaoptout">http://tools.google.com/dlpage/gaoptout</a>
+                        {t('privacy:use_of_online_tracking_technologies.text2')}
+                        <a href="https://optout.networkadvertising.org/?c=1">www.networkadvertising.org/choices/</a>
+                        {t('privacy:use_of_online_tracking_technologies.text3')}
+                        <a href="https://www.youronlinechoices.com/">www.youronlinechoices.com</a>
+                        {t('privacy:use_of_online_tracking_technologies.text4')}
+                        <a href="https://www.google.com/policies/privacy/">https://www.google.com/policies/privacy/</a>
+                        {t('privacy:use_of_online_tracking_technologies.text5')}
+                        <a href="http://www.google.com/analytics/terms/us.html">http://www.google.com/analytics/terms/us.html</a>
+                        {t('privacy:use_of_online_tracking_technologies.text6')}
+                        <a href="http://www.google.com/analytics/learn/index.html">http://www.google.com/analytics/learn/index.html</a>
+                        {t('privacy:use_of_online_tracking_technologies.text7')}
+                    </p>
+
+                    {/* <p>{t('privacy:use_of_online_tracking_technologies.p1', {url1: "http://tools.google.com/dlpage/gaoptout"})}
                     {t('privacy:use_of_online_tracking_technologies.p2', {url2: "www.networkadvertising.org/choices/"})}
                     {t('privacy:use_of_online_tracking_technologies.p3', {url3: "www.youronlinechoices.com"})}
                     {t('privacy:use_of_online_tracking_technologies.p4', {url4: "https://www.google.com/policies/privacy/"})}
                     {t('privacy:use_of_online_tracking_technologies.p5', {url5: "http://www.google.com/analytics/terms/us.html"})}
-                    {t('privacy:use_of_online_tracking_technologies.p6', {url6: "http://www.google.com/analytics/learn/index.html"})}</p>
+                    {t('privacy:use_of_online_tracking_technologies.p6', {url6: "http://www.google.com/analytics/learn/index.html"})}</p> */}
+                    
                     <br/>
                     <h2>{t('privacy:use_of_cookies.title')}</h2>
                     <p>{t('privacy:use_of_cookies.p')}</p>
