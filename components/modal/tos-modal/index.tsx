@@ -35,7 +35,7 @@ const TermsOfServiceModal = () => {
                             <li>{t('tos:accounts_and_api_usage.p.A')}</li>
                             <li>{t('tos:accounts_and_api_usage.p.B')}</li>
                             <li>{t('tos:accounts_and_api_usage.p.C')}</li>
-                            <li>{t('tos:accounts_and_api_usage.p.D')}</li>
+                            <li>{t('tos:accounts_and_api_usage.p.D', { url: "https://resourcewatch.org/api-attribution-requirements" })}</li>
                             <li>{t('tos:accounts_and_api_usage.p.E')}</li>
                         </ol>
                     </p>
