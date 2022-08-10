@@ -1,0 +1,69 @@
+{
+	"world_resouce_institute": {
+		"title": "Instituto de Recursos Mundiales",
+		"sub_title": "Política de Privacidad",
+		"p": "<p>World Resources Institute respeta la privacidad de nuestros visitantes y usuarios y reconoce la importancia de proteger la información que recopilamos sobre usted.</p> <p>Esta Política de privacidad le indica cómo World Resources Institute (\"WRI\", \"nosotros\" o \"nos\") maneja la información recopilada sobre usted a través de nuestros sitios web y aplicaciones (colectivamente, los \"Servicios\"). Al utilizar nuestros sitios web o al proporcionarnos información a través de los Servicios, usted acepta la recopilación y el uso de dicha información como se describe en esta Política de privacidad.</p> <p>WRI es una organización de investigación global que abarca más de 50 países, con oficinas en los Estados Unidos, China, India, Brasil, Indonesia y más. Como resultado, la información que recopilamos a través de los Servicios, incluida la información personal, puede transferirse a nuestras oficinas en los Estados Unidos para permitirnos cumplir con nuestras obligaciones legales y contractuales, proporcionar información y servicios, y realizar actividades comerciales relacionadas. Además, podemos trabajar con proveedores de servicios externos en los Estados Unidos y en otros países para respaldar nuestras actividades comerciales. Por lo tanto, la información personal puede transferirse, almacenarse en servidores y accederse desde los Estados Unidos y países distintos del país en el que se recopiló inicialmente la información. En todos estos casos, usamos, transferimos y divulgamos información personal únicamente para los fines descritos en esta Política de privacidad.</p>"
+	},
+	"information_we_collect": {
+		"title": "Información que recopilamos",
+		"p": "<p>Al utilizar los Servicios, podemos recopilar información de identificación personal (\"Información personal\") sobre usted, como su nombre, dirección de correo electrónico, nombre de usuario, número de teléfono, cargo, empleador y el contenido que usted u otras personas proporcionan a través de los Servicios.</p> <p>También podemos recopilar las siguientes categorías de información a través de su uso de los Servicios (\"Información de uso\"): información del navegador, modelo de hardware, sistema operativo, dirección IP, la hora en que accede a los Servicios y el tipo de contenido que ve o con el que interactúa mientras usa los Servicios.</p> <p>Colectivamente, la información de uso y la información personal se denominan \"información\".</p>"
+	},
+	"why_we_collect_this_information": {
+		"title": "Por qué recopilamos esta información",
+		"p0": "Recopilamos información sobre usted para ayudar a que los Servicios sean más útiles para usted. Esto incluye:",
+		"p": [
+			"Administración y mejora de los Servicios",
+			"Analizar la calidad y el alcance de nuestros Servicios",
+			"Personalizar su experiencia con los Servicios",
+			"Promover la seguridad de los Servicios",
+			"Ponernos en contacto con usted acerca de los Servicios"
+		]
+	},
+	"who_we_share_your_information_with": {
+		"title": "Con quién compartimos su información",
+		"p0": "Podemos compartir su información de la siguiente manera:",
+		"p": [
+			"Proveedores de servicios de terceros. Podemos compartir su información con proveedores de servicios externos y contratistas que trabajan en nombre de WRI que nos ayudan a proporcionar los Servicios. Estos proveedores de servicios solo están autorizados a usar su Información personal para ayudarnos a proporcionar los Servicios. No vendemos ni compartimos su información personal con dichos terceros para sus fines de marketing directo.",
+			"Según lo exija o permita la ley. Podemos compartir su información con tribunales, agencias gubernamentales y otros terceros según lo exija o permita la ley aplicable, para cumplir con una citación o solicitud legal similar, para hacer cumplir nuestras políticas o para proteger nuestros derechos, propiedad o seguridad o los de otros.",
+			"Informes de rendimiento. Podemos compartir Información de uso agregada y anónima con nuestros donantes y socios para informar sobre la utilidad y el rendimiento de los Servicios."
+		]
+	},
+	"security_of_your_information": {
+		"title": "Seguridad de su información",
+		"p": "Hemos implementado salvaguardas comercialmente razonables, técnicas, administrativas y físicas para proteger su información. Desafortunadamente, no se puede garantizar que la transmisión de datos a través de Internet o el sistema de almacenamiento de datos sea 100% seguro. Sin embargo, si tiene motivos para creer que su uso de los Servicios ya no es seguro (por ejemplo, el nombre de usuario y la contraseña se han visto comprometidos), contáctenos inmediatamente en privacy@wri.org."
+	},
+	"use_of_online_tracking_technologies": {
+		"title": "Uso de tecnologías de seguimiento en línea",
+		"p": "<p>Cuando utiliza los Servicios, nosotros, junto con nuestros proveedores de servicios externos, podemos usar la Información de uso para comprender de manera más efectiva cómo se utilizan los Servicios y mejorar la usabilidad de nuestros Servicios.</p> <p>Para obtener más información sobre dichas tecnologías y las opciones que puede tener, visite Digital Advertising Alliance o la configuración de su dispositivo. También utilizamos Google Analytics, un servicio de análisis web proporcionado por Google, Inc. (\"Google\"). Google utiliza cookies para ayudarnos a analizar cómo los visitantes utilizan nuestros Servicios. La información generada por la cookie sobre su uso de nuestros Servicios generalmente se transmite y almacena en un servidor de Google en los Estados Unidos. Google utilizará esta información para evaluar su uso de los Servicios, compilar informes sobre la actividad del sitio web y proporcionarnos otros servicios analíticos relacionados con nuestros Servicios. Google no asociará su dirección IP con ningún otro dato en poder de Google.</p> <p>Puede administrar y excluirse del uso de cookies por parte de Google visitando la configuración de anuncios de Google y seleccionando la configuración adecuada en su navegador. Tenga en cuenta que si lo hace, es posible que no pueda utilizar la funcionalidad completa de nuestros Servicios. Alternativamente, puede evitar la recopilación y el uso de datos por parte de Google descargando e instalando el complemento del navegador disponible en: {{url1}} y / o optar por no participar visitando {{url2}} o {{url3}}. Para obtener más información sobre los términos de uso y la protección de datos/privacidad de Google, consulte {{url4}}, {{url5}} y {{url6}}.</p>"
+	},
+	"use_of_cookies": {
+		"title": "Uso de Cookies",
+		"p": "Cuando utiliza los Servicios, podemos colocar un archivo de texto (\"Cookie\") en el navegador de su computadora. Las cookies recopilan información como el tipo de motor de búsqueda utilizado, las secciones de los sitios web visitados y otra información de uso del sitio web. Las cookies permiten que los Servicios funcionen mediante el seguimiento del estado de la aplicación y la autenticación de Usted en cada página de los servicios. Puede rechazar las cookies deshabilitándolas en la configuración de su navegador de Internet, generalmente en las secciones \"Ayuda\" u \"Opciones de Internet\" o para www.networkadvertising.org/choices/ o www.youronlinechoices.com. Sin embargo, es posible que los Servicios no funcionen correctamente si las Cookies están deshabilitadas."
+	},
+	"choices": {
+		"title": "Opciones",
+		"p": {
+			"p1": "Le recomendamos que actualice de inmediato su información personal si cambia. Puede corregir, actualizar, enmendar, eliminar o solicitar que se elimine su información personal realizando el cambio en la página de configuración de su cuenta de usuario, si corresponde, o poniéndose en contacto con nosotros como se detalla a continuación.",
+			"p2": {
+				"p20": "Además, usted ejerce cualquiera de las siguientes acciones en cualquier momento:",
+				"p21": [
+					"Puede optar por no recibir comunicaciones de la IRG utilizando el enlace para darse de baja dentro de cada correo electrónico.",
+					"Puede solicitar información y acceso a los datos personales que recopilamos de usted.",
+					"Puede hacer preguntas o presentar quejas sobre nuestras prácticas de privacidad y seguridad de datos con respecto a sus datos personales.",
+					"Puede solicitar que eliminemos la información que hemos recopilado sobre usted.",
+					"Puede solicitarnos una copia de la información que recopilamos de usted."
+				]
+			},
+			"p3": "Para ejercer cualquiera de estas opciones o para obtener información adicional sobre nuestras prácticas de privacidad, contáctenos en privacy@wri.org.",
+			"p4": "Conservaremos su información durante el tiempo que sea necesario para proporcionarle los Servicios. Intentaremos cumplir con las solicitudes en virtud de esta sección tan pronto como sea razonablemente posible según lo exija la ley aplicable. Sin embargo, es posible que necesitemos retener y usar cierta información para fines de mantenimiento de registros, para completar cualquier solicitud previa, según sea necesario para cumplir con nuestras obligaciones legales, resolver disputas, hacer cumplir nuestros acuerdos o para otros fines según lo exija o permita la ley aplicable."
+		}
+	},
+	"updates_to_our_privacy_policy": {
+		"title": "Actualizaciones de nuestra Política de Privacidad",
+		"p": "De vez en cuando, podemos revisar la Política de privacidad para reflejar los cambios en la ley, nuestras prácticas de recopilación y uso de información o para detallar las nuevas funciones proporcionadas a través de los Servicios. Si realizamos algún cambio sustancial, se lo notificaremos por correo electrónico (enviado a la dirección de correo electrónico especificada en su cuenta) o mediante un aviso destacado a través de los Servicios."
+	},
+	"contact_us": {
+		"title": "Contáctenos",
+		"p": "<p>Si tiene alguna pregunta sobre esta Política de privacidad o nuestras prácticas de privacidad, contáctenos en:</p><p>privacy@wri.org</p><p>World Resources Institute</p><p>10 G Street NE, Suite 800</p><p>Washington, DC 20002</p>"
+	}
+}

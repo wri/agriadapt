@@ -1,1 +1,35 @@
-{}
+{
+	"Any": "Cualquier",
+	"Back": "Atrás",
+	"Cancel": "Cancelar",
+	"Select_Country": "Seleccionar país",
+	"Language": "Idioma",
+	"emission_scenarios": {
+		"Emission Scenario": "Escenario de emisiones",
+		"Emissions_Scenario": "Escenario de emisiones",
+		"pessimistic": "Pesimista (RCP 8.5)",
+		"optimistic": "Optimista (PCR 4.5)"
+	},
+	"timescales": {
+		"Timescale": "Calendario",
+		"Historic": "Histórico",
+		"Future Looking": "Mirando hacia el futuro"
+	},
+	"value_chains": {
+		"Value Chains": "Cadenas de valor",
+		"Coffee": "Café",
+		"Cotton": "Algodón",
+		"Rice": "Arroz"
+	},
+	"Search": "Buscar",
+	"Select": "Escoger",
+	"share": {
+		"Share": "Compartir",
+		"Public url to share": "URL pública para compartir",
+		"Code to embed": "Código para incrustar",
+		"Copy link": "Copiar enlace"
+	},
+	"world_resources_institute": "Instituto de Recursos Mundiales",
+	"hear_from_our_users": "Escuche a nuestros usuarios",
+	"terms_of_service": "Términos de servicio"
+}
