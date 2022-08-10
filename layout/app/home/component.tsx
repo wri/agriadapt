@@ -6,8 +6,9 @@ import LearnMoreContainerHome from './home-learn-more-container/component';
 import IntroHeader from 'layout/intro-header';
 import { LANDING } from 'layout/intro-header/constants';
 import TermsOfServiceModal from 'components/modal/tos-modal';
+import PrivacyPolicyModal from 'components/modal/privacy-policy-modal';
 
-const LayoutHome = ({ showTermsModal = false }) => {
+const LayoutHome = ({ showTermsModal = false, showPrivacyModal = false }) => {
   return (
     <Layout title="Home">
       <div className="l-home">
@@ -32,6 +33,7 @@ const LayoutHome = ({ showTermsModal = false }) => {
         </div>
       </div>
       {showTermsModal && <TermsOfServiceModal />}
+      {showPrivacyModal && <PrivacyPolicyModal />}
     </Layout>
   );
 };
