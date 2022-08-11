@@ -37,7 +37,7 @@ const TermsOfServiceModal = () => {
                             <li>{t('tos:accounts_and_api_usage.p.C')}</li>
                             <li>
                                 {t('tos:accounts_and_api_usage.p.D')}
-                                <a href="https://resourcewatch.org/api-attribution-requirements">https://resourcewatch.org/api-attribution-requirements</a>
+                                <a href="https://resourcewatch.org/api-attribution-requirements" target="_blank" rel="noreferrer">https://resourcewatch.org/api-attribution-requirements</a>
                                 {t('tos:accounts_and_api_usage.p.D1')}
                             </li>
                             {/* <li>{t('tos:accounts_and_api_usage.p.integrated_url_D', { url: "https://resourcewatch.org/api-attribution-requirements" })}</li> */}
