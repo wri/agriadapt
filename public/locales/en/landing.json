@@ -7,7 +7,8 @@
   "sub_intro": {
     "title": "Reliable, verified information to make better decisions in agriculture",
     "subtitle": "We deliver free climate information to inform decisions for agriculture businesses – small and large – to adapt in the face of climate change.",
-    "button_label": "Explore the Map"
+    "button_label": "Explore the Map",
+    "image_alt": "Map Explore"
   },
   "value_chain_cards": {
     "title": "The value chain of each crop faces unique risks",
@@ -29,6 +30,7 @@
   },
   "map_analysis_carousel": {
     "title": "Quick Start!",
+    "image_alt": "Analysis Map",
     "subtitle": "Begin exploring climate threats for agriculture with these data recommendations from our specialists",
     "content": [
       "Understand how cotton production is exposed to water stress.",

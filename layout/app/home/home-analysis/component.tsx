@@ -3,15 +3,17 @@ import Carousel from 'nuka-carousel';
 import { Media } from 'lib/media';
 import { ANALYSIS } from '../constants';
 import AnalysisCard from './analysis-card/component';
+import { useTranslation } from 'next-i18next';
 
 const AnalysisContainerHome = () => {
+  const {t} = useTranslation();
   return (
     <div className="c-home-analysis">
       <div className="l-container">
         <div className="row">
           <div className="column">
-            <h2>{ANALYSIS.title}</h2>
-            <h3>{ANALYSIS.subTitle}</h3>
+            <h2>{t(ANALYSIS.title)}</h2>
+            <h3>{t(ANALYSIS.subTitle)}</h3>
             {['sm', 'md', 'lg', 'xl'].map((b: 'sm' | 'md' | 'lg' | 'xl', i) => (
               <Media
                 key={b}
@@ -33,7 +35,7 @@ const AnalysisContainerHome = () => {
                     {ANALYSIS.cards.map((c) => (
                       <AnalysisCard
                         key={i}
-                        image_alt={ANALYSIS.image_alt}
+                        image_alt={t(ANALYSIS.image_alt)}
                         {...c}
                       />
                     ))}
