@@ -1,13 +1,13 @@
 // services
-import { fetchPartners } from "services/partners";
+import { fetchPartners } from 'services/partners';
 
 /**
  * CONSTANTS
  */
-const GET_PARTNERS_SUCCESS = "partners/GET_PARTNERS_SUCCESS";
-const GET_PARTNERS_ERROR = "partners/GET_PARTNERS_ERROR";
-const GET_PARTNERS_LOADING = "partners/GET_PARTNERS_LOADING";
-const SET_PARTNERS_FILTERS = "partners/SET_PARTNERS_FILTERS";
+const GET_PARTNERS_SUCCESS = 'partners/GET_PARTNERS_SUCCESS';
+const GET_PARTNERS_ERROR = 'partners/GET_PARTNERS_ERROR';
+const GET_PARTNERS_LOADING = 'partners/GET_PARTNERS_LOADING';
+const SET_PARTNERS_FILTERS = 'partners/SET_PARTNERS_FILTERS';
 
 /**
  * STORE

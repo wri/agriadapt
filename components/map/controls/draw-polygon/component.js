@@ -1,9 +1,9 @@
-import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
-import classnames from "classnames";
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 // components
-import Icon from "components/ui/icon";
+import Icon from 'components/ui/icon';
 
 class DrawPolygonControls extends PureComponent {
   static propTypes = {
@@ -34,13 +34,13 @@ class DrawPolygonControls extends PureComponent {
   render() {
     const { className, drawing, showRemovePolygonButton } = this.props;
     const componentClass = classnames({
-      "c-draw-polygon-control": true,
+      'c-draw-polygon-control': true,
       [className]: !!className,
     });
 
     const drawPolygonBtnClass = classnames({
-      "draw-polygon--btn": true,
-      "-drawing": drawing,
+      'draw-polygon--btn': true,
+      '-drawing': drawing,
     });
 
     return (

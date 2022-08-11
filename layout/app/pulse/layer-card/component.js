@@ -1,21 +1,21 @@
-import { PureComponent } from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
-import Link from "next/link";
-import { withRouter } from "next/router";
+import { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import Link from 'next/link';
+import { withRouter } from 'next/router';
 
 // Utils
-import { LAYERS_PLANET_PULSE } from "utils/layers/pulse_layers";
+import { LAYERS_PLANET_PULSE } from 'utils/layers/pulse_layers';
 
 // Components
-import Legend from "layout/app/pulse/legend";
-import WidgetChart from "components/charts/widget-chart";
+import Legend from 'layout/app/pulse/legend';
+import WidgetChart from 'components/charts/widget-chart';
 // import LoginRequired from 'components/ui/login-required';
-import LayerInfoModal from "components/modal/layer-info-modal";
-import Icon from "components/ui/icon";
+import LayerInfoModal from 'components/modal/layer-info-modal';
+import Icon from 'components/ui/icon';
 
 // Modal
-import Modal from "components/modal/modal-component";
+import Modal from 'components/modal/modal-component';
 // import SubscriptionsModal from 'components/modal/subscriptions-modal/dataset';
 
 class LayerCardComponent extends PureComponent {
@@ -93,8 +93,8 @@ class LayerCardComponent extends PureComponent {
     const lastUpdateDate = dataset && dataset.dataLastUpdated;
 
     const className = classNames({
-      "c-layer-card": true,
-      "-hidden": layerActive === null,
+      'c-layer-card': true,
+      '-hidden': layerActive === null,
     });
 
     const datasetId = layerActive !== null ? layerActive.dataset : null;
@@ -149,7 +149,7 @@ class LayerCardComponent extends PureComponent {
                 Last update: {lastUpdateDate}
               </div>
             )}
-            <Legend layerActive={layerActive} className={{ color: "-dark" }} />
+            <Legend layerActive={layerActive} className={{ color: '-dark' }} />
             {activeContextLayers.length > 0 && (
               <div className="context-layers-legends">
                 {activeContextLayers.map((ctLayer) => (
@@ -179,7 +179,7 @@ class LayerCardComponent extends PureComponent {
                     </div>
                     <Legend
                       layerActive={ctLayer}
-                      className={{ color: "-dark" }}
+                      className={{ color: '-dark' }}
                     />
                   </div>
                 ))}

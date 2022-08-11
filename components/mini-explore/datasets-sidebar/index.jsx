@@ -1,14 +1,14 @@
-import { useMemo, useCallback } from "react";
-import PropTypes from "prop-types";
+import { useMemo, useCallback } from 'react';
+import PropTypes from 'prop-types';
 
 // hooks
 import useFetchDatasets from 'hooks/dataset/fetch-datasets';
 
 // components
-import DatasetsSidebar from "./component";
+import DatasetsSidebar from './component';
 
 // reducers
-import { miniExploreSlice } from "../reducer";
+import { miniExploreSlice } from '../reducer';
 
 const { toggleMapLayerGroup, resetMapLayerGroupsInteraction } =
   miniExploreSlice.actions;
@@ -44,9 +44,9 @@ export default function DatasetsSidebarContainer({
 
   const { data: datasets } = useFetchDatasets(
     {
-      includes: "layer,metadata",
-      ids: datasetIDs.join(","),
-      "page[size]": 50,
+      includes: 'layer,metadata',
+      ids: datasetIDs.join(','),
+      'page[size]': 50,
       env: process.env.NEXT_PUBLIC_ENVS_SHOW,
     },
     {
@@ -62,7 +62,7 @@ export default function DatasetsSidebarContainer({
         ...dataset,
         active: activeDatasets.includes(dataset.id),
         hrefLink: {
-          pathname: "/explore/[[...dataset]]",
+          pathname: '/explore/[[...dataset]]',
           query: {
             dataset: [dataset.slug],
           },

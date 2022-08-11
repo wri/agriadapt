@@ -248,7 +248,7 @@ export default createReducer(initialState, (builder) => {
           // Apply emission scenario filter
           (!l.applicationConfig.emission_scenario ||
             l.applicationConfig.emission_scenario ===
-            state.filters.emission_scenario) &&
+              state.filters.emission_scenario) &&
           // Apply value chain filter
           (!l.applicationConfig.value_chain ||
             !state.filters.value_chains.length ||

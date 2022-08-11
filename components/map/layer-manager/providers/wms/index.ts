@@ -3,9 +3,9 @@ import type {
   LayerSpec,
   Source,
   ProviderMaker,
-} from "@vizzuality/layer-manager";
-import omit from "lodash/omit";
-import { WMSQueryParams } from "./types";
+} from '@vizzuality/layer-manager';
+import omit from 'lodash/omit';
+import { WMSQueryParams } from './types';
 
 export type RasterSource = Source & {
   tiles?: string[];
@@ -23,7 +23,7 @@ class WMSProviderMaker implements ProviderMaker {
    * A name (key) for the provider.
    * Use the same name you will use in your layerSpec object.
    */
-  public name = "wms";
+  public name = 'wms';
 
   private getTilerUrl = (layer: LayerSpec): string | Error => {
     const source: RasterSource = layer.source;
@@ -31,11 +31,11 @@ class WMSProviderMaker implements ProviderMaker {
     if (!source.tiles)
       throw new Error("A WMS server must be provided in the 'tiles' property");
 
-    const defaultParams: Pick<WMSQueryParams, "bbox" | "request" | "service"> =
+    const defaultParams: Pick<WMSQueryParams, 'bbox' | 'request' | 'service'> =
       {
-        bbox: "{bbox-epsg-3857}",
-        request: "GetMap",
-        service: "WMS",
+        bbox: '{bbox-epsg-3857}',
+        request: 'GetMap',
+        service: 'WMS',
       };
 
     const baseURLTiler = new URL(source.tiles[0]);
@@ -63,7 +63,7 @@ class WMSProviderMaker implements ProviderMaker {
       const result = {
         ...layer,
         source: {
-          ...omit(layer.source, "provider"),
+          ...omit(layer.source, 'provider'),
           tiles: [this.getTilerUrl(layer)],
         } as Source,
       };

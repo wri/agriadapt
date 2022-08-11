@@ -1,27 +1,27 @@
-import { useMemo, useState, useCallback, CSSProperties } from "react";
-import { useQueries } from "react-query";
-import { ErrorBoundary } from "react-error-boundary";
+import { useMemo, useState, useCallback, CSSProperties } from 'react';
+import { useQueries } from 'react-query';
+import { ErrorBoundary } from 'react-error-boundary';
 // import type { ViewportProps } from "react-map-gl";
 
 // services
-import { fetchLayer } from "services/layer";
+import { fetchLayer } from 'services/layer';
 
 // hooks
-import { useFetchWidget } from "hooks/widget";
+import { useFetchWidget } from 'hooks/widget';
 // import useBelongsToCollection from 'hooks/collection/belongs-to-collection';
-import { useGeostore } from "hooks/geostore";
+import { useGeostore } from 'hooks/geostore';
 // import { useMe } from 'hooks/user';
 
 // utils
-import { getAoiLayer, getMaskLayer, getLayerGroups } from "utils/layers";
+import { getAoiLayer, getMaskLayer, getLayerGroups } from 'utils/layers';
 
 // components
-import ErrorFallback from "components/error-fallback";
-import SwipeTypeWidget from "./component";
+import ErrorFallback from 'components/error-fallback';
+import SwipeTypeWidget from './component';
 
-import type { Bounds } from "components/map/types";
-import type { APIWidgetSpec } from "types/widget";
-import { APILayerSpec } from "types/layer";
+import type { Bounds } from 'components/map/types';
+import type { APIWidgetSpec } from 'types/widget';
+import { APILayerSpec } from 'types/layer';
 
 const CustomErrorFallback = (_props) => (
   <ErrorFallback {..._props} title="Something went wrong loading the widget" />
@@ -65,7 +65,7 @@ const SwipeTypeWidgetContainer = ({
   } = useFetchWidget(
     widgetId,
     {
-      includes: "metadata",
+      includes: 'metadata',
     },
     {
       enabled: !!widgetId,
@@ -89,7 +89,7 @@ const SwipeTypeWidgetContainer = ({
 
   const leftLayerStates = useQueries(
     (widget?.widgetConfig?.paramsConfig?.layersLeft || []).map((layerId) => ({
-      queryKey: ["fetch-layer", layerId],
+      queryKey: ['fetch-layer', layerId],
       queryFn: () => fetchLayer(layerId),
       placeholderData: null,
       select: (_layer: APILayerSpec) => ({
@@ -101,7 +101,7 @@ const SwipeTypeWidgetContainer = ({
 
   const rightLayerStates = useQueries(
     (widget?.widgetConfig?.paramsConfig?.layersRight || []).map((layerId) => ({
-      queryKey: ["fetch-layer", layerId],
+      queryKey: ['fetch-layer', layerId],
       queryFn: () => fetchLayer(layerId),
       placeholderData: null,
       select: (_layer: APILayerSpec) => ({

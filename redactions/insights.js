@@ -1,60 +1,60 @@
 // import 'isomorphic-fetch';
-import find from "lodash/find";
+import find from 'lodash/find';
 
 /**
  * CONSTANTS
  */
 const INSIGHTS_DATA = [
   {
-    tag: "Spotlight",
-    date: "Spotlight",
-    title: "Welcome to Resource Watch",
-    slug: "welcome-to-resource-watch",
+    tag: 'Spotlight',
+    date: 'Spotlight',
+    title: 'Welcome to Resource Watch',
+    slug: 'welcome-to-resource-watch',
     source: {
-      name: "Resource Watch",
-      path: "http://www.resourcewatch.org/",
-      img: "/images/logo-no-text.svg",
+      name: 'Resource Watch',
+      path: 'http://www.resourcewatch.org/',
+      img: '/images/logo-no-text.svg',
     },
-    background: "url(/tempImages/backgrounds/rw_welcome.jpg) top",
-    body: "",
+    background: 'url(/tempImages/backgrounds/rw_welcome.jpg) top',
+    body: '',
   },
   {
-    tag: "April 11, 2018",
-    date: "April 11, 2018",
-    title: "Experience a bleached coral reef in 360°",
-    slug: "experience-a-bleached-coral-reef-in-360",
-    link: "/splash/coral",
+    tag: 'April 11, 2018',
+    date: 'April 11, 2018',
+    title: 'Experience a bleached coral reef in 360°',
+    slug: 'experience-a-bleached-coral-reef-in-360',
+    link: '/splash/coral',
     source: {
-      name: "Resource Watch",
-      path: "http://www.resourcewatch.org/",
-      img: "/images/logo-no-text.svg",
+      name: 'Resource Watch',
+      path: 'http://www.resourcewatch.org/',
+      img: '/images/logo-no-text.svg',
     },
     background:
-      "url(/tempImages/backgrounds/BLEACHED-American-Samoa-2-February-2015.jpg)",
-    body: "",
+      'url(/tempImages/backgrounds/BLEACHED-American-Samoa-2-February-2015.jpg)',
+    body: '',
   },
   {
-    tag: "April 11, 2018",
-    date: "April 11, 2018",
+    tag: 'April 11, 2018',
+    date: 'April 11, 2018',
     title: "We mapped the world's power plants. Here's what we learned.",
-    slug: "we-mapped-the-worlds-power-plants-heres-what-we-learned",
+    slug: 'we-mapped-the-worlds-power-plants-heres-what-we-learned',
     source: {
-      name: "Resource Watch",
-      path: "http://www.resourcewatch.org/",
-      img: "/images/logo-no-text.svg",
+      name: 'Resource Watch',
+      path: 'http://www.resourcewatch.org/',
+      img: '/images/logo-no-text.svg',
     },
-    background: "url(/tempImages/backgrounds/rw_powerwatch.jpg)",
-    body: "",
+    background: 'url(/tempImages/backgrounds/rw_powerwatch.jpg)',
+    body: '',
   },
 ];
 
-const GET_INSIGHTS_SUCCESS = "insights/GET_INSIGHTS_SUCCESS";
-const GET_INSIGHTS_ERROR = "insights/GET_INSIGHTS_ERROR";
-const GET_INSIGHTS_LOADING = "insights/GET_INSIGHTS_LOADING";
+const GET_INSIGHTS_SUCCESS = 'insights/GET_INSIGHTS_SUCCESS';
+const GET_INSIGHTS_ERROR = 'insights/GET_INSIGHTS_ERROR';
+const GET_INSIGHTS_LOADING = 'insights/GET_INSIGHTS_LOADING';
 
-const GET_INSIGHT_DETAIL_SUCCESS = "insights/GET_INSIGHT_DETAIL_SUCCESS";
-const GET_INSIGHT_DETAIL_ERROR = "insights/GET_INSIGHT_DETAIL_ERROR";
-const GET_INSIGHT_DETAIL_LOADING = "insights/GET_INSIGHT_DETAIL_LOADING";
+const GET_INSIGHT_DETAIL_SUCCESS = 'insights/GET_INSIGHT_DETAIL_SUCCESS';
+const GET_INSIGHT_DETAIL_ERROR = 'insights/GET_INSIGHT_DETAIL_ERROR';
+const GET_INSIGHT_DETAIL_LOADING = 'insights/GET_INSIGHT_DETAIL_LOADING';
 
 /**
  * REDUCER

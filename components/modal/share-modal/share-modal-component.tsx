@@ -45,7 +45,6 @@ const ShareModalComponent = ({
     };
   }, [links.link, resetShortLinks]);
 
-
   const onCopyClick = (type: string) => {
     const input = inputs.current[type];
     input.select();
@@ -78,7 +77,7 @@ const ShareModalComponent = ({
       <div className="share-content">
         {Object.keys(links).map((type) => {
           const htmlFor = `share-${type}`;
-          const url = shortLinks && shortLinks[type] || links[type];
+          const url = (shortLinks && shortLinks[type]) || links[type];
 
           switch (type) {
             case 'link':

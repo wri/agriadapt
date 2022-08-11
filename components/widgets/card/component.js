@@ -1,39 +1,39 @@
-import { useReducer, useEffect } from "react";
-import PropTypes from "prop-types";
-import { useRouter } from "next/router";
-import truncate from "lodash/truncate";
-import classnames from "classnames";
+import { useReducer, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { useRouter } from 'next/router';
+import truncate from 'lodash/truncate';
+import classnames from 'classnames';
 import { toastr } from 'react-redux-toastr';
-import { Tooltip } from "vizzuality-components";
+import { Tooltip } from 'vizzuality-components';
 
 // services
-import { deleteWidget } from "services/widget";
-import { fetchLayer } from "services/layer";
+import { deleteWidget } from 'services/widget';
+import { fetchLayer } from 'services/layer';
 
 // hooks
 // import useBelongsToCollection from 'hooks/collection/belongs-to-collection';
 
 // utils
-import { isMapWidget, isEmbedWidget, isTextualWidget } from "utils/widget";
-import { logEvent } from "utils/analytics";
+import { isMapWidget, isEmbedWidget, isTextualWidget } from 'utils/widget';
+import { logEvent } from 'utils/analytics';
 
 // constants
-import { MAPSTYLES } from "components/map/constants";
-import { INITIAL_STATE, REDUCER } from "components/widgets/card/constants";
+import { MAPSTYLES } from 'components/map/constants';
+import { INITIAL_STATE, REDUCER } from 'components/widgets/card/constants';
 
 // components
-import Title from "components/ui/Title";
-import Icon from "components/ui/icon";
-import Spinner from "components/ui/Spinner";
-import Map from "components/map";
-import LayerManager from "components/map/layer-manager";
+import Title from 'components/ui/Title';
+import Icon from 'components/ui/icon';
+import Spinner from 'components/ui/Spinner';
+import Map from 'components/map';
+import LayerManager from 'components/map/layer-manager';
 // import LoginRequired from 'components/ui/login-required';
-import CollectionsPanel from "components/collections-panel";
-import WidgetChart from "components/charts/widget-chart";
-import MapThumbnail from "components/map/thumbnail";
-import ShareModal from "components/modal/share-modal";
-import TextChart from "components/widgets/charts/TextChart";
-import WidgetActionsTooltip from "./tooltip";
+import CollectionsPanel from 'components/collections-panel';
+import WidgetChart from 'components/charts/widget-chart';
+import MapThumbnail from 'components/map/thumbnail';
+import ShareModal from 'components/modal/share-modal';
+import TextChart from 'components/widgets/charts/TextChart';
+import WidgetActionsTooltip from './tooltip';
 
 const WidgetCard = (props) => {
   const {
@@ -72,7 +72,7 @@ const WidgetCard = (props) => {
               onWidgetRemove();
             })
             .catch(({ message }) =>
-              toastr.error("Something went wrong deleting the widget", message)
+              toastr.error('Something went wrong deleting the widget', message)
             );
         },
       }
@@ -82,8 +82,8 @@ const WidgetCard = (props) => {
   const handleEmbed = () => {
     const { toggleModal, setModalOptions } = props;
     const { id, widgetConfig } = widget;
-    const widgetType = widgetConfig.type || "widget";
-    const location = typeof window !== "undefined" && window.location;
+    const widgetType = widgetConfig.type || 'widget';
+    const location = typeof window !== 'undefined' && window.location;
     const { origin } = location;
     const options = {
       children: ShareModal,
@@ -93,10 +93,10 @@ const WidgetCard = (props) => {
           embed: location && `${origin}/embed/${widgetType}/${id}`,
         },
         analytics: {
-          facebook: () => logEvent("Share", `Share widget: ${id}`, "Facebook"),
-          twitter: () => logEvent("Share", `Share widget: ${id}`, "Twitter"),
+          facebook: () => logEvent('Share', `Share widget: ${id}`, 'Facebook'),
+          twitter: () => logEvent('Share', `Share widget: ${id}`, 'Twitter'),
           copy: (type) =>
-            logEvent("Share", `Share widget: ${id}`, `Copy ${type}`),
+            logEvent('Share', `Share widget: ${id}`, `Copy ${type}`),
         },
         toggleModal,
       },
@@ -111,7 +111,7 @@ const WidgetCard = (props) => {
       user: { role, id },
     } = props;
     const isOwner = widget.userId === id;
-    const isAdmin = role === "ADMIN";
+    const isAdmin = role === 'ADMIN';
 
     if (isAdmin) {
       router.push(
@@ -131,41 +131,41 @@ const WidgetCard = (props) => {
   };
 
   const handleDownloadPDF = () => {
-    toastr.info("Widget download", "The file is being generated...");
+    toastr.info('Widget download', 'The file is being generated...');
 
     const { id, name, widgetConfig } = widget;
-    const type = widgetConfig.type || "widget";
+    const type = widgetConfig.type || 'widget';
     const { origin } = window.location;
     const filename = encodeURIComponent(name);
 
-    const link = document.createElement("a");
-    link.setAttribute("download", "");
+    const link = document.createElement('a');
+    link.setAttribute('download', '');
     link.href = `${process.env.NEXT_PUBLIC_WRI_API_URL}/v1/webshot/pdf?filename=${filename}&width=790&height=580&waitFor=8000&url=${origin}/embed/${type}/${id}`;
 
     // link.click() doesn't work on Firefox for some reasons
     // so we have to create an event manually
-    const event = new MouseEvent("click");
+    const event = new MouseEvent('click');
     link.dispatchEvent(event);
   };
 
   const handleTooltipVisibility = (visible) => {
-    dispatch({ type: "WIDGET-CARD/SET_TOOLTIP", payload: visible });
+    dispatch({ type: 'WIDGET-CARD/SET_TOOLTIP', payload: visible });
   };
 
   const getLayer = async (layerId) => {
-    dispatch({ type: "WIDGET-CARD/SET_LOADING", payload: true });
-    dispatch({ type: "WIDGET-CARD/SET_ERROR", payload: null });
+    dispatch({ type: 'WIDGET-CARD/SET_LOADING', payload: true });
+    dispatch({ type: 'WIDGET-CARD/SET_ERROR', payload: null });
 
     try {
       const layerData = await fetchLayer(layerId);
-      dispatch({ type: "WIDGET-CARD/SET_LAYER", payload: layerData });
-      dispatch({ type: "WIDGET-CARD/SET_LOADING", payload: false });
+      dispatch({ type: 'WIDGET-CARD/SET_LAYER', payload: layerData });
+      dispatch({ type: 'WIDGET-CARD/SET_LOADING', payload: false });
     } catch (e) {
       dispatch({
-        type: "WIDGET-CARD/SET_ERROR",
-        payload: "There was an issue rendering the visualization",
+        type: 'WIDGET-CARD/SET_ERROR',
+        payload: 'There was an issue rendering the visualization',
       });
-      dispatch({ type: "WIDGET-CARD/SET_LOADING", payload: false });
+      dispatch({ type: 'WIDGET-CARD/SET_LOADING', payload: false });
     }
   };
 
@@ -181,7 +181,7 @@ const WidgetCard = (props) => {
     }
 
     if (error) {
-      toastr.error("Error", error);
+      toastr.error('Error', error);
       // TODO: Correctly show the UI
       return null;
     }
@@ -189,7 +189,7 @@ const WidgetCard = (props) => {
     // If the widget is an embedded page, we render a
     // different component
     if (isEmbedWidget(widget.widgetConfig)) {
-      if (mode === "grid") {
+      if (mode === 'grid') {
         return (
           <div className="c-widget-chart -thumbnail">
             <div className="c-we-chart -no-preview">
@@ -213,7 +213,7 @@ const WidgetCard = (props) => {
     // If the widget is a map, we render the correct component
     if (isMapWidget(widget.widgetConfig)) {
       // We render the thumbnail of a map
-      if (mode === "grid") {
+      if (mode === 'grid') {
         return <MapThumbnail layer={layer} />;
       }
 
@@ -244,13 +244,13 @@ const WidgetCard = (props) => {
             doubleClickZoom={false}
             touchRotate={false}
             onLoad={({ map }) => {
-              map.on("render", () => {
+              map.on('render', () => {
                 if (map.areTilesLoaded()) {
                   dispatch({
-                    type: "WIDGET-CARD/SET_MAP_LOADING",
+                    type: 'WIDGET-CARD/SET_MAP_LOADING',
                     payload: false,
                   });
-                  map.off("render");
+                  map.off('render');
                 }
               });
             }}
@@ -294,13 +294,13 @@ const WidgetCard = (props) => {
   const isWidgetOwner = widget.userId === user.id;
 
   const starIconName = classnames({
-    "icon-star-full": isInACollection,
-    "icon-star-empty": !isInACollection,
+    'icon-star-full': isInACollection,
+    'icon-star-empty': !isInACollection,
   });
 
   const mainClassname = classnames({
-    "c-widget-card": true,
-    "-clickable": clickable,
+    'c-widget-card': true,
+    '-clickable': clickable,
   });
 
   return (
@@ -402,7 +402,7 @@ WidgetCard.propTypes = {
   showRemove: PropTypes.bool,
   showEmbed: PropTypes.bool,
   showFavorite: PropTypes.bool,
-  mode: PropTypes.oneOf(["grid", "full"]).isRequired,
+  mode: PropTypes.oneOf(['grid', 'full']).isRequired,
   onWidgetRemove: PropTypes.func.isRequired,
   onWidgetClick: PropTypes.func,
   limitChar: PropTypes.number,

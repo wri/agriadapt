@@ -261,7 +261,7 @@
   padding-right: 15px;
 }
 .Select-arrow {
-  @include arrow(8px, 2px, $primary-green, "down");
+  @include arrow(8px, 2px, $primary-green, 'down');
   position: relative;
   bottom: 3px;
 }

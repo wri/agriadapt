@@ -1,13 +1,13 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback } from 'react';
 
 // component
-import MaintenaceBanner from "./component";
+import MaintenaceBanner from './component';
 
 // utils
 import {
   getMaintenanceBannerAccepted,
   setMaintenanceBannerAccepted,
-} from "./helpers";
+} from './helpers';
 
 const MaintenaceBannerContainer = () => {
   const [maintenanceBannerAccepted, setMaintenanceBannerAcceptance] = useState(

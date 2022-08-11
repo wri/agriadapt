@@ -1,30 +1,30 @@
-import { useState, useEffect, useCallback, useRef, useMemo } from "react";
-import PropTypes from "prop-types";
-import classnames from "classnames";
-import { toastr } from "react-redux-toastr";
-import { Tooltip } from "vizzuality-components";
-import axios from "axios";
+import { useState, useEffect, useCallback, useRef, useMemo } from 'react';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
+import { toastr } from 'react-redux-toastr';
+import { Tooltip } from 'vizzuality-components';
+import axios from 'axios';
 
 // services
-import { fetchGeostore } from "services/geostore";
-import { updateArea } from "services/areas";
+import { fetchGeostore } from 'services/geostore';
+import { updateArea } from 'services/areas';
 
 // constants
-import { DEFAULT_VIEWPORT, MAPSTYLES } from "components/map/constants";
+import { DEFAULT_VIEWPORT, MAPSTYLES } from 'components/map/constants';
 
 // components
-import Map from "components/map";
-import LayerManager from "components/map/layer-manager";
-import Spinner from "components/ui/Spinner";
-import Modal from "components/modal/modal-component";
-import SubscriptionsModal from "components/modal/subscriptions-modal/area";
-import AreaActionsTooltip from "components/areas/card/tooltip";
+import Map from 'components/map';
+import LayerManager from 'components/map/layer-manager';
+import Spinner from 'components/ui/Spinner';
+import Modal from 'components/modal/modal-component';
+import SubscriptionsModal from 'components/modal/subscriptions-modal/area';
+import AreaActionsTooltip from 'components/areas/card/tooltip';
 
 // hooks
-import useSubscriptionsByArea from "hooks/subscription/fetch-subscriptions-by-area";
+import useSubscriptionsByArea from 'hooks/subscription/fetch-subscriptions-by-area';
 
 // utils
-import { getUserAreaLayer } from "components/map/utils";
+import { getUserAreaLayer } from 'components/map/utils';
 
 const AreaCard = (props) => {
   const {
@@ -49,7 +49,7 @@ const AreaCard = (props) => {
   const formRef = useRef(null);
   const nameRef = useRef(null);
 
-  const [modal, setModalState] = useState({ open: false, mode: "new" });
+  const [modal, setModalState] = useState({ open: false, mode: 'new' });
   const [areaName, setAreaName] = useState(name);
   const [tooltip, setTooltipState] = useState({ open: false });
   const [loading, setLoadingState] = useState(true);
@@ -66,7 +66,7 @@ const AreaCard = (props) => {
     (modalState = true) => {
       setModalState({
         open: modalState,
-        mode: subscription ? "edit" : "new",
+        mode: subscription ? 'edit' : 'new',
       });
     },
     [subscription]
@@ -101,7 +101,7 @@ const AreaCard = (props) => {
       );
       onChangedVisibility();
     } catch (e) {
-      toastr.error("Something went wrong updating the area.");
+      toastr.error('Something went wrong updating the area.');
     }
   }, [id, area, token, onChangedVisibility]);
 
@@ -126,7 +126,7 @@ const AreaCard = (props) => {
 
   const handleKeyDown = useCallback(
     async (evt) => {
-      if (evt.key === "Escape") {
+      if (evt.key === 'Escape') {
         setAreaName(name);
         nameRef.current.blur();
       }
@@ -151,7 +151,7 @@ const AreaCard = (props) => {
         nameRef.current.blur();
         if (onEditArea) onEditArea(id);
       } catch (e) {
-        toastr.error("Something went wrong updating the area.");
+        toastr.error('Something went wrong updating the area.');
       }
     },
     [id, areaName, geostore, token, onEditArea]
@@ -181,7 +181,7 @@ const AreaCard = (props) => {
       .catch((_error) => {
         if (axios.isCancel(_error)) {
           // eslint-disable-next-line no-console
-          console.error("Cancelled by user");
+          console.error('Cancelled by user');
         } else {
           toastr.error(`Something went wrong loading your area "${name}"`);
         }
@@ -198,12 +198,12 @@ const AreaCard = (props) => {
   const { open: isTooltipOpen } = tooltip;
   const { bounds, geojson } = layer;
   const mapContainerClass = classnames({
-    "map-container": true,
-    "-ready": !loading,
+    'map-container': true,
+    '-ready': !loading,
   });
 
   const userAreaLayer = useMemo(
-    () => (geojson ? [getUserAreaLayer({ id: "user-area", geojson })] : []),
+    () => (geojson ? [getUserAreaLayer({ id: 'user-area', geojson })] : []),
     [geojson]
   );
 
@@ -223,7 +223,7 @@ const AreaCard = (props) => {
           boundaries
           bounds={bounds}
           fitBoundsOptions={{ transitionDuration: 0 }}
-          getCursor={() => "default"}
+          getCursor={() => 'default'}
           doubleClickZoom={false}
           scrollZoom={false}
           touchZoom={false}
@@ -270,7 +270,7 @@ const AreaCard = (props) => {
                 onClick={openSubscriptionsModal}
               >
                 {`${subscriptionsByArea.length} subscription`}
-                {subscriptionsByArea.length > 1 && "s"}
+                {subscriptionsByArea.length > 1 && 's'}
                 {subscriptionsToConfirm.length > 0 &&
                   ` (${subscriptionsToConfirm.length} to confirm)`}
               </button>
@@ -281,13 +281,13 @@ const AreaCard = (props) => {
         <div className="actions-container">
           <button
             type="button"
-            className={classnames("c-btn -compressed -fs-medium", {
-              "-primary": isVisible,
-              "-secondary": !isVisible,
+            className={classnames('c-btn -compressed -fs-medium', {
+              '-primary': isVisible,
+              '-secondary': !isVisible,
             })}
             onClick={handleMapView}
           >
-            {isVisible ? "Active" : "Show area"}
+            {isVisible ? 'Active' : 'Show area'}
           </button>
           <Tooltip
             visible={isTooltipOpen}

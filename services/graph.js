@@ -1,8 +1,8 @@
-import WRISerializer from "wri-json-api-serializer";
+import WRISerializer from 'wri-json-api-serializer';
 
 // utils
-import { WRIAPI } from "utils/axios";
-import { logger } from "utils/logs";
+import { WRIAPI } from 'utils/axios';
+import { logger } from 'utils/logs';
 
 /**
  * Get all tags.
@@ -10,9 +10,9 @@ import { logger } from "utils/logs";
  * @param {Object} params Request parameters to API.
  */
 export const fetchAllTags = (params = {}) => {
-  logger.info("Fetch all tags");
-  return WRIAPI.get("/v1/graph/query/list-concepts", {
-    headers: { "Upgrade-Insecure-Requests": 1 },
+  logger.info('Fetch all tags');
+  return WRIAPI.get('/v1/graph/query/list-concepts', {
+    headers: { 'Upgrade-Insecure-Requests': 1 },
     params: {
       env: process.env.NEXT_PUBLIC_API_ENV,
       application: process.env.NEXT_PUBLIC_APPLICATIONS,
@@ -33,9 +33,9 @@ export const fetchAllTags = (params = {}) => {
  * @param {Object} params Request parameters to API.
  */
 export const fetchInferredTags = (params = {}) => {
-  logger.info("Fetch inferred tags");
-  return WRIAPI.get("/v1/graph/query/concepts-inferred", {
-    headers: { "Upgrade-Insecure-Requests": 1 },
+  logger.info('Fetch inferred tags');
+  return WRIAPI.get('/v1/graph/query/concepts-inferred', {
+    headers: { 'Upgrade-Insecure-Requests': 1 },
     params: {
       env: process.env.NEXT_PUBLIC_API_ENV,
       application: process.env.NEXT_PUBLIC_APPLICATIONS,
@@ -58,7 +58,7 @@ export const fetchInferredTags = (params = {}) => {
  * @param {Object} params Request parameters to API.
  */
 export const countDatasetView = (datasetId, token, params = {}) => {
-  logger.info("Count dataset view");
+  logger.info('Count dataset view');
   return WRIAPI.post(
     `/v1/graph/dataset/${datasetId}/visited`,
     {},
@@ -88,14 +88,14 @@ export const countDatasetView = (datasetId, token, params = {}) => {
  * @returns {Promise<string[]>} List of sorted ids
  */
 export const fetchMostViewedDatasets = (params = {}) => {
-  logger.info("Fetch most viewed datasets");
-  return WRIAPI.get("/v1/graph/query/most-viewed", {
+  logger.info('Fetch most viewed datasets');
+  return WRIAPI.get('/v1/graph/query/most-viewed', {
     params: {
       env: process.env.NEXT_PUBLIC_API_ENV,
       application: process.env.NEXT_PUBLIC_APPLICATIONS,
       ...params,
     },
-    headers: { "Upgrade-Insecure-Requests": 1 },
+    headers: { 'Upgrade-Insecure-Requests': 1 },
   })
     .then((response) => WRISerializer(response.data))
     .catch((response) => {
@@ -115,14 +115,14 @@ export const fetchMostViewedDatasets = (params = {}) => {
  * @param {Object} params Request parameters to API.
  */
 export const fetchMostFavoritedDatasets = (params = {}) => {
-  logger.info("Fetch most favorited datasets");
-  return WRIAPI.get("/v1/graph/query/most-liked-datasets", {
+  logger.info('Fetch most favorited datasets');
+  return WRIAPI.get('/v1/graph/query/most-liked-datasets', {
     params: {
       env: process.env.NEXT_PUBLIC_API_ENV,
       application: process.env.NEXT_PUBLIC_APPLICATIONS,
       ...params,
     },
-    headers: { "Upgrade-Insecure-Requests": 1 },
+    headers: { 'Upgrade-Insecure-Requests': 1 },
   })
     .then((response) => WRISerializer(response.data))
     .catch((response) => {
@@ -144,17 +144,17 @@ export const fetchMostFavoritedDatasets = (params = {}) => {
  * should be considered or not
  */
 export const fetchSimilarDatasets = (params = {}, withAncestors = true) => {
-  logger.info("Fetch similar datasets");
+  logger.info('Fetch similar datasets');
   const endpoint = withAncestors
-    ? "similar-dataset-including-descendent"
-    : "similar-dataset";
+    ? 'similar-dataset-including-descendent'
+    : 'similar-dataset';
   return WRIAPI.get(`graph/query/${endpoint}`, {
     params: {
       env: process.env.NEXT_PUBLIC_API_ENV,
       application: process.env.NEXT_PUBLIC_APPLICATIONS,
       ...params,
     },
-    headers: { "Upgrade-Insecure-Requests": 1 },
+    headers: { 'Upgrade-Insecure-Requests': 1 },
   })
     .then((response) => response.data.data)
     .catch((response) => {

@@ -1,8 +1,8 @@
-import WRISerializer from "wri-json-api-serializer";
+import WRISerializer from 'wri-json-api-serializer';
 
 // utils
-import { WRIAPI } from "utils/axios";
-import { logger } from "utils/logs";
+import { WRIAPI } from 'utils/axios';
+import { logger } from 'utils/logs';
 
 /**
  * Get FAQs.
@@ -12,13 +12,13 @@ import { logger } from "utils/logs";
  * @returns {Object}
  */
 export const fetchFaqs = (params = {}, headers = {}) => {
-  logger.info("Fetch FAQs");
-  return WRIAPI.get("/v1/faq", {
+  logger.info('Fetch FAQs');
+  return WRIAPI.get('/v1/faq', {
     params: {
       env: process.env.NEXT_PUBLIC_API_ENV,
       application: process.env.NEXT_PUBLIC_APPLICATIONS,
       ...params,
-      published: "all",
+      published: 'all',
     },
     headers: { ...headers },
   })
@@ -120,9 +120,9 @@ export const updateFaq = (id, faq, token, params = {}, headers = {}) => {
  * @returns {Object}
  */
 export const createFaq = (faq, token, params = {}, headers = {}) => {
-  logger.info("Create FAQ");
+  logger.info('Create FAQ');
   return WRIAPI.post(
-    "/v1/faq",
+    '/v1/faq',
     { ...faq },
     {
       headers: {
@@ -153,9 +153,9 @@ export const createFaq = (faq, token, params = {}, headers = {}) => {
  * @returns {Object}
  */
 export const updateFaqOrder = (order, token, params = {}, headers = {}) => {
-  logger.info("Reorder FAQ");
+  logger.info('Reorder FAQ');
   return WRIAPI.post(
-    "/v1/faq/reorder",
+    '/v1/faq/reorder',
     { ...order },
     {
       headers: {

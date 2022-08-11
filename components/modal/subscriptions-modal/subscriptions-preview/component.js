@@ -1,9 +1,9 @@
-import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 
 // components
-import Spinner from "components/ui/Spinner";
-import AlertsTable from "./table";
+import Spinner from 'components/ui/Spinner';
+import AlertsTable from './table';
 
 class SubscriptionsPreview extends PureComponent {
   static propTypes = {

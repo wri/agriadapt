@@ -1,5 +1,5 @@
-import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 
 class CodeTD extends PureComponent {
   static propTypes = { row: PropTypes.object.isRequired };
@@ -9,7 +9,7 @@ class CodeTD extends PureComponent {
       row: { metadata },
     } = this.props;
     const code =
-      metadata && (metadata[0] || {}).info ? metadata[0].info.rwId : "";
+      metadata && (metadata[0] || {}).info ? metadata[0].info.rwId : '';
 
     return (
       <td>

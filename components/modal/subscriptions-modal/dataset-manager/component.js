@@ -1,17 +1,17 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import classnames from "classnames";
-import isEqual from "lodash/isEqual";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
+import isEqual from 'lodash/isEqual';
 
 // components
-import CustomSelect from "components/ui/CustomSelect";
-import Field from "components/form/Field";
-import Input from "components/form/Input";
+import CustomSelect from 'components/ui/CustomSelect';
+import Field from 'components/form/Field';
+import Input from 'components/form/Input';
 
 const EMPTY_DATASET = {
   id: null,
-  label: "",
-  value: "",
+  label: '',
+  value: '',
   subscriptions: [],
   threshold: 1,
 };
@@ -154,14 +154,14 @@ class DatasetManager extends Component {
           <div key={index} className="selectors-container">
             <Field
               properties={{
-                name: index === 0 ? "dataset" : null,
-                label: index === 0 ? "Dataset" : null,
+                name: index === 0 ? 'dataset' : null,
+                label: index === 0 ? 'Dataset' : null,
               }}
             >
               <CustomSelect
                 placeholder="Select a dataset"
                 className={classnames({
-                  "-disabled":
+                  '-disabled':
                     activeArea !== null
                       ? false
                       : index === 0 && _selectedDataset.value,
@@ -175,14 +175,14 @@ class DatasetManager extends Component {
             </Field>
             <Field
               properties={{
-                name: index === 0 ? "type" : null,
-                label: index === 0 ? "Type" : null,
+                name: index === 0 ? 'type' : null,
+                label: index === 0 ? 'Type' : null,
               }}
             >
               <CustomSelect
                 placeholder="Select a subscription type"
                 className={classnames({
-                  "-disabled": !_selectedDataset.subscriptions.length,
+                  '-disabled': !_selectedDataset.subscriptions.length,
                 })}
                 options={_selectedDataset.subscriptions}
                 onValueChange={(val) => this.onSetSubscription(val, index)}
@@ -203,9 +203,9 @@ class DatasetManager extends Component {
               className="threshold-input"
               onChange={(val) => this.onSetthreshold(val, index)}
               properties={{
-                name: "threshold",
-                label: index === 0 ? "Minimum" : null,
-                type: "number",
+                name: 'threshold',
+                label: index === 0 ? 'Minimum' : null,
+                type: 'number',
                 default: _selectedDataset.threshold,
                 value: _selectedDataset.threshold,
               }}
@@ -214,8 +214,8 @@ class DatasetManager extends Component {
             </Field>
             <Field
               properties={{
-                name: "delete",
-                label: index === 0 ? " " : null,
+                name: 'delete',
+                label: index === 0 ? ' ' : null,
               }}
             >
               <button
@@ -229,8 +229,8 @@ class DatasetManager extends Component {
         ))}
         <div className="subscription-btn-container">
           <button
-            className={classnames("c-btn -b -fullwidth", {
-              "-disabled": selectedDatasets.find(
+            className={classnames('c-btn -b -fullwidth', {
+              '-disabled': selectedDatasets.find(
                 (_selectedDataset) => _selectedDataset.id === null
               ),
             })}

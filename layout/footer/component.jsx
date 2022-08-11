@@ -1,14 +1,14 @@
 // components
-import FooterLinks from "./footer-links";
-import Link from "next/link";
-import { Media } from "lib/media";
-import Image from "next/image";
+import FooterLinks from './footer-links';
+import Link from 'next/link';
+import { Media } from 'lib/media';
+import Image from 'next/image';
 import wriLogo from 'public/images/wri-logo.svg';
 import loader from 'lib/imageLoader';
-import { useTranslation } from "next-i18next";
+import { useTranslation } from 'next-i18next';
 
 export default function Footer() {
-  const { t } = useTranslation('footer');
+  const { t } = useTranslation('common', 'footer');
 
   return (
     <footer className="l-footer">
@@ -30,17 +30,21 @@ export default function Footer() {
                     <Image
                       src={wriLogo}
                       loader={loader}
-                      alt={t('footer:world_resources_institute')}
+                      alt={t('common:world_resources_institute')}
                     />
                   </a>
                 </div>
                 <div className="footer-item">
-                  <Link href="#">
-                    <p>{t('footer:terms_of_service')}</p>
-                  </Link>
-                  <Link href="#">
-                    <p>{t('footer:privacy_policy')}</p>
-                  </Link>
+                  <p>
+                    <Link href="/terms-of-service" passHref>
+                      <a>{t('common:terms_of_service')}</a>
+                    </Link>
+                  </p>
+                  <p>
+                    <Link href="/privacy-policy" passHref>
+                      <a>{t('footer:privacy_policy')}</a>
+                    </Link>
+                  </p>
                 </div>
               </div>
             </div>
@@ -54,7 +58,7 @@ export default function Footer() {
               <div className="column small-12">
                 <div className="footer-container">
                   <div className="footer-item">
-                    © {t('footer:world_resources_institute')} 2022
+                    © {t('common:world_resources_institute')} 2022
                   </div>
                 </div>
               </div>
@@ -79,7 +83,7 @@ export default function Footer() {
               <div className="column small-12">
                 <div className="footer-container">
                   <div className="footer-item">
-                  © {t('footer:world_resources_institute')} 2022
+                    © {t('common:world_resources_institute')} 2022
                   </div>
                   <div className="footer-item">
                     <span>{t('footer:powered_by')}</span>

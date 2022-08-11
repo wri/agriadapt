@@ -1,3 +1,3 @@
-import AlertsTable from "./component";
+import AlertsTable from './component';
 
 export default AlertsTable;

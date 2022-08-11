@@ -3,11 +3,11 @@
  * are too generic and don't add much meaning
  */
 export const TAGS_BLACKLIST = [
-  "general",
-  "location",
-  "global",
-  "dataset",
-  "frequency",
-  "time_period",
-  "data_type",
+  'general',
+  'location',
+  'global',
+  'dataset',
+  'frequency',
+  'time_period',
+  'data_type',
 ];

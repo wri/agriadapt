@@ -1,4 +1,4 @@
-import { createSelector } from "reselect";
+import { createSelector } from 'reselect';
 
 const dashboards = (state) => state.adminDashboards.dashboards.list;
 const filters = (state) => state.adminDashboards.dashboards.filters;
@@ -15,13 +15,13 @@ export const getFilteredDashboards = (dashboards, filters) => {
   return dashboards.filter((dashboard) => {
     // eslint-disable-line arrow-body-style
     return filters.every((filter) => {
-      if (filter.key === "id") return dashboard.id === filter.value;
-      if (filter.key === "owner") {
+      if (filter.key === 'id') return dashboard.id === filter.value;
+      if (filter.key === 'owner') {
         return dashboard.user && dashboard.user.role === filter.value;
       }
       if (!dashboard[filter.key]) return false;
 
-      if (typeof filter.value === "string") {
+      if (typeof filter.value === 'string') {
         return dashboard[filter.key]
           .toLowerCase()
           .match(filter.value.toLowerCase());
@@ -44,9 +44,9 @@ export const getDashboards = createSelector(
     data.map((_dashboard) => ({
       ..._dashboard,
       owner: _dashboard.user
-        ? _dashboard.user.name || (_dashboard.user.email || "").split("@")[0]
-        : "",
-      role: _dashboard.user ? _dashboard.user.role || "" : "",
+        ? _dashboard.user.name || (_dashboard.user.email || '').split('@')[0]
+        : '',
+      role: _dashboard.user ? _dashboard.user.role || '' : '',
     }))
 );
 

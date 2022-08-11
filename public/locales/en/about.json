@@ -1,6 +1,6 @@
 {
   "intro": {
-    "title": "Agricultural Adaptation Tool",
+    "title": "About the Agricultural Adaptation Tool",
     "description": [
       "World Resources Institute has been building out a multifaceted program on Transforming Agriculture for Climate Resilience over the past five years. The aim of this work is to inform funders, policymakers and practitioners to integrate climate risk and resilience into plans, policies and programs.",
       "The Agricultural Adaptation Tool is developed focusing on in-depth stakeholder engagement to bring together sectoral knowledge with technical and data expertise, underpinned by a user-centric approach to tool development."
@@ -11,7 +11,8 @@
       "header": "A special thanks to our contributors"
     },
     "committee_members": {
-      "subheader": "Technical Advisory Committee Members"
+      "subheader": "Technical Advisory Committee Members",
+      "text": "Agrosavia, CIAT, CIMMYT, Climate Analytics, Colombian Corporation for Agricultural Research, Climate Edge, Cotton 2040/Forum for the Future, Ecosistema Jaguar, FAO GAEZ, IFPRI, IIASA Hotspots Explorer, ITACA, ITC, Olam International, Pepsi Co, Suntory, University of Florida, World Bank, World Cocoa Foundation, World Food Programme."
     },
     "funders": {
       "header": "Our Funders"

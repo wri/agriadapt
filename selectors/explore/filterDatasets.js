@@ -1,4 +1,4 @@
-import { createSelector } from "reselect";
+import { createSelector } from 'reselect';
 
 // Get datasets
 const datasetList = (state) => state.explore.datasets.list;
@@ -21,7 +21,7 @@ const getPaginatedDatasets = (_list, _page, _limit) => {
  * @param {{ order: string, datasets: string[], loading: boolean }[]} sorting Sorting object
  */
 const getSortedDatasets = (datasets, sorting) => {
-  if (sorting.order === "modified" || sorting.loading) {
+  if (sorting.order === 'modified' || sorting.loading) {
     return datasets;
   }
 
@@ -74,7 +74,7 @@ const getFilteredDatasets = (
     let searchFilterPassed = false;
     let conceptsCheckPassed = true;
 
-    if (search && search.key === "name") {
+    if (search && search.key === 'name') {
       const searchSt = search.value.toLowerCase();
 
       if (it.attributes.metadata.length > 0) {

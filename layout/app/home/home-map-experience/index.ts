@@ -1,3 +1,3 @@
-import MapContainerHome from "./component";
+import MapContainerHome from './component';
 
 export default MapContainerHome;

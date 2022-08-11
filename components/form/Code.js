@@ -1,16 +1,16 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 // Components
-import FormElement from "./FormElement";
+import FormElement from './FormElement';
 
 let AceEditor;
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   /* eslint-disable */
-  require("brace");
-  require("brace/mode/json");
-  require("brace/theme/github");
-  AceEditor = require("react-ace").default;
+  require('brace');
+  require('brace/mode/json');
+  require('brace/theme/github');
+  AceEditor = require('react-ace').default;
   /* eslint-enable */
 }
 
@@ -67,7 +67,7 @@ class Code extends FormElement {
   }
 
   render() {
-    if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') {
       return (
         <AceEditor
           name={this.props.properties.name}

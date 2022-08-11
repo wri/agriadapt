@@ -56,9 +56,7 @@ interface ExplorePageProps {
 
 class ExplorePage extends PureComponent<ExplorePageProps> {
   componentDidMount() {
-    const {
-      setIsServer,
-    } = this.props;
+    const { setIsServer } = this.props;
 
     setIsServer(false);
   }
@@ -70,9 +68,7 @@ class ExplorePage extends PureComponent<ExplorePageProps> {
   }
 
   componentWillUnmount() {
-    const {
-      resetExplore,
-    } = this.props;
+    const { resetExplore } = this.props;
 
     resetExplore();
   }
@@ -82,13 +78,7 @@ class ExplorePage extends PureComponent<ExplorePageProps> {
       explore: {
         datasets,
         filters,
-        map: {
-          viewport,
-          basemap,
-          labels,
-          boundaries,
-          layerGroups,
-        },
+        map: { viewport, basemap, labels, boundaries, layerGroups },
         sidebar: { anchor, selectedTab },
       },
       router,
@@ -138,17 +128,14 @@ class ExplorePage extends PureComponent<ExplorePageProps> {
         {},
         {
           shallow: true,
-        },
+        }
       );
     }
   }
 
   shouldUpdateUrl(prevProps: ExplorePageProps) {
     const {
-      explore: {
-        datasets, filters, map,
-        sidebar,
-      },
+      explore: { datasets, filters, map, sidebar },
     } = this.props;
 
     const {
@@ -160,36 +147,44 @@ class ExplorePage extends PureComponent<ExplorePageProps> {
       },
     } = prevProps;
 
-    const layers = encodeURIComponent(JSON.stringify(map.layerGroups.map((lg) => ({
-      dataset: lg.dataset,
-      opacity: lg.opacity || 1,
-      visible: lg.visible,
-      layer: lg.layers.find((l) => l.active === true)?.id,
-    }))));
+    const layers = encodeURIComponent(
+      JSON.stringify(
+        map.layerGroups.map((lg) => ({
+          dataset: lg.dataset,
+          opacity: lg.opacity || 1,
+          visible: lg.visible,
+          layer: lg.layers.find((l) => l.active === true)?.id,
+        }))
+      )
+    );
 
-    const prevLayers = encodeURIComponent(JSON.stringify(prevMap.layerGroups.map((lg) => ({
-      dataset: lg.dataset,
-      opacity: lg.opacity || 1,
-      visible: lg.visible,
-      layer: lg.layers.find((l) => l.active === true)?.id,
-    }))));
+    const prevLayers = encodeURIComponent(
+      JSON.stringify(
+        prevMap.layerGroups.map((lg) => ({
+          dataset: lg.dataset,
+          opacity: lg.opacity || 1,
+          visible: lg.visible,
+          layer: lg.layers.find((l) => l.active === true)?.id,
+        }))
+      )
+    );
 
     return (
       // Map
-      map.viewport.zoom !== prevMap.viewport.zoom
-      || map.viewport.latitude !== prevMap.viewport.latitude
-      || map.viewport.longitude !== prevMap.viewport.longitude
-      || map.viewport.pitch !== prevMap.viewport.pitch
-      || map.viewport.bearing !== prevMap.viewport.bearing
-      || map.basemap !== prevMap.basemap
-      || map.labels.id !== prevMap.labels.id
-      || map.boundaries !== prevMap.boundaries
-      || layers !== prevLayers
-      || sidebar.selectedTab !== prevSidebar.selectedTab
+      map.viewport.zoom !== prevMap.viewport.zoom ||
+      map.viewport.latitude !== prevMap.viewport.latitude ||
+      map.viewport.longitude !== prevMap.viewport.longitude ||
+      map.viewport.pitch !== prevMap.viewport.pitch ||
+      map.viewport.bearing !== prevMap.viewport.bearing ||
+      map.basemap !== prevMap.basemap ||
+      map.labels.id !== prevMap.labels.id ||
+      map.boundaries !== prevMap.boundaries ||
+      layers !== prevLayers ||
+      sidebar.selectedTab !== prevSidebar.selectedTab ||
       // Datasets
-      || datasets.selected !== prevDatasets.selected
-      || datasets.page !== prevDatasets.page
-      || filters.search !== prevFilters.search
+      datasets.selected !== prevDatasets.selected ||
+      datasets.page !== prevDatasets.page ||
+      filters.search !== prevFilters.search
     );
   }
 
@@ -221,14 +216,21 @@ export const getServerSideProps = wrapper.getServerSideProps(
 
       const viewer_iso2 = req.headers['cloudfront-viewer-country'];
       if (req.headers && viewer_iso2) {
-        if (viewer_iso2 === 'IN')
-          dispatch(actions.setWorldview(viewer_iso2));
+        if (viewer_iso2 === 'IN') dispatch(actions.setWorldview(viewer_iso2));
       }
       let datasetData = null;
 
-      if (tab) dispatch(actions.setSidebarSelectedTab(Array.isArray(tab) ? tab.join('') : tab));
+      if (tab)
+        dispatch(
+          actions.setSidebarSelectedTab(Array.isArray(tab) ? tab.join('') : tab)
+        );
 
-      if (search) dispatch(actions.setFiltersSearch(Array.isArray(search) ? search.join('') : search));
+      if (search)
+        dispatch(
+          actions.setFiltersSearch(
+            Array.isArray(search) ? search.join('') : search
+          )
+        );
 
       if (value_chains)
         dispatch(
@@ -245,11 +247,18 @@ export const getServerSideProps = wrapper.getServerSideProps(
           )
         );
       if (dataset) {
-        dispatch(actions.setSelectedDataset(Array.isArray(dataset) ? dataset.join('') : dataset));
+        dispatch(
+          actions.setSelectedDataset(
+            Array.isArray(dataset) ? dataset.join('') : dataset
+          )
+        );
         datasetData = await fetchDataset(
           Array.isArray(dataset) ? dataset.join('') : dataset
         );
-        if (viewer_iso2 === 'IN' && INDIA_BLACKLIST_DATASET_IDS.includes(datasetData.id))
+        if (
+          viewer_iso2 === 'IN' &&
+          INDIA_BLACKLIST_DATASET_IDS.includes(datasetData.id)
+        )
           return {
             redirect: {
               destination: '/unauthorized',
@@ -270,11 +279,19 @@ export const getServerSideProps = wrapper.getServerSideProps(
           ...(bearing && { bearing: +bearing }),
         })
       );
-      if (basemap) dispatch(actions.setBasemap(Array.isArray(basemap) ? basemap.join('') : basemap));
-      if (labels) dispatch(actions.setLabels(Array.isArray(labels) ? labels.join('') : labels));
+      if (basemap)
+        dispatch(
+          actions.setBasemap(
+            Array.isArray(basemap) ? basemap.join('') : basemap
+          )
+        );
+      if (labels)
+        dispatch(
+          actions.setLabels(Array.isArray(labels) ? labels.join('') : labels)
+        );
       if (boundaries) dispatch(actions.setBoundaries(!!boundaries));
 
-      // Fetch layers  
+      // Fetch layers
       if (layers)
         await dispatch(
           actions.fetchMapLayerGroups(
@@ -300,10 +317,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
     }
 );
 
-export default connect(
-  (state: RootState) => ({ explore: state.explore }),
-  {
-    ...actions,
-    setIsServer: setServerAction,
-  },
-)(withRouter(ExplorePage));
+export default connect((state: RootState) => ({ explore: state.explore }), {
+  ...actions,
+  setIsServer: setServerAction,
+})(withRouter(ExplorePage));

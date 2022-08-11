@@ -1,8 +1,8 @@
-import WRISerializer from "wri-json-api-serializer";
+import WRISerializer from 'wri-json-api-serializer';
 
 // utils
-import { WRIAPI } from "utils/axios";
-import { logger } from "utils/logs";
+import { WRIAPI } from 'utils/axios';
+import { logger } from 'utils/logs';
 
 /**
  * Get Subscriptions
@@ -11,8 +11,8 @@ import { logger } from "utils/logs";
  * @param {Object} params request paremeters to API.
  */
 export const fetchSubscriptions = (token, params) => {
-  logger.info("Fetch subscriptions");
-  return WRIAPI.get("/v1/subscriptions", {
+  logger.info('Fetch subscriptions');
+  return WRIAPI.get('/v1/subscriptions', {
     headers: {
       ...WRIAPI.defaults.headers,
       Authorization: token,
@@ -28,7 +28,7 @@ export const fetchSubscriptions = (token, params) => {
 
       if (status >= 300) {
         logger.error(
-          "Error fetching subscriptions:",
+          'Error fetching subscriptions:',
           `${status}: ${statusText}`
         );
         throw new Error(statusText);
@@ -54,24 +54,24 @@ export const createSubscriptionToArea = ({
   datasetsQuery,
   user,
   language,
-  name = "",
+  name = '',
 }) => {
   logger.info(`Create subscription to area: ${areaId}`);
   const bodyObj = {
     name,
     application: process.env.NEXT_PUBLIC_APPLICATIONS,
     env: process.env.NEXT_PUBLIC_API_ENV,
-    language: language || "en",
+    language: language || 'en',
     datasets,
     datasetsQuery,
     resource: {
-      type: "EMAIL",
+      type: 'EMAIL',
       content: user.email,
     },
     params: { area: areaId },
   };
 
-  return WRIAPI.post("/v1/subscriptions", bodyObj, {
+  return WRIAPI.post('/v1/subscriptions', bodyObj, {
     headers: { Authorization: user.token },
   }).catch(({ response }) => {
     const { status, statusText } = response;
@@ -106,11 +106,11 @@ export const updateSubscriptionToArea = (
   const bodyObj = {
     application: process.env.NEXT_PUBLIC_APPLICATIONS,
     env: process.env.NEXT_PUBLIC_API_ENV,
-    language: language || "en",
+    language: language || 'en',
     datasets,
     datasetsQuery,
     resource: {
-      type: "EMAIL",
+      type: 'EMAIL',
       content: user.email,
     },
     params: { area: areaId },

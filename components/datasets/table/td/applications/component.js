@@ -1,5 +1,5 @@
-import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 
 class ApplicationsTD extends PureComponent {
   static propTypes = { row: PropTypes.object.isRequired };
@@ -11,7 +11,7 @@ class ApplicationsTD extends PureComponent {
 
     return (
       <td>
-        <span>{application.join(", ")}</span>
+        <span>{application.join(', ')}</span>
       </td>
     );
   }

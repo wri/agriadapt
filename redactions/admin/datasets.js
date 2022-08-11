@@ -1,19 +1,19 @@
-import { createAction, createThunkAction } from "redux-tools";
+import { createAction, createThunkAction } from 'redux-tools';
 
-import { fetchDatasets } from "services/dataset";
+import { fetchDatasets } from 'services/dataset';
 
 /**
  * CONSTANTS
  */
-const GET_DATASETS_SUCCESS = "datasets/getDatasetsSuccess";
-const GET_DATASETS_ERROR = "datasets/getDatasetsError";
-const GET_DATASETS_LOADING = "datasets/getDatasetsLoading";
-const SET_DATASETS_FILTERS = "datasets/getDatasetsFilters";
-const SET_DATASETS_ORDER_DIRECTION = "datasets/setOrderDirection";
-const SET_DATASETS_PAGINATION_PAGE = "datasets/setDatasetsPaginationPage";
-const SET_DATASETS_PAGINATION_TOTAL = "datasets/setDatasetsPaginationTotal";
-const SET_DATASETS_PAGINATION_LIMIT = "datasets/setDatasetsPaginationLimit";
-const RESET_DATASETS = "datasets/resetDatasets";
+const GET_DATASETS_SUCCESS = 'datasets/getDatasetsSuccess';
+const GET_DATASETS_ERROR = 'datasets/getDatasetsError';
+const GET_DATASETS_LOADING = 'datasets/getDatasetsLoading';
+const SET_DATASETS_FILTERS = 'datasets/getDatasetsFilters';
+const SET_DATASETS_ORDER_DIRECTION = 'datasets/setOrderDirection';
+const SET_DATASETS_PAGINATION_PAGE = 'datasets/setDatasetsPaginationPage';
+const SET_DATASETS_PAGINATION_TOTAL = 'datasets/setDatasetsPaginationTotal';
+const SET_DATASETS_PAGINATION_LIMIT = 'datasets/setDatasetsPaginationLimit';
+const RESET_DATASETS = 'datasets/resetDatasets';
 
 /**
  * STORE
@@ -26,7 +26,7 @@ const initialState = {
     loading: false, // Are we loading the data?
     error: null, // An error was produced while loading the data
     filters: [], // Filters for the list of datasets
-    orderDirection: "desc", // sort's direction of the list
+    orderDirection: 'desc', // sort's direction of the list
     pagination: {
       page: 1, // current page of the pagination
       total: 0, // total items to be paginated
@@ -148,7 +148,7 @@ export const setPaginationLimit = createAction(SET_DATASETS_PAGINATION_LIMIT);
 export const resetDatasets = createAction(RESET_DATASETS);
 
 export const getAllDatasets = createThunkAction(
-  "datasets/getAllDatasets",
+  'datasets/getAllDatasets',
   (options) => (dispatch, getState) => {
     dispatch({ type: GET_DATASETS_LOADING });
     const { user } = getState();
@@ -156,13 +156,13 @@ export const getAllDatasets = createThunkAction(
       { ...options.filters, includes: options.includes },
       {
         Authorization: user.token,
-        "Upgrade-Insecure-Requests": 1,
+        'Upgrade-Insecure-Requests': 1,
       },
       true
     )
       .then((result) => {
         const { datasets, meta } = result;
-        const { "total-items": totalItems } = meta;
+        const { 'total-items': totalItems } = meta;
 
         dispatch({
           type: GET_DATASETS_SUCCESS,
@@ -177,7 +177,7 @@ export const getAllDatasets = createThunkAction(
 );
 
 export const getDatasetsByTab = createThunkAction(
-  "datasets/getDatasetsByTab",
+  'datasets/getDatasetsByTab',
   (tab) => (dispatch, getState) => {
     const { user, datasets } = getState();
     const { id } = user;
@@ -185,17 +185,17 @@ export const getDatasetsByTab = createThunkAction(
     const { page, limit } = pagination;
     let options = {
       filters: {
-        "page[size]": limit,
-        "page[number]": page,
-        sort: orderDirection === "asc" ? "updatedAt" : "-updatedAt",
-        name: (filters.find((filter) => filter.key === "name") || {}).value,
+        'page[size]': limit,
+        'page[number]': page,
+        sort: orderDirection === 'asc' ? 'updatedAt' : '-updatedAt',
+        name: (filters.find((filter) => filter.key === 'name') || {}).value,
       },
-      includes: ["widget", "layer", "metadata", "vocabulary"].join(","),
+      includes: ['widget', 'layer', 'metadata', 'vocabulary'].join(','),
     };
 
     switch (tab) {
       // when the user asks for a its own datasets...
-      case "my_datasets":
+      case 'my_datasets':
         options = {
           ...options,
           filters: {
@@ -207,7 +207,7 @@ export const getDatasetsByTab = createThunkAction(
         break;
 
       // when the user asks for its favorites datasets...
-      case "favorites":
+      case 'favorites':
         options = {
           ...options,
           filters: {

@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classnames from "classnames";
-import Icon from "components/ui/icon";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
+import Icon from 'components/ui/icon';
 
 function TableSorts(props) {
   const { field, sort, onSort } = props;
@@ -10,7 +10,7 @@ function TableSorts(props) {
     <div>
       <button
         className={classnames({
-          "-active": sort.field === field && sort.value === 1,
+          '-active': sort.field === field && sort.value === 1,
         })}
         onClick={() =>
           onSort &&
@@ -25,7 +25,7 @@ function TableSorts(props) {
 
       <button
         className={classnames({
-          "-active": sort.field === field && sort.value === -1,
+          '-active': sort.field === field && sort.value === -1,
         })}
         onClick={() =>
           onSort &&

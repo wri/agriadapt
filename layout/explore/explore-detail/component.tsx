@@ -56,9 +56,7 @@ const ExploreDetailComponent = ({
     dataset.metadata.length > 0 &&
     dataset.metadata[0];
   const info = metadata && metadata.info;
-  const layers =
-    dataset &&
-    dataset.layer.filter(layerFilter);
+  const layers = dataset && dataset.layer.filter(layerFilter);
   const dateLastUpdated = getDateConsideringTimeZone(
     dataset && dataset.dataLastUpdated
   );

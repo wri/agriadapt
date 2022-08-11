@@ -2,15 +2,23 @@
   "intro": {
     "subtitle": "Climate Risk in Coffee Value Chains",
     "description": [
-      "Although it is hard to be precise, it is generally accepted that climate change will affect both arabica and robusta production. Increasing average temperatures, more frequent droughts and heat waves, and inclement weather patterns threaten to upend a large portion of suitable coffee producing areas over the next decades. More coffee may need to be grown under irrigation, thereby increasing pressure on scarce water resources."
-    ]
+      "Available research reveals that climate change will affect coffee production worldwide, especially arabica production. Increasing average temperatures, more frequent droughts and heat waves, shifting seasonal patterns, and other factors threaten to upend a large portion of suitable coffee producing areas over the next decades. These changes are likely to increase pressure on water and other natural resources."
+    ],
+    "drop_down_title": "Select Country"
+  },
+  "climate_hazard": {
+    "title": "How Does Climate Change Affect the Coffee Value Chain?",
+    "description": "The production of coffee is affected by different climate threats along its value chain. Click on the buttons below to find information about how climate change affects each link of the value chain:"
   },
   "inputs": {
     "land_suitability": {
       "info": "Coffee arabica production is highly sensitive to climate change. Significant reductions in climate suitability are expected for most coffee growing regions."
     },
     "labor": {
-      "info": "Agricultural workers are especially vulnerable to increased heat stress, which affects the health of individuals and reduces labour productivity. The Universal Thermal Climate Index identifies outdoor conditions that cause discomfort to people using a combination of temperature, humidity, wind, and radiation to determine the stress (sweating, shivering, skin wetness, etc.) a person undergoes when exposed to outdoor conditions."
+      "info": [
+        "Agricultural workers are especially vulnerable to increased heat stress, which affects the health of individuals and reduces labor productivity. The Universal Thermal Climate Index identifies outdoor conditions that cause discomfort to people using a combination of temperature, humidity, wind, and radiation to determine the stress (sweating, shivering, skin wetness, etc.) a person undergoes when exposed to outdoor conditions.",
+        "Values between 9-26 means no thermal stress. Values above 26 are approaching heat stress, with values above 46 meaning extreme heat stress. Values below 9 are approaching cold stress, with values below -40 meaning extreme cold stress."
+      ]
     }
   },
   "production": {
@@ -20,13 +28,13 @@
     "pests_and_disease": {
       "info": "The coffee berry borer and coffee leaf rust are the most threatening pest and disease to the health of coffee trees. In general, increased temperatures will increase the spread of pests and diseases in coffee trees. However, projected decreased rainfall in certain regions may decrease the spread of pest and disease."
     },
-    "changing_rainfall": {
+    "changes_in_rainfall": {
       "info": "Temperature and rainfall conditions are considered to be important factors in defining potential coffee yield. Both factors interfere in the crop phenology, and consequently in productivity and quality."
     }
   },
   "trade": {
     "export_and_import": {
-      "info": "Coffee is one of the most important commercially traded commodities in the international market, as well as the most popular beverage around the world."
+      "info": "Coffee is one of the most important commercially traded commodities in the international market, as well as one of the most popular beverages around the world. Climate impacts to production means ripple effects to global markets by affecting product availability, quality, and price. Explore the visualization to learn about coffee exports and imports in {{country}}."
     }
   },
   "quotes": [

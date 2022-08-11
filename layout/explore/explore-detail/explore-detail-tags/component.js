@@ -1,8 +1,8 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 // Utils
-import { logEvent } from "utils/analytics";
+import { logEvent } from 'utils/analytics';
 
 // Constants
 
@@ -12,13 +12,13 @@ function ExploreDetailTags(props) {
   const getFilterObject = (tag) => {
     const { id, labels } = tag;
 
-    let keySt = "topics";
-    if (labels.includes("TOPIC")) {
-      keySt = "topics";
-    } else if (labels.includes("GEOGRAPHY")) {
-      keySt = "geographies";
-    } else if (labels.includes("DATA_TYPE")) {
-      keySt = "dataTypes";
+    let keySt = 'topics';
+    if (labels.includes('TOPIC')) {
+      keySt = 'topics';
+    } else if (labels.includes('GEOGRAPHY')) {
+      keySt = 'geographies';
+    } else if (labels.includes('DATA_TYPE')) {
+      keySt = 'dataTypes';
     }
 
     return { key: keySt, list: [id] };

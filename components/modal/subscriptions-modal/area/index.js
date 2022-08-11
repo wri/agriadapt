@@ -1,19 +1,19 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import sortBy from "lodash/sortBy";
-import isEqual from "lodash/isEqual";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import sortBy from 'lodash/sortBy';
+import isEqual from 'lodash/isEqual';
 
 // actions
-import { getUserAreas } from "redactions/user";
-import * as actions from "../actions";
+import { getUserAreas } from 'redactions/user';
+import * as actions from '../actions';
 
 // selectors
-import { getAvailableAreas, isAreaFound } from "../selectors";
-import { getSubscriptionsByArea, getActiveArea } from "./selectors";
+import { getAvailableAreas, isAreaFound } from '../selectors';
+import { getSubscriptionsByArea, getActiveArea } from './selectors';
 
 // component
-import AreaSubscriptionsModal from "./component";
+import AreaSubscriptionsModal from './component';
 
 class AreaSubscriptionsModalContainer extends Component {
   static propTypes = {
@@ -90,7 +90,7 @@ class AreaSubscriptionsModalContainer extends Component {
                   value: val,
                   ...(datasetQuery.type.includes(val) && { selected: true }),
                 })),
-                "label"
+                'label'
               ),
               threshold: datasetQuery.threshold,
             };

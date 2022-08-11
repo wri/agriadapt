@@ -1,6 +1,6 @@
-import { createReducer } from "@reduxjs/toolkit";
-import * as actions from "./actions";
-import initialState from "./initial-state";
+import { createReducer } from '@reduxjs/toolkit';
+import * as actions from './actions';
+import initialState from './initial-state';
 
 const reducers = createReducer(initialState, {
   [actions.setShapesCreated]: (state, { payload }) => ({

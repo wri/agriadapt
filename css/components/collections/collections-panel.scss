@@ -34,7 +34,7 @@
     margin: 10px 0 0;
 
     &:before {
-      content: "";
+      content: '';
       position: absolute;
       z-index: 1;
       display: inline-block;
@@ -81,7 +81,7 @@
     border-radius: 2px;
   }
 
-  input[type="checkbox"] {
+  input[type='checkbox'] {
     appearance: none;
     position: absolute;
     top: 0;
@@ -109,7 +109,7 @@
       background: $sea-blue;
 
       &:before {
-        content: "✔";
+        content: '✔';
         display: inline-block;
         position: absolute;
         top: 50%;

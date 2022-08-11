@@ -8,7 +8,6 @@ import Link from 'next/link';
 import { useTranslation } from 'next-i18next';
 
 const LayoutAbout = () => {
-
   const { t } = useTranslation(['about']);
 
   return (

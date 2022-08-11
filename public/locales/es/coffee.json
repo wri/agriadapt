@@ -1,0 +1,52 @@
+{
+	"intro": {
+		"subtitle": "Riesgo climático en las cadenas de valor del café",
+		"description": [
+			"La investigación disponible revela que el cambio climático afectará la producción de café en todo el mundo, especialmente la producción de arábica. El aumento de las temperaturas promedio, las sequías y olas de calor más frecuentes, los patrones estacionales cambiantes y otros factores amenazan con alterar una gran parte de las áreas productoras de café adecuadas en las próximas décadas. Es probable que estos cambios aumenten la presión sobre el agua y otros recursos naturales."
+		],
+		"drop_down_title": "Seleccionar país"
+	},
+	"climate_hazard": {
+		"title": "¿Cómo afecta el cambio climático a la cadena de valor del café?",
+		"description": "La producción de café se ve afectada por diferentes amenazas climáticas a lo largo de su cadena de valor. Haga clic en los botones a continuación para encontrar información sobre cómo el cambio climático afecta a cada eslabón de la cadena de valor:"
+	},
+	"inputs": {
+		"land_suitability": {
+			"info": "La producción de café arábica es altamente sensible al cambio climático. Se esperan reducciones significativas en la idoneidad climática para la mayoría de las regiones productoras de café."
+		},
+		"labor": {
+			"info": [
+				"Los trabajadores agrícolas son especialmente vulnerables al aumento del estrés por calor, lo que afecta la salud de las personas y reduce la productividad laboral. El Índice Climático Térmico Universal identifica las condiciones exteriores que causan incomodidad a las personas utilizando una combinación de temperatura, humedad, viento y radiación para determinar el estrés (sudoración, escalofríos, humedad de la piel, etc.) que sufre una persona cuando se expone a condiciones al aire libre.",
+				"Valores entre 9-26 significa que no hay estrés térmico. Los valores por encima de 26 se acercan al estrés por calor, con valores por encima de 46 que significan estrés por calor extremo. Los valores por debajo de 9 se acercan al estrés por frío, con valores por debajo de -40 que significan estrés por frío extremo."
+			]
+		}
+	},
+	"production": {
+		"production_volume": {
+			"info": "Explore nuestras visualizaciones de datos para comprender mejor dónde están las principales regiones productoras de café en {{país}} y cuánto café se produce actualmente."
+		},
+		"pests_and_disease": {
+			"info": "El barrenador de la baya del café y la roya de la hoja de café son la plaga y la enfermedad más amenazantes para la salud de los árboles de café. En general, el aumento de las temperaturas aumentará la propagación de plagas y enfermedades en los árboles de café. Sin embargo, la disminución proyectada de las precipitaciones en ciertas regiones puede disminuir la propagación de plagas y enfermedades."
+		},
+		"changes_in_rainfall": {
+			"info": "Las condiciones de temperatura y lluvia se consideran factores importantes para definir el rendimiento potencial del café. Ambos factores interfieren en la fenología del cultivo y, en consecuencia, en la productividad y la calidad."
+		}
+	},
+	"trade": {
+		"export_and_import": {
+			"info": "El café es uno de los productos más importantes comercializados comercialmente en el mercado internacional, así como una de las bebidas más populares en todo el mundo. Los impactos climáticos en la producción significan efectos dominó en los mercados globales al afectar la disponibilidad, la calidad y el precio de los productos. Explore la visualización para obtener información sobre las exportaciones e importaciones de café en {{país}}."
+		}
+	},
+	"quotes": [
+		{
+			"location": "Risaralda, Colombia",
+			"title": "Productor, Asociación Asocafé Tatamá",
+			"quote": "AgriAdapt ayuda a los productores a obtener los mapas de riesgo climático que requieren las certificaciones de café."
+		},
+		{
+			"location": "Bolívar, Colombia",
+			"title": "Representante de la asociación cafetera, Asociación De Jóvenes Cafeteros De Ciudad Bolívar",
+			"quote": "La herramienta ayudaría a las asociaciones cafeteras a revisar el riesgo climático en sus tierras."
+		}
+	]
+}

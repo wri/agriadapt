@@ -1,6 +1,6 @@
 // utils
-import { WRIAPI } from "utils/axios";
-import { logger } from "utils/logs";
+import { WRIAPI } from 'utils/axios';
+import { logger } from 'utils/logs';
 
 /**
  * Sends a contact form including a topic, email address, and a message.
@@ -9,8 +9,8 @@ import { logger } from "utils/logs";
  * @returns {Promise}
  */
 export const contactUs = (params) => {
-  logger.info("Contact us");
-  return WRIAPI.post("/v1/contact-us", params).catch(({ response }) => {
+  logger.info('Contact us');
+  return WRIAPI.post('/v1/contact-us', params).catch(({ response }) => {
     const { status, statusText } = response;
     logger.error(`Error with contact us endpoint: ${status}: ${statusText}`);
     throw new Error(`Error with contact us endpoint: ${status}: ${statusText}`);

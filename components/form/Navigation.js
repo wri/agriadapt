@@ -1,9 +1,9 @@
-import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
-import classnames from "classnames";
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
-import Button from "components/ui/Button";
-import Spinner from "components/ui/Spinner";
+import Button from 'components/ui/Button';
+import Spinner from 'components/ui/Spinner';
 
 class Navigation extends PureComponent {
   static propTypes = {
@@ -62,22 +62,22 @@ class Navigation extends PureComponent {
       onDelete,
       disabled,
     } = this.props;
-    const submittingClassName = classnames({ "-submitting": submitting });
+    const submittingClassName = classnames({ '-submitting': submitting });
 
     return (
       <ul
         className={classnames({
-          "c-field-buttons": true,
-          "-disabled": disabled,
+          'c-field-buttons': true,
+          '-disabled': disabled,
         })}
       >
         {showDelete && (
           <li className="c-button-container -full-width">
             <Button
               properties={{
-                type: "button",
-                name: "commit",
-                className: "-secondary -expanded",
+                type: 'button',
+                name: 'commit',
+                className: '-secondary -expanded',
               }}
               onClick={onDelete}
             >
@@ -89,9 +89,9 @@ class Navigation extends PureComponent {
           <li>
             <Button
               properties={{
-                type: "button",
-                name: "commit",
-                className: "-secondary -expanded",
+                type: 'button',
+                name: 'commit',
+                className: '-secondary -expanded',
               }}
               onClick={this.onStepChange}
             >
@@ -103,9 +103,9 @@ class Navigation extends PureComponent {
           <li>
             <Button
               properties={{
-                type: "submit",
-                name: "commit",
-                className: "-primary -expanded",
+                type: 'submit',
+                name: 'commit',
+                className: '-primary -expanded',
               }}
             >
               Next
@@ -117,9 +117,9 @@ class Navigation extends PureComponent {
           <li>
             <Button
               properties={{
-                type: "button",
-                name: "commit",
-                className: "-secondary -expanded",
+                type: 'button',
+                name: 'commit',
+                className: '-secondary -expanded',
               }}
               onClick={this.onBack}
             >
@@ -132,8 +132,8 @@ class Navigation extends PureComponent {
           <li>
             <Button
               properties={{
-                type: "submit",
-                name: "commit",
+                type: 'submit',
+                name: 'commit',
                 disabled: submitting,
                 className: `-primary -expanded ${submittingClassName}`,
               }}

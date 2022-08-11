@@ -1,28 +1,28 @@
-import { createThunkAction } from "redux-tools";
-import { createAction } from "@reduxjs/toolkit";
+import { createThunkAction } from 'redux-tools';
+import { createAction } from '@reduxjs/toolkit';
 
 // services
-import { fetchPosts } from "services/blog";
+import { fetchPosts } from 'services/blog';
 
 // utils
-import { postParser } from "utils/blog";
+import { postParser } from 'utils/blog';
 
 // constants
 import {
   SPOTLIGHT_CATEGORY,
   ERROR_MESSAGE_FETCH_POSTS,
   UNCATEGORIZED_CATEGORY,
-} from "constants/blog";
+} from 'constants/blog';
 
-export const setLatestPosts = createAction("BLOG/SET_LATEST_POSTS");
-export const setLatestPostsError = createAction("BLOG/SET_LATEST_POSTS_ERROR");
-export const setSpotlightPosts = createAction("BLOG/SET_SPOTLIGHT_POSTS");
+export const setLatestPosts = createAction('BLOG/SET_LATEST_POSTS');
+export const setLatestPostsError = createAction('BLOG/SET_LATEST_POSTS_ERROR');
+export const setSpotlightPosts = createAction('BLOG/SET_SPOTLIGHT_POSTS');
 export const setSpotlightPostsError = createAction(
-  "BLOG/SET_SPOTLIGHT_POSTS_ERROR"
+  'BLOG/SET_SPOTLIGHT_POSTS_ERROR'
 );
 
 export const getLatestPosts = createThunkAction(
-  "BLOG/GET_LATEST_POSTS",
+  'BLOG/GET_LATEST_POSTS',
   () => (dispatch) => {
     dispatch(setLatestPostsError(null));
 
@@ -41,14 +41,14 @@ export const getLatestPosts = createThunkAction(
 );
 
 export const getSpotlightPosts = createThunkAction(
-  "BLOG_POSTS_LATEST_FETCH_DATA",
+  'BLOG_POSTS_LATEST_FETCH_DATA',
   () => (dispatch) => {
     dispatch(setSpotlightPostsError(null));
 
     return fetchPosts({
       _embed: true,
       per_page: 3,
-      categories: SPOTLIGHT_CATEGORY.join(","),
+      categories: SPOTLIGHT_CATEGORY.join(','),
     })
       .then((posts) => {
         dispatch(setSpotlightPosts(postParser(posts)));

@@ -1,9 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
-import isEqual from "lodash/isEqual";
+import React from 'react';
+import PropTypes from 'prop-types';
+import isEqual from 'lodash/isEqual';
 
 // Components
-import Icon from "components/ui/icon";
+import Icon from 'components/ui/icon';
 
 export default class SearchSelect extends React.Component {
   constructor(props) {
@@ -44,7 +44,7 @@ export default class SearchSelect extends React.Component {
   }
 
   componentWillUnmount() {
-    window.removeEventListener("click", this.onScreenClick);
+    window.removeEventListener('click', this.onScreenClick);
   }
 
   // Event handler for event keyup on search input
@@ -95,7 +95,7 @@ export default class SearchSelect extends React.Component {
         );
         this.setState({ filteredOptions }, () => {
           if (this.props.onKeyPressed)
-            this.props.onKeyPressed({ value }, [], "name");
+            this.props.onKeyPressed({ value }, [], 'name');
         });
         break;
       }
@@ -110,7 +110,7 @@ export default class SearchSelect extends React.Component {
   onScreenClick(evt) {
     if (this.el.contains && !this.el.contains(evt.target)) {
       this.close();
-      window.removeEventListener("click", this.onScreenClick);
+      window.removeEventListener('click', this.onScreenClick);
     }
   }
 
@@ -136,7 +136,7 @@ export default class SearchSelect extends React.Component {
   // Method than shows the option list
   open() {
     // Close select when clicking outside it
-    window.addEventListener("click", this.onScreenClick);
+    window.addEventListener('click', this.onScreenClick);
 
     this.setState({ closed: false }, () => {
       if (this.input) this.input.focus();
@@ -145,7 +145,7 @@ export default class SearchSelect extends React.Component {
 
   // Method that closes the options list
   close() {
-    window.removeEventListener("click", this.onScreenClick);
+    window.removeEventListener('click', this.onScreenClick);
 
     this.setState(
       {
@@ -159,9 +159,9 @@ export default class SearchSelect extends React.Component {
 
   render() {
     // Class names
-    const cNames = ["c-custom-select -search"];
+    const cNames = ['c-custom-select -search'];
     if (this.props.className) cNames.push(this.props.className);
-    if (this.state.closed) cNames.push("-closed");
+    if (this.state.closed) cNames.push('-closed');
 
     const noResults = !!(
       this.props.options.length && !this.state.filteredOptions.length
@@ -172,7 +172,7 @@ export default class SearchSelect extends React.Component {
         ref={(node) => {
           this.el = node;
         }}
-        className={cNames.join(" ")}
+        className={cNames.join(' ')}
       >
         <span className="custom-select-text" onClick={this.toggle}>
           <div>
@@ -200,7 +200,7 @@ export default class SearchSelect extends React.Component {
           <ul className="custom-select-options">
             {this.state.filteredOptions.map((item, index) => {
               const cName =
-                index === this.state.selectedIndex ? "-selected" : "";
+                index === this.state.selectedIndex ? '-selected' : '';
               return (
                 <li
                   className={cName}

@@ -1,5 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 class SwitchOptions extends React.Component {
   constructor(props) {
@@ -33,13 +33,13 @@ class SwitchOptions extends React.Component {
 
   render() {
     const { selected, options } = this.props;
-    const position = selected === options[0].value ? "-left" : "-right";
+    const position = selected === options[0].value ? '-left' : '-right';
 
     return (
       <div className="c-switch-options">
         <span
           className={`switch-label ${
-            selected === options[0].value ? "-selected" : ""
+            selected === options[0].value ? '-selected' : ''
           }`}
           data-value={options[0].value}
           onClick={this.onChange}
@@ -53,7 +53,7 @@ class SwitchOptions extends React.Component {
 
         <span
           className={`switch-label ${
-            selected === options[1].value ? "-selected" : ""
+            selected === options[1].value ? '-selected' : ''
           }`}
           data-value={options[1].value}
           onClick={this.onChange}

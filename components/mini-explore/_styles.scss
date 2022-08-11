@@ -1,4 +1,4 @@
-@import "css/settings";
+@import 'css/settings';
 
 .c-mini-explore {
   width: 100%;
@@ -69,7 +69,7 @@
             }
           }
 
-          &[aria-expanded="true"] {
+          &[aria-expanded='true'] {
             .group-header-title {
               svg {
                 transform: rotate(90deg);

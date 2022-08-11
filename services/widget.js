@@ -1,8 +1,8 @@
-import WRISerializer from "wri-json-api-serializer";
+import WRISerializer from 'wri-json-api-serializer';
 
 // utils
-import { WRIAPI } from "utils/axios";
-import { logger } from "utils/logs";
+import { WRIAPI } from 'utils/axios';
+import { logger } from 'utils/logs';
 
 /**
  * Fetch widgets according to params.
@@ -13,12 +13,12 @@ import { logger } from "utils/logs";
  * included in the response or not
  */
 export const fetchWidgets = (params = {}, headers = {}, _meta = false) => {
-  logger.info("fetches widgets");
-  return WRIAPI.get("/v1/widget", {
+  logger.info('fetches widgets');
+  return WRIAPI.get('/v1/widget', {
     headers: {
       ...WRIAPI.defaults.headers,
       // TO-DO: forces the API to not cache, this should be removed at some point
-      "Upgrade-Insecure-Requests": 1,
+      'Upgrade-Insecure-Requests': 1,
       ...headers,
     },
     params: {
@@ -35,7 +35,7 @@ export const fetchWidgets = (params = {}, headers = {}, _meta = false) => {
       const { status, statusText, data } = response;
       const { widgets, meta } = data;
       if (status >= 300) {
-        logger.error("Error fetching widgets:", `${status}: ${statusText}`);
+        logger.error('Error fetching widgets:', `${status}: ${statusText}`);
         throw new Error(statusText);
       }
 
@@ -65,7 +65,7 @@ export const fetchWidgets = (params = {}, headers = {}, _meta = false) => {
 export const fetchWidget = (id, params = {}) => {
   if (!id)
     throw Error(
-      "The widget id is mandatory to perform this request (fetchWidget)."
+      'The widget id is mandatory to perform this request (fetchWidget).'
     );
   logger.info(`Fetch widget: ${id}`);
 
@@ -73,7 +73,7 @@ export const fetchWidget = (id, params = {}) => {
     headers: {
       ...WRIAPI.defaults.headers,
       // TO-DO: forces the API to not cache, this should be removed at some point
-      "Upgrade-Insecure-Requests": 1,
+      'Upgrade-Insecure-Requests': 1,
     },
     params: {
       env: process.env.NEXT_PUBLIC_API_ENV,
@@ -181,11 +181,11 @@ export const updateWidget = (widget, token) => {
  * @param {string} token - user's token.
  */
 export const createWidget = (widget, datasetId, token) => {
-  logger.info("Create widget");
+  logger.info('Create widget');
   return WRIAPI.post(
     `/v1/dataset/${datasetId}/widget`,
     {
-      application: process.env.NEXT_PUBLIC_APPLICATIONS.split(","),
+      application: process.env.NEXT_PUBLIC_APPLICATIONS.split(','),
       env: process.env.NEXT_PUBLIC_API_ENV,
       ...widget,
     },

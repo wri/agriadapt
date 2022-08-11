@@ -1,9 +1,9 @@
-import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
-import compact from "lodash/compact";
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import compact from 'lodash/compact';
 
 // Redux
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
 let Cesium;
 
@@ -12,20 +12,20 @@ let Cesium;
 const MAXIMUM_ZOOM_DISTANCE = 30000000;
 const MINIMUM_ZOOM_DISTANCE = 99;
 /* Severity colors */
-const severityLowColor = "#2C7FB8";
-const severityMediumColor = "#7FCDBB";
-const severityHighColor = "#EDF8B1";
+const severityLowColor = '#2C7FB8';
+const severityMediumColor = '#7FCDBB';
+const severityHighColor = '#EDF8B1';
 /* Magnitude colors */
-const magnitudeLessThan5Color = "#feebe2";
-const magnitude5_5_5Color = "#fbb4b9"; // eslint-disable-line camelcase
-const magnitude5_5_6Color = "#f768a1"; // eslint-disable-line camelcase
-const magnitude6_7Color = "#c51b8a"; // eslint-disable-line camelcase
-const magnitude7orMore = "#7a0177";
+const magnitudeLessThan5Color = '#feebe2';
+const magnitude5_5_5Color = '#fbb4b9'; // eslint-disable-line camelcase
+const magnitude5_5_6Color = '#f768a1'; // eslint-disable-line camelcase
+const magnitude6_7Color = '#c51b8a'; // eslint-disable-line camelcase
+const magnitude7orMore = '#7a0177';
 /* Url tone colors */
-const tone_10_7Color = "#d7301f"; // eslint-disable-line camelcase
-const tone_7_5Color = "#fc8d59"; // eslint-disable-line camelcase
-const tone_5_2Color = "#fdcc8a"; // eslint-disable-line camelcase
-const tone_2orMoreColor = "#fef0d9"; // eslint-disable-line camelcase
+const tone_10_7Color = '#d7301f'; // eslint-disable-line camelcase
+const tone_7_5Color = '#fc8d59'; // eslint-disable-line camelcase
+const tone_5_2Color = '#fdcc8a'; // eslint-disable-line camelcase
+const tone_2orMoreColor = '#fef0d9'; // eslint-disable-line camelcase
 //----------------------------------------------------------
 
 class GlobeCesiumComponent extends PureComponent {
@@ -46,7 +46,7 @@ class GlobeCesiumComponent extends PureComponent {
     Cesium.BingMapsApi.defaultKey = process.env.NEXT_PUBLIC_BING_MAPS_API_KEY;
 
     // Create viewer object
-    this.viewer = new Cesium.Viewer("cesiumContainer", {
+    this.viewer = new Cesium.Viewer('cesiumContainer', {
       geocoder: false,
       homeButton: false,
       selectionIndicato: false,
@@ -235,14 +235,14 @@ class GlobeCesiumComponent extends PureComponent {
     const pickedFeature = this.viewer.scene.pick(click.position);
     if (
       pickedFeature &&
-      pickedFeature.id.type === "billboard" &&
+      pickedFeature.id.type === 'billboard' &&
       this.props.onBillboardClick
     ) {
       pickedFeature.id.highlighted = true;
       pickedFeature.id.billboard.image = pickedFeature.id.imageSelected;
       // Dehighlight the rest of billboards
       this.viewer.entities.values.forEach((entity) => {
-        if (entity.type === "billboard" && entity.id !== pickedFeature.id.id) {
+        if (entity.type === 'billboard' && entity.id !== pickedFeature.id.id) {
           entity.highlighted = false; // eslint-disable-line no-param-reassign
           entity.billboard.image = entity.imageNotSelected; // eslint-disable-line no-param-reassign
         }
@@ -274,7 +274,7 @@ class GlobeCesiumComponent extends PureComponent {
 
     if (
       Cesium.defined(pickedFeature) &&
-      pickedFeature.id.type === "billboard" &&
+      pickedFeature.id.type === 'billboard' &&
       this.props.onBillboardHover &&
       !billboardHover
     ) {
@@ -307,7 +307,7 @@ class GlobeCesiumComponent extends PureComponent {
             })
           );
           const description = tooltipContentObj.map((val) => {
-            if (val.type === "url") {
+            if (val.type === 'url') {
               return `<strong>${val.key}</strong>: <a href=${val.value} target="_blank">${val.value}</a>`;
             } else {
               // eslint-disable-line no-else-return
@@ -325,7 +325,7 @@ class GlobeCesiumComponent extends PureComponent {
               elem.displaced > 0
                 ? Math.log(elem.displaced) * 100000
                 : defaultHeight;
-          } else if (markerType === "volcano") {
+          } else if (markerType === 'volcano') {
             height = 50000;
           } else if (elem.distance_km) {
             height =
@@ -339,7 +339,7 @@ class GlobeCesiumComponent extends PureComponent {
 
           // ------------------- COLOR --------------------------
           let color = Cesium.Color.WHITE;
-          if (markerType === "volcano") {
+          if (markerType === 'volcano') {
             color = Cesium.Color.RED;
           }
           const { severity, urltone, mag } = elem;
@@ -385,7 +385,7 @@ class GlobeCesiumComponent extends PureComponent {
           let bottomRadius = 15000;
           let topRadius = 15000;
 
-          if (markerType === "volcano") {
+          if (markerType === 'volcano') {
             bottomRadius = 50000;
           }
           if (+elem.displaced || elem.displaced === 0) {
@@ -395,15 +395,15 @@ class GlobeCesiumComponent extends PureComponent {
           //--------------------------------
 
           return {
-            description: description.join("<br>"),
+            description: description.join('<br>'),
             height,
             lat: elem.lat,
             lon: elem.lon,
-            name: elem.name || elem.title || "",
+            name: elem.name || elem.title || '',
             topRadius,
             bottomRadius,
             color,
-            type: "cylinder",
+            type: 'cylinder',
           };
         })
       );
@@ -427,7 +427,7 @@ class GlobeCesiumComponent extends PureComponent {
     layer.alpha = Cesium.defaultValue(alpha, 0.5);
     layer.show = Cesium.defaultValue(show, true);
     layer.name = name;
-    Cesium.knockout.track(layer, ["alpha", "show", "name"]);
+    Cesium.knockout.track(layer, ['alpha', 'show', 'name']);
   }
 
   addBasemap(name, imageryProvider, alpha, show) {
@@ -435,12 +435,12 @@ class GlobeCesiumComponent extends PureComponent {
     layer.alpha = Cesium.defaultValue(alpha, 0.5);
     layer.show = Cesium.defaultValue(show, true);
     layer.name = name;
-    Cesium.knockout.track(layer, ["alpha", "show", "name"]);
+    Cesium.knockout.track(layer, ['alpha', 'show', 'name']);
   }
 
   removeMainLayer() {
     for (let i = 0; i < this.imageryLayers.length; i++) {
-      if (this.imageryLayers.get(i).name === "mainLayer") {
+      if (this.imageryLayers.get(i).name === 'mainLayer') {
         this.imageryLayers.remove(this.imageryLayers.get(i), false);
       }
     }
@@ -448,7 +448,7 @@ class GlobeCesiumComponent extends PureComponent {
 
   removeLabelsLayer() {
     for (let i = 0; i < this.imageryLayers.length; i++) {
-      if (this.imageryLayers.get(i).name === "labelsLayer") {
+      if (this.imageryLayers.get(i).name === 'labelsLayer') {
         this.imageryLayers.remove(this.imageryLayers.get(i), false);
       }
     }
@@ -456,7 +456,7 @@ class GlobeCesiumComponent extends PureComponent {
 
   removeContextLayers() {
     for (let i = this.imageryLayers.length - 1; i > 0; i--) {
-      if (this.imageryLayers.get(i).name !== "mainLayer") {
+      if (this.imageryLayers.get(i).name !== 'mainLayer') {
         this.imageryLayers.remove(this.imageryLayers.get(i), false);
       }
     }
@@ -499,7 +499,7 @@ class GlobeCesiumComponent extends PureComponent {
       );
       if (labelsPulse.labelsLayerActive) {
         this.addAdditionalLayerOption(
-          "labelsLayer",
+          'labelsLayer',
           new Cesium.UrlTemplateImageryProvider({ url: labelsPulse.url }),
           1,
           true
@@ -511,7 +511,7 @@ class GlobeCesiumComponent extends PureComponent {
       this.removeMainLayer();
       if (!layerActive.threedimensional) {
         this.addAdditionalLayerOption(
-          "mainLayer",
+          'mainLayer',
           new Cesium.UrlTemplateImageryProvider({ url: mainLayer }),
           1,
           true
@@ -534,7 +534,7 @@ class GlobeCesiumComponent extends PureComponent {
       );
       if (labelsPulse.labelsLayerActive) {
         this.addAdditionalLayerOption(
-          "labelsLayer",
+          'labelsLayer',
           new Cesium.UrlTemplateImageryProvider({ url: labelsPulse.url }),
           1,
           true
@@ -550,9 +550,9 @@ class GlobeCesiumComponent extends PureComponent {
 
   initGlobe() {
     this.addAdditionalLayerOption(
-      "default",
+      'default',
       new Cesium.UrlTemplateImageryProvider({
-        url: "https://api.mapbox.com/styles/v1/wri/cjd56ttip0i1s2rnxv8py2km5/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoid3JpIiwiYSI6Ik9TY2w5RTQifQ.0HV7dQTjK40mk7GpNNA64g",
+        url: 'https://api.mapbox.com/styles/v1/wri/cjd56ttip0i1s2rnxv8py2km5/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoid3JpIiwiYSI6Ik9TY2w5RTQifQ.0HV7dQTjK40mk7GpNNA64g',
       }),
       1,
       true
@@ -565,17 +565,17 @@ class GlobeCesiumComponent extends PureComponent {
   createShapes(shapes) {
     if (shapes) {
       shapes.forEach((shape) => {
-        if (shape.type === "billboard") {
+        if (shape.type === 'billboard') {
           const position = Cesium.Cartesian3.fromDegrees(shape.lon, shape.lat);
           this.viewer.entities.add({
             position,
             billboard: { image: shape.image },
             name: shape.name,
-            type: "billboard",
+            type: 'billboard',
             imageSelected: shape.imageSelected,
             imageNotSelected: shape.imageNotSelected,
           });
-        } else if (shape.type === "cylinder") {
+        } else if (shape.type === 'cylinder') {
           const position = Cesium.Cartesian3.fromDegrees(
             shape.lon,
             shape.lat,
@@ -594,7 +594,7 @@ class GlobeCesiumComponent extends PureComponent {
             },
             description: shape.description,
             name: shape.name,
-            type: "cylinder",
+            type: 'cylinder',
           });
         }
       });

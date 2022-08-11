@@ -1,7 +1,7 @@
-import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 
-import Icon from "components/ui/icon";
+import Icon from 'components/ui/icon';
 
 class LayerMenuNativeComponent extends PureComponent {
   render() {

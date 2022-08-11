@@ -9,12 +9,12 @@
     align-items: center;
     float: left;
     font-size: 12px;
-    font-family: "Arial";
+    font-family: 'Arial';
     user-select: none;
     margin: 0 auto;
 
     &:after {
-      content: " ";
+      content: ' ';
       display: block;
       height: 0;
       clear: both;
@@ -132,7 +132,7 @@
 
       a {
         &:after {
-          content: "\2039";
+          content: '\2039';
         }
       }
     }
@@ -140,7 +140,7 @@
     &-next {
       a {
         &:after {
-          content: "\203A";
+          content: '\203A';
         }
       }
     }
@@ -150,7 +150,7 @@
     &-jump-prev,
     &-jump-next {
       &:after {
-        content: "...";
+        content: '...';
         display: block;
         letter-spacing: 2px;
         color: #ccc;

@@ -9,8 +9,8 @@ import styles from './styles.module.scss';
 
 const Controls = ({ setConfig, options: params, layers, country }) => {
   const scenarios = [
-    { label: 'Pessimistic (RCP 8.5)', value: 'rcp8p5' },
-    { label: 'Optimistic (RCP 4.5)', value: 'rcp4p5' },
+    { label: 'common:emission_scenarios.pessimistic', value: 'rcp8p5' },
+    { label: 'common:emission_scenarios.optimistic', value: 'rcp4p5' },
   ];
   const emscen = useSelect(scenarios[0]);
   const [radios, setRadios] = useState(
@@ -18,7 +18,7 @@ const Controls = ({ setConfig, options: params, layers, country }) => {
   );
   const [radioToggle, setRadioToggle] = useState(true);
 
-  const { t } = useTranslation('common')
+  const { t } = useTranslation(['common', 'widgets']);
 
   const handleRadioSelect = (i) => (c) => {
     setRadios((r) => {
@@ -57,9 +57,9 @@ const Controls = ({ setConfig, options: params, layers, country }) => {
           label: t('common:emission_scenarios:Emissions_Scenario'),
           default: scenarios[0],
         }}
-        value={emscen.value}
+        value={{ ...emscen.value, label: t(emscen.value.label) }}
         onChange={emscen.onChange}
-        options={scenarios}
+        options={scenarios.map((s) => ({ ...s, label: t(s.label) }))}
         className={'Select--large'}
       >
         {Select}
@@ -74,7 +74,7 @@ const Controls = ({ setConfig, options: params, layers, country }) => {
             }}
             value={radios[i]}
             onChange={handleRadioSelect(i)}
-            options={p}
+            options={p.map((o) => ({ ...o, label: t(o.label) }))}
           >
             {RadioGroup}
           </Field>
@@ -87,7 +87,7 @@ const Controls = ({ setConfig, options: params, layers, country }) => {
           }}
           value={radios[0]}
           onChange={handleRadioSelect(0)}
-          options={params}
+          options={params.map((p) => ({ ...p, label: t(p.label) }))}
         >
           {RadioGroup}
         </Field>

@@ -1,5 +1,5 @@
-import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 
 class WidgetActionsTooltip extends PureComponent {
   static propTypes = {
@@ -16,15 +16,15 @@ class WidgetActionsTooltip extends PureComponent {
   static defaultProps = { widgetLinks: [] };
 
   componentDidMount() {
-    document.addEventListener("mousedown", this.triggerMouseDown);
+    document.addEventListener('mousedown', this.triggerMouseDown);
   }
 
   componentWillUnmount() {
-    document.removeEventListener("mousedown", this.triggerMouseDown);
+    document.removeEventListener('mousedown', this.triggerMouseDown);
   }
 
   triggerMouseDown = (e) => {
-    const el = document.querySelector(".c-rc-tooltip");
+    const el = document.querySelector('.c-rc-tooltip');
     const clickOutside = el && el.contains && !el.contains(e.target);
     if (clickOutside) this.props.toggleTooltip(false);
   };
@@ -40,23 +40,23 @@ class WidgetActionsTooltip extends PureComponent {
     } = this.props;
 
     switch (action) {
-      case "edit_widget":
+      case 'edit_widget':
         onEditWidget();
         break;
-      case "go_to_dataset":
+      case 'go_to_dataset':
         onGoToDataset();
         break;
-      case "share_embed":
+      case 'share_embed':
         onShareEmbed();
         break;
-      case "download_pdf":
+      case 'download_pdf':
         onDownloadPDF();
         break;
-      case "delete":
+      case 'delete':
         onRemove();
         break;
       default:
-        console.error("action not supported");
+        console.error('action not supported');
     }
 
     toggleTooltip(false);
@@ -73,7 +73,7 @@ class WidgetActionsTooltip extends PureComponent {
               <button
                 type="button"
                 className="-desktopOnly"
-                onClick={() => this.handleClick("edit_widget")}
+                onClick={() => this.handleClick('edit_widget')}
               >
                 Edit visualization
               </button>
@@ -82,7 +82,7 @@ class WidgetActionsTooltip extends PureComponent {
           <li>
             <button
               type="button"
-              onClick={() => this.handleClick("share_embed")}
+              onClick={() => this.handleClick('share_embed')}
             >
               Share/Embed
             </button>
@@ -91,7 +91,7 @@ class WidgetActionsTooltip extends PureComponent {
             <li>
               <button
                 type="button"
-                onClick={() => this.handleClick("go_to_dataset")}
+                onClick={() => this.handleClick('go_to_dataset')}
               >
                 Go to dataset
               </button>
@@ -107,14 +107,14 @@ class WidgetActionsTooltip extends PureComponent {
           <li>
             <button
               type="button"
-              onClick={() => this.handleClick("download_pdf")}
+              onClick={() => this.handleClick('download_pdf')}
             >
               Download as PDF
             </button>
           </li>
           {isWidgetOwner && (
             <li>
-              <button type="button" onClick={() => this.handleClick("delete")}>
+              <button type="button" onClick={() => this.handleClick('delete')}>
                 Delete visualization
               </button>
             </li>

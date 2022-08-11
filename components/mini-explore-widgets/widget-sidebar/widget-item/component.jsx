@@ -1,14 +1,14 @@
-import PropTypes from "prop-types";
-import Renderer from "@widget-editor/renderer";
+import PropTypes from 'prop-types';
+import Renderer from '@widget-editor/renderer';
 
 // components
-import WidgetHeader from "components/widgets/header";
-import Spinner from "components/ui/Spinner";
-import WidgetShareModal from "components/widgets/share-modal";
-import WidgetInfo from "components/widgets/info";
+import WidgetHeader from 'components/widgets/header';
+import Spinner from 'components/ui/Spinner';
+import WidgetShareModal from 'components/widgets/share-modal';
+import WidgetInfo from 'components/widgets/info';
 
 // constants
-import { WIDGET_EDITOR_MAPBOX_PROPS } from "constants/widget-editor";
+import { WIDGET_EDITOR_MAPBOX_PROPS } from 'constants/widget-editor';
 
 export default function WidgetItem({
   widgetState,

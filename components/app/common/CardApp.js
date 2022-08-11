@@ -1,9 +1,9 @@
-import PropTypes from "prop-types";
-import classnames from "classnames";
-import Link from "next/link";
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
+import Link from 'next/link';
 
 // Components
-import Title from "components/ui/Title";
+import Title from 'components/ui/Title';
 
 // Utils
 // import { logEvent } from "utils/analytics";
@@ -22,8 +22,8 @@ function CardApp({
   });
 
   const buttonClasses = classnames({
-    "-secondary": !buttonType,
-    "-primary": buttonType && buttonType === "primary",
+    '-secondary': !buttonType,
+    '-primary': buttonType && buttonType === 'primary',
   });
 
   return (
@@ -49,7 +49,7 @@ function CardApp({
                 className={`c-button ${buttonClasses} -fullwidth`}
                 onClick={() => {
                   if (logEvent) {
-                    logEvent("Related app Go to site clicked", title);
+                    logEvent('Related app Go to site clicked', title);
                   }
                 }}
               >
@@ -65,7 +65,7 @@ function CardApp({
               className={`c-button ${buttonClasses} -fullwidth`}
               onClick={() => {
                 if (logEvent) {
-                  logEvent("Related app Go to site clicked", title);
+                  logEvent('Related app Go to site clicked', title);
                 }
               }}
             >

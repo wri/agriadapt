@@ -1,16 +1,16 @@
 .c_controls {
-    position: absolute;
-    width: 257px;
-    right: 50px;
+  position: absolute;
+  width: 257px;
+  right: 50px;
 
-    :global {
-        .c-radio-box {
-            display: flex;
-            flex-wrap: wrap;
-    
-            .c-radio {
-                padding-right: 10px;
-            }
-        }
+  :global {
+    .c-radio-box {
+      display: flex;
+      flex-wrap: wrap;
+
+      .c-radio {
+        padding-right: 10px;
+      }
     }
+  }
 }

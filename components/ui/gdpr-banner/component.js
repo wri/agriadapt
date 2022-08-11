@@ -1,5 +1,5 @@
-import PropTypes from "prop-types";
-import Link from "next/link";
+import PropTypes from 'prop-types';
+import Link from 'next/link';
 
 const GDPRBanner = ({ handleGDPR }) => (
   <div className="c-gdpr-banner">
@@ -8,12 +8,12 @@ const GDPRBanner = ({ handleGDPR }) => (
         <div className="column small-9 medium-10">
           This website uses cookies to provide you with an improved user
           experience. By continuing to browse this site, you consent to the use
-          of cookies and similar technologies. Please visit our{" "}
+          of cookies and similar technologies. Please visit our{' '}
           <Link href="/privacy-policy">
             <a target="_blank" rel="noopener noreferrer">
               privacy policy
             </a>
-          </Link>{" "}
+          </Link>{' '}
           for further details.
         </div>
         <div className="column small-3 medium-2">

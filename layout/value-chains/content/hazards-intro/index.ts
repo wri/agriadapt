@@ -1,3 +1,3 @@
-import HazardsIntro from "./component";
+import HazardsIntro from './component';
 
 export default HazardsIntro;

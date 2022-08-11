@@ -1,6 +1,6 @@
-import { createSelector } from "reselect";
-import uniq from "lodash/uniq";
-import sortBy from "lodash/sortBy";
+import { createSelector } from 'reselect';
+import uniq from 'lodash/uniq';
+import sortBy from 'lodash/sortBy';
 
 const getDatasets = (state) => state.subscriptions.datasets.list;
 
@@ -22,12 +22,12 @@ export const getSuscribableDatasets = createSelector(
               value: key,
               query: (dataset.subscribable[key] || {}).dataQuery,
             })),
-            "label"
+            'label'
           ),
           threshold: 1,
         }))
       ),
-      "label"
+      'label'
     )
 );
 

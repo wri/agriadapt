@@ -1,9 +1,9 @@
-import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 
 // Components
-import DatasetList from "components/datasets/list";
-import Spinner from "components/ui/Spinner";
+import DatasetList from 'components/datasets/list';
+import Spinner from 'components/ui/Spinner';
 
 class SimilarDatasets extends PureComponent {
   static propTypes = {

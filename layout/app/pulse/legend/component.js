@@ -1,6 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { LegendItemTypes } from "vizzuality-components";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { LegendItemTypes } from 'vizzuality-components';
 
 function Legend(props) {
   if (props.layerActive) {

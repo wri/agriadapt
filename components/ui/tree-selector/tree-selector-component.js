@@ -1,8 +1,8 @@
-import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
-import classnames from "classnames";
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
-import DropdownTreeSelect from "react-dropdown-tree-select";
+import DropdownTreeSelect from 'react-dropdown-tree-select';
 
 class TreeSelector extends PureComponent {
   static propTypes = {
@@ -23,7 +23,7 @@ class TreeSelector extends PureComponent {
     const { showDropdown, placeholderText, data, onChange, classNames } =
       this.props;
     const datasetFilterClass = classnames({
-      "c-tree-selector": true,
+      'c-tree-selector': true,
       classNames: !!classNames,
     });
 

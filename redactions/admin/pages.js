@@ -1,12 +1,12 @@
-import { fetchPages } from "services/pages";
+import { fetchPages } from 'services/pages';
 
 /**
  * CONSTANTS
  */
-const GET_PAGES_SUCCESS = "pages/GET_PAGES_SUCCESS";
-const GET_PAGES_ERROR = "pages/GET_PAGES_ERROR";
-const GET_PAGES_LOADING = "pages/GET_PAGES_LOADING";
-const SET_PAGES_FILTERS = "pages/SET_PAGES_FILTERS";
+const GET_PAGES_SUCCESS = 'pages/GET_PAGES_SUCCESS';
+const GET_PAGES_ERROR = 'pages/GET_PAGES_ERROR';
+const GET_PAGES_LOADING = 'pages/GET_PAGES_LOADING';
+const SET_PAGES_FILTERS = 'pages/SET_PAGES_FILTERS';
 
 /**
  * STORE

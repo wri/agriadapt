@@ -1,4 +1,4 @@
-import { createSelector } from "reselect";
+import { createSelector } from 'reselect';
 
 const getCurrentArea = (state) => state.subscriptions.userSelection.area;
 const getUserSubscriptions = (state) => state.subscriptions.list;

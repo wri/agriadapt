@@ -1,0 +1,47 @@
+{
+  "rice_land_suitability": {
+    "title": "Land Suitability for Rice in {{country}}",
+    "dryland_rice": "Dryland rice",
+    "wetland_rice": "Wetland rice",
+    "rainfed_rice": "Rainfed rice",
+    "irrigated_rice": "Irrigated rice"
+  },
+  "coffee_land_suitability": {
+    "title": "Land Suitability for Coffee in {{country}}",
+    "rainfed_coffee": "Rainfed coffee",
+    "irrigated_coffee": "Irrigated coffee"
+  },
+  "cotton_land_suitability": {
+    "title": "Land Suitability for Cotton in {{country}}",
+    "rainfed_cotton": "Rainfed cotton",
+    "irrigated_cotton": "Irrigated cotton"
+  },
+  "export_import": {
+    "cotton": {
+      "title": "Export and Import Statistics for Cotton in {{country}}",
+      "products": {
+        "cotton_carded_combed": "Cotton, carded, combed",
+        "cotton_lint": "Cotton lint"
+      }
+    },
+    "coffee": {
+      "title": "Export and Import Statistics for Coffee in {{country}}",
+      "products": {
+        "coffee_green": "Coffee, green",
+        "coffee_roasted": "Coffee, roasted"
+      }
+    },
+    "rice": {
+      "title": "Export and Import Statistics for Rice in {{country}}",
+      "products": {
+        "rice_husked": "Rice, husked",
+        "rice_milled": "Rice, milled",
+        "rice_paddy": "Rice, paddy"
+      }
+    },
+    "indicators": {
+      "quantity": "Quantity",
+      "value": "Value"
+    }
+  }
+}

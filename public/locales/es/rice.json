@@ -1,0 +1,62 @@
+{
+	"intro": {
+		"subtitle": "Riesgo climático en las cadenas de valor del arroz",
+		"description": [
+			"El aumento de la temperatura, el aumento del nivel del mar y los cambios en los patrones de lluvia y la distribución podrían tener un impacto sustancial en los recursos de tierra y agua para la producción de arroz. La extracción continua de agua subterránea para el riego con arrozales ya está dando lugar a una fuerte disminución de la disponibilidad de agua subterránea."
+		]
+	},
+	"climate_hazard": {
+		"title": "¿Cómo afecta el cambio climático a la cadena de valor del arroz?",
+		"description": "La producción de arroz se ve afectada por diferentes amenazas climáticas a lo largo de su cadena de valor. Haga clic en los botones a continuación para encontrar información sobre cómo los peligros climáticos afectan a cada eslabón de la cadena de valor:"
+	},
+	"inputs": {
+		"land_suitability": {
+			"info": "El cultivo de arroz es muy vulnerable a las fluctuaciones climáticas, especialmente a la temperatura y la disponibilidad de agua. Sin embargo, los efectos varían según la geografía, lo que resulta en riesgos y oportunidades. Explore las visualizaciones a continuación para obtener más información sobre cómo la idoneidad de la tierra para la producción de arroz puede cambiar en el futuro debido al cambio climático."
+		},
+		"labor": {
+			"info": "<p>Los trabajadores agrícolas son especialmente vulnerables al aumento del estrés por calor, lo que afecta la salud de las personas y reduce la productividad laboral. El Índice Climático Térmico Universal identifica las condiciones exteriores que causan incomodidad a las personas utilizando una combinación de temperatura, humedad, viento y radiación para determinar el estrés (sudoración, escalofríos, humedad de la piel, etc.) que sufre una persona cuando se expone a condiciones al aire libre.</p> <p>Valores entre 9-26 significa que no hay estrés térmico. Los valores por encima de 26 se acercan al estrés por calor, con valores por encima de 46 que significan estrés por calor extremo. Los valores por debajo de 9 se acercan al estrés por frío, con valores por debajo de -40 que significan estrés por frío extremo.</p>"
+		},
+		"seedlings": {
+			"info": "Las semillas de arroz son las más sensibles a la sequía y a la alta temperatura durante el desarrollo temprano de las semillas. Cuanto antes se produzca la sequía de la planta, mayor será el daño a la calidad posterior de la semilla. (Rahman, Ellis, 2019) Además, la calidad de las semillas en el arroz Japonica puede reducirse considerablemente cuando se produce a temperaturas más cálidas (34/26 ° C) en lugar de más frías (28/20 ° C)."
+		}
+	},
+	"production": {
+		"production_volume": {
+			"info": "El siguiente mapa muestra las principales regiones productoras de arroz en el país, junto con la cantidad de arroz que se produce actualmente."
+		},
+		"changes_in_rainfall": {
+			"info": "Los estudios sugieren que los cambios en los patrones de lluvia y la distribución podrían tener impactos sustanciales en la tierra y los recursos hídricos para la producción de arroz, incluida la reducción de la tierra cultivable debido a inundaciones y sequías, y pérdidas en el rendimiento como resultado de una mayor persistencia de plagas, entre otros."
+		},
+		"change_in_yield": {
+			"info": "La gran mayoría de los impactos del cambio climático en la producción de arroz son el resultado de variaciones en la temperatura y las precipitaciones que conducen a inundaciones, escasez de agua y aumentos en las plagas, enfermedades y malezas. Aunque las predicciones de las condiciones climáticas futuras incluyen una cantidad de incertidumbre, es importante medir los efectos potenciales del cambio climático en la producción mundial de arroz. Estos conocimientos pueden identificar áreas que son vulnerables al cambio climático e informar el desarrollo de estrategias de adaptación. Considerar los cambios en los rendimientos del arroz también es valioso para garantizar la seguridad alimentaria futura bajo las presiones de una población creciente y una creciente demanda de arroz."
+		}
+	},
+	"trade": {
+		"policies_and_price": {
+			"info": "La tasa nominal de protección mide la medida en que las políticas agrícolas afectan el precio de mercado de un producto básico. Calcula la diferencia entre el precio que recibe un agricultor y el precio que recibiría un agricultor sin estas políticas."
+		},
+		"food_vulnerability": {
+			"info": "El Puntaje de Vulnerabilidad Alimentaria muestra la vulnerabilidad de un país al cambio climático en una escala de 0 a 1. Los puntajes más bajos indican los países que son menos vulnerables. El puntaje de alimentos incorpora seis indicadores (cambio proyectado de los rendimientos de cereales, crecimiento proyectado de la población, dependencia de las importaciones de alimentos, población rural, capacidad agrícola y desnutrición infantil) para capturar su vulnerabilidad con respecto a la producción y demanda de alimentos, la nutrición y la población rural."
+		},
+		"export_and_import": {
+			"info": "El mercado del arroz está muy expuesto al cambio climático. El cambio climático no sólo crea riesgos para los países productores, sino que también transmite esos riesgos a través del comercio de productos básicos agrícolas a consumidores de todo tipo, y puede hacerlo a distancias significativas. Explore la visualización para obtener información sobre las exportaciones e importaciones de arroz en {{país}}."
+		}
+	},
+	"quotes": [
+		{
+			"location": "Chengalpet Dt, Tamilnadu",
+			"title": "Sr. V. Prabhu",
+			"quote": "Los peligros climáticos nos dejaron en bancarrota y nos llevaron a cerrar muchas unidades de molinos de arroz. Sin embargo, con la información en esta plataforma, ahora entiendo cómo el cambio climático está afectando al negocio y puedo decidir mejor sobre nuestro plan operativo y hacer las inversiones adecuadas para prevenir futuros riesgos climáticos."
+		},
+		{
+			"location": "Coimbatore, Tamilnadu, India",
+			"title": "Profesor Asst",
+			"quote": "La Herramienta de Riesgo Climático nos ayudará a proporcionar a todas las partes interesadas en la cadena de valor del arroz la información climática adecuada que necesitan para prepararse contra posibles peligros climáticos."
+		},
+		{
+			"location": "Kanchipuram Dt, Tamilnadu, India",
+			"title": "Asociación de Propietarios de Molinos de Arroz",
+			"quote": "Un aumento anormal de la temperatura y precipitaciones sin precedentes han cambiado drásticamente los métodos de procesamiento del arroz a lo largo de los años, pero las políticas para las unidades de molinos de arroz bajo la industria a pequeña escala permanecen sin cambios. Con estos nuevos datos de riesgo climático, esperamos influir en los tomadores de decisiones y ajustar las políticas sobre subsidios para apoyar a los trabajadores a pequeña escala en un clima cambiante."
+		}
+	]
+}

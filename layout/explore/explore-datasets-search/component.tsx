@@ -8,6 +8,7 @@ import debounce from 'lodash/debounce';
 import useSelect from 'hooks/form/useSelect';
 import { logEvent } from 'utils/analytics';
 import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
 
 const ExploreDatasetsSearch = ({
   search,
@@ -25,6 +26,8 @@ const ExploreDatasetsSearch = ({
 }): JSX.Element => {
   const { VALUE_CHAINS, EMISSION_SCENARIO, TIMESCALE } = EXPLORE_FILTERS;
   const router = useRouter();
+
+  const { t } = useTranslation(['explore', 'common']);
 
   const selectedChains = useSelect(
     VALUE_CHAINS.options.filter(({ value }) => value_chains.includes(value))
@@ -118,18 +121,16 @@ const ExploreDatasetsSearch = ({
 
   return (
     <>
-      {/* TODO: Translate */}
-      {/* <h4>Start Exploring</h4> */}
       <Field
         id="search"
         properties={{
-          label: 'Search Layers',
+          label: t('layers:Search Layers', { keySeparator: ':' }),
           default: search,
         }}
         onSearch={handleSearch}
         input={{
           value: search,
-          placeholder: 'Search Layers', // TODO: Translate
+          placeholder: t('layers:Search Layers', { keySeparator: ':' }), // TODO: Translate
         }}
       >
         {SearchInput}
@@ -139,17 +140,21 @@ const ExploreDatasetsSearch = ({
         id={'VALUE_CHAINS'}
         properties={{
           // TODO: Translate
-          label: `Filter Layers by ${VALUE_CHAINS.placeholder}`,
-          default: VALUE_CHAINS.options.filter(({ value }) => value_chains.includes(value)),
+          label: t('layers:Filter Layers by Value Chains', {
+            keySeparator: ':',
+          }),
+          default: VALUE_CHAINS.options.filter(({ value }) =>
+            value_chains.includes(value)
+          ),
           tooltip: VALUE_CHAINS.tooltip,
         }}
         value={selectedChains.value}
         onChange={handleSelectValueChains}
         options={VALUE_CHAINS.options}
-        placeholder={VALUE_CHAINS.placeholder}
+        placeholder={t('common:value_chains.Value Chains')}
         className={'Select--large'}
         isMulti={VALUE_CHAINS.multi}
-        hint={VALUE_CHAINS.hint}
+        hint={t(VALUE_CHAINS.hint)}
         // isSearchable={false}
         // isClearable={false}
       >
@@ -159,22 +164,24 @@ const ExploreDatasetsSearch = ({
         id={'EMISSION_SCENARIO'}
         properties={{
           // TODO: Translate
-          label: `Filter Layers by ${EMISSION_SCENARIO.placeholder}`,
+          label: t('layers:Filter Layers by Emission Scenario', {
+            keySeparator: ':',
+          }),
           default: EMISSION_SCENARIO.options.find(
-            ({ value }) => value === emission_scenario 
+            ({ value }) => value === emission_scenario
           ),
         }}
-        value={selectedScenario.value}
+        value={{...selectedScenario.value, label: t(selectedScenario.value.label)}}
         onChange={handleSelectEmissionScenario}
         placeholder={EMISSION_SCENARIO.placeholder} // TODO: Translate
-        options={EMISSION_SCENARIO.options}
+        options={EMISSION_SCENARIO.options.map(o => ({ ...o, label: t(o.label)}))}
         className="Select--large"
       >
         {Select}
       </Field>
       {/* TODO: Translate */}
       <div className="advanced-link">
-        <a onClick={handleClickAdvanced}>{'Advanced Search'}</a>
+        <a onClick={handleClickAdvanced}>{t('explore:layers.Advanced Search')}</a>
       </div>
       {advOpen && (
         <>
@@ -182,23 +189,33 @@ const ExploreDatasetsSearch = ({
             id={'TIMESCALE'}
             properties={{
               // TODO: Translate
-              label: `Filter Layers by ${TIMESCALE.placeholder}`,
-              default: timescale,
+              label: t('layers:Filter Layers by Timescale', {
+                keySeparator: ':',
+              }),
+              default: { ...timescale, label: t(timescale) },
             }}
-            value={selectedTimescale.value}
+            value={{
+              ...selectedTimescale.value,
+              label: t(`common:timescales.${selectedTimescale.value.label}`, {
+                keySeparator: ':',
+              }),
+            }}
             onChange={handleSelectTimescale}
-            options={TIMESCALE.options}
+            options={TIMESCALE.options.map(
+              (o) => ({ ...o, label: t(`common:timescales.${o.label}`) }),
+              { keySeparator: ':' }
+            )}
           >
             {RadioGroup}
           </Field>
           <div className="c-explore-search-actions">
             <button className="c-button -secondary" onClick={handleCancel}>
               {/* TODO: Translate */}
-              {'Cancel'}
+              {t('common:Cancel')}
             </button>
             <button className="c-button -primary" onClick={handleSubmit}>
               {/* TODO: Translate */}
-              {'Search'}
+              {t('common:Search')}
             </button>
           </div>
         </>

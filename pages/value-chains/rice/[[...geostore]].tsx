@@ -9,7 +9,6 @@ import DROPDOWN from 'public/data/rice_countries.json';
 import india_worldview_geostore from 'public/data/india_worldview_geostore.json';
 
 const RicePage = ({ countries }: ValueChainPageProps) => {
-
   return <LayoutRice countries={countries} />;
 };
 
@@ -17,7 +16,7 @@ const CROP = 'rice';
 
 const default_country = {
   label: 'India',
-  value: '45d0f6f887a18df373fa69c3eb6f13c7',
+  value: 'fb119d758d39527a91307b7fed3debf4',
   iso: 'IND',
 };
 
@@ -28,13 +27,28 @@ export const getServerSideProps = wrapper.getServerSideProps(
       const { dispatch } = store;
       const viewer_iso2 = req.headers['cloudfront-viewer-country'];
       // const viewer_iso2 = 'IN';
-      const country = geostore && await fetchGeostore(
-        Array.isArray(geostore) ? geostore.join('') : geostore
-      ).then(({ id, info: { name, iso } }) => ({
-        label: name,
-        value: id,
-        iso,
-      })).catch(() => console.error('Error fetching geostore'));
+      if (
+        viewer_iso2 === 'IN' &&
+        geostore === 'fb119d758d39527a91307b7fed3debf4'
+      )
+        return {
+          redirect: {
+            destination: '/value-chains/rice/1252b02f0a27cf77fd19b8298be6a8db',
+            permanent: false,
+          },
+        };
+
+      const country =
+        geostore &&
+        (await fetchGeostore(
+          Array.isArray(geostore) ? geostore.join('') : geostore
+        )
+          .then(({ id, info: { name, iso } }) => ({
+            label: name,
+            value: id,
+            iso,
+          }))
+          .catch(() => console.error('Error fetching geostore')));
 
       if (country) dispatch(actions.setCountry(country));
       else
@@ -48,7 +62,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
 
       const countries = (await fetchCountries()).reduce((arr, geo) => {
         if (!geo.name || !DROPDOWN.countries.includes(geo.name)) return arr;
-        
+
         const { name: label, geostoreId: value, iso } = geo;
         if (iso === 'IND' && viewer_iso2 === 'IN')
           arr.push(india_worldview_geostore);
@@ -64,6 +78,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
             'countries',
             'header',
             'footer',
+            'widgets',
           ])),
           countries,
         },

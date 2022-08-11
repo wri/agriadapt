@@ -1,12 +1,12 @@
-import { useReducer, useMemo } from "react";
-import PropTypes from "prop-types";
+import { useReducer, useMemo } from 'react';
+import PropTypes from 'prop-types';
 
 // components
-import DatasetsSidebar from "./datasets-sidebar";
-import MiniExploreMap from "./map";
+import DatasetsSidebar from './datasets-sidebar';
+import MiniExploreMap from './map';
 
 // reducers
-import { miniExploreState, miniExploreSlice } from "./reducer";
+import { miniExploreState, miniExploreSlice } from './reducer';
 
 const miniExploreReducer = miniExploreSlice.reducer;
 

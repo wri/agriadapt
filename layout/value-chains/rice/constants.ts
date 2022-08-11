@@ -1,6 +1,6 @@
-import rice1 from 'public/images/quotes/rice1.png'
-import rice2 from 'public/images/quotes/rice2.png'
-import rice3 from 'public/images/quotes/rice3.png'
+import rice1 from 'public/images/quotes/rice1.png';
+import rice2 from 'public/images/quotes/rice2.png';
+import rice3 from 'public/images/quotes/rice3.png';
 import ImportExportControls from '../custom-widgets/ImportExport/Controls';
 import LandSuitabilityControls from '../custom-widgets/LandSuitability/Controls';
 
@@ -12,19 +12,31 @@ const inputs = {
       { id: '043440a2-b3fd-493e-93a9-362eac5637c7', fullWidth: true },
       // { id: '284fed69-50e7-4d40-92a1-5640eb02e51f', fullWidth: true },
       {
-        title: 'Land Suitability for Rice in {{country}}',
+        title: 'widgets:rice_land_suitability.title',
         type: 'custom',
         fullWidth: true,
         controls: LandSuitabilityControls,
         controlsProps: {
           options: [
             [
-              { label: 'Dryland rice', value: 'dryland' },
-              { label: 'Wetland rice', value: 'wetland' },
+              {
+                label: 'widgets:rice_land_suitability.dryland_rice',
+                value: 'dryland',
+              },
+              {
+                label: 'widgets:rice_land_suitability.wetland_rice',
+                value: 'wetland',
+              },
             ],
             [
-              { label: 'Rainfed rice', value: 'rainfed' },
-              { label: 'Irrigated rice', value: 'irrigated' },
+              {
+                label: 'widgets:rice_land_suitability.rainfed_rice',
+                value: 'rainfed',
+              },
+              {
+                label: 'widgets:rice_land_suitability.irrigated_rice',
+                value: 'irrigated',
+              },
             ],
           ],
           layers: {
@@ -50,7 +62,7 @@ const inputs = {
               '2050s_rcp8p5_rainfed_wetland_rice',
             ],
           },
-        }
+        },
       },
     ], // TODO: Additional Stacked Bar Visual
   },
@@ -93,8 +105,8 @@ const production = {
     //   type: 'Total',
     // },
   },
-  production: {
-    info: 'production.production.info',
+  changes_in_rainfall: {
+    info: 'production.changes_in_rainfall.info',
     widgets: [{ id: 'd95ad48d-e14e-42cd-a5fb-1d8054c258d9' }],
   },
   change_in_yield: {
@@ -153,20 +165,32 @@ const trade = {
     info: 'trade.export_and_import.info',
     widgets: [
       {
-        title: 'Export and Import Statistics for Rice in {{country}}',
+        title: 'widgets:export_import.rice.title',
         type: 'custom',
         fullWidth: true,
         controls: ImportExportControls,
         controlsProps: {
           products: [
-            { label: 'Rice, husked', value: 'Rice, husked' },
-            { label: 'Rice, milled', value: 'Rice, milled' },
-            { label: 'Rice, paddy', value: 'Rice, paddy' },
+            {
+              label: 'widgets:export_import.rice.products.rice_husked',
+              value: 'Rice, husked',
+            },
+            {
+              label: 'widgets:export_import.rice.products.rice_milled',
+              value: 'Rice, milled',
+            },
+            {
+              label: 'widgets:export_import.rice.products.rice_paddy',
+              value: 'Rice, paddy',
+            },
           ],
           indicators: [
-            { label: 'Quantity', value: 'Quantity' },
-            { label: 'Value', value: 'Value' },
-          ]
+            {
+              label: 'widgets:export_import.indicators.quantity',
+              value: 'Quantity',
+            },
+            { label: 'widgets:export_import.indicators.value', value: 'Value' },
+          ],
         },
       },
     ],
@@ -178,7 +202,7 @@ export const quotes = [
     location: 'quotes.0.location',
     image: rice1,
     title: 'quotes.0.title',
-    quote: 'quotes.0.quote'
+    quote: 'quotes.0.quote',
   },
   {
     location: 'quotes.1.location',
@@ -193,7 +217,6 @@ export const quotes = [
     quote: 'quotes.2.quote',
   },
 ];
-
 
 const details = { inputs, production, trade };
 
