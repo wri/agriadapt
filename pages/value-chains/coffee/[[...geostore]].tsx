@@ -63,7 +63,7 @@ export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps
             'footer',
           ])),
           countries,
-          headers: req.headers['cloudfront-viewer-country']
+          headers: req.headers
         },
       };
     }
