@@ -16,7 +16,7 @@ const CROP = 'cotton';
 
 const default_country = {
   label: 'India',
-  value: '45d0f6f887a18df373fa69c3eb6f13c7',
+  value: 'fb119d758d39527a91307b7fed3debf4',
   iso: 'IND',
 };
 
@@ -26,6 +26,19 @@ export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps
       const { geostore } = query;
       const { dispatch } = store;
       const viewer_iso2 = req.headers['cloudfront-viewer-country'];
+      // const viewer_iso2 = 'IN';
+      if (
+        viewer_iso2 === 'IN' &&
+        geostore === 'fb119d758d39527a91307b7fed3debf4'
+      )
+        return {
+          redirect: {
+            destination:
+              '/value-chains/cotton/1252b02f0a27cf77fd19b8298be6a8db',
+            permanent: false,
+          },
+        };
+
       const country =
         geostore &&
         (await fetchGeostore(
