@@ -17,9 +17,9 @@
 	},
 	"value_chains": {
 		"Value Chains": "மதிப்பு சங்கிலிகள்",
-		"Coffee": "காப்பி",
-		"Cotton": "பருத்திப்பயிர்",
-		"Rice": "நெற்பயிர்"
+		"coffee": "காப்பி",
+		"cotton": "பருத்திப்பயிர்",
+		"rice": "நெற்பயிர்"
 	},
 	"Search": "தேட்டம்",
 	"Select": "தேர்ந்தெடுக்கப்பெற்ற",
@@ -31,5 +31,20 @@
 	},
 	"world_resources_institute": "உலக வளங்கள் நிறுவனம்",
 	"hear_from_our_users": "எங்கள் பயனர்களிடமிருந்து கேளுங்கள்",
-	"terms_of_service": "சேவை விதிமுறைகள்"
+	"terms_of_service": "சேவை விதிமுறைகள்",
+	"content": {
+		"inputs": "உள்ளீடுகள்",
+		"production": "விளைவாக்கம்",
+		"trade": "வாணிகம்",
+		"land_suitability": "நிலப் பொருத்தப்பாடு",
+		"labor": "தொழிலாளர்",
+		"seedlings": "நாற்றுகள்",
+		"production_volume": "உற்பத்தி அளவு",
+		"pest_and_disease": "பூச்சி மற்றும் நோய்",
+		"changes_in_rainfall": "மழைவீழ்ச்சியில் ஏற்படும் மாற்றங்கள்",
+		"change_in_yield": "மகசூலில் மாற்றம்",
+		"policies_and_price": "கொள்கைகள் மற்றும் விலை",
+		"food_vulnerability": "உணவு பாதிப்பு",
+		"export_and_import": "ஏற்றுமதி மற்றும் இறக்குமதி"
+	}
 }

@@ -57,7 +57,7 @@ const UserStories = ({
         <div className="c-user-info">
           <h3>{`${t(s.title)}, ${t(s.location)}`}</h3>
           <p>{`"${t(s.quote)}"`}</p>
-          <Link href="/explore" passHref>
+          {/* <Link href="/explore" passHref>
             <a
               className={classnames({
                 'c-button': true,
@@ -66,7 +66,7 @@ const UserStories = ({
             >
               {'Find Out More in the Map'}
             </a>
-          </Link>
+          </Link> */}
         </div>
       </div>
     ));

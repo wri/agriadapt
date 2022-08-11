@@ -11,7 +11,7 @@ const Controls = ({ setConfig, products, indicators, country }) => {
   const product = useSelect(products[0]);
   const indicator = useSelect(indicators[0]);
 
-  const { t } = useTranslation();
+  const { t } = useTranslation('widgets');
 
   useEffect(() => {
     const i_sql = indicator.value.value;
@@ -32,9 +32,9 @@ const Controls = ({ setConfig, products, indicators, country }) => {
           label: t('Select Product'),
           default: products[0]
         }}
-        value={product.value}
+        value={{...product.value.value, label: t(product.value.label)}}
         onChange={product.onChange}
-        options={products}
+        options={products.map(o => ({...o, label: t(o.label)}))}
         className={'Select--large'}
       >
         {Select}
@@ -45,9 +45,9 @@ const Controls = ({ setConfig, products, indicators, country }) => {
           label: t('Select Indicator'),
           default: indicators[0]
         }}
-        value={indicator.value}
+        value={{...indicator.value.value, label: t(indicator.value.label)}}
         onChange={indicator.onChange}
-        options={indicators}
+        options={indicators.map(o => ({...o, label: t(o.label)}))}
         className={'Select--large'}
       >
         {Select}

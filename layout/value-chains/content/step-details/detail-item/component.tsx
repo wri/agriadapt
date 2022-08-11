@@ -50,7 +50,7 @@ const DetailItem = ({
 }: DetailItemProps) => {
   const [geojson, setGeoJson] = useState('');
 
-  const { t } = useTranslation(crop);
+  const { t } = useTranslation([crop, 'common', 'widgets']);
 
   useEffect(() => {
     if (country?.value)
@@ -87,7 +87,7 @@ const DetailItem = ({
               />
             </div>
             <div>
-              <h3>{label}</h3>
+              <h3>{t(label)}</h3>
               <p className="description">
                 <Trans i18nKey={info}>
                   {t(info)} {{ country: country?.label }}

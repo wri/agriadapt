@@ -17,9 +17,9 @@
 	},
 	"value_chains": {
 		"Value Chains": "వాల్యూ ఛైయిన్ లు",
-		"Coffee": "కాఫీ",
-		"Cotton": "పత్తి",
-		"Rice": "బియ్యం"
+		"coffee": "కాఫీ",
+		"cotton": "పత్తి",
+		"rice": "బియ్యం"
 	},
 	"Search": "వెతుకు",
 	"Select": "ఎంచు",
@@ -31,5 +31,20 @@
 	},
 	"world_resources_institute": "వరల్డ్ రిసోర్సెస్ ఇనిస్టిట్యూట్",
 	"hear_from_our_users": "మా వినియోగదారుల నుండి వినండి",
-	"terms_of_service": "సేవా నిబంధనలు"
+	"terms_of_service": "సేవా నిబంధనలు",
+	"content": {
+		"inputs": "ఇన్ పుట్ లు",
+		"production": "ఉత్పత్తి",
+		"trade": "వ్యాపారం",
+		"land_suitability": "భూమి అనుకూలత",
+		"labor": "కష్టపడు",
+		"seedlings": "మొలకలు",
+		"production_volume": "ప్రొడక్షన్ వాల్యూమ్",
+		"pest_and_disease": "చీడపీడలు మరియు చీడలు",
+		"changes_in_rainfall": "వర్షపాతంలో మార్పులు",
+		"change_in_yield": "దిగుబడిలో మార్పు",
+		"policies_and_price": "పాలసీలు మరియు ధర",
+		"food_vulnerability": "ఆహార దుర్బలత్వం",
+		"export_and_import": "ఎగుమతి మరియు దిగుమతి"
+	}
 }

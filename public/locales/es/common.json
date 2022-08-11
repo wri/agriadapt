@@ -17,9 +17,9 @@
 	},
 	"value_chains": {
 		"Value Chains": "Cadenas de valor",
-		"Coffee": "Café",
-		"Cotton": "Algodón",
-		"Rice": "Arroz"
+		"coffee": "Café",
+		"cotton": "Algodón",
+		"rice": "Arroz"
 	},
 	"Search": "Buscar",
 	"Select": "Escoger",
@@ -31,5 +31,20 @@
 	},
 	"world_resources_institute": "Instituto de Recursos Mundiales",
 	"hear_from_our_users": "Escuche a nuestros usuarios",
-	"terms_of_service": "Términos de servicio"
+	"terms_of_service": "Términos de servicio",
+	"content": {
+		"inputs": "Entradas",
+		"production": "Producción",
+		"trade": "Comercio",
+		"land_suitability": "Idoneidad del terreno",
+		"labor": "Trabajo",
+		"seedlings": "Plántulas",
+		"production_volume": "Volumen de producción",
+		"pest_and_disease": "Plaga y enfermedad",
+		"changes_in_rainfall": "Cambios en las precipitaciones",
+		"change_in_yield": "Cambio en el rendimiento",
+		"policies_and_price": "Políticas y Precio",
+		"food_vulnerability": "Vulnerabilidad alimentaria",
+		"export_and_import": "Exportación e importación"
+	}
 }

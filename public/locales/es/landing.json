@@ -7,7 +7,8 @@
 	"sub_intro": {
 		"title": "Información confiable y verificada para tomar mejores decisiones en la agricultura",
 		"subtitle": "Entregamos información climática gratuita para informar las decisiones de las empresas agrícolas, pequeñas y grandes, para adaptarse al cambio climático.",
-		"button_label": "Explora el mapa"
+		"button_label": "Explora el mapa",
+		"image_alt": "Mapa Explorar"
 	},
 	"value_chain_cards": {
 		"title": "La cadena de valor de cada cultivo se enfrenta a riesgos únicos",
@@ -29,6 +30,7 @@
 	},
 	"map_analysis_carousel": {
 		"title": "¡Inicio rápido!",
+		"image_alt": "Mapa de análisis",
 		"subtitle": "Comience a explorar las amenazas climáticas para la agricultura con estas recomendaciones de datos de nuestros especialistas",
 		"content": [
 			"Comprender cómo la producción de algodón está expuesta al estrés hídrico.",

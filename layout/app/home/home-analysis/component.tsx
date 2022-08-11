@@ -6,7 +6,7 @@ import AnalysisCard from './analysis-card/component';
 import { useTranslation } from 'next-i18next';
 
 const AnalysisContainerHome = () => {
-  const {t} = useTranslation();
+  const { t } = useTranslation('landing');
   return (
     <div className="c-home-analysis">
       <div className="l-container">

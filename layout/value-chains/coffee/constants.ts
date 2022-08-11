@@ -11,14 +11,14 @@ const inputs = {
       { id: '00b89bc8-b8c1-413f-ba55-2c4e7308133a', fullWidth: true },
       // { id: '41612127-bb5f-4ac3-b80a-4676dd9c3a2b', fullWidth: true },
       {
-        title: 'Land Suitability for Coffee in {{country}}',
+        title: 'widgets:coffee_land_suitability.title',
         type: 'custom',
         fullWidth: true,
         controls: LandSuitabilityControls,
         controlsProps: {
           options: [
-            { label: 'Rainfed coffee', value: 'rainfed' },
-            { label: 'Irrigated coffee', value: 'irrigated' },
+            { label: 'widgets:coffee_land_suitability.rainfed_coffee', value: 'rainfed' },
+            { label: 'widgets:coffee_land_suitability.irrigated_coffee', value: 'irrigated' },
           ],
           layers: {
             historic: [
@@ -87,18 +87,18 @@ const trade = {
     // widgets: [{ id: '96622815-7e6b-4d15-97cc-3ca3bc1a5c98' }],
     widgets: [
       {
-        title: 'Export and Import Statistics for Coffee in {{country}}',
+        title: 'widgets:export_import.coffee.title',
         type: 'custom',
         fullWidth: true,
         controls: ImportExportControls,
         controlsProps: {
           products: [
-            { label: 'Coffee, green', value: 'Coffee, green' },
-            { label: 'Coffee, roasted', value: 'Coffee, roasted' },
+            { label: 'widgets:export_import.coffee.products.coffee_green', value: 'Coffee, green' },
+            { label: 'widgets:export_import.coffee.products.coffee_roasted', value: 'Coffee, roasted' },
           ],
           indicators: [
-            { label: 'Quantity', value: 'Quantity' },
-            { label: 'Value', value: 'Value' },
+            { label: 'widgets:export_import.indicators.quantity', value: 'Quantity' },
+            { label: 'widgets:export_import.indicators.value', value: 'Value' },
           ]
         },
       },

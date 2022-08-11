@@ -8,7 +8,7 @@ import mobileBlob from 'public/images/components/layout/landing/value-chain-card
 import { VALUECHAINS } from '../../constants';
 
 export const ValueChainCards = () => {
-  const {t} = useTranslation();
+  const {t} = useTranslation(['landing', 'common']);
   return (
     <>
       <Media at="sm">
@@ -22,14 +22,11 @@ export const ValueChainCards = () => {
               alt="valuechain-blob"
             />
           </div>
-          {/* {VALUECHAINS.chains.map((c) => (
+          {VALUECHAINS.chains.map((c) => (
             <button key={c.label} className="c-button -secondary">
               {t(c.label)}
             </button>
-          ))} */}
-          <button key={VALUECHAINS.chains[0].label} className="c-button -secondary">
-            {t(VALUECHAINS.chains[0].label)}
-          </button>
+          ))}
         </div>
       </Media>
 
@@ -38,10 +35,10 @@ export const ValueChainCards = () => {
           {VALUECHAINS.chains.map((c) => (
             <div key={c.label} className={'value-chain-card'}>
               <div className="c-image">
-                <Image loader={loader} src={c.image} alt={c.label} />
+                <Image loader={loader} src={c.image} alt={t(c.label)} />
               </div>
               <div className="c-value-chain-card-info">
-                <h2>{c.label}</h2>
+                <h2>{t(c.label)}</h2>
                 <Link passHref href={`/value-chains/${c.href}`}>
                   <a className="c-button -secondary -fullwidth">
                     {t(c.button_label)}

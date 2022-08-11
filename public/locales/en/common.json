@@ -17,9 +17,9 @@
   },
   "value_chains": {
     "Value Chains": "Value Chains",
-    "Coffee": "Coffee",
-    "Cotton": "Cotton",
-    "Rice": "Rice"
+    "coffee": "Coffee",
+    "cotton": "Cotton",
+    "rice": "Rice"
   },
   "Search": "Search",
   "Select": "Select",
@@ -31,5 +31,20 @@
   },
   "world_resources_institute": "World Resources Institute",
   "hear_from_our_users": "Hear from Our Users",
-  "terms_of_service": "Terms of Service"
+  "terms_of_service": "Terms of Service",
+  "content": {
+    "inputs": "Inputs",
+    "production": "Production",
+    "trade": "Trade",
+    "land_suitability": "Land Suitability",
+    "labor": "Labor",
+    "seedlings": "Seedlings",
+    "production_volume": "Production Volume",
+    "pest_and_disease": "Pest and Disease",
+    "changes_in_rainfall": "Changes in Rainfall",
+    "change_in_yield": "Change in Yield",
+    "policies_and_price": "Policies and Price",
+    "food_vulnerability": "Food Vulnerability",
+    "export_and_import": "Export and Import"
+  }
 }
