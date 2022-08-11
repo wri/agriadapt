@@ -4,4 +4,5 @@ export interface ValueChainPageProps {
     value: string;
     iso: string;
   }[];
+  headers;
 }

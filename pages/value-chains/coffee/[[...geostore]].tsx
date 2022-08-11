@@ -8,6 +8,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import DROPDOWN from 'public/data/coffee_countries.json';
 import india_worldview_geostore from 'public/data/india_worldview_geostore.json';
 const CoffeeCountryPage = (props: ValueChainPageProps) => {
+  console.log(props.headers);
   return <LayoutCoffee {...props} />;
 };
 
@@ -62,6 +63,7 @@ export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps
             'footer',
           ])),
           countries,
+          headers: req.headers['cloudfront-viewer-country']
         },
       };
     }
