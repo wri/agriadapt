@@ -50,17 +50,17 @@ const PrivacyPolicyModal = () => {
                     <p>{t('privacy:use_of_online_tracking_technologies.p')}</p>
                     <p>
                         {t('privacy:use_of_online_tracking_technologies.text1')}
-                        <a href="http://tools.google.com/dlpage/gaoptout">http://tools.google.com/dlpage/gaoptout</a>
+                        <a href="http://tools.google.com/dlpage/gaoptout" target="_blank" rel="noreferrer">http://tools.google.com/dlpage/gaoptout</a>
                         {t('privacy:use_of_online_tracking_technologies.text2')}
-                        <a href="https://optout.networkadvertising.org/?c=1">www.networkadvertising.org/choices/</a>
+                        <a href="https://optout.networkadvertising.org/?c=1" target="_blank" rel="noreferrer">www.networkadvertising.org/choices/</a>
                         {t('privacy:use_of_online_tracking_technologies.text3')}
-                        <a href="https://www.youronlinechoices.com/">www.youronlinechoices.com</a>
+                        <a href="https://www.youronlinechoices.com/" target="_blank" rel="noreferrer">www.youronlinechoices.com</a>
                         {t('privacy:use_of_online_tracking_technologies.text4')}
-                        <a href="https://www.google.com/policies/privacy/">https://www.google.com/policies/privacy/</a>
+                        <a href="https://www.google.com/policies/privacy/" target="_blank" rel="noreferrer">https://www.google.com/policies/privacy/</a>
                         {t('privacy:use_of_online_tracking_technologies.text5')}
-                        <a href="http://www.google.com/analytics/terms/us.html">http://www.google.com/analytics/terms/us.html</a>
+                        <a href="http://www.google.com/analytics/terms/us.html" target="_blank" rel="noreferrer">http://www.google.com/analytics/terms/us.html</a>
                         {t('privacy:use_of_online_tracking_technologies.text6')}
-                        <a href="http://www.google.com/analytics/learn/index.html">http://www.google.com/analytics/learn/index.html</a>
+                        <a href="http://www.google.com/analytics/learn/index.html" target="_blank" rel="noreferrer">http://www.google.com/analytics/learn/index.html</a>
                         {t('privacy:use_of_online_tracking_technologies.text7')}
                     </p>
 
