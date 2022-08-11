@@ -1,50 +1,51 @@
 {
-  "Any": "ఏవైనా",
-  "Back": "వీపు",
-  "Cancel": "రద్దు",
-  "Select_Country": "దేశం ఎంచుకోండి",
-  "Language": "భాష",
-  "emission_scenarios": {
-    "Emission Scenario": "ఉద్గార దృశ్యం",
-    "Emissions_Scenario": "ఉద్గారాల దృశ్యం",
-    "pessimistic": "నిరాశావాదం (RCP 8.5)",
-    "optimistic": "ఆశావాదం (RCP 4.5)"
-  },
-  "timescales": {
-    "Timescale": "టైమ్ స్కేల్",
-    "Historic": "చారిత్రక",
-    "Future Looking": "భవిష్యత్తు చూడటం"
-  },
-  "value_chains": {
-    "Value Chains": "వాల్యూ ఛైయిన్ లు",
-    "coffee": "కాఫీ",
-    "cotton": "పత్తి",
-    "rice": "బియ్యం"
-  },
-  "Search": "వెతుకు",
-  "Select": "ఎంచు",
-  "share": {
-    "Share": "భాగం",
-    "Public url to share": "భాగస్వామ్యం చేయడానికి పబ్లిక్ url",
-    "Code to embed": "ఎంబెడ్ చేయడానికి కోడ్",
-    "Copy link": "లింక్ కాపీ చేయి"
-  },
-  "world_resources_institute": "వరల్డ్ రిసోర్సెస్ ఇనిస్టిట్యూట్",
-  "hear_from_our_users": "మా వినియోగదారుల నుండి వినండి",
-  "terms_of_service": "సేవా నిబంధనలు",
-  "content": {
-    "inputs": "ఇన్ పుట్ లు",
-    "production": "ఉత్పత్తి",
-    "trade": "వ్యాపారం",
-    "land_suitability": "భూమి అనుకూలత",
-    "labor": "కష్టపడు",
-    "seedlings": "మొలకలు",
-    "production_volume": "ప్రొడక్షన్ వాల్యూమ్",
-    "pest_and_disease": "చీడపీడలు మరియు చీడలు",
-    "changes_in_rainfall": "వర్షపాతంలో మార్పులు",
-    "change_in_yield": "దిగుబడిలో మార్పు",
-    "policies_and_price": "పాలసీలు మరియు ధర",
-    "food_vulnerability": "ఆహార దుర్బలత్వం",
-    "export_and_import": "ఎగుమతి మరియు దిగుమతి"
-  }
+	"Any": "ఏవైనా",
+	"Back": "వీపు",
+	"Cancel": "రద్దు",
+	"Select_Country": "దేశం ఎంచుకోండి",
+	"Language": "భాష",
+	"emission_scenarios": {
+		"Emission Scenario": "ఉద్గార దృశ్యం",
+		"Emissions_Scenario": "ఉద్గారాల దృశ్యం",
+		"pessimistic": "నిరాశావాదం (RCP 8.5)",
+		"optimistic": "ఆశావాదం (RCP 4.5)"
+	},
+	"timescales": {
+		"Any": "ఏవైనా",
+		"Timescale": "టైమ్ స్కేల్",
+		"Historic": "చారిత్రక",
+		"Future Looking": "భవిష్యత్తు చూడటం"
+	},
+	"value_chains": {
+		"Value Chains": "వాల్యూ ఛైయిన్ లు",
+		"coffee": "కాఫీ",
+		"cotton": "పత్తి",
+		"rice": "బియ్యం"
+	},
+	"Search": "వెతుకు",
+	"Select": "ఎంచు",
+	"share": {
+		"Share": "భాగం",
+		"Public url to share": "భాగస్వామ్యం చేయడానికి పబ్లిక్ url",
+		"Code to embed": "ఎంబెడ్ చేయడానికి కోడ్",
+		"Copy link": "లింక్ కాపీ చేయి"
+	},
+	"world_resources_institute": "వరల్డ్ రిసోర్సెస్ ఇనిస్టిట్యూట్",
+	"hear_from_our_users": "మా వినియోగదారుల నుండి వినండి",
+	"terms_of_service": "సేవా నిబంధనలు",
+	"content": {
+		"inputs": "ఇన్ పుట్ లు",
+		"production": "ఉత్పత్తి",
+		"trade": "వ్యాపారం",
+		"land_suitability": "భూమి అనుకూలత",
+		"labor": "కష్టపడు",
+		"seedlings": "మొలకలు",
+		"production_volume": "ప్రొడక్షన్ వాల్యూమ్",
+		"pest_and_disease": "చీడపీడలు మరియు చీడలు",
+		"changes_in_rainfall": "వర్షపాతంలో మార్పులు",
+		"change_in_yield": "దిగుబడిలో మార్పు",
+		"policies_and_price": "పాలసీలు మరియు ధర",
+		"food_vulnerability": "ఆహార దుర్బలత్వం",
+		"export_and_import": "ఎగుమతి మరియు దిగుమతి"
+	}
 }

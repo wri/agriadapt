@@ -5,7 +5,9 @@
     "Layers": "Layers",
     "Search Layers": "Search Layers",
     "start_search": "Type to start search",
-    "Filter Layers by": "Filter Layers by",
+    "Filter Layers by Value Chains": "Filter Layers by Value Chains",
+    "Filter Layers by Emission Scenario": "Filter Layers by Emission Scenario",
+    "Filter Layers by Timescale": "Filter Layers by Timescale",
     "value_chains": {
       "hint": "Select a pathway for forward-looking data."
     }

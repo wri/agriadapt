@@ -1,47 +1,47 @@
 {
-  "rice_land_suitability": {
-    "title": "{{country}} இல் நெல்லுக்கான காணிப் பொருத்தப்பாடு",
-    "dryland_rice": "மானாவாரி நெல்",
-    "wetland_rice": "ஈரநில நெல்",
-    "rainfed_rice": "மானாவாரி நெல்",
-    "irrigated_rice": "நீர்ப்பாசன நெல்"
-  },
-  "coffee_land_suitability": {
-    "title": "{{country}} இல் காபிக்கான நிலப் பொருத்தப்பாடு",
-    "rainfed_coffee": "மானாவாரி காபி",
-    "irrigated_coffee": "நீர்ப்பாசன காபி"
-  },
-  "cotton_land_suitability": {
-    "title": "{{country}} இல் பருத்திக்கான நிலப் பொருத்தப்பாடு",
-    "rainfed_cotton": "மானாவாரி பருத்தி",
-    "irrigated_cotton": "நீர்ப்பாசனம் செய்யப்பட்ட பருத்தி"
-  },
-  "export_import": {
-    "cotton": {
-      "title": "{{country}} இல் பருத்திக்கான ஏற்றுமதி மற்றும் இறக்குமதி புள்ளிவிபரங்கள்",
-      "products": {
-        "cotton_carded_combed": "பருத்தி, அட்டை, சீவப்பட்ட",
-        "cotton_lint": "பருத்தி பஞ்சு"
-      }
-    },
-    "coffee": {
-      "title": "{{country}} இல் காபிக்கான ஏற்றுமதி மற்றும் இறக்குமதி புள்ளிவிபரங்கள்",
-      "products": {
-        "coffee_green": "காபி, பச்சை",
-        "coffee_roasted": "காபி, வறுத்த"
-      }
-    },
-    "rice": {
-      "title": "{{country}} இல் அரிசிக்கான ஏற்றுமதி மற்றும் இறக்குமதி புள்ளிவிபரங்கள்",
-      "products": {
-        "rice_husked": "அரிசி, உமி",
-        "rice_milled": "அரிசி, அரைக்கப்பட்ட",
-        "rice_paddy": "நெல், நெல்"
-      }
-    },
-    "indicators": {
-      "quantity": "அளவு",
-      "value": "மதிப்பு"
-    }
-  }
+	"rice_land_suitability": {
+		"title": "{{நாடு}} இல் நெல்லுக்கான காணிப் பொருத்தப்பாடு",
+		"dryland_rice": "மானாவாரி நெல்",
+		"wetland_rice": "ஈரநில நெல்",
+		"rainfed_rice": "மானாவாரி நெல்",
+		"irrigated_rice": "நீர்ப்பாசன நெல்"
+	},
+	"coffee_land_suitability": {
+		"title": "{{நாடு}} இல் காபிக்கான நிலப் பொருத்தப்பாடு",
+		"rainfed_coffee": "மானாவாரி காபி",
+		"irrigated_coffee": "நீர்ப்பாசன காபி"
+	},
+	"cotton_land_suitability": {
+		"title": "{{நாடு}} இல் பருத்திக்கான நிலப் பொருத்தப்பாடு",
+		"rainfed_cotton": "மானாவாரி பருத்தி",
+		"irrigated_cotton": "நீர்ப்பாசனம் செய்யப்பட்ட பருத்தி"
+	},
+	"export_import": {
+		"cotton": {
+			"title": "{{நாடு}} இல் பருத்திக்கான ஏற்றுமதி மற்றும் இறக்குமதி புள்ளிவிபரங்கள்",
+			"products": {
+				"cotton_carded_combed": "பருத்தி, அட்டை, சீவப்பட்ட",
+				"cotton_lint": "பருத்தி பஞ்சு"
+			}
+		},
+		"coffee": {
+			"title": "{{நாடு}} இல் காபிக்கான ஏற்றுமதி மற்றும் இறக்குமதி புள்ளிவிபரங்கள்",
+			"products": {
+				"coffee_green": "காபி, பச்சை",
+				"coffee_roasted": "காபி, வறுத்த"
+			}
+		},
+		"rice": {
+			"title": "{{நாடு}} இல் அரிசிக்கான ஏற்றுமதி மற்றும் இறக்குமதி புள்ளிவிபரங்கள்",
+			"products": {
+				"rice_husked": "அரிசி, உமி",
+				"rice_milled": "அரிசி, அரைக்கப்பட்ட",
+				"rice_paddy": "நெல், நெல்"
+			}
+		},
+		"indicators": {
+			"quantity": "அளவு",
+			"value": "மதிப்பு"
+		}
+	}
 }

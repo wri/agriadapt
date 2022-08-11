@@ -11,6 +11,7 @@
     "optimistic": "Optimistic (RCP 4.5)"
   },
   "timescales": {
+    "Any": "Any",
     "Timescale": "Timescale",
     "Historic": "Historic",
     "Future Looking": "Future Looking"

@@ -1,47 +1,47 @@
 {
-  "rice_land_suitability": {
-    "title": "{{country}} లో వరి కొరకు భూమి అనుకూలత",
-    "dryland_rice": "డ్రైల్యాండ్ రైస్",
-    "wetland_rice": "చిత్తడి నేల వరి",
-    "rainfed_rice": "వర్షాధార వరి",
-    "irrigated_rice": "సాగునీరు అందించే వరి"
-  },
-  "coffee_land_suitability": {
-    "title": "{{country}} లో కాఫీ కొరకు ల్యాండ్ అనుకూలత",
-    "rainfed_coffee": "వర్షాధార కాఫీ",
-    "irrigated_coffee": "నీటి పారుదల కాఫీ"
-  },
-  "cotton_land_suitability": {
-    "title": "{{country}} లో పత్తి కొరకు భూమి అనుకూలత",
-    "rainfed_cotton": "వర్షాధార పత్తి",
-    "irrigated_cotton": "సాగునీరు అందించే పత్తి"
-  },
-  "export_import": {
-    "cotton": {
-      "title": "{{country}} లో పత్తి కొరకు ఎగుమతి మరియు దిగుమతి గణాంకాలు",
-      "products": {
-        "cotton_carded_combed": "కాటన్, కార్డెడ్, దువ్వెన",
-        "cotton_lint": "కాటన్ లింట్"
-      }
-    },
-    "coffee": {
-      "title": "{{country}} లో కాఫీ కొరకు ఎగుమతి మరియు దిగుమతి గణాంకాలు",
-      "products": {
-        "coffee_green": "కాఫీ, ఆకుపచ్చ",
-        "coffee_roasted": "కాఫీ, కాల్చిన"
-      }
-    },
-    "rice": {
-      "title": "{{country}} లో వరి కొరకు ఎగుమతి మరియు దిగుమతి గణాంకాలు",
-      "products": {
-        "rice_husked": "వరి, పొట్టు",
-        "rice_milled": "వరి, మిల్లింగ్",
-        "rice_paddy": "వరి, వరి"
-      }
-    },
-    "indicators": {
-      "quantity": "పరిమాణం",
-      "value": "విలువ"
-    }
-  }
+	"rice_land_suitability": {
+		"title": "{{country}} లో వరి కొరకు భూమి అనుకూలత",
+		"dryland_rice": "డ్రైల్యాండ్ రైస్",
+		"wetland_rice": "చిత్తడి నేల వరి",
+		"rainfed_rice": "వర్షాధార వరి",
+		"irrigated_rice": "సాగునీరు అందించే వరి"
+	},
+	"coffee_land_suitability": {
+		"title": "{{country}} లో కాఫీ కొరకు ల్యాండ్ అనుకూలత",
+		"rainfed_coffee": "వర్షాధార కాఫీ",
+		"irrigated_coffee": "నీటి పారుదల కాఫీ"
+	},
+	"cotton_land_suitability": {
+		"title": "{{country}} లో పత్తి కొరకు భూమి అనుకూలత",
+		"rainfed_cotton": "వర్షాధార పత్తి",
+		"irrigated_cotton": "సాగునీరు అందించే పత్తి"
+	},
+	"export_import": {
+		"cotton": {
+			"title": "{{country}} లో పత్తి కొరకు ఎగుమతి మరియు దిగుమతి గణాంకాలు",
+			"products": {
+				"cotton_carded_combed": "కాటన్, కార్డెడ్, దువ్వెన",
+				"cotton_lint": "కాటన్ లింట్"
+			}
+		},
+		"coffee": {
+			"title": "{{country}} లో కాఫీ కొరకు ఎగుమతి మరియు దిగుమతి గణాంకాలు",
+			"products": {
+				"coffee_green": "కాఫీ, ఆకుపచ్చ",
+				"coffee_roasted": "కాఫీ, కాల్చిన"
+			}
+		},
+		"rice": {
+			"title": "{{country}} లో వరి కొరకు ఎగుమతి మరియు దిగుమతి గణాంకాలు",
+			"products": {
+				"rice_husked": "వరి, పొట్టు",
+				"rice_milled": "వరి, మిల్లింగ్",
+				"rice_paddy": "వరి, వరి"
+			}
+		},
+		"indicators": {
+			"quantity": "పరిమాణం",
+			"value": "విలువ"
+		}
+	}
 }
