@@ -43,8 +43,8 @@ export const EXPLORE_ANALYSIS = {
       { label: 'Search by address', value: 'address' },
       { label: 'Choose my location', value: 'admin' },
     ],
-  }
-}
+  },
+};
 
 export const INDIA_BLACKLIST_DATASET_IDS = [
   '2dcd7aeb-d290-414b-80a2-8d90c44ae02a',

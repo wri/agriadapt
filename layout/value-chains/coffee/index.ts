@@ -1,3 +1,3 @@
-import LayoutCoffee from "./component";
+import LayoutCoffee from './component';
 
 export default LayoutCoffee;

@@ -16,7 +16,7 @@
     },
     "labor": {
       "info": [
-        "Agricultural workers are especially vulnerable to increased heat stress, which affects the health of individuals and reduces labor productivity. The Universal Thermal Climate Index identifies outdoor conditions that cause discomfort to people using a combination of temperature, humidity, wind, and radiation to determine the stress (sweating, shivering, skin wetness, etc.) a person undergoes when exposed to outdoor conditions.", 
+        "Agricultural workers are especially vulnerable to increased heat stress, which affects the health of individuals and reduces labor productivity. The Universal Thermal Climate Index identifies outdoor conditions that cause discomfort to people using a combination of temperature, humidity, wind, and radiation to determine the stress (sweating, shivering, skin wetness, etc.) a person undergoes when exposed to outdoor conditions.",
         "Values between 9-26 means no thermal stress. Values above 26 are approaching heat stress, with values above 46 meaning extreme heat stress. Values below 9 are approaching cold stress, with values below -40 meaning extreme cold stress."
       ]
     },

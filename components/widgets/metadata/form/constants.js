@@ -1,8 +1,8 @@
 export const LANGUAGE_OPTIONS = [
-  { label: "English", value: "en" },
-  { label: "Español", value: "es" },
-  { label: "Français", value: "fr" },
-  { label: "Português", value: "pt" },
+  { label: 'English', value: 'en' },
+  { label: 'Español', value: 'es' },
+  { label: 'Français', value: 'fr' },
+  { label: 'Português', value: 'pt' },
 ];
 
 export const STATE_DEFAULT = {
@@ -11,8 +11,8 @@ export const STATE_DEFAULT = {
   submitting: false,
   loading: false,
   form: {
-    authorization: "",
-    language: "en",
+    authorization: '',
+    language: 'en',
     info: {
       widgetLinks: [],
     },

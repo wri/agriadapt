@@ -11,7 +11,7 @@ import { fetchGADM1Geostore } from 'services/geostore';
 import { AnalysisLocation } from 'types/analysis';
 import { getUserPosition } from 'utils/locations/user-position';
 import { forwardGeocode, reverseGeocode } from 'services/geocoder';
-import isoJSON from "i18n-iso-countries/langs/en.json";
+import isoJSON from 'i18n-iso-countries/langs/en.json';
 
 const ExploreAnalysisLocationEditor = ({
   countries,
@@ -35,10 +35,15 @@ const ExploreAnalysisLocationEditor = ({
   const locationType = useInput(current.type || 'point');
   const address = useSelect(current.address);
   const country = useSelect(current.country);
-  const [countryAndIso, setCountryAndIso] = useState({country: current.country, iso: current.iso});
+  const [countryAndIso, setCountryAndIso] = useState({
+    country: current.country,
+    iso: current.iso,
+  });
   const [selectedState, setSelectedState] = useState(current.state);
   const [geo, setGeo] = useState(current.geo);
-  const [autocompleteResults, setAutocompleteResults] = useState<{value: string; label: string; lngLat: Record<string, number>}[]>([]);
+  const [autocompleteResults, setAutocompleteResults] = useState<
+    { value: string; label: string; lngLat: Record<string, number> }[]
+  >([]);
   const [geocodeResults, setGeocodeResults] = useState<number[]>([]);
   const [geoLabel, setGeoLabel] = useState(null);
 
@@ -96,12 +101,12 @@ const ExploreAnalysisLocationEditor = ({
       reverseGeocode(Object.values(data)).then((results) => {
         if (results.length) {
           setGeoLabel(results[0].place_name);
-          const country = results.at(-1).place_name
+          const country = results.at(-1).place_name;
           setCountryAndIso({
             country,
             iso: i18nIso.getAlpha3Code(country, 'en'),
           });
-        };
+        }
       });
     }
   }, [countries, geoLocatorData, locationType.value, pointData]);
@@ -226,12 +231,14 @@ const ExploreAnalysisLocationEditor = ({
     if (val.trim().length)
       forwardGeocode(val).then((results) => {
         setAutocompleteResults(
-          results.map(({ id, place_name, context, geometry: { coordinates } }) => ({
-            value: id,
-            label: place_name,
-            country: context?.at(-1).text,
-            lngLat: { lng: coordinates[0], lat: coordinates[1] },
-          }))
+          results.map(
+            ({ id, place_name, context, geometry: { coordinates } }) => ({
+              value: id,
+              label: place_name,
+              country: context?.at(-1).text,
+              lngLat: { lng: coordinates[0], lat: coordinates[1] },
+            })
+          )
         );
       });
     else {
@@ -240,9 +247,12 @@ const ExploreAnalysisLocationEditor = ({
   };
 
   /* Event handler for selecting a geocoded address */
-  const handleSelectAddr = (val: { country: string, lngLat: number[] }) => {
+  const handleSelectAddr = (val: { country: string; lngLat: number[] }) => {
     address.onChange(val);
-    setCountryAndIso({ iso: i18nIso.getAlpha3Code(val.country, 'en'), country: val.country });
+    setCountryAndIso({
+      iso: i18nIso.getAlpha3Code(val.country, 'en'),
+      country: val.country,
+    });
     setDataDrawing(val.lngLat);
   };
 
@@ -254,29 +264,29 @@ const ExploreAnalysisLocationEditor = ({
   /* Side Effect to Geocode the Country and Selected State */
   useEffect(() => {
     if (country.value?.label && selectedState?.label)
-      forwardGeocode(
-        `${selectedState?.label}, ${country.value?.label}`
-      ).then((results) => {
-        if (results) {
-          const lngLatArr: number[] = [
-            results[0].geometry.coordinates[1],
-            results[0].geometry.coordinates[0],
-          ];
-          setGeocodeResults(lngLatArr);
+      forwardGeocode(`${selectedState?.label}, ${country.value?.label}`).then(
+        (results) => {
+          if (results) {
+            const lngLatArr: number[] = [
+              results[0].geometry.coordinates[1],
+              results[0].geometry.coordinates[0],
+            ];
+            setGeocodeResults(lngLatArr);
+          }
         }
-      });
-      else {
-        setGeocodeResults([]);
-      }
+      );
+    else {
+      setGeocodeResults([]);
+    }
   }, [country.value?.label, selectedState]);
-    
+
   /* Side Effect to place the marker at the Geocoded Coordinates */
-  useEffect (() => {
+  useEffect(() => {
     if (geocodeResults[0] && geocodeResults[1]) {
       setIsDrawing(true);
       setDataDrawing({ lng: geocodeResults[1], lat: geocodeResults[0] });
     }
-  }, [geocodeResults, setDataDrawing, setIsDrawing])
+  }, [geocodeResults, setDataDrawing, setIsDrawing]);
 
   // Side effect for getting state options based on country
   useEffect(() => {

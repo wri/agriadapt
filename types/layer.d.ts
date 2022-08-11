@@ -1,4 +1,4 @@
-import { Source } from "@vizzuality/layer-manager";
+import { Source } from '@vizzuality/layer-manager';
 
 export interface Render {
   layers?: Record<string, string | number | boolean | unknown>[];
@@ -7,7 +7,7 @@ export interface Render {
 export interface layerConfigSpec {
   body?: {
     sldValue: string;
-  }
+  };
   render?: Render;
   source: Partial<Source>;
   [key: string]:
@@ -55,8 +55,8 @@ export interface APILayerAppConfig {
   };
   value_chain?: 'coffee' | 'cotton' | 'rice';
   subgroup?: string;
-  emission_scenario?: 'rcp4.5' | 'rcp8.5',
-  timescale?: 'historic' | 'future_looking',
+  emission_scenario?: 'rcp4.5' | 'rcp8.5';
+  timescale?: 'historic' | 'future_looking';
   extreme_value?: string | number;
   extreme_direction?: 'asc' | 'desc';
   extreme_text?: string;

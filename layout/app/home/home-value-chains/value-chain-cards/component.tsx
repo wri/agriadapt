@@ -8,7 +8,7 @@ import mobileBlob from 'public/images/components/layout/landing/value-chain-card
 import { VALUECHAINS } from '../../constants';
 
 export const ValueChainCards = () => {
-  const {t} = useTranslation(['landing', 'common']);
+  const { t } = useTranslation(['landing', 'common']);
   return (
     <>
       <Media at="sm">

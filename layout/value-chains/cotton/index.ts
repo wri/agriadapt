@@ -1,3 +1,3 @@
-import LayoutCotton from "./component";
+import LayoutCotton from './component';
 
 export default LayoutCotton;

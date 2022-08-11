@@ -1,17 +1,17 @@
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
 import {
   toggleMapLayerGroup,
   resetMapLayerGroupsInteraction,
   setMapLayerGroupActive,
-} from "layout/explore/actions";
+} from 'layout/explore/actions';
 
-import DatasetListItemComponent from "./component";
-import * as actions from "./actions";
-import * as reducers from "./reducers";
-import initialState from "./initial-state";
+import DatasetListItemComponent from './component';
+import * as actions from './actions';
+import * as reducers from './reducers';
+import initialState from './initial-state';
 
-import { isActive } from "./selectors";
+import { isActive } from './selectors';
 
 export { actions, reducers, initialState };
 

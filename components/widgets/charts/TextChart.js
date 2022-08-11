@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import "isomorphic-fetch";
-import { format } from "d3-format";
+import React from 'react';
+import PropTypes from 'prop-types';
+import 'isomorphic-fetch';
+import { format } from 'd3-format';
 
 class TextChart extends React.Component {
   static propTypes = {
@@ -78,7 +78,7 @@ class TextChart extends React.Component {
         return res;
       }
 
-      const suffix = config.suffix || "";
+      const suffix = config.suffix || '';
       const formatter =
         config.format && !isNaN(parseInt(value, 10))
           ? (val) => format(config.format)(parseInt(val, 10))
@@ -86,9 +86,9 @@ class TextChart extends React.Component {
       const substitution =
         !isNaN(parseInt(value, 10)) || formatter(value).length
           ? `<span class="token">${formatter(value)}${suffix}</span>`
-          : "";
+          : '';
 
-      return res.replace(new RegExp(`{{${key}}}`, "g"), substitution);
+      return res.replace(new RegExp(`{{${key}}}`, 'g'), substitution);
     }, template);
 
     // If there's at least one key that couldn't be found, we display
@@ -96,8 +96,8 @@ class TextChart extends React.Component {
     if (missingKeys.length) {
       this.setState({
         error: `The widget is malformed: the key${
-          missingKeys.length > 1 ? "s" : ""
-        } ${missingKeys.join(", ")} can't be found in the data`,
+          missingKeys.length > 1 ? 's' : ''
+        } ${missingKeys.join(', ')} can't be found in the data`,
       });
     }
 

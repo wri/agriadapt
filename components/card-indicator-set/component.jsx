@@ -1,8 +1,8 @@
-import { cloneElement, isValidElement } from "react";
-import PropTypes from "prop-types";
+import { cloneElement, isValidElement } from 'react';
+import PropTypes from 'prop-types';
 
 // components
-import IndicatorVisualization from "./indicator-visualization";
+import IndicatorVisualization from './indicator-visualization';
 
 export default function CardIndicatorSet({
   indicator,
@@ -18,8 +18,8 @@ export default function CardIndicatorSet({
       <div
         className="card-indicators-container"
         style={{
-          display: "flex",
-          justifyContent: "space-between",
+          display: 'flex',
+          justifyContent: 'space-between',
         }}
       >
         {children.map((child) => {
@@ -54,7 +54,7 @@ export default function CardIndicatorSet({
 }
 
 CardIndicatorSet.defaultProps = {
-  theme: "primary",
+  theme: 'primary',
   params: null,
 };
 
@@ -68,7 +68,7 @@ CardIndicatorSet.propTypes = {
     PropTypes.element,
     PropTypes.arrayOf(PropTypes.element),
   ]).isRequired,
-  theme: PropTypes.oneOf(["primary", "secondary"]),
+  theme: PropTypes.oneOf(['primary', 'secondary']),
   params: PropTypes.shape({}),
   isInACollection: PropTypes.bool.isRequired,
   handleClickCard: PropTypes.func.isRequired,

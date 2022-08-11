@@ -1,11 +1,11 @@
-import { useState } from "react";
-import PropTypes from "prop-types";
+import { useState } from 'react';
+import PropTypes from 'prop-types';
 
-import WidgetHeader from "./component";
-import WidgetShareModal from "../share-modal";
+import WidgetHeader from './component';
+import WidgetShareModal from '../share-modal';
 
 export default {
-  title: "Widget/Header",
+  title: 'Widget/Header',
   component: WidgetHeader,
   argTypes: {},
 };
@@ -40,28 +40,28 @@ Template.propTypes = {
 export const Default = Template.bind({});
 
 const widget = {
-  id: "3051c12d-7914-4658-86b3-02ca783841f8",
-  name: "% crop growing in high water risk areas by year 2040",
-  dataset: "5edefab9-c707-447e-96f9-6115149e3a87",
-  slug: "crop-growing-in-high-water-risk-areas-by-year-2040",
-  userId: "58333dcfd9f39b189ca44c75",
-  description: "",
-  source: "",
-  authors: "",
-  application: ["rw"],
+  id: '3051c12d-7914-4658-86b3-02ca783841f8',
+  name: '% crop growing in high water risk areas by year 2040',
+  dataset: '5edefab9-c707-447e-96f9-6115149e3a87',
+  slug: 'crop-growing-in-high-water-risk-areas-by-year-2040',
+  userId: '58333dcfd9f39b189ca44c75',
+  description: '',
+  source: '',
+  authors: '',
+  application: ['rw'],
   verified: false,
   default: true,
   protected: false,
   defaultEditableWidget: false,
   published: true,
   freeze: false,
-  env: "production",
+  env: 'production',
   queryUrl:
-    "query/5edefab9-c707-447e-96f9-6115149e3a87?sql=SELECT * FROM crops",
+    'query/5edefab9-c707-447e-96f9-6115149e3a87?sql=SELECT * FROM crops',
   widgetConfig: {},
   template: false,
-  createdAt: "2017-07-13T15:14:58.912Z",
-  updatedAt: "2017-07-13T15:14:58.912Z",
+  createdAt: '2017-07-13T15:14:58.912Z',
+  updatedAt: '2017-07-13T15:14:58.912Z',
 };
 
 Default.args = {

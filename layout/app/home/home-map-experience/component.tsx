@@ -10,7 +10,7 @@ import Link from 'next/link';
 import { useTranslation } from 'next-i18next';
 
 const MapContainerHome = () => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const { button } = MAP;
   return (
     <div className="c-map-experience">
@@ -30,7 +30,11 @@ const MapContainerHome = () => {
         <div className="c-map-image">
           <Image loader={loader} src={mapImage} alt={t(MAP.image_alt)} />
           <div className="layer-panel">
-            <Image loader={loader} src={layerPanelImage} alt={t(MAP.image_alt)} />
+            <Image
+              loader={loader}
+              src={layerPanelImage}
+              alt={t(MAP.image_alt)}
+            />
           </div>
           <div className="legend">
             <Image loader={loader} src={legendImage} alt={t(MAP.image_alt)} />

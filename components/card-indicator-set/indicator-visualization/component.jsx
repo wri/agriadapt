@@ -1,30 +1,30 @@
-import { useState, useMemo, useEffect, useCallback } from "react";
-import PropTypes from "prop-types";
-import dynamic from "next/dynamic";
-import { useQuery, useQueryClient } from "react-query";
-import classnames from "classnames";
-import { format } from "d3-format";
-import Renderer from "@widget-editor/renderer";
-import { replace } from "layer-manager";
-import axios from "axios";
-import isNumber from "lodash/isNumber";
+import { useState, useMemo, useEffect, useCallback } from 'react';
+import PropTypes from 'prop-types';
+import dynamic from 'next/dynamic';
+import { useQuery, useQueryClient } from 'react-query';
+import classnames from 'classnames';
+import { format } from 'd3-format';
+import Renderer from '@widget-editor/renderer';
+import { replace } from 'layer-manager';
+import axios from 'axios';
+import isNumber from 'lodash/isNumber';
 
 // components
-import Spinner from "components/ui/Spinner";
-import Title from "components/ui/Title";
-import WidgetHeader from "components/widgets/header";
-import WidgetInfo from "components/widgets/info";
+import Spinner from 'components/ui/Spinner';
+import Title from 'components/ui/Title';
+import WidgetHeader from 'components/widgets/header';
+import WidgetInfo from 'components/widgets/info';
 
 // hooks
-import { useFetchWidget } from "hooks/widget";
+import { useFetchWidget } from 'hooks/widget';
 
 // utils
-import { getParametrizedWidget } from "utils/widget";
+import { getParametrizedWidget } from 'utils/widget';
 
 // constants
-import { WIDGET_EDITOR_MAPBOX_PROPS } from "constants/widget-editor";
+import { WIDGET_EDITOR_MAPBOX_PROPS } from 'constants/widget-editor';
 
-const WidgetShareModal = dynamic(() => import("../../widgets/share-modal"), {
+const WidgetShareModal = dynamic(() => import('../../widgets/share-modal'), {
   ssr: false,
 });
 
@@ -85,7 +85,7 @@ export default function IndicatorVisualization({
   } = useFetchWidget(
     mainWidgetAvailable,
     {
-      includes: "metadata",
+      includes: 'metadata',
     },
     {
       enabled: !!mainWidgetAvailable,
@@ -123,16 +123,16 @@ export default function IndicatorVisualization({
     isError: isErrorSecondaryWidget,
     refetch: refetchSecondaryWidget,
   } = useQuery(
-    ["fetch-query", replacedQuery, ...queryKeys],
+    ['fetch-query', replacedQuery, ...queryKeys],
     () => {
-      if (!replacedQuery) return Promise.resolve("-");
+      if (!replacedQuery) return Promise.resolve('-');
       return axios.get(replacedQuery).then(({ data }) => data?.rows);
     },
     {
       refetchOnWindowFocus: false,
       placeholderData:
         queryClient.getQueryData([
-          "fetch-query",
+          'fetch-query',
           replacedQuery,
           ...queryKeys,
         ]) || {},
@@ -164,8 +164,8 @@ export default function IndicatorVisualization({
                 handleSection(id);
               }}
               className={classnames({
-                "btn-section": true,
-                "-active": currentSection?.id === id,
+                'btn-section': true,
+                '-active': currentSection?.id === id,
               })}
             >
               {title}
@@ -218,7 +218,7 @@ export default function IndicatorVisualization({
                   ...(isInfoVisible && {
                     padding: 0,
                   }),
-                  height: "calc(100% - 70px)",
+                  height: 'calc(100% - 70px)',
                 }}
               >
                 {mainWidget?.widgetConfig && (
@@ -262,7 +262,7 @@ export default function IndicatorVisualization({
                 {/* eslint-disable-next-line no-nested-ternary */}
                 {widgets?.[1]?.format && isNumber(secondaryWidgetValue)
                   ? format(widgets[1].format)(secondaryWidgetValue)
-                  : secondaryWidgetValue || "-"}
+                  : secondaryWidgetValue || '-'}
                 {widgets?.[1]?.unit && isNumber(secondaryWidgetValue) && (
                   <span className="unit">{widgets[1].unit}</span>
                 )}
@@ -289,7 +289,7 @@ export default function IndicatorVisualization({
 }
 
 IndicatorVisualization.defaultProps = {
-  theme: "primary",
+  theme: 'primary',
   params: {},
   isInACollection: false,
 };
@@ -313,7 +313,7 @@ IndicatorVisualization.propTypes = {
       }).isRequired
     ),
   }).isRequired,
-  theme: PropTypes.oneOf(["primary", "secondary"]),
+  theme: PropTypes.oneOf(['primary', 'secondary']),
   params: PropTypes.shape({}),
   isInACollection: PropTypes.bool,
   RWAdapter: PropTypes.func.isRequired,

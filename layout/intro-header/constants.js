@@ -19,8 +19,7 @@ const ABOUT = {
 
 const LANDING = {
   id: 'LANDING',
-  title:
-    'intro.title',
+  title: 'intro.title',
   subtitle: 'intro.subtitle',
   image: landingImage,
   blob: landingBlob,

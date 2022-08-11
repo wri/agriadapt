@@ -12,7 +12,7 @@ export default function HeaderLanguage() {
   const toggleDropdown = useDebouncedCallback((_isVisible) => {
     setVisibility(_isVisible);
   }, 50);
-  
+
   const router = useRouter();
   const { pathname, query, locale, asPath } = router;
 
@@ -21,8 +21,10 @@ export default function HeaderLanguage() {
   };
 
   // TO DO: might need to update element iteration with additional nav links
-  const featuredLanguages =
-    APP_HEADER_ITEMS.at(-1).children as Array<{ label: string; locale: string }>;
+  const featuredLanguages = APP_HEADER_ITEMS.at(-1).children as Array<{
+    label: string;
+    locale: string;
+  }>;
   return (
     <Tether
       attachment="top center"

@@ -26,10 +26,19 @@ export const item_labels = {
   //   label: 'Changing Rainfall',
   //   icon: 'icon-pests-and-diseases',
   // },
-  policies_and_price: { label: 'common:content.policies_and_price', icon: 'icon-labor' },
-  food_vulnerability: { label: 'common:content.food_vulnerability', icon: 'icon-labor' },
-  export_and_import: { label: 'common:content.export_and_import', icon: 'icon-labor' },
-}
+  policies_and_price: {
+    label: 'common:content.policies_and_price',
+    icon: 'icon-labor',
+  },
+  food_vulnerability: {
+    label: 'common:content.food_vulnerability',
+    icon: 'icon-labor',
+  },
+  export_and_import: {
+    label: 'common:content.export_and_import',
+    icon: 'icon-labor',
+  },
+};
 
 export const chain_items = {
   inputs: {
@@ -43,7 +52,12 @@ export const chain_items = {
   },
   production: {
     label: { text: 'common:content.production', icon: 'icon-production' },
-    options: ['change_in_yield', 'changes_in_rainfall', 'pests_and_disease', 'production_volume'],
+    options: [
+      'change_in_yield',
+      'changes_in_rainfall',
+      'pests_and_disease',
+      'production_volume',
+    ],
   },
   // processing: {
   //   label: { text: 'Processing', icon: 'icon-processing' },
@@ -82,4 +96,3 @@ export const user_stories = {
     },
   ],
 };
-

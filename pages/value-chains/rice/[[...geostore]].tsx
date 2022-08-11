@@ -9,7 +9,6 @@ import DROPDOWN from 'public/data/rice_countries.json';
 import india_worldview_geostore from 'public/data/india_worldview_geostore.json';
 
 const RicePage = ({ countries }: ValueChainPageProps) => {
-
   return <LayoutRice countries={countries} />;
 };
 
@@ -34,19 +33,22 @@ export const getServerSideProps = wrapper.getServerSideProps(
       )
         return {
           redirect: {
-            destination:
-              '/value-chains/rice/1252b02f0a27cf77fd19b8298be6a8db',
+            destination: '/value-chains/rice/1252b02f0a27cf77fd19b8298be6a8db',
             permanent: false,
           },
         };
 
-      const country = geostore && await fetchGeostore(
-        Array.isArray(geostore) ? geostore.join('') : geostore
-      ).then(({ id, info: { name, iso } }) => ({
-        label: name,
-        value: id,
-        iso,
-      })).catch(() => console.error('Error fetching geostore'));
+      const country =
+        geostore &&
+        (await fetchGeostore(
+          Array.isArray(geostore) ? geostore.join('') : geostore
+        )
+          .then(({ id, info: { name, iso } }) => ({
+            label: name,
+            value: id,
+            iso,
+          }))
+          .catch(() => console.error('Error fetching geostore')));
 
       if (country) dispatch(actions.setCountry(country));
       else
@@ -60,7 +62,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
 
       const countries = (await fetchCountries()).reduce((arr, geo) => {
         if (!geo.name || !DROPDOWN.countries.includes(geo.name)) return arr;
-        
+
         const { name: label, geostoreId: value, iso } = geo;
         if (iso === 'IND' && viewer_iso2 === 'IN')
           arr.push(india_worldview_geostore);

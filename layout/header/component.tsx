@@ -12,7 +12,10 @@ interface HeaderProps {
   pageHeader?: boolean;
 }
 
-export default function Header({ className = null, pageHeader = false }: HeaderProps) {
+export default function Header({
+  className = null,
+  pageHeader = false,
+}: HeaderProps) {
   const headerClass = classnames('l-header', {
     '-transparent': pageHeader,
     [className]: !!className,

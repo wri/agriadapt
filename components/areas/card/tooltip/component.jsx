@@ -1,8 +1,8 @@
-import React, { useEffect, useCallback } from "react";
-import PropTypes from "prop-types";
+import React, { useEffect, useCallback } from 'react';
+import PropTypes from 'prop-types';
 
 // Utils
-import { logEvent } from "utils/analytics";
+import { logEvent } from 'utils/analytics';
 
 const AreaActionsTooltip = (props) => {
   const {
@@ -19,17 +19,17 @@ const AreaActionsTooltip = (props) => {
   const handleClick = useCallback(
     (action) => {
       switch (action) {
-        case "rename":
+        case 'rename':
           onRenameArea();
           break;
-        case "change-visibility":
+        case 'change-visibility':
           onChangeVisibility();
           break;
-        case "edit_subscriptions":
-          logEvent("My RW", "Edit subscription", area.name);
+        case 'edit_subscriptions':
+          logEvent('My RW', 'Edit subscription', area.name);
           onEditSubscriptions();
           break;
-        case "delete_area":
+        case 'delete_area':
           onDeleteArea();
           break;
         default: {
@@ -56,10 +56,10 @@ const AreaActionsTooltip = (props) => {
       if (clickOutside) onMouseDown();
     };
 
-    window.addEventListener("mousedown", triggerMouseDown);
+    window.addEventListener('mousedown', triggerMouseDown);
 
     return () => {
-      window.removeEventListener("mousedown", triggerMouseDown);
+      window.removeEventListener('mousedown', triggerMouseDown);
     };
   }, [onMouseDown, tooltipRef]);
 
@@ -70,7 +70,7 @@ const AreaActionsTooltip = (props) => {
           <button
             type="button"
             className="c-button"
-            onClick={() => handleClick("rename")}
+            onClick={() => handleClick('rename')}
           >
             Rename
           </button>
@@ -79,9 +79,9 @@ const AreaActionsTooltip = (props) => {
           <button
             type="button"
             className="c-button"
-            onClick={() => handleClick("change-visibility")}
+            onClick={() => handleClick('change-visibility')}
           >
-            {`Make ${area.public ? "Private" : "Public"}`}
+            {`Make ${area.public ? 'Private' : 'Public'}`}
           </button>
         </li>
         {/**
@@ -93,7 +93,7 @@ const AreaActionsTooltip = (props) => {
             <button
               type="button"
               className="c-button -desktopOnly"
-              onClick={() => handleClick("edit_subscriptions")}
+              onClick={() => handleClick('edit_subscriptions')}
             >
               Edit subscriptions
             </button>
@@ -103,7 +103,7 @@ const AreaActionsTooltip = (props) => {
           <button
             type="button"
             className="c-button"
-            onClick={() => handleClick("delete_area")}
+            onClick={() => handleClick('delete_area')}
           >
             Delete area
           </button>

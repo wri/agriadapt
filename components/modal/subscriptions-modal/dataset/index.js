@@ -1,18 +1,18 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import sortBy from "lodash/sortBy";
-import isEqual from "lodash/isEqual";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import sortBy from 'lodash/sortBy';
+import isEqual from 'lodash/isEqual';
 
 // actions
-import { getUserAreas } from "redactions/user";
-import * as actions from "../actions";
+import { getUserAreas } from 'redactions/user';
+import * as actions from '../actions';
 
 // selectors
-import { getAvailableAreas, isAreaFound } from "../selectors";
+import { getAvailableAreas, isAreaFound } from '../selectors';
 
 // component
-import DatasetSubscriptionsModal from "./component";
+import DatasetSubscriptionsModal from './component';
 
 class DatasetSubscriptionModalContainer extends Component {
   static propTypes = {
@@ -82,7 +82,7 @@ class DatasetSubscriptionModalContainer extends Component {
               }),
               ...(index === 0 && { selected: true }),
             })),
-            "label"
+            'label'
           ),
           threshold: 1,
         })),
@@ -119,7 +119,7 @@ class DatasetSubscriptionModalContainer extends Component {
                   value: val,
                   ...(subscriptionTypes.includes(val) && { selected: true }),
                 })),
-                "label"
+                'label'
               ),
               threshold:
                 activeArea.subscription.attributes.datasetsQuery[index]
@@ -167,7 +167,7 @@ class DatasetSubscriptionModalContainer extends Component {
               }),
               ...(index === 0 && { selected: true }),
             })),
-            "label"
+            'label'
           ),
           threshold: 1,
         })),

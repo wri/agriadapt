@@ -1,31 +1,31 @@
-import { HYDRATE } from "next-redux-wrapper";
-import isEmpty from "lodash/isEmpty";
+import { HYDRATE } from 'next-redux-wrapper';
+import isEmpty from 'lodash/isEmpty';
 
 // Services
-import { fetchDataset } from "services/dataset";
-import RasterService from "services/raster";
-import { fetchLayer } from "services/layer";
+import { fetchDataset } from 'services/dataset';
+import RasterService from 'services/raster';
+import { fetchLayer } from 'services/layer';
 import {
   deleteFavourite,
   createFavourite,
   fetchFavorites,
-} from "services/favourites";
-import { fetchWidget } from "services/widget";
+} from 'services/favourites';
+import { fetchWidget } from 'services/widget';
 
 /**
  * CONSTANTS
  */
-const SET_WIDGET_SUCCESS = "SET_WIDGET_SUCCESS";
-const GET_WIDGET_ERROR = "GET_WIDGET_ERROR";
-const SET_WIDGET_LOADING = "SET_WIDGET_LOADING";
-const SET_WIDGET_DATA = "SET_WIDGET_DATA";
-const SET_WIDGET_DATASET = "SET_WIDGET_DATASET";
-const SET_WIDGET_BAND_DESCRIPTION = "SET_WIDGET_BAND_DESCRIPTION";
-const SET_WIDGET_BAND_STATS = "SET_WIDGET_BAND_STATS";
-const SET_WIDGET_LAYERGROUPS = "SET_WIDGET_LAYERGROUPS";
-const SET_WIDGET_ZOOM = "SET_WIDGET_ZOOM";
-const SET_WIDGET_LATLNG = "SET_WIDGET_LATLNG";
-const GET_WIDGET_FAVORITE = "GET_WIDGET_FAVORITE";
+const SET_WIDGET_SUCCESS = 'SET_WIDGET_SUCCESS';
+const GET_WIDGET_ERROR = 'GET_WIDGET_ERROR';
+const SET_WIDGET_LOADING = 'SET_WIDGET_LOADING';
+const SET_WIDGET_DATA = 'SET_WIDGET_DATA';
+const SET_WIDGET_DATASET = 'SET_WIDGET_DATASET';
+const SET_WIDGET_BAND_DESCRIPTION = 'SET_WIDGET_BAND_DESCRIPTION';
+const SET_WIDGET_BAND_STATS = 'SET_WIDGET_BAND_STATS';
+const SET_WIDGET_LAYERGROUPS = 'SET_WIDGET_LAYERGROUPS';
+const SET_WIDGET_ZOOM = 'SET_WIDGET_ZOOM';
+const SET_WIDGET_LATLNG = 'SET_WIDGET_LATLNG';
+const GET_WIDGET_FAVORITE = 'GET_WIDGET_FAVORITE';
 
 /**
  * STORE
@@ -138,7 +138,7 @@ export default function Widget(state = initialState, action) {
  * @returns {Promise<void>}
  */
 const getDataset = (datasetId) => (dispatch) =>
-  fetchDataset(datasetId, { includes: "metadata" }).then((dataset) =>
+  fetchDataset(datasetId, { includes: 'metadata' }).then((dataset) =>
     dispatch({ type: SET_WIDGET_DATASET, payload: dataset })
   );
 
@@ -236,10 +236,10 @@ export function getWidget(widgetId, params = {}) {
         const { widgetConfig } = widget;
         const isRaster =
           widgetConfig.paramsConfig &&
-          widgetConfig.paramsConfig.visualizationType === "raster_chart";
+          widgetConfig.paramsConfig.visualizationType === 'raster_chart';
         const isMap =
           widgetConfig.paramsConfig &&
-          widgetConfig.paramsConfig.visualizationType === "map";
+          widgetConfig.paramsConfig.visualizationType === 'map';
         const datasetId = widget.dataset;
         if (isRaster) {
           const bandName = widgetConfig.paramsConfig.band.name;
@@ -344,7 +344,7 @@ export function setIfFavorited(widgetId, toFavorite) {
 
     if (toFavorite) {
       createFavourite(user.token, {
-        resourceType: "widget",
+        resourceType: 'widget',
         resourceId: widgetId,
       })
         .then((res) =>

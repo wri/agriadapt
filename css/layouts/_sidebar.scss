@@ -81,7 +81,7 @@ $min-width-sidebar-closed: 40px;
     overflow-y: auto;
     width: 100%;
     height: 100%;
-    
+
     &.-open {
       padding: 0px 18px;
     }
@@ -90,7 +90,7 @@ $min-width-sidebar-closed: 40px;
     // }
 
     &:after {
-      content: "";
+      content: '';
       display: block;
     }
   }

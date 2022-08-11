@@ -1,22 +1,22 @@
-import { useState, useCallback, useMemo } from "react";
-import PropTypes from "prop-types";
-import classnames from "classnames";
-import Renderer from "@widget-editor/renderer";
+import { useState, useCallback, useMemo } from 'react';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
+import Renderer from '@widget-editor/renderer';
 
 // components
-import Spinner from "components/ui/Spinner";
-import WidgetHeader from "../../header";
-import WidgetInfo from "../../info";
-import WidgetCaption from "../../caption";
+import Spinner from 'components/ui/Spinner';
+import WidgetHeader from '../../header';
+import WidgetInfo from '../../info';
+import WidgetCaption from '../../caption';
 
 // constants
-import { WIDGET_EDITOR_MAPBOX_PROPS } from "constants/widget-editor";
+import { WIDGET_EDITOR_MAPBOX_PROPS } from 'constants/widget-editor';
 
-import type { APIWidgetSpec } from "types/widget";
-import type { ChartContainerProps } from "./index";
-import RWAdapter from "@widget-editor/rw-adapter";
+import type { APIWidgetSpec } from 'types/widget';
+import type { ChartContainerProps } from './index';
+import RWAdapter from '@widget-editor/rw-adapter';
 
-export interface ChartTypeProps extends Omit<ChartContainerProps, "widgetId"> {
+export interface ChartTypeProps extends Omit<ChartContainerProps, 'widgetId'> {
   widget: APIWidgetSpec;
   adapter: typeof RWAdapter;
   isFetching: boolean;
@@ -49,7 +49,7 @@ const ChartType = ({
 
   return (
     <div
-      className={classnames("c-widget", { "-is-embed": isEmbed })}
+      className={classnames('c-widget', { '-is-embed': isEmbed })}
       style={style}
     >
       {!isFetching && !isError && !isWebshot && (

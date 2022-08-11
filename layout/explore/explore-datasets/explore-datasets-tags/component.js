@@ -1,16 +1,16 @@
-import React from "react";
-import PropTypes from "prop-types";
-import debounce from "lodash/debounce";
-import upperFirst from "lodash/upperFirst";
+import React from 'react';
+import PropTypes from 'prop-types';
+import debounce from 'lodash/debounce';
+import upperFirst from 'lodash/upperFirst';
 
 // Utils
-import { TAGS_BLACKLIST } from "utils/tags";
+import { TAGS_BLACKLIST } from 'utils/tags';
 
 // Components
-import { Tooltip } from "vizzuality-components";
-import Tag from "components/ui/Tag";
-import { getTooltipContainer } from "utils/tooltip";
-import TagsTooltip from "./tooltip";
+import { Tooltip } from 'vizzuality-components';
+import Tag from 'components/ui/Tag';
+import { getTooltipContainer } from 'utils/tooltip';
+import TagsTooltip from './tooltip';
 
 class ExploreDatasetsTagsComponent extends React.Component {
   static propTypes = {
@@ -39,7 +39,7 @@ class ExploreDatasetsTagsComponent extends React.Component {
     const tab = options.find((o) => o.type === tag.labels[1]) || {};
 
     this.props.toggleFiltersSelected({
-      tab: tab.value || "custom",
+      tab: tab.value || 'custom',
       tag,
     });
     this.fetchDatasets(1);
@@ -93,8 +93,8 @@ class ExploreDatasetsTagsComponent extends React.Component {
               .map((t, i) => (
                 <Tag
                   key={t}
-                  name={`${upperFirst(t.replace("_", " "))}${
-                    i !== vTags.length - 1 ? ", " : ""
+                  name={`${upperFirst(t.replace('_', ' '))}${
+                    i !== vTags.length - 1 ? ', ' : ''
                   }`}
                   className="-clean"
                   onClick={() => {
@@ -125,9 +125,9 @@ class ExploreDatasetsTagsComponent extends React.Component {
               onVisibleChange={this.onVisibleChange}
             >
               <button>
-                {tagsLoading && "loading..."}
-                {!tagsLoading && !tagsOpened && "more..."}
-                {!tagsLoading && tagsOpened && "less..."}
+                {tagsLoading && 'loading...'}
+                {!tagsLoading && !tagsOpened && 'more...'}
+                {!tagsLoading && tagsOpened && 'less...'}
               </button>
             </Tooltip>
           </div>

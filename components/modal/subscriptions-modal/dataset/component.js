@@ -1,15 +1,15 @@
-import { PureComponent } from "react";
-import PropTypes from "prop-types";
-import classnames from "classnames";
-import { withRouter } from "next/router";
-import { toastr } from "react-redux-toastr";
+import { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
+import { withRouter } from 'next/router';
+import { toastr } from 'react-redux-toastr';
 
 // components
-import Field from "components/form/Field";
-import CustomSelect from "components/ui/CustomSelect";
-import Spinner from "components/ui/Spinner";
-import DatasetsManager from "../dataset-manager";
-import SubscriptionsPreview from "../subscriptions-preview";
+import Field from 'components/form/Field';
+import CustomSelect from 'components/ui/CustomSelect';
+import Spinner from 'components/ui/Spinner';
+import DatasetsManager from '../dataset-manager';
+import SubscriptionsPreview from '../subscriptions-preview';
 
 class DatasetSubscriptionsModal extends PureComponent {
   static propTypes = {
@@ -41,7 +41,7 @@ class DatasetSubscriptionsModal extends PureComponent {
       this.props;
     const { selectedType, selectedThreshold } = this.state;
 
-    if (area.value === "upload_area") {
+    if (area.value === 'upload_area') {
       onRequestClose();
 
       router.push(
@@ -110,8 +110,8 @@ class DatasetSubscriptionsModal extends PureComponent {
       }
     } else {
       toastr.error(
-        "Data missing",
-        "Please select an area and a subscription type"
+        'Data missing',
+        'Please select an area and a subscription type'
       );
     }
   };
@@ -120,7 +120,7 @@ class DatasetSubscriptionsModal extends PureComponent {
     const { onRequestClose, router } = this.props;
 
     onRequestClose();
-    router.push("/myrw/areas");
+    router.push('/myrw/areas');
   };
 
   handleState = (bool) => {
@@ -140,7 +140,7 @@ class DatasetSubscriptionsModal extends PureComponent {
 
     const { showSubscribePreview } = this.state;
 
-    let headerText = "Subscription saved!";
+    let headerText = 'Subscription saved!';
 
     const { success } = subscription;
 
@@ -180,14 +180,14 @@ class DatasetSubscriptionsModal extends PureComponent {
             <div className="selectors-container">
               <Field
                 properties={{
-                  name: "areas",
-                  label: "Areas",
+                  name: 'areas',
+                  label: 'Areas',
                 }}
               >
                 <CustomSelect
                   placeholder="Select area"
                   options={areas}
-                  className={classnames({ "-disabled": !!activeArea })}
+                  className={classnames({ '-disabled': !!activeArea })}
                   clearable={!activeArea}
                   onValueChange={this.onChangeArea}
                   allowNonLeafSelection={false}
@@ -217,9 +217,9 @@ class DatasetSubscriptionsModal extends PureComponent {
 
             <button
               className={classnames({
-                "c-btn": true,
-                "-secondary": true,
-                "-disabled": !!activeArea,
+                'c-btn': true,
+                '-secondary': true,
+                '-disabled': !!activeArea,
               })}
               onClick={this.handleShowSubscribePreview}
               disabled={

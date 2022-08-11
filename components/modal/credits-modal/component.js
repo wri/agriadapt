@@ -1,5 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 class CreditsModal extends React.Component {
   render() {
@@ -36,7 +36,7 @@ class CreditsModal extends React.Component {
                 360-degree images courtesy The Ocean Agency / XL Catlin Seaview
                 Survey. Watch Chasing Coral, a documentary chronicling their
                 epic underwater campaign to document the disappearance of coral
-                reefs,{" "}
+                reefs,{' '}
                 <a
                   href="https://www.netflix.com/title/80168188"
                   target="_blank"
@@ -53,7 +53,7 @@ class CreditsModal extends React.Component {
                   rel="noopener noreferrer"
                 >
                   Humphead wrasse image
-                </a>{" "}
+                </a>{' '}
                 courtesy Tam Warner Minton and used here under a
                 <a
                   href="https://creativecommons.org/licenses/by/2.0/"
@@ -72,8 +72,8 @@ class CreditsModal extends React.Component {
                   rel="noopener noreferrer"
                 >
                   freesound.org
-                </a>{" "}
-                and used here under a{" "}
+                </a>{' '}
+                and used here under a{' '}
                 <a
                   href="https://creativecommons.org/licenses/by-nc/3.0/"
                   target="_blank"

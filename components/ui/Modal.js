@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Icon from "components/ui/icon";
-import Spinner from "components/ui/Spinner";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Icon from 'components/ui/icon';
+import Spinner from 'components/ui/Spinner';
 
 export default class Modal extends React.Component {
   static propTypes = {
@@ -23,7 +23,7 @@ export default class Modal extends React.Component {
   };
 
   componentDidMount() {
-    this.el.addEventListener("transitionend", () => {
+    this.el.addEventListener('transitionend', () => {
       if (!this.props.open) {
         this.props.setModalOptions({ children: null });
       }
@@ -34,13 +34,13 @@ export default class Modal extends React.Component {
   UNSAFE_componentWillReceiveProps({ open }) {
     const self = this;
     function escKeyPressListener(evt) {
-      document.removeEventListener("keydown", escKeyPressListener);
+      document.removeEventListener('keydown', escKeyPressListener);
       return evt.keyCode === 27 && self.props.toggleModal(false);
     }
     // if open property has changed
     if (this.props.open !== open) {
-      document[open ? "addEventListener" : "removeEventListener"](
-        "keydown",
+      document[open ? 'addEventListener' : 'removeEventListener'](
+        'keydown',
         escKeyPressListener
       );
     }
@@ -59,8 +59,8 @@ export default class Modal extends React.Component {
         ref={(node) => {
           this.el = node;
         }}
-        className={`c-modal ${open ? "" : "-hidden"} ${options.size || ""} ${
-          className || ""
+        className={`c-modal ${open ? '' : '-hidden'} ${options.size || ''} ${
+          className || ''
         }`}
       >
         <div className="modal-container">

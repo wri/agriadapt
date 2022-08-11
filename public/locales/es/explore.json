@@ -1,46 +1,46 @@
 {
-	"layers": {
-		"Advanced Search": "Búsqueda avanzada",
-		"Add to map": "Añadir al mapa",
-		"Layers": "Capas",
-		"Search Layers": "Capas de búsqueda",
-		"start_search": "Escriba para iniciar la búsqueda",
-		"Filter Layers by": "Filtrar capas por",
-		"value_chains": {
-			"hint": "Seleccione una ruta para obtener datos con visión de futuro."
-		}
-	},
-	"analysis": {
-		"Analysis": "Análisis",
-		"Add a Location": "Agregar una ubicación",
-		"Add Location": "Agregar ubicación",
-		"Select a Location": "Seleccione una ubicación",
-		"Select point on map": "Seleccionar punto en el mapa",
-		"Use my current location": "Usar mi ubicación actual",
-		"Search by address": "Buscar por dirección",
-		"Choose my location": "Elegir mi ubicación"
-	},
-	"explore_detail": {
-		"Read more": "Leer más",
-		"Active": "Activo",
-		"Show layer": "Mostrar capa",
-		"Overview": "Visión general",
-		"Dataset layers": "Capas de dataset",
-		"Further information": "Más información"
-	},
-	"map": {
-		"basemaps": {
-			"Dark": "Oscuro",
-			"Light": "Luz",
-			"Satellite": "Satélite",
-			"Terrain": "Terreno",
-			"Hydrography": "Hidrografía"
-		},
-		"labels": {
-			"No labels": "Sin etiquetas",
-			"Labels light": "Etiquetas ligeras",
-			"Labels dark": "Etiquetas oscuras"
-		},
-		"Boundaries": "Límites"
-	}
+  "layers": {
+    "Advanced Search": "Búsqueda avanzada",
+    "Add to map": "Añadir al mapa",
+    "Layers": "Capas",
+    "Search Layers": "Capas de búsqueda",
+    "start_search": "Escriba para iniciar la búsqueda",
+    "Filter Layers by": "Filtrar capas por",
+    "value_chains": {
+      "hint": "Seleccione una ruta para obtener datos con visión de futuro."
+    }
+  },
+  "analysis": {
+    "Analysis": "Análisis",
+    "Add a Location": "Agregar una ubicación",
+    "Add Location": "Agregar ubicación",
+    "Select a Location": "Seleccione una ubicación",
+    "Select point on map": "Seleccionar punto en el mapa",
+    "Use my current location": "Usar mi ubicación actual",
+    "Search by address": "Buscar por dirección",
+    "Choose my location": "Elegir mi ubicación"
+  },
+  "explore_detail": {
+    "Read more": "Leer más",
+    "Active": "Activo",
+    "Show layer": "Mostrar capa",
+    "Overview": "Visión general",
+    "Dataset layers": "Capas de dataset",
+    "Further information": "Más información"
+  },
+  "map": {
+    "basemaps": {
+      "Dark": "Oscuro",
+      "Light": "Luz",
+      "Satellite": "Satélite",
+      "Terrain": "Terreno",
+      "Hydrography": "Hidrografía"
+    },
+    "labels": {
+      "No labels": "Sin etiquetas",
+      "Labels light": "Etiquetas ligeras",
+      "Labels dark": "Etiquetas oscuras"
+    },
+    "Boundaries": "Límites"
+  }
 }

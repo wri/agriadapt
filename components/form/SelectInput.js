@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Select, { Creatable } from "react-select";
-import FormElement from "./FormElement";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Select, { Creatable } from 'react-select';
+import FormElement from './FormElement';
 
 class SelectInput extends FormElement {
   static defaultProps = { options: [] };

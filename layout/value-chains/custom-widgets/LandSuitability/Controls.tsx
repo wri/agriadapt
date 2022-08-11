@@ -57,9 +57,9 @@ const Controls = ({ setConfig, options: params, layers, country }) => {
           label: t('common:emission_scenarios:Emissions_Scenario'),
           default: scenarios[0],
         }}
-        value={{...emscen.value, label: t(emscen.value.label)}}
+        value={{ ...emscen.value, label: t(emscen.value.label) }}
         onChange={emscen.onChange}
-        options={scenarios.map(s => ({...s, label: t(s.label)}))}
+        options={scenarios.map((s) => ({ ...s, label: t(s.label) }))}
         className={'Select--large'}
       >
         {Select}
@@ -74,7 +74,7 @@ const Controls = ({ setConfig, options: params, layers, country }) => {
             }}
             value={radios[i]}
             onChange={handleRadioSelect(i)}
-            options={p.map(o => ({...o, label: t(o.label)}))}
+            options={p.map((o) => ({ ...o, label: t(o.label) }))}
           >
             {RadioGroup}
           </Field>
@@ -87,7 +87,7 @@ const Controls = ({ setConfig, options: params, layers, country }) => {
           }}
           value={radios[0]}
           onChange={handleRadioSelect(0)}
-          options={params.map(p => ({...p, label: t(p.label)}))}
+          options={params.map((p) => ({ ...p, label: t(p.label) }))}
         >
           {RadioGroup}
         </Field>

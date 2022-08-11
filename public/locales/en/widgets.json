@@ -1,5 +1,5 @@
 {
-    "rice_land_suitability": {
+  "rice_land_suitability": {
     "title": "Land Suitability for Rice in {{country}}",
     "dryland_rice": "Dryland rice",
     "wetland_rice": "Wetland rice",

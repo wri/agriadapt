@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import truncate from "lodash/truncate";
-import ReactMarkdown from "react-markdown";
-import classnames from "classnames";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import truncate from 'lodash/truncate';
+import ReactMarkdown from 'react-markdown';
+import classnames from 'classnames';
 
 function ReadMore(props) {
   const [visible, setVisible] = useState(false);
@@ -19,10 +19,10 @@ function ReadMore(props) {
 
   const shortenedText = visible
     ? text
-    : truncate(text, { length: limitChar, separator: "", omission: "..." });
+    : truncate(text, { length: limitChar, separator: '', omission: '...' });
   const classValue = classnames({
-    "c-read-more": true,
-    "-truncated": !visible,
+    'c-read-more': true,
+    '-truncated': !visible,
   });
 
   return (
@@ -39,7 +39,7 @@ function ReadMore(props) {
           setVisible(!visible);
         }}
       >
-        {visible ? "Read less" : "Read more"}
+        {visible ? 'Read less' : 'Read more'}
       </button>
     </div>
   );
@@ -53,7 +53,7 @@ ReadMore.propTypes = {
 };
 
 ReadMore.defaultProps = {
-  text: "",
+  text: '',
   limitChar: 1300,
   markdown: false,
   readMoreClicked: null,

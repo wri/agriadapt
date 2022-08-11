@@ -1,3 +1,3 @@
-import LearnMoreContainerHome from "./component";
+import LearnMoreContainerHome from './component';
 
 export default LearnMoreContainerHome;

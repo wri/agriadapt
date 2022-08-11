@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react";
-import PropTypes from "prop-types";
-import { useRouter } from "next/router";
-import ReactMarkdown from "react-markdown";
+import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { useRouter } from 'next/router';
+import ReactMarkdown from 'react-markdown';
 
-import { fetchDataset } from "services/dataset";
+import { fetchDataset } from 'services/dataset';
 
 function LayerInfoModal(props) {
   const { layer } = props;
-  const [slug, setSlug] = useState(" ");
+  const [slug, setSlug] = useState(' ');
   const router = useRouter();
 
   useEffect(() => {

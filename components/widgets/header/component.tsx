@@ -48,7 +48,7 @@ export default function WidgetHeader({
     'icon-cross': isInfoVisible,
     'icon-info': !isInfoVisible,
   });
-  
+
   const enlargeIcon = classnames({
     'icon-cross': isEnlarged,
     'icon-enlarge': !isEnlarged,

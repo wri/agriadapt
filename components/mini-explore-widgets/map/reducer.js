@@ -1,11 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 // constants
-import { BASEMAPS, LABELS } from "components/map/constants";
+import { BASEMAPS, LABELS } from 'components/map/constants';
 
 // utils
-import { logEvent } from "utils/analytics";
-import { sortLayers } from "utils/layers";
+import { logEvent } from 'utils/analytics';
+import { sortLayers } from 'utils/layers';
 
 export const initialState = {
   viewport: {
@@ -32,7 +32,7 @@ export const initialState = {
 };
 
 export const mapSlice = createSlice({
-  name: "mini-explore-widgets",
+  name: 'mini-explore-widgets',
   reducers: {
     // map management
     setViewport: (state, { payload }) => ({
@@ -94,8 +94,8 @@ export const mapSlice = createSlice({
         });
         if (layerGroups[0].layers.length) {
           logEvent(
-            "Mini Explore Map",
-            "Add layer",
+            'Mini Explore Map',
+            'Add layer',
             `${layerGroups[0].layers[0].name} [${layerGroups[0].layers[0].id}]`
           );
         }

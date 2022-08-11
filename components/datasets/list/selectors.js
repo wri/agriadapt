@@ -1,7 +1,7 @@
-import { createSelector } from "reselect";
+import { createSelector } from 'reselect';
 
 // utils
-import { getDateConsideringTimeZone } from "utils/utils";
+import { getDateConsideringTimeZone } from 'utils/utils';
 
 const getDatasets = (state) => state.datasets.datasets.list;
 const getIsServer = (state) => state.common.isServer;

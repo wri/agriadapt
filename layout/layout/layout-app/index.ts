@@ -18,5 +18,5 @@ export default connect(
     setModalOptions,
     toggleTooltip,
     updateIsLoading,
-  },
+  }
 )(LayoutApp);

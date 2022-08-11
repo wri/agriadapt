@@ -1,19 +1,19 @@
 // import { useSelector } from 'react-redux';
 
-import { useFetchWidget } from "hooks/widget";
+import { useFetchWidget } from 'hooks/widget';
 // import useBelongsToCollection from 'hooks/collection/belongs-to-collection';
 // import { useMe } from 'hooks/user';
 
 // utils
-import { getParametrizedWidget } from "utils/widget";
+import { getParametrizedWidget } from 'utils/widget';
 // import { getRWAdapter } from 'utils/widget-editor';
-import RWAdapter from "@widget-editor/rw-adapter";
+import RWAdapter from '@widget-editor/rw-adapter';
 // const { default }: () => void = import('@widget-editor/rw-adapter');
 
 // components
-import Chart from "./component";
-import type { CSSProperties } from "react";
-import { APIWidgetSpec } from "types/widget";
+import Chart from './component';
+import type { CSSProperties } from 'react';
+import { APIWidgetSpec } from 'types/widget';
 
 export interface ChartContainerProps {
   widgetId: string;
@@ -45,7 +45,7 @@ const ChartContainer = ({
   } = useFetchWidget(
     widgetId,
     {
-      includes: "metadata",
+      includes: 'metadata',
     },
     {
       enabled: !!widgetId,

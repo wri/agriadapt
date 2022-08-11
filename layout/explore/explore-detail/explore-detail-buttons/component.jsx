@@ -1,16 +1,16 @@
-import React, { useState, useCallback } from "react";
-import PropTypes from "prop-types";
+import React, { useState, useCallback } from 'react';
+import PropTypes from 'prop-types';
 
 // components
 // import LoginRequired from 'components/ui/login-required';
 // import Modal from 'components/modal/modal-component';
 // import DatasetSubscriptionsModal from 'components/modal/subscriptions-modal/dataset';
-import ProminentButton from "components/prominent-button";
-import Icon from "components/ui/icon";
+import ProminentButton from 'components/prominent-button';
+import Icon from 'components/ui/icon';
 
 // utils
-import { getLabel } from "utils/datasets/dataset-helpers";
-import { logEvent } from "utils/analytics";
+import { getLabel } from 'utils/datasets/dataset-helpers';
+import { logEvent } from 'utils/analytics';
 
 const ExploreDetailButtons = ({ dataset }) => {
   // const [showSubscribeModal, setShowSubscribeModal] = useState(false);
@@ -20,13 +20,13 @@ const ExploreDetailButtons = ({ dataset }) => {
   // const isSubscribable = subscribable && Object.keys(subscribable).length > 0;
 
   const handleDownloadSource = useCallback(() => {
-    logEvent("Explore", "Download data from source", getLabel(dataset));
+    logEvent('Explore', 'Download data from source', getLabel(dataset));
   }, [dataset]);
   const handleDownload = useCallback(() => {
-    logEvent("Explore", "Download data", getLabel(dataset));
+    logEvent('Explore', 'Download data', getLabel(dataset));
   }, [dataset]);
   const handleLearnMore = useCallback(() => {
-    logEvent("Explore", "Click to data provider", getLabel(dataset));
+    logEvent('Explore', 'Click to data provider', getLabel(dataset));
   }, [dataset]);
   // const openSubscribeModal = useCallback(() => { setShowSubscribeModal(true); }, []);
   // const closeSubscribeModal = useCallback(() => { setShowSubscribeModal(false); }, []);

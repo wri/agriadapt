@@ -1,10 +1,10 @@
-import { flatten, compact, isEmpty } from "lodash";
+import { flatten, compact, isEmpty } from 'lodash';
 
-import { USER_AREA_LAYER_TEMPLATES } from "components/map/constants";
+import { USER_AREA_LAYER_TEMPLATES } from 'components/map/constants';
 
 export const getUserAreaLayer = (
-  { id = "user-area", geojson, minZoom },
-  template = USER_AREA_LAYER_TEMPLATES["area-card"]
+  { id = 'user-area', geojson, minZoom },
+  template = USER_AREA_LAYER_TEMPLATES['area-card']
 ) => template({ id, geojson, minZoom });
 
 /**

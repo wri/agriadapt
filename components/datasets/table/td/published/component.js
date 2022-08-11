@@ -1,5 +1,5 @@
-import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 
 class PublishedTD extends PureComponent {
   static propTypes = { value: PropTypes.bool.isRequired };
@@ -7,7 +7,7 @@ class PublishedTD extends PureComponent {
   render() {
     const { value } = this.props;
 
-    return <td>{value ? "Yes" : "No"}</td>;
+    return <td>{value ? 'Yes' : 'No'}</td>;
   }
 }
 

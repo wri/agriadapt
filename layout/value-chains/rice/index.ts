@@ -1,3 +1,3 @@
-import LayoutRice from "./component";
+import LayoutRice from './component';
 
 export default LayoutRice;

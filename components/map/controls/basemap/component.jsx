@@ -1,17 +1,17 @@
-import { useCallback, useEffect, useMemo, useState, useRef } from "react";
-import PropTypes from "prop-types";
+import { useCallback, useEffect, useMemo, useState, useRef } from 'react';
+import PropTypes from 'prop-types';
 
 // components
-import Tether from "react-tether";
-import Icon from "components/ui/icon";
-import RadioGroup from "components/form/RadioGroup";
-import Checkbox from "components/form/Checkbox";
+import Tether from 'react-tether';
+import Icon from 'components/ui/icon';
+import RadioGroup from 'components/form/RadioGroup';
+import Checkbox from 'components/form/Checkbox';
 
 // constants
-import { BASEMAPS, LABELS } from "components/map/constants";
+import { BASEMAPS, LABELS } from 'components/map/constants';
 
 // utils
-import { logEvent } from "utils/analytics";
+import { logEvent } from 'utils/analytics';
 
 export default function BasemapControls({
   basemap,
@@ -48,7 +48,7 @@ export default function BasemapControls({
 
   const onBasemapChange = useCallback(
     (nextBasemap) => {
-      logEvent("Explore Map", "change basemap", nextBasemap);
+      logEvent('Explore Map', 'change basemap', nextBasemap);
       onChangeBasemap(BASEMAPS[nextBasemap]);
     },
     [onChangeBasemap]
@@ -70,13 +70,13 @@ export default function BasemapControls({
 
   useEffect(() => {
     if (active) {
-      window.addEventListener("click", onScreenClick);
+      window.addEventListener('click', onScreenClick);
     } else {
-      window.removeEventListener("click", onScreenClick);
+      window.removeEventListener('click', onScreenClick);
     }
 
     return () => {
-      window.removeEventListener("click", onScreenClick);
+      window.removeEventListener('click', onScreenClick);
     };
   }, [active, onScreenClick]);
 
@@ -97,7 +97,7 @@ export default function BasemapControls({
   );
 
   const disableBoundariesControls = useMemo(
-    () => disabledControls.includes("boundaries"),
+    () => disabledControls.includes('boundaries'),
     [disabledControls]
   );
 
@@ -105,9 +105,9 @@ export default function BasemapControls({
     <div className="c-basemap-control">
       <Tether
         attachment="top right"
-        constraints={[{ to: "window" }]}
+        constraints={[{ to: 'window' }]}
         targetOffset="8px 100%"
-        classes={{ element: "c-tooltip -arrow-right" }}
+        classes={{ element: 'c-tooltip -arrow-right' }}
         renderTarget={(ref) => (
           <button
             ref={ref}
@@ -149,9 +149,9 @@ export default function BasemapControls({
                   <div className="divisor" />
                   <Checkbox
                     properties={{
-                      name: "boundaries",
-                      title: "Boundaries",
-                      value: "boundaries",
+                      name: 'boundaries',
+                      title: 'Boundaries',
+                      value: 'boundaries',
                       checked: boundaries,
                     }}
                     onChange={onBoundariesChange}

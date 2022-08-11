@@ -1,13 +1,13 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Link from "next/link";
-import classnames from "classnames";
-import debounce from "lodash/debounce";
-import Tether from "react-tether";
-import { connect } from "react-redux";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Link from 'next/link';
+import classnames from 'classnames';
+import debounce from 'lodash/debounce';
+import Tether from 'react-tether';
+import { connect } from 'react-redux';
 
 // components
-import Icon from "components/ui/icon";
+import Icon from 'components/ui/icon';
 
 class DatasetsRelatedContent extends React.Component {
   constructor(props) {
@@ -52,14 +52,14 @@ class DatasetsRelatedContent extends React.Component {
     // Calculate the number of tags for the current dataset
     if (dataset.vocabulary && dataset.vocabulary.length) {
       knowledgeGraphVoc = dataset.vocabulary.find(
-        (voc) => voc.name === "knowledge_graph"
+        (voc) => voc.name === 'knowledge_graph'
       );
       if (knowledgeGraphVoc) {
         numberOfTags = knowledgeGraphVoc.tags.length;
       }
     }
 
-    const isOwnerOrAdmin = dataset.userId === user.id || user.role === "ADMIN";
+    const isOwnerOrAdmin = dataset.userId === user.id || user.role === 'ADMIN';
 
     return (
       <div className="c-related-content">
@@ -70,12 +70,12 @@ class DatasetsRelatedContent extends React.Component {
                 attachment="bottom center"
                 constraints={[
                   {
-                    to: "window",
+                    to: 'window',
                   },
                 ]}
                 targetOffset="-4px 0"
                 classes={{
-                  element: "c-tooltip",
+                  element: 'c-tooltip',
                 }}
                 renderTarget={(ref) => {
                   if (isOwnerOrAdmin) {
@@ -88,10 +88,10 @@ class DatasetsRelatedContent extends React.Component {
                         <a
                           ref={ref}
                           onMouseEnter={() =>
-                            this.toggleTooltip("widgetsActive", true)
+                            this.toggleTooltip('widgetsActive', true)
                           }
                           onMouseLeave={() =>
-                            this.toggleTooltip("widgetsActive", false)
+                            this.toggleTooltip('widgetsActive', false)
                           }
                         >
                           <Icon name="icon-widget" className="c-icon -small" />
@@ -107,10 +107,10 @@ class DatasetsRelatedContent extends React.Component {
                     <a
                       ref={ref}
                       onMouseEnter={() =>
-                        this.toggleTooltip("widgetsActive", true)
+                        this.toggleTooltip('widgetsActive', true)
                       }
                       onMouseLeave={() =>
-                        this.toggleTooltip("widgetsActive", false)
+                        this.toggleTooltip('widgetsActive', false)
                       }
                     >
                       <Icon name="icon-widget" className="c-icon -small" />
@@ -133,18 +133,18 @@ class DatasetsRelatedContent extends React.Component {
             </li>
           )}
 
-          {route !== "myrw_detail" && buttons.layer && (
+          {route !== 'myrw_detail' && buttons.layer && (
             <li>
               <Tether
                 attachment="bottom center"
                 constraints={[
                   {
-                    to: "window",
+                    to: 'window',
                   },
                 ]}
                 targetOffset="-4px 0"
                 classes={{
-                  element: "c-tooltip",
+                  element: 'c-tooltip',
                 }}
                 renderTarget={(ref) => {
                   if (isOwnerOrAdmin) {
@@ -157,10 +157,10 @@ class DatasetsRelatedContent extends React.Component {
                         <a
                           ref={ref}
                           onMouseEnter={() =>
-                            this.toggleTooltip("layersActive", true)
+                            this.toggleTooltip('layersActive', true)
                           }
                           onMouseLeave={() =>
-                            this.toggleTooltip("layersActive", false)
+                            this.toggleTooltip('layersActive', false)
                           }
                         >
                           <Icon name="icon-layers" className="c-icon -small" />
@@ -176,10 +176,10 @@ class DatasetsRelatedContent extends React.Component {
                     <a
                       ref={ref}
                       onMouseEnter={() =>
-                        this.toggleTooltip("layersActive", true)
+                        this.toggleTooltip('layersActive', true)
                       }
                       onMouseLeave={() =>
-                        this.toggleTooltip("layersActive", false)
+                        this.toggleTooltip('layersActive', false)
                       }
                     >
                       <Icon name="icon-layers" className="c-icon -small" />
@@ -208,12 +208,12 @@ class DatasetsRelatedContent extends React.Component {
                 attachment="bottom center"
                 constraints={[
                   {
-                    to: "window",
+                    to: 'window',
                   },
                 ]}
                 targetOffset="-4px 0"
                 classes={{
-                  element: "c-tooltip",
+                  element: 'c-tooltip',
                 }}
                 renderTarget={(ref) => {
                   if (isOwnerOrAdmin) {
@@ -226,14 +226,14 @@ class DatasetsRelatedContent extends React.Component {
                         <a
                           ref={ref}
                           className={classnames({
-                            "-empty":
+                            '-empty':
                               !dataset.metadata || !dataset.metadata.length,
                           })}
                           onMouseEnter={() =>
-                            this.toggleTooltip("metadataActive", true)
+                            this.toggleTooltip('metadataActive', true)
                           }
                           onMouseLeave={() =>
-                            this.toggleTooltip("metadataActive", false)
+                            this.toggleTooltip('metadataActive', false)
                           }
                         >
                           <Icon
@@ -252,13 +252,13 @@ class DatasetsRelatedContent extends React.Component {
                     <a
                       ref={ref}
                       className={classnames({
-                        "-empty": !dataset.metadata || !dataset.metadata.length,
+                        '-empty': !dataset.metadata || !dataset.metadata.length,
                       })}
                       onMouseEnter={() =>
-                        this.toggleTooltip("metadataActive", true)
+                        this.toggleTooltip('metadataActive', true)
                       }
                       onMouseLeave={() =>
-                        this.toggleTooltip("metadataActive", false)
+                        this.toggleTooltip('metadataActive', false)
                       }
                     >
                       <Icon name="icon-metadata" className="c-icon -small" />
@@ -273,7 +273,7 @@ class DatasetsRelatedContent extends React.Component {
 
                   return (
                     <span ref={ref}>
-                      {(dataset.metadata && dataset.metadata.length) || 0}{" "}
+                      {(dataset.metadata && dataset.metadata.length) || 0}{' '}
                       metadata
                     </span>
                   );
@@ -282,18 +282,18 @@ class DatasetsRelatedContent extends React.Component {
             </li>
           )}
 
-          {route !== "myrw_detail" && buttons.tags && (
+          {route !== 'myrw_detail' && buttons.tags && (
             <li>
               <Tether
                 attachment="bottom center"
                 constraints={[
                   {
-                    to: "window",
+                    to: 'window',
                   },
                 ]}
                 targetOffset="-4px 0"
                 classes={{
-                  element: "c-tooltip",
+                  element: 'c-tooltip',
                 }}
                 renderTarget={(ref) => {
                   if (isOwnerOrAdmin) {
@@ -306,13 +306,13 @@ class DatasetsRelatedContent extends React.Component {
                         <a
                           ref={ref}
                           className={classnames({
-                            "-empty": !knowledgeGraphVoc,
+                            '-empty': !knowledgeGraphVoc,
                           })}
                           onMouseEnter={() =>
-                            this.toggleTooltip("vocabulariesActive", true)
+                            this.toggleTooltip('vocabulariesActive', true)
                           }
                           onMouseLeave={() =>
-                            this.toggleTooltip("vocabulariesActive", false)
+                            this.toggleTooltip('vocabulariesActive', false)
                           }
                         >
                           <Icon name="icon-type" className="c-icon -smaller" />
@@ -325,12 +325,12 @@ class DatasetsRelatedContent extends React.Component {
                   return (
                     <a
                       ref={ref}
-                      className={classnames({ "-empty": !knowledgeGraphVoc })}
+                      className={classnames({ '-empty': !knowledgeGraphVoc })}
                       onMouseEnter={() =>
-                        this.toggleTooltip("vocabulariesActive", true)
+                        this.toggleTooltip('vocabulariesActive', true)
                       }
                       onMouseLeave={() =>
-                        this.toggleTooltip("vocabulariesActive", false)
+                        this.toggleTooltip('vocabulariesActive', false)
                       }
                     >
                       <Icon name="icon-type" className="c-icon -smaller" />

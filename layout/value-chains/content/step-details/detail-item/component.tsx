@@ -50,7 +50,7 @@ const DetailItem = ({
 }: DetailItemProps) => {
   const [geojson, setGeoJson] = useState('');
 
-  const { t } = useTranslation([crop, 'common', 'widgets']);
+  const { t } = useTranslation([crop, 'common', 'widgets', 'countries']);
 
   useEffect(() => {
     if (country?.value)
@@ -119,7 +119,11 @@ const DetailItem = ({
               )}
               {w.type === 'custom' && (
                 <ParamChart
-                  title={t(w.title, params)}
+                  title={t(w.title, {
+                    country: t(`countries:${country.label}`, {
+                      keySeparator: ':',
+                    }),
+                  })}
                   controls={w.controls}
                   controlsProps={{
                     ...w.controlsProps,

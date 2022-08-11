@@ -40,7 +40,8 @@ const CalloutCard = ({
   );
 
   useEffect(() => {
-    if (query && dataset) { // For value chain pages
+    if (query && dataset) {
+      // For value chain pages
       fetchDatasetQuery(dataset, query(params)).then(({ data }) => {
         setResult(formatValue(data.data[0]?.x));
       });
@@ -58,9 +59,7 @@ const CalloutCard = ({
           {type && (
             <h3 className="stat-type">{type === 'avg' ? 'Average' : type}</h3>
           )}
-          <div className="stat-name">
-            {t(name, params)}
-          </div>
+          <div className="stat-name">{t(name, params)}</div>
         </div>
       </div>
       {/* )} */}

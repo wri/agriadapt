@@ -1,6 +1,6 @@
-import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
-import classnames from "classnames";
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 class LayerPillComponent extends PureComponent {
   render() {
@@ -10,11 +10,11 @@ class LayerPillComponent extends PureComponent {
       contextLayersPulse.activeLayers.find((l) => l === layerId);
 
     const className = classnames({
-      "layer-pill": true,
-      "c-button": true,
-      "-secondary": !contextLayer,
-      "-primary": contextLayer,
-      "-active": contextLayer,
+      'layer-pill': true,
+      'c-button': true,
+      '-secondary': !contextLayer,
+      '-primary': contextLayer,
+      '-active': contextLayer,
     });
 
     return (

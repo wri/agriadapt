@@ -1,8 +1,8 @@
-import WRISerializer from "wri-json-api-serializer";
+import WRISerializer from 'wri-json-api-serializer';
 
 // utils
-import { WRIAPI } from "utils/axios";
-import { logger } from "utils/logs";
+import { WRIAPI } from 'utils/axios';
+import { logger } from 'utils/logs';
 
 /**
  * Fetches Geostore
@@ -17,7 +17,7 @@ export const fetchGeostore = (id, params = {}) => {
     const { status, statusText, data } = response;
 
     if (status >= 300) {
-      logger.error("Error fetching geostore:", `${status}: ${statusText}`);
+      logger.error('Error fetching geostore:', `${status}: ${statusText}`);
       throw new Error(statusText);
     }
 
@@ -31,8 +31,8 @@ export const fetchGeostore = (id, params = {}) => {
  * @returns {Object[]}
  */
 export const fetchCountries = () => {
-  logger.info("Fetch countries");
-  return WRIAPI.get("/v2/geostore/admin/list")
+  logger.info('Fetch countries');
+  return WRIAPI.get('/v2/geostore/admin/list')
     .then((array) =>
       array.data.data.sort((a, b) => {
         if (a.name < b.name) {
@@ -85,11 +85,15 @@ export const fetchCountryV2 = (iso) => {
  */
 export const fetchGADM1Geostore = (iso, id) => {
   logger.info(`Fetch GADM Level 1 Boundary ${iso}${id}`);
-  return WRIAPI.get(`/v2/geostore/admin/${iso}/${id}`).then(({ data }) =>
-    WRISerializer(data)
-  ).catch((response) => {
-    const { status, statusText } = response;
-    logger.error(`Error fetching GADM Level 1 boundary ${iso}/${id}: ${status}: ${statusText}`);
-    throw new Error(`Error fetching GADM Level 1 boundary ${iso}/${id}: ${status}: ${statusText}`);
-  });
+  return WRIAPI.get(`/v2/geostore/admin/${iso}/${id}`)
+    .then(({ data }) => WRISerializer(data))
+    .catch((response) => {
+      const { status, statusText } = response;
+      logger.error(
+        `Error fetching GADM Level 1 boundary ${iso}/${id}: ${status}: ${statusText}`
+      );
+      throw new Error(
+        `Error fetching GADM Level 1 boundary ${iso}/${id}: ${status}: ${statusText}`
+      );
+    });
 };

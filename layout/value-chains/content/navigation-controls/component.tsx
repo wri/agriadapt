@@ -10,13 +10,10 @@ interface NavigationControlsProps {
     production: any;
     processing?: any;
     trade: any;
-  }
+  };
 }
 
-const NavigationControls = ({
-  details,
-}: NavigationControlsProps) => {
-
+const NavigationControls = ({ details }: NavigationControlsProps) => {
   const router = useRouter();
   const { step: stepParam } = router.query;
   const activeItem = stepParam

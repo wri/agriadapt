@@ -1,3 +1,3 @@
-import AnalysisContainerHome from "./component";
+import AnalysisContainerHome from './component';
 
 export default AnalysisContainerHome;

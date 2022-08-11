@@ -18,8 +18,14 @@ const inputs = {
         controls: LandSuitabilityControls,
         controlsProps: {
           options: [
-            { label: 'widgets:cotton_land_suitability.rainfed_cotton', value: 'rainfed' },
-            { label: 'widgets:cotton_land_suitability.irrigated_cotton', value: 'irrigated' },
+            {
+              label: 'widgets:cotton_land_suitability.rainfed_cotton',
+              value: 'rainfed',
+            },
+            {
+              label: 'widgets:cotton_land_suitability.irrigated_cotton',
+              value: 'irrigated',
+            },
           ],
           layers: {
             historic: [
@@ -39,7 +45,7 @@ const inputs = {
               '2050s_rcp8p5_rainfed_cotton',
             ],
           },
-        }
+        },
       },
     ],
     // TODO: Additional chart vis
@@ -61,7 +67,7 @@ const production = {
     //TODO: Additional Callout - Need working query
     analysis: {
       value: 'N/A',
-      name: 'Data Coming Soon'
+      name: 'Data Coming Soon',
     },
     // analysis: {
     //   name: ({
@@ -106,16 +112,23 @@ const trade = {
         controls: ImportExportControls,
         controlsProps: {
           products: [
-            { label: 'widgets:export_import.cotton.products.cotton_carded_combed', value: 'Cotton, carded, combed'},
-            { label: 'widgets:export_import.cotton.products.cotton_lint', value: 'Cotton lint'},
+            {
+              label:
+                'widgets:export_import.cotton.products.cotton_carded_combed',
+              value: 'Cotton, carded, combed',
+            },
+            {
+              label: 'widgets:export_import.cotton.products.cotton_lint',
+              value: 'Cotton lint',
+            },
           ],
           indicators: [
             { label: 'widgets:indicators.quantity', value: 'Quantity' },
             { label: 'widgets:indicators.value', value: 'Value' },
-          ]
-        }
+          ],
+        },
       },
-    ]
+    ],
   },
 };
 

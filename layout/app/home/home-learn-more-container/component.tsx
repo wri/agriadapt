@@ -5,7 +5,7 @@ import React from 'react';
 import { LEARN } from '../constants';
 
 const LearnMoreContainerHome = () => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const { button } = LEARN;
   return (
     <div className="learn-more-container">

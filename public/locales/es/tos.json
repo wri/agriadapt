@@ -1,72 +1,72 @@
 {
-	"intro": {
-		"address": "<p>10 G Street NE, Suite 800</p><p>Washington, DC 20002</p><br/>",
-		"paragraphs": "<p>Bienvenido a la familia de plataformas de datos ambientales de la IRG. Este documento permite al usuario de estos Servicios (\"Usted\", \"Su\") saber lo que obtiene cuando utiliza nuestros sitios web y lo que esperamos a cambio.</p> <p>Los Servicios disponibles a través de Resource Watch, Global Forest Watch, Forest Watcher y The Partnership for Resilience and Preparedness, AgriAdapt y sus sitios web asociados, resourcewatch.org, globalforestwatch.org y prepdata.org, agriadapt.org (denominados colectivamente como los \"Servicios\") son propiedad y están operados por el Instituto de Recursos Mundiales (\"WRI\", \"Nosotros\", \"Nuestro\" o \"Nos\"). Al utilizar los Servicios, Usted acepta estar sujeto a estos Términos de Servicio y cualquier actualización futura (colectivamente, los \"Términos\").</p>"
-	},
-	"usage": {
-		"title": "Uso",
-		"p0": "Le proporcionamos acceso a estos Servicios con el fin de promover una mejor gestión de los recursos naturales para el mejoramiento de todas las personas.",
-		"p": {
-			"A": "Por favor, no haga un mal uso de Nuestros Servicios. Usted acepta utilizar los Servicios y su contenido solo para fines legales y no para difamar, acosar o amenazar a nadie o para poner a disposición cualquier material obsceno, pornográfico u ofensivo. No puede usar los Servicios de ninguna manera que pueda dañar o sobrecargar los Servicios o interferir con el uso de los Servicios por parte de cualquier otra parte.",
-			"B": "Su uso de los Servicios no le otorga ningún derecho de propiedad sobre la propiedad intelectual de los Servicios o de su contenido. Parte del software utilizado para proporcionar los Servicios puede estar disponible por separado bajo licencias de código abierto.",
-			"C": "Estamos constantemente tratando de mejorar Nuestros Servicios. Podemos cambiar las características y funciones de los Servicios, incluidas las API, con el tiempo. Es su responsabilidad asegurarse de que su uso de los Servicios sea compatible con la versión actual."
-		}
-	},
-	"accounts_and_api_usage": {
-		"title": "Uso de cuentas y API",
-		"p": {
-			"A": "Para utilizar muchos de los Servicios, debe registrarse para obtener una cuenta.",
-			"B": "Cuando utiliza nuestras interfaces de programa de aplicaciones (\"API(s)\"), cada solicitud a una API debe incluir una de las claves API únicas de Su Cuenta.",
-			"C": "Por favor, proteja la seguridad de su cuenta. Usted es responsable de Su uso de los Servicios y de toda la actividad que ocurra bajo Su Cuenta, incluido cualquier uso de las claves API de Su Cuenta.",
-			"integrated_url_D": "Si utiliza nuestras API en sus propios productos, acreditenos. Usted acepta atribuir nuestras API de acuerdo con nuestros Requisitos de atribución, disponibles en [{{url}}].",
-			"D": "Si utiliza nuestras API en sus propios productos, acreditenos. Usted acepta atribuir nuestras API de acuerdo con nuestros Requisitos de atribución, disponibles en [",
-			"D1": "].",
-			"E": "Podemos cancelar o suspender Su acceso a los Servicios en cualquier momento y por cualquier motivo, sin previo aviso. Tras la cancelación o suspensión, Su derecho a utilizar los Servicios finalizará. Tendrá derecho a acceder a Su Contenido almacenado en los Servicios durante un período de quince días después de la cancelación o suspensión; a partir de entonces, es posible que no tenga acceso a Su Contenido almacenado en los Servicios."
-		}
-	},
-	"third_party_content": {
-		"title": "Contenido de terceros",
-		"p": {
-			"A": "Los Servicios incorporan contenido, datos e información de otros, incluido Usted. Si bien podemos revisar cualquier contenido y eliminarlo si determinamos que infringe la ley o nuestras políticas, no nos comprometemos a revisar todo el contenido, y usted no debe confiar en nosotros para hacerlo.",
-			"B": "Los datos abiertos son importantes para nosotros y hacemos un esfuerzo considerable para que muchos de los conjuntos de datos estén disponibles sin restricciones a través de los Servicios. No obstante, cada conjunto de datos tiene su propia licencia y restricciones. Debe revisar los metadatos del conjunto de datos para comprender estas restricciones.",
-			"C": "Debe cumplir con las licencias de Nuestros conjuntos de datos. Todo el contenido mostrado o accesible a través de los Servicios está protegido por las leyes de derechos de autor de los Estados Unidos o sus equivalentes en otros países."
-		}
-	},
-	"your_content": {
-		"title": "Tu contenido",
-		"p": {
-			"A": "La mayoría de nuestros servicios están diseñados para ayudarle a compartir o publicar su contenido. Al utilizar Resource Watch, Global Forest Watch y The Partnership for Resilience and Preparedness, y sus sitios web asociados, resourcewatch.org, globalforestwatch.org y prepdata.org, Puede enviar datos, información u otro contenido a los Servicios (\"Su Contenido\"). Usted conserva la propiedad de Su Contenido.",
-			"B": "Excepto donde esté expresamente prohibido, Usted entiende que podemos usar, mostrar o distribuir Su Contenido incluso si deja de usar los Servicios. Con el único propósito de permitir Su uso de los Servicios, Usted nos otorga un derecho y una licencia no exclusivos, mundiales, libres de regalías y transferibles (con derecho a sublicenciar), para usar, copiar, mostrar, distribuir, modificar, crear trabajos derivados y almacenar Su Contenido y permitir que otros lo hagan."
-		}
-	},
-	"disclaimers_and_limitations": {
-		"title": "Descargos de responsabilidad y limitaciones",
-		"p": [
-			"Usted acepta que su uso de los servicios y su contenido es bajo su propio riesgo. Los servicios y el contenido se proporcionan \"tal cual\" y sin garantías ni representaciones de ningún tipo, ya sean expresas o implícitas. En la máxima medida permitida por la ley, renunciamos a todas las garantías, legales, expresas o implícitas, incluidas las garantías implícitas de comerciabilidad, idoneidad para un propósito particular, título y no infracción. Las condiciones reales pueden diferir de los mapas y la información proporcionada por los servicios. No garantizamos que el contenido o los servicios estén libres de errores, sean precisos o sin interrupción.",
-			"Al utilizar los servicios, puede estar expuesto a envíos de usuarios y otro contenido de terceros (\"contenido no wri\"), y parte de este contenido puede ser inexacto, ofensivo, indecente o de otra manera objetable. No respaldamos ningún contenido que no sea de wri. Bajo ninguna circunstancia wri será responsable por o en relación con el contenido que no sea wri, incluso por cualquier inexactitud, error u omisión en cualquier contenido que no sea wri, cualquier infracción de propiedad intelectual con respecto a cualquier contenido que no sea wri, o por cualquier pérdida o daño de cualquier tipo incurrido como resultado del uso de cualquier contenido que no sea wri.",
-			"Bajo ninguna circunstancia seremos responsables de ningún daño especial, indirecto, incidental, consecuente o ejemplar (incluyendo, sin limitación, pérdida de ganancias, datos o uso o costo de cobertura) que resulte de su uso o la incapacidad de usar los servicios o sus contenidos, incluso si éramos conscientes de la posibilidad de tales daños. En ningún caso tendremos ninguna responsabilidad hacia usted por todas las reclamaciones o daños por cualquier motivo que excedan los cien dólares ($ 100 usd). Ciertas jurisdicciones no permiten exclusiones o limitaciones en las garantías implícitas o limitaciones de responsabilidad y, por lo tanto, algunas o todas las renuncias, exclusiones o limitaciones pueden no aplicarse a usted, y usted puede tener derechos adicionales."
-		]
-	},
-	"dmca_compliance": {
-		"title": "Cumplimiento de la DMCA",
-		"p0": "Si Usted es propietario de derechos de autor o un agente de los mismos, y cree que cualquier contenido de los Servicios infringe Sus derechos de autor, puede enviar un aviso por escrito al Instituto de Recursos Mundiales Tel: +1 (202) 729-7600 Correo electrónico: privacy@wri.org con la siguiente información:",
-		"p": {
-			"A": "Su firma como persona autorizada para actuar en nombre del propietario de un derecho exclusivo que presuntamente se ha infringido;",
-			"B": "Identificación de la ubicación exacta en los Servicios del trabajo protegido por derechos de autor que se alega que ha sido infringido o, si múltiples trabajos con derechos de autor en los Servicios están cubiertos por una sola notificación, una lista representativa de dichos trabajos tal como se encuentran en los Servicios;",
-			"C": "La dirección, el número de teléfono y la dirección de correo electrónico de la parte reclamante;",
-			"D": "Una declaración de que la parte reclamante cree de buena fe que el uso del material de la manera reclamada no está autorizado por el propietario de los derechos de autor, su agente o la ley; y",
-			"E": "Una declaración de que la información en la notificación es precisa, y bajo pena de perjurio, que la parte reclamante está autorizada a actuar en nombre del propietario de un derecho exclusivo que presuntamente se ha infringido."
-		}
-	},
-	"additional_terms": {
-		"title": "Términos adicionales",
-		"p": {
-			"A": "Nos reservamos el derecho de modificar estos Términos en cualquier momento. Todos los cambios entran en vigor inmediatamente después de su publicación en el sitio web de Resource Watch. Debe revisar estos términos regularmente para ver si hay cambios. Su uso continuado de los Servicios después de dichos cambios constituye Su aceptación vinculante de los Términos actualizados.",
-			"B": "Las leyes del Estado de Delaware, EE.UU., excluyendo las disposiciones de conflicto de leyes de Nueva York, se aplican a cualquier disputa sobre los Servicios, su contenido o estos Términos. La Convención de las Naciones Unidas sobre los Contratos de Compraventa Internacional de Mercaderías no se aplica. Si tenemos un desacuerdo relacionado con estos Términos, o su desempeño o el nuestro en virtud de ellos que no podemos resolver entre nosotros, entonces acordamos que finalmente se resuelvan en arbitraje utilizando (i) las Reglas de Arbitraje Internacional del Centro de Resolución de Disputas Internacionales de la Asociación Americana de Arbitraje, si se encuentra fuera de los Estados Unidos,  o (ii) las Reglas de Arbitraje Comercial de la Asociación Americana de Arbitraje, si usted se encuentra en los Estados Unidos. Acordamos seguir este párrafo si difiere de esas reglas. Solo habrá un árbitro si nuestro desacuerdo involucra menos de $ 250,000. Si nuestro desacuerdo involucra más de $ 250,000, entonces cada uno de nosotros designa un árbitro, y esos dos árbitros eligen un tercero. Acordamos que los árbitros no tendrán el poder de otorgarnos a ninguno de nosotros ningún daño que no sea consistente con la Sección 5 (Descargos de responsabilidad y limitaciones) de estos Términos. El arbitraje será en Washington, DC, EE.UU., y se llevará a cabo en inglés. A menos que estemos de acuerdo o uno de nosotros demuestre su esencia, no habrá ningún descubrimiento formal en nuestro arbitraje. Los árbitros pueden otorgar costos y honorarios de abogados contra uno de nosotros, o dividirlos entre nosotros. Entendemos que cualquier tribunal con jurisdicción hará cumplir las decisiones del arbitraje y dictará sentencia sobre ellas.",
-			"C": "Si no hacemos cumplir los Términos con prontitud, no hemos renunciado a ningún otro derecho o al derecho de hacerlos cumplir u otros Términos en el futuro.",
-			"D": "Si alguna disposición particular de estos Términos no es aplicable, eso no afecta la aplicabilidad de ninguna otra disposición de los Términos.",
-			"E": "Estos Términos están entre Usted y Nosotros, y nadie más puede hacerlos cumplir.",
-			"F": "Estos Términos son la declaración completa del acuerdo entre Usted y Nosotros con respecto a los Servicios y su contenido."
-		}
-	}
+  "intro": {
+    "address": "<p>10 G Street NE, Suite 800</p><p>Washington, DC 20002</p><br/>",
+    "paragraphs": "<p>Bienvenido a la familia de plataformas de datos ambientales de la IRG. Este documento permite al usuario de estos Servicios (\"Usted\", \"Su\") saber lo que obtiene cuando utiliza nuestros sitios web y lo que esperamos a cambio.</p> <p>Los Servicios disponibles a través de Resource Watch, Global Forest Watch, Forest Watcher y The Partnership for Resilience and Preparedness, AgriAdapt y sus sitios web asociados, resourcewatch.org, globalforestwatch.org y prepdata.org, agriadapt.org (denominados colectivamente como los \"Servicios\") son propiedad y están operados por el Instituto de Recursos Mundiales (\"WRI\", \"Nosotros\", \"Nuestro\" o \"Nos\"). Al utilizar los Servicios, Usted acepta estar sujeto a estos Términos de Servicio y cualquier actualización futura (colectivamente, los \"Términos\").</p>"
+  },
+  "usage": {
+    "title": "Uso",
+    "p0": "Le proporcionamos acceso a estos Servicios con el fin de promover una mejor gestión de los recursos naturales para el mejoramiento de todas las personas.",
+    "p": {
+      "A": "Por favor, no haga un mal uso de Nuestros Servicios. Usted acepta utilizar los Servicios y su contenido solo para fines legales y no para difamar, acosar o amenazar a nadie o para poner a disposición cualquier material obsceno, pornográfico u ofensivo. No puede usar los Servicios de ninguna manera que pueda dañar o sobrecargar los Servicios o interferir con el uso de los Servicios por parte de cualquier otra parte.",
+      "B": "Su uso de los Servicios no le otorga ningún derecho de propiedad sobre la propiedad intelectual de los Servicios o de su contenido. Parte del software utilizado para proporcionar los Servicios puede estar disponible por separado bajo licencias de código abierto.",
+      "C": "Estamos constantemente tratando de mejorar Nuestros Servicios. Podemos cambiar las características y funciones de los Servicios, incluidas las API, con el tiempo. Es su responsabilidad asegurarse de que su uso de los Servicios sea compatible con la versión actual."
+    }
+  },
+  "accounts_and_api_usage": {
+    "title": "Uso de cuentas y API",
+    "p": {
+      "A": "Para utilizar muchos de los Servicios, debe registrarse para obtener una cuenta.",
+      "B": "Cuando utiliza nuestras interfaces de programa de aplicaciones (\"API(s)\"), cada solicitud a una API debe incluir una de las claves API únicas de Su Cuenta.",
+      "C": "Por favor, proteja la seguridad de su cuenta. Usted es responsable de Su uso de los Servicios y de toda la actividad que ocurra bajo Su Cuenta, incluido cualquier uso de las claves API de Su Cuenta.",
+      "integrated_url_D": "Si utiliza nuestras API en sus propios productos, acreditenos. Usted acepta atribuir nuestras API de acuerdo con nuestros Requisitos de atribución, disponibles en [{{url}}].",
+      "D": "Si utiliza nuestras API en sus propios productos, acreditenos. Usted acepta atribuir nuestras API de acuerdo con nuestros Requisitos de atribución, disponibles en [",
+      "D1": "].",
+      "E": "Podemos cancelar o suspender Su acceso a los Servicios en cualquier momento y por cualquier motivo, sin previo aviso. Tras la cancelación o suspensión, Su derecho a utilizar los Servicios finalizará. Tendrá derecho a acceder a Su Contenido almacenado en los Servicios durante un período de quince días después de la cancelación o suspensión; a partir de entonces, es posible que no tenga acceso a Su Contenido almacenado en los Servicios."
+    }
+  },
+  "third_party_content": {
+    "title": "Contenido de terceros",
+    "p": {
+      "A": "Los Servicios incorporan contenido, datos e información de otros, incluido Usted. Si bien podemos revisar cualquier contenido y eliminarlo si determinamos que infringe la ley o nuestras políticas, no nos comprometemos a revisar todo el contenido, y usted no debe confiar en nosotros para hacerlo.",
+      "B": "Los datos abiertos son importantes para nosotros y hacemos un esfuerzo considerable para que muchos de los conjuntos de datos estén disponibles sin restricciones a través de los Servicios. No obstante, cada conjunto de datos tiene su propia licencia y restricciones. Debe revisar los metadatos del conjunto de datos para comprender estas restricciones.",
+      "C": "Debe cumplir con las licencias de Nuestros conjuntos de datos. Todo el contenido mostrado o accesible a través de los Servicios está protegido por las leyes de derechos de autor de los Estados Unidos o sus equivalentes en otros países."
+    }
+  },
+  "your_content": {
+    "title": "Tu contenido",
+    "p": {
+      "A": "La mayoría de nuestros servicios están diseñados para ayudarle a compartir o publicar su contenido. Al utilizar Resource Watch, Global Forest Watch y The Partnership for Resilience and Preparedness, y sus sitios web asociados, resourcewatch.org, globalforestwatch.org y prepdata.org, Puede enviar datos, información u otro contenido a los Servicios (\"Su Contenido\"). Usted conserva la propiedad de Su Contenido.",
+      "B": "Excepto donde esté expresamente prohibido, Usted entiende que podemos usar, mostrar o distribuir Su Contenido incluso si deja de usar los Servicios. Con el único propósito de permitir Su uso de los Servicios, Usted nos otorga un derecho y una licencia no exclusivos, mundiales, libres de regalías y transferibles (con derecho a sublicenciar), para usar, copiar, mostrar, distribuir, modificar, crear trabajos derivados y almacenar Su Contenido y permitir que otros lo hagan."
+    }
+  },
+  "disclaimers_and_limitations": {
+    "title": "Descargos de responsabilidad y limitaciones",
+    "p": [
+      "Usted acepta que su uso de los servicios y su contenido es bajo su propio riesgo. Los servicios y el contenido se proporcionan \"tal cual\" y sin garantías ni representaciones de ningún tipo, ya sean expresas o implícitas. En la máxima medida permitida por la ley, renunciamos a todas las garantías, legales, expresas o implícitas, incluidas las garantías implícitas de comerciabilidad, idoneidad para un propósito particular, título y no infracción. Las condiciones reales pueden diferir de los mapas y la información proporcionada por los servicios. No garantizamos que el contenido o los servicios estén libres de errores, sean precisos o sin interrupción.",
+      "Al utilizar los servicios, puede estar expuesto a envíos de usuarios y otro contenido de terceros (\"contenido no wri\"), y parte de este contenido puede ser inexacto, ofensivo, indecente o de otra manera objetable. No respaldamos ningún contenido que no sea de wri. Bajo ninguna circunstancia wri será responsable por o en relación con el contenido que no sea wri, incluso por cualquier inexactitud, error u omisión en cualquier contenido que no sea wri, cualquier infracción de propiedad intelectual con respecto a cualquier contenido que no sea wri, o por cualquier pérdida o daño de cualquier tipo incurrido como resultado del uso de cualquier contenido que no sea wri.",
+      "Bajo ninguna circunstancia seremos responsables de ningún daño especial, indirecto, incidental, consecuente o ejemplar (incluyendo, sin limitación, pérdida de ganancias, datos o uso o costo de cobertura) que resulte de su uso o la incapacidad de usar los servicios o sus contenidos, incluso si éramos conscientes de la posibilidad de tales daños. En ningún caso tendremos ninguna responsabilidad hacia usted por todas las reclamaciones o daños por cualquier motivo que excedan los cien dólares ($ 100 usd). Ciertas jurisdicciones no permiten exclusiones o limitaciones en las garantías implícitas o limitaciones de responsabilidad y, por lo tanto, algunas o todas las renuncias, exclusiones o limitaciones pueden no aplicarse a usted, y usted puede tener derechos adicionales."
+    ]
+  },
+  "dmca_compliance": {
+    "title": "Cumplimiento de la DMCA",
+    "p0": "Si Usted es propietario de derechos de autor o un agente de los mismos, y cree que cualquier contenido de los Servicios infringe Sus derechos de autor, puede enviar un aviso por escrito al Instituto de Recursos Mundiales Tel: +1 (202) 729-7600 Correo electrónico: privacy@wri.org con la siguiente información:",
+    "p": {
+      "A": "Su firma como persona autorizada para actuar en nombre del propietario de un derecho exclusivo que presuntamente se ha infringido;",
+      "B": "Identificación de la ubicación exacta en los Servicios del trabajo protegido por derechos de autor que se alega que ha sido infringido o, si múltiples trabajos con derechos de autor en los Servicios están cubiertos por una sola notificación, una lista representativa de dichos trabajos tal como se encuentran en los Servicios;",
+      "C": "La dirección, el número de teléfono y la dirección de correo electrónico de la parte reclamante;",
+      "D": "Una declaración de que la parte reclamante cree de buena fe que el uso del material de la manera reclamada no está autorizado por el propietario de los derechos de autor, su agente o la ley; y",
+      "E": "Una declaración de que la información en la notificación es precisa, y bajo pena de perjurio, que la parte reclamante está autorizada a actuar en nombre del propietario de un derecho exclusivo que presuntamente se ha infringido."
+    }
+  },
+  "additional_terms": {
+    "title": "Términos adicionales",
+    "p": {
+      "A": "Nos reservamos el derecho de modificar estos Términos en cualquier momento. Todos los cambios entran en vigor inmediatamente después de su publicación en el sitio web de Resource Watch. Debe revisar estos términos regularmente para ver si hay cambios. Su uso continuado de los Servicios después de dichos cambios constituye Su aceptación vinculante de los Términos actualizados.",
+      "B": "Las leyes del Estado de Delaware, EE.UU., excluyendo las disposiciones de conflicto de leyes de Nueva York, se aplican a cualquier disputa sobre los Servicios, su contenido o estos Términos. La Convención de las Naciones Unidas sobre los Contratos de Compraventa Internacional de Mercaderías no se aplica. Si tenemos un desacuerdo relacionado con estos Términos, o su desempeño o el nuestro en virtud de ellos que no podemos resolver entre nosotros, entonces acordamos que finalmente se resuelvan en arbitraje utilizando (i) las Reglas de Arbitraje Internacional del Centro de Resolución de Disputas Internacionales de la Asociación Americana de Arbitraje, si se encuentra fuera de los Estados Unidos,  o (ii) las Reglas de Arbitraje Comercial de la Asociación Americana de Arbitraje, si usted se encuentra en los Estados Unidos. Acordamos seguir este párrafo si difiere de esas reglas. Solo habrá un árbitro si nuestro desacuerdo involucra menos de $ 250,000. Si nuestro desacuerdo involucra más de $ 250,000, entonces cada uno de nosotros designa un árbitro, y esos dos árbitros eligen un tercero. Acordamos que los árbitros no tendrán el poder de otorgarnos a ninguno de nosotros ningún daño que no sea consistente con la Sección 5 (Descargos de responsabilidad y limitaciones) de estos Términos. El arbitraje será en Washington, DC, EE.UU., y se llevará a cabo en inglés. A menos que estemos de acuerdo o uno de nosotros demuestre su esencia, no habrá ningún descubrimiento formal en nuestro arbitraje. Los árbitros pueden otorgar costos y honorarios de abogados contra uno de nosotros, o dividirlos entre nosotros. Entendemos que cualquier tribunal con jurisdicción hará cumplir las decisiones del arbitraje y dictará sentencia sobre ellas.",
+      "C": "Si no hacemos cumplir los Términos con prontitud, no hemos renunciado a ningún otro derecho o al derecho de hacerlos cumplir u otros Términos en el futuro.",
+      "D": "Si alguna disposición particular de estos Términos no es aplicable, eso no afecta la aplicabilidad de ninguna otra disposición de los Términos.",
+      "E": "Estos Términos están entre Usted y Nosotros, y nadie más puede hacerlos cumplir.",
+      "F": "Estos Términos son la declaración completa del acuerdo entre Usted y Nosotros con respecto a los Servicios y su contenido."
+    }
+  }
 }

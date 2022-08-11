@@ -17,8 +17,14 @@ const inputs = {
         controls: LandSuitabilityControls,
         controlsProps: {
           options: [
-            { label: 'widgets:coffee_land_suitability.rainfed_coffee', value: 'rainfed' },
-            { label: 'widgets:coffee_land_suitability.irrigated_coffee', value: 'irrigated' },
+            {
+              label: 'widgets:coffee_land_suitability.rainfed_coffee',
+              value: 'rainfed',
+            },
+            {
+              label: 'widgets:coffee_land_suitability.irrigated_coffee',
+              value: 'irrigated',
+            },
           ],
           layers: {
             historic: [
@@ -93,13 +99,22 @@ const trade = {
         controls: ImportExportControls,
         controlsProps: {
           products: [
-            { label: 'widgets:export_import.coffee.products.coffee_green', value: 'Coffee, green' },
-            { label: 'widgets:export_import.coffee.products.coffee_roasted', value: 'Coffee, roasted' },
+            {
+              label: 'widgets:export_import.coffee.products.coffee_green',
+              value: 'Coffee, green',
+            },
+            {
+              label: 'widgets:export_import.coffee.products.coffee_roasted',
+              value: 'Coffee, roasted',
+            },
           ],
           indicators: [
-            { label: 'widgets:export_import.indicators.quantity', value: 'Quantity' },
+            {
+              label: 'widgets:export_import.indicators.quantity',
+              value: 'Quantity',
+            },
             { label: 'widgets:export_import.indicators.value', value: 'Value' },
-          ]
+          ],
         },
       },
     ],
@@ -113,15 +128,13 @@ export const quotes = [
     location: 'quotes.0.location',
     image: coffee1,
     title: 'quotes.0.title',
-    quote:
-      'quotes.0.quote',
+    quote: 'quotes.0.quote',
   },
   {
     location: 'quotes.1.location',
     image: coffee2,
     title: 'quotes.1.title',
-    quote:
-      'quotes.1.quote',
+    quote: 'quotes.1.quote',
   },
 ];
 

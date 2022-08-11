@@ -1,10 +1,10 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback } from 'react';
 
 // component
-import GDPRBanner from "./component";
+import GDPRBanner from './component';
 
 // utils
-import { getGDPRAccepted, setGDPRAccepted } from "./helpers";
+import { getGDPRAccepted, setGDPRAccepted } from './helpers';
 
 const GDPRBannerContainer = () => {
   const [gdprAcceptance, setGDPRAcceptance] = useState(getGDPRAccepted());

@@ -1,16 +1,15 @@
-import { useMemo, useCallback } from "react";
-import classnames from "classnames";
-import Link from "next/link";
-import { Media } from "lib/media";
+import { useMemo, useCallback } from 'react';
+import classnames from 'classnames';
+import Link from 'next/link';
+import { Media } from 'lib/media';
 
 // constants
-import { FOOTER_LINKS, RELATED_SITES } from "./constants";
-import Image from "next/image";
-import loader from "lib/imageLoader";
-import { useTranslation } from "next-i18next";
+import { FOOTER_LINKS, RELATED_SITES } from './constants';
+import Image from 'next/image';
+import loader from 'lib/imageLoader';
+import { useTranslation } from 'next-i18next';
 
 export default function FooterLinks() {
-
   const { t } = useTranslation(['header', 'common', 'footer']);
 
   const footerMenu = useMemo(
@@ -39,7 +38,7 @@ export default function FooterLinks() {
               return (
                 <li
                   key={item['id'] || item.label}
-                  className={classnames(index === 0 ? "item-title" : "item")}
+                  className={classnames(index === 0 ? 'item-title' : 'item')}
                 >
                   {index === 0 ? <h3>{link}</h3> : link}
                 </li>

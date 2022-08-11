@@ -1,9 +1,9 @@
-import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
-import { toastr } from "react-redux-toastr";
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import { toastr } from 'react-redux-toastr';
 
 // services
-import { deleteDataset } from "services/dataset";
+import { deleteDataset } from 'services/dataset';
 
 class DeleteAction extends PureComponent {
   static propTypes = {
@@ -25,7 +25,7 @@ class DeleteAction extends PureComponent {
           .then(() => {
             onRowDelete(id);
             toastr.success(
-              "Success",
+              'Success',
               `The dataset "${id}" - "${name}" has been removed correctly`
             );
           })
@@ -33,13 +33,13 @@ class DeleteAction extends PureComponent {
             try {
               err.map((er) =>
                 toastr.error(
-                  "Error",
+                  'Error',
                   `The dataset "${id}" - "${name}" was not deleted. ${er.detail}`
                 )
               );
             } catch (e) {
               toastr.error(
-                "Error",
+                'Error',
                 `The dataset "${id}" - "${name}" was not deleted. Try again.`
               );
             }

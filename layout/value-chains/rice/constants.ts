@@ -1,6 +1,6 @@
-import rice1 from 'public/images/quotes/rice1.png'
-import rice2 from 'public/images/quotes/rice2.png'
-import rice3 from 'public/images/quotes/rice3.png'
+import rice1 from 'public/images/quotes/rice1.png';
+import rice2 from 'public/images/quotes/rice2.png';
+import rice3 from 'public/images/quotes/rice3.png';
 import ImportExportControls from '../custom-widgets/ImportExport/Controls';
 import LandSuitabilityControls from '../custom-widgets/LandSuitability/Controls';
 
@@ -19,12 +19,24 @@ const inputs = {
         controlsProps: {
           options: [
             [
-              { label: 'widgets:rice_land_suitability.dryland_rice', value: 'dryland' },
-              { label: 'widgets:rice_land_suitability.wetland_rice', value: 'wetland' },
+              {
+                label: 'widgets:rice_land_suitability.dryland_rice',
+                value: 'dryland',
+              },
+              {
+                label: 'widgets:rice_land_suitability.wetland_rice',
+                value: 'wetland',
+              },
             ],
             [
-              { label: 'widgets:rice_land_suitability.rainfed_rice', value: 'rainfed' },
-              { label: 'widgets:rice_land_suitability.irrigated_rice', value: 'irrigated' },
+              {
+                label: 'widgets:rice_land_suitability.rainfed_rice',
+                value: 'rainfed',
+              },
+              {
+                label: 'widgets:rice_land_suitability.irrigated_rice',
+                value: 'irrigated',
+              },
             ],
           ],
           layers: {
@@ -50,7 +62,7 @@ const inputs = {
               '2050s_rcp8p5_rainfed_wetland_rice',
             ],
           },
-        }
+        },
       },
     ], // TODO: Additional Stacked Bar Visual
   },
@@ -159,14 +171,26 @@ const trade = {
         controls: ImportExportControls,
         controlsProps: {
           products: [
-            { label: 'widgets:export_import.rice.products.rice_husked', value: 'Rice, husked' },
-            { label: 'widgets:export_import.rice.products.rice_milled', value: 'Rice, milled' },
-            { label: 'widgets:export_import.rice.products.rice_paddy', value: 'Rice, paddy' },
+            {
+              label: 'widgets:export_import.rice.products.rice_husked',
+              value: 'Rice, husked',
+            },
+            {
+              label: 'widgets:export_import.rice.products.rice_milled',
+              value: 'Rice, milled',
+            },
+            {
+              label: 'widgets:export_import.rice.products.rice_paddy',
+              value: 'Rice, paddy',
+            },
           ],
           indicators: [
-            { label: 'widgets:export_import.indicators.quantity', value: 'Quantity' },
+            {
+              label: 'widgets:export_import.indicators.quantity',
+              value: 'Quantity',
+            },
             { label: 'widgets:export_import.indicators.value', value: 'Value' },
-          ]
+          ],
         },
       },
     ],
@@ -178,7 +202,7 @@ export const quotes = [
     location: 'quotes.0.location',
     image: rice1,
     title: 'quotes.0.title',
-    quote: 'quotes.0.quote'
+    quote: 'quotes.0.quote',
   },
   {
     location: 'quotes.1.location',
@@ -193,7 +217,6 @@ export const quotes = [
     quote: 'quotes.2.quote',
   },
 ];
-
 
 const details = { inputs, production, trade };
 

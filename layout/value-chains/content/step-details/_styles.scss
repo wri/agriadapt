@@ -1,62 +1,62 @@
 .c-detail-item {
-    padding: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  margin: -16px;
+  margin-bottom: 92px;
+  justify-content: space-between;
+
+  @media screen and (min-width: map-get($breakpoints, medium)) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: auto;
+    gap: 20px;
+  }
+
+  .c-detail-section {
+    &.-full {
+      grid-column: 1 / 3;
+
+      .c-widget {
+        max-width: 880px;
+      }
+    }
+  }
+
+  .c-detail-item-info {
+    max-width: 620px;
     display: flex;
-    flex-direction: column;
-    margin: -16px;
-    margin-bottom: 92px;
-    justify-content: space-between;
+    flex-direction: row;
+
+    .c-step-icon {
+      flex: 1 0 auto;
+    }
+
+    h3 {
+      line-height: 38px;
+    }
+  }
+
+  .c-callout-card {
+    width: 296px;
+    height: 206px;
+    margin: auto;
+  }
+
+  .c-widget {
+    &.-placeholder {
+      background-color: rgb($primary-green, 0.2);
+    }
+
+    width: 100%;
+    margin: auto;
+    min-height: 456px;
 
     @media screen and (min-width: map-get($breakpoints, medium)) {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-auto-rows: auto;
-        gap: 20px;
+      max-width: 340px;
     }
-
-    .c-detail-section {
-        &.-full {
-            grid-column: 1 / 3;
-
-            .c-widget {
-                max-width: 880px;
-            }
-        }
+    @media screen and (min-width: map-get($breakpoints, large)) {
+      max-width: 430px;
     }
-
-    .c-detail-item-info {
-        max-width: 620px;
-        display: flex;
-        flex-direction: row;
-
-        .c-step-icon {
-            flex: 1 0 auto;
-        }
-
-        h3 {
-            line-height: 38px;
-        }
-    }
-
-    .c-callout-card {
-        width: 296px;
-        height: 206px;
-        margin: auto;
-    }
-
-    .c-widget {
-        &.-placeholder {
-            background-color: rgb($primary-green, 0.2);
-        }
-
-        width: 100%;
-        margin: auto;
-        min-height: 456px;
-
-        @media screen and (min-width: map-get($breakpoints, medium)) {
-            max-width: 340px;
-        }
-        @media screen and (min-width: map-get($breakpoints, large)) {
-            max-width: 430px;
-        }
-    }
+  }
 }

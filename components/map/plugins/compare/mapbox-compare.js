@@ -1,6 +1,6 @@
-import { PureComponent } from "react";
-import PropTypes from "prop-types";
-import EventEmitter from "events";
+import { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import EventEmitter from 'events';
 
 class MapboxCompare extends PureComponent {
   static propTypes = {
@@ -22,7 +22,7 @@ class MapboxCompare extends PureComponent {
     this._leftRef = this.props.leftRef ? this.props.leftRef : null;
     this._rightRef = this.props.rightRef ? this.props.rightRef : null;
     this._options = this.props.options || {};
-    this._isHorizontal = this._options.orientation === "horizontal";
+    this._isHorizontal = this._options.orientation === 'horizontal';
     this._ev = new EventEmitter();
 
     this._bounds = this._rightRef
@@ -33,19 +33,19 @@ class MapboxCompare extends PureComponent {
   }
 
   componentWillUnmount() {
-    this._rightRef.off("resize", this._onResize);
+    this._rightRef.off('resize', this._onResize);
 
     if (this._options && this._options.mousemove) {
       this._leftRef
         .getContainer()
-        .removeEventListener("mousemove", this._onMove);
+        .removeEventListener('mousemove', this._onMove);
       this._rightRef
         .getContainer()
-        .removeEventListener("mousemove", this._onMove);
+        .removeEventListener('mousemove', this._onMove);
     }
 
-    this._swiper.removeEventListener("mousedown", this._onDown);
-    this._swiper.removeEventListener("touchstart", this._onDown);
+    this._swiper.removeEventListener('mousedown', this._onDown);
+    this._swiper.removeEventListener('touchstart', this._onDown);
   }
 
   _init = () => {
@@ -56,15 +56,15 @@ class MapboxCompare extends PureComponent {
       (this._horizontal ? this._bounds.height : this._bounds.width) / 2;
     this._setPosition(swiperPosition);
 
-    this._rightRef.on("resize", this._onResize);
+    this._rightRef.on('resize', this._onResize);
 
     if (this.options && this.options.mousemove) {
-      this._leftRef.getContainer().addEventListener("mousemove", this._onMove);
-      this._rightRef.getContainer().addEventListener("mousemove", this._onMove);
+      this._leftRef.getContainer().addEventListener('mousemove', this._onMove);
+      this._rightRef.getContainer().addEventListener('mousemove', this._onMove);
     }
 
-    this._swiper.addEventListener("mousedown", this._onDown);
-    this._swiper.addEventListener("touchstart", this._onDown);
+    this._swiper.addEventListener('mousedown', this._onDown);
+    this._swiper.addEventListener('touchstart', this._onDown);
 
     if (swiper) {
       const { offset } = swiper;
@@ -78,11 +78,11 @@ class MapboxCompare extends PureComponent {
 
   _onDown = (evt) => {
     if (evt.touches) {
-      document.addEventListener("touchmove", this._onMove);
-      document.addEventListener("touchend", this._onTouchEnd);
+      document.addEventListener('touchmove', this._onMove);
+      document.addEventListener('touchend', this._onTouchEnd);
     } else {
-      document.addEventListener("mousemove", this._onMove);
-      document.addEventListener("mouseup", this._onMouseUp);
+      document.addEventListener('mousemove', this._onMove);
+      document.addEventListener('mouseup', this._onMouseUp);
     }
   };
 
@@ -105,7 +105,7 @@ class MapboxCompare extends PureComponent {
 
   _onMove = (evt) => {
     if (this.options && this.options.mousemove) {
-      this._setPointerEvents(evt.touches ? "auto" : "none");
+      this._setPointerEvents(evt.touches ? 'auto' : 'none');
     }
 
     if (this._horizontal) this._setPosition(this._getY(evt));
@@ -113,14 +113,14 @@ class MapboxCompare extends PureComponent {
   };
 
   _onMouseUp = () => {
-    document.removeEventListener("mousemove", this._onMove);
-    document.removeEventListener("mouseup", this._onMouseUp);
-    this.fire("slideend", { currentPosition: this.currentPosition });
+    document.removeEventListener('mousemove', this._onMove);
+    document.removeEventListener('mouseup', this._onMouseUp);
+    this.fire('slideend', { currentPosition: this.currentPosition });
   };
 
   _onTouchEnd = () => {
-    document.removeEventListener("touchmove", this._onMove);
-    document.removeEventListener("touchend", this._onTouchEnd);
+    document.removeEventListener('touchmove', this._onMove);
+    document.removeEventListener('touchend', this._onTouchEnd);
   };
 
   _onResize = () => {

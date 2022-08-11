@@ -1,6 +1,6 @@
-import { createReducer } from "@reduxjs/toolkit";
-import initialState from "modules/dashboards/initial-state";
-import * as actions from "./actions";
+import { createReducer } from '@reduxjs/toolkit';
+import initialState from 'modules/dashboards/initial-state';
+import * as actions from './actions';
 
 const reducers = createReducer(initialState, {
   [actions.setLayers]: (state, action) => ({

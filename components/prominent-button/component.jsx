@@ -1,18 +1,18 @@
-import React, { useRef, useCallback, useEffect } from "react";
-import PropTypes from "prop-types";
-import classnames from "classnames";
+import React, { useRef, useCallback, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 const ProminentButton = ({ isLink, onClick, className, children }) => {
   const buttonRef = useRef(null);
   const handleEscapeKey = useCallback((e) => {
-    if (e.key !== "Escape") return null;
+    if (e.key !== 'Escape') return null;
     return buttonRef.current.blur();
   }, []);
 
   useEffect(() => {
-    window.addEventListener("keydown", handleEscapeKey);
+    window.addEventListener('keydown', handleEscapeKey);
     return () => {
-      window.removeEventListener("keydown", handleEscapeKey);
+      window.removeEventListener('keydown', handleEscapeKey);
     };
   }, [handleEscapeKey]);
 
@@ -20,9 +20,9 @@ const ProminentButton = ({ isLink, onClick, className, children }) => {
     <button
       ref={buttonRef}
       type="button"
-      className={classnames("c-prominent-button", {
+      className={classnames('c-prominent-button', {
         [className]: !!className,
-        "-is-link": isLink,
+        '-is-link': isLink,
       })}
       onClick={onClick}
     >

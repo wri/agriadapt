@@ -6,10 +6,10 @@ const MaintenancePage = () => {
     <>
       <HeadError title="Maintenance" />
       <main className="l-error">
-      <div className="container">
-        <p>This website is under construction</p>
-      </div>
-    </main>
+        <div className="container">
+          <p>This website is under construction</p>
+        </div>
+      </main>
     </>
   );
 };

@@ -1,10 +1,10 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classnames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 // Components
-import Icon from "components/ui/icon";
-import Spinner from "components/ui/Spinner";
+import Icon from 'components/ui/icon';
+import Spinner from 'components/ui/Spinner';
 
 // Types
 /**
@@ -120,7 +120,7 @@ export default class SliderSelect extends React.Component {
   componentWillUnmount() {
     // We remove the handler that is used to close the
     // dropdown when the user clicks outside
-    window.removeEventListener("click", this.onScreenClick);
+    window.removeEventListener('click', this.onScreenClick);
   }
 
   /**
@@ -247,7 +247,7 @@ export default class SliderSelect extends React.Component {
       this.close();
 
       // We remove the now useless hander
-      window.removeEventListener("click", this.onScreenClick);
+      window.removeEventListener('click', this.onScreenClick);
     }
   }
 
@@ -321,7 +321,7 @@ export default class SliderSelect extends React.Component {
   open() {
     // This listener is used to close the dropdown
     // when the user clicks outside of it
-    window.addEventListener("click", this.onScreenClick);
+    window.addEventListener('click', this.onScreenClick);
 
     this.setState({ closed: false }, () => {
       if (this.input) this.input.focus();
@@ -334,7 +334,7 @@ export default class SliderSelect extends React.Component {
   close() {
     // We remove the handler that is used to close the
     // dropdown when the user clicks outside
-    window.removeEventListener("click", this.onScreenClick);
+    window.removeEventListener('click', this.onScreenClick);
 
     // We close the dropdown and reset the selected index
     this.setState({ closed: true });
@@ -364,7 +364,7 @@ export default class SliderSelect extends React.Component {
     }
 
     if (this.input) {
-      this.input.value = "";
+      this.input.value = '';
     }
   }
 
@@ -385,7 +385,7 @@ export default class SliderSelect extends React.Component {
         const res = this.props.onValueChange(
           item,
           path.map((it) => it.value),
-          "vocabulary"
+          'vocabulary'
         );
         this.setState({ waitingConfirmation: false });
         if (!this.props.waitForChangeConfirmation || !!res) resolve();
@@ -435,8 +435,8 @@ export default class SliderSelect extends React.Component {
 
     const cNames = classnames(
       {
-        "c-custom-select -search": true,
-        "-closed": closed,
+        'c-custom-select -search': true,
+        '-closed': closed,
       },
       className
     );
@@ -524,7 +524,7 @@ export default class SliderSelect extends React.Component {
               <li
                 role="option"
                 aria-selected={item === selectedItem}
-                className={classnames({ "-selected": index === selectedIndex })}
+                className={classnames({ '-selected': index === selectedIndex })}
                 key={item.id || item.value}
                 onMouseEnter={() => {
                   this.setSelectedIndex(index);

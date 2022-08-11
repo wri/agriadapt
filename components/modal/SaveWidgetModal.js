@@ -1,20 +1,20 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { withRouter } from "next/router";
-import { toastr } from "react-redux-toastr";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { withRouter } from 'next/router';
+import { toastr } from 'react-redux-toastr';
 
 // Redux
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
 // Components
-import Field from "components/form/Field";
-import Input from "components/form/Input";
-import TextArea from "components/form/TextArea";
-import Button from "components/ui/Button";
-import Spinner from "components/ui/Spinner";
+import Field from 'components/form/Field';
+import Input from 'components/form/Input';
+import TextArea from 'components/form/TextArea';
+import Button from 'components/ui/Button';
+import Spinner from 'components/ui/Spinner';
 
 // Services
-import { createWidget, createWidgetMetadata } from "services/widget";
+import { createWidget, createWidgetMetadata } from 'services/widget';
 
 const FORM_ELEMENTS = {
   elements: {},
@@ -64,13 +64,13 @@ class SaveWidgetModal extends React.Component {
 
         createWidget(widgetObj, dataset, user.token)
           .then((data) => {
-            if (caption !== "") {
+            if (caption !== '') {
               const { id, dataset: widgetdataset } = data;
               createWidgetMetadata(
                 id,
                 widgetdataset,
                 {
-                  language: "en",
+                  language: 'en',
                   application: process.env.NEXT_PUBLIC_APPLICATIONS,
                   info: { caption },
                 },
@@ -88,13 +88,13 @@ class SaveWidgetModal extends React.Component {
               error: true,
               errorMessage: err.message,
             });
-            toastr.error("There was a problem saving the widget");
+            toastr.error('There was a problem saving the widget');
             console.err(err); // eslint-disable-line no-console
           })
           .then(() => this.setState({ loading: false }));
       })
       .catch((error) => {
-        toastr.error("There was a problem saving the widget");
+        toastr.error('There was a problem saving the widget');
         console.err(error); // eslint-disable-line no-console
       });
   };
@@ -115,7 +115,7 @@ class SaveWidgetModal extends React.Component {
     const { onRequestClose, router } = this.props;
 
     onRequestClose(false);
-    router.push("/myrw/widgets/my_widgets");
+    router.push('/myrw/widgets/my_widgets');
   };
 
   render() {
@@ -141,14 +141,14 @@ class SaveWidgetModal extends React.Component {
                   if (c) FORM_ELEMENTS.elements.title = c;
                 }}
                 onChange={(name) => this.setState({ name })}
-                validations={["required"]}
+                validations={['required']}
                 properties={{
-                  title: "title",
-                  label: "Title",
-                  type: "text",
+                  title: 'title',
+                  label: 'Title',
+                  type: 'text',
                   required: true,
                   default: widgetEditor.title,
-                  placeholder: "Visualization title",
+                  placeholder: 'Visualization title',
                 }}
               >
                 {Input}
@@ -159,11 +159,11 @@ class SaveWidgetModal extends React.Component {
                 }}
                 onChange={(caption) => this.setState({ caption })}
                 properties={{
-                  title: "caption",
-                  label: "Caption",
-                  type: "text",
+                  title: 'caption',
+                  label: 'Caption',
+                  type: 'text',
                   default: widgetEditor.caption,
-                  placeholder: "Visualization caption",
+                  placeholder: 'Visualization caption',
                 }}
               >
                 {Input}
@@ -174,11 +174,11 @@ class SaveWidgetModal extends React.Component {
                 }}
                 onChange={(description) => this.setState({ description })}
                 properties={{
-                  title: "description",
-                  label: "Description",
-                  type: "text",
-                  rows: "4",
-                  placeholder: "Visualization description",
+                  title: 'description',
+                  label: 'Description',
+                  type: 'text',
+                  rows: '4',
+                  placeholder: 'Visualization description',
                 }}
               >
                 {TextArea}
@@ -187,9 +187,9 @@ class SaveWidgetModal extends React.Component {
             <div className="buttons-container">
               <Button
                 properties={{
-                  type: "submit",
+                  type: 'submit',
                   disabled: submitting,
-                  className: "-secondary",
+                  className: '-secondary',
                 }}
               >
                 Save
@@ -197,7 +197,7 @@ class SaveWidgetModal extends React.Component {
               <Button
                 properties={{
                   disabled: submitting,
-                  className: "-primary",
+                  className: '-primary',
                 }}
                 onClick={this.handleCancel}
               >
@@ -216,13 +216,13 @@ class SaveWidgetModal extends React.Component {
             </div>
             <div className="buttons-widget-saved">
               <Button
-                properties={{ className: "-primary" }}
+                properties={{ className: '-primary' }}
                 onClick={this.handleCancel}
               >
                 OK
               </Button>
               <Button
-                properties={{ className: "-secondary" }}
+                properties={{ className: '-secondary' }}
                 onClick={this.handleGoToMyRW}
               >
                 Check my widgets

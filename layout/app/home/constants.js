@@ -25,13 +25,15 @@ const VALUECHAINS = {
   chains: [
     {
       label: 'common:value_chains.coffee',
-      button_label: 'landing:value_chain_cards.bottons.coffee_card.coffee_button',
+      button_label:
+        'landing:value_chain_cards.bottons.coffee_card.coffee_button',
       image: coffeeImage,
       href: 'coffee',
     },
     {
       label: 'common:value_chains.cotton',
-      button_label: 'landing:value_chain_cards.bottons.cotton_card.cotton_button',
+      button_label:
+        'landing:value_chain_cards.bottons.cotton_card.cotton_button',
       image: cottonImage,
       href: 'cotton',
     },

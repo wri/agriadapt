@@ -1,12 +1,12 @@
-import { useMemo } from "react";
-import PropTypes from "prop-types";
-import classnames from "classnames";
-import { Tooltip } from "vizzuality-components";
-import isNumber from "lodash/isNumber";
-import { format } from "d3-format";
+import { useMemo } from 'react';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
+import { Tooltip } from 'vizzuality-components';
+import isNumber from 'lodash/isNumber';
+import { format } from 'd3-format';
 
 // components
-import Icon from "components/ui/icon";
+import Icon from 'components/ui/icon';
 
 export default function NumericCardIndicator({
   theme,
@@ -17,9 +17,9 @@ export default function NumericCardIndicator({
   const { value } = data;
   const formatValue = useMemo(() => {
     const { format: _format, unit } = data;
-    let valueString = "";
+    let valueString = '';
 
-    if (!value) return "-";
+    if (!value) return '-';
 
     valueString = _format ? format(_format)(value) : value;
 
@@ -32,9 +32,9 @@ export default function NumericCardIndicator({
     <button
       type="button"
       className={classnames({
-        "c-numeric-card-indicator": true,
+        'c-numeric-card-indicator': true,
         [`-${theme}`]: !!theme,
-        "-active": isSelected,
+        '-active': isSelected,
       })}
       onClick={() => {
         if (onClickCard) onClickCard(data.id);
@@ -54,7 +54,7 @@ export default function NumericCardIndicator({
             }
             overlayClassName="c-rc-tooltip -default"
             placement="top"
-            trigger={["click"]}
+            trigger={['click']}
             mouseLeaveDelay={0}
             destroyTooltipOnHide
           >
@@ -66,15 +66,15 @@ export default function NumericCardIndicator({
             name="icon-info"
             role="button"
             style={{
-              visibility: "hidden",
+              visibility: 'hidden',
             }}
           />
         )}
       </div>
       <div className="content-container">
-        <h5 className="name">{data.title || "-"}</h5>
+        <h5 className="name">{data.title || '-'}</h5>
         <span
-          className={classnames("value", { "-is-literal": !isNumber(value) })}
+          className={classnames('value', { '-is-literal': !isNumber(value) })}
         >
           {formatValue}
         </span>
@@ -86,7 +86,7 @@ export default function NumericCardIndicator({
 NumericCardIndicator.defaultProps = {
   isSelected: false,
   onClickCard: null,
-  theme: "primary",
+  theme: 'primary',
 };
 
 NumericCardIndicator.propTypes = {

@@ -1,6 +1,6 @@
-import { useMemo } from "react";
-import PropTypes from "prop-types";
-import classnames from "classnames";
+import { useMemo } from 'react';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 export default function WidgetInfo({ widget, className }) {
   const widgetLinks = useMemo(
@@ -10,7 +10,7 @@ export default function WidgetInfo({ widget, className }) {
 
   return (
     <div
-      className={classnames("c-widget-info", {
+      className={classnames('c-widget-info', {
         [className]: Boolean(className),
       })}
     >

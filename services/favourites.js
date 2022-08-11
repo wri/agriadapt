@@ -1,8 +1,8 @@
-import WRISerializer from "wri-json-api-serializer";
+import WRISerializer from 'wri-json-api-serializer';
 
 // utils
-import { WRIAPI } from "utils/axios";
-import { logger } from "utils/logs";
+import { WRIAPI } from 'utils/axios';
+import { logger } from 'utils/logs';
 
 /**
  * Retrieve all favourites items of the user
@@ -10,8 +10,8 @@ import { logger } from "utils/logs";
  * @param {String} token User's token
  */
 export const fetchFavorites = (token, params = {}) => {
-  logger.info("Fetch favorites");
-  return WRIAPI.get("/v1/favourite", {
+  logger.info('Fetch favorites');
+  return WRIAPI.get('/v1/favourite', {
     headers: {
       Authorization: token,
     },
@@ -37,9 +37,9 @@ export const fetchFavorites = (token, params = {}) => {
  * resourceType - resource's type (can be dataset, layer or widget)
  */
 export const createFavourite = (token, { resourceId, resourceType }) => {
-  logger.info("Create favourite");
+  logger.info('Create favourite');
   return WRIAPI.post(
-    "/v1/favourite",
+    '/v1/favourite',
     {
       application: process.env.NEXT_PUBLIC_APPLICATIONS,
       env: process.env.NEXT_PUBLIC_API_ENV,

@@ -140,7 +140,9 @@ const ExploreDatasetsSearch = ({
         properties={{
           // TODO: Translate
           label: `Filter Layers by ${VALUE_CHAINS.placeholder}`,
-          default: VALUE_CHAINS.options.filter(({ value }) => value_chains.includes(value)),
+          default: VALUE_CHAINS.options.filter(({ value }) =>
+            value_chains.includes(value)
+          ),
           tooltip: VALUE_CHAINS.tooltip,
         }}
         value={selectedChains.value}
@@ -161,7 +163,7 @@ const ExploreDatasetsSearch = ({
           // TODO: Translate
           label: `Filter Layers by ${EMISSION_SCENARIO.placeholder}`,
           default: EMISSION_SCENARIO.options.find(
-            ({ value }) => value === emission_scenario 
+            ({ value }) => value === emission_scenario
           ),
         }}
         value={selectedScenario.value}

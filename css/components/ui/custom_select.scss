@@ -7,7 +7,7 @@
   height: 45px;
 
   &:after {
-    content: "";
+    content: '';
     width: 0;
     height: 0;
     border-left: 5px solid transparent;
@@ -190,7 +190,7 @@
         background-color: rgba($charcoal-grey, 0.05);
       }
 
-      &[aria-selected="true"] {
+      &[aria-selected='true'] {
         color: $dark-pink;
       }
 

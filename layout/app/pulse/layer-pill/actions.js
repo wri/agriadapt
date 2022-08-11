@@ -1,24 +1,24 @@
-import { createAction, createThunkAction } from "redux-tools";
+import { createAction, createThunkAction } from 'redux-tools';
 
 // Components
-import LayerGlobeManager from "utils/layers/LayerGlobeManager";
+import LayerGlobeManager from 'utils/layers/LayerGlobeManager';
 
 // Services
-import { fetchLayer } from "services/layer";
+import { fetchLayer } from 'services/layer';
 
-export const setContextLayers = createAction("layer-pill/setContextLayers");
+export const setContextLayers = createAction('layer-pill/setContextLayers');
 export const setContextActiveLayers = createAction(
-  "layer-pill/setContextActiveLayers"
+  'layer-pill/setContextActiveLayers'
 );
 export const setContextLayersLoading = createAction(
-  "layer-pill/setContextLayersLoading"
+  'layer-pill/setContextLayersLoading'
 );
 export const setContextLayersError = createAction(
-  "layer-pill/setContextLayersError"
+  'layer-pill/setContextLayersError'
 );
 
 export const toggleContextualLayer = createThunkAction(
-  "layer-pill/toggleContextualLayer",
+  'layer-pill/toggleContextualLayer',
   (id) => async (dispatch, getState) => {
     const { contextLayersPulse } = getState();
     const { contextLayers, activeLayers } = contextLayersPulse;

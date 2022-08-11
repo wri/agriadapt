@@ -1,51 +1,51 @@
-import isNumber from "lodash/isNumber";
-import { APILayerSpec } from "types/layer";
-import { Basemap, Labels } from "./types";
+import isNumber from 'lodash/isNumber';
+import { APILayerSpec } from 'types/layer';
+import { Basemap, Labels } from './types';
 
 export const MAPSTYLES =
-  "mapbox://styles/resourcewatch/cjzmw480d00z41cp2x81gm90h";
+  'mapbox://styles/resourcewatch/cjzmw480d00z41cp2x81gm90h';
 
 export const BASEMAPS = {
   dark: {
-    id: "dark",
-    value: "dark",
-    label: "Dark",
+    id: 'dark',
+    value: 'dark',
+    label: 'Dark',
     options: {
       attribution:
         '<a href="https://www.mapbox.com/about/maps/" target="_blank">© Mapbox</a> <a href="http://www.openstreetmap.org/about/" target="_blank">© OpenStreetMap</a>',
     },
   },
   light: {
-    id: "light",
-    value: "light",
-    label: "Light",
+    id: 'light',
+    value: 'light',
+    label: 'Light',
     options: {
       attribution:
         '<a href="https://www.mapbox.com/about/maps/" target="_blank">© Mapbox</a> <a href="http://www.openstreetmap.org/about/" target="_blank">© OpenStreetMap</a>',
     },
   },
   satellite: {
-    id: "satellite",
-    value: "satellite",
-    label: "Satellite",
+    id: 'satellite',
+    value: 'satellite',
+    label: 'Satellite',
     options: {
       attribution:
         '<a href="https://www.mapbox.com/about/maps/" target="_blank">© Mapbox</a> <a href="http://www.openstreetmap.org/about/" target="_blank">© OpenStreetMap</a>',
     },
   },
   terrain: {
-    id: "terrain",
-    value: "terrain",
-    label: "Terrain",
+    id: 'terrain',
+    value: 'terrain',
+    label: 'Terrain',
     options: {
       attribution:
         '<a href="https://www.mapbox.com/about/maps/" target="_blank">© Mapbox</a> <a href="http://www.openstreetmap.org/about/" target="_blank">© OpenStreetMap</a>',
     },
   },
   aqueduct: {
-    id: "aqueduct",
-    value: "aqueduct",
-    label: "Hydrography",
+    id: 'aqueduct',
+    value: 'aqueduct',
+    label: 'Hydrography',
     options: {
       attribution:
         '<a href="https://www.mapbox.com/about/maps/" target="_blank">© Mapbox</a> <a href="http://www.openstreetmap.org/about/" target="_blank">© OpenStreetMap</a>',
@@ -55,26 +55,26 @@ export const BASEMAPS = {
 
 export const LABELS = {
   none: {
-    id: "none",
-    label: "No labels",
-    value: "none",
+    id: 'none',
+    label: 'No labels',
+    value: 'none',
   },
   light: {
-    id: "light",
-    label: "Labels light",
-    value: "light",
+    id: 'light',
+    label: 'Labels light',
+    value: 'light',
   },
   dark: {
-    id: "dark",
-    label: "Labels dark",
-    value: "dark",
+    id: 'dark',
+    label: 'Labels dark',
+    value: 'dark',
   },
 };
 
 export const BOUNDARIES = {
   dark: {
-    id: "dark",
-    label: "Boundaries",
+    id: 'dark',
+    label: 'Boundaries',
     value: false,
   },
 };
@@ -97,47 +97,47 @@ export const USER_AREA_LAYER_TEMPLATES = {
     id,
     isAreaOfInterest: true,
     layerConfig: {
-      type: "geojson",
+      type: 'geojson',
       source: {
-        type: "geojson",
+        type: 'geojson',
         data: geojson,
       },
       render: {
         layers: [
           {
-            type: "line",
+            type: 'line',
             source: id,
             paint: {
-              "line-color": "hsl(40, 95%, 58%)",
+              'line-color': 'hsl(40, 95%, 58%)',
               ...(!minZoom && {
-                "line-width": 2,
+                'line-width': 2,
               }),
               ...(isNumber(minZoom) && {
-                "line-width": [
-                  "interpolate",
-                  ["linear"],
-                  ["zoom"],
+                'line-width': [
+                  'interpolate',
+                  ['linear'],
+                  ['zoom'],
                   minZoom,
                   2,
                   minZoom + 2,
                   0,
                 ],
               }),
-              "line-offset": -2,
+              'line-offset': -2,
             },
           },
           {
-            type: "line",
+            type: 'line',
             source: id,
             paint: {
               ...(!minZoom && {
-                "line-width": 2,
+                'line-width': 2,
               }),
               ...(isNumber(minZoom) && {
-                "line-width": [
-                  "interpolate",
-                  ["linear"],
-                  ["zoom"],
+                'line-width': [
+                  'interpolate',
+                  ['linear'],
+                  ['zoom'],
                   minZoom,
                   2,
                   minZoom + 2,
@@ -150,31 +150,31 @@ export const USER_AREA_LAYER_TEMPLATES = {
       },
     },
   }),
-  "area-card": ({
+  'area-card': ({
     id,
     geojson,
   }): Partial<APILayerSpec & { isAreaOfInterest: boolean }> => ({
     id,
     isAreaOfInterest: true,
     layerConfig: {
-      type: "geojson",
+      type: 'geojson',
       source: {
-        type: "geojson",
+        type: 'geojson',
         data: geojson,
       },
       render: {
         layers: [
           {
-            type: "line",
+            type: 'line',
             source: id,
-            paint: { "line-color": "#fab72e" },
+            paint: { 'line-color': '#fab72e' },
           },
           {
-            type: "fill",
+            type: 'fill',
             source: id,
             paint: {
-              "fill-color": "#fab72e",
-              "fill-opacity": 0.2,
+              'fill-color': '#fab72e',
+              'fill-opacity': 0.2,
             },
           },
         ],
@@ -184,9 +184,9 @@ export const USER_AREA_LAYER_TEMPLATES = {
 };
 
 export const BASEMAP_LABEL_DICTIONARY: Record<Basemap, Labels> = {
-  dark: "light",
-  light: "dark",
-  satellite: "light",
-  terrain: "dark",
-  aqueduct: "dark",
+  dark: 'light',
+  light: 'dark',
+  satellite: 'light',
+  terrain: 'dark',
+  aqueduct: 'dark',
 };

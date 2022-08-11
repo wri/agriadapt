@@ -1,31 +1,31 @@
-import { createAction, createThunkAction } from "redux-tools";
+import { createAction, createThunkAction } from 'redux-tools';
 
 // Services
-import { fetchDatasets } from "services/dataset";
-import { fetchSimilarDatasets } from "services/graph";
+import { fetchDatasets } from 'services/dataset';
+import { fetchSimilarDatasets } from 'services/graph';
 
 export const setSimilarDatasetsLoading = createAction(
-  "similar-datasets/setSimilarDatasetsLoading"
+  'similar-datasets/setSimilarDatasetsLoading'
 );
 export const setSimilarDatasetsError = createAction(
-  "similar-datasets/setSimilarDatasetsError"
+  'similar-datasets/setSimilarDatasetsError'
 );
 export const setSimilarDatasets = createAction(
-  "similar-datasets/setSimilarDatasets"
+  'similar-datasets/setSimilarDatasets'
 );
 export const resetSimilarDatasets = createAction(
-  "similar-datasets/resetSimilarDatasets"
+  'similar-datasets/resetSimilarDatasets'
 );
 
 // Async actions
 export const getSimilarDatasets = createThunkAction(
-  "similar-datasets/getSimilarDatasets",
-  (datasetIds, locale = "en") =>
+  'similar-datasets/getSimilarDatasets',
+  (datasetIds, locale = 'en') =>
     (dispatch) => {
       dispatch(setSimilarDatasetsLoading(true));
 
       return fetchSimilarDatasets({
-        dataset: datasetIds.join(","),
+        dataset: datasetIds.join(','),
         published: true,
         limit: 6,
         env: process.env.NEXT_PUBLIC_ENVS_SHOW,
@@ -33,9 +33,9 @@ export const getSimilarDatasets = createThunkAction(
         .then((data) => {
           if (data.length > 0) {
             fetchDatasets({
-              ids: data.map((d) => d.dataset).join(","),
+              ids: data.map((d) => d.dataset).join(','),
               language: locale,
-              includes: "widget,metadata,layer,vocabulary",
+              includes: 'widget,metadata,layer,vocabulary',
             })
               .then((similarDatasets) => {
                 dispatch(setSimilarDatasetsLoading(false));

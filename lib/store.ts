@@ -1,7 +1,5 @@
 import { createWrapper } from 'next-redux-wrapper';
-import {
-  reducers as WEReducers,
-} from '@widget-editor/widget-editor';
+import { reducers as WEReducers } from '@widget-editor/widget-editor';
 
 // todo: move redactions to modules
 import * as reducers from 'redactions';
@@ -15,7 +13,7 @@ import { reducers as datasetListItemReducers } from 'components/datasets/list/li
 import { reducers as similarDatasetsReducers } from 'components/datasets/similar-datasets/similar-datasets';
 
 // Value Chains
-import narrativeReducer from 'layout/value-chains/reducers'
+import narrativeReducer from 'layout/value-chains/reducers';
 
 // Tools
 import { reducers as relatedToolsReducers } from 'components/tools/related-tools';
@@ -35,33 +33,34 @@ import { configureStore, Reducer } from '@reduxjs/toolkit';
 
 const WERed: Reducer<{ editor: unknown; AnyAction }> = WEReducers;
 
-const makeStore = () => configureStore({
-  reducer: {
-    ...reducers,
-    ...modules,
-    ...WERed,
-    // Header
-    header: headerReducers,
+const makeStore = () =>
+  configureStore({
+    reducer: {
+      ...reducers,
+      ...modules,
+      ...WERed,
+      // Header
+      header: headerReducers,
 
-    // Value Chains
-    value_chains: narrativeReducer,
+      // Value Chains
+      value_chains: narrativeReducer,
 
-    // Pulse
-    layerContainerPulse: layerContainerReducers,
-    layerMenuPulse: layerMenuReducers,
-    contextLayersPulse: layerPillReducers,
-    labelsPulse: labelsPillsReducers,
-    globeCesium: globeCesiumReducers,
-    pulse: pulseReducers,
+      // Pulse
+      layerContainerPulse: layerContainerReducers,
+      layerMenuPulse: layerMenuReducers,
+      contextLayersPulse: layerPillReducers,
+      labelsPulse: labelsPillsReducers,
+      globeCesium: globeCesiumReducers,
+      pulse: pulseReducers,
 
-    // Dataset
-    datasetListItem: datasetListItemReducers,
-    similarDatasets: similarDatasetsReducers,
+      // Dataset
+      datasetListItem: datasetListItemReducers,
+      similarDatasets: similarDatasetsReducers,
 
-    // Tools
-    relatedTools: relatedToolsReducers,
-  },
-});
+      // Tools
+      relatedTools: relatedToolsReducers,
+    },
+  });
 
 export type AppStore = ReturnType<typeof makeStore>;
 export type RootState = ReturnType<AppStore['getState']>;

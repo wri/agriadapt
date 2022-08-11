@@ -1,13 +1,13 @@
-import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
-import uniq from "lodash/uniq";
-import flatten from "lodash/flatten";
-import isEqual from "lodash/isEqual";
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import uniq from 'lodash/uniq';
+import flatten from 'lodash/flatten';
+import isEqual from 'lodash/isEqual';
 
 // Components
-import TableHeader from "./header/TableHeader";
-import TableContent from "./content/TableContent";
-import TableFooter from "./footer/TableFooter";
+import TableHeader from './header/TableHeader';
+import TableContent from './content/TableContent';
+import TableFooter from './footer/TableFooter';
 
 export default class CustomTable extends PureComponent {
   /* Property typing */
@@ -38,8 +38,8 @@ export default class CustomTable extends PureComponent {
     actions: {
       show: true,
       list: [
-        { name: "Edit", path: "#" },
-        { name: "Remove", path: "#" },
+        { name: 'Edit', path: '#' },
+        { name: 'Remove', path: '#' },
       ],
     },
     filters: true,
@@ -266,7 +266,7 @@ export default class CustomTable extends PureComponent {
         pagination: {
           ...pagination,
           // page,
-          ...(search && (search.value || "").length > 0
+          ...(search && (search.value || '').length > 0
             ? { page: 1 }
             : { page }),
           total: filteredData.length,

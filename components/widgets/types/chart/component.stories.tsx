@@ -1,14 +1,14 @@
-import { useState } from "react";
-import PropTypes from "prop-types";
-import { AdapterModifier } from "@widget-editor/widget-editor";
-import RWAdapter from "@widget-editor/rw-adapter";
+import { useState } from 'react';
+import PropTypes from 'prop-types';
+import { AdapterModifier } from '@widget-editor/widget-editor';
+import RWAdapter from '@widget-editor/rw-adapter';
 
 // components
-import ChartType from "./component";
-import WidgetShareModal from "../../share-modal";
+import ChartType from './component';
+import WidgetShareModal from '../../share-modal';
 
 export default {
-  title: "Widget/Chart",
+  title: 'Widget/Chart',
   component: ChartType,
   argTypes: {},
 };
@@ -23,7 +23,7 @@ function Template(args) {
         style={{
           width: 500,
           height: 450,
-          margin: "0 auto",
+          margin: '0 auto',
         }}
       >
         <ChartType
@@ -49,64 +49,64 @@ Template.propTypes = {
 export const Default = Template.bind({});
 
 const widget = {
-  id: "cd0a50e0-c58e-418b-9604-5a452d07b308",
-  name: "10 countries contain approximately 70% of the world’s remaining forests",
-  dataset: "32324f22-e7f6-4e0d-bc38-d82c6484f1be",
-  slug: "Countries-with-Greatest-Tree-Cover-2000",
-  userId: "58fa22c54eecd907310778cd",
+  id: 'cd0a50e0-c58e-418b-9604-5a452d07b308',
+  name: '10 countries contain approximately 70% of the world’s remaining forests',
+  dataset: '32324f22-e7f6-4e0d-bc38-d82c6484f1be',
+  slug: 'Countries-with-Greatest-Tree-Cover-2000',
+  userId: '58fa22c54eecd907310778cd',
   description:
-    "Top 10 countries with most tree cover in 2000. “Tree cover” was defined as all vegetation taller than 5 meters in height. “Tree cover” is the biophysical presence of trees and may take the form of natural forests or plantations existing over a range of canopy densities.",
-  source: "",
-  authors: "",
-  application: ["rw"],
+    'Top 10 countries with most tree cover in 2000. “Tree cover” was defined as all vegetation taller than 5 meters in height. “Tree cover” is the biophysical presence of trees and may take the form of natural forests or plantations existing over a range of canopy densities.',
+  source: '',
+  authors: '',
+  application: ['rw'],
   verified: false,
   default: false,
   protected: false,
   defaultEditableWidget: false,
   published: true,
-  thumbnailUrl: "",
+  thumbnailUrl: '',
   freeze: false,
-  env: "production",
-  queryUrl: "",
+  env: 'production',
+  queryUrl: '',
   widgetConfig: {
     autosize: {
-      contains: "padding",
+      contains: 'padding',
       resize: true,
-      type: "pad",
+      type: 'pad',
     },
     interaction_config: [
       {
         config: {
           fields: [
             {
-              format: ".3s",
-              type: "number",
-              property: "Tree Cover (Ha)",
-              column: "x",
+              format: '.3s',
+              type: 'number',
+              property: 'Tree Cover (Ha)',
+              column: 'x',
             },
             {
-              type: "string",
-              property: "Country",
-              column: "y",
+              type: 'string',
+              property: 'Country',
+              column: 'y',
             },
           ],
         },
-        name: "tooltip",
+        name: 'tooltip',
       },
     ],
     axes: [
       {
-        scale: "x",
-        orient: "bottom",
-        format: "s",
+        scale: 'x',
+        orient: 'bottom',
+        format: 's',
         tickCount: 5,
-        labelOverlap: "parity",
-        title: "Tree Cover (Ha)",
-        grid: "true",
+        labelOverlap: 'parity',
+        title: 'Tree Cover (Ha)',
+        grid: 'true',
       },
       {
-        scale: "y",
-        orient: "left",
+        scale: 'y',
+        orient: 'left',
         encode: {
           labels: {
             update: {
@@ -114,10 +114,10 @@ const widget = {
                 value: 90,
               },
               text: {
-                signal: "truncate(datum.value, 12)",
+                signal: 'truncate(datum.value, 12)',
               },
               align: {
-                value: "right",
+                value: 'right',
               },
             },
           },
@@ -127,23 +127,23 @@ const widget = {
     scales: [
       {
         nice: true,
-        range: "width",
+        range: 'width',
         domain: {
-          field: "x",
-          data: "table",
+          field: 'x',
+          data: 'table',
         },
-        type: "linear",
-        name: "x",
+        type: 'linear',
+        name: 'x',
       },
       {
         padding: 0.05,
-        range: "height",
+        range: 'height',
         domain: {
-          field: "y",
-          data: "table",
+          field: 'y',
+          data: 'table',
         },
-        type: "band",
-        name: "y",
+        type: 'band',
+        name: 'y',
       },
     ],
     marks: [
@@ -157,19 +157,19 @@ const widget = {
           update: {
             height: {
               band: 1,
-              scale: "y",
+              scale: 'y',
             },
             y: {
-              field: "y",
-              scale: "y",
+              field: 'y',
+              scale: 'y',
             },
             x2: {
-              field: "x",
-              scale: "x",
+              field: 'x',
+              scale: 'x',
             },
             x: {
               value: 0,
-              scale: "x",
+              scale: 'x',
             },
             opacity: {
               value: 1,
@@ -177,61 +177,61 @@ const widget = {
           },
         },
         from: {
-          data: "table",
+          data: 'table',
         },
-        type: "rect",
+        type: 'rect',
       },
     ],
     data: [
       {
         format: {
-          property: "rows",
-          type: "json",
+          property: 'rows',
+          type: 'json',
         },
-        url: "https://wri-01.cartodb.com/api/v2/sql?q=SELECT DISTINCT(country) as y, extent_2000 as x FROM   umd_nat_staging   WHERE  thresh = 30 ORDER  BY extent_2000 DESC limit 10&rw=&env=production&language=en&page[size]=999&rw=&env=production&language=en&page[size]=999&application=rw&env=production",
-        name: "table",
+        url: 'https://wri-01.cartodb.com/api/v2/sql?q=SELECT DISTINCT(country) as y, extent_2000 as x FROM   umd_nat_staging   WHERE  thresh = 30 ORDER  BY extent_2000 DESC limit 10&rw=&env=production&language=en&page[size]=999&rw=&env=production&language=en&page[size]=999&application=rw&env=production',
+        name: 'table',
       },
     ],
     we_meta: {
-      core: "2.6.2",
-      editor: "2.6.2",
-      renderer: "2.6.2",
-      adapter: "rw-adapter",
+      core: '2.6.2',
+      editor: '2.6.2',
+      renderer: '2.6.2',
+      adapter: 'rw-adapter',
       advanced: true,
     },
   },
   template: false,
-  createdAt: "2018-03-15T17:03:15.732Z",
-  updatedAt: "2021-05-19T04:14:31.709Z",
+  createdAt: '2018-03-15T17:03:15.732Z',
+  updatedAt: '2021-05-19T04:14:31.709Z',
   metadata: [
     {
-      id: "5ac4f32cf748cd00105e6aea",
-      type: "metadata",
+      id: '5ac4f32cf748cd00105e6aea',
+      type: 'metadata',
       attributes: {
-        dataset: "32324f22-e7f6-4e0d-bc38-d82c6484f1be",
-        application: "rw",
+        dataset: '32324f22-e7f6-4e0d-bc38-d82c6484f1be',
+        application: 'rw',
         resource: {
-          id: "cd0a50e0-c58e-418b-9604-5a452d07b308",
-          type: "widget",
+          id: 'cd0a50e0-c58e-418b-9604-5a452d07b308',
+          type: 'widget',
         },
-        language: "en",
+        language: 'en',
         info: {
           caption:
-            "Top 10 Countries with Most Tree Cover in 2000, Hansen et al. 2013",
+            'Top 10 Countries with Most Tree Cover in 2000, Hansen et al. 2013',
           widgetLinks: [
             {
-              link: "https://resourcewatch.org/data/explore/0087944f-871c-44bc-b4d9-cd5acfc27023",
-              name: "View on Resource Watch",
+              link: 'https://resourcewatch.org/data/explore/0087944f-871c-44bc-b4d9-cd5acfc27023',
+              name: 'View on Resource Watch',
             },
             {
-              link: "http://science.sciencemag.org/content/342/6160/850",
-              name: "Hansen et al. 2013",
+              link: 'http://science.sciencemag.org/content/342/6160/850',
+              name: 'Hansen et al. 2013',
             },
           ],
         },
-        createdAt: "2018-04-04T15:45:48.095Z",
-        updatedAt: "2021-05-19T04:14:33.079Z",
-        status: "published",
+        createdAt: '2018-04-04T15:45:48.095Z',
+        updatedAt: '2021-05-19T04:14:33.079Z',
+        status: 'published',
       },
     },
   ],
@@ -247,7 +247,7 @@ Default.args = {
   adapter: AdapterModifier(RWAdapter, {
     endpoint: `${process.env.NEXT_PUBLIC_WRI_API_URL}/v1`,
     env: process.env.NEXT_PUBLIC_API_ENV,
-    applications: process.env.NEXT_PUBLIC_APPLICATIONS.split(","),
-    locale: "en",
+    applications: process.env.NEXT_PUBLIC_APPLICATIONS.split(','),
+    locale: 'en',
   }),
 };

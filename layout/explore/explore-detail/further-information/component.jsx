@@ -1,13 +1,13 @@
-import React from "react";
-import PropTypes from "prop-types";
-import ReadMore from "components/ui/read-more";
-import ReactMarkdown from "react-markdown";
+import React from 'react';
+import PropTypes from 'prop-types';
+import ReadMore from 'components/ui/read-more';
+import ReactMarkdown from 'react-markdown';
 
 // constants
-import { DEFAULT_LIMIT_CHAR_FOR_METADATA_FIELDS } from "layout/explore/explore-detail/constants";
+import { DEFAULT_LIMIT_CHAR_FOR_METADATA_FIELDS } from 'layout/explore/explore-detail/constants';
 
 // utils
-import { logEvent } from "utils/analytics";
+import { logEvent } from 'utils/analytics';
 
 const FurtherInformationComponent = ({
   metadata: {
@@ -42,7 +42,7 @@ const FurtherInformationComponent = ({
           text={cautions}
           limitChar={DEFAULT_LIMIT_CHAR_FOR_METADATA_FIELDS}
           readMoreClicked={() =>
-            logEvent("Explore (Detail)", "Clicks Read More", "cautions")
+            logEvent('Explore (Detail)', 'Clicks Read More', 'cautions')
           }
         />
       </div>
@@ -55,7 +55,7 @@ const FurtherInformationComponent = ({
           text={citation}
           limitChar={DEFAULT_LIMIT_CHAR_FOR_METADATA_FIELDS}
           readMoreClicked={() =>
-            logEvent("Explore (Detail)", "Clicks Read More", "citation")
+            logEvent('Explore (Detail)', 'Clicks Read More', 'citation')
           }
         />
       </div>
@@ -69,9 +69,9 @@ const FurtherInformationComponent = ({
           limitChar={DEFAULT_LIMIT_CHAR_FOR_METADATA_FIELDS}
           readMoreClicked={() =>
             logEvent(
-              "Explore (Detail)",
-              "Clicks Read More",
-              "spatial resolution"
+              'Explore (Detail)',
+              'Clicks Read More',
+              'spatial resolution'
             )
           }
         />
@@ -82,8 +82,8 @@ const FurtherInformationComponent = ({
         <h4>Sources</h4>
         {sources.map((source) => (
           <div key={source.id}>
-            {source["source-name"]}
-            {source["source-description"]}
+            {source['source-name']}
+            {source['source-description']}
           </div>
         ))}
       </div>
@@ -134,8 +134,8 @@ FurtherInformationComponent.propTypes = {
       sources: PropTypes.arrayOf(
         PropTypes.shape({
           id: PropTypes.number,
-          "source-name": PropTypes.string,
-          "source-description": PropTypes.string,
+          'source-name': PropTypes.string,
+          'source-description': PropTypes.string,
         })
       ),
       geographic_coverage: PropTypes.string,

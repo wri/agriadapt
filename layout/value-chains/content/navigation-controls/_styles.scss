@@ -1,83 +1,83 @@
 .c-flow {
-    width: 1060px;
+  width: 1060px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 0 $margin-size-small;
+
+  @media screen and (min-width: map-get($breakpoints, medium)) {
+    margin: 0 $margin-size;
+  }
+
+  @media screen and (min-width: map-get($breakpoints, large)) {
+    margin: 0 auto;
+  }
+  .c-chain-item {
+    &.-inactive {
+      .c-step-item {
+        opacity: 0.5;
+      }
+    }
+  }
+
+  .c-flow-step {
+    position: relative;
+    &:hover {
+      cursor: pointer;
+    }
+    &-.active {
+      box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.12);
+    }
+  }
+
+  .c-step-label {
+    position: absolute;
+    left: 42px;
+    top: 16px;
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    margin: 0 $margin-size-small;
+    align-items: center;
 
-    @media screen and (min-width: map-get($breakpoints, medium)) {
-        margin: 0 $margin-size;
+    &.-start {
+      left: 16px;
     }
 
-    @media screen and (min-width: map-get($breakpoints, large)) {
-        margin: 0 auto;
-    }
-    .c-chain-item {
-        &.-inactive {
-            .c-step-item {
-                opacity: 0.5;
-            }
-        }
+    .c-icon {
+      margin-right: 16px;
     }
 
-    .c-flow-step {
-        position: relative;
-        &:hover {
-            cursor: pointer;
-        }
-        &-.active {
-            box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.12);
-        }
+    h3 {
+      display: inline;
+      color: $charcoal-grey;
     }
+  }
 
-    .c-step-label {
-        position: absolute;
-        left: 42px;
-        top: 16px;
-        display: flex;
-        align-items: center;
+  .c-step-item {
+    opacity: 1;
+    display: flex;
+    align-items: center;
+    margin: 12px;
+  }
 
-        &.-start {
-            left: 16px;
-        }
-
-        .c-icon {
-            margin-right: 16px;
-        }
-
-        h3 {
-            display: inline;
-            color: $charcoal-grey;
-        }
-    }
-
-    .c-step-item {
-        opacity: 1;
-        display: flex;
-        align-items: center;
-        margin: 12px;
-    }
-
-    a.c-step-item:hover {
-        cursor: pointer;
-        text-decoration: none;
-    }
+  a.c-step-item:hover {
+    cursor: pointer;
+    text-decoration: none;
+  }
 }
 
 // TODO: Figure out proper location for this class
 .c-step-icon {
-    background: rgb($primary-green, 0.5);
-    max-width: 38px;
-    width: 38px;
-    height: 38px;
-    border-radius: 100%;
-    margin-right: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  background: rgb($primary-green, 0.5);
+  max-width: 38px;
+  width: 38px;
+  height: 38px;
+  border-radius: 100%;
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    &.-inactive {
-        background: none;
-        border: 4px solid rgb($primary-green, 0.5);
-    }
+  &.-inactive {
+    background: none;
+    border: 4px solid rgb($primary-green, 0.5);
+  }
 }

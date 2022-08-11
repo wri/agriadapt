@@ -1,18 +1,18 @@
-import sortBy from "lodash/sortBy";
-import { createAction, createThunkAction } from "redux-tools";
+import sortBy from 'lodash/sortBy';
+import { createAction, createThunkAction } from 'redux-tools';
 
 // Utils
-import { TAGS_BLACKLIST } from "utils/tags";
+import { TAGS_BLACKLIST } from 'utils/tags';
 
-export const setTags = createAction("DATASET_LIST_ITEM/setTags");
-export const setTagsTooltip = createAction("DATASET_LIST_ITEM/setTagsTooltip");
-export const setTagsLoading = createAction("DATASET_LIST_ITEM/setTagsLoading");
-export const setTagsError = createAction("DATASET_LIST_ITEM/setTagsError");
-export const resetTags = createAction("DATASET_LIST_ITEM/resetTags");
+export const setTags = createAction('DATASET_LIST_ITEM/setTags');
+export const setTagsTooltip = createAction('DATASET_LIST_ITEM/setTagsTooltip');
+export const setTagsLoading = createAction('DATASET_LIST_ITEM/setTagsLoading');
+export const setTagsError = createAction('DATASET_LIST_ITEM/setTagsError');
+export const resetTags = createAction('DATASET_LIST_ITEM/resetTags');
 
 // Async actions
 export const fetchTags = createThunkAction(
-  "DATASET_LIST_ITEM/fetchTags",
+  'DATASET_LIST_ITEM/fetchTags',
   () => (dispatch) => {
     dispatch(setTagsLoading(true));
 

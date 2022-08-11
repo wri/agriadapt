@@ -23,15 +23,25 @@ export const setWorldview = createAction<string>('EXPLORE/setWorldview');
 export const resetExplore = createAction('EXPLORE/resetExplore');
 
 // DATASETS
-export const setDatasets = createAction<Record<string, any>[]>('EXPLORE/setDatasetsList');
-export const setDatasetsLoading = createAction<boolean>('EXPLORE/setDatasetsLoading');
+export const setDatasets = createAction<Record<string, any>[]>(
+  'EXPLORE/setDatasetsList'
+);
+export const setDatasetsLoading = createAction<boolean>(
+  'EXPLORE/setDatasetsLoading'
+);
 export const setDatasetsError = createAction<any>('EXPLORE/setDatasetsError');
-export const setHasMoreDatasets = createAction<boolean>('EXPLORE/setHasMoreDatasets');
+export const setHasMoreDatasets = createAction<boolean>(
+  'EXPLORE/setHasMoreDatasets'
+);
 export const setDatasetsPage = createAction('EXPLORE/setDatasetsPage');
-export const setDatasetsTotal = createAction<number>('EXPLORE/setDatasetsTotal');
+export const setDatasetsTotal = createAction<number>(
+  'EXPLORE/setDatasetsTotal'
+);
 export const setDatasetsLimit = createAction('EXPLORE/setDatasetsLimit');
 export const setDatasetsMode = createAction('EXPLORE/setDatasetsMode');
-export const setSelectedDataset = createAction<string>('EXPLORE/setSelectedDataset');
+export const setSelectedDataset = createAction<string>(
+  'EXPLORE/setSelectedDataset'
+);
 export const setFilteredDatasets = createAction(
   'EXPLORE/setFilteredDatasetsList'
 );
@@ -51,7 +61,7 @@ export const fetchDatasets = createThunkAction(
       const {
         timescale: fTimescale,
         emission_scenario,
-        value_chains
+        value_chains,
       } = explore.filters;
       const layers = dataset.layer;
       const match = layers.some(
@@ -116,7 +126,9 @@ export const fetchDatasets = createThunkAction(
                   arr.push({
                     ...l,
                     applicationConfig:
-                      l.applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS] || {},
+                      l.applicationConfig[
+                        process.env.NEXT_PUBLIC_APPLICATIONS
+                      ] || {},
                   });
                 return arr;
               }, []),
@@ -173,11 +185,15 @@ export const fetchCountries = createThunkAction(
 );
 
 // MAP
-export const setViewport = createAction<Record<string, any>>('EXPLORE-MAP__SET-VIEWPORT');
+export const setViewport = createAction<Record<string, any>>(
+  'EXPLORE-MAP__SET-VIEWPORT'
+);
 export const setBasemap = createAction<string>('EXPLORE-MAP__SET-BASEMAP');
 export const setLabels = createAction<string>('EXPLORE-MAP__SET-LABELS');
 export const setBounds = createAction('EXPLORE-MAP__SET-BOUNDS');
-export const setBoundaries = createAction<boolean>('EXPLORE-MAP__SET-BOUNDARIES');
+export const setBoundaries = createAction<boolean>(
+  'EXPLORE-MAP__SET-BOUNDARIES'
+);
 export const setAreaOfInterest = createAction(
   'EXPLORE-MAP__SET_AREA_OF_INTEREST'
 );
@@ -230,7 +246,9 @@ export const resetMapLayerGroupsInteraction = createAction(
   'EXPLORE/resetMapLayerGroupsInteraction'
 );
 
-export const setMapLayerGroups = createAction<{datasets: any, params: any}>('EXPLORE/setMapLayerGroups');
+export const setMapLayerGroups = createAction<{ datasets: any; params: any }>(
+  'EXPLORE/setMapLayerGroups'
+);
 export const fetchMapLayerGroups = createThunkAction(
   'EXPLORE/fetchMapLayers',
   (payload) => (dispatch, getState) => {
@@ -240,7 +258,7 @@ export const fetchMapLayerGroups = createThunkAction(
       language: common.locale,
       includes: 'layer',
       ids: payload.map((lg) => lg.dataset).join(','),
-        'page[size]': 999,
+      'page[size]': 999,
     };
 
     return fetchDatasetsService(params)
@@ -269,7 +287,9 @@ export const fetchMapLayerGroups = createThunkAction(
 );
 
 // FILTERS
-export const setFiltersSearch = createAction<string>('EXPLORE/setFiltersSearch');
+export const setFiltersSearch = createAction<string>(
+  'EXPLORE/setFiltersSearch'
+);
 export const setFiltersAdvancedOpen = createAction(
   'EXPLORE/setFiltersAdvancedOpen'
 );

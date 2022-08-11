@@ -1,24 +1,24 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { toastr } from "react-redux-toastr";
-import cx from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { toastr } from 'react-redux-toastr';
+import cx from 'classnames';
 
 // Components
-import Navigation from "components/form/Navigation";
-import Step1 from "components/widgets/metadata/form/steps/Step1";
+import Navigation from 'components/form/Navigation';
+import Step1 from 'components/widgets/metadata/form/steps/Step1';
 
 // Services
 import {
   fetchWidget,
   updateWidgetMetadata,
   createWidgetMetadata,
-} from "services/widget";
+} from 'services/widget';
 
 // Contants
 import {
   STATE_DEFAULT,
   FORM_ELEMENTS,
-} from "components/widgets/metadata/form/constants";
+} from 'components/widgets/metadata/form/constants';
 
 class MetadataForm extends React.Component {
   static propTypes = {
@@ -45,7 +45,7 @@ class MetadataForm extends React.Component {
   UNSAFE_componentWillMount() {
     const { widget } = this.props;
     if (widget) {
-      fetchWidget(widget, { includes: "metadata" })
+      fetchWidget(widget, { includes: 'metadata' })
         .then(({ metadata, dataset, env }) => {
           this.setState({
             form:
@@ -61,7 +61,7 @@ class MetadataForm extends React.Component {
         })
         .catch((err) => {
           this.setState({ loading: false });
-          toastr.error("Error", err);
+          toastr.error('Error', err);
         });
     }
   }
@@ -107,32 +107,32 @@ class MetadataForm extends React.Component {
         if (widget && thereIsMetadata) {
           updateWidgetMetadata(widget, dataset, formObj, authorization)
             .then(() => {
-              toastr.success("Success", "Metadata has been updated correctly");
+              toastr.success('Success', 'Metadata has been updated correctly');
               if (this.props.onSubmit) {
                 this.props.onSubmit();
               }
             })
             .catch((err) => {
               this.setState({ submitting: false });
-              toastr.error("Error", err);
+              toastr.error('Error', err);
             });
         } else {
           createWidgetMetadata(widget, dataset, formObj, authorization)
             .then(() => {
-              toastr.success("Success", "Metadata has been updated correctly");
+              toastr.success('Success', 'Metadata has been updated correctly');
               if (this.props.onSubmit) {
                 this.props.onSubmit();
               }
             })
             .catch((err) => {
               this.setState({ submitting: false });
-              toastr.error("Error", err);
+              toastr.error('Error', err);
             });
         }
       } else {
         toastr.error(
-          "Error",
-          "Fill all the required fields or correct the invalid values"
+          'Error',
+          'Fill all the required fields or correct the invalid values'
         );
       }
     }, 0);
@@ -166,15 +166,15 @@ class MetadataForm extends React.Component {
     return (
       <div
         className={cx({
-          "c-widget-metadata-form": true,
-          "-disabled":
-            process.env.NEXT_PUBLIC_ENVS_EDIT.split(",").findIndex(
+          'c-widget-metadata-form': true,
+          '-disabled':
+            process.env.NEXT_PUBLIC_ENVS_EDIT.split(',').findIndex(
               (d) => d === env
             ) < 0,
         })}
       >
         <form className="c-form" onSubmit={this.onSubmit} noValidate>
-          {this.state.loading && "loading"}
+          {this.state.loading && 'loading'}
           {!this.state.loading && (
             <Step1
               onChange={(value) => this.onChange(value)}

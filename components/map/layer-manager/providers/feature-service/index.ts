@@ -3,13 +3,13 @@ import type {
   LayerSpec,
   Source,
   ProviderMaker,
-} from "@vizzuality/layer-manager";
-import { fetch } from "@vizzuality/layer-manager-utils";
-import omit from "lodash/omit";
-import { FeatureServiceQueryParams } from "./types";
+} from '@vizzuality/layer-manager';
+import { fetch } from '@vizzuality/layer-manager-utils';
+import omit from 'lodash/omit';
+import { FeatureServiceQueryParams } from './types';
 
 // types
-import type { GeoJSONSourceRaw } from "mapbox-gl";
+import type { GeoJSONSourceRaw } from 'mapbox-gl';
 
 /**
  * Specify how to get the data and the layers for this provider
@@ -23,7 +23,7 @@ class FeatureServiceProviderMaker implements ProviderMaker {
    * A name (key) for the provider.
    * Use the same name you will use in your layerSpec object.
    */
-  public name = "feature-service";
+  public name = 'feature-service';
 
   private getGeoJSON = async (
     layer: LayerSpec,
@@ -39,9 +39,9 @@ class FeatureServiceProviderMaker implements ProviderMaker {
       );
 
     const params: FeatureServiceQueryParams = {
-      f: "geojson",
-      geometryType: "esriGeometryEnvelope",
-      spatialRel: "esriSpatialRelIntersects",
+      f: 'geojson',
+      geometryType: 'esriGeometryEnvelope',
+      spatialRel: 'esriSpatialRelIntersects',
       returnGeometry: true,
       returnTrueCurves: false,
       returnIdsOnly: false,
@@ -50,19 +50,19 @@ class FeatureServiceProviderMaker implements ProviderMaker {
       returnM: false,
       returnDistinctValues: false,
       returnExtentOnly: false,
-      where: "1=1",
+      where: '1=1',
       ...(restOptions || {}),
     };
 
     const geojson = await fetch(
-      "get",
+      'get',
       `${tiler}/query`,
       { params },
       layerModel
     );
 
     return {
-      type: "geojson",
+      type: 'geojson',
       data: geojson,
     };
   };
@@ -77,7 +77,7 @@ class FeatureServiceProviderMaker implements ProviderMaker {
       const result = {
         ...layer,
         source: {
-          ...omit(layer.source, "provider"),
+          ...omit(layer.source, 'provider'),
         } as Source,
       };
 

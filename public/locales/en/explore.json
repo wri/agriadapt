@@ -37,9 +37,9 @@
       "Hydrography": "Hydrography"
     },
     "labels": {
-        "No labels": "No labels",
-        "Labels light": "Labels light",
-        "Labels dark": "Labels dark"
+      "No labels": "No labels",
+      "Labels light": "Labels light",
+      "Labels dark": "Labels dark"
     },
     "Boundaries": "Boundaries"
   }

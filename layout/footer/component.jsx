@@ -1,11 +1,11 @@
 // components
-import FooterLinks from "./footer-links";
-import Link from "next/link";
-import { Media } from "lib/media";
-import Image from "next/image";
+import FooterLinks from './footer-links';
+import Link from 'next/link';
+import { Media } from 'lib/media';
+import Image from 'next/image';
 import wriLogo from 'public/images/wri-logo.svg';
 import loader from 'lib/imageLoader';
-import { useTranslation } from "next-i18next";
+import { useTranslation } from 'next-i18next';
 
 export default function Footer() {
   const { t } = useTranslation('common', 'footer');
@@ -35,16 +35,16 @@ export default function Footer() {
                   </a>
                 </div>
                 <div className="footer-item">
-                    <p>
-                      <Link href="/terms-of-service" passHref>
-                        <a>{t('common:terms_of_service')}</a>
-                      </Link>
-                    </p>
-                    <p>
-                      <Link href="/privacy-policy" passHref>
-                        <a>{t('footer:privacy_policy')}</a>
-                      </Link>
-                    </p>
+                  <p>
+                    <Link href="/terms-of-service" passHref>
+                      <a>{t('common:terms_of_service')}</a>
+                    </Link>
+                  </p>
+                  <p>
+                    <Link href="/privacy-policy" passHref>
+                      <a>{t('footer:privacy_policy')}</a>
+                    </Link>
+                  </p>
                 </div>
               </div>
             </div>
@@ -83,7 +83,7 @@ export default function Footer() {
               <div className="column small-12">
                 <div className="footer-container">
                   <div className="footer-item">
-                  © {t('common:world_resources_institute')} 2022
+                    © {t('common:world_resources_institute')} 2022
                   </div>
                   <div className="footer-item">
                     <span>{t('footer:powered_by')}</span>

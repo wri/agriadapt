@@ -1,4 +1,4 @@
-@import "css/settings";
+@import 'css/settings';
 
 $translate-dropdown: 5px;
 
@@ -13,7 +13,7 @@ $translate-dropdown: 5px;
   transform: translate(0, $translate-dropdown);
 
   &:before {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
@@ -24,7 +24,7 @@ $translate-dropdown: 5px;
   }
 
   &:after {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     left: 30px;
@@ -63,7 +63,7 @@ $translate-dropdown: 5px;
     bottom: 55px;
 
     &:after {
-      content: "";
+      content: '';
       position: absolute;
       top: auto;
       bottom: -8px;

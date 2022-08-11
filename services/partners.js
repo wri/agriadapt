@@ -1,8 +1,8 @@
-import WRISerializer from "wri-json-api-serializer";
+import WRISerializer from 'wri-json-api-serializer';
 
 // utils
-import { WRIAPI } from "utils/axios";
-import { logger } from "utils/logs";
+import { WRIAPI } from 'utils/axios';
+import { logger } from 'utils/logs';
 
 /**
  * Fetch partners according to params and headers.
@@ -12,8 +12,8 @@ import { logger } from "utils/logs";
  * @returns {Object[]} array of serialized partners.
  */
 export const fetchPartners = (params = {}, headers = {}) => {
-  logger.info("Fetch partners");
-  return WRIAPI.get("/v1/partner", {
+  logger.info('Fetch partners');
+  return WRIAPI.get('/v1/partner', {
     params: {
       env: process.env.NEXT_PUBLIC_API_ENV,
       application: process.env.NEXT_PUBLIC_APPLICATIONS,
@@ -34,7 +34,7 @@ export const fetchPartners = (params = {}, headers = {}) => {
       const { status, data } = response;
       throw new Error(
         `Error fetching partners: ${
-          data?.errors[0]?.detail || "Error not defined"
+          data?.errors[0]?.detail || 'Error not defined'
         } – ${status}`
       );
     });
@@ -110,9 +110,9 @@ export const updatePartner = (
  * @returns {Object} Partner object.
  */
 export const createPartner = (partner, token, params = {}, headers = {}) => {
-  logger.info("Create partner");
+  logger.info('Create partner');
   return WRIAPI.post(
-    "/v1/partner",
+    '/v1/partner',
     { ...partner },
     {
       params: {

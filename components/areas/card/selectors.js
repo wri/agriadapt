@@ -1,7 +1,7 @@
-import { createSelector } from "reselect";
+import { createSelector } from 'reselect';
 
 // selectors
-import areaAlerts from "selectors/user/areaAlerts";
+import areaAlerts from 'selectors/user/areaAlerts';
 
 const getUserArea = (state, props) => props.area;
 

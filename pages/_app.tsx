@@ -1,12 +1,12 @@
 // global styles
-import "css/index.scss";
-import type { AppProps } from "next/app";
-import { QueryClient, QueryClientProvider } from "react-query";
+import 'css/index.scss';
+import type { AppProps } from 'next/app';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import { appWithTranslation } from 'next-i18next';
 
 //lib
 import { wrapper } from 'lib/store';
-import MediaContextProvider from "lib/media";
+import MediaContextProvider from 'lib/media';
 
 const queryClient = new QueryClient();
 

@@ -1,3 +1,3 @@
-import TagsTooltipComponent from "./component";
+import TagsTooltipComponent from './component';
 
 export default TagsTooltipComponent;

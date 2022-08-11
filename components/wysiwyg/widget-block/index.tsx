@@ -1,10 +1,10 @@
-import { useFetchWidget } from "hooks/widget";
+import { useFetchWidget } from 'hooks/widget';
 
-import WidgetBlock from "./component";
+import WidgetBlock from './component';
 
 // import type { WYSIWYGItem } from "types/wysiwyg";
-import { connect } from "react-redux";
-import { RootState } from "lib/store";
+import { connect } from 'react-redux';
+import { RootState } from 'lib/store';
 
 export interface WidgetBlockContainerProps {
   // item: WYSIWYGItem;
@@ -12,17 +12,20 @@ export interface WidgetBlockContainerProps {
   country: {
     label: string;
     value: string;
-  }
+  };
 }
 
-const WidgetBlockContainer = ({ widgetId, country }: WidgetBlockContainerProps): JSX.Element => {
+const WidgetBlockContainer = ({
+  widgetId,
+  country,
+}: WidgetBlockContainerProps): JSX.Element => {
   const { data: widget } = useFetchWidget(
     widgetId,
     { includes: 'metadata' },
     {
       enabled: true,
       refetchOnWindowFocus: false,
-    },
+    }
   );
 
   return (

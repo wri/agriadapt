@@ -5,8 +5,8 @@ import Image, { StaticImageData } from 'next/image';
 import loader from 'lib/imageLoader';
 import Carousel from 'nuka-carousel';
 import { user_stories } from '../constants';
-import chevronLeft from 'public/images/icons/chevronLeft.svg'
-import chevronRight from 'public/images/icons/chevronRight.svg'
+import chevronLeft from 'public/images/icons/chevronLeft.svg';
+import chevronRight from 'public/images/icons/chevronRight.svg';
 import Link from 'next/link';
 import { useTranslation } from 'next-i18next';
 
@@ -25,7 +25,7 @@ const UserStories = ({
 }) => {
   const { header, stories } = user_stories;
 
-  const { t } = useTranslation([crop,'common']);
+  const { t } = useTranslation([crop, 'common']);
 
   const getImageDimensions = (b, image) => {
     if (b === 'md') {

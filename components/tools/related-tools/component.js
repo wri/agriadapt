@@ -1,9 +1,9 @@
-import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 
 // Components
-import CardApp from "components/app/common/CardApp";
-import Spinner from "components/ui/Spinner";
+import CardApp from 'components/app/common/CardApp';
+import Spinner from 'components/ui/Spinner';
 
 // Constants
 class RelatedTools extends PureComponent {
@@ -16,7 +16,7 @@ class RelatedTools extends PureComponent {
   };
 
   componentDidMount() {
-    this.props.fetchTools({ published: "all" });
+    this.props.fetchTools({ published: 'all' });
   }
 
   render() {
@@ -42,7 +42,7 @@ class RelatedTools extends PureComponent {
                   description={tool.summary}
                   logEvent
                   link={{
-                    label: "Go to site",
+                    label: 'Go to site',
                     route: tool.url,
                     external: true,
                   }}

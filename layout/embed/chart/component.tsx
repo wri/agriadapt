@@ -1,5 +1,5 @@
-import React from "react";
+import React from 'react';
 
-const LayoutEmbedChart = () => (<></>);
+const LayoutEmbedChart = () => <></>;
 
 export default LayoutEmbedChart;

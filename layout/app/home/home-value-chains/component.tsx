@@ -4,7 +4,7 @@ import { VALUECHAINS } from '../constants';
 import { ValueChainCards } from './value-chain-cards/component';
 
 const ValueChainsContainerHome = () => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <div className="c-value-chains">

@@ -1,4 +1,4 @@
-import { createSelector } from "reselect";
+import { createSelector } from 'reselect';
 
 const getAlerts = (state) => state.subscriptions.preview.list;
 const getSelectedDatasets = (state) =>

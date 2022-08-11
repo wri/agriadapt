@@ -1,14 +1,14 @@
-import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 
 // Utils
-import { logEvent } from "utils/analytics";
+import { logEvent } from 'utils/analytics';
 
 // Redux
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
 // Components
-import Switch from "components/ui/Switch";
+import Switch from 'components/ui/Switch';
 
 class LayerMenuDropdownComponent extends PureComponent {
   render() {
