@@ -25,7 +25,7 @@ const UserStories = ({
 }) => {
   const { header, stories } = user_stories;
 
-  const { t } = useTranslation(crop);
+  const { t } = useTranslation([crop,'common']);
 
   const getImageDimensions = (b, image) => {
     if (b === 'md') {
@@ -57,7 +57,7 @@ const UserStories = ({
         <div className="c-user-info">
           <h3>{`${t(s.title)}, ${t(s.location)}`}</h3>
           <p>{`"${t(s.quote)}"`}</p>
-          <Link href="/explore" passHref>
+          {/* <Link href="/explore" passHref>
             <a
               className={classnames({
                 'c-button': true,
@@ -66,7 +66,7 @@ const UserStories = ({
             >
               {'Find Out More in the Map'}
             </a>
-          </Link>
+          </Link> */}
         </div>
       </div>
     ));
@@ -76,7 +76,7 @@ const UserStories = ({
     <div className="c-user-stories">
       {!!stories.length && (
         // TODO: Translate
-        <h2>{header}</h2>
+        <h2>{t(`common:${header}`)}</h2>
       )}
       <div className="c-user-stories-body">
         {['sm', 'md', 'lg', 'xl'].map((b: 'sm' | 'md' | 'lg' | 'xl') => (

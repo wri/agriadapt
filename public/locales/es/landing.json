@@ -1,0 +1,47 @@
+{
+	"intro": {
+		"title": "¿Cómo está afectando el cambio climático a la agricultura? AgriAdapt ayuda a las empresas agrícolas a comprender y enfrentar este desafío",
+		"subtitle": "Información y herramientas gratuitas para fortalecer la agricultura",
+		"button_label": "Analice los riesgos en su ubicación"
+	},
+	"sub_intro": {
+		"title": "Información confiable y verificada para tomar mejores decisiones en la agricultura",
+		"subtitle": "Entregamos información climática gratuita para informar las decisiones de las empresas agrícolas, pequeñas y grandes, para adaptarse al cambio climático.",
+		"button_label": "Explora el mapa",
+		"image_alt": "Mapa Explorar"
+	},
+	"value_chain_cards": {
+		"title": "La cadena de valor de cada cultivo se enfrenta a riesgos únicos",
+		"subtitle": "Obtenga más información sobre cómo el cambio climático afecta a varios cultivos",
+		"bottons": {
+			"coffee_card": {
+				"coffee_title": "Café",
+				"coffee_button": "Explore la cadena de valor del café"
+			},
+			"cotton_card": {
+				"cotton_title": "Algodón",
+				"cotton_button": "Explore la cadena de valor del algodón"
+			},
+			"rice_card": {
+				"rice_title": "Arroz",
+				"rice_button": "Explore la cadena de valor del arroz"
+			}
+		}
+	},
+	"map_analysis_carousel": {
+		"title": "¡Inicio rápido!",
+		"image_alt": "Mapa de análisis",
+		"subtitle": "Comience a explorar las amenazas climáticas para la agricultura con estas recomendaciones de datos de nuestros especialistas",
+		"content": [
+			"Comprender cómo la producción de algodón está expuesta al estrés hídrico.",
+			"Las sequías y las inundaciones ponen en peligro el arroz, afectando a toda la cadena de valor.",
+			"La calidad del café es susceptible al estrés hídrico y a temperaturas más altas."
+		],
+		"link_to_map_button": "Ver en el mapa"
+	},
+	"landing_to_about": {
+		"title": "Más información sobre el proyecto",
+		"subtitle": "El proyecto de la Herramienta de Adaptación Agrícola es una iniciativa del Instituto de Recursos Mundiales. La versión beta de la herramienta ha sido financiada por la Walmart Foundation.",
+		"button_label": "Leer más"
+	}
+}

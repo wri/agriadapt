@@ -1,0 +1,46 @@
+{
+	"layers": {
+		"Advanced Search": "மேம்பட்ட தேடல்",
+		"Add to map": "வரைபடத்தில் சேர்",
+		"Layers": "அடுக்குகள்",
+		"Search Layers": "அடுக்குகளைத் தேடு",
+		"start_search": "தேடலைத் தொடங்க தட்டச்சு செய்க",
+		"Filter Layers by": "இதன் மூலம் அடுக்குகளை வடிகட்டவும்",
+		"value_chains": {
+			"hint": "முன்னோக்கிய தரவுக்கான பாதையைத் தேர்ந்தெடுக்கவும்."
+		}
+	},
+	"analysis": {
+		"Analysis": "பகுப்பு",
+		"Add a Location": "இருப்பிடத்தைச் சேர்",
+		"Add Location": "இருப்பிடத்தை சேர்",
+		"Select a Location": "இருப்பிடத்தை தேர்ந்தெடு",
+		"Select point on map": "வரைபடத்தில் புள்ளியை தேர்ந்தெடு",
+		"Use my current location": "எனது நடப்பு இருப்பிடத்தைப் பயன்படுத்து",
+		"Search by address": "முகவரி மூலம் தேடு",
+		"Choose my location": "எனது இருப்பிடத்தைத் தேர்ந்தெடு"
+	},
+	"explore_detail": {
+		"Read more": "மேலும் வாசிக்க",
+		"Active": "செயற்படுத்துகிற",
+		"Show layer": "அடுக்கை காண்பி",
+		"Overview": "கண்ணோட்டம்",
+		"Dataset layers": "தரவுத்தொகுப்பு அடுக்குகள்",
+		"Further information": "மேலதிக தகவல்கள்"
+	},
+	"map": {
+		"basemaps": {
+			"Dark": "இருள்",
+			"Light": "ஒளி",
+			"Satellite": "துணைக்கோள்",
+			"Terrain": "திணைநிலம்",
+			"Hydrography": "ஹைட்ரோகிராஃபி"
+		},
+		"labels": {
+			"No labels": "லேபல்கள் இல்லை",
+			"Labels light": "லேபல்கள் ஒளி",
+			"Labels dark": "லேபிள்கள் இருண்டவை"
+		},
+		"Boundaries": "எல்லையுடன்"
+	}
+}

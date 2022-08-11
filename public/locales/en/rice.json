@@ -2,40 +2,45 @@
   "intro": {
     "subtitle": "Climate Risk in Rice Value Chains",
     "description": [
-      "Temperature increases, rising sea levels, and changes in rainfall patterns and distribution could lead to substantial impacts on land and water resources for rice production. Continuous groundwater extraction for rice paddy irrigation is already resulting in a steep decline in groundwater across India (Oo 2018)."
+      "Temperature increases, rising sea levels, and changes in rainfall patterns and distribution could lead to substantial impacts on land and water resources for rice production. Continuous groundwater extraction for rice paddy irrigation is already resulting in a steep decline in groundwater availability."
     ]
+  },
+  "climate_hazard": {
+    "title": "How Does Climate Change Affect the Rice Value Chain?",
+    "description": "The production of rice is affected by different climate threats along its value chain. Click on the buttons below to find information about how climate hazards affect each link of the value chain:"
   },
   "inputs": {
     "land_suitability": {
-      "info": "Rice cultivation is highly vulnerable to climate fluctuations. Explore the visualizations below to learn more about how land suitability for rice production may change in the future due to climate change."
+      "info": "Rice cultivation is highly vulnerable to climate fluctuations, especially temperature and availability of water. However, the effects vary across geography, resulting in both risks and opportunities. Explore the visualizations below to learn more about how land suitability for rice production may change in the future due to climate change."
     },
     "labor": {
-      "info": "Agricultural workers are especially vulnerable to increased heat stress, which affects the health of individuals and reduces labour productivity. The Universal Thermal Climate Index identifies outdoor conditions that cause discomfort to people using a combination of temperature, humidity, wind, and radiation to determine the stress (sweating, shivering, skin wetness, etc.) a person undergoes when exposed to outdoor conditions."
+      "info":
+        "<p>Agricultural workers are especially vulnerable to increased heat stress, which affects the health of individuals and reduces labor productivity. The Universal Thermal Climate Index identifies outdoor conditions that cause discomfort to people using a combination of temperature, humidity, wind, and radiation to determine the stress (sweating, shivering, skin wetness, etc.) a person undergoes when exposed to outdoor conditions.</p><p>Values between 9-26 means no thermal stress. Values above 26 are approaching heat stress, with values above 46 meaning extreme heat stress. Values below 9 are approaching cold stress, with values below -40 meaning extreme cold stress.</p>"
     },
     "seedlings": {
-      "info": "Rice seeds are the most sensitive to drought and high temperature during early seed development. The earlier plant drought occurs, the greater the damage to subsequent seed quality. (Rahman, Ellis, 2019)."
+      "info": "Rice seeds are the most sensitive to drought and high temperature during early seed development. The earlier plant drought occurs, the greater the damage to subsequent seed quality. (Rahman, Ellis, 2019) Additionally, seed quality in Japonica rice can reduce considerably when produced under warmer (34/26°C) rather than cooler (28/20°C) temperatures."
     }
   },
   "production": {
     "production_volume": {
-      "info": "Explore our data visualizations to better understand where the main rice growing regions in {{country}} are and how much rice is currently produced."
+      "info": "The map below shows the main rice growing regions in the country, along with the amount of rice that is currently produced."
     },
-    "production": {
-      "info": "Studies suggest that changes in rainfall patterns and distribution could lead to substantial impacts on land and water resources for rice production."
+    "changes_in_rainfall": {
+      "info": "Studies suggest that changes in rainfall patterns and distribution could lead to substantial impacts on land and water resources for rice production, including reduced arable land due to floods and droughts, and losses in yield as a result of stronger persistence of pests, among others."
     },
     "change_in_yield": {
-      "info": "The vast majority of climate change impacts on rice production result from variations in temperature and rainfall that lead to flooding, water scarcity, and increases in pests, diseases, and weeds. Despite significant uncertainty in predicted future climate conditions, it is important to measure the potential effects of climate change on global rice production as these insights can identify areas that are vulnerable to climate change and inform the development of adaptation strategies. Considering changes in rice yields is also valuable for ensuring future food security under the pressures of an increasing population and a growing rice demand."
+      "info": "The vast majority of climate change impacts on rice production result from variations in temperature and rainfall that lead to flooding, water scarcity, and increases in pests, diseases, and weeds. Although predictions of future climate conditions include an amount of uncertainty, it is important to measure the potential effects of climate change on global rice production. These insights can identify areas that are vulnerable to climate change and inform the development of adaptation strategies. Considering changes in rice yields is also valuable for ensuring future food security under the pressures of an increasing population and a growing rice demand."
     }
   },
   "trade": {
     "policies_and_price": {
-      "info": "The Nominal Rate of Protection measures the extent to which agricultural policies affect the market price of a commodity. It computes the difference between the price a farmer receives versus the price a farmer would receive without these policies in place."
+      "info": "The Nominal Rate of Protection measures the extent to which agricultural policies affect the market price of a commodity. It calculates the difference between the price a farmer receives versus the price a farmer would receive without these policies in place."
     },
     "food_vulnerability": {
-      "info": "The Food Vulnerability Score shows a country’s vulnerability to climate change on a scale of 0 to 1. Lower scores indicate that countries that are less vulnerable. The Food score incorporates six indicators (projected change of cereal yields, projected population growth, food import dependency, rural population, agricultural capacity, and child malnutrition) to capture its vulnerability with regard to food production and demand, nutrition, and rural population."
+      "info": "The Food Vulnerability Score shows a country’s vulnerability to climate change on a scale of 0 to 1. Lower scores indicate the countries that are less vulnerable. The Food score incorporates six indicators (projected change of cereal yields, projected population growth, food import dependency, rural population, agricultural capacity, and child malnutrition) to capture its vulnerability with regard to food production and demand, nutrition, and rural population."
     },
     "export_and_import": {
-      "info": "The rice market is highly exposed to climate change. Climate change not only creates risks for producing countries but also transmits those risks through agricultural commodity trade to consumers of all kinds, and can do so over significant distances."
+      "info": "The rice market is highly exposed to climate change. Climate change not only creates risks for producing countries but also transmits those risks through agricultural commodity trade to consumers of all kinds, and can do so over significant distances. Explore the visualization to learn about rice exports and imports in {{country}}."
     }
   },
   "quotes": [

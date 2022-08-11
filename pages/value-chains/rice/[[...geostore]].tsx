@@ -76,6 +76,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
             'countries',
             'header',
             'footer',
+            'widgets',
           ])),
           countries,
         },

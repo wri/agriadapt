@@ -102,8 +102,10 @@ const IntroHeader = ({
                       id="VALUE_CHAINS"
                       properties={{
                         label: t('common:Select_Country'),
-                        default: country,
-                      }}
+                        default: {...country, 
+                          sql_label: country.sql_label ?? country.label,
+                          label: t(`countries:${country.label}`)
+                      }}}
                       options={countries.map((c) => ({
                         ...c,
                         sql_label: c.sql_label ?? c.label,
@@ -114,7 +116,7 @@ const IntroHeader = ({
                       value={{
                         ...country,
                         sql_label: country.sql_label ?? country.label,
-                        label: t(`${country.label}`),
+                        label: t(`countries:${country.label}`),
                       }}
                       placeholder={t('common:Select_Country')}
                     >

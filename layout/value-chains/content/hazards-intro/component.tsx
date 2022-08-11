@@ -1,15 +1,11 @@
-import { capitalizeFirstLetter } from 'utils/utils';
+import { useTranslation } from 'next-i18next';
 
 const HazardsIntro = ({ crop }: { crop: 'coffee' | 'cotton' | 'rice' }) => {
+  const { t } = useTranslation(crop);
   return (
     <div className="c-hazards-intro">
-      <h2>{`How do Climate Hazards Affect the ${capitalizeFirstLetter(crop)} Value Chain?`}</h2>
-      <p>
-        The production of {capitalizeFirstLetter(crop)} is affected by different
-        climate hazards along its value chain. Click on the buttons below to
-        find out more about how these hazards affect the growth of{' '}
-        {capitalizeFirstLetter(crop)} through our data:
-      </p>
+      <h2>{t('climate_hazard.title')}</h2>
+      <p>{t('climate_hazard.description')}</p>
     </div>
   );
 };

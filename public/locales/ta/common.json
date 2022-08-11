@@ -1,1 +1,50 @@
-{}
+{
+	"Any": "யாராவது ஒருவர்",
+	"Back": "முதுகு",
+	"Cancel": "ரத்து",
+	"Select_Country": "நாடு தேர்ந்தெடு",
+	"Language": "மொழி",
+	"emission_scenarios": {
+		"Emission Scenario": "உமிழ்வு காட்சி",
+		"Emissions_Scenario": "உமிழ்வு சூழல்",
+		"pessimistic": "அவநம்பிக்கை (RCP 8.5)",
+		"optimistic": "நம்பிக்கை (RCP 4.5)"
+	},
+	"timescales": {
+		"Timescale": "கால அளவு",
+		"Historic": "வரலாற்றுப் புகழ்பெற்ற",
+		"Future Looking": "எதிர்காலம் தேடுதல்"
+	},
+	"value_chains": {
+		"Value Chains": "மதிப்பு சங்கிலிகள்",
+		"coffee": "காப்பி",
+		"cotton": "பருத்திப்பயிர்",
+		"rice": "நெற்பயிர்"
+	},
+	"Search": "தேட்டம்",
+	"Select": "தேர்ந்தெடுக்கப்பெற்ற",
+	"share": {
+		"Share": "பங்கு",
+		"Public url to share": "பகிர்வதற்கான பொது URL",
+		"Code to embed": "உட்பொதிக்க வேண்டிய குறியீடு",
+		"Copy link": "இணைப்பை நகலெடு"
+	},
+	"world_resources_institute": "உலக வளங்கள் நிறுவனம்",
+	"hear_from_our_users": "எங்கள் பயனர்களிடமிருந்து கேளுங்கள்",
+	"terms_of_service": "சேவை விதிமுறைகள்",
+	"content": {
+		"inputs": "உள்ளீடுகள்",
+		"production": "விளைவாக்கம்",
+		"trade": "வாணிகம்",
+		"land_suitability": "நிலப் பொருத்தப்பாடு",
+		"labor": "தொழிலாளர்",
+		"seedlings": "நாற்றுகள்",
+		"production_volume": "உற்பத்தி அளவு",
+		"pest_and_disease": "பூச்சி மற்றும் நோய்",
+		"changes_in_rainfall": "மழைவீழ்ச்சியில் ஏற்படும் மாற்றங்கள்",
+		"change_in_yield": "மகசூலில் மாற்றம்",
+		"policies_and_price": "கொள்கைகள் மற்றும் விலை",
+		"food_vulnerability": "உணவு பாதிப்பு",
+		"export_and_import": "ஏற்றுமதி மற்றும் இறக்குமதி"
+	}
+}

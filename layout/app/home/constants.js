@@ -7,34 +7,37 @@ import coffeeImage from 'public/images/components/layout/landing/value-chain-car
 // import analysisImage from 'public/images/components/layout/landing/analysis-map.png';
 
 const MAP = {
-  title: 'Dozens of reliable datasets on climate risk and agriculture',
-  subTitle:
-    'We are on a mission to making climate information accessible to all.',
+  // id: 'LANDING',
+  title: 'landing:sub_intro.title',
+  subTitle: 'landing:sub_intro.subtitle',
   button: {
-    label: 'Explore the Latest Data',
+    label: 'landing:sub_intro.button_label',
     url: { pathname: '/explore' },
   },
   image_sm: map_sm,
   image_md: map_md,
-  image_alt: 'Map Explore',
+  image_alt: 'landing:sub_intro.image_alt',
 };
 
 const VALUECHAINS = {
-  title: 'Risk to shocks is not the same across all value chains',
-  subTitle: 'Learn more about how climate change affects various crops',
+  title: 'landing:value_chain_cards.title',
+  subTitle: 'landing:value_chain_cards.subtitle',
   chains: [
     {
-      label: 'Coffee',
+      label: 'common:value_chains.coffee',
+      button_label: 'landing:value_chain_cards.bottons.coffee_card.coffee_button',
       image: coffeeImage,
       href: 'coffee',
     },
     {
-      label: 'Cotton',
+      label: 'common:value_chains.cotton',
+      button_label: 'landing:value_chain_cards.bottons.cotton_card.cotton_button',
       image: cottonImage,
       href: 'cotton',
     },
     {
-      label: 'Rice',
+      label: 'common:value_chains.rice',
+      button_label: 'landing:value_chain_cards.bottons.rice_card.rice_button',
       image: riceImage,
       href: 'rice',
     },
@@ -42,16 +45,47 @@ const VALUECHAINS = {
 };
 
 const ANALYSIS = {
-  title: 'Overlay risk information to reveal potential impacts of hazards.',
+  // title: 'Overlay risk information to reveal potential impacts of hazards.',
+  title: 'landing:map_analysis_carousel.title',
   image_src: 'static/images/components/layout/landing/analysis-map.png',
-  image_alt: 'Analysis Map',
-  subTitle: 'Or start with these recommendations from our data specialists.',
+  image_alt: 'landing:map_analysis_carousel.image_alt',
+  subTitle: 'landing:map_analysis_carousel.subtitle',
   cards: [
     {
-      title:
-        'Coffee quality is susceptible to water stress and increased temperatures.',
+      title: 'landing:map_analysis_carousel.content.0',
       button: {
-        label: 'Check out the data',
+        label: 'landing:map_analysis_carousel.link_to_map_button',
+        url: {
+          pathname: '/explore',
+          query: {
+            layers: JSON.stringify([
+              {
+                dataset: '54af072c-7bb5-4bb1-af84-ea7ba0b4fc22',
+                opacity: 1,
+                layer: 'f7848792-8ffe-497e-8142-893d606b7754',
+              },
+              {
+                dataset: 'c66d7f3a-d1a8-488f-af8b-302b0f2c3840',
+                opacity: 1,
+                layer: 'fdf06d8c-72e9-48a7-80f1-27bd5f19342c',
+              },
+            ]),
+            tab: 'analysis',
+          },
+        },
+      },
+    },
+    {
+      title: 'landing:map_analysis_carousel.content.1',
+      button: {
+        label: 'landing:map_analysis_carousel.link_to_map_button',
+        url: { pathname: '/explore', query: { tab: 'analysis' } },
+      },
+    },
+    {
+      title: 'landing:map_analysis_carousel.content.2',
+      button: {
+        label: 'landing:map_analysis_carousel.link_to_map_button',
         url: {
           pathname: '/explore',
           query: {
@@ -77,54 +111,21 @@ const ANALYSIS = {
         },
       },
     },
-    {
-      title: 'Understand how cotton production is exposed to water stress.',
-      button: {
-        label: 'Check out the data',
-        url: {
-          pathname: '/explore',
-          query: {
-            layers: JSON.stringify([
-              {
-                dataset: '54af072c-7bb5-4bb1-af84-ea7ba0b4fc22',
-                opacity: 1,
-                layer: 'f7848792-8ffe-497e-8142-893d606b7754',
-              },
-              {
-                dataset: 'c66d7f3a-d1a8-488f-af8b-302b0f2c3840',
-                opacity: 1,
-                layer: 'fdf06d8c-72e9-48a7-80f1-27bd5f19342c',
-              },
-            ]),
-            tab: 'analysis',
-          },
-        },
-      },
-    },
-    {
-      title:
-        'Droughts and floods put rice at risk, with impacts to global food supply.',
-      button: {
-        label: 'Check out the data',
-        url: { pathname: '/explore', query: { tab: 'analysis' } },
-      },
-    },
-    {
-      title:
-        'Understand how climate hazards affect coffee production around the world',
-      button: {
-        label: 'Check out the data',
-        url: { pathname: '/explore', query: { tab: 'analysis' } },
-      },
-    },
+    // {
+    //   title:
+    //     'Understand how climate hazards affect coffee production around the world',
+    //   button: {
+    //     label: 'Check out the data',
+    //     url: { pathname: '/explore', query: { tab: 'analysis' } },
+    //   },
+    // },
   ],
 };
 
 const LEARN = {
-  title: 'Learn more about the project',
-  subTitle:
-    'The Agricultural Adaptation Tool project is an initiative by World Resources Institute. The beta version of the tool has been funded by the Walmart Foundation.',
-  button: { label: 'Read More', url: '/about' },
+  title: 'landing:landing_to_about.title',
+  subTitle: 'landing:landing_to_about.subtitle',
+  button: { label: 'landing:landing_to_about.button_label', url: '/about' },
   image: aboutImage,
 };
 

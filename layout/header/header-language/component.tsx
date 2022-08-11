@@ -17,7 +17,7 @@ export default function HeaderLanguage() {
   const { pathname, query, locale, asPath } = router;
 
   const changeLanguage = (locale: string) => {
-    router.push({ pathname, query }, asPath, { locale, shallow: true });
+    router.push({ pathname, query }, asPath, { locale });
   };
 
   // TO DO: might need to update element iteration with additional nav links

@@ -5,6 +5,7 @@ import flowStepEnd from 'public/images/components/flow-button/flow-step-end.svg'
 import classnames from 'classnames';
 import Icon from 'components/ui/icon';
 import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
 
 export interface FlowButtonProps {
   start: boolean;
@@ -25,6 +26,8 @@ const FlowButton = ({
   id,
 }: FlowButtonProps) => {
   const router = useRouter();
+
+  const { t } = useTranslation('common');
 
   const handleClick = () => {
     !active &&
@@ -61,7 +64,7 @@ const FlowButton = ({
             })}
             name={icon}
           />
-          <h3>{label}</h3>
+          <h3>{t(label)}</h3>
         </div>
       </a>
     </div>

@@ -1,0 +1,46 @@
+{
+	"layers": {
+		"Advanced Search": "అధునాతన శోధన",
+		"Add to map": "మ్యాప్ కు జోడించు",
+		"Layers": "పొరలు[మార్చు]",
+		"Search Layers": "శోధన పొరలు",
+		"start_search": "శోధన ప్రారంభించడానికి టైప్ చేయండి",
+		"Filter Layers by": "ద్వారా లేయర్ లను ఫిల్టర్ చేయి",
+		"value_chains": {
+			"hint": "ఫార్వార్డ్ లుకింగ్ డేటా కొరకు ఒక పాత్ వేని ఎంచుకోండి."
+		}
+	},
+	"analysis": {
+		"Analysis": "విశ్లేషణ",
+		"Add a Location": "స్థానాన్ని జోడించు",
+		"Add Location": "స్థానాన్ని జోడించు",
+		"Select a Location": "స్థానాన్ని ఎంచుకోండి",
+		"Select point on map": "మ్యాప్ పై పాయింట్ ఎంచుకోండి",
+		"Use my current location": "నా ప్రస్తుత స్థానాన్ని ఉపయోగించు",
+		"Search by address": "చిరునామా ద్వారా శోధించండి",
+		"Choose my location": "నా స్థానాన్ని ఎంచుకోండి"
+	},
+	"explore_detail": {
+		"Read more": "మరింత చదవండి",
+		"Active": "చురుకైన",
+		"Show layer": "లేయర్ ను చూపు",
+		"Overview": "అవలోకనం",
+		"Dataset layers": "డేటాసెట్ లేయర్లు",
+		"Further information": "తదుపరి సమాచారం"
+	},
+	"map": {
+		"basemaps": {
+			"Dark": "చీకటి",
+			"Light": "కాంతి",
+			"Satellite": "ఉపగ్రహం",
+			"Terrain": "భూభాగం",
+			"Hydrography": "హైడ్రోగ్రఫీ"
+		},
+		"labels": {
+			"No labels": "లేబుల్స్ లేవు",
+			"Labels light": "లేబుల్స్ లైట్",
+			"Labels dark": "లేబుల్స్ ముదురు"
+		},
+		"Boundaries": "సరిహద్దులు"
+	}
+}

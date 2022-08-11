@@ -1,0 +1,21 @@
+{
+	"intro": {
+		"title": "Acerca de la Herramienta de Adaptación Agrícola",
+		"description": [
+			"El Instituto de Recursos Mundiales ha estado construyendo un programa multifacético sobre la transformación de la agricultura para la resiliencia climática en los últimos cinco años. El objetivo de este trabajo es informar a los financiadores, formuladores de políticas y profesionales para integrar el riesgo climático y la resiliencia en los planes, políticas y programas.",
+			"La Herramienta de Adaptación Agrícola se desarrolla centrándose en la participación profunda de las partes interesadas para reunir el conocimiento sectorial con la experiencia técnica y de datos, respaldada por un enfoque centrado en el usuario para el desarrollo de herramientas."
+		]
+	},
+	"acknowledgements": {
+		"contributors": {
+			"header": "Un agradecimiento especial a nuestros colaboradores"
+		},
+		"committee_members": {
+			"subheader": "Miembros del Comité Asesor Técnico",
+			"text": "Agrosavia, CIAT, CIMMYT, Climate Analytics, Corporación Colombiana de Investigación Agrícola, Climate Edge, Cotton 2040/Forum for the Future, Ecosistema Jaguar, FAO GAEZ, IFPRI, IIASA Hotspots Explorer, ITACA, ITC, Olam International, Pepsi Co, Suntory, Universidad de Florida, Banco Mundial, Fundación Mundial del Cacao, Programa Mundial de Alimentos."
+		},
+		"funders": {
+			"header": "Nuestros Financiadores"
+		}
+	}
+}

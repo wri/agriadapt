@@ -64,7 +64,7 @@ const LANDING = {
 
 const RICE = {
   id: 'RICE',
-  title: 'common:value_chains.Rice',
+  title: 'common:value_chains.rice',
   subtitle: 'intro.subtitle',
   description: ['intro.description.0'],
   image: riceImage,
@@ -73,7 +73,7 @@ const RICE = {
 
 const COTTON = {
   id: 'COTTON',
-  title: 'common:value_chains.Cotton',
+  title: 'common:value_chains.cotton',
   subtitle: 'intro.subtitle',
   description: ['intro.description.0'],
   image: cottonImage,
@@ -82,7 +82,7 @@ const COTTON = {
 
 const COFFEE = {
   id: 'COFFEE',
-  title: 'common:value_chains.Coffee',
+  title: 'common:value_chains.coffee',
   subtitle: 'intro.subtitle',
   description: ['intro.description.0'],
   image: coffeeImage,
