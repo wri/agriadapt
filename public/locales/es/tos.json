@@ -18,7 +18,9 @@
 			"A": "Para utilizar muchos de los Servicios, debe registrarse para obtener una cuenta.",
 			"B": "Cuando utiliza nuestras interfaces de programa de aplicaciones (\"API(s)\"), cada solicitud a una API debe incluir una de las claves API únicas de Su Cuenta.",
 			"C": "Por favor, proteja la seguridad de su cuenta. Usted es responsable de Su uso de los Servicios y de toda la actividad que ocurra bajo Su Cuenta, incluido cualquier uso de las claves API de Su Cuenta.",
-			"D": "Si utiliza nuestras API en sus propios productos, acreditenos. Usted acepta atribuir nuestras API de acuerdo con nuestros Requisitos de atribución, disponibles en [{{url}}].",
+			"integrated_url_D": "Si utiliza nuestras API en sus propios productos, acreditenos. Usted acepta atribuir nuestras API de acuerdo con nuestros Requisitos de atribución, disponibles en [{{url}}].",
+			"D": "Si utiliza nuestras API en sus propios productos, acreditenos. Usted acepta atribuir nuestras API de acuerdo con nuestros Requisitos de atribución, disponibles en [",
+			"D1": "].",
 			"E": "Podemos cancelar o suspender Su acceso a los Servicios en cualquier momento y por cualquier motivo, sin previo aviso. Tras la cancelación o suspensión, Su derecho a utilizar los Servicios finalizará. Tendrá derecho a acceder a Su Contenido almacenado en los Servicios durante un período de quince días después de la cancelación o suspensión; a partir de entonces, es posible que no tenga acceso a Su Contenido almacenado en los Servicios."
 		}
 	},
