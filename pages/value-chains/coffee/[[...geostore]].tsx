@@ -48,7 +48,7 @@ export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps
         
         const { name: label, geostoreId: value, iso } = geo;
         if (iso === 'IND' && viewer_iso2 === 'IN')
-          arr.push({ india_worldview_geostore });
+          arr.push(india_worldview_geostore);
         else arr.push({ label, value, iso });
         return arr;
       }, []);
