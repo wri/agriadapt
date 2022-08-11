@@ -1,8 +1,8 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 // components
-import CardPlaceholder from "components/card-placeholder";
-import WidgetSidebar from "./component";
+import CardPlaceholder from 'components/card-placeholder';
+import WidgetSidebar from './component';
 
 export default function WidgetSidebarContainer({ widgetIds, params, adapter }) {
   if (params.geostore_id) {
@@ -16,16 +16,16 @@ export default function WidgetSidebarContainer({ widgetIds, params, adapter }) {
       <CardPlaceholder />
       <div
         style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
           padding: 25,
-          textAlign: "center",
+          textAlign: 'center',
         }}
       >
         <h4
           style={{
-            fontWeight: "bold",
+            fontWeight: 'bold',
           }}
         >
           Start by selecting a coastal river basin

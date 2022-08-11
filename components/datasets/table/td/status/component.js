@@ -1,14 +1,14 @@
-import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
-import classnames from "classnames";
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 const classesDic = {
   status: {
-    success: "-success",
-    failed: "-failed",
-    saved: "-saved",
-    deleted: "-deleted",
-    pending: "-pending",
+    success: '-success',
+    failed: '-failed',
+    saved: '-saved',
+    deleted: '-deleted',
+    pending: '-pending',
   },
 };
 
@@ -17,7 +17,7 @@ class StatusTD extends PureComponent {
 
   render() {
     const { value } = this.props;
-    const tdClass = classnames("status", {
+    const tdClass = classnames('status', {
       [classesDic.status[value]]: !!classesDic.status[value],
     });
 

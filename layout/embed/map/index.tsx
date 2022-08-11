@@ -7,7 +7,7 @@ import LayoutEmbedMap from './component';
 
 interface LayoutEmbedMapContainerProps {
   widgetId: string;
-  params: ParsedUrlQuery,
+  params: ParsedUrlQuery;
 }
 
 export default function LayoutEmbedMapContainer({

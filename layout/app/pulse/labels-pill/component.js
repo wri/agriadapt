@@ -1,6 +1,6 @@
-import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
-import classnames from "classnames";
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 class LayerPillComponent extends PureComponent {
   render() {
@@ -8,11 +8,11 @@ class LayerPillComponent extends PureComponent {
     const { labelsLayerActive } = labelsPulse;
 
     const className = classnames({
-      "labels-pill": true,
-      "c-button": true,
-      "-secondary": !labelsLayerActive,
-      "-primary": labelsLayerActive,
-      "-active": labelsLayerActive,
+      'labels-pill': true,
+      'c-button': true,
+      '-secondary': !labelsLayerActive,
+      '-primary': labelsLayerActive,
+      '-active': labelsLayerActive,
     });
 
     return (

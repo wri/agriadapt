@@ -6,7 +6,7 @@ export const EXPLORE_TABS = {
 export const EXPLORE_FILTERS = {
   VALUE_CHAINS: {
     placeholder: 'Value Chains',
-    hint: 'Select a pathway for forward-looking data.',
+    hint: 'explore:layers.value_chains.hint',
     type: 'select',
     multi: true,
     options: [
@@ -20,8 +20,8 @@ export const EXPLORE_FILTERS = {
     type: 'select',
     tooltip: 'More information about the filter',
     options: [
-      { label: 'Optimistic RCP 4.5', value: 'rcp4.5' },
-      { label: 'Pessimistic RCP 8.5', value: 'rcp8.5' },
+      { label: 'common:emission_scenarios.optimistic', value: 'rcp4.5' },
+      { label: 'common:emission_scenarios.pessimistic', value: 'rcp8.5' },
     ],
   },
   TIMESCALE: {
@@ -43,8 +43,8 @@ export const EXPLORE_ANALYSIS = {
       { label: 'Search by address', value: 'address' },
       { label: 'Choose my location', value: 'admin' },
     ],
-  }
-}
+  },
+};
 
 export const INDIA_BLACKLIST_DATASET_IDS = [
   '2dcd7aeb-d290-414b-80a2-8d90c44ae02a',

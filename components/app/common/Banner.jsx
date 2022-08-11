@@ -1,5 +1,5 @@
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 export default function Banner({
   styles,
@@ -12,9 +12,9 @@ export default function Banner({
   return (
     <section
       className={classNames({
-        "c-banner": true,
-        "-use-background": useBackground,
-        "-use-dim": useDim,
+        'c-banner': true,
+        '-use-background': useBackground,
+        '-use-dim': useDim,
         [className]: className,
       })}
       style={{

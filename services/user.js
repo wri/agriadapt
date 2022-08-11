@@ -1,6 +1,6 @@
 // utils
-import { logger } from "utils/logs";
-import { localAPI, WRIAPI } from "utils/axios";
+import { logger } from 'utils/logs';
+import { localAPI, WRIAPI } from 'utils/axios';
 
 /**
  * Logs in a user based on the email + password combination
@@ -9,9 +9,9 @@ import { localAPI, WRIAPI } from "utils/axios";
  * @returns {Object}
  */
 export const loginUser = ({ email, password }) => {
-  logger.info("Login user");
+  logger.info('Login user');
   return localAPI
-    .post("local-sign-in", { email, password })
+    .post('local-sign-in', { email, password })
     .then((response) => response.data);
 };
 
@@ -23,8 +23,8 @@ export const loginUser = ({ email, password }) => {
  * @returns {Object}
  */
 export const forgotPassword = ({ email }) => {
-  logger.info("Forgot password");
-  return WRIAPI.post("auth/reset-password", { email })
+  logger.info('Forgot password');
+  return WRIAPI.post('auth/reset-password', { email })
     .then((response) => response.data)
     .catch(({ response }) => {
       const { status, statusText } = response;
@@ -47,8 +47,8 @@ export const forgotPassword = ({ email }) => {
  * @returns {Object}
  */
 export const registerUser = ({ email }) => {
-  logger.info("Register user");
-  return WRIAPI.post("auth/sign-up", {
+  logger.info('Register user');
+  return WRIAPI.post('auth/sign-up', {
     email,
     apps: [process.env.NEXT_PUBLIC_APPLICATIONS],
   })
@@ -70,7 +70,7 @@ export const registerUser = ({ email }) => {
  * @returns {Object}
  */
 export const resetPassword = ({ tokenEmail, password, repeatPassword }) => {
-  logger.info("Reset password");
+  logger.info('Reset password');
   return WRIAPI.post(`auth/reset-password/${tokenEmail}`, {
     password,
     repeatPassword,
@@ -106,10 +106,10 @@ export const uploadPhoto = (file, user) =>
       };
 
       return fetch(`${process.env.NEXT_PUBLIC_WRI_API_URL}/v1/profile`, {
-        method: "POST",
+        method: 'POST',
         body: JSON.stringify(bodyObj),
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
           Authorization: user.token,
         },
       })
@@ -125,12 +125,12 @@ export const uploadPhoto = (file, user) =>
   });
 
 export const fetchUser = (userToken) =>
-  WRIAPI.get("/auth/user/me", {
+  WRIAPI.get('/auth/user/me', {
     headers: {
       Authorization: userToken,
     },
   })
     .then((res) => res.data)
     .catch(() => {
-      throw Error("unable to fetch user");
+      throw Error('unable to fetch user');
     });

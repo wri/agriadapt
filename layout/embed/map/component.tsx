@@ -14,13 +14,22 @@ import { useGeostore } from 'hooks/geostore';
 // utils
 import { isLoadedExternally } from 'utils/embed';
 
-const WidgetShareModal = dynamic(() => import('../../../components/widgets/share-modal'), {
-  ssr: false,
-});
+const WidgetShareModal = dynamic(
+  () => import('../../../components/widgets/share-modal'),
+  {
+    ssr: false,
+  }
+);
 
 const isExternal = isLoadedExternally();
 
-export default function LayoutEmbedMap({ widget, widgetId, aoi, params, isWebshot }) {
+export default function LayoutEmbedMap({
+  widget,
+  widgetId,
+  aoi,
+  params,
+  isWebshot,
+}) {
   const [widgetToShare, setWidgetToShare] = useState(null);
 
   const handleShareWidget = useCallback((_widget) => {
@@ -37,8 +46,8 @@ export default function LayoutEmbedMap({ widget, widgetId, aoi, params, isWebsho
     // see https://resource-watch.github.io/doc-api/reference.html#webshot
     // it waits until 2 seconds to notify is ready to screenshot
     const timerId = window.setTimeout(() => {
-        // eslint-disable-next-line
-        // @ts-ignore
+      // eslint-disable-next-line
+      // @ts-ignore
       window.WEBSHOT_READY = true;
     }, 2000);
 
@@ -57,12 +66,12 @@ export default function LayoutEmbedMap({ widget, widgetId, aoi, params, isWebsho
         return geostore.geojson.features[0].properties || {};
       },
       placeholderData: null,
-    },
+    }
   );
 
   const updatedParams = useMemo(
     () => ({ ...params, ...geostoreProperties }),
-    [params, geostoreProperties],
+    [params, geostoreProperties]
   );
 
   return (

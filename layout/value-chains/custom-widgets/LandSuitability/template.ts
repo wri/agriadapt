@@ -229,7 +229,7 @@ export const template = {
       title: 'Suitability Class',
       titlePadding: 10,
       fill: 'color',
-      legendY: 175,
+      legendY: 200,
       legendX: { signal: 'width - 300' },
       labelFontSize: 16,
       titleFontSize: 13,

@@ -1,8 +1,8 @@
-import PropTypes from "prop-types";
-import Link from "next/link";
+import PropTypes from 'prop-types';
+import Link from 'next/link';
 
 // components
-import Icon from "components/ui/icon";
+import Icon from 'components/ui/icon';
 
 export default function Breadcrumbs({ items }) {
   return (

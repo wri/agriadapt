@@ -10,14 +10,10 @@ export const TRANSIFEX_BLACKLIST = [
   '/app/explore/embed',
 ];
 
-export const FULLSCREEN_PAGES = [
-  '/data/pulse',
-  '/sign-in',
-  '/explore',
-];
+export const FULLSCREEN_PAGES = ['/data/pulse', '/sign-in', '/explore'];
 
 const GADM_COUNTRIES_TABLENAME = 'gadm36_countries';
-const GADM_ADM1_TABLENAME = 'gadm36_adm1'
+const GADM_ADM1_TABLENAME = 'gadm36_adm1';
 
 export const GADM_COUNTIRES_DATASET_ID = 'a8dc9474-ba42-4ae3-a7d3-d8df5f1e78df';
 

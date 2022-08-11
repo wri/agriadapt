@@ -2,69 +2,69 @@ $small-picture-size: 162px;
 $picture-size: 250px;
 
 .c-user-stories {
-    // width: 100%;
-    margin: 158px auto;
-    @media screen and (min-width: map-get($breakpoints, medium)) {
-        margin: 204px auto;
+  // width: 100%;
+  margin: 158px auto;
+  @media screen and (min-width: map-get($breakpoints, medium)) {
+    margin: 204px auto;
+  }
+
+  @media screen and (min-width: map-get($breakpoints, large)) {
+    margin: 0 auto;
+  }
+
+  .c-user-stories-body {
+    // max-width: 1010px;
+    margin: 0 auto;
+
+    .c-carousel {
+      width: 100%;
     }
 
-    @media screen and (min-width: map-get($breakpoints, large)) {
-        margin: 0 auto;
-    }
+    .c-user-story {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: 0 auto;
 
-    .c-user-stories-body {
-        // max-width: 1010px;
-        margin: 0 auto;
+      @media screen and (min-width: map-get($breakpoints, medium)) {
+        flex-direction: row;
+      }
 
-        .c-carousel {
-            width: 100%;
+      .user-picture {
+        margin: 0 auto;
+        border: 3px solid #a8c19f;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @media screen and (min-width: map-get($breakpoints, medium)) {
+          width: $small-picture-size;
+          height: $small-picture-size;
         }
 
-        .c-user-story {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            margin: 0 auto;
-
-            @media screen and (min-width: map-get($breakpoints, medium)) {
-                flex-direction: row;
-            }
-
-            .user-picture {
-                margin: 0 auto;
-                border: 3px solid #A8C19F;
-                border-radius: 50%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-
-                @media screen and (min-width: map-get($breakpoints, medium)) {
-                    width: $small-picture-size;
-                    height: $small-picture-size;
-                }
-
-                @media screen and (min-width: map-get($breakpoints, large)) {
-                    width: $picture-size;
-                    height: $picture-size;
-                }
-
-                span {
-                    border-radius: 50%;
-                    text-align: center;
-                }
-            }
-
-            .c-user-info {
-                margin: 0px 30px 0px 30px;
-
-                @media screen and (min-width: map-get($breakpoints, medium)) {
-                    max-width: 371px;
-                }
-
-                @media screen and (min-width: map-get($breakpoints, large)) {
-                    max-width: 520px;
-                }
-            }
+        @media screen and (min-width: map-get($breakpoints, large)) {
+          width: $picture-size;
+          height: $picture-size;
         }
+
+        span {
+          border-radius: 50%;
+          text-align: center;
+        }
+      }
+
+      .c-user-info {
+        margin: 0px 30px 0px 30px;
+
+        @media screen and (min-width: map-get($breakpoints, medium)) {
+          max-width: 371px;
+        }
+
+        @media screen and (min-width: map-get($breakpoints, large)) {
+          max-width: 520px;
+        }
+      }
     }
+  }
 }

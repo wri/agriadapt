@@ -1,4 +1,4 @@
-import { createSelector } from "reselect";
+import { createSelector } from 'reselect';
 
 const pages = (state) => state.pages.pages.list;
 const filters = (state) => state.pages.pages.filters;
@@ -15,10 +15,10 @@ const getFilteredPages = (pages, filters) => {
   return pages.filter((page) => {
     // eslint-disable-line arrow-body-style
     return filters.every((filter) => {
-      if (filter.key === "id") return page.id === filter.value;
+      if (filter.key === 'id') return page.id === filter.value;
       if (!page[filter.key]) return false;
 
-      if (typeof filter.value === "string") {
+      if (typeof filter.value === 'string') {
         return page[filter.key].toLowerCase().match(filter.value.toLowerCase());
       }
 

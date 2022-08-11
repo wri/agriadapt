@@ -1,9 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Tether from "react-tether";
-import classnames from "classnames";
-import Icon from "components/ui/icon";
-import CheckboxGroup from "../../../form/CheckboxGroup";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Tether from 'react-tether';
+import classnames from 'classnames';
+import Icon from 'components/ui/icon';
+import CheckboxGroup from '../../../form/CheckboxGroup';
 
 export default class TableFilters extends React.Component {
   static propTypes = {
@@ -23,7 +23,7 @@ export default class TableFilters extends React.Component {
 
     this.state = {
       closed: true,
-      input: "",
+      input: '',
       sort: 1,
       values: props.values || [],
       selected: props.selected || [],
@@ -52,7 +52,7 @@ export default class TableFilters extends React.Component {
   }
 
   componentWillUnmount() {
-    window.removeEventListener("click", this.onScreenClick);
+    window.removeEventListener('click', this.onScreenClick);
   }
 
   /**
@@ -78,12 +78,12 @@ export default class TableFilters extends React.Component {
     //                        filter btn won't trigger the screenClick,
     //                        so we will have 2 dropdown filters at the same time
     requestAnimationFrame(() => {
-      window[closed ? "addEventListener" : "removeEventListener"](
-        "click",
+      window[closed ? 'addEventListener' : 'removeEventListener'](
+        'click',
         this.onScreenClick
       );
-      window[closed ? "addEventListener" : "removeEventListener"](
-        "keyup",
+      window[closed ? 'addEventListener' : 'removeEventListener'](
+        'keyup',
         this.onKeyUp
       );
     });
@@ -93,7 +93,7 @@ export default class TableFilters extends React.Component {
 
   // WINDOW EVENTS
   onScreenClick(e) {
-    const el = document.querySelector(".c-table-tooltip");
+    const el = document.querySelector('.c-table-tooltip');
     const clickOutside = el && el.contains && !el.contains(e.target);
 
     if (clickOutside) {
@@ -129,7 +129,7 @@ export default class TableFilters extends React.Component {
     // That's why I put this
     e && e.stopPropagation();
 
-    this.setState({ input: "" }, () => {
+    this.setState({ input: '' }, () => {
       this.props.onSearch &&
         this.props.onSearch({
           field: this.props.field,
@@ -196,7 +196,7 @@ export default class TableFilters extends React.Component {
     const { selected, input, values } = this.state;
 
     const btnClass = classnames({
-      "-active":
+      '-active':
         (values && selected && values.length !== selected.length) || input,
     });
 
@@ -206,11 +206,11 @@ export default class TableFilters extends React.Component {
           attachment="top center"
           constraints={[
             {
-              to: "window",
+              to: 'window',
               pin: true,
             },
           ]}
-          classes={{ element: "c-table-tooltip -footer" }}
+          classes={{ element: 'c-table-tooltip -footer' }}
           renderTarget={(ref) => (
             <button
               ref={ref}

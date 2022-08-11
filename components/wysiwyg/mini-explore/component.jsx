@@ -1,17 +1,17 @@
-import { useMemo, useCallback } from "react";
-import PropTypes from "prop-types";
-import { ErrorBoundary } from "react-error-boundary";
+import { useMemo, useCallback } from 'react';
+import PropTypes from 'prop-types';
+import { ErrorBoundary } from 'react-error-boundary';
 
 // components
 import ErrorFallback from 'components/error-fallback';
-import MiniExplore from "components/mini-explore";
+import MiniExplore from 'components/mini-explore';
 
 function MiniExploreBlock({ item }) {
   const config = useMemo(() => {
     try {
       return JSON.parse(item.content);
     } catch (e) {
-      throw new Error("Mini Explore: error parsing content.");
+      throw new Error('Mini Explore: error parsing content.');
     }
   }, [item]);
 

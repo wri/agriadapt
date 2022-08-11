@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 export const mapWidgetInitialState = {
   layerGroups: [],
@@ -8,7 +8,7 @@ export const mapWidgetInitialState = {
 };
 
 export const mapWidgetSlice = createSlice({
-  name: "map-widget",
+  name: 'map-widget',
   reducers: {
     setMapLayerGroups: (state, { payload }) => ({
       ...state,

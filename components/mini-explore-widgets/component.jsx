@@ -1,12 +1,12 @@
-import { useReducer, useCallback, useEffect } from "react";
-import PropTypes from "prop-types";
+import { useReducer, useCallback, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 // components
-import WidgetSidebar from "./widget-sidebar";
-import MiniExploreMap from "./map";
+import WidgetSidebar from './widget-sidebar';
+import MiniExploreMap from './map';
 
 // reducers
-import { miniExploreWidgetState, miniExploreWidgetSlice } from "./reducer";
+import { miniExploreWidgetState, miniExploreWidgetSlice } from './reducer';
 
 const miniExploreWidgetReducer = miniExploreWidgetSlice.reducer;
 const { setGeostoreBasin } = miniExploreWidgetSlice.actions;

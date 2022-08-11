@@ -1,5 +1,5 @@
-import * as actions from "./actions";
-import initialState from "./initial-state";
+import * as actions from './actions';
+import initialState from './initial-state';
 
 export default {
   [actions.setTagsTooltip]: (state, { payload }) => ({

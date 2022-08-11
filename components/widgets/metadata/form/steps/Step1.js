@@ -1,14 +1,14 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 // components
-import Field from "components/form/Field";
-import Input from "components/form/Input";
-import Checkbox from "components/form/Checkbox";
-import Title from "components/ui/Title";
+import Field from 'components/form/Field';
+import Input from 'components/form/Input';
+import Checkbox from 'components/form/Checkbox';
+import Title from 'components/ui/Title';
 
 // constants
-import { FORM_ELEMENTS } from "components/widgets/metadata/form/constants";
+import { FORM_ELEMENTS } from 'components/widgets/metadata/form/constants';
 
 class Step1 extends React.Component {
   constructor(props) {
@@ -59,7 +59,7 @@ class Step1 extends React.Component {
     this.setState({ widgetLinksSelected: checked });
     let newWidgetLinks = [];
     if (checked) {
-      newWidgetLinks = [{ name: "", link: "", id: Date.now() }];
+      newWidgetLinks = [{ name: '', link: '', id: Date.now() }];
     }
     this.props.onChange({
       info: {
@@ -78,7 +78,7 @@ class Step1 extends React.Component {
 
   handleAddWidgetLink() {
     const widgetLinks = this.props.form.info.widgetLinks.slice(0);
-    widgetLinks.push({ name: "", link: "", id: Date.now() });
+    widgetLinks.push({ name: '', link: '', id: Date.now() });
     this.props.onChange({ info: { ...this.state.form.info, widgetLinks } });
   }
 
@@ -102,9 +102,9 @@ class Step1 extends React.Component {
             }
             className="-fluid"
             properties={{
-              name: "caption",
-              label: "Caption",
-              type: "text",
+              name: 'caption',
+              label: 'Caption',
+              type: 'text',
               default: this.state.form.info.caption,
               value: this.state.form.info.caption,
             }}
@@ -125,8 +125,8 @@ class Step1 extends React.Component {
                 this.onWidgetLinksCheckboxChange(value.checked)
               }
               properties={{
-                name: "widget_links",
-                title: "Widget links",
+                name: 'widget_links',
+                title: 'Widget links',
                 checked: info.widgetLinks && info.widgetLinks.length > 0,
               }}
             >
@@ -148,12 +148,12 @@ class Step1 extends React.Component {
                               id: elem.id,
                             })
                           }
-                          validations={["required"]}
+                          validations={['required']}
                           className="-fluid"
                           properties={{
-                            name: "widgetLinkName",
-                            label: "Name",
-                            type: "text",
+                            name: 'widgetLinkName',
+                            label: 'Name',
+                            type: 'text',
                             default: elem.name,
                             required: true,
                           }}
@@ -172,12 +172,12 @@ class Step1 extends React.Component {
                               id: elem.id,
                             })
                           }
-                          validations={["required", "url"]}
+                          validations={['required', 'url']}
                           className="-fluid"
                           properties={{
-                            name: "widgetLinkLink",
-                            label: "Link",
-                            type: "text",
+                            name: 'widgetLinkLink',
+                            label: 'Link',
+                            type: 'text',
                             default: elem.link,
                             required: true,
                           }}

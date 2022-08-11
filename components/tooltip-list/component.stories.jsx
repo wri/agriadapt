@@ -1,12 +1,12 @@
-import { useCallback } from "react";
-import PropTypes from "prop-types";
-import { Tooltip } from "vizzuality-components";
+import { useCallback } from 'react';
+import PropTypes from 'prop-types';
+import { Tooltip } from 'vizzuality-components';
 
 // components
-import TooltipList from "./component";
+import TooltipList from './component';
 
 export default {
-  title: "Components/Tooltip-List",
+  title: 'Components/Tooltip-List',
   component: TooltipList,
   argTypes: {},
 };
@@ -22,10 +22,10 @@ const Template = (args) => {
   return (
     <div
       style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100%",
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100%',
       }}
     >
       <Tooltip
@@ -68,17 +68,17 @@ export const Default = Template.bind({});
 Default.args = {
   list: [
     {
-      label: "Brazil",
-      value: "BRA",
+      label: 'Brazil',
+      value: 'BRA',
     },
     {
-      label: "Italy",
-      value: "ITA",
+      label: 'Italy',
+      value: 'ITA',
     },
     {
-      label: "Spain",
-      value: "ESP",
+      label: 'Spain',
+      value: 'ESP',
     },
   ],
-  placeholder: "Type something",
+  placeholder: 'Type something',
 };

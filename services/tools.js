@@ -1,8 +1,8 @@
-import WRISerializer from "wri-json-api-serializer";
+import WRISerializer from 'wri-json-api-serializer';
 
 // utils
-import { WRIAPI } from "utils/axios";
-import { logger } from "utils/logs";
+import { WRIAPI } from 'utils/axios';
+import { logger } from 'utils/logs';
 
 /**
  * Fetch tools
@@ -11,8 +11,8 @@ import { logger } from "utils/logs";
  * @param {Object} headers Request headers.
  */
 export const fetchTools = (params = {}, headers = {}) => {
-  logger.info("Fetch tools");
-  return WRIAPI.get("/v1/tool", {
+  logger.info('Fetch tools');
+  return WRIAPI.get('/v1/tool', {
     headers: {
       ...headers,
     },
@@ -85,9 +85,9 @@ export const updateTool = (tool, token) => {
  * @param {Object} token Authentication token.
  */
 export const createTool = (tool, token) => {
-  logger.info("Create tool");
+  logger.info('Create tool');
   return WRIAPI.post(
-    "/v1/tool",
+    '/v1/tool',
     {
       data: {
         application: process.env.NEXT_PUBLIC_APPLICATIONS,

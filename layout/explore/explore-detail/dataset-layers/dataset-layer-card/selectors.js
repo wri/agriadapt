@@ -1,4 +1,4 @@
-import { createSelector } from "reselect";
+import { createSelector } from 'reselect';
 
 export const getLayerGroup = (state, props) =>
   state.explore.map.layerGroups.find((lg) => lg.dataset === props.dataset.id);

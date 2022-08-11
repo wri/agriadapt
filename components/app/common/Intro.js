@@ -1,9 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Banner from "components/app/common/Banner";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Banner from 'components/app/common/Banner';
 
-function Intro({ title = "", intro = "", styles = {} }) {
-  const isIntroString = typeof intro === "string";
+function Intro({ title = '', intro = '', styles = {} }) {
+  const isIntroString = typeof intro === 'string';
 
   return (
     <div className="c-intro">

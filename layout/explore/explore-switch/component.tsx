@@ -30,7 +30,11 @@ const ExploreSwitch = ({ open, selectedTab, setSidebarSelectedTab }) => {
               name={iconName}
               className={classnames({ 'c-icon': true, '-small': open })}
             />
-            {open && <span className="button-text">{capitalizeFirstLetter(value)}</span>}
+            {open && (
+              <span className="button-text">
+                {capitalizeFirstLetter(value)}
+              </span>
+            )}
           </button>
         );
       })}

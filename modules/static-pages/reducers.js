@@ -1,8 +1,8 @@
-import { createReducer } from "@reduxjs/toolkit";
-import { HYDRATE } from "next-redux-wrapper";
+import { createReducer } from '@reduxjs/toolkit';
+import { HYDRATE } from 'next-redux-wrapper';
 
-import * as actions from "./actions";
-import initialState from "./initial-state";
+import * as actions from './actions';
+import initialState from './initial-state';
 
 export default createReducer(initialState, (builder) => {
   builder

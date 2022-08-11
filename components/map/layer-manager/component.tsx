@@ -1,14 +1,14 @@
-import { useMemo } from "react";
+import { useMemo } from 'react';
 import {
   LayerManager as VizzLayerManager,
   Layer,
-} from "@vizzuality/layer-manager-react";
-import PluginMapboxGl from "@vizzuality/layer-manager-plugin-mapboxgl";
-import { MapRef } from "react-map-gl";
-import { APILayerSpec } from "types/layer";
+} from '@vizzuality/layer-manager-react';
+import PluginMapboxGl from '@vizzuality/layer-manager-plugin-mapboxgl';
+import { MapRef } from 'react-map-gl';
+import { APILayerSpec } from 'types/layer';
 
-import ResourceWatchProviders from "./providers";
-import { parseLayers } from "./utils";
+import ResourceWatchProviders from './providers';
+import { parseLayers } from './utils';
 
 // utils
 // import CANVAS_DECODERS from 'utils/layers/canvas-decoders';

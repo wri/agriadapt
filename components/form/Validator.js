@@ -5,20 +5,20 @@ class Validator {
       required: {
         validate(value) {
           const regex = /.*\S.*/;
-          return regex.test(value || "");
+          return regex.test(value || '');
         },
         message() {
-          return "The field is required";
+          return 'The field is required';
         },
       },
 
       email: {
         validate(value) {
           const regex = /\S+@\S+\.\S+/;
-          return regex.test(value || "");
+          return regex.test(value || '');
         },
         message() {
-          return "The field should be an email";
+          return 'The field should be an email';
         },
       },
 
@@ -26,10 +26,10 @@ class Validator {
         validate(value) {
           const regex =
             /(http|ftp|https):\/\/[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:/~+#-]*[\w@?^=%&amp;/~+#-])?/;
-          return regex.test(value || "");
+          return regex.test(value || '');
         },
         message() {
-          return "The field should be an url: http://example.com";
+          return 'The field should be an url: http://example.com';
         },
       },
 
@@ -73,15 +73,15 @@ class Validator {
   validate(validations, value) {
     return validations.map((validation) => {
       let valid;
-      let message = "";
+      let message = '';
 
-      if (typeof validation === "string") {
+      if (typeof validation === 'string') {
         const validObj = this.validations[validation];
         valid = validObj.validate(value);
         message = validObj.message();
       }
 
-      if (typeof validation === "object") {
+      if (typeof validation === 'object') {
         const validObj = this.validations[validation.type];
         valid = validObj.validate(value, validation.condition, validation.data);
         message = validObj.message(validation.condition);

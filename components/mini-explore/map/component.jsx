@@ -1,35 +1,35 @@
-import { useMemo } from "react";
-import PropTypes from "prop-types";
-import classnames from "classnames";
-import isEmpty from "lodash/isEmpty";
-import { Popup } from "react-map-gl";
+import { useMemo } from 'react';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
+import isEmpty from 'lodash/isEmpty';
+import { Popup } from 'react-map-gl';
 import {
   Legend,
   LegendListItem,
   LegendItemToolbar,
   LegendItemTypes,
   LegendItemTimeStep,
-} from "vizzuality-components";
-import { LegendItemTimeline } from "old-vizzuality-components";
+} from 'vizzuality-components';
+import { LegendItemTimeline } from 'old-vizzuality-components';
 
 // components
-import Map from "components/map";
-import Modal from "components/modal/modal-component";
-import LayerInfoModal from "components/modal/layer-info-modal";
-import LayerManager from "components/map/layer-manager";
-import MapControls from "components/map/controls";
-import ZoomControls from "components/map/controls/zoom";
-import BasemapControls from "components/map/controls/basemap";
-import ResetViewControls from "components/map/controls/reset-view";
-import LayerPopup from "components/map/popup";
+import Map from 'components/map';
+import Modal from 'components/modal/modal-component';
+import LayerInfoModal from 'components/modal/layer-info-modal';
+import LayerManager from 'components/map/layer-manager';
+import MapControls from 'components/map/controls';
+import ZoomControls from 'components/map/controls/zoom';
+import BasemapControls from 'components/map/controls/basemap';
+import ResetViewControls from 'components/map/controls/reset-view';
+import LayerPopup from 'components/map/popup';
 
 // constants
-import { MAPSTYLES, BASEMAPS, LABELS } from "components/map/constants";
+import { MAPSTYLES, BASEMAPS, LABELS } from 'components/map/constants';
 // todo: these constants should be generic
 import {
   LEGEND_TIMELINE_PROPERTIES,
   TIMELINE_THRESHOLD,
-} from "layout/explore/explore-map/constants";
+} from 'layout/explore/explore-map/constants';
 
 export default function MiniExploreMap({
   viewport,
@@ -70,8 +70,8 @@ export default function MiniExploreMap({
 }) {
   const { pitch, bearing } = viewport;
   const resetViewBtnClass = classnames({
-    "-with-transition": true,
-    "-visible": pitch !== 0 || bearing !== 0,
+    '-with-transition': true,
+    '-visible': pitch !== 0 || bearing !== 0,
   });
   const basemap = useMemo(() => BASEMAPS[basemapId], [basemapId]);
   const labels = useMemo(() => LABELS[labelsId], [labelsId]);
@@ -83,9 +83,9 @@ export default function MiniExploreMap({
   return (
     <div
       style={{
-        display: "flex",
+        display: 'flex',
         flex: 1,
-        position: "relative",
+        position: 'relative',
       }}
     >
       <Map

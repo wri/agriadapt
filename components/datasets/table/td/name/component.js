@@ -1,6 +1,6 @@
-import { PureComponent } from "react";
-import PropTypes from "prop-types";
-import Link from "next/link";
+import { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import Link from 'next/link';
 
 class NameTD extends PureComponent {
   static propTypes = {

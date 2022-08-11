@@ -1,4 +1,4 @@
-@use "sass:math";
+@use 'sass:math';
 
 .toggle-search {
   .c-field-search {
@@ -14,7 +14,7 @@
     margin: 0;
     width: 95px;
 
-    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans;
+    font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans;
     font-size: $font-size-normal;
     color: $charcoal-grey;
 

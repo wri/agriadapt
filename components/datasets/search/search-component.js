@@ -1,13 +1,13 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classnames from "classnames";
-import flatten from "lodash/flatten";
-import groupBy from "lodash/groupBy";
-import omit from "lodash/omit";
-import Fuse from "fuse.js";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
+import flatten from 'lodash/flatten';
+import groupBy from 'lodash/groupBy';
+import omit from 'lodash/omit';
+import Fuse from 'fuse.js';
 
 // Components
-import Icon from "components/ui/icon";
+import Icon from 'components/ui/icon';
 
 class SearchComponent extends React.Component {
   static propTypes = {
@@ -35,15 +35,15 @@ class SearchComponent extends React.Component {
     this.fuse = new Fuse(list, {
       keys: [
         {
-          name: "label",
+          name: 'label',
           weight: 0.6,
         },
         {
-          name: "synonyms",
+          name: 'synonyms',
           weight: 0.3,
         },
         {
-          name: "id",
+          name: 'id',
           weight: 0.1,
         },
       ],
@@ -54,7 +54,7 @@ class SearchComponent extends React.Component {
 
   state = {
     index: 0,
-    value: "",
+    value: '',
     filteredList: [],
     groupedFilteredList: {},
   };
@@ -67,7 +67,7 @@ class SearchComponent extends React.Component {
   // - onChangeTab
   // - onChangeSearch
   onScreenClick = (e) => {
-    const el = document.querySelector(".c-dataset-search");
+    const el = document.querySelector('.c-dataset-search');
     const clickOutside = el && el.contains && !el.contains(e.target);
 
     if (clickOutside) {
@@ -88,11 +88,11 @@ class SearchComponent extends React.Component {
 
       // ARROWS
       case 38:
-        this.onKeyArrow("up");
+        this.onKeyArrow('up');
         break;
 
       case 40:
-        this.onKeyArrow("down");
+        this.onKeyArrow('down');
         break;
 
       default:
@@ -103,14 +103,14 @@ class SearchComponent extends React.Component {
   onToggleOpen = (to) => {
     requestAnimationFrame(() => {
       if (to) {
-        window.addEventListener("click", this.onScreenClick);
-        window.addEventListener("keyup", this.onScreenKeyup);
+        window.addEventListener('click', this.onScreenClick);
+        window.addEventListener('keyup', this.onScreenKeyup);
       } else {
-        window.removeEventListener("click", this.onScreenClick);
-        window.removeEventListener("keyup", this.onScreenKeyup);
+        window.removeEventListener('click', this.onScreenClick);
+        window.removeEventListener('keyup', this.onScreenKeyup);
         this.setState({
           index: 0,
-          value: "",
+          value: '',
           filteredList: [],
           groupedFilteredList: {},
         });
@@ -123,11 +123,11 @@ class SearchComponent extends React.Component {
 
   onKeyArrow = (direction) => {
     const { index, filteredList } = this.state;
-    if (direction === "up") {
+    if (direction === 'up') {
       this.setState({ index: index !== 0 ? index - 1 : filteredList.length });
     }
 
-    if (direction === "down") {
+    if (direction === 'down') {
       this.setState({ index: index !== filteredList.length ? index + 1 : 0 });
     }
   };
@@ -181,9 +181,9 @@ class SearchComponent extends React.Component {
     const newGroupFilteredList = omit(
       groupBy(filteredList, (l) => {
         const group = l.labels && l.labels[1];
-        return group || "undefined";
+        return group || 'undefined';
       }),
-      ["undefined", "GEOGRAPHY"]
+      ['undefined', 'GEOGRAPHY']
     );
     this.setState({
       index: Object.keys(newGroupFilteredList).length > 0 ? 1 : 0,
@@ -204,8 +204,8 @@ class SearchComponent extends React.Component {
         <div className="search-container">
           <button
             className={classnames({
-              "search-icon": true,
-              "-search": true,
+              'search-icon': true,
+              '-search': true,
             })}
           >
             <Icon name="icon-search" className="-small" />
@@ -216,8 +216,8 @@ class SearchComponent extends React.Component {
               this.input = c;
             }}
             className={classnames({
-              "search-input": true,
-              "-open": open,
+              'search-input': true,
+              '-open': open,
             })}
             type="search"
             placeholder="Search datasets"
@@ -248,7 +248,7 @@ class SearchComponent extends React.Component {
                           <button
                             type="button"
                             className={classnames({
-                              "-active": index === currentIndex,
+                              '-active': index === currentIndex,
                             })}
                             onClick={() => {
                               this.props.onToggleSelected(l);
@@ -273,7 +273,7 @@ class SearchComponent extends React.Component {
                   <li>
                     <button
                       type="button"
-                      className={classnames({ "-active": index === 0 })}
+                      className={classnames({ '-active': index === 0 })}
                       onClick={() => {
                         this.props.onChangeTextSearch(value);
                         this.onToggleOpen(false);

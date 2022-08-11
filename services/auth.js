@@ -1,13 +1,13 @@
-import { WRIAPI } from "utils/axios";
+import { WRIAPI } from 'utils/axios';
 
 export const signIn = (userCredentials = {}) =>
-  WRIAPI.post("/auth/login", userCredentials).then((response) => {
+  WRIAPI.post('/auth/login', userCredentials).then((response) => {
     if (response.status >= 400) throw Error(response.status);
     return response;
   });
 
 export const signOut = (userToken) =>
-  WRIAPI.get("/auth/logout", {
+  WRIAPI.get('/auth/logout', {
     headers: {
       Authorization: `Bearer ${userToken}`,
     },
@@ -17,7 +17,7 @@ export const signOut = (userToken) =>
   });
 
 export const updateUser = (userData, userToken) =>
-  WRIAPI.patch("/auth/user/me", userData, {
+  WRIAPI.patch('/auth/user/me', userData, {
     headers: {
       Authorization: userToken,
     },

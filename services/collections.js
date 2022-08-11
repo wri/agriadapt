@@ -1,8 +1,8 @@
-import WRISerializer from "wri-json-api-serializer";
+import WRISerializer from 'wri-json-api-serializer';
 
 // utils
-import { WRIAPI } from "utils/axios";
-import { logger } from "utils/logs";
+import { WRIAPI } from 'utils/axios';
+import { logger } from 'utils/logs';
 
 /**
  * Retrieve all collections from a user
@@ -11,11 +11,11 @@ import { logger } from "utils/logs";
  * @param {Object} params Request optional parameters
  */
 export const fetchAllCollections = (token, params = {}, _meta = false) => {
-  logger.info("Fetch all collections");
-  return WRIAPI.get("/v1/collection", {
+  logger.info('Fetch all collections');
+  return WRIAPI.get('/v1/collection', {
     headers: {
       Authorization: token,
-      "Upgrade-Insecure-Requests": 1,
+      'Upgrade-Insecure-Requests': 1,
     },
     params: {
       env: process.env.NEXT_PUBLIC_API_ENV,
@@ -37,7 +37,7 @@ export const fetchAllCollections = (token, params = {}, _meta = false) => {
       const { collections, meta } = data;
 
       if (status >= 300) {
-        logger.error("Error fetching collections:", `${status}: ${statusText}`);
+        logger.error('Error fetching collections:', `${status}: ${statusText}`);
         throw new Error(statusText);
       }
 
@@ -69,7 +69,7 @@ export const fetchCollection = (token, collectionId, params = {}) => {
   return WRIAPI.get(`/v1/collection/${collectionId}`, {
     headers: {
       Authorization: token,
-      "Upgrade-Insecure-Requests": 1,
+      'Upgrade-Insecure-Requests': 1,
     },
     params: {
       env: process.env.NEXT_PUBLIC_API_ENV,
@@ -96,16 +96,16 @@ export const fetchCollection = (token, collectionId, params = {}) => {
  * @param {Object} data collection data
  */
 export const createCollection = (token, data = {}) => {
-  logger.info("Create collection");
+  logger.info('Create collection');
   return WRIAPI.post(
-    "v1/collection",
+    'v1/collection',
     {
       env: process.env.NEXT_PUBLIC_API_ENV,
       ...data,
     },
     {
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
         Authorization: token,
       },
     }
@@ -166,7 +166,7 @@ export const updateCollection = (token, collectionId, data) => {
     },
     {
       headers: {
-        "content-type": "application/json",
+        'content-type': 'application/json',
         Authorization: token,
       },
     }
@@ -199,7 +199,7 @@ export const addResourceToCollection = (token, collectionId, resource = {}) => {
     { ...resource },
     {
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
         Authorization: token,
       },
     }

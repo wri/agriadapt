@@ -63,8 +63,8 @@ export default class LayerGlobeManager {
     };
 
     const layerTpl = {
-      version: "1.3.0",
-      stat_tag: "API",
+      version: '1.3.0',
+      stat_tag: 'API',
       layers: layer.body.layers,
     };
     const params = `?stat_tag=API&config=${encodeURIComponent(

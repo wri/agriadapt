@@ -2,7 +2,7 @@ import React, { useCallback, useEffect } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 // Components
-import Spinner from "components/ui/Spinner";
+import Spinner from 'components/ui/Spinner';
 import DatasetListItem from './list-item';
 
 interface DatasetListProps {

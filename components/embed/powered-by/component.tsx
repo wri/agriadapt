@@ -11,10 +11,7 @@ export default function PoweredBy() {
     >
       Powered by
       <Link href="/">
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a target="_blank" rel="noopener noreferrer">
           <img
             src="/public/images/logo-embed.png"
             alt="Resource Watch logo"

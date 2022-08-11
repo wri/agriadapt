@@ -135,7 +135,7 @@ $table-font-size: $font-size-small;
   // Status
   td.status {
     &:before {
-      content: "";
+      content: '';
       display: inline-block;
       width: 6px;
       height: 6px;

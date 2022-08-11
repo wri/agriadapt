@@ -1,6 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
-import isEqual from "lodash/isEqual";
+import React from 'react';
+import PropTypes from 'prop-types';
+import isEqual from 'lodash/isEqual';
 
 export default class Table extends React.Component {
   /* Property typing */
@@ -110,7 +110,7 @@ export default class Table extends React.Component {
     return paginatedData.map((row, index) => (
       <tr key={index}>
         {this.props.columns.map((col, i) => (
-          <td key={i} className={col.cellClasses ? col.cellClasses : ""}>
+          <td key={i} className={col.cellClasses ? col.cellClasses : ''}>
             {row[col.name]}
           </td>
         ))}

@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 class Switch extends React.Component {
   static defaultProps = {
@@ -34,7 +34,7 @@ class Switch extends React.Component {
   }
 
   render() {
-    const activeClass = this.state.active ? "-active" : null;
+    const activeClass = this.state.active ? '-active' : null;
     return (
       <div className={`c-switch ${this.props.classNames}`}>
         <span

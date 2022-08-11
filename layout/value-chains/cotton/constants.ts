@@ -12,14 +12,20 @@ const inputs = {
       { id: '2a1aab23-1c36-4a17-b5e0-b63a68531c63', fullWidth: true },
       // { id: 'a5b13394-84a8-4f7c-aa2d-7fc332f5c842', fullWidth: true },
       {
-        title: 'Land Suitability for Coffee in {{country}}',
+        title: 'widgets:cotton_land_suitability.title',
         type: 'custom',
         fullWidth: true,
         controls: LandSuitabilityControls,
         controlsProps: {
           options: [
-            { label: 'Rainfed cotton', value: 'rainfed' },
-            { label: 'Irrigated cotton', value: 'irrigated' },
+            {
+              label: 'widgets:cotton_land_suitability.rainfed_cotton',
+              value: 'rainfed',
+            },
+            {
+              label: 'widgets:cotton_land_suitability.irrigated_cotton',
+              value: 'irrigated',
+            },
           ],
           layers: {
             historic: [
@@ -39,13 +45,13 @@ const inputs = {
               '2050s_rcp8p5_rainfed_cotton',
             ],
           },
-        }
+        },
       },
     ],
     // TODO: Additional chart vis
   },
   labor: {
-    info: 'inputs.labor.info',
+    info: ['inputs.labor.info.0', 'inputs.labor.info.1'],
     widgets: [{ id: '4cecc183-2ae4-4045-a7ad-c664ee1c368e' }],
   },
   seedlings: {
@@ -61,7 +67,7 @@ const production = {
     //TODO: Additional Callout - Need working query
     analysis: {
       value: 'N/A',
-      name: 'Data Coming Soon'
+      name: 'Data Coming Soon',
     },
     // analysis: {
     //   name: ({
@@ -100,22 +106,29 @@ const trade = {
     info: 'trade.export_and_import.info',
     widgets: [
       {
-        title: 'Export and Import Statistics for Cotton in {{country}}',
+        title: 'widgets:export_import.cotton.title',
         type: 'custom',
         fullWidth: true,
         controls: ImportExportControls,
         controlsProps: {
           products: [
-            { label: 'Cotton, carded, combed', value: 'Cotton, carded, combed'},
-            { label: 'Cotton lint', value: 'Cotton lint'},
+            {
+              label:
+                'widgets:export_import.cotton.products.cotton_carded_combed',
+              value: 'Cotton, carded, combed',
+            },
+            {
+              label: 'widgets:export_import.cotton.products.cotton_lint',
+              value: 'Cotton lint',
+            },
           ],
           indicators: [
-            { label: 'Quantity', value: 'Quantity' },
-            { label: 'Value', value: 'Value' },
-          ]
-        }
+            { label: 'widgets:indicators.quantity', value: 'Quantity' },
+            { label: 'widgets:indicators.value', value: 'Value' },
+          ],
+        },
       },
-    ]
+    ],
   },
 };
 

@@ -1,17 +1,17 @@
-import { createRef, useRef, useState, useCallback } from "react";
-import PropTypes from "prop-types";
-import { Legend, LegendListItem, LegendItemTypes } from "vizzuality-components";
-import { useDebouncedCallback } from "use-debounce";
+import { createRef, useRef, useState, useCallback } from 'react';
+import PropTypes from 'prop-types';
+import { Legend, LegendListItem, LegendItemTypes } from 'vizzuality-components';
+import { useDebouncedCallback } from 'use-debounce';
 
 // constants
-import { DEFAULT_VIEWPORT, MAPSTYLES } from "components/map/constants";
+import { DEFAULT_VIEWPORT, MAPSTYLES } from 'components/map/constants';
 
 // components
-import Map from "components/map";
-import MapControls from "components/map/controls";
-import ZoomControls from "components/map/controls/zoom";
-import LayerManager from "components/map/layer-manager";
-import MapboxCompare from "./mapbox-compare";
+import Map from 'components/map';
+import MapControls from 'components/map/controls';
+import ZoomControls from 'components/map/controls/zoom';
+import LayerManager from 'components/map/layer-manager';
+import MapboxCompare from './mapbox-compare';
 
 const CompareMaps = (props) => {
   const { layers, bbox, compareOptions } = props;

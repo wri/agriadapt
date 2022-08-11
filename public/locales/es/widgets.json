@@ -1,0 +1,47 @@
+{
+	"rice_land_suitability": {
+		"title": "Idoneidad de la tierra para el arroz en {{país}}",
+		"dryland_rice": "Arroz de secano",
+		"wetland_rice": "Arroz de humedal",
+		"rainfed_rice": "Arroz de secano",
+		"irrigated_rice": "Arroz de regadío"
+	},
+	"coffee_land_suitability": {
+		"title": "Idoneidad de la tierra para el café en {{país}}",
+		"rainfed_coffee": "Café de secano",
+		"irrigated_coffee": "Café de regadío"
+	},
+	"cotton_land_suitability": {
+		"title": "Idoneidad de la tierra para el algodón en {{país}}",
+		"rainfed_cotton": "Algodón de secano",
+		"irrigated_cotton": "Algodón de regadío"
+	},
+	"export_import": {
+		"cotton": {
+			"title": "Estadísticas de exportación e importación de algodón en {{país}}",
+			"products": {
+				"cotton_carded_combed": "Algodón, cardado, peinado",
+				"cotton_lint": "Pelusa de algodón"
+			}
+		},
+		"coffee": {
+			"title": "Estadísticas de exportación e importación de café en {{país}}",
+			"products": {
+				"coffee_green": "Café, verde",
+				"coffee_roasted": "Café tostado"
+			}
+		},
+		"rice": {
+			"title": "Estadísticas de exportación e importación de arroz en {{país}}",
+			"products": {
+				"rice_husked": "Arroz descascarillado",
+				"rice_milled": "Arroz molido",
+				"rice_paddy": "Arrozal"
+			}
+		},
+		"indicators": {
+			"quantity": "Cantidad",
+			"value": "Valor"
+		}
+	}
+}

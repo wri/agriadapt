@@ -1,8 +1,8 @@
-import isEmpty from "lodash/isEmpty";
-import { createSelector } from "reselect";
+import isEmpty from 'lodash/isEmpty';
+import { createSelector } from 'reselect';
 
 // utils
-import { getDateConsideringTimeZone } from "utils/utils";
+import { getDateConsideringTimeZone } from 'utils/utils';
 
 const getDataset = (state) => state.layerCardPulse.dataset;
 const getIsServer = (state) => state.common.isServer;

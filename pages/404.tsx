@@ -7,10 +7,7 @@ const Layout404 = () => {
   return (
     <>
       <HeadError title="Page Not Found" />
-      <LayoutError
-        statusCode={404}
-        description="The page could not be found"
-      />
+      <LayoutError statusCode={404} description="The page could not be found" />
     </>
   );
 };

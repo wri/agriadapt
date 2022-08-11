@@ -1,11 +1,11 @@
-import { useMemo } from "react";
-import PropTypes from "prop-types";
-import { replace } from "@vizzuality/layer-manager-utils";
+import { useMemo } from 'react';
+import PropTypes from 'prop-types';
+import { replace } from '@vizzuality/layer-manager-utils';
 
 // hooks
-import { useSQLQuery } from "hooks/sql";
+import { useSQLQuery } from 'hooks/sql';
 
-import NumericCardIndicator from "./component";
+import NumericCardIndicator from './component';
 
 export default function NumericCardIndicatorContainer({
   id,
@@ -49,7 +49,7 @@ export default function NumericCardIndicatorContainer({
 NumericCardIndicatorContainer.defaultProps = {
   params: {},
   isSelected: false,
-  theme: "primary",
+  theme: 'primary',
 };
 
 NumericCardIndicatorContainer.propTypes = {

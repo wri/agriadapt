@@ -1,9 +1,9 @@
-import { useMemo } from "react";
-import PropTypes from "prop-types";
+import { useMemo } from 'react';
+import PropTypes from 'prop-types';
 
 // components
-import Spinner from "components/ui/Spinner";
-import DatasetListItem from "../card-item";
+import Spinner from 'components/ui/Spinner';
+import DatasetListItem from '../card-item';
 
 export default function DatasetCardList({
   list,

@@ -1,9 +1,9 @@
-import React, { PureComponent } from "react";
-import classNames from "classnames";
-import PropTypes from "prop-types";
+import React, { PureComponent } from 'react';
+import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
 // Components
-import DatasetListItem from "components/datasets/list/list-item";
+import DatasetListItem from 'components/datasets/list/list-item';
 
 class DatasetList extends PureComponent {
   static propTypes = {
@@ -16,11 +16,11 @@ class DatasetList extends PureComponent {
 
   static defaultProps = {
     grid: {
-      small: "small-12",
-      medium: "medium-6",
-      large: "large-4",
-      xlarge: "xlarge-4",
-      xxlarge: "xxlarge-4",
+      small: 'small-12',
+      medium: 'medium-6',
+      large: 'large-4',
+      xlarge: 'xlarge-4',
+      xxlarge: 'xxlarge-4',
     },
   };
 
@@ -31,10 +31,10 @@ class DatasetList extends PureComponent {
       column: true,
       [`-${mode}`]: true,
       [grid.small]: true,
-      [grid.medium]: mode === "grid",
-      [grid.large]: mode === "grid",
-      [grid.xlarge]: mode === "grid",
-      [grid.xxlarge]: mode === "grid",
+      [grid.medium]: mode === 'grid',
+      [grid.large]: mode === 'grid',
+      [grid.xlarge]: mode === 'grid',
+      [grid.xxlarge]: mode === 'grid',
     });
 
     return (
@@ -64,7 +64,7 @@ class DatasetList extends PureComponent {
                     vocabulary={
                       dataset.vocabulary
                         ? dataset.vocabulary.find(
-                            (v) => v.name === "knowledge_graph"
+                            (v) => v.name === 'knowledge_graph'
                           ) || {}
                         : null
                     }

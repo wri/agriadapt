@@ -1,7 +1,7 @@
-import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
-import classnames from "classnames";
-import Icon from "components/ui/icon";
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
+import Icon from 'components/ui/icon';
 
 class Field extends PureComponent {
   static propTypes = {
@@ -49,9 +49,9 @@ class Field extends PureComponent {
     // Set classes
     const fieldClasses = classnames({
       [className]: !!className,
-      "-disabled": properties.disabled,
-      "-valid": valid === true,
-      "-error": valid === false,
+      '-disabled': properties.disabled,
+      '-valid': valid === true,
+      '-error': valid === false,
     });
 
     return (

@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 // constants
-import { BASEMAPS, LABELS } from "components/map/constants";
+import { BASEMAPS, LABELS } from 'components/map/constants';
 
 // utils
-import { logEvent } from "utils/analytics";
-import { sortLayers } from "utils/layers";
+import { logEvent } from 'utils/analytics';
+import { sortLayers } from 'utils/layers';
 
 export const miniExploreState = {
   viewport: {
@@ -32,7 +32,7 @@ export const miniExploreState = {
 };
 
 export const miniExploreSlice = createSlice({
-  name: "mini-explore",
+  name: 'mini-explore',
   reducers: {
     // map management
     setViewport: (state, { payload }) => ({
@@ -129,8 +129,8 @@ export const miniExploreSlice = createSlice({
         });
         if (layerGroups[0].layers.length) {
           logEvent(
-            "Mini Explore Map",
-            "Add layer",
+            'Mini Explore Map',
+            'Add layer',
             `${layerGroups[0].layers[0].name} [${layerGroups[0].layers[0].id}]`
           );
         }

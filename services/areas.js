@@ -1,8 +1,8 @@
-import WRISerializer from "wri-json-api-serializer";
+import WRISerializer from 'wri-json-api-serializer';
 
 // utils
-import { WRIAPI } from "utils/axios";
-import { logger } from "utils/logs";
+import { WRIAPI } from 'utils/axios';
+import { logger } from 'utils/logs';
 
 /**
  * Get area.
@@ -18,7 +18,7 @@ export const fetchArea = (id, params = {}, headers = {}) => {
   return WRIAPI.get(`/v2/area/${id}`, {
     headers: {
       ...headers,
-      "Upgrade-Insecure-Requests": 1,
+      'Upgrade-Insecure-Requests': 1,
     },
     params: {
       env: process.env.NEXT_PUBLIC_API_ENV,
@@ -40,12 +40,12 @@ export const fetchArea = (id, params = {}, headers = {}) => {
  * @returns {Object}
  */
 export const fetchUserAreas = (token, params = {}, _meta = false) => {
-  logger.info("Fetch user areas");
+  logger.info('Fetch user areas');
 
-  return WRIAPI.get("/v2/area", {
+  return WRIAPI.get('/v2/area', {
     headers: {
       Authorization: token,
-      "Upgrade-Insecure-Requests": 1,
+      'Upgrade-Insecure-Requests': 1,
     },
     params: {
       application: process.env.NEXT_PUBLIC_APPLICATIONS,
@@ -62,7 +62,7 @@ export const fetchUserAreas = (token, params = {}, _meta = false) => {
       const { areas, meta } = data;
 
       if (status >= 300) {
-        logger.error("Error fetching areas:", `${status}: ${statusText}`);
+        logger.error('Error fetching areas:', `${status}: ${statusText}`);
         throw new Error(statusText);
       }
 
@@ -110,7 +110,7 @@ export const deleteArea = (areaId, token) => {
  * @returns {Object}
  */
 export const createArea = (name, geostore, token) => {
-  logger.info("Create area");
+  logger.info('Create area');
 
   const bodyObj = {
     name,
@@ -119,7 +119,7 @@ export const createArea = (name, geostore, token) => {
     geostore,
   };
 
-  return WRIAPI.post("/v2/area", bodyObj, { headers: { Authorization: token } })
+  return WRIAPI.post('/v2/area', bodyObj, { headers: { Authorization: token } })
     .then((response) => WRISerializer(response.data))
     .catch(({ response }) => {
       const { status, statusText } = response;

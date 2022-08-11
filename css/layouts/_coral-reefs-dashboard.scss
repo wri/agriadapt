@@ -1,5 +1,5 @@
-@use "sass:math";
-@import "css/settings";
+@use 'sass:math';
+@import 'css/settings';
 
 .coral-reefs-dashboard {
   .section {
@@ -120,7 +120,7 @@
         transition: color $animation-time $ease-in-out-cubic;
 
         &:before {
-          content: "";
+          content: '';
           position: absolute;
           bottom: 0;
           display: inline-block;

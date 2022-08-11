@@ -1,17 +1,17 @@
-import { useState, useMemo, useCallback } from "react";
-import PropTypes from "prop-types";
-import { useSelector } from "react-redux";
+import { useState, useMemo, useCallback } from 'react';
+import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
 // hooks
-import { useMe } from "hooks/user";
-import { useFetchWidget } from "hooks/widget";
-import useBelongsToCollection from "hooks/collection/belongs-to-collection";
+import { useMe } from 'hooks/user';
+import { useFetchWidget } from 'hooks/widget';
+import useBelongsToCollection from 'hooks/collection/belongs-to-collection';
 
 // utils
-import { getRWAdapter } from "utils/widget-editor";
+import { getRWAdapter } from 'utils/widget-editor';
 
 // component
-import CardIndicatorSet from "./component";
+import CardIndicatorSet from './component';
 
 export default function CardIndicatorSetContainer({
   config: { indicators },
@@ -53,7 +53,7 @@ export default function CardIndicatorSetContainer({
   const { data: mainWidget } = useFetchWidget(
     mainWidgetAvailable,
     {
-      includes: "metadata",
+      includes: 'metadata',
     },
     {
       enabled: !!mainWidgetAvailable,

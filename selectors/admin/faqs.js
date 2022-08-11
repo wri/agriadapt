@@ -1,5 +1,5 @@
-import sortBy from "lodash/sortBy";
-import { createSelector } from "reselect";
+import sortBy from 'lodash/sortBy';
+import { createSelector } from 'reselect';
 
 const faqs = (state) => state.faqs.list;
 const filters = (state) => state.faqs.filters;
@@ -17,7 +17,7 @@ const getFilteredFaqs = (faqs = [], filters, order) => {
       const index = order.indexOf(+f.id);
       return { ...f, order: index < 0 ? f.order : index };
     }),
-    "order"
+    'order'
   );
 
   if (!filters.length) return newFaqs;
@@ -25,10 +25,10 @@ const getFilteredFaqs = (faqs = [], filters, order) => {
   return newFaqs.filter((faq) => {
     // eslint-disable-line arrow-body-style
     return filters.some((filter) => {
-      if (filter.key === "id") return faq.id === filter.value;
+      if (filter.key === 'id') return faq.id === filter.value;
       if (!faq[filter.key]) return false;
 
-      if (typeof filter.value === "string") {
+      if (typeof filter.value === 'string') {
         return faq[filter.key].toLowerCase().match(filter.value.toLowerCase());
       }
 

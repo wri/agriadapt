@@ -16,7 +16,7 @@ interface LayoutCropProps {
     label: string;
     value: string;
     iso: string;
-  }
+  };
   countries: {
     label: string;
     value: string;

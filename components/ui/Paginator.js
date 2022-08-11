@@ -1,6 +1,6 @@
-import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
-import Pagination from "rc-pagination";
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import Pagination from 'rc-pagination';
 
 class Paginator extends PureComponent {
   static propTypes = {

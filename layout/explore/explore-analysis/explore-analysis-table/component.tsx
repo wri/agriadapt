@@ -73,7 +73,10 @@ const AnalysisTable = ({
         const params = {
           geojson: encodeURIComponent(JSON.stringify(toGeoJSON(l))),
           iso: l.iso,
-          country: l.iso === 'USA' ? `'United States', 'United States of America'` : `'${l.country}'`,
+          country:
+            l.iso === 'USA'
+              ? `'United States', 'United States of America'`
+              : `'${l.country}'`,
         };
 
         // Evaluating application layer's config query

@@ -1,4 +1,4 @@
-import { createSelector } from "reselect";
+import { createSelector } from 'reselect';
 
 const getLayerGroups = (state) => state.explore.map.layerGroups;
 const getDataset = (state, props) => props.dataset.id;

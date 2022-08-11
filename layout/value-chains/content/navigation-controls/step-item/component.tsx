@@ -1,5 +1,6 @@
 import classnames from 'classnames';
 import Icon from 'components/ui/icon';
+import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 
 interface StepItemProps {
@@ -12,6 +13,8 @@ interface StepItemProps {
 const StepItem = ({ parent, id, label, icon }: StepItemProps) => {
   const router = useRouter();
   const { step = 'inputs' } = router.query;
+
+  const { t } = useTranslation('common');
 
   const handleOnClick = () => {
     router.push(
@@ -36,7 +39,7 @@ const StepItem = ({ parent, id, label, icon }: StepItemProps) => {
           })}
         />
       </div>
-      <span>{label}</span>
+      <span>{t(label)}</span>
     </a>
   );
 };

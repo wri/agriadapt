@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classnames from "classnames";
-import Link from "next/link";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
+import Link from 'next/link';
 
 export default class Tabs extends React.Component {
   constructor(props) {
@@ -32,15 +32,15 @@ export default class Tabs extends React.Component {
     return (
       <header
         className={classnames({
-          "c-tabs": true,
+          'c-tabs': true,
           [className]: !!className,
         })}
       >
         <div className="row l-row">
           {options.map((option) => {
             const btnClasses = classnames({
-              "-active": option.value === selected,
-              "-desktopOnly": option.desktopOnly,
+              '-active': option.value === selected,
+              '-desktopOnly': option.desktopOnly,
             });
 
             return (

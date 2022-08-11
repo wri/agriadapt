@@ -1,3 +1,3 @@
-import StepDetails from "./component";
+import StepDetails from './component';
 
 export default StepDetails;

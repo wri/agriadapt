@@ -4,7 +4,10 @@
     "Add to map": "Add to map",
     "Layers": "Layers",
     "Search Layers": "Search Layers",
-    "Filter Layers by": "Filter Layers by",
+    "start_search": "Type to start search",
+    "Filter Layers by Value Chains": "Filter Layers by Value Chains",
+    "Filter Layers by Emission Scenario": "Filter Layers by Emission Scenario",
+    "Filter Layers by Timescale": "Filter Layers by Timescale",
     "value_chains": {
       "hint": "Select a pathway for forward-looking data."
     }
@@ -36,9 +39,9 @@
       "Hydrography": "Hydrography"
     },
     "labels": {
-        "No labels": "No labels",
-        "Labels light": "Labels light",
-        "Labels dark": "Labels dark"
+      "No labels": "No labels",
+      "Labels light": "Labels light",
+      "Labels dark": "Labels dark"
     },
     "Boundaries": "Boundaries"
   }

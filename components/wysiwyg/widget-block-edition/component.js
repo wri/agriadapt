@@ -1,12 +1,12 @@
-import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 
 // components
-import Tabs from "components/ui/Tabs";
-import Spinner from "components/ui/Spinner";
-import Paginator from "components/ui/Paginator";
-import SearchInput from "components/ui/SearchInput";
-import WidgetCardList from "components/widgets/card-list";
+import Tabs from 'components/ui/Tabs';
+import Spinner from 'components/ui/Spinner';
+import Paginator from 'components/ui/Paginator';
+import SearchInput from 'components/ui/SearchInput';
+import WidgetCardList from 'components/widgets/card-list';
 
 class WidgetBlockEdition extends PureComponent {
   static propTypes = {
@@ -49,9 +49,9 @@ class WidgetBlockEdition extends PureComponent {
                     <h1>Select visualization</h1>
                     <Tabs
                       options={[
-                        { label: "My visualizations", value: "my-widgets" },
-                        { label: "My favorites", value: "my-favorites" },
-                        { label: "All visualizations", value: "all-widgets" },
+                        { label: 'My visualizations', value: 'my-widgets' },
+                        { label: 'My favorites', value: 'my-favorites' },
+                        { label: 'All visualizations', value: 'all-widgets' },
                       ]}
                       defaultSelected={tab}
                       selected={tab}
@@ -69,7 +69,7 @@ class WidgetBlockEdition extends PureComponent {
                 <div className="row">
                   <div className="column small-12">
                     <SearchInput
-                      input={{ placeholder: "Search visualization" }}
+                      input={{ placeholder: 'Search visualization' }}
                       link={{}}
                       onSearch={onChangeSearch}
                     />

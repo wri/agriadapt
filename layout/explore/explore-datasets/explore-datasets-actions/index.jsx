@@ -1,10 +1,10 @@
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
 // actions
-import * as actions from "layout/explore/actions";
+import * as actions from 'layout/explore/actions';
 
 // component
-import ExploreDatasetsActions from "./component";
+import ExploreDatasetsActions from './component';
 
 export default connect(
   (state) => ({

@@ -1,8 +1,8 @@
-import WRISerializer from "wri-json-api-serializer";
+import WRISerializer from 'wri-json-api-serializer';
 
 // utils
-import { WRIAPI } from "utils/axios";
-import { logger } from "utils/logs";
+import { WRIAPI } from 'utils/axios';
+import { logger } from 'utils/logs';
 
 // API docs: TBD
 
@@ -14,13 +14,13 @@ import { logger } from "utils/logs";
  * @returns {Object[]} array of serialized dashboards.
  */
 export const fetchDashboards = (params = {}, headers = {}, _meta = false) => {
-  logger.info("Fetch dashboards");
-  return WRIAPI.get("/v1/dashboard", {
+  logger.info('Fetch dashboards');
+  return WRIAPI.get('/v1/dashboard', {
     headers: {
       ...WRIAPI.defaults.headers,
       ...headers,
       // TO-DO: forces the API to not cache, this should be removed at some point
-      "Upgrade-Insecure-Requests": 1,
+      'Upgrade-Insecure-Requests': 1,
     },
     params: {
       env: process.env.NEXT_PUBLIC_API_ENV,
@@ -50,7 +50,7 @@ export const fetchDashboards = (params = {}, headers = {}, _meta = false) => {
       const { status, data } = response;
       throw new Error(
         `Error fetching dashboards: ${
-          data?.errors[0]?.detail || "Error not defined"
+          data?.errors[0]?.detail || 'Error not defined'
         } – ${status}`
       );
     });
@@ -68,7 +68,7 @@ export const fetchDashboard = (id, params = {}) => {
     headers: {
       ...WRIAPI.defaults.headers,
       // TO-DO: forces the API to not cache, this should be removed at some point
-      "Upgrade-Insecure-Requests": 1,
+      'Upgrade-Insecure-Requests': 1,
     },
     params: {
       env: process.env.NEXT_PUBLIC_API_ENV,
@@ -103,9 +103,9 @@ export const fetchDashboard = (id, params = {}) => {
  * @returns {Object} serialized created dashboard.
  */
 export const createDashboard = (body, token) => {
-  logger.info("Create dashboard");
+  logger.info('Create dashboard');
   return WRIAPI.post(
-    "/v1/dashboard",
+    '/v1/dashboard',
     {
       data: {
         attributes: { ...body },
@@ -211,7 +211,7 @@ export const cloneDashboard = (dashboard, user) => {
   const { token, id: userId } = user;
   const url = `/v1/dashboard/${id}/clone`;
   const params = {
-    "user-id": userId,
+    'user-id': userId,
     data: {
       attributes: {
         published: false,

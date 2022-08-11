@@ -1,9 +1,9 @@
-import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
-import classnames from "classnames";
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
-import Modal from "react-modal";
-import Icon from "components/ui/icon";
+import Modal from 'react-modal';
+import Icon from 'components/ui/icon';
 
 class ModalComponent extends PureComponent {
   static propTypes = {

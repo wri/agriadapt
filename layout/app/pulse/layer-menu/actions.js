@@ -1,26 +1,26 @@
-import { createAction, createThunkAction } from "redux-tools";
+import { createAction, createThunkAction } from 'redux-tools';
 
-import { fetchLayers, fetchLayer } from "services/layer";
+import { fetchLayers, fetchLayer } from 'services/layer';
 
 // Actions
-import { setContextActiveLayers } from "layout/app/pulse/layer-pill/actions";
-import { setInitialPosition } from "components/vis/globe-cesium/actions";
-import { resetLabelsLayer } from "layout/app/pulse/labels-pill/actions";
+import { setContextActiveLayers } from 'layout/app/pulse/layer-pill/actions';
+import { setInitialPosition } from 'components/vis/globe-cesium/actions';
+import { resetLabelsLayer } from 'layout/app/pulse/labels-pill/actions';
 
 // Components
-import LayerGlobeManager from "utils/layers/LayerGlobeManager";
+import LayerGlobeManager from 'utils/layers/LayerGlobeManager';
 
-export const resetLayerPoints = createAction("layer-menu/resetLayerPoints");
-export const setActiveLayer = createAction("layer-menu/setActiveLayer");
+export const resetLayerPoints = createAction('layer-menu/resetLayerPoints');
+export const setActiveLayer = createAction('layer-menu/setActiveLayer');
 export const setActiveLayerLoading = createAction(
-  "layer-menu/setActiveLayerLoading"
+  'layer-menu/setActiveLayerLoading'
 );
 export const setActiveLayerError = createAction(
-  "layer-menu/setActiveLayerError"
+  'layer-menu/setActiveLayerError'
 );
 
 export const resetActiveLayer = createThunkAction(
-  "layer-menu/resetActiveLayer",
+  'layer-menu/resetActiveLayer',
   () => (dispatch) => {
     dispatch(setContextActiveLayers([]));
     dispatch(setActiveLayer(null));
@@ -30,7 +30,7 @@ export const resetActiveLayer = createThunkAction(
 );
 
 export const toggleActiveLayer = createThunkAction(
-  "layer-menu/toggleActiveLayer",
+  'layer-menu/toggleActiveLayer',
   ({
       id,
       threedimensional,

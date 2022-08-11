@@ -1,10 +1,10 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 class GlobeTooltip extends React.Component {
   getContent(val) {
     // eslint-disable-line class-methods-use-this
-    if (val.type === "url") {
+    if (val.type === 'url') {
       return (
         <div>
           <strong>{val.key}</strong>:

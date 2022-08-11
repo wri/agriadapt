@@ -1,3 +1,3 @@
-import ValueChainsContainerHome from "./component";
+import ValueChainsContainerHome from './component';
 
 export default ValueChainsContainerHome;

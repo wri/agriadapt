@@ -1,5 +1,5 @@
-import { blogAPI } from "utils/axios";
-import { logger } from "utils/logs";
+import { blogAPI } from 'utils/axios';
+import { logger } from 'utils/logs';
 
 /**
  * Fetchs posts from wordpress API.
@@ -9,10 +9,10 @@ import { logger } from "utils/logs";
  * @returns {Object[]} array of parsed posts.
  */
 export const fetchPosts = (params = {}, headers = {}) => {
-  logger.info("Fetch posts from blog");
+  logger.info('Fetch posts from blog');
 
   return blogAPI
-    .get("/posts", {
+    .get('/posts', {
       headers: { ...headers },
       params: { ...params },
     })
@@ -26,7 +26,7 @@ export const fetchPosts = (params = {}, headers = {}) => {
 
       if (status >= 300) {
         logger.error(
-          "Error fetching posts from blog:",
+          'Error fetching posts from blog:',
           `${status}: ${statusText}`
         );
         throw new Error(statusText);

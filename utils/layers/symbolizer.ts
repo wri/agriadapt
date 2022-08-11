@@ -1,8 +1,8 @@
 export interface legendConfigItem {
-    color: string;
-    name: string;
-    id: number;
-  }
+  color: string;
+  name: string;
+  id: number;
+}
 
 export const createColorValueMap = (
   xml: string,

@@ -9,7 +9,6 @@ export default function ExploreDetailHeader({
   // userIsLoggedIn,
   isSidebarOpen,
 }) {
-
   return (
     <div
       className="c-explore-detail-header"

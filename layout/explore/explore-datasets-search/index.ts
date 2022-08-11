@@ -7,5 +7,5 @@ export default connect(
   (state: RootState) => ({
     ...state.explore.filters,
   }),
- actions
+  actions
 )(ExploreSearchComponent);

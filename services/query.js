@@ -42,15 +42,17 @@ export const fetchDatasetQuery = async (id, sql) => {
   if (!id) return null;
   if (!sql) return null;
 
-  return WRIAPI.get(`/v1/query/${id}`, {
-    params: { sql },
-  })
-  // return WRIAPI.post(`/v1/query/${id}`, { sql })
-    .then((response) => {
-      if (response.status === 200) return response;
-      throw response;
+  return (
+    WRIAPI.get(`/v1/query/${id}`, {
+      params: { sql },
     })
-    .catch((err) => {
-      throw err;
-    });
+      // return WRIAPI.post(`/v1/query/${id}`, { sql })
+      .then((response) => {
+        if (response.status === 200) return response;
+        throw response;
+      })
+      .catch((err) => {
+        throw err;
+      })
+  );
 };
