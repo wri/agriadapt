@@ -16,14 +16,19 @@
 		"Analysis": "பகுப்பு",
 		"Add a Location": "இருப்பிடத்தைச் சேர்",
 		"Add Location": "இருப்பிடத்தை சேர்",
+		"Cancel": "ரத்து",
 		"Select a Location": "இருப்பிடத்தை தேர்ந்தெடு",
 		"Select point on map": "வரைபடத்தில் புள்ளியை தேர்ந்தெடு",
 		"Use my current location": "எனது நடப்பு இருப்பிடத்தைப் பயன்படுத்து",
 		"Search by address": "முகவரி மூலம் தேடு",
-		"Choose my location": "எனது இருப்பிடத்தைத் தேர்ந்தெடு"
+		"Choose my location": "எனது இருப்பிடத்தைத் தேர்ந்தெடு",
+		"Edit Location": "இருப்பிடத்தை திருத்து",
+		"Customize Name": "பெயரை தனிப்பயனாக்கு",
+		"Delete Location": "இருப்பிடத்தை நீக்கு"
 	},
 	"explore_detail": {
 		"Read more": "மேலும் வாசிக்க",
+		"Read less": "குறைவாக படிக்கவும்",
 		"Active": "செயற்படுத்துகிற",
 		"Show layer": "அடுக்கை காண்பி",
 		"Overview": "கண்ணோட்டம்",

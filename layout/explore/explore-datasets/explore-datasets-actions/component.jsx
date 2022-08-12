@@ -2,6 +2,7 @@ import { useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { logEvent } from 'utils/analytics';
+import { useTranslation } from 'next-i18next';
 
 const ExploreDatasetsActions = (props) => {
   const {
@@ -29,6 +30,8 @@ const ExploreDatasetsActions = (props) => {
     [isActive, dataset, toggleMapLayerGroup, resetMapLayerGroupsInteraction]
   );
 
+  const { t } = useTranslation(['explore', 'common']);
+
   return (
     <div className="c-explore-datasets-actions">
       <button
@@ -44,7 +47,7 @@ const ExploreDatasetsActions = (props) => {
         disabled={!layer}
         onClick={handleToggleLayerGroup}
       >
-        {isActive ? 'Active' : 'Add to map'}
+        {isActive ? t('explore:explore_detail.Active') : t('explore:layers.Add to map')}
       </button>
     </div>
   );

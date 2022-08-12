@@ -16,14 +16,19 @@
 		"Analysis": "విశ్లేషణ",
 		"Add a Location": "స్థానాన్ని జోడించు",
 		"Add Location": "స్థానాన్ని జోడించు",
+		"Cancel": "రద్దు",
 		"Select a Location": "స్థానాన్ని ఎంచుకోండి",
 		"Select point on map": "మ్యాప్ పై పాయింట్ ఎంచుకోండి",
 		"Use my current location": "నా ప్రస్తుత స్థానాన్ని ఉపయోగించు",
 		"Search by address": "చిరునామా ద్వారా శోధించండి",
-		"Choose my location": "నా స్థానాన్ని ఎంచుకోండి"
+		"Choose my location": "నా స్థానాన్ని ఎంచుకోండి",
+		"Edit Location": "స్థానాన్ని సవరించు",
+		"Customize Name": "పేరును అనుకూలీకరించు",
+		"Delete Location": "స్థానాన్ని తొలగించు"
 	},
 	"explore_detail": {
 		"Read more": "మరింత చదవండి",
+		"Read less": "తక్కువ చదవండి",
 		"Active": "చురుకైన",
 		"Show layer": "లేయర్ ను చూపు",
 		"Overview": "అవలోకనం",

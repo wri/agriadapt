@@ -16,14 +16,19 @@
 		"Analysis": "Análisis",
 		"Add a Location": "Agregar una ubicación",
 		"Add Location": "Agregar ubicación",
+		"Cancel": "Cancelar",
 		"Select a Location": "Seleccione una ubicación",
 		"Select point on map": "Seleccionar punto en el mapa",
 		"Use my current location": "Usar mi ubicación actual",
 		"Search by address": "Buscar por dirección",
-		"Choose my location": "Elegir mi ubicación"
+		"Choose my location": "Elegir mi ubicación",
+		"Edit Location": "Editar ubicación",
+		"Customize Name": "Personalizar nombre",
+		"Delete Location": "Eliminar ubicación"
 	},
 	"explore_detail": {
 		"Read more": "Leer más",
+		"Read less": "Leer menos",
 		"Active": "Activo",
 		"Show layer": "Mostrar capa",
 		"Overview": "Visión general",

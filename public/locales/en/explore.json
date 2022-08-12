@@ -16,14 +16,19 @@
     "Analysis": "Analysis",
     "Add a Location": "Add a Location",
     "Add Location": "Add Location",
+    "Cancel": "Cancel",
     "Select a Location": "Select a Location",
     "Select point on map": "Select point on map",
     "Use my current location": "Use my current location",
     "Search by address": "Search by address",
-    "Choose my location": "Choose my location"
+    "Choose my location": "Choose my location",
+    "Edit Location": "Edit Location",
+    "Customize Name": "Customize Name",
+    "Delete Location": "Delete Location"
   },
   "explore_detail": {
     "Read more": "Read more",
+    "Read less": "Read less",
     "Active": "Active",
     "Show layer": "Show layer",
     "Overview": "Overview",

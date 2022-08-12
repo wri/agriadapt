@@ -12,6 +12,7 @@ import { BASEMAPS, LABELS } from 'components/map/constants';
 
 // utils
 import { logEvent } from 'utils/analytics';
+import { useTranslation } from 'next-i18next';
 
 export default function BasemapControls({
   basemap,
@@ -79,6 +80,8 @@ export default function BasemapControls({
       window.removeEventListener('click', onScreenClick);
     };
   }, [active, onScreenClick]);
+
+  const { t } = useTranslation(['explore', 'common']);
 
   const basemapOptions = Object.values(BASEMAPS).map(
     ({ label, value }) => ({
@@ -150,7 +153,7 @@ export default function BasemapControls({
                   <Checkbox
                     properties={{
                       name: 'boundaries',
-                      title: 'Boundaries',
+                      title: t('explore:map.Boundaries'),
                       value: 'boundaries',
                       checked: boundaries,
                     }}

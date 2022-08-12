@@ -12,6 +12,7 @@ import { AnalysisLocation } from 'types/analysis';
 import { getUserPosition } from 'utils/locations/user-position';
 import { forwardGeocode, reverseGeocode } from 'services/geocoder';
 import isoJSON from 'i18n-iso-countries/langs/en.json';
+import { useTranslation } from 'next-i18next';
 
 const ExploreAnalysisLocationEditor = ({
   countries,
@@ -326,11 +327,13 @@ const ExploreAnalysisLocationEditor = ({
     }
   }, [country.value, selectedState]);
 
+  const { t } = useTranslation(['explore', 'common']);
+
   return (
     <div className="c-analysis-location-editor">
       <div className="c-location-form">
         {/* TODO: Translate */}
-        <h4>Select a Location</h4>
+        <h4>{t('explore:analysis.Select a Location')}</h4>
         <div className="c-radio-box">
           {LOCATION_CONFIG.options.map((o) => (
             <div key={o.value} className="c-radio">
@@ -343,7 +346,7 @@ const ExploreAnalysisLocationEditor = ({
               />
               <label htmlFor={`radio-${o.value}`}>
                 <span />
-                {o.label}
+                {t(o.label)}
               </label>
               {o.value === 'address' && (
                 <div style={{ display: 'flex', flexDirection: 'row' }}>
@@ -406,14 +409,14 @@ const ExploreAnalysisLocationEditor = ({
       </div>
       <div className="c-location-actions">
         <button onClick={onCancel} className="c-button -secondary">
-          Cancel
+          {t('explore:analysis.Cancel')}
         </button>
         <button
           onClick={onSubmit}
           className="c-button -primary"
           disabled={!isValid}
         >
-          {current.editing ? 'Edit Location' : 'Add Location'}
+          {current.editing ? t('explore:analysis.Edit Location') : t('explore:analysis.Add Location')}
         </button>
       </div>
     </div>
