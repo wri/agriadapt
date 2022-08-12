@@ -39,6 +39,7 @@ interface ExplorePageProps {
       anchor?: string;
       selectedTab?: string;
     };
+    worldview: string;
   };
   dataset: Record<string, any>;
   router;
@@ -217,7 +218,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
       const viewer_iso2 = req.headers['cloudfront-viewer-country'];
       const india_worldview = viewer_iso2 === 'IN' || worldview === 'IN';
       if (viewer_iso2) {
-        if (viewer_iso2 === 'IN'  && worldview !== 'IN') dispatch(actions.setWorldview(viewer_iso2));
+        if (viewer_iso2 === 'IN' && worldview !== 'IN') dispatch(actions.setWorldview(viewer_iso2));
       }
       let datasetData = null;
 

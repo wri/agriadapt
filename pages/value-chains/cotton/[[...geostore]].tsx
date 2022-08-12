@@ -31,7 +31,7 @@ export const getServerSideProps: GetServerSideProps =
     // const viewer_iso2 = 'IN';
     const india_worldview = viewer_iso2 === 'IN' || worldview === 'IN';
     if (viewer_iso2 === 'IN' && worldview !== 'IN') dispatch(setWorldview(viewer_iso2));
-    if ((india_worldview) && geostore === 'fb119d758d39527a91307b7fed3debf4')
+    if (india_worldview && geostore === 'fb119d758d39527a91307b7fed3debf4')
       return {
         redirect: {
           destination: '/value-chains/cotton/1252b02f0a27cf77fd19b8298be6a8db',
