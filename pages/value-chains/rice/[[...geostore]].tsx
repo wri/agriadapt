@@ -55,7 +55,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
       else
         dispatch(
           actions.setCountry(
-            viewer_iso2 === 'IN' ? india_worldview_geostore : default_country
+            india_worldview ? india_worldview_geostore : default_country
           )
         );
 
