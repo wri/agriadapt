@@ -197,6 +197,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
   (store) =>
     async ({ query, locale, req }) => {
       const { dispatch } = store;
+      const { explore: { worldview }} = store.getState();
       const {
         search,
         zoom,
@@ -213,10 +214,10 @@ export const getServerSideProps = wrapper.getServerSideProps(
         value_chains,
         emission_scenario,
       } = query;
-
       const viewer_iso2 = req.headers['cloudfront-viewer-country'];
+      const india_worldview = viewer_iso2 === 'IN' || worldview === 'IN';
       if (req.headers && viewer_iso2) {
-        if (viewer_iso2 === 'IN') dispatch(actions.setWorldview(viewer_iso2));
+        if (viewer_iso2 === 'IN'  && worldview !== 'IN') dispatch(actions.setWorldview(viewer_iso2));
       }
       let datasetData = null;
 
@@ -256,7 +257,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
           Array.isArray(dataset) ? dataset.join('') : dataset
         );
         if (
-          viewer_iso2 === 'IN' &&
+          india_worldview &&
           INDIA_BLACKLIST_DATASET_IDS.includes(datasetData.id)
         )
           return {

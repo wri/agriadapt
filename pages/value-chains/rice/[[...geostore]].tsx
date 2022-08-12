@@ -7,6 +7,7 @@ import { fetchCountries, fetchGeostore } from 'services/geostore';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import DROPDOWN from 'public/data/rice_countries.json';
 import india_worldview_geostore from 'public/data/india_worldview_geostore.json';
+import { setWorldview } from 'layout/explore/actions';
 
 const RicePage = ({ countries }: ValueChainPageProps) => {
   return <LayoutRice countries={countries} />;
@@ -25,12 +26,12 @@ export const getServerSideProps = wrapper.getServerSideProps(
     async ({ query, locale, req }) => {
       const { geostore } = query;
       const { dispatch } = store;
+      const { explore: { worldview }} = store.getState();
       const viewer_iso2 = req.headers['cloudfront-viewer-country'];
       // const viewer_iso2 = 'IN';
-      if (
-        viewer_iso2 === 'IN' &&
-        geostore === 'fb119d758d39527a91307b7fed3debf4'
-      )
+      const india_worldview = viewer_iso2 === 'IN' || worldview === 'IN';
+      if (viewer_iso2 === 'IN' && worldview !== 'IN') dispatch(setWorldview(viewer_iso2));
+      if (india_worldview && geostore === 'fb119d758d39527a91307b7fed3debf4')
         return {
           redirect: {
             destination: '/value-chains/rice/1252b02f0a27cf77fd19b8298be6a8db',
@@ -88,5 +89,5 @@ export const getServerSideProps = wrapper.getServerSideProps(
 
 export default connect(
   (state: RootState) => ({ country: state.value_chains.country }),
-  actions
+  {...actions, setWorldview }
 )(RicePage);
