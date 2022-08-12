@@ -130,16 +130,20 @@ export default function BasemapControls({
             <div ref={ref}>
               <RadioGroup
                 name="basemap"
-                options={basemapOptions}
-                properties={{ default: basemap.id }}
-                onChange={onBasemapChange}
-              />
+                options={basemapOptions.map((o) => (
+                  {...o, label: t(o.label)}
+                  ))}
+                  properties={{ default: basemap.id }}
+                  onChange={onBasemapChange}
+                  />
 
               <div className="divisor" />
 
               <RadioGroup
                 name="labels"
-                options={labelsOptions}
+                options={labelsOptions.map((o) => (
+                  {...o, label: t(o.label)}
+                ))}
                 properties={{
                   default: labels.id,
                   value: labels.id,
