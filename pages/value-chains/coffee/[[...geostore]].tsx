@@ -1,12 +1,14 @@
 import LayoutCoffee from 'layout/value-chains/coffee';
 import { actions } from 'layout/value-chains/reducers';
-import { wrapper } from 'lib/store';
+import { RootState, wrapper } from 'lib/store';
 import { GetServerSideProps } from 'next';
 import { fetchCountries, fetchGeostore } from 'services/geostore';
 import { ValueChainPageProps } from 'types/value-chain';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import DROPDOWN from 'public/data/coffee_countries.json';
 import india_worldview_geostore from 'public/data/india_worldview_geostore.json';
+import { setWorldview } from 'layout/explore/actions';
+import { connect } from 'react-redux';
 const CoffeeCountryPage = (props: ValueChainPageProps) => {
   console.log(props.headers);
   return <LayoutCoffee {...props} />;
@@ -24,8 +26,11 @@ export const getServerSideProps: GetServerSideProps =
   wrapper.getServerSideProps((store) => async ({ query, locale, req }) => {
     const { geostore } = query;
     const { dispatch } = store;
+    const { explore: { worldview }} = store.getState();
     const viewer_iso2 = req.headers['cloudfront-viewer-country'];
-    if (viewer_iso2 === 'IN' && geostore === 'fb119d758d39527a91307b7fed3debf4')
+    const india_worldview = viewer_iso2 === 'IN' || worldview === 'IN';
+    if (viewer_iso2 === 'IN' && worldview !== 'IN') dispatch(setWorldview(viewer_iso2));
+    if ((india_worldview) && geostore === 'fb119d758d39527a91307b7fed3debf4')
       return {
         redirect: {
           destination: '/value-chains/coffee/1252b02f0a27cf77fd19b8298be6a8db',
@@ -54,7 +59,7 @@ export const getServerSideProps: GetServerSideProps =
       if (!geo.name || !DROPDOWN.countries.includes(geo.name)) return arr;
 
       const { name: label, geostoreId: value, iso } = geo;
-      if (iso === 'IND' && viewer_iso2 === 'IN')
+      if (iso === 'IND' && india_worldview)
         arr.push(india_worldview_geostore);
       else arr.push({ label, value, iso });
       return arr;
@@ -76,4 +81,4 @@ export const getServerSideProps: GetServerSideProps =
     };
   });
 
-export default CoffeeCountryPage;
+export default connect(null, { setWorldview })(CoffeeCountryPage);
