@@ -65,7 +65,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
         if (!geo.name || !DROPDOWN.countries.includes(geo.name)) return arr;
 
         const { name: label, geostoreId: value, iso } = geo;
-        if (iso === 'IND' && viewer_iso2 === 'IN')
+        if (iso === 'IND' && india_worldview)
           arr.push(india_worldview_geostore);
         else arr.push({ label, value, iso });
         return arr;
