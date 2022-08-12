@@ -13,6 +13,7 @@ import { getUserPosition } from 'utils/locations/user-position';
 import { forwardGeocode, reverseGeocode } from 'services/geocoder';
 import isoJSON from 'i18n-iso-countries/langs/en.json';
 import { useTranslation } from 'next-i18next';
+import { useRouter } from 'next/router';
 
 const ExploreAnalysisLocationEditor = ({
   countries,
@@ -50,6 +51,9 @@ const ExploreAnalysisLocationEditor = ({
 
   const [statesList, setStatesList] = useState([]);
   const [statesLoading, setStatesLoading] = useState(false);
+
+  const router = useRouter();
+  const { locale } = router.query;
 
   /* Register locales */
   useEffect(() => {
@@ -99,7 +103,7 @@ const ExploreAnalysisLocationEditor = ({
         ? geoLocatorData
         : null;
     if (data) {
-      reverseGeocode(Object.values(data)).then((results) => {
+      reverseGeocode(Object.values(data), Array.isArray(locale) ? locale.join('') : locale).then((results) => {
         if (results.length) {
           setGeoLabel(results[0].place_name);
           const country = results.at(-1).place_name;
@@ -110,7 +114,7 @@ const ExploreAnalysisLocationEditor = ({
         }
       });
     }
-  }, [countries, geoLocatorData, locationType.value, pointData]);
+  }, [countries, geoLocatorData, locale, locationType.value, pointData]);
 
   const createLabel = useCallback(() => {
     const accuracy = 4;
@@ -230,7 +234,7 @@ const ExploreAnalysisLocationEditor = ({
   /* Event handler for geocode autocomplete results */
   const handleAddrSearch = (val: string) => {
     if (val.trim().length)
-      forwardGeocode(val).then((results) => {
+      forwardGeocode(val, Array.isArray(locale) ? locale.join('') : locale).then((results) => {
         setAutocompleteResults(
           results.map(
             ({ id, place_name, context, geometry: { coordinates } }) => ({
@@ -265,7 +269,7 @@ const ExploreAnalysisLocationEditor = ({
   /* Side Effect to Geocode the Country and Selected State */
   useEffect(() => {
     if (country.value?.label && selectedState?.label)
-      forwardGeocode(`${selectedState?.label}, ${country.value?.label}`).then(
+      forwardGeocode(`${selectedState?.label}, ${country.value?.label}`, Array.isArray(locale) ? locale.join('') : locale).then(
         (results) => {
           if (results) {
             const lngLatArr: number[] = [
@@ -279,7 +283,7 @@ const ExploreAnalysisLocationEditor = ({
     else {
       setGeocodeResults([]);
     }
-  }, [country.value?.label, selectedState]);
+  }, [country.value?.label, locale, selectedState]);
 
   /* Side Effect to place the marker at the Geocoded Coordinates */
   useEffect(() => {

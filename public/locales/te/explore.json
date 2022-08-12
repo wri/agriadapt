@@ -24,7 +24,12 @@
 		"Choose my location": "నా స్థానాన్ని ఎంచుకోండి",
 		"Edit Location": "స్థానాన్ని సవరించు",
 		"Customize Name": "పేరును అనుకూలీకరించు",
-		"Delete Location": "స్థానాన్ని తొలగించు"
+		"Delete Location": "స్థానాన్ని తొలగించు",
+		"Layer Analysis Table": "లేయర్ ఎనాలిసిస్ టేబుల్",
+		"Name": "పేరు",
+		"Change Column Name": "కాలమ్ పేరును మార్చండి",
+		"Sort by Column A-Z": "కాలమ్ A-Z ద్వారా క్రమీకరించు",
+		"Delete": "పరిహరించు"
 	},
 	"explore_detail": {
 		"Read more": "మరింత చదవండి",

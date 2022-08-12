@@ -1,6 +1,6 @@
 import map_sm from 'public/images/components/layout/landing/map-container-image-mobile.svg';
 import map_md from 'public/images/components/layout/landing/map-container-image.svg';
-import aboutImage from 'public/images/components/layout/landing/learn-more.svg';
+import aboutImage from 'public/images/components/layout/landing/about-image.png';
 import riceImage from 'public/images/components/layout/landing/value-chain-cards/rice.png';
 import cottonImage from 'public/images/components/layout/landing/value-chain-cards/cotton.png';
 import coffeeImage from 'public/images/components/layout/landing/value-chain-cards/coffee.png';

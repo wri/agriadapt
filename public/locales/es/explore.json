@@ -24,7 +24,12 @@
 		"Choose my location": "Elegir mi ubicación",
 		"Edit Location": "Editar ubicación",
 		"Customize Name": "Personalizar nombre",
-		"Delete Location": "Eliminar ubicación"
+		"Delete Location": "Eliminar ubicación",
+		"Layer Analysis Table": "Tabla de análisis de capas",
+		"Name": "Nombre",
+		"Change Column Name": "Cambiar el nombre de la columna",
+		"Sort by Column A-Z": "Ordenar por columna A-Z",
+		"Delete": "Borrar"
 	},
 	"explore_detail": {
 		"Read more": "Leer más",

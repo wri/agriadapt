@@ -24,7 +24,12 @@
     "Choose my location": "Choose my location",
     "Edit Location": "Edit Location",
     "Customize Name": "Customize Name",
-    "Delete Location": "Delete Location"
+    "Delete Location": "Delete Location",
+    "Layer Analysis Table": "Layer Analysis Table",
+    "Name": "Name",
+    "Change Column Name": "Change Column Name",
+    "Sort by Column A-Z": "Sort by Column A-Z",
+    "Delete": "Delete"
   },
   "explore_detail": {
     "Read more": "Read more",
