@@ -38,7 +38,8 @@
 		"Show layer": "Mostrar capa",
 		"Overview": "Visión general",
 		"Dataset layers": "Capas de dataset",
-		"Further information": "Más información"
+		"Further information": "Más información",
+		"Back": "Atrás"
 	},
 	"map": {
 		"basemaps": {

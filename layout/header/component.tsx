@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 // components
 import HeaderMenu from 'layout/header/header-menu';
-import Icon from 'components/ui/icon';
+// import Icon from 'components/ui/icon';
 import { Media } from 'lib/media';
 import HeaderMenuMobile from 'layout/header/header-menu-mobile';
 
