@@ -17,8 +17,8 @@ module.exports = {
       //   permanent: false,
       // },
       {
-        source: '/value-chains',
-        destination: '/value-chains/rice',
+        source: '/crops',
+        destination: '/crops/rice',
         permanent: true,
       },
     ];

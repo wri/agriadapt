@@ -31,7 +31,7 @@ export const getServerSideProps: GetServerSideProps = withSession(
     if (india_worldview && geostore === 'fb119d758d39527a91307b7fed3debf4')
       return {
         redirect: {
-          destination: '/value-chains/rice/1252b02f0a27cf77fd19b8298be6a8db',
+          destination: '/crops/rice/1252b02f0a27cf77fd19b8298be6a8db',
           permanent: false,
         },
       };

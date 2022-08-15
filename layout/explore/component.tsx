@@ -6,7 +6,6 @@ import ExploreDatasets from 'layout/explore/explore-datasets';
 import ExploreDetail from 'layout/explore/explore-detail';
 import ExploreSwitch from './explore-switch';
 import classnames from 'classnames';
-import { EXPLORE_TABS } from './constants';
 import ExploreAnalysis from 'layout/explore/explore-analysis';
 import Head from 'next/head';
 
@@ -31,7 +30,7 @@ const Explore = ({
         })}
         id="sidebar-content-container"
       >
-        {selectedTab === EXPLORE_TABS.LAYERS && (
+        {selectedTab === 'layers' && (
           <>
             {!selected ? (
               <ExploreDatasets />
@@ -43,7 +42,7 @@ const Explore = ({
             )}
           </>
         )}
-        {selectedTab === EXPLORE_TABS.ANALYSIS && <ExploreAnalysis />}
+        {selectedTab === 'analysis' && <ExploreAnalysis />}
       </div>
     </>
   );
