@@ -7,6 +7,9 @@ import { fetchCountries, fetchGeostore } from 'services/geostore';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import DROPDOWN from 'public/data/rice_countries.json';
 import india_worldview_geostore from 'public/data/india_worldview_geostore.json';
+import { setWorldview } from 'layout/explore/actions';
+import { GetServerSideProps } from 'next';
+import { withSession } from 'hoc/session';
 
 const RicePage = ({ countries }: ValueChainPageProps) => {
   return <LayoutRice countries={countries} />;
@@ -20,17 +23,23 @@ const default_country = {
   iso: 'IND',
 };
 
-export const getServerSideProps = wrapper.getServerSideProps(
-  (store) =>
-    async ({ query, locale, req }) => {
-      const { geostore } = query;
-      const { dispatch } = store;
-      const viewer_iso2 = req.headers['cloudfront-viewer-country'];
-      // const viewer_iso2 = 'IN';
-      if (
-        viewer_iso2 === 'IN' &&
-        geostore === 'fb119d758d39527a91307b7fed3debf4'
-      )
+export const getServerSideProps: GetServerSideProps = withSession(
+  wrapper.getServerSideProps((store) => async ({ query, locale, req, res }) => {
+    const { geostore } = query;
+    const { dispatch } = store;
+    const worldview =
+      req.headers['cloudfront-viewer-country'] ??
+      req.session.user?.country ??
+      'US';
+    // const worldview = 'IN';
+    req.session.user = {
+      country: Array.isArray(worldview) ? worldview.join('') : worldview,
+    };
+    await req.session.save();
+    const india_worldview = worldview === 'IN';
+    dispatch(setWorldview(String(worldview)));
+
+      if (india_worldview && geostore === 'fb119d758d39527a91307b7fed3debf4')
         return {
           redirect: {
             destination: '/value-chains/rice/1252b02f0a27cf77fd19b8298be6a8db',
@@ -84,9 +93,12 @@ export const getServerSideProps = wrapper.getServerSideProps(
         },
       };
     }
-);
+));
 
 export default connect(
-  (state: RootState) => ({ country: state.value_chains.country }),
-  actions
+  (state: RootState) => ({
+    country: state.value_chains.country,
+    worldview: state.explore.worldview,
+  }),
+  { ...actions, setWorldview }
 )(RicePage);

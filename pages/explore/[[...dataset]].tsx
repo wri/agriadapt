@@ -12,6 +12,7 @@ import { RootState, wrapper } from 'lib/store';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { INDIA_BLACKLIST_DATASET_IDS } from 'layout/explore/constants';
 import { fetchDataset } from 'services/dataset';
+import { withSession } from 'hoc/session';
 
 interface ExplorePageProps {
   explore: {
@@ -193,128 +194,130 @@ class ExplorePage extends PureComponent<ExplorePageProps> {
   }
 }
 
-export const getServerSideProps = wrapper.getServerSideProps(
-  (store) =>
-    async ({ query, locale, req }) => {
-      const { dispatch } = store;
-      const {
-        search,
-        zoom,
-        lat,
-        lng,
-        pitch,
-        bearing,
-        basemap,
-        labels,
-        boundaries,
-        layers,
-        dataset,
-        tab,
-        value_chains,
-        emission_scenario,
-      } = query;
+export const getServerSideProps = withSession(
+  wrapper.getServerSideProps((store) => async ({ query, locale, req }) => {
+    const { dispatch } = store;
+    const {
+      search,
+      zoom,
+      lat,
+      lng,
+      pitch,
+      bearing,
+      basemap,
+      labels,
+      boundaries,
+      layers,
+      dataset,
+      tab,
+      value_chains,
+      emission_scenario,
+    } = query;
+    const worldview =
+      req.headers['cloudfront-viewer-country'] ??
+      req.session.user?.country ??
+      'US';
+    // const worldview = 'IN';
+    req.session.user = {
+      country: Array.isArray(worldview) ? worldview.join('') : worldview,
+    };
+    await req.session.save();
+    const india_worldview = worldview === 'IN';
+    dispatch(actions.setWorldview(String(worldview)));
 
-      const viewer_iso2 = req.headers['cloudfront-viewer-country'];
-      if (req.headers && viewer_iso2) {
-        if (viewer_iso2 === 'IN') dispatch(actions.setWorldview(viewer_iso2));
-      }
-      let datasetData = null;
+    let datasetData = null;
 
-      if (tab)
-        dispatch(
-          actions.setSidebarSelectedTab(Array.isArray(tab) ? tab.join('') : tab)
-        );
-
-      if (search)
-        dispatch(
-          actions.setFiltersSearch(
-            Array.isArray(search) ? search.join('') : search
-          )
-        );
-
-      if (value_chains)
-        dispatch(
-          actions.setFiltersValueChains(
-            Array.isArray(value_chains) ? value_chains : value_chains.split(',')
-          )
-        );
-      if (emission_scenario)
-        dispatch(
-          actions.setFiltersEmissionScenario(
-            Array.isArray(emission_scenario)
-              ? emission_scenario.join('')
-              : emission_scenario
-          )
-        );
-      if (dataset) {
-        dispatch(
-          actions.setSelectedDataset(
-            Array.isArray(dataset) ? dataset.join('') : dataset
-          )
-        );
-        datasetData = await fetchDataset(
-          Array.isArray(dataset) ? dataset.join('') : dataset
-        );
-        if (
-          viewer_iso2 === 'IN' &&
-          INDIA_BLACKLIST_DATASET_IDS.includes(datasetData.id)
-        )
-          return {
-            redirect: {
-              destination: '/unauthorized',
-              permanent: false,
-            },
-          };
-      }
-      // sets map params from URL
+    if (tab)
       dispatch(
-        actions.setViewport({
-          ...(zoom && { zoom: +zoom }),
-          ...(lat &&
-            lng && {
-              latitude: +lat,
-              longitude: +lng,
-            }),
-          ...(pitch && { pitch: +pitch }),
-          ...(bearing && { bearing: +bearing }),
-        })
+        actions.setSidebarSelectedTab(Array.isArray(tab) ? tab.join('') : tab)
       );
-      if (basemap)
-        dispatch(
-          actions.setBasemap(
-            Array.isArray(basemap) ? basemap.join('') : basemap
-          )
-        );
-      if (labels)
-        dispatch(
-          actions.setLabels(Array.isArray(labels) ? labels.join('') : labels)
-        );
-      if (boundaries) dispatch(actions.setBoundaries(!!boundaries));
 
-      // Fetch layers
-      if (layers)
-        await dispatch(
-          actions.fetchMapLayerGroups(
-            JSON.parse(
-              decodeURIComponent(
-                Array.isArray(layers) ? layers.join('') : layers
-              )
-            )
-          )
-        );
+    if (search)
+      dispatch(
+        actions.setFiltersSearch(
+          Array.isArray(search) ? search.join('') : search
+        )
+      );
 
-      return {
-        props: {
-          ...(await serverSideTranslations(locale, [
-            'explore',
-            'common',
-            'countries',
-            'header',
-          ])),
-          ...(datasetData && { dataset: datasetData }),
-        },
-      };
+    if (value_chains)
+      dispatch(
+        actions.setFiltersValueChains(
+          Array.isArray(value_chains) ? value_chains : value_chains.split(',')
+        )
+      );
+    if (emission_scenario)
+      dispatch(
+        actions.setFiltersEmissionScenario(
+          Array.isArray(emission_scenario)
+            ? emission_scenario.join('')
+            : emission_scenario
+        )
+      );
+    if (dataset) {
+      dispatch(
+        actions.setSelectedDataset(
+          Array.isArray(dataset) ? dataset.join('') : dataset
+        )
+      );
+      datasetData = await fetchDataset(
+        Array.isArray(dataset) ? dataset.join('') : dataset
+      );
+      if (
+        india_worldview &&
+        INDIA_BLACKLIST_DATASET_IDS.includes(datasetData.id)
+      )
+        return {
+          redirect: {
+            destination: '/unauthorized',
+            permanent: false,
+          },
+        };
     }
+    // sets map params from URL
+    dispatch(
+      actions.setViewport({
+        ...(zoom && { zoom: +zoom }),
+        ...(lat &&
+          lng && {
+            latitude: +lat,
+            longitude: +lng,
+          }),
+        ...(pitch && { pitch: +pitch }),
+        ...(bearing && { bearing: +bearing }),
+      })
+    );
+    if (basemap)
+      dispatch(
+        actions.setBasemap(Array.isArray(basemap) ? basemap.join('') : basemap)
+      );
+    if (labels)
+      dispatch(
+        actions.setLabels(Array.isArray(labels) ? labels.join('') : labels)
+      );
+    if (boundaries) dispatch(actions.setBoundaries(!!boundaries));
+
+    // Fetch layers
+    if (layers)
+      await dispatch(
+        actions.fetchMapLayerGroups(
+          JSON.parse(
+            decodeURIComponent(Array.isArray(layers) ? layers.join('') : layers)
+          )
+        )
+      );
+
+    return {
+      props: {
+        ...(await serverSideTranslations(locale, [
+          'explore',
+          'common',
+          'countries',
+          'header',
+        ])),
+        ...(datasetData && { dataset: datasetData }),
+      },
+    };
+  })
 );
 
 export default connect((state: RootState) => ({ explore: state.explore }), {
