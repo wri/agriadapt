@@ -1,5 +1,7 @@
 // components
+import { withSession } from 'hoc/session';
 import HeadError from 'layout/head/error';
+import { GetServerSideProps } from 'next';
 
 const MaintenancePage = () => {
   return (
@@ -13,5 +15,7 @@ const MaintenancePage = () => {
     </>
   );
 };
+
+export const getServerSideProps: GetServerSideProps = withSession();
 
 export default MaintenancePage;
