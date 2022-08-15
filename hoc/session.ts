@@ -4,7 +4,7 @@ import { GetServerSideProps } from 'next';
 export const withSession = (getServerSidePropsFunc: GetServerSideProps) => {
   return withIronSessionSsr(getServerSidePropsFunc, {
     cookieName: 'user_country',
-    password: process.env.SECRET || 'keyboard cat',
+    password: process.env.SECRET || 'zkrKxRNs4Pr1Rypkmh36C097hhqryCas',
     cookieOptions: {
       secure: process.env.NODE_ENV === 'production',
     },
