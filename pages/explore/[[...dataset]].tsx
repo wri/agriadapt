@@ -214,17 +214,9 @@ export const getServerSideProps = withSession(
       value_chains,
       emission_scenario,
     } = query;
-    const worldview =
-      req.headers['cloudfront-viewer-country'] ??
-      req.session.user?.country ??
-      'US';
-    // const worldview = 'IN';
-    req.session.user = {
-      country: Array.isArray(worldview) ? worldview.join('') : worldview,
-    };
-    await req.session.save();
+    const worldview = req.session.user?.country;
     const india_worldview = worldview === 'IN';
-    dispatch(actions.setWorldview(String(worldview)));
+    dispatch(actions.setWorldview(worldview));
 
     let datasetData = null;
 
