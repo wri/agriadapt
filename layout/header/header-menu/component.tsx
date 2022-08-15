@@ -9,7 +9,7 @@ import { APP_HEADER_ITEMS } from 'layout/header/constants';
 import { useTranslation } from 'next-i18next';
 
 const header = {
-  'value-chains': import('../header-valuechains'),
+  'crops': import('../header-crops'),
   language: import('../header-language'),
 };
 
@@ -22,7 +22,7 @@ const HeaderMenu = () => {
       <ul>
         {APP_HEADER_ITEMS.map((item) => {
           let DropdownMenu;
-          if (item.id === 'value-chains' || item.id === 'language') {
+          if (item.id === 'crops' || item.id === 'language') {
             DropdownMenu = dynamic(() => header[item.id]);
           }
 

@@ -39,7 +39,7 @@ export const ValueChainCards = () => {
               </div>
               <div className="c-value-chain-card-info">
                 <h2>{t(c.label)}</h2>
-                <Link passHref href={`/value-chains/${c.href}`}>
+                <Link passHref href={`/crops/${c.href}`}>
                   <a className="c-button -secondary -fullwidth">
                     {t(c.button_label)}
                   </a>
