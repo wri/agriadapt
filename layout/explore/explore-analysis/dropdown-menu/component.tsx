@@ -3,6 +3,7 @@ import { useDebouncedCallback } from 'use-debounce';
 import Tether from 'react-tether';
 import Icon from 'components/ui/icon';
 import classnames from 'classnames';
+import { useTranslation } from 'next-i18next';
 
 const AnalysisDropdownMenu = ({ options }) => {
   const [isVisible, setVisibility] = useState(false);
@@ -27,6 +28,8 @@ const AnalysisDropdownMenu = ({ options }) => {
     return () =>
       document.removeEventListener('mousedown', handleClickAway, true);
   }, [handleClickAway]);
+
+  const { t } = useTranslation(['explore', 'common']);
 
   return (
     <Tether

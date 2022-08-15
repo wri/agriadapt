@@ -12,6 +12,8 @@ import { AnalysisLocation } from 'types/analysis';
 import { getUserPosition } from 'utils/locations/user-position';
 import { forwardGeocode, reverseGeocode } from 'services/geocoder';
 import isoJSON from 'i18n-iso-countries/langs/en.json';
+import { useTranslation } from 'next-i18next';
+import { useRouter } from 'next/router';
 
 const ExploreAnalysisLocationEditor = ({
   countries,
@@ -49,6 +51,9 @@ const ExploreAnalysisLocationEditor = ({
 
   const [statesList, setStatesList] = useState([]);
   const [statesLoading, setStatesLoading] = useState(false);
+
+  const router = useRouter();
+  const { locale } = router.query;
 
   /* Register locales */
   useEffect(() => {
@@ -98,7 +103,7 @@ const ExploreAnalysisLocationEditor = ({
         ? geoLocatorData
         : null;
     if (data) {
-      reverseGeocode(Object.values(data)).then((results) => {
+      reverseGeocode(Object.values(data), Array.isArray(locale) ? locale.join('') : locale).then((results) => {
         if (results.length) {
           setGeoLabel(results[0].place_name);
           const country = results.at(-1).place_name;
@@ -109,7 +114,7 @@ const ExploreAnalysisLocationEditor = ({
         }
       });
     }
-  }, [countries, geoLocatorData, locationType.value, pointData]);
+  }, [countries, geoLocatorData, locale, locationType.value, pointData]);
 
   const createLabel = useCallback(() => {
     const accuracy = 4;
@@ -229,7 +234,7 @@ const ExploreAnalysisLocationEditor = ({
   /* Event handler for geocode autocomplete results */
   const handleAddrSearch = (val: string) => {
     if (val.trim().length)
-      forwardGeocode(val).then((results) => {
+      forwardGeocode(val, Array.isArray(locale) ? locale.join('') : locale).then((results) => {
         setAutocompleteResults(
           results.map(
             ({ id, place_name, context, geometry: { coordinates } }) => ({
@@ -264,7 +269,7 @@ const ExploreAnalysisLocationEditor = ({
   /* Side Effect to Geocode the Country and Selected State */
   useEffect(() => {
     if (country.value?.label && selectedState?.label)
-      forwardGeocode(`${selectedState?.label}, ${country.value?.label}`).then(
+      forwardGeocode(`${selectedState?.label}, ${country.value?.label}`, Array.isArray(locale) ? locale.join('') : locale).then(
         (results) => {
           if (results) {
             const lngLatArr: number[] = [
@@ -278,7 +283,7 @@ const ExploreAnalysisLocationEditor = ({
     else {
       setGeocodeResults([]);
     }
-  }, [country.value?.label, selectedState]);
+  }, [country.value?.label, locale, selectedState]);
 
   /* Side Effect to place the marker at the Geocoded Coordinates */
   useEffect(() => {
@@ -326,11 +331,13 @@ const ExploreAnalysisLocationEditor = ({
     }
   }, [country.value, selectedState]);
 
+  const { t } = useTranslation(['explore', 'common']);
+
   return (
     <div className="c-analysis-location-editor">
       <div className="c-location-form">
         {/* TODO: Translate */}
-        <h4>Select a Location</h4>
+        <h4>{t('explore:analysis.Select a Location')}</h4>
         <div className="c-radio-box">
           {LOCATION_CONFIG.options.map((o) => (
             <div key={o.value} className="c-radio">
@@ -343,7 +350,7 @@ const ExploreAnalysisLocationEditor = ({
               />
               <label htmlFor={`radio-${o.value}`}>
                 <span />
-                {o.label}
+                {t(o.label)}
               </label>
               {o.value === 'address' && (
                 <div style={{ display: 'flex', flexDirection: 'row' }}>
@@ -406,14 +413,14 @@ const ExploreAnalysisLocationEditor = ({
       </div>
       <div className="c-location-actions">
         <button onClick={onCancel} className="c-button -secondary">
-          Cancel
+          {t('explore:analysis.Cancel')}
         </button>
         <button
           onClick={onSubmit}
           className="c-button -primary"
           disabled={!isValid}
         >
-          {current.editing ? 'Edit Location' : 'Add Location'}
+          {current.editing ? t('explore:analysis.Edit Location') : t('explore:analysis.Add Location')}
         </button>
       </div>
     </div>

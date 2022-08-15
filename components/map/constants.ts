@@ -9,7 +9,7 @@ export const BASEMAPS = {
   dark: {
     id: 'dark',
     value: 'dark',
-    label: 'Dark',
+    label: 'explore:map.basemaps.Dark',
     options: {
       attribution:
         '<a href="https://www.mapbox.com/about/maps/" target="_blank">© Mapbox</a> <a href="http://www.openstreetmap.org/about/" target="_blank">© OpenStreetMap</a>',
@@ -18,7 +18,7 @@ export const BASEMAPS = {
   light: {
     id: 'light',
     value: 'light',
-    label: 'Light',
+    label: 'explore:map.basemaps.Light',
     options: {
       attribution:
         '<a href="https://www.mapbox.com/about/maps/" target="_blank">© Mapbox</a> <a href="http://www.openstreetmap.org/about/" target="_blank">© OpenStreetMap</a>',
@@ -27,7 +27,7 @@ export const BASEMAPS = {
   satellite: {
     id: 'satellite',
     value: 'satellite',
-    label: 'Satellite',
+    label: 'explore:map.basemaps.Satellite',
     options: {
       attribution:
         '<a href="https://www.mapbox.com/about/maps/" target="_blank">© Mapbox</a> <a href="http://www.openstreetmap.org/about/" target="_blank">© OpenStreetMap</a>',
@@ -36,7 +36,7 @@ export const BASEMAPS = {
   terrain: {
     id: 'terrain',
     value: 'terrain',
-    label: 'Terrain',
+    label: 'explore:map.basemaps.Terrain',
     options: {
       attribution:
         '<a href="https://www.mapbox.com/about/maps/" target="_blank">© Mapbox</a> <a href="http://www.openstreetmap.org/about/" target="_blank">© OpenStreetMap</a>',
@@ -45,7 +45,7 @@ export const BASEMAPS = {
   aqueduct: {
     id: 'aqueduct',
     value: 'aqueduct',
-    label: 'Hydrography',
+    label: 'explore:map.basemaps.Hydrography',
     options: {
       attribution:
         '<a href="https://www.mapbox.com/about/maps/" target="_blank">© Mapbox</a> <a href="http://www.openstreetmap.org/about/" target="_blank">© OpenStreetMap</a>',
@@ -56,17 +56,17 @@ export const BASEMAPS = {
 export const LABELS = {
   none: {
     id: 'none',
-    label: 'No labels',
+    label: 'explore:map.labels.No labels',
     value: 'none',
   },
   light: {
     id: 'light',
-    label: 'Labels light',
+    label: 'explore:map.labels.Labels light',
     value: 'light',
   },
   dark: {
     id: 'dark',
-    label: 'Labels dark',
+    label: 'explore:map.labels.Labels dark',
     value: 'dark',
   },
 };
@@ -74,7 +74,7 @@ export const LABELS = {
 export const BOUNDARIES = {
   dark: {
     id: 'dark',
-    label: 'Boundaries',
+    label: 'explore:map.Boundaries',
     value: false,
   },
 };

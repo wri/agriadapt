@@ -12,6 +12,7 @@ import { BASEMAPS, LABELS } from 'components/map/constants';
 
 // utils
 import { logEvent } from 'utils/analytics';
+import { useTranslation } from 'next-i18next';
 
 export default function BasemapControls({
   basemap,
@@ -80,6 +81,8 @@ export default function BasemapControls({
     };
   }, [active, onScreenClick]);
 
+  const { t } = useTranslation(['explore', 'common']);
+
   const basemapOptions = Object.values(BASEMAPS).map(
     ({ label, value }) => ({
       label,
@@ -127,16 +130,20 @@ export default function BasemapControls({
             <div ref={ref}>
               <RadioGroup
                 name="basemap"
-                options={basemapOptions}
-                properties={{ default: basemap.id }}
-                onChange={onBasemapChange}
-              />
+                options={basemapOptions.map((o) => (
+                  {...o, label: t(o.label)}
+                  ))}
+                  properties={{ default: basemap.id }}
+                  onChange={onBasemapChange}
+                  />
 
               <div className="divisor" />
 
               <RadioGroup
                 name="labels"
-                options={labelsOptions}
+                options={labelsOptions.map((o) => (
+                  {...o, label: t(o.label)}
+                ))}
                 properties={{
                   default: labels.id,
                   value: labels.id,
@@ -150,7 +157,7 @@ export default function BasemapControls({
                   <Checkbox
                     properties={{
                       name: 'boundaries',
-                      title: 'Boundaries',
+                      title: t('explore:map.Boundaries'),
                       value: 'boundaries',
                       checked: boundaries,
                     }}

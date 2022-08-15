@@ -16,19 +16,30 @@
 		"Analysis": "Análisis",
 		"Add a Location": "Agregar una ubicación",
 		"Add Location": "Agregar ubicación",
+		"Cancel": "Cancelar",
 		"Select a Location": "Seleccione una ubicación",
 		"Select point on map": "Seleccionar punto en el mapa",
 		"Use my current location": "Usar mi ubicación actual",
 		"Search by address": "Buscar por dirección",
-		"Choose my location": "Elegir mi ubicación"
+		"Choose my location": "Elegir mi ubicación",
+		"Edit Location": "Editar ubicación",
+		"Customize Name": "Personalizar nombre",
+		"Delete Location": "Eliminar ubicación",
+		"Layer Analysis Table": "Tabla de análisis de capas",
+		"Name": "Nombre",
+		"Change Column Name": "Cambiar el nombre de la columna",
+		"Sort by Column A-Z": "Ordenar por columna A-Z",
+		"Delete": "Borrar"
 	},
 	"explore_detail": {
 		"Read more": "Leer más",
+		"Read less": "Leer menos",
 		"Active": "Activo",
 		"Show layer": "Mostrar capa",
 		"Overview": "Visión general",
 		"Dataset layers": "Capas de dataset",
-		"Further information": "Más información"
+		"Further information": "Más información",
+		"Back": "Atrás"
 	},
 	"map": {
 		"basemaps": {
