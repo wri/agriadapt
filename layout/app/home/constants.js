@@ -1,9 +1,12 @@
 import map_sm from 'public/images/components/layout/landing/map-container-image-mobile.svg';
 import map_md from 'public/images/components/layout/landing/map-container-image.svg';
-import aboutImage from 'public/images/components/layout/landing/learn-more.svg';
+import aboutImage from 'public/images/components/layout/landing/about-image.png';
 import riceImage from 'public/images/components/layout/landing/value-chain-cards/rice.png';
 import cottonImage from 'public/images/components/layout/landing/value-chain-cards/cotton.png';
 import coffeeImage from 'public/images/components/layout/landing/value-chain-cards/coffee.png';
+import analysisCottonMap from 'public/images/components/layout/landing/Home_Img_Cotton.png';
+import analysisRiceMap from 'public/images/components/layout/landing/Home_Img_Rice.png';
+import analysisCoffeeMap from 'public/images/components/layout/landing/Home_Img_Coffee.png';
 // import analysisImage from 'public/images/components/layout/landing/analysis-map.png';
 
 const MAP = {
@@ -49,7 +52,6 @@ const VALUECHAINS = {
 const ANALYSIS = {
   // title: 'Overlay risk information to reveal potential impacts of hazards.',
   title: 'landing:map_analysis_carousel.title',
-  image_src: 'static/images/components/layout/landing/analysis-map.png',
   image_alt: 'landing:map_analysis_carousel.image_alt',
   subTitle: 'landing:map_analysis_carousel.subtitle',
   cards: [
@@ -76,6 +78,7 @@ const ANALYSIS = {
           },
         },
       },
+      image: analysisCottonMap,
     },
     {
       title: 'landing:map_analysis_carousel.content.1',
@@ -83,6 +86,7 @@ const ANALYSIS = {
         label: 'landing:map_analysis_carousel.link_to_map_button',
         url: { pathname: '/explore', query: { tab: 'analysis' } },
       },
+      image: analysisRiceMap,
     },
     {
       title: 'landing:map_analysis_carousel.content.2',
@@ -112,6 +116,7 @@ const ANALYSIS = {
           },
         },
       },
+      image: analysisCoffeeMap,
     },
     // {
     //   title:
