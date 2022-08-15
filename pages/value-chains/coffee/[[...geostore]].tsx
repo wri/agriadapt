@@ -1,6 +1,6 @@
 import LayoutCoffee from 'layout/value-chains/coffee';
 import { actions } from 'layout/value-chains/reducers';
-import { RootState, wrapper } from 'lib/store';
+import { wrapper } from 'lib/store';
 import { GetServerSideProps } from 'next';
 import { fetchCountries, fetchGeostore } from 'services/geostore';
 import { ValueChainPageProps } from 'types/value-chain';
@@ -87,4 +87,4 @@ export const getServerSideProps: GetServerSideProps = withSession(
     };
   }));
 
-export default connect((state: RootState) => ({ worldview: state.explore.worldview }), { setWorldview })(CoffeeCountryPage);
+export default connect(null, { setWorldview })(CoffeeCountryPage);

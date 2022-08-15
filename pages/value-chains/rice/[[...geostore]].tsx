@@ -1,6 +1,6 @@
 import LayoutRice from 'layout/value-chains/rice';
 import { actions } from 'layout/value-chains/reducers';
-import { RootState, wrapper } from 'lib/store';
+import { wrapper } from 'lib/store';
 import { ValueChainPageProps } from 'types/value-chain';
 import { connect } from 'react-redux';
 import { fetchCountries, fetchGeostore } from 'services/geostore';
@@ -95,10 +95,4 @@ export const getServerSideProps: GetServerSideProps = withSession(
     }
 ));
 
-export default connect(
-  (state: RootState) => ({
-    country: state.value_chains.country,
-    worldview: state.explore.worldview,
-  }),
-  { ...actions, setWorldview }
-)(RicePage);
+export default connect(null, { ...actions, setWorldview })(RicePage);
