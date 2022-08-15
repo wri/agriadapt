@@ -70,6 +70,8 @@ export const getServerSideProps: GetServerSideProps = withSession(
           'countries',
           'header',
           'footer',
+          'tos',
+          'privacy',
           'widgets',
         ])),
         countries,

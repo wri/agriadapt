@@ -6,9 +6,22 @@ import Image from 'next/image';
 import wriLogo from 'public/images/wri-logo.svg';
 import loader from 'lib/imageLoader';
 import { useTranslation } from 'next-i18next';
+import TermsOfServiceModal from 'components/modal/tos-modal';
+import PrivacyPolicyModal from 'components/modal/privacy-policy-modal';
+import { useState } from 'react';
 
 export default function Footer() {
   const { t } = useTranslation('common', 'footer');
+  const [showTermsModal, setShowTermsModal] = useState(false);
+  const [showPrivacyModal, setShowPrivacyModal] = useState(false);
+
+  const handleToggleTerms = () => {
+    setShowTermsModal((s) => !s);
+  };
+
+  const handleTogglePrivacy = () => {
+    setShowPrivacyModal((s) => !s);
+  };
 
   return (
     <footer className="l-footer">
@@ -36,14 +49,14 @@ export default function Footer() {
                 </div>
                 <div className="footer-item">
                   <p>
-                    <Link href="/terms-of-service" passHref>
-                      <a>{t('common:terms_of_service')}</a>
-                    </Link>
+                    <a onClick={handleToggleTerms}>
+                      {t('common:terms_of_service')}
+                    </a>
                   </p>
                   <p>
-                    <Link href="/privacy-policy" passHref>
-                      <a>{t('footer:privacy_policy')}</a>
-                    </Link>
+                    <a onClick={handleTogglePrivacy}>
+                      {t('footer:privacy_policy')}
+                    </a>
                   </p>
                 </div>
               </div>
@@ -101,6 +114,8 @@ export default function Footer() {
           </Media>
         </div>
       </div>
+      {showTermsModal && <TermsOfServiceModal onClose={handleToggleTerms} />}
+      {showPrivacyModal && <PrivacyPolicyModal onClose={handleTogglePrivacy} />}
     </footer>
   );
 }
