@@ -14,7 +14,7 @@ const AnalysisCard = ({ title, button, image, image_alt }) => {
         <a className="c-button -secondary relative z-10">{t(button.label)}</a>
       </Link>
       <div className="c-analysis-card-image">
-        <Image loader={loader} unoptimized src={image} alt={t(image_alt)}/>
+        <Image loader={loader} unoptimized src={image} alt={t(image_alt)} className="c-analysis-card-map"/>
       </div>
     </div>
   );
