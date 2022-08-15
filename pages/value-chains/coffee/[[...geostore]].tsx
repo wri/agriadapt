@@ -7,6 +7,8 @@ import { ValueChainPageProps } from 'types/value-chain';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import DROPDOWN from 'public/data/coffee_countries.json';
 import india_worldview_geostore from 'public/data/india_worldview_geostore.json';
+import { withSession } from 'hoc/session';
+
 const CoffeeCountryPage = (props: ValueChainPageProps) => {
   return <LayoutCoffee {...props} />;
 };
@@ -19,12 +21,14 @@ const default_country = {
   iso: 'COL',
 };
 
-export const getServerSideProps: GetServerSideProps =
+export const getServerSideProps: GetServerSideProps = withSession(
   wrapper.getServerSideProps((store) => async ({ query, locale, req }) => {
     const { geostore } = query;
     const { dispatch } = store;
-    const viewer_iso2 = req.headers['cloudfront-viewer-country'];
-    if (viewer_iso2 === 'IN' && geostore === 'fb119d758d39527a91307b7fed3debf4')
+    const worldview = req.session.user?.country;
+    const india_worldview = worldview === 'IN';
+
+    if (india_worldview && geostore === 'fb119d758d39527a91307b7fed3debf4')
       return {
         redirect: {
           destination: '/value-chains/coffee/1252b02f0a27cf77fd19b8298be6a8db',
@@ -53,8 +57,7 @@ export const getServerSideProps: GetServerSideProps =
       if (!geo.name || !DROPDOWN.countries.includes(geo.name)) return arr;
 
       const { name: label, geostoreId: value, iso } = geo;
-      if (iso === 'IND' && viewer_iso2 === 'IN')
-        arr.push(india_worldview_geostore);
+      if (iso === 'IND' && india_worldview) arr.push(india_worldview_geostore);
       else arr.push({ label, value, iso });
       return arr;
     }, []);
@@ -72,6 +75,6 @@ export const getServerSideProps: GetServerSideProps =
         countries,
       },
     };
-  });
+  }));
 
 export default CoffeeCountryPage;

@@ -14,7 +14,7 @@ export default createReducer(initialState, (builder) => {
     // explore
     .addCase(actions.resetExplore, () => initialState)
     .addCase(actions.setWorldview, (state, { payload }) => {
-      state.geo_env = payload;
+      state.worldview = payload;
     })
     // datasets
     .addCase(actions.setDatasets, (state, { payload }) => ({

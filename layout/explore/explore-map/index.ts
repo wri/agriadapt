@@ -19,8 +19,7 @@ export default connect(
   (state: RootState) => ({
     ...state.explore.sidebar,
     ...state.explore.map,
-    // token: state.user.token,
-    // userId: state.user.id,
+    worldview: state.explore.worldview,
     activeLayers: exploreMapGetUpdatedLayers(state),
     activeInteractiveLayers: exploreMapGetActiveInteractiveLayers(state),
     layerGroups: exploreMapGetUpdatedLayerGroups(state),
