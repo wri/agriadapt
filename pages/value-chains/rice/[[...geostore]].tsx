@@ -24,7 +24,7 @@ const default_country = {
 };
 
 export const getServerSideProps: GetServerSideProps = withSession(
-  wrapper.getServerSideProps((store) => async ({ query, locale, req, res }) => {
+  wrapper.getServerSideProps((store) => async ({ query, locale, req }) => {
     const { geostore } = query;
     const { dispatch } = store;
     const worldview =
