@@ -1,6 +1,6 @@
 import LayoutCotton from 'layout/value-chains/cotton';
 import { actions } from 'layout/value-chains/reducers';
-import { wrapper } from 'lib/store';
+import { RootState, wrapper } from 'lib/store';
 import { GetServerSideProps } from 'next';
 import { fetchCountries, fetchGeostore } from 'services/geostore';
 import { ValueChainPageProps } from 'types/value-chain';
@@ -9,6 +9,7 @@ import DROPDOWN from 'public/data/cotton_countries.json';
 import india_worldview_geostore from 'public/data/india_worldview_geostore.json';
 import { setWorldview } from 'layout/explore/actions';
 import { connect } from 'react-redux';
+import { withSession } from 'hoc/session';
 
 const CottonPage = ({ countries }: ValueChainPageProps) => {
   return <LayoutCotton countries={countries} />;
@@ -22,16 +23,23 @@ const default_country = {
   iso: 'IND',
 };
 
-export const getServerSideProps: GetServerSideProps =
+export const getServerSideProps: GetServerSideProps = withSession(
   wrapper.getServerSideProps((store) => async ({ query, locale, req }) => {
     const { geostore } = query;
     const { dispatch } = store;
-    const { explore: { worldview }} = store.getState();
-    const viewer_iso2 = req.headers['cloudfront-viewer-country'];
-    // const viewer_iso2 = 'IN';
-    const india_worldview = viewer_iso2 === 'IN' || worldview === 'IN';
-    if (viewer_iso2 === 'IN' && worldview !== 'IN') dispatch(setWorldview(viewer_iso2));
-    if ((india_worldview) && geostore === 'fb119d758d39527a91307b7fed3debf4')
+    const worldview =
+      req.headers['cloudfront-viewer-country'] ??
+      req.session.user?.country ??
+      'US';
+    // const worldview = 'IN';
+    req.session.user = {
+      country: Array.isArray(worldview) ? worldview.join('') : worldview,
+    };
+    await req.session.save();
+    const india_worldview = worldview === 'IN';
+    dispatch(setWorldview(String(worldview)));
+
+    if (india_worldview && geostore === 'fb119d758d39527a91307b7fed3debf4')
       return {
         redirect: {
           destination: '/value-chains/cotton/1252b02f0a27cf77fd19b8298be6a8db',
@@ -65,8 +73,7 @@ export const getServerSideProps: GetServerSideProps =
       if (!geo.name || !DROPDOWN.countries.includes(geo.name)) return arr;
 
       const { name: label, geostoreId: value, iso } = geo;
-      if (iso === 'IND' && india_worldview)
-        arr.push(india_worldview_geostore);
+      if (iso === 'IND' && india_worldview) arr.push(india_worldview_geostore);
       else arr.push({ label, value, iso });
       return arr;
     }, []);
@@ -84,7 +91,7 @@ export const getServerSideProps: GetServerSideProps =
         countries,
       },
     };
-  });
+  }));
 
-  export default connect(null, { setWorldview })(CottonPage);
+  export default connect((state: RootState) => ({worldview: state.explore.worldview}), { setWorldview })(CottonPage);
 
