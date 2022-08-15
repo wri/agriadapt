@@ -1,9 +1,12 @@
 import classnames from 'classnames';
 import Icon from 'components/ui/icon';
+import { useTranslation } from 'next-i18next';
 import { capitalizeFirstLetter } from 'utils/utils';
 import { EXPLORE_TABS } from '../constants';
 
 const ExploreSwitch = ({ open, selectedTab, setSidebarSelectedTab }) => {
+  const { t } = useTranslation(['explore', 'common']);
+
   return (
     <div
       className={classnames({
@@ -32,7 +35,7 @@ const ExploreSwitch = ({ open, selectedTab, setSidebarSelectedTab }) => {
             />
             {open && (
               <span className="button-text">
-                {capitalizeFirstLetter(value)}
+                {capitalizeFirstLetter(t(value))}
               </span>
             )}
           </button>

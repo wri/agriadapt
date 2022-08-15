@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import truncate from 'lodash/truncate';
 import ReactMarkdown from 'react-markdown';
 import classnames from 'classnames';
+import { useTranslation } from 'next-i18next';
 
 function ReadMore(props) {
   const [visible, setVisible] = useState(false);
@@ -25,6 +26,9 @@ function ReadMore(props) {
     '-truncated': !visible,
   });
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const { t } = useTranslation(['explore', 'common']);
+
   return (
     <div className={classValue}>
       {markdown && <ReactMarkdown linkTarget="_blank" source={shortenedText} />}
@@ -39,7 +43,7 @@ function ReadMore(props) {
           setVisible(!visible);
         }}
       >
-        {visible ? 'Read less' : 'Read more'}
+        {visible ? t('explore:explore_detail.Read less') : t('explore:explore_detail.Read more')}
       </button>
     </div>
   );
