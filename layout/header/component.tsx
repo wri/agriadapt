@@ -7,6 +7,11 @@ import Icon from 'components/ui/icon';
 import { Media } from 'lib/media';
 import HeaderMenuMobile from 'layout/header/header-menu-mobile';
 
+import headerLogo from 'components/icons/LOGO AgriAdapt horiz 4C.svg';
+import loader from 'lib/imageLoader';
+import Image from 'next/image';
+
+
 interface HeaderProps {
   className?: string;
   pageHeader?: boolean;
@@ -30,11 +35,12 @@ export default function Header({
               <div className="header-logo">
                 <Link href="/">
                   <a>
-                    <Icon
+                    {/* <Icon
                       name="icon-agri-adapt"
                       className="brand-logo"
                       style={undefined}
-                    />
+                    /> */}
+                    <Image loader={loader} unoptimized src={headerLogo} alt="" className="brand-logo"/>
                   </a>
                 </Link>
               </div>
