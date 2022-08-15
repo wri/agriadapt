@@ -42,8 +42,9 @@ const UserStories = ({
           }}
         >
           <Image
-            height={getImageDimensions(b, true)}
-            width={getImageDimensions(b, true)}
+            layout="fill"
+            objectFit="cover"
+            objectPosition={"50% 50%"}
             loader={loader}
             unoptimized
             src={s.image}

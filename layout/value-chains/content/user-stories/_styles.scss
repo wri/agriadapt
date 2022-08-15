@@ -31,6 +31,7 @@ $picture-size: 250px;
       }
 
       .user-picture {
+        position: relative;
         margin: 0 auto;
         border: 3px solid #a8c19f;
         border-radius: 50%;
@@ -51,6 +52,7 @@ $picture-size: 250px;
         span {
           border-radius: 50%;
           text-align: center;
+          border: 5px solid white !important;
         }
       }
 

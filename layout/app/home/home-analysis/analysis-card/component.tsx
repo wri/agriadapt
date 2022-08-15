@@ -1,7 +1,5 @@
 import loader from 'lib/imageLoader';
 import Image from 'next/image';
-import mapImage from 'public/images/components/layout/landing/analysis-map.png';
-import mapImage1 from 'public/images/components/layout/landing/Home_Img_Cotton.png';
 import Link from 'next/link';
 import { useTranslation } from 'next-i18next';
 
