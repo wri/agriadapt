@@ -32,7 +32,7 @@ export default function HeaderValueChains() {
             onMouseEnter={() => toggleDropdown(true)}
             onMouseLeave={() => toggleDropdown(false)}
           >
-            {t('header:value_chains')}
+            {t('header:crops')}
           </a>
         </Link>
       )}

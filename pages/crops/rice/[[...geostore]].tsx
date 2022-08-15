@@ -1,24 +1,24 @@
-import LayoutCoffee from 'layout/value-chains/coffee';
+import LayoutRice from 'layout/value-chains/rice';
 import { actions } from 'layout/value-chains/reducers';
 import { wrapper } from 'lib/store';
-import { GetServerSideProps } from 'next';
-import { fetchCountries, fetchGeostore } from 'services/geostore';
 import { ValueChainPageProps } from 'types/value-chain';
+import { fetchCountries, fetchGeostore } from 'services/geostore';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import DROPDOWN from 'public/data/coffee_countries.json';
+import DROPDOWN from 'public/data/rice_countries.json';
 import india_worldview_geostore from 'public/data/india_worldview_geostore.json';
+import { GetServerSideProps } from 'next';
 import { withSession } from 'hoc/session';
 
-const CoffeeCountryPage = (props: ValueChainPageProps) => {
-  return <LayoutCoffee {...props} />;
+const RicePage = ({ countries }: ValueChainPageProps) => {
+  return <LayoutRice countries={countries} />;
 };
 
-const CROP = 'coffee';
+const CROP = 'rice';
 
 const default_country = {
-  label: 'Colombia',
-  value: '298fc2cf079fb1439a4ad816d258a965',
-  iso: 'COL',
+  label: 'India',
+  value: 'fb119d758d39527a91307b7fed3debf4',
+  iso: 'IND',
 };
 
 export const getServerSideProps: GetServerSideProps = withSession(
@@ -31,7 +31,7 @@ export const getServerSideProps: GetServerSideProps = withSession(
     if (india_worldview && geostore === 'fb119d758d39527a91307b7fed3debf4')
       return {
         redirect: {
-          destination: '/value-chains/coffee/1252b02f0a27cf77fd19b8298be6a8db',
+          destination: '/crops/rice/1252b02f0a27cf77fd19b8298be6a8db',
           permanent: false,
         },
       };
@@ -49,7 +49,12 @@ export const getServerSideProps: GetServerSideProps = withSession(
         .catch(() => console.error('Error fetching geostore')));
 
     if (country) dispatch(actions.setCountry(country));
-    else dispatch(actions.setCountry(default_country));
+    else
+      dispatch(
+        actions.setCountry(
+          india_worldview ? india_worldview_geostore : default_country
+        )
+      );
 
     dispatch(actions.setActiveCrop(CROP));
 
@@ -75,6 +80,7 @@ export const getServerSideProps: GetServerSideProps = withSession(
         countries,
       },
     };
-  }));
+  })
+);
 
-export default CoffeeCountryPage;
+export default RicePage;

@@ -1,5 +1,4 @@
 import { BASEMAPS, LABELS } from 'components/map/constants';
-import { EXPLORE_TABS } from 'layout/explore/constants';
 
 const initialState = {
   worldview: 'US',
@@ -100,7 +99,7 @@ const initialState = {
     subsection: null,
     selected: null,
     selectedCollection: null,
-    selectedTab: EXPLORE_TABS.LAYERS,
+    selectedTab: 'layers',
   },
 
   tags: {
