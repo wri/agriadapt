@@ -71,6 +71,7 @@ const ExploreMap = (props) => {
     layerGroupsInteractionLatLng,
     drawer: { isDrawing },
     // stopDrawing,
+    worldview,
     exploreBehavior,
     onLayerInfoButtonClick,
     setSelectedDataset,
@@ -540,6 +541,7 @@ const ExploreMap = (props) => {
           onChangeBasemap={handleBasemap}
           onChangeLabels={handleLabels}
           onChangeBoundaries={handleBoundaries}
+          {...(worldview === 'IN' && { disabledControls: ['boundaries'] })}
         />
         {/* <SearchControls onSelectLocation={handleSearch} /> */}
         <ResetViewControls
