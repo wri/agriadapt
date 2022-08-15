@@ -42,7 +42,7 @@ const Controls = ({ setConfig, products, indicators, country }) => {
         id={'EXPORT_IMPORT_INDICATOR'}
         properties={{
           label: t('Select Indicator'),
-          default: indicators[0],
+          default: { ...indicators[0], label: t(indicators[0].label) },
         }}
         value={{ ...indicator.value.value, label: t(indicator.value.label) }}
         onChange={indicator.onChange}

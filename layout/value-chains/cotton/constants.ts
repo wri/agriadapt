@@ -123,8 +123,8 @@ const trade = {
             },
           ],
           indicators: [
-            { label: 'widgets:indicators.quantity', value: 'Quantity' },
-            { label: 'widgets:indicators.value', value: 'Value' },
+            { label: 'widgets:export_import.indicators.quantity', value: 'Quantity' },
+            { label: 'widgets:export_import.indicators.value', value: 'Value' },
           ],
         },
       },
