@@ -1,5 +1,9 @@
 export interface ValueChainPageProps {
-  iso: string;
+  country: {
+    label: string;
+    value: string;
+    iso: string;
+  };
   countries: {
     label: string;
     value: string;

@@ -3,14 +3,14 @@ import { ValueChainPageProps } from 'types/value-chain';
 import LayoutCrop from 'layout/value-chains';
 import details, { quotes } from './constants';
 
-const LayoutCotton = ({ countries, iso }: ValueChainPageProps) => {
+const LayoutCotton = ({ countries, country }: ValueChainPageProps) => {
   return (
     <LayoutCrop
       crop="cotton"
       header={COTTON}
       details={details}
       countries={countries}
-      quotes={quotes[iso]?.quotes}
+      quotes={quotes[country.iso]?.quotes}
     />
   );
 };

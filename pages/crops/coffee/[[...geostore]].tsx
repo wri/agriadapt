@@ -1,6 +1,6 @@
 import LayoutCoffee from 'layout/value-chains/coffee';
 import { actions } from 'layout/value-chains/reducers';
-import { RootState, wrapper } from 'lib/store';
+import { wrapper } from 'lib/store';
 import { GetServerSideProps } from 'next';
 import { fetchCountries, fetchGeostore } from 'services/geostore';
 import { ValueChainPageProps } from 'types/value-chain';
@@ -8,7 +8,6 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import DROPDOWN from 'public/data/coffee_countries.json';
 import india_worldview_geostore from 'public/data/india_worldview_geostore.json';
 import { withSession } from 'hoc/session';
-import { connect } from 'react-redux';
 
 const CoffeePage = (props: ValueChainPageProps) => {
   return <LayoutCoffee {...props} />;
@@ -78,6 +77,4 @@ export const getServerSideProps: GetServerSideProps = withSession(
     };
   }));
 
-export default connect((state: RootState) => ({
-  iso: state.value_chains.country.iso,
-}))(CoffeePage);
+export default CoffeePage;
