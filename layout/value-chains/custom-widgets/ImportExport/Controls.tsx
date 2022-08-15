@@ -29,7 +29,7 @@ const Controls = ({ setConfig, products, indicators, country }) => {
         id={'EXPORT_IMPORT_PRODUCT'}
         properties={{
           label: t('Select Product'),
-          default: products[0],
+          default: { ...products[0], label: t(products[0].label) },
         }}
         value={{ ...product.value.value, label: t(product.value.label) }}
         onChange={product.onChange}
