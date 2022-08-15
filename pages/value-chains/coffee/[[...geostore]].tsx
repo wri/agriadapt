@@ -7,9 +7,8 @@ import { ValueChainPageProps } from 'types/value-chain';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import DROPDOWN from 'public/data/coffee_countries.json';
 import india_worldview_geostore from 'public/data/india_worldview_geostore.json';
-import { setWorldview } from 'layout/explore/actions';
-import { connect } from 'react-redux';
 import { withSession } from 'hoc/session';
+
 const CoffeeCountryPage = (props: ValueChainPageProps) => {
   return <LayoutCoffee {...props} />;
 };
@@ -26,17 +25,8 @@ export const getServerSideProps: GetServerSideProps = withSession(
   wrapper.getServerSideProps((store) => async ({ query, locale, req }) => {
     const { geostore } = query;
     const { dispatch } = store;
-    const worldview =
-      req.headers['cloudfront-viewer-country'] ??
-      req.session.user?.country ??
-      'US';
-    // const worldview = 'IN';
-    req.session.user = {
-      country: Array.isArray(worldview) ? worldview.join('') : worldview,
-    };
-    await req.session.save();
+    const worldview = req.session.user?.country;
     const india_worldview = worldview === 'IN';
-    dispatch(setWorldview(String(worldview)));
 
     if (india_worldview && geostore === 'fb119d758d39527a91307b7fed3debf4')
       return {
@@ -87,4 +77,4 @@ export const getServerSideProps: GetServerSideProps = withSession(
     };
   }));
 
-export default connect(null, { setWorldview })(CoffeeCountryPage);
+export default CoffeeCountryPage;
