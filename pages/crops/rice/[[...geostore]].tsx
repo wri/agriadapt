@@ -1,6 +1,6 @@
 import LayoutRice from 'layout/value-chains/rice';
 import { actions } from 'layout/value-chains/reducers';
-import { wrapper } from 'lib/store';
+import { RootState, wrapper } from 'lib/store';
 import { ValueChainPageProps } from 'types/value-chain';
 import { fetchCountries, fetchGeostore } from 'services/geostore';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
@@ -8,9 +8,10 @@ import DROPDOWN from 'public/data/rice_countries.json';
 import india_worldview_geostore from 'public/data/india_worldview_geostore.json';
 import { GetServerSideProps } from 'next';
 import { withSession } from 'hoc/session';
+import { connect } from 'react-redux';
 
-const RicePage = ({ countries }: ValueChainPageProps) => {
-  return <LayoutRice countries={countries} />;
+const RicePage = ({ countries, iso }: ValueChainPageProps) => {
+  return <LayoutRice iso={iso} countries={countries} />;
 };
 
 const CROP = 'rice';
@@ -83,4 +84,6 @@ export const getServerSideProps: GetServerSideProps = withSession(
   })
 );
 
-export default RicePage;
+export default connect((state: RootState) => ({
+  iso: state.value_chains.country.iso,
+}))(RicePage);

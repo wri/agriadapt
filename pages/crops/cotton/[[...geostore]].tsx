@@ -1,6 +1,6 @@
 import LayoutCotton from 'layout/value-chains/cotton';
 import { actions } from 'layout/value-chains/reducers';
-import { wrapper } from 'lib/store';
+import { RootState, wrapper } from 'lib/store';
 import { GetServerSideProps } from 'next';
 import { fetchCountries, fetchGeostore } from 'services/geostore';
 import { ValueChainPageProps } from 'types/value-chain';
@@ -8,9 +8,10 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import DROPDOWN from 'public/data/cotton_countries.json';
 import india_worldview_geostore from 'public/data/india_worldview_geostore.json';
 import { withSession } from 'hoc/session';
+import { connect } from 'react-redux';
 
-const CottonPage = ({ countries }: ValueChainPageProps) => {
-  return <LayoutCotton countries={countries} />;
+const CottonPage = ({ countries, iso }: ValueChainPageProps) => {
+  return <LayoutCotton iso={iso} countries={countries} />;
 };
 
 const CROP = 'cotton';
@@ -83,4 +84,6 @@ export const getServerSideProps: GetServerSideProps = withSession(
   })
 );
 
-export default CottonPage;
+export default connect((state: RootState) => ({
+  iso: state.value_chains.country.iso,
+}))(CottonPage);

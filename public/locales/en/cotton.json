@@ -40,21 +40,27 @@
       "info": "Cotton is a very important cash crop which has a growing demand for domestic and international markets. Disruptions to cotton production can result in an uncertain market for farmers and ripple effects can be seen throughout the entire value chain . Production constraints will impact global markets by affecting product availability, quality, and price."
     }
   },
-  "quotes": [
-    {
-      "location": "Nandyala, India",
-      "title": "Scientist, Regional Agricultural Research Station (RARS)",
-      "quote": "One of the important factors which can affect the cotton supply chain is the pest infestation which not only reduces the yield but also reduces the quality of ginnable cotton. The incidence of pests and diseases are climate related and the AgriAdapt can help us in providing early warning systems with its data on climate variability and forecasted risks"
-    },
-    {
-      "location": "Vijayawada, India",
-      "title": "Climate Change Activities Manager, Asian Infrastructure Investment Bank",
-      "quote": "Cotton’s supply chain is facing several challenges in the quality of cotton triggered by extreme climate events. Through a robust platform like AgriAdapt, Ginners/Spinners can identify the least affected regions to climate hazards and plan their purchases of cotton accordingly from these cultivated areas."
-    },
-    {
-      "location": "Guntur, India",
-      "title": "Manager, KDM Spinners Pvt Ltd.",
-      "quote": "Extreme weather events are affecting the quality of cotton. We have been facing a lot of problems related to the poor quality of cotton while procurement, which affects the final output and poses serious threats to the business. By knowing the climatic hazards and unseasonal rain through the AgriAdapt, we can procure cotton well in advance to avoid the purchase of cotton at a high cost and of poor quality. We can also sensitize our suppliers/farmers about climate hazards and possible infestation of pests and disease so that we can avoid climate related risks at the source itself."
+  "quotes": {
+    "IN": {
+      "IND": {
+        "quotes": [
+          {
+            "location": "Asian Infrastructure Investment Bank, Vijayawada, India",
+            "title": "Dr Rajani Ganta, Climate Change Activities Manager",
+            "quote": "“Cotton’s supply chain is facing several challenges in the quality of cotton triggered by extreme climate events. It is great to have a robust tool like AgriAdapt, that considers the needs of various stakeholders including supply chain managers, funding entities, and policy makers.”"
+          },
+          {
+            "location": "Regional Agricultural Research Station, Nandyala, India",
+            "title": "Dr. B. V. R. Prakash Reddy, Scientist",
+            "quote": "“One of the important factors which can affect the cotton supply chain is the pest infestation, which not only reduces the yield but also reduces the quality of ginnable cotton. The incidence of pests and diseases are climate related and AgriAdapt can help us in providing early warning systems with its data on climate variability and forecast risks.”"
+          },
+          {
+            "location": "KDM Spinners Pvt Ltd., Guntur, India",
+            "title": "K. Apparao, Manager,",
+            "quote": "“Extreme weather events are affecting the quality of cotton. We have been facing a lot of problems related to the poor quality of cotton while procurement, which affects the final output and poses serious threats to the business. With AgriAdapt we can sensitize our suppliers/farmers about climate hazards and possible infestation of pests and disease so that we can avoid climate related risks at the source itself.”"
+          }
+        ]
+      }
     }
-  ]
+  }
 }

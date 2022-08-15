@@ -1,5 +1,3 @@
-import coffee1 from 'public/images/quotes/coffee1.png';
-import coffee2 from 'public/images/quotes/coffee2.png';
 import LandSuitabilityControls from '../custom-widgets/LandSuitability/Controls';
 import ImportExportControls from '../custom-widgets/ImportExport/Controls';
 
@@ -122,20 +120,5 @@ const trade = {
 };
 
 const details = { inputs, production, trade };
-
-export const quotes = [
-  {
-    location: 'quotes.0.location',
-    image: coffee1,
-    title: 'quotes.0.title',
-    quote: 'quotes.0.quote',
-  },
-  {
-    location: 'quotes.1.location',
-    image: coffee2,
-    title: 'quotes.1.title',
-    quote: 'quotes.1.quote',
-  },
-];
 
 export default details;

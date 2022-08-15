@@ -23,7 +23,7 @@ interface LayoutCropProps {
     iso: string;
   }[];
   details: any;
-  quotes: {
+  quotes?: {
     location: string;
     image: StaticImageData;
     title: string;
@@ -48,7 +48,7 @@ const LayoutCrop = ({
         <div className="l-container">
           <div className="row">
             <div className="column small-12">
-              <UserStories crop={crop} quotes={quotes} />
+              {quotes?.length && <UserStories crop={crop} quotes={quotes} />}
             </div>
           </div>
         </div>

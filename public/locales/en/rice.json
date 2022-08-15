@@ -42,21 +42,27 @@
       "info": "The rice market is highly exposed to climate change. Climate change not only creates risks for producing countries but also transmits those risks through agricultural commodity trade to consumers of all kinds, and can do so over significant distances. Explore the visualization to learn about rice exports and imports in {{country}}."
     }
   },
-  "quotes": [
-    {
-      "location": "Chengalpet Dt, Tamilnadu",
-      "title": "Mr. V. Prabhu",
-      "quote": "Climate hazards left us in bankruptcy and led us to close down many rice mill units. With the information in this platform, however, I now understand how climate change is affecting the business and can better decide upon our operational plan and make the appropriate investments to prevent future climate risks."
-    },
-    {
-      "location": "Coimbatore, Tamilnadu, India",
-      "title": "Asst Prof",
-      "quote": "The Climate Risk Tool will help us to provide all stakeholders in the paddy value chain with the appropriate climate information they need to prepare against possible climate hazards."
-    },
-    {
-      "location": "Kanchipuram Dt, Tamilnadu, India",
-      "title": "Ricemill Owner Association",
-      "quote": "An abnormal rise in temperature and unprecedented rainfall has drastically changed the processing methods of rice over the years, but the policies for rice mill units under small scale industry remain unchanged. With this new climate risk data, we hope to influence decision makers and adjust the policies on subsidies to support small scale workers in a shifting climate."
+  "quotes": {
+    "IN": {
+      "IND": {
+        "quotes": [
+          {
+            "location": "Chengalpattu District, Tamilnadu, India",
+            "title": "Mr. V. Prabhu, Rice Milling Business",
+            "quote": "“Climate hazards left us in bankruptcy and led us to close down many rice mill units. With the information in this platform, however, I now understand how climate change is affecting the business and I can better decide upon our operational plan”"
+          },
+          {
+            "location": "Coimbatore, Tamil Nadu, India",
+            "title": "Dr. K. Boomirajan, Assistant Professor",
+            "quote": "“AgriAdapt will help us to provide all stakeholders in the paddy value chain with the appropriate climate information they need to prepare against possible climate hazards.”"
+          },
+          {
+            "location": "Kanchipuram District, Tamil Nadu, India",
+            "title": "Mr. A. Ravi, Ricemill Owner Association",
+            "quote": "“An abnormal rise in temperature and unprecedented rainfall has drastically changed the processing methods of rice over the years, but the policies for rice mill units under small scale industry remain unchanged. With this new climate risk data, we hope to influence decision makers and adjust the policies on subsidies to support small scale workers in a shifting climate.”"
+          }
+        ]
+      }
     }
-  ]
+  }
 }
