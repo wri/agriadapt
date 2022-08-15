@@ -2,11 +2,10 @@ import React from 'react';
 import classnames from 'classnames';
 
 // Utils
-import { logEvent } from 'utils/analytics';
+// import { logEvent } from 'utils/analytics';
 
 // Components
 import Icon from 'components/ui/icon';
-import { EXPLORE_TABS } from '../constants';
 
 const ExploreSidebarComponent = ({
   open,
@@ -37,7 +36,7 @@ const ExploreSidebarComponent = ({
         'c-sidebar': true,
         '-open': open,
         '-details': !!selectedDataset,
-        '-wider': open && selectedTab === EXPLORE_TABS.ANALYSIS,
+        '-wider': open && selectedTab === 'analysis',
       })}
     >
       <button type="button" className="btn-toggle" onClick={triggerToggle}>

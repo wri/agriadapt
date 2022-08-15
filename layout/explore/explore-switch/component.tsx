@@ -16,18 +16,18 @@ const ExploreSwitch = ({ open, selectedTab, setSidebarSelectedTab }) => {
     >
       {Object.entries(EXPLORE_TABS).map(([key, value]) => {
         const iconName = classnames({
-          'icon-layers': key === 'LAYERS',
-          'icon-widget': key === 'ANALYSIS',
+          'icon-layers': key === 'layers',
+          'icon-widget': key === 'analysis',
         });
         return (
           <button
             key={key}
             className={classnames({
               'c-button': true,
-              '-primary': selectedTab === value && open,
-              '-tertiary': selectedTab !== value || !open,
+              '-primary': selectedTab === value.id && open,
+              '-tertiary': selectedTab !== value.id || !open,
             })}
-            onClick={() => setSidebarSelectedTab(value)}
+            onClick={() => setSidebarSelectedTab(value.id)}
           >
             <Icon
               name={iconName}
@@ -35,7 +35,7 @@ const ExploreSwitch = ({ open, selectedTab, setSidebarSelectedTab }) => {
             />
             {open && (
               <span className="button-text">
-                {capitalizeFirstLetter(t(value))}
+                {capitalizeFirstLetter(t(value.label))}
               </span>
             )}
           </button>
