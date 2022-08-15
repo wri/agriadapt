@@ -2,8 +2,6 @@ import React from 'react';
 
 import LayoutError from 'layout/error';
 import HeadError from 'layout/head/error';
-import { GetServerSideProps } from 'next';
-import { withSession } from 'hoc/session';
 
 const Layout404 = () => {
   return (
@@ -13,7 +11,5 @@ const Layout404 = () => {
     </>
   );
 };
-
-export const getServerSideProps: GetServerSideProps = withSession();
 
 export default Layout404;
