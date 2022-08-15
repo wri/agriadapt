@@ -23,7 +23,7 @@
 	},
 	"production": {
 		"production_volume": {
-			"info": "Explore nuestras visualizaciones de datos para comprender mejor dónde están las principales regiones productoras de café en {{país}} y cuánto café se produce actualmente."
+			"info": "Explore nuestras visualizaciones de datos para comprender mejor dónde están las principales regiones productoras de café en {{country}} y cuánto café se produce actualmente."
 		},
 		"pests_and_disease": {
 			"info": "El barrenador de la baya del café y la roya de la hoja de café son la plaga y la enfermedad más amenazantes para la salud de los árboles de café. En general, el aumento de las temperaturas aumentará la propagación de plagas y enfermedades en los árboles de café. Sin embargo, la disminución proyectada de las precipitaciones en ciertas regiones puede disminuir la propagación de plagas y enfermedades."
@@ -34,7 +34,7 @@
 	},
 	"trade": {
 		"export_and_import": {
-			"info": "El café es uno de los productos más importantes comercializados comercialmente en el mercado internacional, así como una de las bebidas más populares en todo el mundo. Los impactos climáticos en la producción significan efectos dominó en los mercados globales al afectar la disponibilidad, la calidad y el precio de los productos. Explore la visualización para obtener información sobre las exportaciones e importaciones de café en {{país}}."
+			"info": "El café es uno de los productos más importantes comercializados comercialmente en el mercado internacional, así como una de las bebidas más populares en todo el mundo. Los impactos climáticos en la producción significan efectos dominó en los mercados globales al afectar la disponibilidad, la calidad y el precio de los productos. Explore la visualización para obtener información sobre las exportaciones e importaciones de café en {{country}}."
 		}
 	},
 	"quotes": [

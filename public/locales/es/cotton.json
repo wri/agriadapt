@@ -26,7 +26,7 @@
 	},
 	"production": {
 		"production_volume": {
-			"info": "El siguiente mapa muestra las principales regiones de cultivo de algodón en {{país}}, junto con la cantidad de algodón que se produce actualmente."
+			"info": "El siguiente mapa muestra las principales regiones de cultivo de algodón en {{country}}, junto con la cantidad de algodón que se produce actualmente."
 		},
 		"pests_and_disease": {
 			"info": "Los cambios en el clima pueden resultar en la evolución continua de las plagas, haciéndolas más difíciles de contener, lo que puede influir significativamente en el rendimiento y la calidad. La temperatura adecuada, la humedad, las bajas precipitaciones, la baja velocidad del viento, el tiempo de sol adecuado y la baja evaporación tienen más probabilidades de causar plagas y enfermedades del algodón."

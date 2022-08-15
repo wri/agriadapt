@@ -39,7 +39,7 @@
 			"info": "El Puntaje de Vulnerabilidad Alimentaria muestra la vulnerabilidad de un país al cambio climático en una escala de 0 a 1. Los puntajes más bajos indican los países que son menos vulnerables. El puntaje de alimentos incorpora seis indicadores (cambio proyectado de los rendimientos de cereales, crecimiento proyectado de la población, dependencia de las importaciones de alimentos, población rural, capacidad agrícola y desnutrición infantil) para capturar su vulnerabilidad con respecto a la producción y demanda de alimentos, la nutrición y la población rural."
 		},
 		"export_and_import": {
-			"info": "El mercado del arroz está muy expuesto al cambio climático. El cambio climático no sólo crea riesgos para los países productores, sino que también transmite esos riesgos a través del comercio de productos básicos agrícolas a consumidores de todo tipo, y puede hacerlo a distancias significativas. Explore la visualización para obtener información sobre las exportaciones e importaciones de arroz en {{país}}."
+			"info": "El mercado del arroz está muy expuesto al cambio climático. El cambio climático no sólo crea riesgos para los países productores, sino que también transmite esos riesgos a través del comercio de productos básicos agrícolas a consumidores de todo tipo, y puede hacerlo a distancias significativas. Explore la visualización para obtener información sobre las exportaciones e importaciones de arroz en {{country}}."
 		}
 	},
 	"quotes": [
