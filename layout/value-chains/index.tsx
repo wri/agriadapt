@@ -40,6 +40,7 @@ const LayoutCrop = ({
   crop,
   quotes,
 }: LayoutCropProps) => {
+
   return (
     // TODO: Translate
     <Layout title={`${capitalizeFirstLetter(crop)} (${country.label})`}>

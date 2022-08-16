@@ -23,6 +23,7 @@ import {
   setTags,
   setTagsLoading,
 } from './actions';
+import { useRouter } from 'next/router';
 
 const ExploreDetailContainer = (props) => {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -34,6 +35,8 @@ const ExploreDetailContainer = (props) => {
     toggleMapLayerGroup,
   } = props;
 
+  const { locale } = useRouter();
+
   useEffect(() => {
     if (datasetID) {
       dispatch(setDatasetLoading(true));
@@ -42,6 +45,7 @@ const ExploreDetailContainer = (props) => {
       fetchDataset(datasetID, {
         includes: 'metadata,layer,vocabulary,widget',
         application: process.env.NEXT_PUBLIC_APPLICATIONS,
+        language: locale,
         env: process.env.NEXT_PUBLIC_API_ENV,
       })
         .then((data) => {
@@ -97,7 +101,7 @@ const ExploreDetailContainer = (props) => {
           console.error('Error loading dataset data', error);
         });
     }
-  }, [anchor, datasetID]);
+  }, [anchor, datasetID, locale]);
 
   useEffect(() => {
     const element = document.getElementById(anchor);
