@@ -21,7 +21,7 @@ import IconsRW from 'components/icons';
 import Tooltip from 'components/ui/Tooltip';
 import Modal from 'components/ui/Modal';
 import NoBrowserSupport from 'components/app/common/Browser';
-// import GDPRBanner from "components/ui/gdpr-banner";
+import GDPRBanner from "components/ui/gdpr-banner";
 
 // utils
 import { containsString } from 'utils/string';
@@ -93,7 +93,7 @@ class LayoutApp extends Component {
           {...(thumbnail && { thumbnail })}
         />
 
-        {/* <GDPRBanner /> */}
+        <GDPRBanner />
 
         {!browserSupported() && (
           <Modal open canClose={false}>

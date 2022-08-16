@@ -7,8 +7,8 @@ const TermsOfServiceModal = ({ onClose }) => {
   return (
     <Modal isOpen className="-no-padding" onRequestClose={onClose}>
       <div className="c-tos-modal">
-        <p>{t('common:terms_of_service')}</p>
-        <p>{t('common:world_resources_institute')}</p>
+        <p>{t('tos:terms_of_service')}</p>
+        <p>{t('tos:world_resources_institute')}</p>
         <Trans>
           {t('tos:intro.address')}
           {t('tos:intro.paragraphs')}

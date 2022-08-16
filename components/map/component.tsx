@@ -376,7 +376,7 @@ export const Map = ({
         mapStyle={MAPSTYLES}
         {...mapboxProps}
         {...mapViewport}
-        style={{ width: width, height: height }}
+        style={{ width, height }}
         dragPan={!flying && dragPan}
         dragRotate={!flying && dragRotate}
         scrollZoom={!flying && scrollZoom}
