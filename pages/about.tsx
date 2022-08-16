@@ -16,6 +16,8 @@ export const getServerSideProps: GetServerSideProps = withSession(
           'common',
           'header',
           'footer',
+          'tos',
+          'privacy',
         ])),
       },
     };

@@ -18,7 +18,7 @@ module.exports = {
       // },
       {
         source: '/crops',
-        destination: '/crops/rice',
+        destination: '/crops/coffee',
         permanent: true,
       },
     ];

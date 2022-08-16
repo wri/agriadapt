@@ -9,8 +9,7 @@ import DROPDOWN from 'public/data/coffee_countries.json';
 import india_worldview_geostore from 'public/data/india_worldview_geostore.json';
 import { withSession } from 'hoc/session';
 
-const CoffeeCountryPage = (props: ValueChainPageProps) => {
-  console.log(props.headers);
+const CoffeePage = (props: ValueChainPageProps) => {
   return <LayoutCoffee {...props} />;
 };
 
@@ -39,9 +38,7 @@ export const getServerSideProps: GetServerSideProps = withSession(
 
     const country =
       geostore &&
-      (await fetchGeostore(
-        Array.isArray(geostore) ? geostore.join('') : geostore
-      )
+      (await fetchGeostore(String(geostore))
         .then(({ id, info: { name, iso } }) => ({
           label: name,
           value: id,
@@ -71,6 +68,8 @@ export const getServerSideProps: GetServerSideProps = withSession(
           'countries',
           'header',
           'footer',
+          'tos',
+          'privacy',
           'widgets',
         ])),
         countries,
@@ -79,4 +78,4 @@ export const getServerSideProps: GetServerSideProps = withSession(
     };
   }));
 
-export default CoffeeCountryPage;
+export default CoffeePage;

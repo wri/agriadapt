@@ -66,7 +66,7 @@ const DatasetList = ({
                   dataset.widget ? dataset.widget.find((w) => w.default) : null
                 }
                 layer={
-                  dataset.layer ? dataset.layer.find((l) => l.default) : null
+                  dataset.layer ? dataset.layer.find((l) => l.default) ?? dataset.layer[0] : null
                 }
                 metadata={
                   dataset.metadata && Array.isArray(dataset.metadata)

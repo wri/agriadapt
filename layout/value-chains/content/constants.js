@@ -69,30 +69,7 @@ export const chain_items = {
   },
 };
 
-// export const intros = {
-//   inputs: {
-//     header: 'Do we need an inputs intro?',
-//     description:
-//       'Lörem ipsum koldioxidbanta flitbonus pamäbel då vimiren pasamma. Exogisk höbelt, i preplastisk. Nys ultravigisk us emedan äd sisat. Lasat inat morotsmobb har påprest misade. Vass popregt. ',
-//   },
-//   production: {},
-//   processing: {},
-//   trade: {},
-// };
-
 export const chains = {
   COFFEE: {},
   COTTON: {},
-};
-
-export const user_stories = {
-  header: 'hear_from_our_users',
-  stories: [
-    {
-      person: 'Daniel',
-      location: 'Colombia',
-      quote:
-        'When my crops were devastated by the extreme rainfalls last summer, I was fortunate to have AgriAdapt data to demonstrate the loss and facilitate the process to claim the insurance.',
-    },
-  ],
 };

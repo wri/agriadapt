@@ -38,9 +38,7 @@ export const getServerSideProps: GetServerSideProps = withSession(
 
     const country =
       geostore &&
-      (await fetchGeostore(
-        Array.isArray(geostore) ? geostore.join('') : geostore
-      )
+      (await fetchGeostore(String(geostore))
         .then(({ id, info: { name, iso } }) => ({
           label: name,
           value: id,
@@ -75,6 +73,8 @@ export const getServerSideProps: GetServerSideProps = withSession(
           'countries',
           'header',
           'footer',
+          'tos',
+          'privacy',
           'widgets',
         ])),
         countries,

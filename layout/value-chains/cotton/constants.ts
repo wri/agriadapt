@@ -1,5 +1,5 @@
-import cotton1 from 'public/images/quotes/cotton1.png';
-import cotton2 from 'public/images/quotes/cotton2.png';
+import cotton1 from 'public/images/quotes/cotton2.png';
+import cotton2 from 'public/images/quotes/cotton1.png';
 import cotton3 from 'public/images/quotes/cotton3.png';
 import LandSuitabilityControls from '../custom-widgets/LandSuitability/Controls';
 import ImportExportControls from '../custom-widgets/ImportExport/Controls';
@@ -123,8 +123,8 @@ const trade = {
             },
           ],
           indicators: [
-            { label: 'widgets:indicators.quantity', value: 'Quantity' },
-            { label: 'widgets:indicators.value', value: 'Value' },
+            { label: 'widgets:export_import.indicators.quantity', value: 'Quantity' },
+            { label: 'widgets:export_import.indicators.value', value: 'Value' },
           ],
         },
       },
@@ -132,26 +132,31 @@ const trade = {
   },
 };
 
-export const quotes = [
-  {
-    location: 'quotes.0.location',
-    image: cotton1,
-    title: 'quotes.0.title',
-    quote: 'quotes.0.quote',
+export const quotes = {
+  IND: {
+    audience: 'IN',
+    quotes: [
+      {
+        location: 'quotes.IN.IND.quotes.0.location',
+        image: cotton1,
+        title: 'quotes.IN.IND.quotes.0.title',
+        quote: 'quotes.IN.IND.quotes.0.quote',
+      },
+      {
+        location: 'quotes.IN.IND.quotes.1.location',
+        image: cotton2,
+        title: 'quotes.IN.IND.quotes.1.title',
+        quote: 'quotes.IN.IND.quotes.1.quote',
+      },
+      {
+        location: 'quotes.IN.IND.quotes.2.location',
+        image: cotton3,
+        title: 'quotes.IN.IND.quotes.2.title',
+        quote: 'quotes.IN.IND.quotes.2.quote',
+      },
+    ],
   },
-  {
-    location: 'quotes.1.location',
-    image: cotton2,
-    title: 'quotes.1.title',
-    quote: 'quotes.1.quote',
-  },
-  {
-    location: 'quotes.2.location',
-    image: cotton3,
-    title: 'quotes.2.title',
-    quote: 'quotes.2.quote',
-  },
-];
+};
 
 const details = { inputs, production, trade };
 

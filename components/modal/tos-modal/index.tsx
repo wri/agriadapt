@@ -1,14 +1,8 @@
 import { Trans, useTranslation } from 'next-i18next';
-import { useRouter } from 'next/router';
 import Modal from 'components/modal/modal-component';
 
-const TermsOfServiceModal = () => {
+const TermsOfServiceModal = ({ onClose }) => {
   const { t } = useTranslation(['common', 'tos']);
-  const router = useRouter();
-
-  const onClose = () => {
-    router.replace('/', {}, { shallow: true });
-  };
 
   return (
     <Modal isOpen className="-no-padding" onRequestClose={onClose}>
