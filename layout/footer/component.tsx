@@ -8,19 +8,21 @@ import loader from 'lib/imageLoader';
 import { useTranslation } from 'next-i18next';
 import TermsOfServiceModal from 'components/modal/tos-modal';
 import PrivacyPolicyModal from 'components/modal/privacy-policy-modal';
-import { useState } from 'react';
 
-export default function Footer() {
-  const { t } = useTranslation('common', 'footer');
-  const [showTermsModal, setShowTermsModal] = useState(false);
-  const [showPrivacyModal, setShowPrivacyModal] = useState(false);
+export default function Footer({
+  setShowTermsModal,
+  setShowPrivacyModal,
+  showTermsModal,
+  showPrivacyModal,
+}) {
+  const { t } = useTranslation(['common', 'footer']);
 
   const handleToggleTerms = () => {
-    setShowTermsModal((s) => !s);
+    setShowTermsModal(!showTermsModal);
   };
 
   const handleTogglePrivacy = () => {
-    setShowPrivacyModal((s) => !s);
+    setShowPrivacyModal(!showPrivacyModal);
   };
 
   return (

@@ -69,7 +69,4 @@ export const chain_items = {
   },
 };
 
-export const chains = {
-  COFFEE: {},
-  COTTON: {},
-};
+export const india_disclaimer = 'common:india_maps_disclaimer';
