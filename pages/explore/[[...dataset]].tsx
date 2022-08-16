@@ -223,15 +223,11 @@ export const getServerSideProps = withSession(
 
     if (tab)
       dispatch(
-        actions.setSidebarSelectedTab(Array.isArray(tab) ? tab.join('') : tab)
+        actions.setSidebarSelectedTab(String(tab))
       );
 
     if (search)
-      dispatch(
-        actions.setFiltersSearch(
-          Array.isArray(search) ? search.join('') : search
-        )
-      );
+      dispatch(actions.setFiltersSearch(String(search)));
 
     if (value_chains)
       dispatch(
@@ -240,22 +236,10 @@ export const getServerSideProps = withSession(
         )
       );
     if (emission_scenario)
-      dispatch(
-        actions.setFiltersEmissionScenario(
-          Array.isArray(emission_scenario)
-            ? emission_scenario.join('')
-            : emission_scenario
-        )
-      );
+      dispatch(actions.setFiltersEmissionScenario(String(emission_scenario)));
     if (dataset) {
-      dispatch(
-        actions.setSelectedDataset(
-          Array.isArray(dataset) ? dataset.join('') : dataset
-        )
-      );
-      datasetData = await fetchDataset(
-        Array.isArray(dataset) ? dataset.join('') : dataset, { language: locale }
-      );
+      dispatch(actions.setSelectedDataset(String(dataset)));
+      datasetData = await fetchDataset(String(dataset), { language: locale });
       if (
         india_worldview &&
         INDIA_BLACKLIST_DATASET_IDS.includes(datasetData.id)
@@ -281,22 +265,16 @@ export const getServerSideProps = withSession(
       })
     );
     if (basemap)
-      dispatch(
-        actions.setBasemap(Array.isArray(basemap) ? basemap.join('') : basemap)
-      );
+      dispatch(actions.setBasemap(String(basemap)));
     if (labels)
-      dispatch(
-        actions.setLabels(Array.isArray(labels) ? labels.join('') : labels)
-      );
+      dispatch(actions.setLabels(String(labels)));
     if (boundaries) dispatch(actions.setBoundaries(!!boundaries));
 
     // Fetch layers
     if (layers)
       await dispatch(
         actions.fetchMapLayerGroups(
-          JSON.parse(
-            decodeURIComponent(Array.isArray(layers) ? layers.join('') : layers)
-          )
+          JSON.parse(decodeURIComponent(String(layers)))
         )
       );
 
