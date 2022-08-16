@@ -53,7 +53,7 @@ const ExploreAnalysisLocationEditor = ({
   const [statesLoading, setStatesLoading] = useState(false);
 
   const router = useRouter();
-  const { locale } = router.query;
+  const { locale } = router;
 
   /* Register locales */
   useEffect(() => {
@@ -103,7 +103,7 @@ const ExploreAnalysisLocationEditor = ({
         ? geoLocatorData
         : null;
     if (data) {
-      reverseGeocode(Object.values(data), Array.isArray(locale) ? locale.join('') : locale).then((results) => {
+      reverseGeocode(Object.values(data), String(locale)).then((results) => {
         if (results.length) {
           setGeoLabel(results[0].place_name);
           const country = results.at(-1).place_name;
@@ -234,7 +234,7 @@ const ExploreAnalysisLocationEditor = ({
   /* Event handler for geocode autocomplete results */
   const handleAddrSearch = (val: string) => {
     if (val.trim().length)
-      forwardGeocode(val, Array.isArray(locale) ? locale.join('') : locale).then((results) => {
+      forwardGeocode(val, String(locale)).then((results) => {
         setAutocompleteResults(
           results.map(
             ({ id, place_name, context, geometry: { coordinates } }) => ({
