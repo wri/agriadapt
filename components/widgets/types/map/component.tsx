@@ -316,5 +316,5 @@ const MapTypeWidget = ({
 };
 
 export default connect((state: RootState) => ({
-  worldview: state.value_chains.worldview,
+  ...state.value_chains,
 }))(MapTypeWidget);
