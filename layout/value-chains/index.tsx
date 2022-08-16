@@ -9,8 +9,6 @@ import { capitalizeFirstLetter } from 'utils/utils';
 import { connect } from 'react-redux';
 import { RootState } from 'lib/store';
 import { StaticImageData } from 'next/image';
-import useDynamicTranslate from 'hooks/translate';
-import {useEffect} from 'react';
 
 interface LayoutCropProps {
   header: any;
@@ -43,14 +41,11 @@ const LayoutCrop = ({
   quotes,
 }: LayoutCropProps) => {
 
-  const { dt } = useDynamicTranslate();
-
   return (
     // TODO: Translate
     <Layout title={`${capitalizeFirstLetter(crop)} (${country.label})`}>
       <div className="l-crop">
         <IntroHeader crop={crop} {...header} countries={countries} />
-        {dt('hey')}
         <div className="l-container">
           <div className="row">
             <div className="column small-12">
