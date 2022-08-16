@@ -60,7 +60,7 @@ export default function WidgetShareModal({
     }
   }, [widget, params]);
 
-  const { t } = useTranslation('widgets');
+  const { t } = useTranslation(['widgets', 'modals']);
 
   const shareLinks = useMemo(
     () => getLinksByWidgetType(widget, params),
@@ -106,7 +106,7 @@ export default function WidgetShareModal({
         }}
       >
         <button type="button" className="c-btn -primary" onClick={onClose}>
-          Close
+          {t('modals:share_modal.close')}
         </button>
         <button
           type="button"
@@ -121,8 +121,8 @@ export default function WidgetShareModal({
         >
           {isWebshotLoading ? (
             <Spinner isLoading className="-transparent -small" />
-          ) : (
-            'Download image'
+          ) : t(
+            'modals:share_modal.download_image'
           )}
         </button>
       </div>
