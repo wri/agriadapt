@@ -197,26 +197,31 @@ const trade = {
   },
 };
 
-export const quotes = [
-  {
-    location: 'quotes.0.location',
-    image: rice1,
-    title: 'quotes.0.title',
-    quote: 'quotes.0.quote',
+export const quotes = {
+  IND: {
+    audience: 'IN',
+    quotes: [
+      {
+        location: 'quotes.IN.IND.quotes.0.location',
+        image: rice1,
+        title: 'quotes.IN.IND.quotes.0.title',
+        quote: 'quotes.IN.IND.quotes.0.quote',
+      },
+      {
+        location: 'quotes.IN.IND.quotes.1.location',
+        image: rice2,
+        title: 'quotes.IN.IND.quotes.1.title',
+        quote: 'quotes.IN.IND.quotes.1.quote',
+      },
+      {
+        location: 'quotes.IN.IND.quotes.2.location',
+        image: rice3,
+        title: 'quotes.IN.IND.quotes.2.title',
+        quote: 'quotes.IN.IND.quotes.2.quote',
+      },
+    ],
   },
-  {
-    location: 'quotes.1.location',
-    image: rice2,
-    title: 'quotes.1.title',
-    quote: 'quotes.1.quote',
-  },
-  {
-    location: 'quotes.2.location',
-    image: rice3,
-    title: 'quotes.2.title',
-    quote: 'quotes.2.quote',
-  },
-];
+};
 
 const details = { inputs, production, trade };
 

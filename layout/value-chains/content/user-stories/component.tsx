@@ -1,14 +1,11 @@
 import React from 'react';
-import classnames from 'classnames';
 import { Media } from 'lib/media';
 import Image, { StaticImageData } from 'next/image';
 import loader from 'lib/imageLoader';
 import Carousel from 'nuka-carousel';
-import { user_stories } from '../constants';
 import chevronLeft from 'public/images/icons/chevronLeft.svg';
 import chevronRight from 'public/images/icons/chevronRight.svg';
-import Link from 'next/link';
-import { useTranslation } from 'next-i18next';
+import { Trans, useTranslation } from 'next-i18next';
 
 const UserStories = ({
   quotes,
@@ -23,7 +20,6 @@ const UserStories = ({
 
   crop: 'rice' | 'coffee' | 'cotton';
 }) => {
-  const { header, stories } = user_stories;
 
   const { t } = useTranslation([crop, 'common']);
 
@@ -46,8 +42,9 @@ const UserStories = ({
           }}
         >
           <Image
-            height={getImageDimensions(b, true)}
-            width={getImageDimensions(b, true)}
+            layout="fill"
+            objectFit="cover"
+            objectPosition={"50% 50%"}
             loader={loader}
             unoptimized
             src={s.image}
@@ -56,7 +53,9 @@ const UserStories = ({
         </div>
         <div className="c-user-info">
           <h3>{`${t(s.title)}, ${t(s.location)}`}</h3>
-          <p>{`"${t(s.quote)}"`}</p>
+          <Trans >
+            <em><p>{`${t(s.quote)}`}</p></em>
+          </Trans>
           {/* <Link href="/explore" passHref>
             <a
               className={classnames({
@@ -74,10 +73,7 @@ const UserStories = ({
 
   return (
     <div className="c-user-stories">
-      {!!stories.length && (
-        // TODO: Translate
-        <h2>{t(`common:${header}`)}</h2>
-      )}
+      <h2>{t(`common:hear_from_our_users`)}</h2>
       <div className="c-user-stories-body">
         {['sm', 'md', 'lg', 'xl'].map((b: 'sm' | 'md' | 'lg' | 'xl') => (
           <Media

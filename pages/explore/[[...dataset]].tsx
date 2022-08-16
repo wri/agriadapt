@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'next/router';
 
 // actions
-import { setIsServer as setServerAction } from 'redactions/common';
+import { setIsServer as setServerAction, setLocale } from 'redactions/common';
 import * as actions from 'layout/explore/actions';
 
 // components
@@ -217,6 +217,8 @@ export const getServerSideProps = withSession(
     const india_worldview = worldview === 'IN';
     dispatch(actions.setWorldview(worldview));
 
+    dispatch(setLocale(locale));
+
     let datasetData = null;
 
     if (tab)
@@ -252,7 +254,7 @@ export const getServerSideProps = withSession(
         )
       );
       datasetData = await fetchDataset(
-        Array.isArray(dataset) ? dataset.join('') : dataset
+        Array.isArray(dataset) ? dataset.join('') : dataset, { language: locale }
       );
       if (
         india_worldview &&

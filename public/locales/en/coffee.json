@@ -36,17 +36,5 @@
     "export_and_import": {
       "info": "Coffee is one of the most important commercially traded commodities in the international market, as well as one of the most popular beverages around the world. Climate impacts to production means ripple effects to global markets by affecting product availability, quality, and price. Explore the visualization to learn about coffee exports and imports in {{country}}."
     }
-  },
-  "quotes": [
-    {
-      "location": "Risaralda, Colombia",
-      "title": "Producer, Asociación Asocafé Tatamá",
-      "quote": "AgriAdapt helps producers obtain the climate risk maps that are required by coffee certifications."
-    },
-    {
-      "location": "Bolivar, Colombia",
-      "title": "Coffee association representative, Asociación De Jóvenes Cafeteros De Ciudad Bolivar",
-      "quote": "The tool would help coffee associations to revise the climatic risk in their lands."
-    }
-  ]
+  }
 }

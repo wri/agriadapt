@@ -7,13 +7,5 @@ export { default as modal } from './modal';
 export { default as page } from './page';
 export { default as insights } from './insights';
 
-// Admin
-export { default as datasets } from './admin/datasets';
-export { default as adminDashboards } from './admin/dashboards';
-export { default as pages } from './admin/pages';
-export { default as tools } from './admin/tools';
-export { default as sources } from './admin/sources';
-export { default as faqs } from './admin/faqs';
-
 // Toastr
 export { reducer as toastr } from 'react-redux-toastr';
