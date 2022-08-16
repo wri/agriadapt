@@ -48,9 +48,14 @@ const {
 import type { APIWidgetSpec } from 'types/widget';
 import type { LayerGroup, Bounds } from 'components/map/types';
 import type { MapTypeWidgetContainerProps } from './index';
+import { disclaimer_aoi_ids, india_maps_disclaimer } from './constants';
+import { connect } from 'react-redux';
+import { RootState } from 'lib/store';
+import { useTranslation } from 'next-i18next';
 
 export interface MapTypeWidgetProps
   extends Omit<MapTypeWidgetContainerProps, 'widgetId' | 'params'> {
+  worldview: string;
   widget: APIWidgetSpec;
   layerGroups: LayerGroup[];
   // todo: improve typing of layers
@@ -67,6 +72,7 @@ export interface MapTypeWidgetProps
 }
 
 const MapTypeWidget = ({
+  worldview,
   widget,
   layerGroups = [],
   aoiLayer = null,
@@ -93,6 +99,8 @@ const MapTypeWidget = ({
     ...DEFAULT_VIEWPORT,
     height: 400,
   });
+
+  const { t } = useTranslation('widgets');
 
   const [isInfoWidgetVisible, setInfoWidgetVisibility] = useState(false);
   // const [isEnlarged, setIsEnlarged] = useState(false);
@@ -294,9 +302,19 @@ const MapTypeWidget = ({
           <WidgetInfo widget={widget} className="p-4" />
         )}
       </div>
-      {caption && <WidgetCaption text={caption} />}
+      {caption && (
+        <WidgetCaption
+          {...(worldview === 'IN' &&
+            disclaimer_aoi_ids.includes(String(aoiLayer?.id)) && {
+              disclaimer: t(india_maps_disclaimer),
+            })}
+          text={caption}
+        />
+      )}
     </div>
   );
 };
 
-export default MapTypeWidget;
+export default connect((state: RootState) => ({
+  worldview: state.value_chains.worldview,
+}))(MapTypeWidget);

@@ -68,5 +68,3 @@ export const chain_items = {
     options: ['poliies_and_price', 'food_vulnerability', 'export_and_import'],
   },
 };
-
-export const india_disclaimer = 'common:india_maps_disclaimer';
