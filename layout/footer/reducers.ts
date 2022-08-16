@@ -2,30 +2,26 @@ import { createSlice } from '@reduxjs/toolkit';
 import { HYDRATE } from 'next-redux-wrapper';
 
 const initialState = {
-  country: null,
-  crop: 'rice',
-  worldview: 'US',
+  showPrivacyModal: false,
+  showTermsModal: false,
 };
 
 export const slice = createSlice({
-  name: 'VALUECHAINS',
+  name: 'FOOTER',
   initialState,
   reducers: {
-    setCountry: (state, { payload }) => {
-      state.country = payload;
+    setShowPrivacyModal: (state, { payload }) => {
+      state.showPrivacyModal = payload;
     },
-    setActiveCrop: (state, { payload }) => {
-      state.crop = payload;
-    },
-    setWorldview: (state, { payload }) => {
-      state.worldview = payload;
+    setShowTermsModal: (state, { payload }) => {
+      state.showTermsModal = payload;
     },
   },
   extraReducers: (builder) => {
     // eslint-disable-next-line
     // @ts-ignore
     builder.addCase(HYDRATE, (state, { payload }) => ({
-      ...payload.value_chains,
+      ...payload.footer,
     }));
   },
 });

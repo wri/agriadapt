@@ -28,6 +28,8 @@ export const getServerSideProps: GetServerSideProps = withSession(
     const worldview = req.session.user?.country;
     const india_worldview = worldview === 'IN';
 
+    dispatch(actions.setWorldview(worldview));
+
     if (india_worldview && geostore === 'fb119d758d39527a91307b7fed3debf4')
       return {
         redirect: {

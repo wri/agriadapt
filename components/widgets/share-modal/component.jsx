@@ -1,8 +1,8 @@
 import { useCallback, useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-// import { saveAs } from 'file-saver';
-// import dateFnsFormat from 'date-fns/format';
+import { saveAs } from 'file-saver';
+import dateFnsFormat from 'date-fns/format';
 
 // components
 import Modal from 'components/modal/modal-component';
@@ -16,15 +16,20 @@ import { takeWidgetWebshot } from 'services/webshot';
 import { getLinksByWidgetType } from 'utils/embed';
 import { getWidgetType } from 'utils/widget';
 import { logEvent } from 'utils/analytics';
-// import { logger } from 'utils/logs';
+import { logger } from 'utils/logs';
+import { india_maps_disclaimer } from '../types/map/constants';
+import { useTranslation } from 'next-i18next';
 
 export default function WidgetShareModal({
   isVisible,
   onClose,
   widget,
   params,
+  worldview,
+  country,
 }) {
   const [isWebshotLoading, setWebshotLoading] = useState(false);
+  const showDisclaimer = worldview === 'IN' && country.iso === 'IND';
 
   const handleWidgetWebshot = useCallback(async () => {
     try {
@@ -40,20 +45,22 @@ export default function WidgetShareModal({
       });
 
       if (widgetThumbnail) {
-        // saveAs(
-        //   widgetThumbnail,
-        //   `${widget.slug}-${dateFnsFormat(
-        //     Date.now(),
-        //     "yyyy-MM-dd'T'HH:mm:ss"
-        //   )}.png`
-        // );
+        saveAs(
+          widgetThumbnail,
+          `${widget.slug}-${dateFnsFormat(
+            Date.now(),
+            "yyyy-MM-dd'T'HH:mm:ss"
+          )}.png`
+        );
         setWebshotLoading(false);
       }
     } catch (e) {
-      // logger.error(`widget webshot: ${e.message}`);
+      logger.error(`widget webshot: ${e.message}`);
       setWebshotLoading(false);
     }
   }, [widget, params]);
+
+  const { t } = useTranslation('widgets');
 
   const shareLinks = useMemo(
     () => getLinksByWidgetType(widget, params),
@@ -87,11 +94,15 @@ export default function WidgetShareModal({
             ),
         }}
       />
-
+      {showDisclaimer && (
+        <div className="flex">
+          <span className="text-xs italic">{t(india_maps_disclaimer)}</span>
+        </div>
+      )}
       <div
         style={{
           display: 'flex',
-          margin: '80px 0 0',
+          margin: showDisclaimer ? '20px 0 0' : '80px 0 0',
         }}
       >
         <button type="button" className="c-btn -primary" onClick={onClose}>
