@@ -140,7 +140,7 @@ const AnalysisTable = ({
               colArr.reduce(
                 (acc: Record<string, any>, c: string) => acc[c],
                 interaction
-              ) || interaction[output.path];
+              ) ?? interaction[output.path];
             valArr.push(val);
             arr.push(formatValue(val, output, valueMap));
             return { arr, valArr };
