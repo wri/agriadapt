@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import FormElement from "./FormElement";
+import FormElement from './FormElement';
 
 class Input extends FormElement {
   /**

@@ -5,7 +5,7 @@ export interface ErrorFallbackProps {
 }
 
 const ErrorFallback = ({
-  title = "Something went wrong.",
+  title = 'Something went wrong.',
   resetErrorBoundary,
 }: ErrorFallbackProps): JSX.Element => {
   return (

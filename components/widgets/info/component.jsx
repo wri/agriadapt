@@ -1,6 +1,7 @@
-import { useMemo } from "react";
-import PropTypes from "prop-types";
-import classnames from "classnames";
+import { useMemo } from 'react';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
+import { useTranslation } from 'next-i18next';
 
 export default function WidgetInfo({ widget, className }) {
   const widgetLinks = useMemo(
@@ -8,18 +9,20 @@ export default function WidgetInfo({ widget, className }) {
     [widget]
   );
 
+  const { t } = useTranslation(['widgets']);
+
   return (
     <div
-      className={classnames("c-widget-info", {
+      className={classnames('c-widget-info', {
         [className]: Boolean(className),
       })}
     >
       <div className="widget-info-row">
-        {!widget?.description && <p>No additional information is available.</p>}
+        {!widget?.description && <p>{t('widgets:widget_info.none')}</p>}
 
         {widget?.description && (
           <>
-            <h4>Description</h4>
+            <h4>{t('widgets:widget_info.description')}</h4>
             <p>{widget.description}</p>
           </>
         )}
@@ -28,7 +31,7 @@ export default function WidgetInfo({ widget, className }) {
       {widgetLinks.length > 0 && (
         <div className="widget-info-row">
           <div className="widget-links-container">
-            <h4>Links</h4>
+            <h4>{t('widgets:widget_info.links')}</h4>
             <ul>
               {widgetLinks.map((link) => (
                 <li key={link.name}>

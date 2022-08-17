@@ -74,7 +74,7 @@ export const template = {
     {
       domain: {
         data: 'table',
-        field: 'x'
+        field: 'x',
       },
       range: ['#B9D765', '#65B60D', '#C32D7B', '#3BB2D0', '#2C75B0', '#FAB72E'],
       type: 'ordinal',

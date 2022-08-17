@@ -2,7 +2,7 @@ import React, { useCallback, useEffect } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 // Components
-import Spinner from "components/ui/Spinner";
+import Spinner from 'components/ui/Spinner';
 import DatasetListItem from './list-item';
 
 interface DatasetListProps {
@@ -66,7 +66,7 @@ const DatasetList = ({
                   dataset.widget ? dataset.widget.find((w) => w.default) : null
                 }
                 layer={
-                  dataset.layer ? dataset.layer.find((l) => l.default) : null
+                  dataset.layer ? dataset.layer.find((l) => l.default) ?? dataset.layer[0] : null
                 }
                 metadata={
                   dataset.metadata && Array.isArray(dataset.metadata)

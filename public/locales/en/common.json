@@ -11,15 +11,16 @@
     "optimistic": "Optimistic (RCP 4.5)"
   },
   "timescales": {
+    "Any": "Any",
     "Timescale": "Timescale",
     "Historic": "Historic",
     "Future Looking": "Future Looking"
   },
   "value_chains": {
     "Value Chains": "Value Chains",
-    "Coffee": "Coffee",
-    "Cotton": "Cotton",
-    "Rice": "Rice"
+    "coffee": "Coffee",
+    "cotton": "Cotton",
+    "rice": "Rice"
   },
   "Search": "Search",
   "Select": "Select",
@@ -28,5 +29,27 @@
     "Public url to share": "Public url to share",
     "Code to embed": "Code to embed",
     "Copy link": "Copy link"
-  }
+  },
+  "world_resources_institute": "World Resources Institute",
+  "hear_from_our_users": "Hear from Our Users",
+  "terms_of_service": "Terms of Service",
+  "privacy_policy": "privacy policy",
+  "content": {
+    "inputs": "Inputs",
+    "production": "Production",
+    "trade": "Trade",
+    "land_suitability": "Land Suitability",
+    "labor": "Labor",
+    "seedlings": "Seedlings",
+    "production_volume": "Production Volume",
+    "pest_and_disease": "Pest and Disease",
+    "changes_in_rainfall": "Changes in Rainfall",
+    "change_in_yield": "Change in Yield",
+    "policies_and_price": "Policies and Price",
+    "food_vulnerability": "Food Vulnerability",
+    "export_and_import": "Export and Import"
+  },
+  "GDPR": "This website uses cookies to provide you with an improved user experience. By continuing to browse this site, you consent to the use of cookies and similar technologies. Please visit our",
+  "further_details": "for further details.",
+  "Agree": "I Agree"
 }

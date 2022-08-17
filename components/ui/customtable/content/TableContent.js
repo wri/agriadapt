@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classnames from "classnames";
-import isEmpty from "lodash/isEmpty";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
+import isEmpty from 'lodash/isEmpty';
 
 export default class TableContent extends React.Component {
   static propTypes = {
@@ -65,13 +65,13 @@ export default class TableContent extends React.Component {
 
         const rowACondition =
           rowAField !== null &&
-          typeof rowAField !== "undefined" &&
+          typeof rowAField !== 'undefined' &&
           rowAField.toString
             ? rowAField.toString().toLowerCase().trim()
             : rowAField;
         const rowBCondition =
           rowBField !== null &&
-          typeof rowBField !== "undefined" &&
+          typeof rowBField !== 'undefined' &&
           rowBField.toString
             ? rowBField.toString().toLowerCase().trim()
             : rowBField;
@@ -90,7 +90,7 @@ export default class TableContent extends React.Component {
       <tbody>
         {data.map((row) => {
           const selectedClass = classnames({
-            "-selected": rowSelection.includes(row.id),
+            '-selected': rowSelection.includes(row.id),
           });
           return (
             <tr
@@ -103,7 +103,7 @@ export default class TableContent extends React.Component {
                 const td = col.td ? (
                   <col.td {...col.tdProps} key={i} row={row} value={value} />
                 ) : (
-                  <td key={i} className={col.className || ""}>
+                  <td key={i} className={col.className || ''}>
                     {value && value.toString ? value.toString() : value}
                   </td>
                 );

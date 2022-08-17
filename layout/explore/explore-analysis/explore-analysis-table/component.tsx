@@ -11,6 +11,7 @@ import { APILayerSpec } from 'types/layer';
 // import { appConfigs } from 'constants/app-config-template';
 import { toGeoJSON } from 'utils/locations/geojson';
 import { createColorValueMap, legendConfigItem } from 'utils/layers/symbolizer';
+import { useTranslation } from 'next-i18next';
 
 const AnalysisTable = ({
   loc_map: locations,
@@ -73,7 +74,10 @@ const AnalysisTable = ({
         const params = {
           geojson: encodeURIComponent(JSON.stringify(toGeoJSON(l))),
           iso: l.iso,
-          country: l.iso === 'USA' ? `'United States', 'United States of America'` : `'${l.country}'`,
+          country:
+            l.iso === 'USA'
+              ? `'United States', 'United States of America'`
+              : `'${l.country}'`,
         };
 
         // Evaluating application layer's config query
@@ -169,12 +173,15 @@ const AnalysisTable = ({
   const options = [
     {
       id: 'change-column-name',
-      label: 'Change Column Name',
+      label: 'explore:analysis.Change Column Name',
       onClick: () => undefined,
     },
-    { id: 'sort-a-z', label: 'Sort by Column A-Z', onClick: () => undefined },
-    { id: 'delete', label: 'Delete', onClick: () => undefined },
+    { id: 'sort-a-z', label: 'explore:analysis.Sort by Column A-Z', onClick: () => undefined },
+    { id: 'delete', label: 'explore:analysis.Delete', onClick: () => undefined },
   ];
+
+  const { t } = useTranslation(['explore', 'common']);
+
   return (
     <div
       className={classnames(
@@ -184,7 +191,7 @@ const AnalysisTable = ({
       <div className="p-4 border-b border-gray-light widget-header-container">
         <WidgetHeader
           download
-          widget={{ name: 'Layer Analysis Table', id: 'analysis-table' }}
+          widget={{ name: t('explore:analysis.Layer Analysis Table'), id: 'analysis-table' }}
           onToggleInfo={() => undefined}
           onToggleShare={() => undefined}
         />
@@ -194,8 +201,8 @@ const AnalysisTable = ({
           <thead>
             <tr>
               <th>
-                <AnalysisDropdownMenu options={options} />
-                Name
+                <AnalysisDropdownMenu options={options.map((o) => ({...o, label: t(o.label)}))} />
+                {t('explore:analysis.Name')}
               </th>
               {columns.map((c, i) => (
                 <th key={i}>

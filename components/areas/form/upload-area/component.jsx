@@ -1,13 +1,13 @@
-import { useState, useCallback, useMemo, useRef } from "react";
-import PropTypes from "prop-types";
-import Dropzone from "react-dropzone";
-import classnames from "classnames";
+import { useState, useCallback, useMemo, useRef } from 'react';
+import PropTypes from 'prop-types';
+import Dropzone from 'react-dropzone';
+import classnames from 'classnames';
 
 // components
-import Spinner from "components/ui/Spinner";
+import Spinner from 'components/ui/Spinner';
 
 // utils
-import { processFile } from "utils/areas";
+import { processFile } from 'utils/areas';
 
 const UploadArea = ({ onUploadArea }) => {
   const dropzoneRef = useRef(null);
@@ -95,9 +95,9 @@ const UploadArea = ({ onUploadArea }) => {
   const getFileName = useCallback((file) => file.name, []);
 
   const fileInputContent = useMemo(() => {
-    if (dropzoneActive) return "Drop the file here";
+    if (dropzoneActive) return 'Drop the file here';
     if (accepted) return getFileName(accepted);
-    return "Select a file";
+    return 'Select a file';
   }, [dropzoneActive, accepted, getFileName]);
 
   return (
@@ -118,8 +118,8 @@ const UploadArea = ({ onUploadArea }) => {
       >
         <div
           className={classnames({
-            "dropzone-file-input": true,
-            "-active": dropzoneActive,
+            'dropzone-file-input': true,
+            '-active': dropzoneActive,
           })}
         >
           <div

@@ -1,0 +1,74 @@
+{
+  "terms_of_service": "Terms of Service",
+  "world_resources_institute": "World Resources Institute",
+  "intro": {
+    "address": "<p>10 G Street NE, Suite 800</p><p>Washington, DC 20002</p><br/>",
+    "paragraphs": "<p>Welcome to the WRI family of environmental data platforms. This document lets the user of these Services (“You”, “Your”) know what you get when you use our websites, and what We expect in return.</p><p>The Services available through Resource Watch, Global Forest Watch, Forest Watcher, and The Partnership for Resilience and Preparedness, AgriAdapt and their associated websites, resourcewatch.org, globalforestwatch.org, and prepdata.org, agriadapt.org (collectively referred to as the “Services”) are owned and operated by the World Resources Institute (“WRI,” “We,” “Our” or “Us”). By using the Services, You agree to be bound by these Terms of Service and any future updates (collectively, the “Terms”).</p>"
+  },
+  "usage": {
+    "title": "Usage",
+    "p0": "We provide You with access to these Services in order to promote better management of natural resources for the betterment of all people.",
+    "p": {
+      "A": "Please don’t misuse Our Services. You agree to use the Services and their contents only for lawful purposes and not to defame, harass or threaten any one or to make available any obscene, pornographic or offensive material. You may not use the Services in any manner that could damage or overburden the Services or interfere with any other party’s use of the Services.",
+      "B": "Your use of the Services does not give You any ownership rights in the intellectual property in the Services or in its contents. Some of the software used to provide the Services may be made available separately under open source licenses.",
+      "C": "We are constantly trying to improve Our Services. We may change the features and functions of the Services, including APIs, over time. It is Your responsibility to ensure that Your use of the Services is compatible with the current version."
+    }
+  },
+  "accounts_and_api_usage": {
+    "title": "Account and API Usage",
+    "p": {
+      "A": "In order to use many of the Services, You must register for an account.",
+      "B": "When You use Our application program interfaces (“API(s)”), each request to an API must include one of Your Account's unique API keys.",
+      "C": "Please protect the security of Your Account. You are responsible for Your use of the Services and all activity that occurs under Your Account, including any use of Your Account’s API keys.",
+      "integrated_url_D": "If You use Our APIs in Your own products, please credit Us. You agree to attribute our APIs in line with our Attribution Requirements, available at [{{url}}].",
+      "D": "If You use Our APIs in Your own products, please credit Us. You agree to attribute our APIs in line with our Attribution Requirements, available at [",
+      "D1": "].",
+      "E": "We may cancel or suspend Your access to the Services at any time and for any reason, without notice. Upon cancellation or suspension, Your right to use the Services will end. You will have the right to access to Your Content stored on the Services for a period of fifteen days following cancellation or suspension; thereafter you may not have access to Your Content stored on the Services."
+    }
+  },
+  "third_party_content": {
+    "title": "Third-Party Content",
+    "p": {
+      "A": "The Services incorporate content, data, and information from others, including You. While We may review any content, and remove it if We determine it violates the law or Our policies, We do not commit to review all content, and You should not rely on Us to do so.",
+      "B": "Open data is important to Us and we make considerable effort to make many of the datasets available without restriction through the Services. Nonetheless, each dataset carries its own license and restrictions. You should review the dataset’s metadata to understand these restrictions.",
+      "C": "You must comply with the licenses of Our datasets. All content displayed on or accessible through the Services is protected by United States copyright laws or their equivalents in other countries."
+    }
+  },
+  "your_content": {
+    "title": "Your Content",
+    "p": {
+      "A": "Most of Our Services are designed to help You share or publish Your content. In using Resource Watch, Global Forest Watch, and The Partnership for Resilience and Preparedness, and their associated websites, resourcewatch.org, globalforestwatch.org, and prepdata.org, You may submit data, information, or other content to the Services (“Your Content”). You retain ownership of Your Content.",
+      "B": "Except where expressly prohibited, You understand that We may use, display, or distribute Your Content even if You stop using the Services. For the sole purpose of enabling Your use of the Services, You grant Us a non-exclusive, worldwide, royalty-free, transferable right and license (with right to sublicense), to use, copy, display, distribute, modify, create derivative works, and store Your Content and to allow others to do so."
+    }
+  },
+  "disclaimers_and_limitations": {
+    "title": "Disclaimers and Limitations",
+    "p": [
+      "You agree that your use of the services and its content is at your sole risk. The services and content are provided on an “as is” basis and without warranties or representations of any kind, either express or implied. To the fullest extent permitted by law, we disclaim all warranties, statutory, express or implied, including implied warranties of merchantability, fitness for a particular purpose, title, and non-infringement. Actual conditions may differ from maps and information provided by the services. We do not warrant that the content or services will be error free, accurate or without interruption.",
+      "When using the services you may be exposed to user submissions and other third party content (“non-wri content”), and some of this content may be inaccurate, offensive, indecent, or otherwise objectionable. We do not endorse any non-wri content. Under no circumstances will wri be liable for or in connection with the non-wri content, including for any inaccuracies, errors, or omissions in any non-wri content, any intellectual property infringement with regard to any non-wri content, or for any loss or damage of any kind incurred as a result of the use of any non-wri content.",
+      "Under no circumstances will we be liable for any special, indirect, incidental, consequential, or exemplary damages (including without limitation, loss of profits, data, or use or cost of cover) resulting from your use or the inability to use the services or their contents, even if we were aware of the possibility of such damages. In no event will we have any liability to you for all claims or damages for any reason in excess of one hundred dollars ($100 usd). Certain jurisdictions do not allow exclusions or limitations on implied warranties or limitations on liability, and therefore some or all of the disclaimers, exclusions, or limitations may not apply to you, and you may have additional rights."
+    ]
+  },
+  "dmca_compliance": {
+    "title": "DMCA Compliance",
+    "p0": "If You are a copyright owner or an agent thereof, and believe that any content on the Services infringes Your copyrights, You may send a notice in writing to World Resources Institute Tel: +1 (202) 729-7600 E-mail: privacy@wri.org with the following information:",
+    "p": {
+      "A": "Your signature as a person authorized to act on behalf of the owner of an exclusive right that is allegedly infringed;",
+      "B": "Identification of the exact location on the Services of copyrighted work claimed to have been infringed, or, if multiple copyrighted works on the Services are covered by a single notification, a representative list of such works as located on the Services;",
+      "C": "The address, telephone number, and e-mail address of the complaining party;",
+      "D": "A statement that the complaining party has a good faith belief that use of the material in the manner complained of is not authorized by the copyright owner, its agent, or the law; and",
+      "E": "A statement that the information in the notification is accurate, and under penalty of perjury, that the complaining party is authorized to act on behalf of the owner of an exclusive right that is allegedly infringed."
+    }
+  },
+  "additional_terms": {
+    "title": "Additional Terms",
+    "p": {
+      "A": "We reserve the right to modify these Terms at any time. All changes are effective immediately upon posting on the Resource Watch website. You should review these terms regularly for changes. Your continued use of the Services after any such changes constitutes Your binding acceptance of the updated Terms.",
+      "B": "The laws of the State of Delaware, U.S.A., excluding New York's conflict of laws provisions, apply to any dispute about the Services, their content or these Terms. The U.N. Convention on Contracts for the International Sale of Goods doesn't apply. If we have a disagreement related to these Terms, or Your or Our performance under them that we cannot resolve between us, then we agree to have them finally resolved in arbitration using either (i) the International Arbitration Rules of the International Dispute Resolution Centre of the American Arbitration Association, if You are located outside of the United States, or (ii) the Commercial Arbitration Rules of the American Arbitration Association, if You are located in the United States. We agree to follow this paragraph if it differs from those rules. There will be only one arbitrator if our disagreement involves less than $250,000. If our disagreement involves more than $250,000, then we each appoint one arbitrator, and those two arbitrators choose a third. We agree that the arbitrators will not have the power to award either of us any damages that are not consistent with Section 5 (Disclaimers and Limitations) of these Terms. The arbitration will be in Washington, DC, USA, and will be conducted in English. Unless we agree or one of us shows its essential, there will not be any formal discovery in our arbitration. The arbitrators can award costs and attorney’s fees against one of us, or divide them between us. We understand that any court with jurisdiction will enforce the decisions from the arbitration and enter judgment on them.",
+      "C": "If We do not promptly enforce the Terms, We have not given up any other rights or the right to enforce them or other Terms in the future.",
+      "D": "If any particular provision of these Terms is not enforceable, that doesn't affect the enforceability of any other provision of the Terms.",
+      "E": "These Terms are between You and Us, and no one else can enforce them.",
+      "F": "These Terms are the entire statement of the agreement between You and Us regarding the Services and their contents."
+    }
+  }
+}

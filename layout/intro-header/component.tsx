@@ -34,7 +34,7 @@ const IntroHeader = ({
       {},
       { shallow: true }
     );
-  }
+  };
 
   return (
     <div className="c-intro-header">
@@ -102,7 +102,13 @@ const IntroHeader = ({
                       id="VALUE_CHAINS"
                       properties={{
                         label: t('common:Select_Country'),
-                        default: country,
+                        default: {
+                          ...country,
+                          sql_label: country.sql_label ?? country.label,
+                          label: t(`countries:${country.label}`, {
+                            keySeparator: ':',
+                          }),
+                        },
                       }}
                       options={countries.map((c) => ({
                         ...c,
@@ -114,7 +120,9 @@ const IntroHeader = ({
                       value={{
                         ...country,
                         sql_label: country.sql_label ?? country.label,
-                        label: t(`${country.label}`),
+                        label: t(`countries:${country.label}`, {
+                          keySeparator: ':',
+                        }),
                       }}
                       placeholder={t('common:Select_Country')}
                     >

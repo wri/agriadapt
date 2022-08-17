@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { remove } from "utils/request";
-import { toastr } from "react-redux-toastr";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { remove } from 'utils/request';
+import { toastr } from 'react-redux-toastr';
 
 class DeleteAction extends React.Component {
   constructor(props) {
@@ -24,7 +24,7 @@ class DeleteAction extends React.Component {
           url: `${url}/${data.id}`,
           headers: [
             {
-              key: "Authorization",
+              key: 'Authorization',
               value: this.props.authorization,
             },
           ],
@@ -33,8 +33,8 @@ class DeleteAction extends React.Component {
           },
           onError: () => {
             toastr.error(
-              "Error",
-              "There was an error with the request. The object was not deleted"
+              'Error',
+              'There was an error with the request. The object was not deleted'
             );
           },
         });

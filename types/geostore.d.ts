@@ -1,4 +1,4 @@
-import type { FeatureCollection } from "geojson";
+import type { FeatureCollection } from 'geojson';
 
 export interface Geostore {
   geojson: FeatureCollection;

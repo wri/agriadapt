@@ -1,3 +1,29 @@
+const colors = {
+  name: 'color',
+  type: 'ordinal',
+  domain: [
+    'Very High',
+    'High',
+    'Good',
+    'Medium',
+    'Moderate',
+    'Marginal',
+    'Very Marginal',
+    'Not Suitable',
+  ],
+  range: [
+    '#017100',
+    '#15ae0f',
+    '#ace15e',
+    '#fed800',
+    '#ce9d53',
+    '#cc6c00',
+    '#808080',
+    '#cfcfcf',
+  ],
+  interpolate: 'hcl',
+};
+
 export const template = {
   $schema: 'https://vega.github.io/schema/vega/v5.json',
   interaction_config: [
@@ -19,9 +45,9 @@ export const template = {
       name: 'tooltip',
     },
   ],
-  autosize: { type: 'fit', contains: 'padding' },
+  autosize: 'fit',
   background: 'white',
-  padding: 5,
+  padding: 0,
   style: 'cell',
   data: [
     {
@@ -64,20 +90,21 @@ export const template = {
   signals: [
     {
       name: 'width',
-      init: 'isFinite(containerSize()[0]) ? containerSize()[0] : 200',
+      init: 'containerSize()[0]',
       on: [
         {
-          update: 'isFinite(containerSize()[0]) ? containerSize()[0] : 200',
+          update:
+            'containerSize()[0]',
           events: 'window:resize',
         },
       ],
     },
     {
       name: 'height',
-      init: 'isFinite(containerSize()[1]) ? containerSize()[1] : 200',
+      init: 'containerSize()[1]',
       on: [
         {
-          update: 'isFinite(containerSize()[1]) ? containerSize()[1] : 200',
+          update: 'containerSize()[1]',
           events: 'window:resize',
         },
       ],
@@ -161,7 +188,8 @@ export const template = {
       name: 'x',
       type: 'band',
       domain: { data: 'source_0', field: 'raster', sort: true },
-      range: [0, 500],
+      // range: [0, 500],
+      range: [0, { signal: 'width' }],
       padding: 0.45,
     },
     {
@@ -172,31 +200,7 @@ export const template = {
       nice: true,
       zero: true,
     },
-    {
-      name: 'color',
-      type: 'ordinal',
-      domain: [
-        'Very High',
-        'High',
-        'Good',
-        'Medium',
-        'Moderate',
-        'Marginal',
-        'Very Marginal',
-        'Not Suitable',
-      ],
-      range: [
-        '#017100',
-        '#15ae0f',
-        '#ace15e',
-        '#fed800',
-        '#ce9d53',
-        '#cc6c00',
-        '#808080',
-        '#cfcfcf',
-      ],
-      interpolate: 'hcl',
-    },
+    colors,
   ],
   axes: [
     {
@@ -219,6 +223,34 @@ export const template = {
       zindex: 0,
     },
   ],
+  config: { style: { cell: { stroke: null } } },
+};
+
+export const legend = {
+  $schema: 'https://vega.github.io/schema/vega/v5.json',
+  signals: [
+    {
+      name: 'width',
+      init: 'containerSize()[1]',
+      on: [
+        {
+          update: 'containerSize()[0]',
+          events: 'window:resize',
+        },
+      ],
+    },
+    {
+      name: 'height',
+      init: 'containerSize()[0]',
+      on: [
+        {
+          update: 'containerSize()[1]',
+          events: 'window:resize',
+        },
+      ],
+    },
+  ],
+  scales: [colors],
   legends: [
     {
       columnPadding: 10,
@@ -229,15 +261,13 @@ export const template = {
       title: 'Suitability Class',
       titlePadding: 10,
       fill: 'color',
-      legendY: 175,
-      legendX: { signal: 'width - 300' },
       labelFontSize: 16,
       titleFontSize: 13,
-      orient: 'none',
       titleFont: 'Lato',
       labelFont: 'Lato',
       titleColor: '#393f44',
       labelColor: '#393f44',
+      orient: 'left',
     },
   ],
   config: { style: { cell: { stroke: null } } },

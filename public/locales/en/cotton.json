@@ -2,26 +2,34 @@
   "intro": {
     "subtitle": "Climate Risk in Cotton Value Chains",
     "description": [
-      "Although it is hard to be precise, it is generally accepted that climate change will affect both arabica and robusta production. Increasing average temperatures, more frequent droughts and heat waves, and inclement weather patterns threaten to upend a large portion of suitable coffee producing areas over the next decades. More coffee may need to be grown under irrigation, thereby increasing pressure on scarce water resources."
-    ]
+      "The cotton value chain is likely to experience disruptions due to climate change impacts such as water availability, changing rainfall patterns, and rising temperatures. Cotton's lengthy growing season (approximately 150-180 days) already makes the crop quite vulnerable to pests and diseases. A warmer climate will only increase cotton's susceptibility."
+    ],
+    "drop_down_title": "Select Country"
+  },
+  "climate_hazard": {
+    "title": "How Does Climate Change Affect the Cotton Value Chain?",
+    "description": "The production of cotton is affected by different climate threats along its value chain. Click on the buttons below to find information about how climate hazards affect each link of the value chain:"
   },
   "inputs": {
     "land_suitability": {
       "info": "Appropriate cotton land use decisions are vital to achieve optimum productivity of the land and ensure environmental sustainability. Explore the visualizations below to learn more about how cotton land suitability may change in the future."
     },
     "labor": {
-      "info": "Agricultural workers are especially vulnerable to increased heat stress, which affects the health of individuals and reduces labour productivity. The Universal Thermal Climate Index identifies outdoor conditions that cause discomfort to people using a combination of temperature, humidity, wind, and radiation to determine the stress (sweating, shivering, skin wetness, etc.) a person undergoes when exposed to outdoor conditions."
+      "info": [
+        "Agricultural workers are especially vulnerable to increased heat stress, which affects the health of individuals and reduces labor productivity. The Universal Thermal Climate Index identifies outdoor conditions that cause discomfort to people using a combination of temperature, humidity, wind, and radiation to determine the stress (sweating, shivering, skin wetness, etc.) a person undergoes when exposed to outdoor conditions.",
+        "Values between 9-26 means no thermal stress. Values above 26 are approaching heat stress, with values above 46 meaning extreme heat stress. Values below 9 are approaching cold stress, with values below -40 meaning extreme cold stress."
+      ]
     },
     "seedlings": {
-      "info": "Temperature conditions are crutial for growing cotton. Seeds will have a low germination rate if the soil temperature is below 60°F (15°C)."
+      "info": "Temperature conditions are crucial for growing cotton. Seeds will have a low germination rate if the soil temperature is below 60°F (15°C)."
     }
   },
   "production": {
     "production_volume": {
-      "info": "Explore our data visualizations to better understand where the main cotton growing regions in {{country}} are and how much cotton is currently produced."
+      "info": "The map below shows the main cotton growing regions in {{country}}, along with the amount of cotton that is currently produced."
     },
     "pests_and_disease": {
-      "info": "Changes to climate can result in the continuous evolution of pests, making them harder to contain, which can significantly influence yield and quality. Suitable temperature, humidity, low rainfall, low wind speed, suitable sunshine time and low evaporation are more likely to cause cotton pests and diseases. (Xiao, Q., Li, W., Kai, Y. et al.)"
+      "info": "Changes to climate can result in the continuous evolution of pests, making them harder to contain, which can significantly influence yield and quality. Suitable temperature, humidity, low rainfall, low wind speed, suitable sunshine time and low evaporation are more likely to cause cotton pests and diseases."
     }
   },
   "trade": {
@@ -29,24 +37,30 @@
       "info": "The Nominal Rate of Protection measures the extent to which agricultural policies affect the market price of a commodity. It computes the difference between the price a farmer receives versus the price a farmer would receive without these policies in place."
     },
     "export_and_import": {
-      "info": "Cotton is a very important cash crop which has a growing demand for domestic and international market. Disruptions to cotton production can result in an uncertain market for farmers and ripple effects can be seen throughout the entire value chain (Cotton 2040, 2021). Production constraints will impact global markets by effecting product availabilty, quality, and price."
+      "info": "Cotton is a very important cash crop which has a growing demand for domestic and international markets. Disruptions to cotton production can result in an uncertain market for farmers and ripple effects can be seen throughout the entire value chain . Production constraints will impact global markets by affecting product availability, quality, and price."
     }
   },
-  "quotes": [
-    {
-      "location": "Nandyala, India",
-      "title": "Scientist, Regional Agricultural Research Station (RARS)",
-      "quote": "One of the important factors which can affect the cotton supply chain is the pest infestation which not only reduces the yield but also reduces the quality of ginnable cotton. The incidence of pests and diseases are climate related and the AgriAdapt can help us in providing early warning systems with its data on climate variability and forecasted risks"
-    },
-    {
-      "location": "Vijayawada, India",
-      "title": "Climate Change Activities Manager, Asian Infrastructure Investment Bank",
-      "quote": "Cotton’s supply chain is facing several challenges in the quality of cotton triggered by extreme climate events. Through a robust platform like AgriAdapt, Ginners/Spinners can identify the least affected regions to climate hazards and plan their purchases of cotton accordingly from these cultivated areas."
-    },
-    {
-      "location": "Guntur, India",
-      "title": "Manager, KDM Spinners Pvt Ltd.",
-      "quote": "Extreme weather events are affecting the quality of cotton. We have been facing a lot of problems related to the poor quality of cotton while procurement, which affects the final output and poses serious threats to the business. By knowing the climatic hazards and unseasonal rain through the AgriAdapt, we can procure cotton well in advance to avoid the purchase of cotton at a high cost and of poor quality. We can also sensitize our suppliers/farmers about climate hazards and possible infestation of pests and disease so that we can avoid climate related risks at the source itself."
+  "quotes": {
+    "IN": {
+      "IND": {
+        "quotes": [
+          {
+            "location": "Asian Infrastructure Investment Bank, Vijayawada, India",
+            "title": "Dr Rajani Ganta, Climate Change Activities Manager",
+            "quote": "“Cotton’s supply chain is facing several challenges in the quality of cotton triggered by extreme climate events. It is great to have a robust tool like AgriAdapt, that considers the needs of various stakeholders including supply chain managers, funding entities, and policy makers.”"
+          },
+          {
+            "location": "Regional Agricultural Research Station, Nandyala, India",
+            "title": "Dr. B. V. R. Prakash Reddy, Scientist",
+            "quote": "“One of the important factors which can affect the cotton supply chain is the pest infestation, which not only reduces the yield but also reduces the quality of ginnable cotton. The incidence of pests and diseases are climate related and AgriAdapt can help us in providing early warning systems with its data on climate variability and forecast risks.”"
+          },
+          {
+            "location": "KDM Spinners Pvt Ltd., Guntur, India",
+            "title": "K. Apparao, Manager,",
+            "quote": "“Extreme weather events are affecting the quality of cotton. We have been facing a lot of problems related to the poor quality of cotton while procurement, which affects the final output and poses serious threats to the business. With AgriAdapt we can sensitize our suppliers/farmers about climate hazards and possible infestation of pests and disease so that we can avoid climate related risks at the source itself.”"
+          }
+        ]
+      }
     }
-  ]
+  }
 }

@@ -1,4 +1,5 @@
 import Icon from 'components/ui/icon';
+import { useTranslation } from 'next-i18next';
 import { useCallback, useState } from 'react';
 import AnalysisDropdownMenu from '../explore-analysis/dropdown-menu/component';
 import RenameField from '../explore-analysis/rename-field/component';
@@ -10,6 +11,8 @@ const ExploreAnalysisLocation = ({
   removeLocation,
   setEditing,
 }) => {
+  const { t } = useTranslation(['explore', 'common']);
+
   const [renaming, setRenaming] = useState(false);
 
   const handleEdit = () => {
@@ -36,7 +39,7 @@ const ExploreAnalysisLocation = ({
           <span className="align-middle">
             <Icon name="icon-pencil" className="" />
           </span>
-          <span>Edit Location</span>
+          <span>{t('explore:analysis.Edit Location')}</span>
         </div>
       ),
       onClick: handleEdit,
@@ -48,7 +51,7 @@ const ExploreAnalysisLocation = ({
           <span className="align-middle">
             <Icon name="icon-marker" className="" />
           </span>
-          <span>Customize Name</span>
+          <span>{t('explore:analysis.Customize Name')}</span>
         </div>
       ),
       onClick: () => setRenaming(true),
@@ -60,7 +63,7 @@ const ExploreAnalysisLocation = ({
           <span className="align-middle">
             <Icon name="icon-bin-simple" className="" />
           </span>
-          <span>Delete Location</span>
+          <span>{t('explore:analysis.Delete Location')}</span>
         </div>
       ),
       onClick: handleDelete,

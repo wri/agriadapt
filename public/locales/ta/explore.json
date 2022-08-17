@@ -1,0 +1,59 @@
+{
+	"layers": {
+		"Advanced Search": "மேம்பட்ட தேடல்",
+		"Add to map": "வரைபடத்தில் சேர்",
+		"Layers": "அடுக்குகள்",
+		"Search Layers": "அடுக்குகளைத் தேடு",
+		"start_search": "தேடலைத் தொடங்க தட்டச்சு செய்க",
+		"Filter Layers by Value Chains": "மதிப்பு சங்கிலிகள் மூலம் வடிகட்டி அடுக்குகள்",
+		"Filter Layers by Emission Scenario": "உமிழ்வு சூழ்நிலையின்படி வடிகட்டி அடுக்குகள்",
+		"Filter Layers by Timescale": "கால அளவுப்படி அடுக்குகளை வடிகட்டு",
+		"value_chains": {
+			"hint": "முன்னோக்கிய தரவுக்கான பாதையைத் தேர்ந்தெடுக்கவும்."
+		}
+	},
+	"analysis": {
+		"Analysis": "பகுப்பு",
+		"Add a Location": "இருப்பிடத்தைச் சேர்",
+		"Add Location": "இருப்பிடத்தை சேர்",
+		"Cancel": "ரத்து",
+		"Select a Location": "இருப்பிடத்தை தேர்ந்தெடு",
+		"Select point on map": "வரைபடத்தில் புள்ளியை தேர்ந்தெடு",
+		"Use my current location": "எனது நடப்பு இருப்பிடத்தைப் பயன்படுத்து",
+		"Search by address": "முகவரி மூலம் தேடு",
+		"Choose my location": "எனது இருப்பிடத்தைத் தேர்ந்தெடு",
+		"Edit Location": "இருப்பிடத்தை திருத்து",
+		"Customize Name": "பெயரை தனிப்பயனாக்கு",
+		"Delete Location": "இருப்பிடத்தை நீக்கு",
+		"Layer Analysis Table": "அடுக்கு பகுப்பாய்வு அட்டவணை",
+		"Name": "பெயர்",
+		"Change Column Name": "நெடுவரிசை பெயரை மாற்று",
+		"Sort by Column A-Z": "நெடுவரிசை A-Z படி வரிசைப்படுத்து",
+		"Delete": "தீங்கான"
+	},
+	"explore_detail": {
+		"Read more": "மேலும் வாசிக்க",
+		"Read less": "குறைவாக படிக்கவும்",
+		"Active": "செயற்படுத்துகிற",
+		"Show layer": "அடுக்கை காண்பி",
+		"Overview": "கண்ணோட்டம்",
+		"Dataset layers": "தரவுத்தொகுப்பு அடுக்குகள்",
+		"Further information": "மேலதிக தகவல்கள்",
+		"Back": "முதுகு"
+	},
+	"map": {
+		"basemaps": {
+			"Dark": "இருள்",
+			"Light": "ஒளி",
+			"Satellite": "துணைக்கோள்",
+			"Terrain": "திணைநிலம்",
+			"Hydrography": "ஹைட்ரோகிராஃபி"
+		},
+		"labels": {
+			"No labels": "லேபல்கள் இல்லை",
+			"Labels light": "லேபல்கள் ஒளி",
+			"Labels dark": "லேபிள்கள் இருண்டவை"
+		},
+		"Boundaries": "எல்லையுடன்"
+	}
+}

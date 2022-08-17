@@ -1,8 +1,8 @@
-import PropTypes from "prop-types";
-import classnames from "classnames";
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 // components
-import Icon from "components/ui/icon";
+import Icon from 'components/ui/icon';
 
 export default function CardIndicator({
   id,
@@ -16,9 +16,9 @@ export default function CardIndicator({
     <button
       type="button"
       className={classnames({
-        "c-indicator-card-set": true,
+        'c-indicator-card-set': true,
         [`-${theme}`]: !!theme,
-        "-active": isSelected,
+        '-active': isSelected,
       })}
       id={id}
       data-title={title}
@@ -35,14 +35,14 @@ export default function CardIndicator({
 CardIndicator.defaultProps = {
   isSelected: false,
   onClickCard: null,
-  theme: "primary",
+  theme: 'primary',
 };
 
 CardIndicator.propTypes = {
   id: PropTypes.string.isRequired,
   icon: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  theme: PropTypes.oneOf(["primary", "secondary"]),
+  theme: PropTypes.oneOf(['primary', 'secondary']),
   isSelected: PropTypes.bool,
   onClickCard: PropTypes.func,
 };

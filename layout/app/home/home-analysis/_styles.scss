@@ -1,39 +1,50 @@
 .c-home-analysis {
-	margin-bottom: 200px;
-	overflow: hidden;
-	
-	.c-carousel {
-		padding-top: 60px;
-		padding-bottom: 120px;
+  margin-bottom: 200px;
+  overflow: hidden;
 
-		.c-analysis-card {
-			background: #FFFFFF;
-			overflow: hidden;
-			position: relative;
-			box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.12);
-			height: 450px;
-			border-radius: 16px;
-			padding: 32px;
-			width: 100%;
-			max-width: 430px;
+  .c-carousel {
+    padding-top: 60px;
+    padding-bottom: 120px;
 
-			.c-analysis-card-image {
-				position: absolute;
-				margin: -32px -32px 0;
-				bottom: -16px;
-			}
-		}
+    .c-analysis-card {
+      background: #ffffff;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.12);
+      height: 450px;
+      border-radius: 16px;
+      padding: 32px;
+      width: 100%;
+      max-width: 430px;
 
-		.slider-control-bottomcenter {
-			bottom: -50px !important;
-			left: 50%;
-			button {
-				padding: revert;
-			}
-		}
+      .c-analysis-card-image {
+        position: absolute;
+        // margin: -32px -32px 0;
+        bottom: -16px;
+        width: 459px;
+        height: 258px;
+        left: 32px;
+        top: 213px;
+        box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.32);
+        border-radius: 16px;
 
-		.slider-frame {
-			overflow: visible !important;
-		}
-	}
+        .c-analysis-card-map {
+          // box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.12);
+          border-radius: 16px;
+        }
+      }
+    }
+
+    .slider-control-bottomcenter {
+      bottom: -50px !important;
+      left: 50%;
+      button {
+        padding: revert;
+      }
+    }
+
+    .slider-frame {
+      overflow: visible !important;
+    }
+  }
 }

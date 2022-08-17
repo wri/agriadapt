@@ -1,5 +1,6 @@
 // import ErrorFallback from 'components/error-fallback';
 import Icon from 'components/ui/icon';
+import { useTranslation } from 'next-i18next';
 import { useState } from 'react';
 import { AnalysisLocation } from 'types/analysis';
 import Location from '../explore-analysis-location';
@@ -26,6 +27,8 @@ const ExploreAnalysis = ({
   const [outputs, setOutputs] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  const { t } = useTranslation(['explore', 'common']);
+
   return (
     <div className="c-analysis">
       {Object.values(locations).map((loc: AnalysisLocation) => (
@@ -42,7 +45,7 @@ const ExploreAnalysis = ({
       ) : (
         <a onClick={handleAddLocation} className="c-add-location">
           <Icon name="icon-circle-plus" className="" />
-          Add a Location
+          {t('explore:analysis.Add a Location')}
         </a>
       )}
       {!!Object.values(locations).length && (

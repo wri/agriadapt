@@ -1,4 +1,4 @@
-@import "css/settings";
+@import 'css/settings';
 
 .l-header {
   background-color: $primary-green;
@@ -31,13 +31,19 @@
 
   .header-logo {
     position: relative;
+    // margin-left: 100px;
+    width: 200px;
+    height: 100px;
+    
 
     .brand-logo {
-      width: 200px;
-      height: 35px;
+      // min-width: 100%;
+      // max-width: 100%;
+      // min-height: 100%;
+      // max-height: 100%;
       display: block;
       fill: $white;
-    }
+    }     
   }
 
   .c-nav {
@@ -78,7 +84,7 @@
           text-decoration: none;
 
           &:after {
-            content: "";
+            content: '';
             position: absolute;
             bottom: 0;
             left: 50%;

@@ -1,11 +1,11 @@
-import { isNumber, groupBy } from "lodash";
-import { v4 as uuidv4 } from "uuid";
+import { isNumber, groupBy } from 'lodash';
+import { v4 as uuidv4 } from 'uuid';
 
 // utils
-import { getUserAreaLayer } from "components/map/utils";
+import { getUserAreaLayer } from 'components/map/utils';
 
 // constants
-import { USER_AREA_LAYER_TEMPLATES } from "components/map/constants";
+import { USER_AREA_LAYER_TEMPLATES } from 'components/map/constants';
 
 // sorts layers based on an array of layer ids
 export const sortLayers = (_layers = [], _layerOrder = []) => {
@@ -40,7 +40,7 @@ export const getLayerGroups = (
   layerParams = {},
   forceActive = false
 ) => {
-  const layersByDataset = groupBy(layers, "dataset");
+  const layersByDataset = groupBy(layers, 'dataset');
 
   return Object.keys(layersByDataset).map((datasetKey) => ({
     id: datasetKey,
@@ -90,7 +90,7 @@ export const getMaskLayer = (widget = {}, params = {}) => {
 
   return {
     id: mask?.id || `${uuidv4()}-mask`,
-    type: "vector",
+    type: 'vector',
     layerConfig: {
       ...mask,
       params,

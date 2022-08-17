@@ -1,7 +1,7 @@
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
 // actions
-import * as actions from "layout/explore/actions";
+import * as actions from 'layout/explore/actions';
 
 // selectors
 import {
@@ -9,18 +9,17 @@ import {
   exploreMapGetUpdatedLayerGroups,
   exploreMapGetUpdatedLayers,
   exploreMapGetActiveInteractiveLayers,
-} from "./selectors";
+} from './selectors';
 
 // components
-import ExploreMap from "./component";
-import { RootState } from "lib/store";
+import ExploreMap from './component';
+import { RootState } from 'lib/store';
 
 export default connect(
   (state: RootState) => ({
     ...state.explore.sidebar,
     ...state.explore.map,
-    // token: state.user.token,
-    // userId: state.user.id,
+    worldview: state.explore.worldview,
     activeLayers: exploreMapGetUpdatedLayers(state),
     activeInteractiveLayers: exploreMapGetActiveInteractiveLayers(state),
     layerGroups: exploreMapGetUpdatedLayerGroups(state),

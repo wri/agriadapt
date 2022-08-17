@@ -1,8 +1,8 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 // Components
-import FormElement from "./FormElement";
+import FormElement from './FormElement';
 
 class RadioGroup extends FormElement {
   state = { value: this.props.properties.default };

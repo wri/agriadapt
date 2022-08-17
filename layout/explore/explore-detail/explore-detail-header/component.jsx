@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 
 // components
 import Icon from 'components/ui/icon';
+import { useTranslation } from 'next-i18next';
 
 export default function ExploreDetailHeader({
   // dataset,
@@ -9,6 +10,7 @@ export default function ExploreDetailHeader({
   // userIsLoggedIn,
   isSidebarOpen,
 }) {
+  const { t } = useTranslation(['explore', 'common']);
 
   return (
     <div
@@ -22,7 +24,7 @@ export default function ExploreDetailHeader({
         onClick={() => setSelectedDataset(null)}
       >
         <Icon className="-small" name="icon-arrow-left-2" />
-        <span>Back</span>
+        <span>{t("explore:explore_detail.Back")}</span>
       </button>
     </div>
   );

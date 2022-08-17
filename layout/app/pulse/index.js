@@ -1,10 +1,10 @@
 // Redux
-import { connect } from "react-redux";
-import * as actions from "./actions";
-import reducers from "./reducers";
-import initialState from "./default-state";
+import { connect } from 'react-redux';
+import * as actions from './actions';
+import reducers from './reducers';
+import initialState from './default-state';
 
-import PulseComponent from "./component";
+import PulseComponent from './component';
 
 // Mandatory
 export { actions, reducers, initialState };

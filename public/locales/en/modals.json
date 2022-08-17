@@ -1,0 +1,11 @@
+{
+    "share_modal": {
+        "Share": "Share",
+        "public_url": "Public url to share",
+        "code_to_embed": "Code to embed",
+        "copy_link": "Copy Link",
+        "copied": "Copied",
+        "close": "Close",
+        "download_image": "Download image"
+    }
+}

@@ -1,4 +1,4 @@
-import { createSelector } from "reselect";
+import { createSelector } from 'reselect';
 
 const getContextLayers = (state) => state.contextLayersPulse.contextLayers;
 const getActiveLayers = (state) => state.contextLayersPulse.activeLayers;

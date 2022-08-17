@@ -1,11 +1,11 @@
-import compact from "lodash/compact";
+import compact from 'lodash/compact';
 
 export function substitution(string, params) {
   // Params should have this format => [{key:'xxx', value:'xxx'},{key:'xxx', value:'xxx'}]
   // Keys to search should be in this format {{key}}
   let str = string;
   params.forEach((param) => {
-    str = str.replace(new RegExp(`{{${param.key}}}`, "g"), param.value);
+    str = str.replace(new RegExp(`{{${param.key}}}`, 'g'), param.value);
   });
   return str;
 }
@@ -24,9 +24,9 @@ export function concatenation(string, params) {
         }
         return null;
       })
-    ).join(" AND ")}`;
-    sql = sql ? `WHERE ${sql}` : "";
-    str = str.replace(new RegExp(`{{${param.key}}}`, "g"), sql);
+    ).join(' AND ')}`;
+    sql = sql ? `WHERE ${sql}` : '';
+    str = str.replace(new RegExp(`{{${param.key}}}`, 'g'), sql);
   });
   return str;
 }
@@ -34,7 +34,7 @@ export function concatenation(string, params) {
 export function listSeperator(arr, key) {
   const l = arr.length - 1;
   if (l !== key) {
-    return l - 1 === key ? "and" : ",";
+    return l - 1 === key ? 'and' : ',';
   }
   return null;
 }
@@ -44,7 +44,7 @@ export function paramIsTrue(param) {
 }
 
 export function capitalizeFirstLetter(string) {
-  if (typeof string === "string") {
+  if (typeof string === 'string') {
     return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
   }
   return string;

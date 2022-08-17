@@ -4,7 +4,10 @@
     "Add to map": "Add to map",
     "Layers": "Layers",
     "Search Layers": "Search Layers",
-    "Filter Layers by": "Filter Layers by",
+    "start_search": "Type to start search",
+    "Filter Layers by Value Chains": "Filter Layers by Value Chains",
+    "Filter Layers by Emission Scenario": "Filter Layers by Emission Scenario",
+    "Filter Layers by Timescale": "Filter Layers by Timescale",
     "value_chains": {
       "hint": "Select a pathway for forward-looking data."
     }
@@ -13,19 +16,30 @@
     "Analysis": "Analysis",
     "Add a Location": "Add a Location",
     "Add Location": "Add Location",
+    "Cancel": "Cancel",
     "Select a Location": "Select a Location",
     "Select point on map": "Select point on map",
     "Use my current location": "Use my current location",
     "Search by address": "Search by address",
-    "Choose my location": "Choose my location"
+    "Choose my location": "Choose my location",
+    "Edit Location": "Edit Location",
+    "Customize Name": "Customize Name",
+    "Delete Location": "Delete Location",
+    "Layer Analysis Table": "Layer Analysis Table",
+    "Name": "Name",
+    "Change Column Name": "Change Column Name",
+    "Sort by Column A-Z": "Sort by Column A-Z",
+    "Delete": "Delete"
   },
   "explore_detail": {
     "Read more": "Read more",
+    "Read less": "Read less",
     "Active": "Active",
     "Show layer": "Show layer",
     "Overview": "Overview",
     "Dataset layers": "Dataset layers",
-    "Further information": "Further information"
+    "Further information": "Further information",
+    "Back": "Back"
   },
   "map": {
     "basemaps": {
@@ -36,9 +50,9 @@
       "Hydrography": "Hydrography"
     },
     "labels": {
-        "No labels": "No labels",
-        "Labels light": "Labels light",
-        "Labels dark": "Labels dark"
+      "No labels": "No labels",
+      "Labels light": "Labels light",
+      "Labels dark": "Labels dark"
     },
     "Boundaries": "Boundaries"
   }

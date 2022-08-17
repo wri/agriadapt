@@ -1,8 +1,8 @@
-import WRISerializer from "wri-json-api-serializer";
+import WRISerializer from 'wri-json-api-serializer';
 
 // utils
-import { WRIAPI } from "utils/axios";
-import { logger } from "utils/logs";
+import { WRIAPI } from 'utils/axios';
+import { logger } from 'utils/logs';
 
 /**
  * Fetch pages
@@ -11,13 +11,13 @@ import { logger } from "utils/logs";
  * @param {Object} headers Request headers.
  */
 export const fetchPages = (params = {}, headers = {}) => {
-  logger.info("fetches static pages");
-  return WRIAPI.get("/v1/static_page", {
+  logger.info('fetches static pages');
+  return WRIAPI.get('/v1/static_page', {
     headers: {
       ...headers,
     },
     params: {
-      published: "all",
+      published: 'all',
       application: process.env.NEXT_PUBLIC_APPLICATIONS,
       env: process.env.NEXT_PUBLIC_API_ENV,
       ...params,
@@ -87,9 +87,9 @@ export const updatePage = (page, token) => {
  * @param {Object} token Authentication token.
  */
 export const createPage = (page, token) => {
-  logger.info("Create page");
+  logger.info('Create page');
   return WRIAPI.post(
-    "/v1/static_page",
+    '/v1/static_page',
     {
       data: {
         application: process.env.NEXT_PUBLIC_APPLICATIONS,

@@ -4,6 +4,7 @@ import { HYDRATE } from 'next-redux-wrapper';
 const initialState = {
   country: null,
   crop: 'rice',
+  worldview: 'US',
 };
 
 export const slice = createSlice({
@@ -15,6 +16,9 @@ export const slice = createSlice({
     },
     setActiveCrop: (state, { payload }) => {
       state.crop = payload;
+    },
+    setWorldview: (state, { payload }) => {
+      state.worldview = payload;
     },
   },
   extraReducers: (builder) => {

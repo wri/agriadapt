@@ -1,4 +1,4 @@
-import { createSelector } from "reselect";
+import { createSelector } from 'reselect';
 
 const layers = (state) => state.layers.layers.list;
 const filters = (state) => state.layers.layers.filters;
@@ -22,10 +22,10 @@ const getFilteredLayers = (layers, filters) => {
     .filter((layer) => {
       // eslint-disable-line arrow-body-style
       return filters.every((filter) => {
-        if (filter.key === "id") return layer.id === filter.value;
+        if (filter.key === 'id') return layer.id === filter.value;
         if (!layer[filter.key]) return false;
 
-        if (typeof filter.value === "string") {
+        if (typeof filter.value === 'string') {
           return layer[filter.key]
             .toLowerCase()
             .match(filter.value.toLowerCase());

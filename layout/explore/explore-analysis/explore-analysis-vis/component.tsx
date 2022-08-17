@@ -1,5 +1,5 @@
 import PieChart from 'components/widgets/charts/v2/PieChart';
-import TextChart from 'components/widgets/charts/v2/TextChart';
+import CalloutCard from 'components/widgets/charts/v2/CalloutCard';
 import { ErrorBoundary } from 'react-error-boundary';
 import ErrorFallback from 'components/error-fallback';
 
@@ -36,22 +36,24 @@ const AnalysisVisuals = ({
   ) => {
     let suffix = s;
     let avg = arr.reduce((a, b) => a + b, 0) / arr.length;
-    if (suffix?.includes('minutes')) { // Convert time
-      if (avg > (30 * 24 * 60)){ // months
-        avg /= (30 * 24 * 60);
-        suffix = ' m'
-      }
-      else if (avg > (24 * 60)) { // days
-        avg /= (24 * 60);
+    if (suffix?.includes('minutes')) {
+      // Convert time
+      if (avg > 30 * 24 * 60) {
+        // months
+        avg /= 30 * 24 * 60;
+        suffix = ' m';
+      } else if (avg > 24 * 60) {
+        // days
+        avg /= 24 * 60;
         suffix = ' d';
-      }   
-      else { // hours
+      } else {
+        // hours
         avg /= 60;
-        suffix = ' h'
+        suffix = ' h';
       }
-    } 
+    }
     let num = avg.toFixed(2);
-    
+
     if (suffix) num = +num + suffix;
     if (prefix) num = prefix + +num;
     if (type === 'number' || !valueMap) return num;
@@ -80,7 +82,7 @@ const AnalysisVisuals = ({
             <>
               <PieChart name={c} domain={labelDomain} />
               {avg !== 'NaN' && (
-                <TextChart
+                <CalloutCard
                   analysis={{
                     name: c,
                     type: 'avg',

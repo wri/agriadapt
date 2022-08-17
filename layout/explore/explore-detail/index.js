@@ -1,28 +1,29 @@
-import React, { useReducer, useEffect } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { toastr } from "react-redux-toastr";
-import * as actions from "layout/explore/actions";
+import React, { useReducer, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { toastr } from 'react-redux-toastr';
+import * as actions from 'layout/explore/actions';
 
 // services
-import { fetchDataset } from "services/dataset";
-import { fetchInferredTags } from "services/graph";
+import { fetchDataset } from 'services/dataset';
+import { fetchInferredTags } from 'services/graph';
 
 // Helpers
-import { TAGS_BLACKLIST } from "utils/tags";
+import { TAGS_BLACKLIST } from 'utils/tags';
 
 // component
-import ExploreDetailComponent from "./component";
+import ExploreDetailComponent from './component';
 
 // store
-import reducer from "./reducer";
-import initialState from "./initial-state";
+import reducer from './reducer';
+import initialState from './initial-state';
 import {
   setDataset,
   setDatasetLoading,
   setTags,
   setTagsLoading,
-} from "./actions";
+} from './actions';
+import { useRouter } from 'next/router';
 
 const ExploreDetailContainer = (props) => {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -34,14 +35,17 @@ const ExploreDetailContainer = (props) => {
     toggleMapLayerGroup,
   } = props;
 
+  const { locale } = useRouter();
+
   useEffect(() => {
     if (datasetID) {
       dispatch(setDatasetLoading(true));
       dispatch(setTagsLoading(true));
 
       fetchDataset(datasetID, {
-        includes: "metadata,layer,vocabulary,widget",
+        includes: 'metadata,layer,vocabulary,widget',
         application: process.env.NEXT_PUBLIC_APPLICATIONS,
+        language: locale,
         env: process.env.NEXT_PUBLIC_API_ENV,
       })
         .then((data) => {
@@ -68,7 +72,7 @@ const ExploreDetailContainer = (props) => {
           // Load tags
           const knowledgeGraphVoc =
             data.vocabulary &&
-            data.vocabulary.find((v) => v.name === "knowledge_graph");
+            data.vocabulary.find((v) => v.name === 'knowledge_graph');
           const tags = knowledgeGraphVoc && knowledgeGraphVoc.tags;
           if (tags) {
             fetchInferredTags({ concepts: tags.join(',') })
@@ -93,16 +97,16 @@ const ExploreDetailContainer = (props) => {
         })
         .catch((error) => {
           dispatch(setDatasetLoading(false));
-          toastr.error("Error loading dataset data");
-          console.error("Error loading dataset data", error);
+          toastr.error('Error loading dataset data');
+          console.error('Error loading dataset data', error);
         });
     }
-  }, [anchor, datasetID]);
+  }, [anchor, datasetID, locale]);
 
   useEffect(() => {
     const element = document.getElementById(anchor);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }, [anchor]);
 

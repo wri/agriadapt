@@ -1,23 +1,23 @@
-import "isomorphic-fetch";
-import { createAction, createThunkAction } from "redux-tools";
+import 'isomorphic-fetch';
+import { createAction, createThunkAction } from 'redux-tools';
 
 // Utils
-import { LAYERS_PLANET_PULSE } from "utils/layers/pulse_layers";
+import { LAYERS_PLANET_PULSE } from 'utils/layers/pulse_layers';
 
-export const setLayers = createAction("PULSE/setLayers");
-export const setLayersLoading = createAction("PULSE/setLayersLoading");
-export const setLayersError = createAction("PULSE/setLayersError");
-export const setActiveLayer = createAction("PULSE/setActiveLayer");
-export const setLayerPoints = createAction("PULSE/setLayerPoints");
+export const setLayers = createAction('PULSE/setLayers');
+export const setLayersLoading = createAction('PULSE/setLayersLoading');
+export const setLayersError = createAction('PULSE/setLayersError');
+export const setActiveLayer = createAction('PULSE/setActiveLayer');
+export const setLayerPoints = createAction('PULSE/setLayerPoints');
 export const setLayerPointsLoading = createAction(
-  "PULSE/setLayerPointsLoading"
+  'PULSE/setLayerPointsLoading'
 );
-export const setLayerPointsError = createAction("PULSE/setLayerPointsError");
-export const setSimilarWidgets = createAction("PULSE/setSimilarWidgets");
-export const resetLayerPoints = createAction("PULSE/resetLayerPoints");
+export const setLayerPointsError = createAction('PULSE/setLayerPointsError');
+export const setSimilarWidgets = createAction('PULSE/setSimilarWidgets');
+export const resetLayerPoints = createAction('PULSE/resetLayerPoints');
 
 export const getLayers = createThunkAction(
-  "PULSE/getLayers",
+  'PULSE/getLayers',
   () => (dispatch) => {
     // Waiting for fetch from server -> Dispatch loading
     dispatch(setLayersLoading(true));
@@ -28,7 +28,7 @@ export const getLayers = createThunkAction(
 );
 
 export const getLayerPoints = createThunkAction(
-  "PULSE/getLayerPoints",
+  'PULSE/getLayerPoints',
   (queryUrl) => (dispatch) => {
     dispatch(setLayerPointsLoading(true));
     fetch(new Request(queryUrl))

@@ -1,0 +1,59 @@
+{
+	"layers": {
+		"Advanced Search": "Búsqueda avanzada",
+		"Add to map": "Añadir al mapa",
+		"Layers": "Capas",
+		"Search Layers": "Capas de búsqueda",
+		"start_search": "Escriba para iniciar la búsqueda",
+		"Filter Layers by Value Chains": "Filtrar capas por cadenas de valor",
+		"Filter Layers by Emission Scenario": "Filtrar capas por escenario de emisión",
+		"Filter Layers by Timescale": "Filtrar capas por escala de tiempo",
+		"value_chains": {
+			"hint": "Seleccione una ruta para obtener datos con visión de futuro."
+		}
+	},
+	"analysis": {
+		"Analysis": "Análisis",
+		"Add a Location": "Agregar una ubicación",
+		"Add Location": "Agregar ubicación",
+		"Cancel": "Cancelar",
+		"Select a Location": "Seleccione una ubicación",
+		"Select point on map": "Seleccionar punto en el mapa",
+		"Use my current location": "Usar mi ubicación actual",
+		"Search by address": "Buscar por dirección",
+		"Choose my location": "Elegir mi ubicación",
+		"Edit Location": "Editar ubicación",
+		"Customize Name": "Personalizar nombre",
+		"Delete Location": "Eliminar ubicación",
+		"Layer Analysis Table": "Tabla de análisis de capas",
+		"Name": "Nombre",
+		"Change Column Name": "Cambiar el nombre de la columna",
+		"Sort by Column A-Z": "Ordenar por columna A-Z",
+		"Delete": "Borrar"
+	},
+	"explore_detail": {
+		"Read more": "Leer más",
+		"Read less": "Leer menos",
+		"Active": "Activo",
+		"Show layer": "Mostrar capa",
+		"Overview": "Visión general",
+		"Dataset layers": "Capas de dataset",
+		"Further information": "Más información",
+		"Back": "Atrás"
+	},
+	"map": {
+		"basemaps": {
+			"Dark": "Oscuro",
+			"Light": "Luz",
+			"Satellite": "Satélite",
+			"Terrain": "Terreno",
+			"Hydrography": "Hidrografía"
+		},
+		"labels": {
+			"No labels": "Sin etiquetas",
+			"Labels light": "Etiquetas ligeras",
+			"Labels dark": "Etiquetas oscuras"
+		},
+		"Boundaries": "Límites"
+	}
+}

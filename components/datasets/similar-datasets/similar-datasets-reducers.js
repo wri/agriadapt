@@ -1,6 +1,6 @@
-import { createReducer } from "@reduxjs/toolkit";
-import * as actions from "./similar-datasets-actions";
-import initialState from "./similar-datasets-initial-state";
+import { createReducer } from '@reduxjs/toolkit';
+import * as actions from './similar-datasets-actions';
+import initialState from './similar-datasets-initial-state';
 
 const reducers = createReducer(initialState, {
   [actions.setSimilarDatasetsLoading]: (state, { payload }) => ({

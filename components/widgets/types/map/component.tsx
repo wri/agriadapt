@@ -1,5 +1,5 @@
-import { useState, useReducer, useMemo, useCallback, useEffect } from "react";
-import classnames from "classnames";
+import { useState, useReducer, useMemo, useCallback, useEffect } from 'react';
+import classnames from 'classnames';
 import {
   Legend,
   LegendListItem,
@@ -8,8 +8,8 @@ import {
   LegendItemButtonOpacity,
   LegendItemButtonVisibility,
   LegendItemTypes,
-} from "vizzuality-components";
-import { useErrorHandler } from "react-error-boundary";
+} from 'vizzuality-components';
+import { useErrorHandler } from 'react-error-boundary';
 // import type { ViewportProps } from "react-map-gl";
 
 // constants
@@ -18,22 +18,22 @@ import {
   MAPSTYLES,
   BASEMAPS,
   LABELS,
-} from "components/map/constants";
+} from 'components/map/constants';
 
 // components
-import Spinner from "components/ui/Spinner";
-import Map from "components/map";
-import LayerManager from "components/map/layer-manager";
-import MapControls from "components/map/controls";
-import ZoomControls from "components/map/controls/zoom";
-import WidgetHeader from "../../header";
-import WidgetInfo from "../../info";
-import WidgetCaption from "../../caption";
+import Spinner from 'components/ui/Spinner';
+import Map from 'components/map';
+import LayerManager from 'components/map/layer-manager';
+import MapControls from 'components/map/controls';
+import ZoomControls from 'components/map/controls/zoom';
+import WidgetHeader from '../../header';
+import WidgetInfo from '../../info';
+import WidgetCaption from '../../caption';
 
-import type { Basemap, Labels } from "components/map/types";
+import type { Basemap, Labels } from 'components/map/types';
 
 // reducers
-import { mapWidgetInitialState, mapWidgetSlice } from "./reducer";
+import { mapWidgetInitialState, mapWidgetSlice } from './reducer';
 
 const mapWidgetReducer = mapWidgetSlice.reducer;
 
@@ -45,12 +45,17 @@ const {
   setMapLayerGroupOpacity,
 } = mapWidgetSlice.actions;
 
-import type { APIWidgetSpec } from "types/widget";
-import type { LayerGroup, Bounds } from "components/map/types";
-import type { MapTypeWidgetContainerProps } from "./index";
+import type { APIWidgetSpec } from 'types/widget';
+import type { LayerGroup, Bounds } from 'components/map/types';
+import type { MapTypeWidgetContainerProps } from './index';
+import { disclaimer_aoi_ids, india_maps_disclaimer } from './constants';
+import { connect } from 'react-redux';
+import { RootState } from 'lib/store';
+import { useTranslation } from 'next-i18next';
 
 export interface MapTypeWidgetProps
-  extends Omit<MapTypeWidgetContainerProps, "widgetId" | "params"> {
+  extends Omit<MapTypeWidgetContainerProps, 'widgetId' | 'params'> {
+  worldview: string;
   widget: APIWidgetSpec;
   layerGroups: LayerGroup[];
   // todo: improve typing of layers
@@ -67,6 +72,7 @@ export interface MapTypeWidgetProps
 }
 
 const MapTypeWidget = ({
+  worldview,
   widget,
   layerGroups = [],
   aoiLayer = null,
@@ -83,7 +89,7 @@ const MapTypeWidget = ({
   onFitBoundsChange,
 }: MapTypeWidgetProps): JSX.Element => {
   const handleError = useErrorHandler(
-    isError ? new Error("something went wrong") : null
+    isError ? new Error('something went wrong') : null
   );
   const [mapWidgetState, dispatch] = useReducer(mapWidgetReducer, {
     ...mapWidgetInitialState,
@@ -93,6 +99,8 @@ const MapTypeWidget = ({
     ...DEFAULT_VIEWPORT,
     height: 400,
   });
+
+  const { t } = useTranslation('widgets');
 
   const [isInfoWidgetVisible, setInfoWidgetVisibility] = useState(false);
   // const [isEnlarged, setIsEnlarged] = useState(false);
@@ -164,17 +172,17 @@ const MapTypeWidget = ({
   }, []);
 
   const basemap: Basemap = useMemo(() => {
-    if (!widget?.widgetConfig) return "dark";
+    if (!widget?.widgetConfig) return 'dark';
 
-    const basemapKey = widget.widgetConfig?.basemapLayers?.basemap || "dark";
+    const basemapKey = widget.widgetConfig?.basemapLayers?.basemap || 'dark';
 
     return BASEMAPS[basemapKey].value as Basemap;
   }, [widget]);
 
   const labels: Labels = useMemo(() => {
-    if (!widget?.widgetConfig) return "light";
+    if (!widget?.widgetConfig) return 'light';
 
-    const label = widget.widgetConfig?.basemapLayers?.labels || "light";
+    const label = widget.widgetConfig?.basemapLayers?.labels || 'light';
 
     return LABELS[label].value as Labels;
   }, [widget]);
@@ -204,7 +212,7 @@ const MapTypeWidget = ({
 
   return (
     <div
-      className={classnames("c-widget h-full", { "-is-embed": isEmbed })}
+      className={classnames('c-widget h-full', { '-is-embed': isEmbed })}
       style={{
         ...style,
       }}
@@ -224,11 +232,11 @@ const MapTypeWidget = ({
       )}
       <div
         className={classnames(
-          "relative flex h-full overflow-x-auto overflow-y-hidden widget-container grow",
+          'relative flex h-full overflow-x-auto overflow-y-hidden widget-container grow',
           {
-            "border-0": !isInfoWidgetVisible,
-            "border border-gray-light": isInfoWidgetVisible,
-            "rounded-none": !!caption,
+            'border-0': !isInfoWidgetVisible,
+            'border border-gray-light': isInfoWidgetVisible,
+            'rounded-none': !!caption,
           }
         )}
         style={{
@@ -294,9 +302,19 @@ const MapTypeWidget = ({
           <WidgetInfo widget={widget} className="p-4" />
         )}
       </div>
-      {caption && <WidgetCaption text={caption} />}
+      {caption && (
+        <WidgetCaption
+          {...(worldview === 'IN' &&
+            disclaimer_aoi_ids.includes(String(aoiLayer?.id)) && {
+              disclaimer: t(india_maps_disclaimer),
+            })}
+          text={caption}
+        />
+      )}
     </div>
   );
 };
 
-export default MapTypeWidget;
+export default connect((state: RootState) => ({
+  ...state.value_chains,
+}))(MapTypeWidget);

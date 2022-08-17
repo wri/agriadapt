@@ -1,13 +1,13 @@
-import "isomorphic-fetch";
-import { createAction, createThunkAction } from "redux-tools";
+import 'isomorphic-fetch';
+import { createAction, createThunkAction } from 'redux-tools';
 
 // TOOLS
-export const setActiveTools = createAction("EXPLORE-DETAIL/setActiveTools");
-export const setTools = createAction("EXPLORE-DETAIL/setTools");
-export const setToolsLoading = createAction("EXPLORE-DETAIL/setToolsLoading");
-export const setToolsError = createAction("EXPLORE-DETAIL/setToolsError");
+export const setActiveTools = createAction('EXPLORE-DETAIL/setActiveTools');
+export const setTools = createAction('EXPLORE-DETAIL/setTools');
+export const setToolsLoading = createAction('EXPLORE-DETAIL/setToolsLoading');
+export const setToolsError = createAction('EXPLORE-DETAIL/setToolsError');
 export const fetchTools = createThunkAction(
-  "WIDGET-DETAIL/fetchTools",
+  'WIDGET-DETAIL/fetchTools',
   () => (dispatch) => {
     dispatch(setToolsLoading(true));
     dispatch(setToolsError(null));

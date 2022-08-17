@@ -1,17 +1,17 @@
-import { useMemo } from "react";
-import PropTypes from "prop-types";
+import { useMemo } from 'react';
+import PropTypes from 'prop-types';
 import {
   Accordion,
   AccordionItem,
   AccordionItemHeading,
   AccordionItemButton,
   AccordionItemPanel,
-} from "react-accessible-accordion";
+} from 'react-accessible-accordion';
 
 // components
-import DatasetCardList from "components/datasets/card-list";
-import Icon from "components/ui/icon";
-import MiniExploreDatasetsActions from "./dataset-actions";
+import DatasetCardList from 'components/datasets/card-list';
+import Icon from 'components/ui/icon';
+import MiniExploreDatasetsActions from './dataset-actions';
 
 export default function DatasetsSidebar({ datasetGroups, handleAddMap }) {
   const expandedGroupsByDefault = useMemo(
@@ -28,7 +28,7 @@ export default function DatasetsSidebar({ datasetGroups, handleAddMap }) {
       >
         {datasetGroups.map(({ id, title, datasets }) => {
           const datasetCounter = `${datasets.length} dataset${
-            datasets.length > 1 ? "s" : ""
+            datasets.length > 1 ? 's' : ''
           }`;
 
           return (

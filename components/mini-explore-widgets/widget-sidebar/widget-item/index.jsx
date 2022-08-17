@@ -1,16 +1,16 @@
-import { useState, useCallback } from "react";
-import PropTypes from "prop-types";
+import { useState, useCallback } from 'react';
+import PropTypes from 'prop-types';
 
 // hooks
-import { useFetchWidget } from "hooks/widget";
-import useBelongsToCollection from "hooks/collection/belongs-to-collection";
-import { useMe } from "hooks/user";
+import { useFetchWidget } from 'hooks/widget';
+import useBelongsToCollection from 'hooks/collection/belongs-to-collection';
+import { useMe } from 'hooks/user';
 
 // utils
-import { getParametrizedWidget } from "utils/widget";
+import { getParametrizedWidget } from 'utils/widget';
 
 // component
-import WidgetItem from "./component";
+import WidgetItem from './component';
 
 export default function WidgetItemContainer({ widgetId, params, adapter }) {
   const [isShareVisible, setShareVisibility] = useState(false);
@@ -20,7 +20,7 @@ export default function WidgetItemContainer({ widgetId, params, adapter }) {
   const widgetState = useFetchWidget(
     widgetId,
     {
-      includes: "metadata",
+      includes: 'metadata',
     },
     {
       enabled: !!widgetId,

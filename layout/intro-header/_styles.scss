@@ -3,163 +3,162 @@ $right-vector-mask: url('/images/components/layout/intro-header/right-vector-mas
 $about-vector-mask: url('/images/components/layout/intro-header/about-vector-mask.svg');
 
 .c-intro-header {
-    position: relative;
-    z-index: 1;
+  position: relative;
+  z-index: 1;
 
-    h3 {
-        color: $charcoal-grey
-    }
+  h3 {
+    color: $charcoal-grey;
+  }
 }
 
 .c-content {
-    position: relative;
-    width: 100%;
-    z-index: 1;
-    
-    @media screen and (min-width: map-get($breakpoints, medium)) {
-        position: absolute;
-        top: 40%;
-    }
-    @media screen and (min-width: map-get($breakpoints, large)) {
-        position: absolute;
-        top: 30%;
-    }
+  position: relative;
+  width: 100%;
+  z-index: 1;
+
+  @media screen and (min-width: map-get($breakpoints, medium)) {
+    position: absolute;
+    top: 40%;
+  }
+  @media screen and (min-width: map-get($breakpoints, large)) {
+    position: absolute;
+    top: 30%;
+  }
 }
 
 .visual-container {
-    position: relative;
+  position: relative;
 
-    &.-right {
-        text-align: right;
-        margin-left: auto;
+  &.-right {
+    text-align: right;
+    margin-left: auto;
 
-        .blob-container {
-            right: 0px;
-        }
+    .blob-container {
+      right: 0px;
     }
+  }
 
-    @media screen and (min-width: map-get($breakpoints, medium)) {
-        max-width: 70%;
-    }
+  @media screen and (min-width: map-get($breakpoints, medium)) {
+    max-width: 70%;
+  }
 
-    // @media screen and (max-width: map-get($breakpoints, medium)) and (orientation: landscape) {
-    //     max-width: 70%;
-    // }
+  // @media screen and (max-width: map-get($breakpoints, medium)) and (orientation: landscape) {
+  //     max-width: 70%;
+  // }
 
-    // @media screen and (min-width: map-get($breakpoints, large)) {
-    //     max-width: 100%;
-    // }
+  // @media screen and (min-width: map-get($breakpoints, large)) {
+  //     max-width: 100%;
+  // }
 }
 
 .image-container {
-    position: relative;
-    margin: 0 0 auto auto;
+  position: relative;
+  margin: 0 0 auto auto;
+
+  .image {
+    mask: $right-vector-mask 0 0 / contain no-repeat;
+  }
+
+  // formula: calc(95% container x image_svg_width / blob_svg_width)
+  &.-landing {
+    max-width: calc(95% * 699 / 937);
+    // @media screen and (min-width: map-get($breakpoints, medium)) {
+    //     max-width: calc(95% * 699/937);
+    // }
+
+    margin: 0 auto auto 0;
+    padding-bottom: 50px;
+    .image {
+      mask: $left-vector-mask 0 0 / contain no-repeat;
+    }
+  }
+
+  &.-about {
+    max-width: calc(95% * 542 / 719);
 
     .image {
-        mask: $right-vector-mask 0 0 / contain no-repeat;
+      mask: $about-vector-mask 0 0 / contain no-repeat;
     }
+  }
 
-    // formula: calc(95% container x image_svg_width / blob_svg_width)
-    &.-landing {
-        max-width: calc(95% * 699/937);
-        // @media screen and (min-width: map-get($breakpoints, medium)) {
-        //     max-width: calc(95% * 699/937);
-        // }
+  &.-rice {
+    max-width: calc(95% * 622 / 799);
+  }
 
-        margin: 0 auto auto 0;
-        padding-bottom: 50px;
-        .image {
-            mask: $left-vector-mask 0 0 / contain no-repeat;
-        }
-    }
+  &.-coffee {
+    max-width: calc(95% * 622 / 799);
+  }
 
-    &.-about {
-        max-width: calc(95% * 542/719);
-
-        .image {
-            mask: $about-vector-mask 0 0 / contain no-repeat;
-        }
-    }
-
-    &.-rice {
-        max-width: calc(95% * 622/799);
-    }
-
-    &.-coffee {
-        max-width: calc(95% * 622/799);
-    }
-
-    &.-cotton {
-        max-width: calc(95% * 622/799);
-    }
+  &.-cotton {
+    max-width: calc(95% * 622 / 799);
+  }
 }
 
 .blob-container {
-    position: absolute;
-    top: 0px;
-    z-index: -1;
+  position: absolute;
+  top: 0px;
+  z-index: -1;
 
-    @media screen and (min-width: map-get($breakpoints, medium)) {
-        max-width: 95%;
-    }
-
+  @media screen and (min-width: map-get($breakpoints, medium)) {
+    max-width: 95%;
+  }
 }
 
 .country-selector {
-    max-width: 340px;
+  max-width: 340px;
 }
 
 .info-container {
-    @media screen and (min-width: map-get($breakpoints, small)) {
-        position: relative;
-        // top: $space * -10;
-        // margin: 0 $margin-size-small;
+  @media screen and (min-width: map-get($breakpoints, small)) {
+    position: relative;
+    // top: $space * -10;
+    // margin: 0 $margin-size-small;
+  }
+
+  // @media screen and (max-width: map-get($breakpoints, medium)) and (orientation: landscape) {
+  //     top: $space * -50;
+  //     max-width: 429px;
+  // }
+
+  @media screen and (max-width: map-get($breakpoints, medium)) {
+    &.-landing {
+      text-align: center;
+    }
+  }
+
+  @media screen and (min-width: map-get($breakpoints, medium)) {
+    max-width: 429px;
+    // position: absolute;
+    // top: 200px;
+    text-align: left;
+    // margin: 0 $margin-size;
+
+    &.-right {
+      margin-left: auto;
     }
 
-    // @media screen and (max-width: map-get($breakpoints, medium)) and (orientation: landscape) {
-    //     top: $space * -50;
-    //     max-width: 429px;
-    // }
-
-    @media screen and (max-width: map-get($breakpoints, medium)) {
-        &.-landing {
-            text-align: center;
-        }
+    &.-landing {
+      max-width: 450px;
     }
 
-    @media screen and (min-width: map-get($breakpoints, medium)) {
-        max-width: 429px;
-        // position: absolute;
-        // top: 200px;
-        text-align: left;
-        // margin: 0 $margin-size;
+    .description {
+      max-width: 444px;
+    }
+  }
 
-        &.-right {
-            margin-left: auto;
-        }
+  @media screen and (min-width: map-get($breakpoints, large)) {
+    // margin: 0 $margin-size * 2;
 
-        &.-landing {
-            max-width: 450px;
-        }
-
-        .description {
-            max-width: 444px;
-        }
+    &.-landing {
+      max-width: 540px;
     }
 
-    @media screen and (min-width: map-get($breakpoints, large)) {
-        // margin: 0 $margin-size * 2;
+    &.-about {
+      max-width: 615px;
 
-        &.-landing {
-            max-width: 540px;
-        }
-
-        &.-about {
-            max-width: 615px;
-
-            .description {
-                max-width: 540px;
-            }
-        }
+      .description {
+        max-width: 540px;
+      }
     }
+  }
 }

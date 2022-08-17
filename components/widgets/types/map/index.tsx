@@ -1,25 +1,25 @@
-import { useMemo, useCallback, useState, CSSProperties } from "react";
-import { useQueries } from "react-query";
-import { ErrorBoundary } from "react-error-boundary";
+import { useMemo, useCallback, useState, CSSProperties } from 'react';
+import { useQueries } from 'react-query';
+import { ErrorBoundary } from 'react-error-boundary';
 
 // services
-import { fetchLayer } from "services/layer";
+import { fetchLayer } from 'services/layer';
 
 // hooks
-import { useFetchWidget } from "hooks/widget";
+import { useFetchWidget } from 'hooks/widget';
 // import useBelongsToCollection from 'hooks/collection/belongs-to-collection';
-import { useGeostore } from "hooks/geostore";
+import { useGeostore } from 'hooks/geostore';
 // import { useMe } from 'hooks/user';
 
 // utils
-import { getAoiLayer, getMaskLayer, getLayerGroups } from "utils/layers";
+import { getAoiLayer, getMaskLayer, getLayerGroups } from 'utils/layers';
 
 // components
-import ErrorFallback from "components/error-fallback";
-import MapTypeWidget from "./component";
+import ErrorFallback from 'components/error-fallback';
+import MapTypeWidget from './component';
 
-import type { APILayerSpec } from "types/layer";
-import type { APIWidgetSpec } from "types/widget";
+import type { APILayerSpec } from 'types/layer';
+import type { APIWidgetSpec } from 'types/widget';
 
 const CustomErrorFallback = (_props: any) => (
   <ErrorFallback {..._props} title="Something went wrong loading the widget" />
@@ -49,8 +49,6 @@ const MapTypeWidgetContainer = ({
   isEnlarged = false,
 }: MapTypeWidgetContainerProps): JSX.Element => {
   const [minZoom, setMinZoom] = useState(null);
-  // const { data: user } = useMe();
-  // const { isInACollection } = useBelongsToCollection(widgetId, user?.token);
   const isInACollection = false;
 
   const {
@@ -61,7 +59,7 @@ const MapTypeWidgetContainer = ({
   } = useFetchWidget(
     widgetId,
     {
-      includes: "metadata",
+      includes: 'metadata',
     },
     {
       enabled: !!widgetId,
@@ -93,7 +91,7 @@ const MapTypeWidgetContainer = ({
 
   const layerStates = useQueries(
     layerIds.map((layerId) => ({
-      queryKey: ["fetch-layer", layerId],
+      queryKey: ['fetch-layer', layerId],
       queryFn: () => fetchLayer(layerId),
       placeholderData: null,
       select: (_layer: APILayerSpec) =>

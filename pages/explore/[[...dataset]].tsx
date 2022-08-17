@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'next/router';
 
 // actions
-import { setIsServer as setServerAction } from 'redactions/common';
+import { setIsServer as setServerAction, setLocale } from 'redactions/common';
 import * as actions from 'layout/explore/actions';
 
 // components
@@ -12,6 +12,7 @@ import { RootState, wrapper } from 'lib/store';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { INDIA_BLACKLIST_DATASET_IDS } from 'layout/explore/constants';
 import { fetchDataset } from 'services/dataset';
+import { withSession } from 'hoc/session';
 
 interface ExplorePageProps {
   explore: {
@@ -39,6 +40,7 @@ interface ExplorePageProps {
       anchor?: string;
       selectedTab?: string;
     };
+    worldview: string;
   };
   dataset: Record<string, any>;
   router;
@@ -56,9 +58,7 @@ interface ExplorePageProps {
 
 class ExplorePage extends PureComponent<ExplorePageProps> {
   componentDidMount() {
-    const {
-      setIsServer,
-    } = this.props;
+    const { setIsServer } = this.props;
 
     setIsServer(false);
   }
@@ -70,9 +70,7 @@ class ExplorePage extends PureComponent<ExplorePageProps> {
   }
 
   componentWillUnmount() {
-    const {
-      resetExplore,
-    } = this.props;
+    const { resetExplore } = this.props;
 
     resetExplore();
   }
@@ -82,13 +80,7 @@ class ExplorePage extends PureComponent<ExplorePageProps> {
       explore: {
         datasets,
         filters,
-        map: {
-          viewport,
-          basemap,
-          labels,
-          boundaries,
-          layerGroups,
-        },
+        map: { viewport, basemap, labels, boundaries, layerGroups },
         sidebar: { anchor, selectedTab },
       },
       router,
@@ -138,17 +130,14 @@ class ExplorePage extends PureComponent<ExplorePageProps> {
         {},
         {
           shallow: true,
-        },
+        }
       );
     }
   }
 
   shouldUpdateUrl(prevProps: ExplorePageProps) {
     const {
-      explore: {
-        datasets, filters, map,
-        sidebar,
-      },
+      explore: { datasets, filters, map, sidebar },
     } = this.props;
 
     const {
@@ -160,36 +149,44 @@ class ExplorePage extends PureComponent<ExplorePageProps> {
       },
     } = prevProps;
 
-    const layers = encodeURIComponent(JSON.stringify(map.layerGroups.map((lg) => ({
-      dataset: lg.dataset,
-      opacity: lg.opacity || 1,
-      visible: lg.visible,
-      layer: lg.layers.find((l) => l.active === true)?.id,
-    }))));
+    const layers = encodeURIComponent(
+      JSON.stringify(
+        map.layerGroups.map((lg) => ({
+          dataset: lg.dataset,
+          opacity: lg.opacity || 1,
+          visible: lg.visible,
+          layer: lg.layers.find((l) => l.active === true)?.id,
+        }))
+      )
+    );
 
-    const prevLayers = encodeURIComponent(JSON.stringify(prevMap.layerGroups.map((lg) => ({
-      dataset: lg.dataset,
-      opacity: lg.opacity || 1,
-      visible: lg.visible,
-      layer: lg.layers.find((l) => l.active === true)?.id,
-    }))));
+    const prevLayers = encodeURIComponent(
+      JSON.stringify(
+        prevMap.layerGroups.map((lg) => ({
+          dataset: lg.dataset,
+          opacity: lg.opacity || 1,
+          visible: lg.visible,
+          layer: lg.layers.find((l) => l.active === true)?.id,
+        }))
+      )
+    );
 
     return (
       // Map
-      map.viewport.zoom !== prevMap.viewport.zoom
-      || map.viewport.latitude !== prevMap.viewport.latitude
-      || map.viewport.longitude !== prevMap.viewport.longitude
-      || map.viewport.pitch !== prevMap.viewport.pitch
-      || map.viewport.bearing !== prevMap.viewport.bearing
-      || map.basemap !== prevMap.basemap
-      || map.labels.id !== prevMap.labels.id
-      || map.boundaries !== prevMap.boundaries
-      || layers !== prevLayers
-      || sidebar.selectedTab !== prevSidebar.selectedTab
+      map.viewport.zoom !== prevMap.viewport.zoom ||
+      map.viewport.latitude !== prevMap.viewport.latitude ||
+      map.viewport.longitude !== prevMap.viewport.longitude ||
+      map.viewport.pitch !== prevMap.viewport.pitch ||
+      map.viewport.bearing !== prevMap.viewport.bearing ||
+      map.basemap !== prevMap.basemap ||
+      map.labels.id !== prevMap.labels.id ||
+      map.boundaries !== prevMap.boundaries ||
+      layers !== prevLayers ||
+      sidebar.selectedTab !== prevSidebar.selectedTab ||
       // Datasets
-      || datasets.selected !== prevDatasets.selected
-      || datasets.page !== prevDatasets.page
-      || filters.search !== prevFilters.search
+      datasets.selected !== prevDatasets.selected ||
+      datasets.page !== prevDatasets.page ||
+      filters.search !== prevFilters.search
     );
   }
 
@@ -198,112 +195,106 @@ class ExplorePage extends PureComponent<ExplorePageProps> {
   }
 }
 
-export const getServerSideProps = wrapper.getServerSideProps(
-  (store) =>
-    async ({ query, locale, req }) => {
-      const { dispatch } = store;
-      const {
-        search,
-        zoom,
-        lat,
-        lng,
-        pitch,
-        bearing,
-        basemap,
-        labels,
-        boundaries,
-        layers,
-        dataset,
-        tab,
-        value_chains,
-        emission_scenario,
-      } = query;
+export const getServerSideProps = withSession(
+  wrapper.getServerSideProps((store) => async ({ query, locale, req }) => {
+    const { dispatch } = store;
+    const {
+      search,
+      zoom,
+      lat,
+      lng,
+      pitch,
+      bearing,
+      basemap,
+      labels,
+      boundaries,
+      layers,
+      dataset,
+      tab,
+      value_chains,
+      emission_scenario,
+    } = query;
+    const worldview = req.session.user?.country;
+    const india_worldview = worldview === 'IN';
+    dispatch(actions.setWorldview(worldview));
 
-      const viewer_iso2 = req.headers['cloudfront-viewer-country'];
-      if (req.headers && viewer_iso2) {
-        if (viewer_iso2 === 'IN')
-          dispatch(actions.setWorldview(viewer_iso2));
-      }
-      let datasetData = null;
+    dispatch(setLocale(locale));
 
-      if (tab) dispatch(actions.setSidebarSelectedTab(Array.isArray(tab) ? tab.join('') : tab));
+    let datasetData = null;
 
-      if (search) dispatch(actions.setFiltersSearch(Array.isArray(search) ? search.join('') : search));
-
-      if (value_chains)
-        dispatch(
-          actions.setFiltersValueChains(
-            Array.isArray(value_chains) ? value_chains : value_chains.split(',')
-          )
-        );
-      if (emission_scenario)
-        dispatch(
-          actions.setFiltersEmissionScenario(
-            Array.isArray(emission_scenario)
-              ? emission_scenario.join('')
-              : emission_scenario
-          )
-        );
-      if (dataset) {
-        dispatch(actions.setSelectedDataset(Array.isArray(dataset) ? dataset.join('') : dataset));
-        datasetData = await fetchDataset(
-          Array.isArray(dataset) ? dataset.join('') : dataset
-        );
-        if (viewer_iso2 === 'IN' && INDIA_BLACKLIST_DATASET_IDS.includes(datasetData.id))
-          return {
-            redirect: {
-              destination: '/unauthorized',
-              permanent: false,
-            },
-          };
-      }
-      // sets map params from URL
+    if (tab)
       dispatch(
-        actions.setViewport({
-          ...(zoom && { zoom: +zoom }),
-          ...(lat &&
-            lng && {
-              latitude: +lat,
-              longitude: +lng,
-            }),
-          ...(pitch && { pitch: +pitch }),
-          ...(bearing && { bearing: +bearing }),
-        })
+        actions.setSidebarSelectedTab(String(tab))
       );
-      if (basemap) dispatch(actions.setBasemap(Array.isArray(basemap) ? basemap.join('') : basemap));
-      if (labels) dispatch(actions.setLabels(Array.isArray(labels) ? labels.join('') : labels));
-      if (boundaries) dispatch(actions.setBoundaries(!!boundaries));
 
-      // Fetch layers  
-      if (layers)
-        await dispatch(
-          actions.fetchMapLayerGroups(
-            JSON.parse(
-              decodeURIComponent(
-                Array.isArray(layers) ? layers.join('') : layers
-              )
-            )
-          )
-        );
+    if (search)
+      dispatch(actions.setFiltersSearch(String(search)));
 
-      return {
-        props: {
-          ...(await serverSideTranslations(locale, [
-            'explore',
-            'common',
-            'countries',
-            'header',
-          ])),
-          ...(datasetData && { dataset: datasetData }),
-        },
-      };
+    if (value_chains)
+      dispatch(
+        actions.setFiltersValueChains(
+          Array.isArray(value_chains) ? value_chains : value_chains.split(',')
+        )
+      );
+    if (emission_scenario)
+      dispatch(actions.setFiltersEmissionScenario(String(emission_scenario)));
+    if (dataset) {
+      dispatch(actions.setSelectedDataset(String(dataset)));
+      datasetData = await fetchDataset(String(dataset), { language: locale });
+      if (
+        india_worldview &&
+        INDIA_BLACKLIST_DATASET_IDS.includes(datasetData.id)
+      )
+        return {
+          redirect: {
+            destination: '/unauthorized',
+            permanent: false,
+          },
+        };
     }
+    // sets map params from URL
+    dispatch(
+      actions.setViewport({
+        ...(zoom && { zoom: +zoom }),
+        ...(lat &&
+          lng && {
+            latitude: +lat,
+            longitude: +lng,
+          }),
+        ...(pitch && { pitch: +pitch }),
+        ...(bearing && { bearing: +bearing }),
+      })
+    );
+    if (basemap)
+      dispatch(actions.setBasemap(String(basemap)));
+    if (labels)
+      dispatch(actions.setLabels(String(labels)));
+    if (boundaries) dispatch(actions.setBoundaries(!!boundaries));
+
+    // Fetch layers
+    if (layers)
+      await dispatch(
+        actions.fetchMapLayerGroups(
+          JSON.parse(decodeURIComponent(String(layers)))
+        )
+      );
+
+    return {
+      props: {
+        ...(await serverSideTranslations(locale, [
+          'explore',
+          'common',
+          'countries',
+          'header',
+          'modals'
+        ])),
+        ...(datasetData && { dataset: datasetData }),
+      },
+    };
+  })
 );
 
-export default connect(
-  (state: RootState) => ({ explore: state.explore }),
-  {
-    ...actions,
-    setIsServer: setServerAction,
-  },
-)(withRouter(ExplorePage));
+export default connect((state: RootState) => ({ explore: state.explore }), {
+  ...actions,
+  setIsServer: setServerAction,
+})(withRouter(ExplorePage));

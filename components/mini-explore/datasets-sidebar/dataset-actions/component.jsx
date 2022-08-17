@@ -1,11 +1,11 @@
-import { useCallback } from "react";
-import PropTypes from "prop-types";
-import classnames from "classnames";
-import { Tooltip } from "vizzuality-components";
+import { useCallback } from 'react';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
+import { Tooltip } from 'vizzuality-components';
 
 // Components
-import Icon from "components/ui/icon";
-import CollectionsPanel from "components/collections-panel";
+import Icon from 'components/ui/icon';
+import CollectionsPanel from 'components/collections-panel';
 
 const MiniExploreDatasetsActions = (props) => {
   const { dataset, layer, handleAddMap } = props;
@@ -13,13 +13,13 @@ const MiniExploreDatasetsActions = (props) => {
   const isInACollection = false;
 
   const starIconName = classnames({
-    "icon-star-full": isInACollection,
-    "icon-star-empty": !isInACollection,
+    'icon-star-full': isInACollection,
+    'icon-star-empty': !isInACollection,
   });
   const starIconClass = classnames({
-    "-small": true,
-    "-filled": true,
-    "-empty": !isInACollection,
+    '-small': true,
+    '-filled': true,
+    '-empty': !isInACollection,
   });
 
   const onHandleMap = useCallback(

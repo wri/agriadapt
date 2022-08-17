@@ -1,4 +1,4 @@
-@use "sass:math";
+@use 'sass:math';
 
 .c-dashboard-template-selector {
   .template-list {
@@ -33,7 +33,7 @@
         position: relative;
 
         &:after {
-          content: "";
+          content: '';
           display: inline-block;
           position: absolute;
           top: 0;

@@ -18,11 +18,7 @@ interface ExploreDatasetsProps {
 
 export default function ExploreDatasets(props: ExploreDatasetsProps) {
   const {
-    datasets: {
-      selected,
-      list,
-      loading,
-    },
+    datasets: { selected, list, loading },
     filters,
     fetchCountries,
     advOpen,

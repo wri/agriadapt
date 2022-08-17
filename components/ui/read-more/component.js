@@ -1,8 +1,9 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import truncate from "lodash/truncate";
-import ReactMarkdown from "react-markdown";
-import classnames from "classnames";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import truncate from 'lodash/truncate';
+import ReactMarkdown from 'react-markdown';
+import classnames from 'classnames';
+import { useTranslation } from 'next-i18next';
 
 function ReadMore(props) {
   const [visible, setVisible] = useState(false);
@@ -19,11 +20,14 @@ function ReadMore(props) {
 
   const shortenedText = visible
     ? text
-    : truncate(text, { length: limitChar, separator: "", omission: "..." });
+    : truncate(text, { length: limitChar, separator: '', omission: '...' });
   const classValue = classnames({
-    "c-read-more": true,
-    "-truncated": !visible,
+    'c-read-more': true,
+    '-truncated': !visible,
   });
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const { t } = useTranslation(['explore', 'common']);
 
   return (
     <div className={classValue}>
@@ -39,7 +43,7 @@ function ReadMore(props) {
           setVisible(!visible);
         }}
       >
-        {visible ? "Read less" : "Read more"}
+        {visible ? t('explore:explore_detail.Read less') : t('explore:explore_detail.Read more')}
       </button>
     </div>
   );
@@ -53,7 +57,7 @@ ReadMore.propTypes = {
 };
 
 ReadMore.defaultProps = {
-  text: "",
+  text: '',
   limitChar: 1300,
   markdown: false,
   readMoreClicked: null,

@@ -1,35 +1,35 @@
-import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
-import debounce from "lodash/debounce";
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import debounce from 'lodash/debounce';
 
 // Redux
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 import {
   getLayers,
   getLayerPoints,
   resetLayerPoints,
-} from "layout/app/pulse/actions";
-import { resetActiveLayer } from "layout/app/pulse/layer-menu/actions";
-import { toggleTooltip } from "redactions/tooltip";
+} from 'layout/app/pulse/actions';
+import { resetActiveLayer } from 'layout/app/pulse/layer-menu/actions';
+import { toggleTooltip } from 'redactions/tooltip';
 
 // selectors
-import getLayersGroupPulse from "selectors/pulse/layersGroupPulse";
-import getActiveLayersPulse from "selectors/pulse/layersActivePulse";
+import getLayersGroupPulse from 'selectors/pulse/layersGroupPulse';
+import getActiveLayersPulse from 'selectors/pulse/layersActivePulse';
 
 // components
-import Layout from "layout/layout/layout-app";
-import LayerContainer from "layout/app/pulse/layer-container";
-import LayerMenu from "layout/app/pulse/layer-menu";
-import LayerCard from "layout/app/pulse/layer-card";
-import Spinner from "components/ui/Spinner";
-import GlobeTooltip from "layout/app/pulse/globe-tooltip";
-import GlobeCesium from "components/vis/globe-cesium";
+import Layout from 'layout/layout/layout-app';
+import LayerContainer from 'layout/app/pulse/layer-container';
+import LayerMenu from 'layout/app/pulse/layer-menu';
+import LayerCard from 'layout/app/pulse/layer-card';
+import Spinner from 'components/ui/Spinner';
+import GlobeTooltip from 'layout/app/pulse/globe-tooltip';
+import GlobeCesium from 'components/vis/globe-cesium';
 // import WelcomeModal from 'layout/app/pulse/welcome-modal';
 
 // utils
-import LayerGlobeManager from "utils/layers/LayerGlobeManager";
-import { substitution } from "utils/utils";
-import { logEvent } from "utils/analytics";
+import LayerGlobeManager from 'utils/layers/LayerGlobeManager';
+import { substitution } from 'utils/utils';
+import { logEvent } from 'utils/analytics';
 
 // Cesium
 let Cesium;
@@ -73,7 +73,7 @@ class LayoutPulse extends PureComponent {
     Cesium.BingMapsApi.defaultKey = process.env.NEXT_PUBLIC_BING_MAPS_API_KEY;
 
     this.props.getLayers();
-    document.addEventListener("click", this.handleMouseClick);
+    document.addEventListener('click', this.handleMouseClick);
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
@@ -98,7 +98,7 @@ class LayoutPulse extends PureComponent {
   }
 
   componentWillUnmount() {
-    document.removeEventListener("click", this.handleMouseClick);
+    document.removeEventListener('click', this.handleMouseClick);
     this.props.toggleTooltip(false);
     this.props.resetActiveLayer();
     this.props.resetLayerPoints();
@@ -119,7 +119,7 @@ class LayoutPulse extends PureComponent {
   }
 
   handleMouseClick(event) {
-    if (event.target.tagName !== "CANVAS") {
+    if (event.target.tagName !== 'CANVAS') {
       this.props.toggleTooltip(false);
     }
   }
@@ -154,12 +154,12 @@ class LayoutPulse extends PureComponent {
 
     if (layerMenuPulse.layerActive && interactionConfig.pulseConfig) {
       const requestURL = substitution(interactionConfig.pulseConfig.url, [
-        { key: "point", value: `[${latLon.longitude}, ${latLon.latitude}]` },
+        { key: 'point', value: `[${latLon.longitude}, ${latLon.latitude}]` },
       ]);
       this.setTooltipValue(requestURL, clientX, clientY);
       logEvent(
-        "Planet Pulse",
-        "Click a datapoint",
+        'Planet Pulse',
+        'Click a datapoint',
         `${latLon.latitude},${latLon.longitude}`
       );
     }
@@ -218,7 +218,7 @@ class LayoutPulse extends PureComponent {
 
     const cartesian = camera.pickEllipsoid(mousePosition, ellipsoid);
 
-    if (cartesian && threedimensional !== "true") {
+    if (cartesian && threedimensional !== 'true') {
       const cartographic = ellipsoid.cartesianToCartographic(cartesian);
       const longitudeString = Cesium.Math.toDegrees(
         cartographic.longitude

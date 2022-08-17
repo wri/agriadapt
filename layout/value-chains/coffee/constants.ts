@@ -1,5 +1,3 @@
-import coffee1 from 'public/images/quotes/coffee1.png';
-import coffee2 from 'public/images/quotes/coffee2.png';
 import LandSuitabilityControls from '../custom-widgets/LandSuitability/Controls';
 import ImportExportControls from '../custom-widgets/ImportExport/Controls';
 
@@ -11,14 +9,20 @@ const inputs = {
       { id: '00b89bc8-b8c1-413f-ba55-2c4e7308133a', fullWidth: true },
       // { id: '41612127-bb5f-4ac3-b80a-4676dd9c3a2b', fullWidth: true },
       {
-        title: 'Land Suitability for Coffee in {{country}}',
+        title: 'widgets:coffee_land_suitability.title',
         type: 'custom',
         fullWidth: true,
         controls: LandSuitabilityControls,
         controlsProps: {
           options: [
-            { label: 'Rainfed coffee', value: 'rainfed' },
-            { label: 'Irrigated coffee', value: 'irrigated' },
+            {
+              label: 'widgets:coffee_land_suitability.rainfed_coffee',
+              value: 'rainfed',
+            },
+            {
+              label: 'widgets:coffee_land_suitability.irrigated_coffee',
+              value: 'irrigated',
+            },
           ],
           layers: {
             historic: [
@@ -44,7 +48,7 @@ const inputs = {
     // TODO: Additional Graphical Visual
   },
   labor: {
-    info: 'inputs.labor.info',
+    info: ['inputs.labor.info.0', 'inputs.labor.info.1'],
     widgets: [{ id: '4cecc183-2ae4-4045-a7ad-c664ee1c368e' }],
   },
 };
@@ -75,8 +79,8 @@ const production = {
     info: 'production.pests_and_disease.info',
     widgets: [{ id: '8cdfd430-0f19-4f3d-ab4f-9d2474f15299' }],
   },
-  changing_rainfall: {
-    info: 'production.changing_rainfall.info',
+  changes_in_rainfall: {
+    info: 'production.changes_in_rainfall.info',
     widgets: [{ id: 'd95ad48d-e14e-42cd-a5fb-1d8054c258d9' }],
   },
 };
@@ -87,19 +91,28 @@ const trade = {
     // widgets: [{ id: '96622815-7e6b-4d15-97cc-3ca3bc1a5c98' }],
     widgets: [
       {
-        title: 'Export and Import Statistics for Coffee in {{country}}',
+        title: 'widgets:export_import.coffee.title',
         type: 'custom',
         fullWidth: true,
         controls: ImportExportControls,
         controlsProps: {
           products: [
-            { label: 'Coffee, green', value: 'Coffee, green' },
-            { label: 'Coffee, roasted', value: 'Coffee, roasted' },
+            {
+              label: 'widgets:export_import.coffee.products.coffee_green',
+              value: 'Coffee, green',
+            },
+            {
+              label: 'widgets:export_import.coffee.products.coffee_roasted',
+              value: 'Coffee, roasted',
+            },
           ],
           indicators: [
-            { label: 'Quantity', value: 'Quantity' },
-            { label: 'Value', value: 'Value' },
-          ]
+            {
+              label: 'widgets:export_import.indicators.quantity',
+              value: 'Quantity',
+            },
+            { label: 'widgets:export_import.indicators.value', value: 'Value' },
+          ],
         },
       },
     ],
@@ -107,22 +120,5 @@ const trade = {
 };
 
 const details = { inputs, production, trade };
-
-export const quotes = [
-  {
-    location: 'quotes.0.location',
-    image: coffee1,
-    title: 'quotes.0.title',
-    quote:
-      'quotes.0.quote',
-  },
-  {
-    location: 'quotes.1.location',
-    image: coffee2,
-    title: 'quotes.1.title',
-    quote:
-      'quotes.1.quote',
-  },
-];
 
 export default details;

@@ -16,14 +16,14 @@ interface LayoutCropProps {
     label: string;
     value: string;
     iso: string;
-  }
+  };
   countries: {
     label: string;
     value: string;
     iso: string;
   }[];
   details: any;
-  quotes: {
+  quotes?: {
     location: string;
     image: StaticImageData;
     title: string;
@@ -40,6 +40,7 @@ const LayoutCrop = ({
   crop,
   quotes,
 }: LayoutCropProps) => {
+
   return (
     // TODO: Translate
     <Layout title={`${capitalizeFirstLetter(crop)} (${country.label})`}>
@@ -48,7 +49,7 @@ const LayoutCrop = ({
         <div className="l-container">
           <div className="row">
             <div className="column small-12">
-              <UserStories crop={crop} quotes={quotes} />
+              {quotes?.length && <UserStories crop={crop} quotes={quotes} />}
             </div>
           </div>
         </div>

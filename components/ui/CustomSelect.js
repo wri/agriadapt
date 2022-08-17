@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import SliderSelect from "./SliderSelect";
-import SearchSelect from "./SearchSelect";
+import React from 'react';
+import PropTypes from 'prop-types';
+import SliderSelect from './SliderSelect';
+import SearchSelect from './SearchSelect';
 
 function CustomSelect(props) {
   const { search, ...newProps } = props;

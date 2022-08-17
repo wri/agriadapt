@@ -1,11 +1,11 @@
-import { useState, useCallback, useMemo, useRef, useEffect } from "react";
-import PropTypes from "prop-types";
+import { useState, useCallback, useMemo, useRef, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 // components
-import SearchInput from "components/ui/SearchInput";
+import SearchInput from 'components/ui/SearchInput';
 
 export default function TooltipList({ list, onClickItem, placeholder }) {
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState('');
   const searchBoxRef = useRef(null);
   const handleSearch = useCallback(
     (_search) => {
@@ -73,7 +73,7 @@ export default function TooltipList({ list, onClickItem, placeholder }) {
 }
 
 TooltipList.defaultProps = {
-  placeholder: "Search",
+  placeholder: 'Search',
 };
 
 TooltipList.propTypes = {

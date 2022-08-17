@@ -1,34 +1,38 @@
 export const APP_HEADER_ITEMS = [
   {
-    id: 'value-chains',
-    label: 'header:value_chains',
-    href: '/value-chains/rice',
-    root: '/value-chains',
+    id: 'crops',
+    label: 'header:crops',
+    href: '/crops/rice',
+    root: '/crops',
     children: [
       {
-        label: 'common:value_chains.Rice',
-        href: '/value-chains/rice',
+        label: 'common:value_chains.coffee',
+        href: '/crops/coffee',
       },
       {
-        label: 'common:value_chains.Coffee',
-        href: '/value-chains/coffee',
-      },
-      {
-        label: 'common:value_chains.Cotton',
-        href: '/value-chains/cotton',
+        label: 'common:value_chains.cotton',
+        href: '/crops/cotton',
         logEvent: true,
+      },
+      {
+        label: 'common:value_chains.rice',
+        href: '/crops/rice',
       },
     ],
   },
   {
     id: 'explorer',
-    label: 'header:climate_risk_explorer',
+    label: 'header:explore_the_map',
     href: '/explore',
     root: '/explore',
     children: [
       {
-        label: 'header:explore_the_map',
-        href: '/explore',
+        label: 'footer:layers',
+        href: { pathname: '/explore', query: { tab: 'layers'}},
+      },
+      {
+        label: 'footer:analysis',
+        href: { pathname: '/explore', query: { tab: 'analysis'}},
       },
     ],
   },

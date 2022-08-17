@@ -1,6 +1,6 @@
-import { Component, createElement } from "react";
+import { Component, createElement } from 'react';
 
-import GlobeTooltipComponent from "./component";
+import GlobeTooltipComponent from './component';
 
 class GlobeTooltipContainer extends Component {
   render() {

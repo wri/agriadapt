@@ -30,7 +30,7 @@
         color: $dove-grey;
 
         &:after {
-          content: "";
+          content: '';
           position: absolute;
           right: -17px;
           top: 4px;
@@ -123,6 +123,15 @@
       display: flex;
       justify-content: center;
       flex-flow: column;
+
+      a {
+        color: $white;
+        text-decoration: initial;
+        &:hover {
+          cursor: pointer;
+          text-decoration: underline;
+        }
+      }
 
       &:last-child {
         text-align: right;

@@ -21,4 +21,4 @@ export const RELATED_SITES = [
     image: prepImage,
     alt: 'Resource Watch',
   },
-]
+];

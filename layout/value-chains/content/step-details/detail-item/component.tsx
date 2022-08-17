@@ -1,9 +1,9 @@
 import classnames from 'classnames';
 import Icon from 'components/ui/icon';
 import ParamChart from 'components/widgets/charts/v2/ParamChart';
-import TextChart from 'components/widgets/charts/v2/TextChart';
+import CalloutCard from 'components/widgets/charts/v2/CalloutCard';
 import WidgetBlock from 'components/wysiwyg/widget-block';
-import { useTranslation } from 'next-i18next';
+import { Trans, useTranslation } from 'next-i18next';
 import { useEffect, useMemo, useState } from 'react';
 import { fetchGeostore } from 'services/geostore';
 import { capitalizeFirstLetter } from 'utils/utils';
@@ -23,6 +23,7 @@ interface DetailItemProps {
     type?: string | 'custom';
     controls?: React.FunctionComponent;
     controlsProps?: any;
+    legendConfig?: any;
   }[];
   country: { label: string; sql_label?: string; value: string; iso: string };
   analysis?: {
@@ -50,7 +51,7 @@ const DetailItem = ({
 }: DetailItemProps) => {
   const [geojson, setGeoJson] = useState('');
 
-  const { t } = useTranslation(crop);
+  const { t } = useTranslation([crop, 'common', 'widgets', 'countries']);
 
   useEffect(() => {
     if (country?.value)
@@ -87,9 +88,11 @@ const DetailItem = ({
               />
             </div>
             <div>
-              <h3>{label}</h3>
+              <h3>{t(label)}</h3>
               <p className="description">
-                {t(info, { country: country?.label })}
+                <Trans i18nKey={info}>
+                  {t(info)} {{ country: country?.label }}
+                </Trans>
               </p>
             </div>
           </div>
@@ -117,19 +120,23 @@ const DetailItem = ({
               )}
               {w.type === 'custom' && (
                 <ParamChart
-                  title={t(w.title, params)}
+                  title={t(w.title, {
+                    country: t(`countries:${country.label}`, {
+                      keySeparator: ':',
+                    }),
+                  })}
+                  legendConfig={w.legendConfig}
                   controls={w.controls}
-                  controlsProps={ {...w.controlsProps, country: params.country}}
+                  controlsProps={{
+                    ...w.controlsProps,
+                    country: params.country,
+                  }}
                 />
               )}
             </div>
           </div>
         ))}
-        {analysis && (
-          <div className="c-widget">
-            <TextChart analysis={analysis} params={params} />
-          </div>
-        )}
+        {analysis && <CalloutCard analysis={analysis} params={params} />}
       </div>
     </>
   );

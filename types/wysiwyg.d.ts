@@ -7,12 +7,12 @@ export interface WYSIWYGContentItem {
 export interface WYSIWYGItem {
   id: number;
   type:
-    | "widget"
-    | "embed"
-    | "text"
-    | "image"
-    | "video"
-    | "grid"
-    | "mini-explore";
+    | 'widget'
+    | 'embed'
+    | 'text'
+    | 'image'
+    | 'video'
+    | 'grid'
+    | 'mini-explore';
   content: WYSIWYGContentItem;
 }

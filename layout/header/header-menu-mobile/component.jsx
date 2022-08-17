@@ -1,30 +1,27 @@
-import { useEffect } from "react";
-import PropTypes from "prop-types";
-import classnames from "classnames";
-import Link from "next/link";
-import { useRouter } from "next/router";
+import { useEffect } from 'react';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 // components
-import Icon from "components/ui/icon";
+import Icon from 'components/ui/icon';
 
 // constants
-import { APP_HEADER_ITEMS } from "layout/header/constants";
-import { useTranslation } from "next-i18next";
+import { APP_HEADER_ITEMS } from 'layout/header/constants';
+import { useTranslation } from 'next-i18next';
 
-const HeaderMenuMobile = ({
-  header,
-  setMobileOpened,
-}) => {
+const HeaderMenuMobile = ({ header, setMobileOpened }) => {
   const { pathname } = useRouter();
 
   const { t } = useTranslation(['header', 'common']);
 
   const { mobileOpened } = header;
 
-  const classNames = classnames({ "-opened": mobileOpened });
+  const classNames = classnames({ '-opened': mobileOpened });
 
   useEffect(() => {
-    document.body.classList.toggle("no-scroll", mobileOpened);
+    document.body.classList.toggle('no-scroll', mobileOpened);
   }, [mobileOpened]);
 
   return (
@@ -59,39 +56,39 @@ const HeaderMenuMobile = ({
 
               // If admin user is defined and is not equal to the current token
               // if (typeof item.admin !== 'undefined' && item.admin !== isUserAdmin) return null;
-                const activeClassName = classnames({
-                  "-active": item.pages && item.pages.includes(pathname),
-                });
-  
-                return (
-                  <li key={item.label} className={activeClassName}>
-                    {<h2>{t(item.label)}</h2>}
-  
-                    {item.children && (
-                      <ul>
-                        {item.children.map((c) => {
-                          if (item.id === 'language') {
-                            return (
-                              <li key={c.label} onClick={null}>
-                                {t(c.label)}
-                              </li>
-                            );
-                          } else {
-                            return (
-                              <li key={c.label}>
-                                {c.href && (
-                                  <Link href={c.href}>
-                                    <a>{t(c.label)}</a>
-                                  </Link>
-                                )}
-                              </li>
-                            );
-                          }
-                        })}
-                      </ul>
-                    )}
-                  </li>
-                );
+              const activeClassName = classnames({
+                '-active': item.pages && item.pages.includes(pathname),
+              });
+
+              return (
+                <li key={item.label} className={activeClassName}>
+                  {<h2>{t(item.label)}</h2>}
+
+                  {item.children && (
+                    <ul>
+                      {item.children.map((c) => {
+                        if (item.id === 'language') {
+                          return (
+                            <li key={c.label} onClick={null}>
+                              {t(c.label)}
+                            </li>
+                          );
+                        } else {
+                          return (
+                            <li key={c.label}>
+                              {c.href && (
+                                <Link href={c.href}>
+                                  <a>{t(c.label)}</a>
+                                </Link>
+                              )}
+                            </li>
+                          );
+                        }
+                      })}
+                    </ul>
+                  )}
+                </li>
+              );
             })}
           </ul>
         </nav>

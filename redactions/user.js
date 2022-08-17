@@ -1,30 +1,30 @@
-import { toastr } from "react-redux-toastr";
-import { createAction, createThunkAction } from "redux-tools";
-import axios from "axios";
-import { HYDRATE } from "next-redux-wrapper";
+import { toastr } from 'react-redux-toastr';
+import { createAction, createThunkAction } from 'redux-tools';
+import axios from 'axios';
+import { HYDRATE } from 'next-redux-wrapper';
 
 // Utils
 import {
   mergeSubscriptions,
   setGeoLayer,
   setCountryLayer,
-} from "utils/user/areas";
+} from 'utils/user/areas';
 
 // services
-import { fetchUserAreas, deleteArea } from "services/areas";
-import { fetchSubscriptions, deleteSubscription } from "services/subscriptions";
-import { fetchDatasets } from "services/dataset";
-import { fetchGeostore, fetchCountry } from "services/geostore";
+import { fetchUserAreas, deleteArea } from 'services/areas';
+import { fetchSubscriptions, deleteSubscription } from 'services/subscriptions';
+import { fetchDatasets } from 'services/dataset';
+import { fetchGeostore, fetchCountry } from 'services/geostore';
 
 /**
  * CONSTANTS
  */
-const SET_USER = "user/setUser";
+const SET_USER = 'user/setUser';
 // areas
-const SET_USER_AREAS = "user/setUserAreas";
-const SET_USER_AREAS_ERROR = "user/setUserAreasError";
-const SET_USER_AREAS_LOADING = "user/setUserAreasLoading";
-const SET_USER_AREA_LAYER_GROUP = "user/setUserAreaLayerGroup";
+const SET_USER_AREAS = 'user/setUserAreas';
+const SET_USER_AREAS_ERROR = 'user/setUserAreasError';
+const SET_USER_AREAS_LOADING = 'user/setUserAreasLoading';
+const SET_USER_AREA_LAYER_GROUP = 'user/setUserAreaLayerGroup';
 
 /**
  * REDUCER
@@ -112,7 +112,7 @@ export function setUser(user) {
     const userObj = { ...user };
 
     if (userObj.token) {
-      userObj.token = userObj.token.includes("Bearer")
+      userObj.token = userObj.token.includes('Bearer')
         ? userObj.token
         : `Bearer ${userObj.token}`;
     }
@@ -128,7 +128,7 @@ export const setUserAreasLoading = createAction(SET_USER_AREAS_LOADING);
 export const setUserAreaLayerGroup = createAction(SET_USER_AREA_LAYER_GROUP);
 
 export const getUserAreaLayerGroups = createThunkAction(
-  "user/getUserAreaLayerGroups",
+  'user/getUserAreaLayerGroups',
   (area = {}) =>
     (dispatch) => {
       const { geostore, iso } = area;
@@ -152,7 +152,7 @@ export const getUserAreaLayerGroups = createThunkAction(
 );
 
 export const getUserAreas = createThunkAction(
-  "user/getUserAreas",
+  'user/getUserAreas',
   () => (dispatch, getState) => {
     const {
       user: { token },
@@ -172,9 +172,9 @@ export const getUserAreas = createThunkAction(
 
           if (datasetsToFetch.size) {
             fetchDatasets({
-              ids: [...datasetsToFetch].join(","),
-              includes: "metadata",
-              "page[size]": 999,
+              ids: [...datasetsToFetch].join(','),
+              includes: 'metadata',
+              'page[size]': 999,
             }).then((datasets) => {
               const userAreasWithSubscriptions = mergeSubscriptions(
                 userAreas,
@@ -195,7 +195,7 @@ export const getUserAreas = createThunkAction(
 );
 
 export const removeUserArea = createThunkAction(
-  "user/removeUserArea",
+  'user/removeUserArea',
   (area = {}) =>
     (dispatch, getState) => {
       const { user } = getState();
@@ -210,7 +210,7 @@ export const removeUserArea = createThunkAction(
           .then(() =>
             deleteArea(area.id, user.token).then(() => {
               toastr.success(
-                "Area deleted",
+                'Area deleted',
                 `The area "${area.name}" was deleted successfully.`
               );
               dispatch(getUserAreas());
@@ -220,7 +220,7 @@ export const removeUserArea = createThunkAction(
 
       return deleteArea(area.id, user.token).then(() => {
         toastr.success(
-          "Area deleted",
+          'Area deleted',
           `The area "${area.name}" was deleted successfully.`
         );
         dispatch(getUserAreas());

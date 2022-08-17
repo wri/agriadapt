@@ -1,13 +1,13 @@
-import { createSelector } from "reselect";
-import moment from "moment";
+import { createSelector } from 'reselect';
+import moment from 'moment';
 
 // utils
 import {
   reduceParams,
   reduceSqlParams,
   getTimelineParams,
-} from "utils/layers/params-parser";
-import { getInteractiveLayers } from "components/map/utils";
+} from 'utils/layers/params-parser';
+import { getInteractiveLayers } from 'components/map/utils';
 
 // The next selectors are factories: provide them the needed data before using them.
 // Otherwise, they won't work. You can check some examples in:
@@ -50,9 +50,9 @@ export const getActiveLayers = (statePointer) =>
     const activeLayers = _layerGroups
       .filter((lg) => lg.layers.length > 0)
       .map((lg) => ({
-        ...lg.layers.find((l) => l.active) || lg.layers[0],
-        opacity: typeof lg.opacity !== "undefined" ? lg.opacity : 1,
-        visibility: typeof lg.visibility !== "undefined" ? lg.visibility : true,
+        ...(lg.layers.find((l) => l.active) || lg.layers[0]),
+        opacity: typeof lg.opacity !== 'undefined' ? lg.opacity : 1,
+        visibility: typeof lg.visibility !== 'undefined' ? lg.visibility : true,
       }));
 
     return activeLayers;
@@ -70,7 +70,7 @@ export const getUpdatedLayers = (activeLayersPointer, parametrizationPointer) =>
       if (!Object.keys(_parametrization).length) {
         return _activeLayers.map((_activeLayer) => {
           // User Area of Interest (Currently being used in the GEDC Energy dashboard)
-          if (_activeLayer.id === "user_area") {
+          if (_activeLayer.id === 'user_area') {
             return _activeLayer;
           }
           const reducedDecodeParams = reduceParams(

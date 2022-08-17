@@ -19,16 +19,20 @@ const acknowledgements = {
     ],
   },
 
-  // committee_members: {
-  //   subheader: 'Technical Advisory Committee Members',
-  //   content: [
-  //     {
-  //       name: 'United Nations Food and Agriculture Organization',
-  //       href: 'https://www.fao.org/home/en',
-  //     },
-  //     { name: 'World Food Programme', href: 'https://www.wfp.org/' },
-  //   ],
-  // },
+  committee_members: {
+    subheader: 'Technical Advisory Committee Members',
+    content: [
+      { name: 'CIAT', href: 'https://ciat.cgiar.org/' },
+      { name: 'Climate Edge', href: 'https://www.climate-edge.com/' },
+      { name: 'FAO GAEZ', href: 'https://gaez.fao.org/' },
+      { name: 'Keith Wiebe with IFPRI', href: 'https://www.ifpri.org/' },
+      { name: 'Edward Byers with IIASA Hotspots Explorer', href: 'https://hotspots-explorer.org/' },
+      { name: 'Olam International', href: 'https://www.olamagri.com/' },
+      { name: 'Suntory', href: 'https://www.suntory.com/' },
+      { name: 'World Bank', href: 'https://www.worldbank.org/en/home' },
+      { name: 'World Cocoa Foundation', href: 'https://www.worldcocoafoundation.org/' },
+    ],
+  },
 
   funders: {
     header: 'acknowledgements.funders.header',

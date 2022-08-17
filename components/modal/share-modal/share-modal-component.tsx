@@ -3,6 +3,7 @@ import { toastr } from 'react-redux-toastr';
 
 // components
 import Icon from 'components/ui/icon';
+import { useTranslation } from 'next-i18next';
 // import Spinner from 'components/ui/Spinner';
 
 interface ShareModalComponentProps {
@@ -45,7 +46,6 @@ const ShareModalComponent = ({
     };
   }, [links.link, resetShortLinks]);
 
-
   const onCopyClick = (type: string) => {
     const input = inputs.current[type];
     input.select();
@@ -71,20 +71,22 @@ const ShareModalComponent = ({
     }
   };
 
+  const { t } = useTranslation(['modals', 'common']);
+
   return (
     <div className="c-share-modal">
-      <h2>Share</h2>
+      <h2>{t('modals:share_modal.Share')}</h2>
 
       <div className="share-content">
         {Object.keys(links).map((type) => {
           const htmlFor = `share-${type}`;
-          const url = shortLinks && shortLinks[type] || links[type];
+          const url = (shortLinks && shortLinks[type]) || links[type];
 
           switch (type) {
             case 'link':
               return (
                 <div key={type} className="c-field">
-                  <label htmlFor={htmlFor}>Public url to share</label>
+                  <label htmlFor={htmlFor}>{t('modals:share_modal.public_url')}</label>
 
                   <div className="share-input-container">
                     {/* {loading && <Spinner className="-light -tiny" isLoading />} */}
@@ -135,7 +137,7 @@ const ShareModalComponent = ({
                         role="button"
                         onClick={() => onCopyClick(type)}
                       >
-                        {copied[type] ? 'Copied' : 'Copy link'}
+                        {copied[type] ? t('modals:share_modal.copied') : t('modals:share_modal.copy_link')}
                       </a>
                     </div>
                   </div>
@@ -145,7 +147,7 @@ const ShareModalComponent = ({
             case 'embed':
               return (
                 <div key={type} className="c-field">
-                  <label htmlFor={htmlFor}>Code to embed</label>
+                  <label htmlFor={htmlFor}>{t('modals:share_modal.code_to_embed')}</label>
 
                   <div className="share-input-container">
                     <input
@@ -164,7 +166,7 @@ const ShareModalComponent = ({
                         role="button"
                         onClick={() => onCopyClick(type)}
                       >
-                        {copied[type] ? 'Copied' : 'Copy link'}
+                        {copied[type] ? t('modals:share_modal.copied') : t('modals:share_modal.copy_link')}
                       </a>
                     </div>
                   </div>

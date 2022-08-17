@@ -10,7 +10,7 @@ const EmbedMapPage = () => {
 
   return (
     <LayoutEmbedMap
-      widgetId={Array.isArray(id) ? id.join('') : id}
+      widgetId={String(id)}
       {...(webshot && { isWebshot: true })}
       {...(aoi && { aoi })}
       params={restQueryParams}

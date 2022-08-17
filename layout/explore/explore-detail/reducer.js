@@ -3,7 +3,7 @@ import {
   SET_DATASET,
   SET_TAGS,
   SET_TAGS_LOADING,
-} from "./actions";
+} from './actions';
 
 export default (state, { type, payload }) => {
   switch (type) {
@@ -16,6 +16,6 @@ export default (state, { type, payload }) => {
     case SET_TAGS:
       return { ...state, tags: payload };
     default:
-      throw new Error("action not found");
+      throw new Error('action not found');
   }
 };

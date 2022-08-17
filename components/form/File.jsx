@@ -1,20 +1,20 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classnames from "classnames";
-import omit from "lodash/omit";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
+import omit from 'lodash/omit';
 
-import Dropzone from "react-dropzone";
+import Dropzone from 'react-dropzone';
 
 // Utils
-import { post } from "utils/request";
+import { post } from 'utils/request';
 
 // Components
-import Spinner from "components/ui/Spinner";
+import Spinner from 'components/ui/Spinner';
 
-import FormElement from "./FormElement";
+import FormElement from './FormElement';
 
 // constants
-const COLUMN_FORMAT = ["csv", "tsv"];
+const COLUMN_FORMAT = ['csv', 'tsv'];
 
 class File extends FormElement {
   constructor(props) {
@@ -80,8 +80,8 @@ class File extends FormElement {
       this.setState(
         {
           accepted: [],
-          value: "",
-          validations: ["required", "url"],
+          value: '',
+          validations: ['required', 'url'],
         },
         () => {
           // Publish the new value to the form
@@ -103,7 +103,7 @@ class File extends FormElement {
     this.setState(
       {
         value: e.currentTarget.value,
-        validations: ["required", "url"],
+        validations: ['required', 'url'],
       },
       () => {
         // Publish the new value to the form
@@ -131,23 +131,23 @@ class File extends FormElement {
       return current.name;
     }
 
-    return "Select file to import data";
+    return 'Select file to import data';
   }
 
   uploadFile(file) {
     const formData = new FormData();
     const { provider } = this.props.properties || {};
-    formData.append("dataset", file);
-    formData.append("provider", provider);
+    formData.append('dataset', file);
+    formData.append('provider', provider);
 
     this.setState({ loading: true, errors: [] });
 
     post({
-      type: "POST",
+      type: 'POST',
       url: `${process.env.NEXT_PUBLIC_WRI_API_URL}/v1/dataset/upload`,
       headers: [
         {
-          key: "Authorization",
+          key: 'Authorization',
           value: this.props.properties.authorization,
         },
       ],
@@ -157,7 +157,7 @@ class File extends FormElement {
         this.setState(
           {
             value: connectorUrl,
-            validations: ["required"],
+            validations: ['required'],
             loading: false,
           },
           () => {
@@ -166,7 +166,7 @@ class File extends FormElement {
               this.props.onChange({
                 ...(COLUMN_FORMAT.includes(provider) && {
                   // filters non-empty fields
-                  fields: fields.filter((field) => (field || "").length),
+                  fields: fields.filter((field) => (field || '').length),
                 }),
                 value: connectorUrl,
               });
@@ -215,7 +215,7 @@ class File extends FormElement {
           } */}
 
           <input
-            {...omit(properties, "authorization", "provider")}
+            {...omit(properties, 'authorization', 'provider')}
             className={`input ${inputClassName}`}
             value={this.state.value}
             id={`input-${properties.name}`}
@@ -229,7 +229,7 @@ class File extends FormElement {
             onClick={this.triggerBrowseOrCancel}
           >
             <Spinner className="-light -small" isLoading={loading} />
-            {accepted.length ? "Cancel" : "Browse file"}
+            {accepted.length ? 'Cancel' : 'Browse file'}
           </button>
         </Dropzone>
       </div>

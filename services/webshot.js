@@ -1,6 +1,6 @@
 // utils
-import { logger } from "utils/logs";
-import { WRIAPI } from "utils/axios";
+import { logger } from 'utils/logs';
+import { WRIAPI } from 'utils/axios';
 
 /**
  * Check out the API docs for this endpoint {@link https://resource-watch.github.io/doc-api/reference.html#webshot|here}

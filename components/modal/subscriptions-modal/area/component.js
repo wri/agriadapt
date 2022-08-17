@@ -1,15 +1,15 @@
-import { PureComponent } from "react";
-import PropTypes from "prop-types";
-import classnames from "classnames";
-import { withRouter } from "next/router";
-import { toastr } from "react-redux-toastr";
+import { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
+import { withRouter } from 'next/router';
+import { toastr } from 'react-redux-toastr';
 
 // components
-import Field from "components/form/Field";
-import CustomSelect from "components/ui/CustomSelect";
-import Spinner from "components/ui/Spinner";
-import DatasetsManager from "../dataset-manager";
-import SubscriptionsPreview from "../subscriptions-preview";
+import Field from 'components/form/Field';
+import CustomSelect from 'components/ui/CustomSelect';
+import Spinner from 'components/ui/Spinner';
+import DatasetsManager from '../dataset-manager';
+import SubscriptionsPreview from '../subscriptions-preview';
 
 class AreaSubscriptionsModal extends PureComponent {
   static propTypes = {
@@ -63,8 +63,8 @@ class AreaSubscriptionsModal extends PureComponent {
       updateSubscription();
     } else {
       toastr.error(
-        "Data missing",
-        "Please select at least one dataset and a subscription type"
+        'Data missing',
+        'Please select at least one dataset and a subscription type'
       );
     }
     this.props.onRequestClose();
@@ -74,7 +74,7 @@ class AreaSubscriptionsModal extends PureComponent {
     const { onRequestClose, router } = this.props;
 
     onRequestClose();
-    router.push("/myrw/areas");
+    router.push('/myrw/areas');
   };
 
   handleState = (bool) => {
@@ -99,7 +99,7 @@ class AreaSubscriptionsModal extends PureComponent {
       </p>
     ) : null;
     let headerText = `${activeArea.name} subscriptions`;
-    if (success) headerText = "Subscription saved!";
+    if (success) headerText = 'Subscription saved!';
 
     if (showSubscribePreview) {
       return (
@@ -123,8 +123,8 @@ class AreaSubscriptionsModal extends PureComponent {
             <div className="selectors-container">
               <Field
                 properties={{
-                  name: "areas",
-                  label: "Areas",
+                  name: 'areas',
+                  label: 'Areas',
                 }}
               >
                 <CustomSelect
@@ -158,9 +158,9 @@ class AreaSubscriptionsModal extends PureComponent {
 
             <button
               className={classnames({
-                "c-btn": true,
-                "-secondary": true,
-                "-disabled": !userSelection.datasets.length,
+                'c-btn': true,
+                '-secondary': true,
+                '-disabled': !userSelection.datasets.length,
               })}
               onClick={this.handleShowSubscribePreview}
               disabled={

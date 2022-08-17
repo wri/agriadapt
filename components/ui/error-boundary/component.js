@@ -1,5 +1,5 @@
-import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 
 class ErrorBoundary extends PureComponent {
   state = {
@@ -33,7 +33,7 @@ ErrorBoundary.propTypes = {
 };
 
 ErrorBoundary.defaultProps = {
-  message: "There was an error",
+  message: 'There was an error',
 };
 
 export default ErrorBoundary;

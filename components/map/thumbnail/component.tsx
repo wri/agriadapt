@@ -1,4 +1,4 @@
-import { APILayerSpec } from "types/layer";
+import { APILayerSpec } from 'types/layer';
 
 export interface MapThumbnailProps {
   layer: APILayerSpec;
@@ -10,8 +10,7 @@ export const MapThumbnail = ({ layer }: MapThumbnailProps): JSX.Element => {
       className="relative w-full h-full bg-center bg-no-repeat bg-cover"
       style={{
         backgroundImage: `url(${
-          layer?.thumbnailUrl ||
-          "/images/placeholder-layer-thumbnail.png"
+          layer?.thumbnailUrl || '/images/placeholder-layer-thumbnail.png'
         })`,
       }}
     ></div>

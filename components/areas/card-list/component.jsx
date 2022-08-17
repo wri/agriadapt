@@ -1,10 +1,10 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classnames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 // components
-import InView from "components/in-view";
-import AreaCard from "../card";
+import InView from 'components/in-view';
+import AreaCard from '../card';
 
 const AreaCardList = ({
   areas,
@@ -17,7 +17,7 @@ const AreaCardList = ({
   onDeletionArea,
 }) => {
   const componentClass = classnames({
-    "c-areas-list": true,
+    'c-areas-list': true,
     [className]: !!className,
   });
 
@@ -27,7 +27,7 @@ const AreaCardList = ({
         {areas.map((area) => (
           <div
             key={area.id}
-            className={classnames({ "column small-12 medium-4": !isColumn })}
+            className={classnames({ 'column small-12 medium-4': !isColumn })}
           >
             <InView triggerOnce threshold={0.25}>
               {({ ref, inView }) => (
@@ -36,7 +36,7 @@ const AreaCardList = ({
                   className="card-container"
                   style={{
                     height: isColumn ? 335 : 390,
-                    width: isColumn ? 300 : "auto",
+                    width: isColumn ? 300 : 'auto',
                   }}
                 >
                   {inView && (

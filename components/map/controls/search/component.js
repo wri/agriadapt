@@ -1,12 +1,12 @@
-import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
-import Geosuggest from "react-geosuggest";
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import Geosuggest from 'react-geosuggest';
 
 // components
-import Icon from "components/ui/icon";
+import Icon from 'components/ui/icon';
 
 // utils
-import { logEvent } from "utils/analytics";
+import { logEvent } from 'utils/analytics';
 
 class SearchControls extends PureComponent {
   static propTypes = { onSelectLocation: PropTypes.func.isRequired };
@@ -32,7 +32,7 @@ class SearchControls extends PureComponent {
         });
       }
 
-      if ("label" in e) logEvent("Explore map", " Search for a place", e.label);
+      if ('label' in e) logEvent('Explore map', ' Search for a place', e.label);
 
       this.handleSearchInput(false);
     }

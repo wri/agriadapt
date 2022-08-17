@@ -1,33 +1,33 @@
-import { Component } from "react";
-import PropTypes from "prop-types";
+import { Component } from 'react';
+import PropTypes from 'prop-types';
 // import dynamic from "next/dynamic";
-import { withRouter } from "next/router";
-import Progress from "react-progress-2";
-import classnames from "classnames";
+import { withRouter } from 'next/router';
+import Progress from 'react-progress-2';
+import classnames from 'classnames';
 
 // Utils
 // import { initGA, logPageView } from "utils/analytics";
-import { browserSupported } from "utils/browser";
+import { browserSupported } from 'utils/browser';
 
 // vizzuality-components
-import { Icons } from "vizzuality-components";
+import { Icons } from 'vizzuality-components';
 
 // Components
-import HeadApp from "layout/head/app";
-import Header from "layout/header";
-import Footer from "layout/footer";
+import HeadApp from 'layout/head/app';
+import Header from 'layout/header';
+import Footer from 'layout/footer';
 
-import IconsRW from "components/icons";
-import Tooltip from "components/ui/Tooltip";
-import Modal from "components/ui/Modal";
-import NoBrowserSupport from "components/app/common/Browser";
-// import GDPRBanner from "components/ui/gdpr-banner";
+import IconsRW from 'components/icons';
+import Tooltip from 'components/ui/Tooltip';
+import Modal from 'components/ui/Modal';
+import NoBrowserSupport from 'components/app/common/Browser';
+import GDPRBanner from "components/ui/gdpr-banner";
 
 // utils
-import { containsString } from "utils/string";
+import { containsString } from 'utils/string';
 
 // constants
-import { FULLSCREEN_PAGES } from "constants/app";
+import { FULLSCREEN_PAGES } from 'constants/app';
 
 // const UserReportButton = dynamic(() => import('../../user-report'), { ssr: false });
 
@@ -81,7 +81,7 @@ class LayoutApp extends Component {
       router: { pathname },
     } = this.props;
     // const { modalOpen } = this.state;
-    const componentClass = classnames("l-page", { [className]: !!className });
+    const componentClass = classnames('l-page', { [className]: !!className });
 
     const isFullScreen = containsString(pathname, FULLSCREEN_PAGES);
 
@@ -93,7 +93,7 @@ class LayoutApp extends Component {
           {...(thumbnail && { thumbnail })}
         />
 
-        {/* <GDPRBanner /> */}
+        <GDPRBanner />
 
         {!browserSupported() && (
           <Modal open canClose={false}>
@@ -133,7 +133,7 @@ LayoutApp.defaultProps = {
   description: null,
   className: null,
   pageHeader: false,
-  thumbnail: "https://resourcewatch.org/static/images/social-big.jpg",
+  thumbnail: 'https://agriadapt.org/static/images/social-big.pngg',
   modal: {},
 };
 

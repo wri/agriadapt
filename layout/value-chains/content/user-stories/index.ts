@@ -1,3 +1,3 @@
-import UserStories from "./component";
+import UserStories from './component';
 
 export default UserStories;

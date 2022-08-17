@@ -1,7 +1,7 @@
-import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
-import renderHTML from "react-render-html";
-import classnames from "classnames";
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import renderHTML from 'react-render-html';
+import classnames from 'classnames';
 
 import {
   Accordion,
@@ -9,7 +9,7 @@ import {
   AccordionItemHeading,
   AccordionItemButton,
   AccordionItemPanel,
-} from "react-accessible-accordion";
+} from 'react-accessible-accordion';
 
 class AccordionComponent extends PureComponent {
   static propTypes = {
@@ -22,7 +22,7 @@ class AccordionComponent extends PureComponent {
   render() {
     const { items, className, ...accordionProps } = this.props;
     const classNameValue = classnames({
-      "c-accordion": true,
+      'c-accordion': true,
       [className]: !!className,
     });
     return (

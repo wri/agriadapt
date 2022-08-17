@@ -1,7 +1,7 @@
-import { createSelector } from "reselect";
-import sortBy from "lodash/sortBy";
+import { createSelector } from 'reselect';
+import sortBy from 'lodash/sortBy';
 // constants
-import { CUSTOM_AREA_OPTION } from "./constants";
+import { CUSTOM_AREA_OPTION } from './constants';
 
 const getAreas = (state) => state.subscriptions.areas.list;
 const getUserAreas = (state) => state.user.areas.items;
@@ -10,7 +10,7 @@ const getUserSelection = (state) => state.subscriptions.userSelection;
 
 const parseAreas = createSelector([getAreas], (_areas) =>
   _areas.map((area) => ({
-    label: area.name || "",
+    label: area.name || '',
     value: area.geostoreId || area.geostore,
     isGeostore: area.geostoreId || area.geostore,
     areaID: null,
@@ -31,10 +31,10 @@ const parseUserAreas = createSelector([getUserAreas], (_userAreas) =>
 export const getAvailableAreas = createSelector(
   [parseAreas, parseUserAreas],
   (_areas, _userAreas) => {
-    const sortedAreas = sortBy([..._areas, ..._userAreas], "label");
+    const sortedAreas = sortBy([..._areas, ..._userAreas], 'label');
 
     return [...CUSTOM_AREA_OPTION, ...sortedAreas].filter(
-      (option) => option.label !== ""
+      (option) => option.label !== ''
     );
   }
 );

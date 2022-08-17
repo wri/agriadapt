@@ -1,25 +1,25 @@
-import "isomorphic-fetch";
+import 'isomorphic-fetch';
 
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 // Components
-import Dropzone from "react-dropzone";
-import Icon from "components/ui/icon";
+import Dropzone from 'react-dropzone';
+import Icon from 'components/ui/icon';
 
-import FormElement from "./FormElement";
+import FormElement from './FormElement';
 
 class FileImage extends FormElement {
   constructor(props) {
     super(props);
 
     const defaultValue = props.properties.default;
-    const previewURL = `${defaultValue || ""}`;
+    const previewURL = `${defaultValue || ''}`;
     const { getUrlImage } = props;
 
     this.state = {
       value:
-        defaultValue && !getUrlImage ? this.getBase64FromURL(previewURL) : "",
+        defaultValue && !getUrlImage ? this.getBase64FromURL(previewURL) : '',
       accepted: defaultValue
         ? [{ name: defaultValue, preview: previewURL }]
         : [],
@@ -63,10 +63,10 @@ class FileImage extends FormElement {
       () => {
         if (accepted.length) {
           switch (this.props.mode) {
-            case "image":
+            case 'image':
               this.getBase64(accepted[0]);
               break;
-            case "url":
+            case 'url':
               this.props.getUrlImage(accepted[0]).then((value) => {
                 this.setState(
                   {
@@ -113,7 +113,7 @@ class FileImage extends FormElement {
     reader.onerror = (error) => {
       this.setState(
         {
-          value: "",
+          value: '',
           error,
         },
         () => {
@@ -127,10 +127,10 @@ class FileImage extends FormElement {
   }
 
   getBase64FromURL(url) {
-    if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') {
       const xhr = new XMLHttpRequest();
-      xhr.open("get", url);
-      xhr.responseType = "blob";
+      xhr.open('get', url);
+      xhr.responseType = 'blob';
       xhr.onload = () => {
         this.getBase64(xhr.response);
       };
@@ -149,7 +149,7 @@ class FileImage extends FormElement {
       this.setState(
         {
           accepted: [],
-          value: "",
+          value: '',
         },
         () => {
           // Publish the new value to the form
@@ -190,7 +190,7 @@ class FileImage extends FormElement {
       return current.name;
     }
 
-    return "Select file to upload";
+    return 'Select file to upload';
   }
 
   render() {

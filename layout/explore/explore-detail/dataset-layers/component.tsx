@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 // Components
 import DatasetLayerCard from './dataset-layer-card';
 import { APILayerSpec } from 'types/layer';
+import { useTranslation } from 'next-i18next';
 
 const DatasetLayers = ({
   layers,
@@ -16,9 +17,11 @@ const DatasetLayers = ({
   const showTimelineOldApproach =
     isATimeline && !timelineLayerMapbox && timelineLayer;
 
+  const { t } = useTranslation(['explore', 'common']);
+
   return (
     <div className="c-dataset-layers">
-      <h3>Dataset layers</h3>
+      <h3>{t('explore:explore_detail.Dataset layers')}</h3>
       <div className="layers-container">
         {showTimelineOldApproach && (
           <DatasetLayerCard layer={timelineLayer} dataset={dataset} />

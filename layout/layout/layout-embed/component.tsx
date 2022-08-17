@@ -7,14 +7,20 @@ import HeadApp from 'layout/head/app';
 import IconsRW from 'components/icons';
 
 interface LayoutEmbedProps {
-    title: string;
-    description: string;
-    thumbnailUrl?: string;
-    className?: string;
-    children: ReactNode;
+  title: string;
+  description: string;
+  thumbnailUrl?: string;
+  className?: string;
+  children: ReactNode;
 }
 
-const LayoutEmbed = ({ title, description, className = null, thumbnailUrl = null, children }: LayoutEmbedProps) => (
+const LayoutEmbed = ({
+  title,
+  description,
+  className = null,
+  thumbnailUrl = null,
+  children,
+}: LayoutEmbedProps) => (
   <div
     className={classnames('l-page', {
       [className]: !!className,

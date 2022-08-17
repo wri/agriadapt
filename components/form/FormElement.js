@@ -1,9 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
-import isEqual from "lodash/isEqual";
-import pick from "lodash/pick";
+import React from 'react';
+import PropTypes from 'prop-types';
+import isEqual from 'lodash/isEqual';
+import pick from 'lodash/pick';
 
-import Validator from "./Validator";
+import Validator from './Validator';
 
 class FormElement extends React.Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class FormElement extends React.Component {
     this.state = {
       // NOTE: Please add a default value such as ''
       // otherwise React will throw a warning
-      value: this.props.properties.default || "",
+      value: this.props.properties.default || '',
       valid: null,
       error: [],
     };
@@ -34,7 +34,7 @@ class FormElement extends React.Component {
   UNSAFE_componentWillReceiveProps(nextProps) {
     const hasValue = Object.prototype.hasOwnProperty.call(
       nextProps.properties,
-      "value"
+      'value'
     );
     const isNew = nextProps.properties.value !== this.state.value;
     if (hasValue && isNew) {
@@ -45,8 +45,8 @@ class FormElement extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const prevPropsParsed = pick(prevProps, ["properties", "validations"]);
-    const currentPropsParsed = pick(this.props, ["properties", "validations"]);
+    const prevPropsParsed = pick(prevProps, ['properties', 'validations']);
+    const currentPropsParsed = pick(this.props, ['properties', 'validations']);
 
     if (!isEqual(prevPropsParsed, currentPropsParsed)) {
       this.triggerValidate();
@@ -68,7 +68,7 @@ class FormElement extends React.Component {
     //       if required validation is present
     if (
       validations &&
-      (isValuePresent || validations.indexOf("required") !== -1)
+      (isValuePresent || validations.indexOf('required') !== -1)
     ) {
       const validateArr = this.validator.validate(validations, value);
       valid = validateArr.every((element) => element.valid);

@@ -1,8 +1,8 @@
-import { useState, useCallback, useEffect, useMemo } from "react";
-import PropTypes from "prop-types";
-import flattenDeep from "lodash/flattenDeep";
-import compact from "lodash/compact";
-import { useDebouncedCallback } from "use-debounce";
+import { useState, useCallback, useEffect, useMemo } from 'react';
+import PropTypes from 'prop-types';
+import flattenDeep from 'lodash/flattenDeep';
+import compact from 'lodash/compact';
+import { useDebouncedCallback } from 'use-debounce';
 
 // hooks
 import { useFetchDatasets } from 'hooks/dataset/fetch-datasets';
@@ -12,17 +12,17 @@ import { useGeostore } from 'hooks/geostore';
 import {
   USER_AREA_LAYER_TEMPLATES,
   BASEMAP_LABEL_DICTIONARY,
-} from "components/map/constants";
+} from 'components/map/constants';
 
 // utils
-import { getUserAreaLayer, getInteractiveLayers } from "components/map/utils";
-import { logEvent } from "utils/analytics";
+import { getUserAreaLayer, getInteractiveLayers } from 'components/map/utils';
+import { logEvent } from 'utils/analytics';
 
 // components
-import MiniExploreMap from "./component";
+import MiniExploreMap from './component';
 
 // reducers
-import { miniExploreSlice } from "../reducer";
+import { miniExploreSlice } from '../reducer';
 
 const {
   setViewport,
@@ -94,8 +94,8 @@ export default function MiniExploreMapContainer({
       );
 
       logEvent(
-        "Mini Explore Map",
-        "Clicks Another Layer from Map Legend Tooltip",
+        'Mini Explore Map',
+        'Clicks Another Layer from Map Legend Tooltip',
         `${l.name} [${l.id}]`
       );
     },
@@ -164,8 +164,8 @@ export default function MiniExploreMapContainer({
         })
       );
       logEvent(
-        "Mini Explore Map",
-        "Clicks Another Layer from Map Legend Timeline",
+        'Mini Explore Map',
+        'Clicks Another Layer from Map Legend Timeline',
         `${l.name} [${l.id}]`
       );
     },
@@ -250,7 +250,7 @@ export default function MiniExploreMapContainer({
     (_basemap) => {
       const { id } = _basemap;
       dispatch(setBasemap(id));
-      if (labelsId !== "none")
+      if (labelsId !== 'none')
         dispatch(setLabels(BASEMAP_LABEL_DICTIONARY[id]));
     },
     [dispatch, labelsId]
@@ -276,8 +276,8 @@ export default function MiniExploreMapContainer({
   );
 
   const handleMapCursor = useCallback(({ isHovering }) => {
-    if (isHovering) return "pointer";
-    return "grab";
+    if (isHovering) return 'pointer';
+    return 'grab';
   }, []);
 
   const onChangeInfo = useCallback((layer) => {
@@ -308,9 +308,9 @@ export default function MiniExploreMapContainer({
 
   const { data: datasetsWithLayers } = useFetchDatasets(
     {
-      includes: "layer",
-      ids: datasetIds.join(","),
-      "page[size]": 30,
+      includes: 'layer',
+      ids: datasetIds.join(','),
+      'page[size]': 30,
       env: process.env.NEXT_PUBLIC_ENVS_SHOW,
     },
     {

@@ -36,21 +36,20 @@
     }
 
     &.signup {
-      background: url("/images/backgrounds/computer.jpg");
+      background: url('/images/backgrounds/computer.jpg');
     }
     &.insights {
-      background: url("/images/backgrounds/jellyfish.jpg");
+      background: url('/images/backgrounds/jellyfish.jpg');
     }
     &.contribute {
       background: $dark-pink
-        url("/images/components/layout/header-bg-texture.png") no-repeat
-        center;
+        url('/images/components/layout/header-bg-texture.png') no-repeat center;
     }
     &.join {
       background: $sea-blue;
     }
     &.develop {
-      background: url("/images/backgrounds/develop_app.jpg");
+      background: url('/images/backgrounds/develop_app.jpg');
     }
   }
   .c-card-long {

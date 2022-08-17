@@ -1,4 +1,4 @@
-@use "sass:math";
+@use 'sass:math';
 
 .l-container {
   width: 100%;
@@ -6,9 +6,7 @@
   // max-width: $grid-row-width;
   margin: 0 auto;
 
-
   /// footer margin change auto to media query based values
-
 
   box-sizing: border-box;
   padding: 0 math.div(map-get($grid-column-gutter, medium), 2);

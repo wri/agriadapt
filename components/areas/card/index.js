@@ -1,13 +1,13 @@
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
 // actions
-import { removeUserArea, getUserAreaLayerGroups } from "redactions/user";
+import { removeUserArea, getUserAreaLayerGroups } from 'redactions/user';
 
 // selectors
-import { getActiveAlerts } from "./selectors";
+import { getActiveAlerts } from './selectors';
 
 // component
-import AreaCard from "./component";
+import AreaCard from './component';
 
 export default connect(
   (state, props) => ({
