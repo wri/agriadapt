@@ -133,7 +133,7 @@ LayoutApp.defaultProps = {
   description: null,
   className: null,
   pageHeader: false,
-  thumbnail: 'https://resourcewatch.org/static/images/social-big.jpg',
+  thumbnail: 'https://agriadapt.org/static/images/social-big.pngg',
   modal: {},
 };
 
