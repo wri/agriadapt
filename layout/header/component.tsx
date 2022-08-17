@@ -35,12 +35,16 @@ export default function Header({
               <div className="header-logo">
                 <Link href="/">
                   <a>
-                    {/* <Icon
-                      name="icon-agri-adapt"
-                      className="brand-logo"
-                      style={undefined}
-                    /> */}
-                    <Image loader={loader} unoptimized src={headerLogo} alt="" className="brand-logo"/>
+                    <div className="brand-logo">
+                      <Image
+                        loader={loader}
+                        layout="fill"
+                        // unoptimized
+                        // height={180}
+                        src={headerLogo}
+                        alt=""
+                      />
+                    </div>
                   </a>
                 </Link>
               </div>

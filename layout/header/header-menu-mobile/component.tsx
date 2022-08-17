@@ -12,7 +12,6 @@ import { APP_HEADER_ITEMS } from 'layout/header/constants';
 import { useTranslation } from 'next-i18next';
 
 const HeaderMenuMobile = ({ header, setMobileOpened }) => {
-  const { pathname } = useRouter();
 
   const { t } = useTranslation(['header', 'common']);
 
@@ -23,6 +22,15 @@ const HeaderMenuMobile = ({ header, setMobileOpened }) => {
   useEffect(() => {
     document.body.classList.toggle('no-scroll', mobileOpened);
   }, [mobileOpened]);
+
+  const router = useRouter();
+  const { pathname, query, asPath } = router;
+
+  const changeLanguage = (locale: string) => {
+    router.push({ pathname, query }, asPath, { locale });
+    setMobileOpened(false);
+  };
+
 
   return (
     <div className="c-header-menu-mobile">
@@ -57,7 +65,9 @@ const HeaderMenuMobile = ({ header, setMobileOpened }) => {
               // If admin user is defined and is not equal to the current token
               // if (typeof item.admin !== 'undefined' && item.admin !== isUserAdmin) return null;
               const activeClassName = classnames({
-                '-active': item.pages && item.pages.includes(pathname),
+                '-active':
+                  item.children &&
+                  item.children.map((c) => c['href']).includes(pathname),
               });
 
               return (
@@ -69,8 +79,8 @@ const HeaderMenuMobile = ({ header, setMobileOpened }) => {
                       {item.children.map((c) => {
                         if (item.id === 'language') {
                           return (
-                            <li key={c.label} onClick={null}>
-                              {t(c.label)}
+                            <li key={c.label}>
+                              <a onClick={() => changeLanguage(c.locale)}>{t(c.label)}</a>
                             </li>
                           );
                         } else {

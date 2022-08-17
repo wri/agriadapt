@@ -23,9 +23,9 @@ export const ValueChainCards = () => {
             />
           </div>
           {VALUECHAINS.chains.map((c) => (
-            <button key={c.label} className="c-button -secondary">
-              {t(c.label)}
-            </button>
+            <Link href={`/crops/${c.href}`} key={c.label} passHref>
+              <a className="c-button -secondary">{t(c.label)}</a>
+            </Link>
           ))}
         </div>
       </Media>
