@@ -11,11 +11,11 @@ module.exports = {
 
   async redirects() {
     return [
-      {
-        source: '/((?!maintenance)(?!_next)(?!static).*)',
-        destination: '/maintenance',
-        permanent: false,
-      },
+      // {
+      //   source: '/((?!maintenance)(?!_next)(?!static).*)',
+      //   destination: '/maintenance',
+      //   permanent: false,
+      // },
       {
         source: '/crops',
         destination: '/crops/coffee',
