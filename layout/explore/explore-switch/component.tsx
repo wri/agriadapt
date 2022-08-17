@@ -4,8 +4,13 @@ import { useTranslation } from 'next-i18next';
 import { capitalizeFirstLetter } from 'utils/utils';
 import { EXPLORE_TABS } from '../constants';
 
-const ExploreSwitch = ({ open, selectedTab, setSidebarSelectedTab }) => {
+const ExploreSwitch = ({ open, selectedTab, setSidebarSelectedTab, setSidebarOpen }) => {
   const { t } = useTranslation(['explore', 'common']);
+
+  const handleSelectTab = (id: string) => {
+    setSidebarSelectedTab(id);
+    if(!open) setSidebarOpen(true);
+  }
 
   return (
     <div
@@ -27,7 +32,7 @@ const ExploreSwitch = ({ open, selectedTab, setSidebarSelectedTab }) => {
               '-primary': selectedTab === value.id && open,
               '-tertiary': selectedTab !== value.id || !open,
             })}
-            onClick={() => setSidebarSelectedTab(value.id)}
+            onClick={() => handleSelectTab(value.id)}
           >
             <Icon
               name={iconName}

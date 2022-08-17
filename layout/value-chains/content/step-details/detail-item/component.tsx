@@ -23,6 +23,7 @@ interface DetailItemProps {
     type?: string | 'custom';
     controls?: React.FunctionComponent;
     controlsProps?: any;
+    legendConfig?: any;
   }[];
   country: { label: string; sql_label?: string; value: string; iso: string };
   analysis?: {
@@ -124,6 +125,7 @@ const DetailItem = ({
                       keySeparator: ':',
                     }),
                   })}
+                  legendConfig={w.legendConfig}
                   controls={w.controls}
                   controlsProps={{
                     ...w.controlsProps,

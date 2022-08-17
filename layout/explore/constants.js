@@ -47,7 +47,7 @@ export const EXPLORE_ANALYSIS = {
       { label: 'explore:analysis.Select point on map', value: 'point' },
       { label: 'explore:analysis.Use my current location', value: 'current' },
       { label: 'explore:analysis.Search by address', value: 'address' },
-      { label: 'explore:analysis.Choose my location', value: 'admin' },
+      // { label: 'explore:analysis.Choose my location', value: 'admin' },
     ],
   },
 };

@@ -1,0 +1,14 @@
+.c_param_chart {
+    flex-direction: column;
+    @media screen and (min-width: 834px) {
+        flex-direction: row;
+    }
+}
+
+.chart {
+    width: 100%;
+}
+
+.c_legend {
+    max-width: 300px;
+}

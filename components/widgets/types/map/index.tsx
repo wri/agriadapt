@@ -49,8 +49,6 @@ const MapTypeWidgetContainer = ({
   isEnlarged = false,
 }: MapTypeWidgetContainerProps): JSX.Element => {
   const [minZoom, setMinZoom] = useState(null);
-  // const { data: user } = useMe();
-  // const { isInACollection } = useBelongsToCollection(widgetId, user?.token);
   const isInACollection = false;
 
   const {

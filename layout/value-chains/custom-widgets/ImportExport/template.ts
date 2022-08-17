@@ -1,3 +1,53 @@
+const colors = {
+  name: 'color',
+  type: 'ordinal',
+  range: [
+    '#40B2CE',
+    '#2E75AD',
+    '#F9B746',
+    '#ED4A4D',
+    '#68B631',
+    '#C22E7A',
+    '#F478B7',
+    '#63D2B9',
+    '#F0812D',
+    '#9E1D0D',
+    '#A7E9E3',
+    '#BAD771',
+    '#393F44',
+    '#CACCD0',
+    '#717171',
+  ],
+  domain: {
+    data: 'table',
+    field: 'color',
+  },
+}
+
+export const legend = {
+  $schema: 'https://vega.github.io/schema/vega/v5.json',
+  scales: [colors],
+  legends: [
+    {
+      columnPadding: 10,
+      columns: 1,
+      rowPadding: 7,
+      symbolSize: 300,
+      symbolType: 'square',
+      title: 'Legend',
+      titlePadding: 10,
+      fill: 'color',
+      labelFontSize: 16,
+      titleFontSize: 13,
+      orient: 'top-right',
+      titleFont: 'Lato',
+      labelFont: 'Lato',
+      titleColor: '#393f44',
+      labelColor: '#393f44',
+    },
+  ],
+}
+
 export const template = {
   $schema: 'https://vega.github.io/schema/vega/v5.json',
   interaction_config: [
@@ -189,31 +239,7 @@ export const template = {
         field: 'y',
       },
     },
-    {
-      name: 'color',
-      type: 'ordinal',
-      range: [
-        '#40B2CE',
-        '#2E75AD',
-        '#F9B746',
-        '#ED4A4D',
-        '#68B631',
-        '#C22E7A',
-        '#F478B7',
-        '#63D2B9',
-        '#F0812D',
-        '#9E1D0D',
-        '#A7E9E3',
-        '#BAD771',
-        '#393F44',
-        '#CACCD0',
-        '#717171',
-      ],
-      domain: {
-        data: 'table',
-        field: 'color',
-      },
-    },
+    colors,
   ],
   axes: [
     {
@@ -382,25 +408,5 @@ export const template = {
       },
     },
   ],
-  legends: [
-    {
-      columnPadding: 10,
-      columns: 1,
-      rowPadding: 7,
-      symbolSize: 300,
-      symbolType: 'square',
-      title: 'Legend',
-      titlePadding: 10,
-      fill: 'color',
-      // legendY: 175,
-      // legendX: { signal: 'width - 300' },
-      labelFontSize: 16,
-      titleFontSize: 13,
-      orient: 'top-right',
-      titleFont: 'Lato',
-      labelFont: 'Lato',
-      titleColor: '#393f44',
-      labelColor: '#393f44',
-    },
-  ],
+  legends: legend.legends,
 };

@@ -27,9 +27,9 @@ const LayoutAbout = () => {
                       'c-logo-container': content.every((c) => 'image' in c),
                     })}
                   >
-                    {content.map((c) =>
-                      c.image ? (
-                        <div className="c-logo">
+                    {key!=='committee_members' && 
+                    content.map((c) => (
+                        <div key={c.name} className="c-logo">
                           <Link href={c.href} passHref>
                             <a target="_blank">
                               <Image
@@ -39,15 +39,18 @@ const LayoutAbout = () => {
                               />
                             </a>
                           </Link>
-                        </div>
-                      ) : (
-                        <p>
-                          <Link href={c.href} passHref>
-                            <a target="_blank">{c.name}</a>
-                          </Link>
-                        </p>
-                      )
+                        </div>)
                     )}
+                    {key==='committee_members' && (<p>{
+                      content.map((c) => (
+                      <p key={c.name}>
+                        <Link  href={c.href} passHref>
+                          <a target="_blank">{c.name}</a>
+                        </Link>
+                      </p>  
+                      ))
+                    }
+                    </p>)}
                   </div>
                 </div>
               );
