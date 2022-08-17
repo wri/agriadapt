@@ -33,6 +33,7 @@
 	"world_resources_institute": "Instituto de Recursos Mundiales",
 	"hear_from_our_users": "Escuche a nuestros usuarios",
 	"terms_of_service": "Términos de servicio",
+	"privacy_policy": "política de privacidad",
 	"content": {
 		"inputs": "Entradas",
 		"production": "Producción",
@@ -47,5 +48,8 @@
 		"policies_and_price": "Políticas y Precio",
 		"food_vulnerability": "Vulnerabilidad alimentaria",
 		"export_and_import": "Exportación e importación"
-	}
+	},
+	"GDPR": "Este sitio web utiliza cookies para proporcionarle una experiencia de usuario mejorada. Al continuar navegando por este sitio, usted acepta el uso de cookies y tecnologías similares. Por favor, visite nuestro",
+	"further_details": "para más detalles.",
+	"Agree": "De acuerdo"
 }

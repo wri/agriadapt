@@ -1,0 +1,11 @@
+{
+	"share_modal": {
+		"Share": "Compartir",
+		"public_url": "URL pública para compartir",
+		"code_to_embed": "Código para incrustar",
+		"copy_link": "Copiar enlace",
+		"copied": "Copiado",
+		"close": "Cerrar",
+		"download_image": "Descargar imagen"
+	}
+}
