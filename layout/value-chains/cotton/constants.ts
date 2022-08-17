@@ -3,6 +3,7 @@ import cotton2 from 'public/images/quotes/cotton1.png';
 import cotton3 from 'public/images/quotes/cotton3.png';
 import LandSuitabilityControls from '../custom-widgets/LandSuitability/Controls';
 import ImportExportControls from '../custom-widgets/ImportExport/Controls';
+import { legend as landSuitabilityLegend } from '../custom-widgets/LandSuitability/template';
 
 const inputs = {
   land_suitability: {
@@ -15,6 +16,7 @@ const inputs = {
         title: 'widgets:cotton_land_suitability.title',
         type: 'custom',
         fullWidth: true,
+        legendConfig: landSuitabilityLegend,
         controls: LandSuitabilityControls,
         controlsProps: {
           options: [

@@ -1,5 +1,6 @@
 import LandSuitabilityControls from '../custom-widgets/LandSuitability/Controls';
 import ImportExportControls from '../custom-widgets/ImportExport/Controls';
+import { legend as landSuitabilityLegend } from '../custom-widgets/LandSuitability/template';
 
 const inputs = {
   land_suitability: {
@@ -12,6 +13,7 @@ const inputs = {
         title: 'widgets:coffee_land_suitability.title',
         type: 'custom',
         fullWidth: true,
+        legendConfig: landSuitabilityLegend,
         controls: LandSuitabilityControls,
         controlsProps: {
           options: [
