@@ -483,6 +483,8 @@ const ExploreMap = (props) => {
         // getCursor={handleMapCursor}
         className={mapClass}
         onMapViewportChange={handleViewport}
+        width="100vw"
+        // height="100vh"
       >
         {(_map) => (
           <>

@@ -285,6 +285,7 @@ export const getServerSideProps = withSession(
           'common',
           'countries',
           'header',
+          'modals'
         ])),
         ...(datasetData && { dataset: datasetData }),
       },
