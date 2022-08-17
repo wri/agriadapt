@@ -133,7 +133,7 @@ LayoutApp.defaultProps = {
   description: null,
   className: null,
   pageHeader: false,
-  thumbnail: 'https://agriadapt.org/images/social-big.png',
+  thumbnail: 'https://agriadapt.org/images/social-big.jpg',
   modal: {},
 };
 

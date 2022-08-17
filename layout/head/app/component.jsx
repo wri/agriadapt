@@ -39,7 +39,7 @@ export default function HeadApp({ title, description, thumbnail }) {
 HeadApp.defaultProps = {
   title: null,
   description: null,
-  thumbnail: 'https://agriadapt.org/images/social-big.png',
+  thumbnail: 'https://agriadapt.org/images/social-big.jpg',
 };
 
 HeadApp.propTypes = {
