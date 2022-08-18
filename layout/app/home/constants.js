@@ -66,7 +66,7 @@ const ANALYSIS = {
               {
                 dataset: '54af072c-7bb5-4bb1-af84-ea7ba0b4fc22',
                 opacity: 1,
-                layer: 'f7848792-8ffe-497e-8142-893d606b7754',
+                layer: '101349eb-9de9-4d85-b4be-2a9b1a7ba696',
               },
               {
                 dataset: 'c66d7f3a-d1a8-488f-af8b-302b0f2c3840',
@@ -84,7 +84,24 @@ const ANALYSIS = {
       title: 'landing:map_analysis_carousel.content.1',
       button: {
         label: 'landing:map_analysis_carousel.link_to_map_button',
-        url: { pathname: '/explore', query: { tab: 'analysis' } },
+        url: {
+          pathname: '/explore',
+          query: {
+            layers: JSON.stringify([
+              {
+                dataset: '54af072c-7bb5-4bb1-af84-ea7ba0b4fc22',
+                opacity: 1,
+                layer: 'f7848792-8ffe-497e-8142-893d606b7754',
+              },
+              {
+                dataset: '5c9507d1-47f7-4c6a-9e64-fc210ccc48e2',
+                opacity: 1,
+                layer: 'cf0bd43a-529b-4c46-8f95-927279608ba7',
+              },
+            ]),
+            tab: 'analysis',
+          },
+        },
       },
       image: analysisRiceMap,
     },
