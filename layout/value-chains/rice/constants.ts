@@ -4,6 +4,7 @@ import rice3 from 'public/images/quotes/rice3.png';
 import ImportExportControls from '../custom-widgets/ImportExport/Controls';
 import LandSuitabilityControls from '../custom-widgets/LandSuitability/Controls';
 import { legend as landSuitabilityLegend } from '../custom-widgets/LandSuitability/template';
+import { legend as importExportLegend } from '../custom-widgets/ImportExport/template';
 
 const inputs = {
   land_suitability: {
@@ -170,6 +171,7 @@ const trade = {
         title: 'widgets:export_import.rice.title',
         type: 'custom',
         fullWidth: true,
+        legendConfig: importExportLegend,
         controls: ImportExportControls,
         controlsProps: {
           products: [

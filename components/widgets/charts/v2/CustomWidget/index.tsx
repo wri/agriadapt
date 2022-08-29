@@ -4,19 +4,19 @@ import Renderer from '@widget-editor/renderer';
 import RWAdapter from '@widget-editor/rw-adapter';
 import styles from './styles.module.scss';
 
-interface ParamChartProps {
+interface CustomWidgetProps {
   controls: React.FunctionComponent;
   legendConfig: any;
   controlsProps: any;
   title: string;
 }
 
-const ParamChart = ({
+const CustomWidget = ({
   controls,
   controlsProps,
   title,
   legendConfig,
-}: ParamChartProps) => {
+}: CustomWidgetProps) => {
   const widgetHeader = {
     id: null,
     name: title,
@@ -54,4 +54,4 @@ const ParamChart = ({
   );
 };
 
-export default ParamChart;
+export default CustomWidget;

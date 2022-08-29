@@ -26,6 +26,28 @@ const colors = {
 
 export const legend = {
   $schema: 'https://vega.github.io/schema/vega/v5.json',
+  signals: [
+    {
+      name: 'width',
+      init: 'containerSize()[1]',
+      on: [
+        {
+          update: 'containerSize()[0]',
+          events: 'window:resize',
+        },
+      ],
+    },
+    {
+      name: 'height',
+      init: 'containerSize()[0]',
+      on: [
+        {
+          update: 'containerSize()[1]',
+          events: 'window:resize',
+        },
+      ],
+    },
+  ],
   scales: [colors],
   legends: [
     {
@@ -408,5 +430,5 @@ export const template = {
       },
     },
   ],
-  legends: legend.legends,
+  // legends: legend.legends,
 };

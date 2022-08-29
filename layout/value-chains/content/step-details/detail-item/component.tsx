@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import Icon from 'components/ui/icon';
-import ParamChart from 'components/widgets/charts/v2/ParamChart';
+import CustomWidget from 'components/widgets/charts/v2/CustomWidget';
 import CalloutCard from 'components/widgets/charts/v2/CalloutCard';
 import WidgetBlock from 'components/wysiwyg/widget-block';
 import { Trans, useTranslation } from 'next-i18next';
@@ -119,7 +119,7 @@ const DetailItem = ({
                 />
               )}
               {w.type === 'custom' && (
-                <ParamChart
+                <CustomWidget
                   title={t(w.title, {
                     country: t(`countries:${country.label}`, {
                       keySeparator: ':',
