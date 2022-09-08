@@ -38,6 +38,7 @@ const Controls = ({ setConfig, products, indicators, country }: ControlsProps) =
           label: t('Select Product'),
           default: { ...products[0], label: t(products[0].label) },
         }}
+        isSearchable={false}
         value={{ ...product.value.value, label: t(product.value.label) }}
         onChange={product.onChange}
         options={products.map((o) => ({ ...o, label: t(o.label) }))}
@@ -51,6 +52,7 @@ const Controls = ({ setConfig, products, indicators, country }: ControlsProps) =
           label: t('Select Indicator'),
           default: { ...indicators[0], label: t(indicators[0].label) },
         }}
+        isSearchable={false}
         value={{ ...indicator.value.value, label: t(indicator.value.label) }}
         onChange={indicator.onChange}
         options={indicators.map((o) => ({ ...o, label: t(o.label) }))}
