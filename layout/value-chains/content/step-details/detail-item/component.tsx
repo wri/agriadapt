@@ -21,9 +21,8 @@ interface DetailItemProps {
     title: string;
     fullWidth?: boolean;
     type?: string | 'custom';
-    controls?: React.FunctionComponent;
+    widget?: React.FunctionComponent;
     controlsProps?: any;
-    legendConfig?: any;
   }[];
   country: { label: string; sql_label?: string; value: string; iso: string };
   analysis?: {
@@ -125,8 +124,7 @@ const DetailItem = ({
                       keySeparator: ':',
                     }),
                   })}
-                  legendConfig={w.legendConfig}
-                  controls={w.controls}
+                  widget={w.widget}
                   controlsProps={{
                     ...w.controlsProps,
                     country: params.country,

@@ -6,7 +6,14 @@ import useSelect from 'hooks/form/useSelect';
 import { useTranslation } from 'next-i18next';
 import styles from './styles.module.scss';
 
-const Controls = ({ setConfig, products, indicators, country }) => {
+interface ControlsProps {
+  setConfig: (config: any) => void;
+  products: any[];
+  indicators: any[];
+  country: string;
+}
+
+const Controls = ({ setConfig, products, indicators, country }: ControlsProps) => {
   const product = useSelect(products[0]);
   const indicator = useSelect(indicators[0]);
 

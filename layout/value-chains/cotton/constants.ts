@@ -1,10 +1,8 @@
 import cotton1 from 'public/images/quotes/cotton2.png';
 import cotton2 from 'public/images/quotes/cotton1.png';
 import cotton3 from 'public/images/quotes/cotton3.png';
-import LandSuitabilityControls from '../custom-widgets/LandSuitability/Controls';
-import ImportExportControls from '../custom-widgets/ImportExport/Controls';
-import { legend as landSuitabilityLegend } from '../custom-widgets/LandSuitability/template';
-import { legend as importExportLegend } from '../custom-widgets/ImportExport/template';
+import ImportExport from '../custom-widgets/ImportExport';
+import LandSuitability from '../custom-widgets/LandSuitability';
 
 const inputs = {
   land_suitability: {
@@ -17,8 +15,7 @@ const inputs = {
         title: 'widgets:cotton_land_suitability.title',
         type: 'custom',
         fullWidth: true,
-        legendConfig: landSuitabilityLegend,
-        controls: LandSuitabilityControls,
+        widget: LandSuitability,
         controlsProps: {
           options: [
             {
@@ -112,8 +109,7 @@ const trade = {
         title: 'widgets:export_import.cotton.title',
         type: 'custom',
         fullWidth: true,
-        legendConfig: importExportLegend,
-        controls: ImportExportControls,
+        widget: ImportExport,
         controlsProps: {
           products: [
             {

@@ -1,22 +1,14 @@
 import WidgetHeader from 'components/widgets/header/component';
-import React, { useState } from 'react';
-import Renderer from '@widget-editor/renderer';
-import RWAdapter from '@widget-editor/rw-adapter';
+import React, { Attributes, useState } from 'react';
 import styles from './styles.module.scss';
 
 interface CustomWidgetProps {
-  controls: React.FunctionComponent;
-  legendConfig: any;
+  widget: React.FunctionComponent;
   controlsProps: any;
   title: string;
 }
 
-const CustomWidget = ({
-  controls,
-  controlsProps,
-  title,
-  legendConfig,
-}: CustomWidgetProps) => {
+const CustomWidget = ({ widget, controlsProps, title }: CustomWidgetProps) => {
   const widgetHeader = {
     id: null,
     name: title,
@@ -33,21 +25,14 @@ const CustomWidget = ({
         onToggleShare={undefined}
       />
       {typeof window !== 'undefined' && (
-        <div className={`${styles.c_param_chart} relative flex overflow-y-hidden widget-container grow mb-3 pt-6`}>
-          <div className="flex-1">
-            <Renderer widgetConfig={config} adapter={RWAdapter} />
-          </div>
-          <div className="flex flex-col pr-5">
-            <div className="flex-1">
-              {React.createElement(controls, {
-                ...controlsProps,
-                setConfig,
-              })}
-            </div>
-            <div className={styles.c_legend}>
-              <Renderer widgetConfig={legendConfig} adapter={RWAdapter} />
-            </div>
-          </div>
+        <div
+          className={`${styles.c_param_chart} relative flex overflow-y-hidden widget-container grow mb-3 pt-6`}
+        >
+          {React.createElement(widget, {
+            config,
+            setConfig,
+            controlsProps,
+          } as Attributes)}
         </div>
       )}
     </div>

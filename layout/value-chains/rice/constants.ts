@@ -1,10 +1,8 @@
 import rice1 from 'public/images/quotes/rice1.png';
 import rice2 from 'public/images/quotes/rice2.png';
 import rice3 from 'public/images/quotes/rice3.png';
-import ImportExportControls from '../custom-widgets/ImportExport/Controls';
-import LandSuitabilityControls from '../custom-widgets/LandSuitability/Controls';
-import { legend as landSuitabilityLegend } from '../custom-widgets/LandSuitability/template';
-import { legend as importExportLegend } from '../custom-widgets/ImportExport/template';
+import LandSuitability from '../custom-widgets/LandSuitability';
+import ImportExport from '../custom-widgets/ImportExport';
 
 const inputs = {
   land_suitability: {
@@ -17,8 +15,7 @@ const inputs = {
         title: 'widgets:rice_land_suitability.title',
         type: 'custom',
         fullWidth: true,
-        legendConfig: landSuitabilityLegend,
-        controls: LandSuitabilityControls,
+        widget: LandSuitability,
         controlsProps: {
           options: [
             [
@@ -171,8 +168,7 @@ const trade = {
         title: 'widgets:export_import.rice.title',
         type: 'custom',
         fullWidth: true,
-        legendConfig: importExportLegend,
-        controls: ImportExportControls,
+        widget: ImportExport,
         controlsProps: {
           products: [
             {
