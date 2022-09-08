@@ -56,6 +56,7 @@ const Controls = ({ setConfig, options: params, layers, country }) => {
           label: t('common:emission_scenarios:Emissions_Scenario'),
           default: scenarios[0],
         }}
+        isSearchable={false}
         value={{ ...emscen.value, label: t(emscen.value.label) }}
         onChange={emscen.onChange}
         options={scenarios.map((s) => ({ ...s, label: t(s.label) }))}
