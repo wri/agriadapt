@@ -53,7 +53,6 @@ const Controls = ({ setConfig, options: params, layers, country }) => {
       <Field
         id={'EMISSION_SCENARIO'}
         properties={{
-          // TODO: Translate
           label: t('common:emission_scenarios:Emissions_Scenario'),
           default: scenarios[0],
         }}

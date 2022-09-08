@@ -1,7 +1,4 @@
 .c_controls {
-  position: absolute;
-  width: 600px;
-  left: 20px;
   display: flex;
   gap: 50px;
 
@@ -9,5 +6,18 @@
     .Select--large {
       flex: 1;
     }
+  }
+}
+
+.c_legend {
+  div {
+    height: 100px;
+  }
+}
+
+.c_info {
+  flex-direction: column;
+  @media screen and (min-width: 834px) {
+      flex-direction: row;
   }
 }

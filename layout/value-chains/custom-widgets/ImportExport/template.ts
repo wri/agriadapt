@@ -1,6 +1,7 @@
 const colors = {
   name: 'color',
   type: 'ordinal',
+  domain: ['Export Quantity', 'Import Quantity'],
   range: [
     '#40B2CE',
     '#2E75AD',
@@ -18,10 +19,6 @@ const colors = {
     '#CACCD0',
     '#717171',
   ],
-  domain: {
-    data: 'table',
-    field: 'color',
-  },
 }
 
 export const legend = {
@@ -408,5 +405,4 @@ export const template = {
       },
     },
   ],
-  legends: legend.legends,
 };

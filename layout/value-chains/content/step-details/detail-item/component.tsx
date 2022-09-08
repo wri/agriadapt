@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import Icon from 'components/ui/icon';
-import ParamChart from 'components/widgets/charts/v2/ParamChart';
+import CustomWidget from 'components/widgets/charts/v2/CustomWidget';
 import CalloutCard from 'components/widgets/charts/v2/CalloutCard';
 import WidgetBlock from 'components/wysiwyg/widget-block';
 import { Trans, useTranslation } from 'next-i18next';
@@ -21,9 +21,8 @@ interface DetailItemProps {
     title: string;
     fullWidth?: boolean;
     type?: string | 'custom';
-    controls?: React.FunctionComponent;
+    widget?: React.FunctionComponent;
     controlsProps?: any;
-    legendConfig?: any;
   }[];
   country: { label: string; sql_label?: string; value: string; iso: string };
   analysis?: {
@@ -119,14 +118,13 @@ const DetailItem = ({
                 />
               )}
               {w.type === 'custom' && (
-                <ParamChart
+                <CustomWidget
                   title={t(w.title, {
                     country: t(`countries:${country.label}`, {
                       keySeparator: ':',
                     }),
                   })}
-                  legendConfig={w.legendConfig}
-                  controls={w.controls}
+                  widget={w.widget}
                   controlsProps={{
                     ...w.controlsProps,
                     country: params.country,

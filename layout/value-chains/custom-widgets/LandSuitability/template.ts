@@ -45,10 +45,12 @@ export const template = {
       name: 'tooltip',
     },
   ],
-  autosize: 'fit',
+  autosize: {
+    type: 'fit',
+    contains: 'padding',
+  },
   background: 'white',
-  padding: 0,
-  style: 'cell',
+  padding: 5,
   data: [
     {
       name: 'source_0',
@@ -90,21 +92,20 @@ export const template = {
   signals: [
     {
       name: 'width',
-      init: 'containerSize()[0]',
+      init: 'isFinite(containerSize()[0]) ? containerSize()[0] : 200',
       on: [
         {
-          update:
-            'containerSize()[0]',
+          update: 'isFinite(containerSize()[0]) ? containerSize()[0] : 200',
           events: 'window:resize',
         },
       ],
     },
     {
       name: 'height',
-      init: 'containerSize()[1]',
+      init: 'isFinite(containerSize()[1]) ? containerSize()[1] : 200',
       on: [
         {
-          update: 'containerSize()[1]',
+          update: 'isFinite(containerSize()[1]) ? containerSize()[1] : 200',
           events: 'window:resize',
         },
       ],
@@ -228,28 +229,6 @@ export const template = {
 
 export const legend = {
   $schema: 'https://vega.github.io/schema/vega/v5.json',
-  signals: [
-    {
-      name: 'width',
-      init: 'containerSize()[1]',
-      on: [
-        {
-          update: 'containerSize()[0]',
-          events: 'window:resize',
-        },
-      ],
-    },
-    {
-      name: 'height',
-      init: 'containerSize()[0]',
-      on: [
-        {
-          update: 'containerSize()[1]',
-          events: 'window:resize',
-        },
-      ],
-    },
-  ],
   scales: [colors],
   legends: [
     {
