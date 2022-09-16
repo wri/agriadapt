@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { template } from './template';
+import { colors, template } from './template';
 import Field from 'components/form/Field';
 import Select from 'react-select';
 import useSelect from 'hooks/form/useSelect';
@@ -23,6 +23,7 @@ const Controls = ({ setConfig, products, indicators, country }: ControlsProps) =
     const i_sql = indicator.value.value;
     const p_sql = product.value.value;
     const url = `https://api.resourcewatch.org/v1/query/2dcd7aeb-d290-414b-80a2-8d90c44ae02a?sql=SELECT year as x, element as color, value as y FROM com_039_rw0_agricultural_trade_statistics_edit WHERE country IN ('${country}') AND element IN ('Export ${i_sql}', 'Import ${i_sql}') AND item IN ('${p_sql}') ORDER BY year asc`;
+    colors.domain = [`Export ${i_sql}`, `Import ${i_sql}`];
 
     setConfig({
       ...template,

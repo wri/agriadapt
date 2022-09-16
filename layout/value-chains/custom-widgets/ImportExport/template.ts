@@ -1,4 +1,4 @@
-const colors = {
+export const colors = {
   name: 'color',
   type: 'ordinal',
   domain: ['Export Quantity', 'Import Quantity'],
