@@ -1,4 +1,4 @@
-import { useMemo, useState, useCallback, CSSProperties } from 'react';
+import { useMemo, useState, CSSProperties } from 'react';
 import { useQueries } from 'react-query';
 import { ErrorBoundary } from 'react-error-boundary';
 // import type { ViewportProps } from "react-map-gl";

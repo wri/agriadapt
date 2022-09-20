@@ -15,6 +15,6 @@ export interface Bounds {
 export interface LayerGroup {
   dataset?: string;
   id?: string;
-  visible: boolean;
+  visibility: boolean;
   layers: APILayerActiveSpec[];
 }

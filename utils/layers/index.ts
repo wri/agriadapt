@@ -7,6 +7,7 @@ import { getUserAreaLayer } from 'components/map/utils';
 // constants
 import { USER_AREA_LAYER_TEMPLATES } from 'components/map/constants';
 import { APILayerSpec } from 'types/layer';
+import { LayerGroup } from 'components/map/types';
 
 // sorts layers based on an array of layer ids
 export const sortLayers = (_layers = [], _layerOrder = []) => {
@@ -70,13 +71,13 @@ export const filterPublishedLayers = (layers: APILayerSpec[], state) => {
  * @param {Object[]} layers - array of layers to group by dataset
  * @param {Object} layerParams - additional layer params to modify the layer specification
  * @param {boolean} forceActive - enforces the layer to be active regardless its configuration
- * @returns {Object[]} array of layers grouped by dataset
+ * @returns {LayerGroup[]} array of layers grouped by dataset
  */
 export const getLayerGroups = (
   layers = [],
   layerParams = {},
   forceActive = false
-) => {
+): LayerGroup[] => {
   const layersByDataset = groupBy(layers, 'dataset');
 
   return Object.keys(layersByDataset).map((datasetKey) => ({
