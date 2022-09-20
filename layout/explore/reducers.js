@@ -3,7 +3,7 @@ import { HYDRATE } from 'next-redux-wrapper';
 
 // utils
 import { logEvent } from 'utils/analytics';
-import { sortLayers } from 'utils/layers';
+import { filterLayers, filterPublishedLayers, sortLayers } from 'utils/layers';
 
 import * as actions from './actions';
 import initialState from './initial-state';
@@ -243,19 +243,7 @@ export default createReducer(initialState, (builder) => {
       const { dataset, toggle } = payload;
       const { applicationConfig, layer: layers } = dataset;
 
-      let datasetLayers = layers?.filter(
-        (l) =>
-          // Apply emission scenario filter
-          (!l.applicationConfig.emission_scenario ||
-            l.applicationConfig.emission_scenario ===
-              state.filters.emission_scenario) &&
-          // Apply value chain filter
-          (!l.applicationConfig.value_chain ||
-            !state.filters.value_chains.length ||
-            state.filters.value_chains.includes(
-              l.applicationConfig.value_chain
-            ))
-      );
+      let datasetLayers = filterLayers(layers, state);
 
       // sorts layers if applies
       if (
@@ -370,18 +358,7 @@ export default createReducer(initialState, (builder) => {
           const { id, layer: layers, applicationConfig } = _dataset;
           const dParams = params.find((p) => p.dataset === id);
           // gets only published layers in selected emission scenario and value_chain
-          let publishedLayers = layers.filter(
-            (_layer) =>
-              _layer.published &&
-              (!_layer.applicationConfig.emission_scenario ||
-                _layer.applicationConfig.emission_scenario ===
-                  state.filters.emission_scenario) &&
-              (!_layer.applicationConfig.value_chain ||
-                !state.filters.value_chains.length ||
-                state.filters.value_chains.includes(
-                  _layer.applicationConfig.value_chain
-                ))
-          );
+          let publishedLayers = filterPublishedLayers(layers, state);
           // sorts layers if applies
           if (
             // TODO: Fix layer sort based on resource watch ordering.

@@ -6,6 +6,7 @@ import { getUserAreaLayer } from 'components/map/utils';
 
 // constants
 import { USER_AREA_LAYER_TEMPLATES } from 'components/map/constants';
+import { APILayerSpec } from 'types/layer';
 
 // sorts layers based on an array of layer ids
 export const sortLayers = (_layers = [], _layerOrder = []) => {
@@ -27,6 +28,42 @@ export const sortLayers = (_layers = [], _layerOrder = []) => {
   // merges both layer arrays to respect already ordered layers and others
   return [...sortedLayers, ...restLayers];
 };
+
+export const filterLayers = (layers: APILayerSpec[], state) => {
+  if (!layers) return [];
+  const filtered = layers.filter((l) => filterLayer(l, state));
+
+  // if default layer was filtered out, set first layer as default
+  if (filtered.length && !filtered.find((l) => l.default))
+    filtered[0] = { ...filtered[0], default: true}
+
+  return filtered;
+};
+
+export const filterLayer = (layer: APILayerSpec, state) => {
+  if (!layer) return false;
+  return (
+    // Apply emission scenario filter
+    (!layer.applicationConfig.emission_scenario ||
+      layer.applicationConfig.emission_scenario ===
+        state.filters.emission_scenario) &&
+    // Apply value chain filter
+    (!layer.applicationConfig.value_chain ||
+      !state.filters.value_chains.length ||
+      state.filters.value_chains.includes(layer.applicationConfig.value_chain))
+  );
+};
+
+export const filterPublishedLayers = (layers: APILayerSpec[], state) => {
+  if (!layers) return [];
+  const filtered = layers.filter((l) => l.published && filterLayer(l, state));
+
+  // if default layer was filtered out, set first layer as default
+  if (filtered.length && !filtered.find((l) => l.default))
+    filtered[0] = { ...filtered[0], default: true}
+
+    return filtered;
+}
 
 /**
  *
@@ -61,9 +98,9 @@ export const getLayerGroups = (
 export const getAoiLayer = (widget = {}, geostore, options = {}) => {
   if (!geostore) return null;
 
-  const { layerParams } = widget?.widgetConfig || {};
+  const { layerParams } = widget?.['widgetConfig'] || {};
 
-  const { minZoom } = options;
+  const minZoom = options['minZoom'];
 
   const { id, geojson, bbox } = geostore;
 
@@ -84,7 +121,8 @@ export const getAoiLayer = (widget = {}, geostore, options = {}) => {
 };
 
 export const getMaskLayer = (widget = {}, params = {}) => {
-  const { mask, layerParams } = widget?.widgetConfig?.paramsConfig || {};
+  const { mask, layerParams } =
+    widget?.['widgetConfig']?.['paramsConfig'] || {};
 
   if (!mask) return null;
 
