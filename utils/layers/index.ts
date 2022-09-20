@@ -6,6 +6,8 @@ import { getUserAreaLayer } from 'components/map/utils';
 
 // constants
 import { USER_AREA_LAYER_TEMPLATES } from 'components/map/constants';
+import { APILayerSpec } from 'types/layer';
+import { LayerGroup } from 'components/map/types';
 
 // sorts layers based on an array of layer ids
 export const sortLayers = (_layers = [], _layerOrder = []) => {
@@ -28,18 +30,54 @@ export const sortLayers = (_layers = [], _layerOrder = []) => {
   return [...sortedLayers, ...restLayers];
 };
 
+export const filterLayers = (layers: APILayerSpec[], state) => {
+  if (!layers) return [];
+  const filtered = layers.filter((l) => filterLayer(l, state));
+
+  // if default layer was filtered out, set first layer as default
+  if (filtered.length && !filtered.find((l) => l.default))
+    filtered[0] = { ...filtered[0], default: true}
+
+  return filtered;
+};
+
+export const filterLayer = (layer: APILayerSpec, state) => {
+  if (!layer) return false;
+  return (
+    // Apply emission scenario filter
+    (!layer.applicationConfig.emission_scenario ||
+      layer.applicationConfig.emission_scenario ===
+        state.filters.emission_scenario) &&
+    // Apply value chain filter
+    (!layer.applicationConfig.value_chain ||
+      !state.filters.value_chains.length ||
+      state.filters.value_chains.includes(layer.applicationConfig.value_chain))
+  );
+};
+
+export const filterPublishedLayers = (layers: APILayerSpec[], state) => {
+  if (!layers) return [];
+  const filtered = layers.filter((l) => l.published && filterLayer(l, state));
+
+  // if default layer was filtered out, set first layer as default
+  if (filtered.length && !filtered.find((l) => l.default))
+    filtered[0] = { ...filtered[0], default: true}
+
+    return filtered;
+}
+
 /**
  *
  * @param {Object[]} layers - array of layers to group by dataset
  * @param {Object} layerParams - additional layer params to modify the layer specification
  * @param {boolean} forceActive - enforces the layer to be active regardless its configuration
- * @returns {Object[]} array of layers grouped by dataset
+ * @returns {LayerGroup[]} array of layers grouped by dataset
  */
 export const getLayerGroups = (
   layers = [],
   layerParams = {},
   forceActive = false
-) => {
+): LayerGroup[] => {
   const layersByDataset = groupBy(layers, 'dataset');
 
   return Object.keys(layersByDataset).map((datasetKey) => ({
@@ -61,9 +99,9 @@ export const getLayerGroups = (
 export const getAoiLayer = (widget = {}, geostore, options = {}) => {
   if (!geostore) return null;
 
-  const { layerParams } = widget?.widgetConfig || {};
+  const { layerParams } = widget?.['widgetConfig'] || {};
 
-  const { minZoom } = options;
+  const minZoom = options['minZoom'];
 
   const { id, geojson, bbox } = geostore;
 
@@ -84,7 +122,8 @@ export const getAoiLayer = (widget = {}, geostore, options = {}) => {
 };
 
 export const getMaskLayer = (widget = {}, params = {}) => {
-  const { mask, layerParams } = widget?.widgetConfig?.paramsConfig || {};
+  const { mask, layerParams } =
+    widget?.['widgetConfig']?.['paramsConfig'] || {};
 
   if (!mask) return null;
 
