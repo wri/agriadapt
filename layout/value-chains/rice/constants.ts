@@ -1,7 +1,7 @@
 import rice1 from 'public/images/quotes/rice1.png';
 import rice2 from 'public/images/quotes/rice2.png';
 import rice3 from 'public/images/quotes/rice3.png';
-import LandSuitability from '../custom-widgets/LandSuitability';
+import WaterStress from '../custom-widgets/WaterStress';
 import ImportExport from '../custom-widgets/ImportExport';
 
 const inputs = {
@@ -15,7 +15,7 @@ const inputs = {
         title: 'widgets:rice_land_suitability.title',
         type: 'custom',
         fullWidth: true,
-        widget: LandSuitability,
+        widget: WaterStress,
         controlsProps: {
           options: [
             [

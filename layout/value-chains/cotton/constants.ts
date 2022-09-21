@@ -2,7 +2,7 @@ import cotton1 from 'public/images/quotes/cotton2.png';
 import cotton2 from 'public/images/quotes/cotton1.png';
 import cotton3 from 'public/images/quotes/cotton3.png';
 import ImportExport from '../custom-widgets/ImportExport';
-import LandSuitability from '../custom-widgets/LandSuitability';
+import WaterStress from '../custom-widgets/WaterStress';
 
 const inputs = {
   land_suitability: {
@@ -15,7 +15,7 @@ const inputs = {
         title: 'widgets:cotton_land_suitability.title',
         type: 'custom',
         fullWidth: true,
-        widget: LandSuitability,
+        widget: WaterStress,
         controlsProps: {
           options: [
             {

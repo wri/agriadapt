@@ -1,4 +1,4 @@
-import LandSuitability from '../custom-widgets/LandSuitability';
+import WaterStress from '../custom-widgets/WaterStress';
 import ImportExport from '../custom-widgets/ImportExport';
 
 const inputs = {
@@ -12,7 +12,7 @@ const inputs = {
         title: 'widgets:coffee_land_suitability.title',
         type: 'custom',
         fullWidth: true,
-        widget: LandSuitability,
+        widget: WaterStress,
         controlsProps: {
           options: [
             {
