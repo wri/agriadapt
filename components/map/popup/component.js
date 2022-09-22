@@ -48,8 +48,7 @@ class LayerPopup extends PureComponent {
     }
   }
 
-  // componentWillReceiveProps(nextProps) {
-  getDerivedStateFromProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const {
       data: { layersInteractionSelected: nextLayersInteractionSelected },
       latlng: nextLatLng,
