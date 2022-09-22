@@ -41,3 +41,11 @@ const formatValue = (
     if (output.suffix) result = `${result}${output.suffix}`;
     return result;
   };
+
+  // TODO: Implement Export to CSV
+  export const exportToCSV = (rows: any[], cols: any[]) => {
+    const success = true;
+    console.log(rows, cols);
+
+    return success;
+  }

@@ -11,7 +11,7 @@ import { APILayerSpec } from 'types/layer';
 import { toGeoJSON } from 'utils/locations/geojson';
 import { createColorValueMap, legendConfigItem } from 'utils/layers/symbolizer';
 import { useTranslation } from 'next-i18next';
-import { makeRows } from './utils';
+import { exportToCSV, makeRows } from './utils';
 
 const AnalysisTable = ({
   loc_map: locations,
@@ -144,6 +144,8 @@ const AnalysisTable = ({
         <WidgetHeader
           download
           widget={{ name: t('explore:analysis.Layer Analysis Table'), id: 'analysis-table' }}
+          // TODO: Implement Export to CSV
+          onDownload={() => exportToCSV(rows, columns)}
           onToggleInfo={() => undefined}
           onToggleShare={() => undefined}
         />
