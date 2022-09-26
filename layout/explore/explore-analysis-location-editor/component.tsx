@@ -19,7 +19,7 @@ import { getUserPosition } from 'utils/locations/user-position';
 import { forwardGeocode } from 'services/geocoder';
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
-import { getGeocodeInfo, getIso } from './utils';
+import { getGeocodeInfo, getIso, makePointLocation } from './utils';
 
 const ExploreAnalysisLocationEditor = ({
   countries,
@@ -65,11 +65,25 @@ const ExploreAnalysisLocationEditor = ({
   const { locale } = router;
   const { add } = router.query;
 
-  /* Register locales */
   useEffect(() => {
-    // i18nIso.registerLocale(isoJSON);
     setIsDrawing(true);
   }, [setIsDrawing]);
+
+  /**
+   * Side effect for processing clicked point data
+   */
+  useEffect(() => {
+    const data = locationType.value === 'point' ? pointData : null;
+    if (data) {
+      getGeocodeInfo(data, locale).then(({ label, country, iso }) => {
+        setGeoLabel(label);
+        setCountryAndIso({
+          country,
+          iso,
+        });
+      });
+    }
+  }, [locale, locationType.value, pointData]);
 
   const onChangeLocType: ChangeEventHandler<HTMLInputElement> = async (e) => {
     locationType.onChange(e);
@@ -128,12 +142,12 @@ const ExploreAnalysisLocationEditor = ({
     geoLabel,
   ]);
 
-  const stopEditing = () => {
+  const stopEditing = useCallback(() => {
     setIsDrawing(false);
     setDataDrawing(null);
     setIsGeoLocating(false);
     setDataGeoLocator(null);
-  }
+  }, [setDataDrawing, setDataGeoLocator, setIsDrawing, setIsGeoLocating]);
 
   const onCancel = () => {
     if (!isAdding) setEditing({ id, editing: false });
@@ -142,27 +156,28 @@ const ExploreAnalysisLocationEditor = ({
   };
 
   const onSubmit = () => {
+    const type = locationType.value;
     const loc = {
       id,
       label: label || createLabel(),
-      type: locationType.value,
+      type,
       iso: countryAndIso.iso,
       country: countryAndIso.country,
-      ...(locationType.value === 'admin' && {
-        country: country.value,
-        state: selectedState,
-        longitude: geocodeResults[1],
-        latitude: geocodeResults[0],
-      }),
-      ...(locationType.value === 'point' && {
+      // ...(type === 'admin' && {
+      //   country: country.value,
+      //   state: selectedState,
+      //   longitude: geocodeResults[1],
+      //   latitude: geocodeResults[0],
+      // }),
+      ...(type === 'point' && {
         longitude: pointData.lng,
         latitude: pointData.lat,
       }),
-      ...(locationType.value === 'current' && {
+      ...(type === 'current' && {
         longitude: geoLocatorData.longitude,
         latitude: geoLocatorData.latitude,
       }),
-      ...(locationType.value === 'address' && {
+      ...(type === 'address' && {
         address: address.value,
         longitude: pointData.lng,
         latitude: pointData.lat,
@@ -310,16 +325,24 @@ const ExploreAnalysisLocationEditor = ({
     }
   }, [country.value, selectedState]);
 
+  /**
+   * Add user location from link
+   */
   const addUserLocation = useCallback(async () => {
-    locationType.onChange({ target: { value: 'current' } });
-    setIsGeoLocating(true);
-    const { coords } = await getUserPosition();
-    setDataGeoLocator(coords);
-  }, [locationType, setDataGeoLocator, setIsGeoLocating]);
+    const { coords: { longitude, latitude } } = await getUserPosition();
+    const info = await getGeocodeInfo({ longitude, latitude }, locale);
+    const loc = makePointLocation('current', info, { longitude, latitude });
+    addLocation(loc);
+  }, [addLocation, locale]);
 
   useEffect(() => {
-    if (String(add) === 'current') addUserLocation();
-  }, [add, addUserLocation]);
+    if (String(add) === 'current') {
+      stopEditing();
+      addUserLocation();
+      delete router.query.add;
+      router.replace({ query: router.query }, undefined, { shallow: true } );
+    }
+  }, [add, addUserLocation, router, stopEditing]);
 
   const { t } = useTranslation(['explore', 'common']);
 
