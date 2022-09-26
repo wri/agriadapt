@@ -22,6 +22,7 @@ interface WidgetHeaderProps {
   onToggleInfo: () => void;
   onToggleShare: () => void;
   onToggleEnlarge?: () => void;
+  onDownload?: () => void;
   download?: boolean;
   country?: {
     label: string;
@@ -35,6 +36,7 @@ export default function WidgetHeader({
   onToggleInfo,
   onToggleShare,
   onToggleEnlarge,
+  onDownload,
   isInfoVisible = false,
   isEnlarged = false,
   download = false,
@@ -82,13 +84,13 @@ export default function WidgetHeader({
               </li>
             )}
             {/* TODO: Implement download report */}
-            {/* {download && (
+            {download && (
               <li>
-                <button type="button" className="c-btn -clean">
+                <button type="button" className="c-btn -clean" onClick={onDownload}>
                   <Icon name="download-2" className="-small" />
                 </button>
               </li>
-            )} */}
+            )}
             {!isEnlarged && (
               <li>
                 <button
