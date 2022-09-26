@@ -44,15 +44,12 @@ const formatValue = (
     return result;
   };
 
-  // TODO: Implement Export to CSV
   export const exportToCSV = (rows: any[], cols: any[]) => {
-    const success = true;
-
     const topRow = [["Name", ...cols]];
 
     //replicates how each line of the table would look
     const dataRows = rows.map((row) => {
-      return [row.name, ...row.numAttributes];
+      return [row.name, ...row.attributes];
     });
 
     const array = topRow.concat(dataRows);
@@ -74,15 +71,15 @@ const formatValue = (
         'href',
         `data:text/plain;charset=utf-8,${encodeURIComponent(csv)}`,
       );
-      element.setAttribute('download', `layeranalysistable.csv`);
+      element.setAttribute('download', 'analysis_export.csv');
       element.style.display = 'none';
       document.body.appendChild(element);
       element.click();
       document.body.removeChild(element);
     } catch (err) {
       console.log(err);
-      return null;
+      return false;
     }
 
-    return success;
+    return true;
   }

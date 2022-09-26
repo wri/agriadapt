@@ -144,7 +144,6 @@ const AnalysisTable = ({
         <WidgetHeader
           download
           widget={{ name: t('explore:analysis.Layer Analysis Table'), id: 'analysis-table' }}
-          // TODO: Implement Export to CSV
           onDownload={() => exportToCSV(rows, columns)}
           onToggleInfo={() => undefined}
           onToggleShare={() => undefined}
