@@ -89,8 +89,8 @@ const DetailItem = ({
             <div>
               <h3>{t(label)}</h3>
               <p className="description">
-                <Trans i18nKey={info}>
-                  {t(info)} {{ country: country?.label }}
+                <Trans i18nKey={info} values={{ country: country?.label }}>
+                  {t(info)}
                 </Trans>
               </p>
             </div>
