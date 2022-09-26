@@ -13,7 +13,6 @@ const PointEdit = ({
     <>
       {((isDrawing && !!pointData) || (isGeoLocating && !!geoLocatorData)) && (
         <LocationMarker
-          onDropMarker={undefined}
           location={{
             longitude: isDrawing ? pointData.lng : geoLocatorData.longitude,
             latitude: isDrawing ? pointData.lat : geoLocatorData.latitude,
