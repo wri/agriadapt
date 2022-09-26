@@ -5,6 +5,7 @@ import Pin from './pin';
 const LocationMarker = ({
   location: { latitude, longitude, editing },
   setDataDrawing,
+  onDropMarker = undefined,
 }) => {
   const [marker, setMarker] = useState({ latitude, longitude });
 
@@ -17,8 +18,9 @@ const LocationMarker = ({
     ({ lngLat: { lng, lat } }) => {
       setDataDrawing({ lng, lat });
       setMarker({ latitude: lat, longitude: lng });
+      onDropMarker && onDropMarker({ latitude: lat, longitude: lng })
     },
-    [setDataDrawing]
+    [onDropMarker, setDataDrawing]
   );
 
   return (

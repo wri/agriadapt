@@ -29,6 +29,7 @@ const LANDING = {
       pathname: '/explore',
       query: {
         tab: 'analysis',
+        add: 'current',
         layers: JSON.stringify([
           {
             dataset: 'faf79d2c-5e54-4591-9d70-4bd1029c18e6',

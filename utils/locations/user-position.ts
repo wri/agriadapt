@@ -1,7 +1,4 @@
-const error = (err) => {
-  console.warn(`ERROR(${err.code}): ${err.message}`);
-};
-
-export const getUserPosition = (success) => {
-  return navigator.geolocation.getCurrentPosition(success, error);
+export const getUserPosition = (): Promise<GeolocationPosition> => {
+  return new Promise((resolve, reject) =>
+    navigator.geolocation.getCurrentPosition(resolve, reject));
 };
