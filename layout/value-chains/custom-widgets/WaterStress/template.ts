@@ -232,8 +232,7 @@ export const legend = {
   scales: [colors],
   legends: [
     {
-      // columnPadding: 10,
-      columns: 1,
+      orient: 'none',
       rowPadding: 7,
       symbolSize: 1000,
       symbolType: 'square',
@@ -244,9 +243,9 @@ export const legend = {
       titleFontSize: 13,
       titleFont: 'Lato',
       labelFont: 'Lato',
+      labelLimit: 282,
       titleColor: '#393f44',
       labelColor: '#393f44',
-      orient: 'left',
     },
   ],
   config: { style: { cell: { stroke: null } } },
