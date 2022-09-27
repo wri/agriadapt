@@ -1,6 +1,9 @@
 {
   "water_stress": {
-    "title": "Projected Water Stress in {{country}} Compared to Baseline (1950-2010)"
+    "title": "Projected Water Stress in {{country}} Compared to Baseline (1950-2010)",
+    "coffee_description": "Coffee production, especially Arabica, is highly sensitive to its environment and climate variations. Unfavorable temperatures and droughts, even for short periods of time, can significantly impact yields and the quality of coffee beans.",
+    "cotton_description": "While cotton is not a water-intensive crop, its sensitivity to water stress fluctuates throughout its life cycle. It is crucial that cotton receives water at certain growth stages in order to produce optimum yields. Water table depletion and rainfall variation due to climate change are likely to pose challenges to cotton production.",
+    "rice_description": "Rice cultivation is highly vulnerable to climate fluctuations, especially water stress and temperature. Rice production is often water-intensive, however, water resources are becoming increasingly scarce. Rice cultivation under water stress can result in reduced yields and lower quality product."
   },
   "rice_land_suitability": {
     "title": "Land Suitability for Rice in {{country}}",

@@ -13,6 +13,9 @@ const inputs = {
       // { id: 'a5b13394-84a8-4f7c-aa2d-7fc332f5c842', fullWidth: true },
       {
         title: 'widgets:water_stress.title',
+        info: {
+          description: 'widgets:water_stress.cotton_description',
+        },
         type: 'custom',
         fullWidth: true,
         widget: WaterStress,

@@ -23,7 +23,7 @@ export default function WidgetInfo({ widget, className }) {
         {widget?.description && (
           <>
             <h4>{t('widgets:widget_info.description')}</h4>
-            <p>{widget.description}</p>
+            <p>{t(widget.description)}</p>
           </>
         )}
       </div>
