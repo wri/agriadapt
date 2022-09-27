@@ -19,10 +19,6 @@ import narrativeReducers from 'layout/value-chains/reducers';
 // Tools
 import { reducers as relatedToolsReducers } from 'components/tools/related-tools';
 
-// import {
-//   reducers as layerCardReducers,
-//   initialState as layerCardInitialState,
-// } from 'layout/app/pulse/layer-card';
 import { configureStore, Reducer } from '@reduxjs/toolkit';
 
 const WERed: Reducer<{ editor: unknown; AnyAction }> = WEReducers;
