@@ -14,9 +14,6 @@
     "land_suitability": {
       "info": "Coffee arabica production is highly sensitive to climate change. Significant reductions in climate suitability are expected for most coffee growing regions."
     },
-    "water_stress": {
-      "info": "Coffee production, especially Arabica, is highly sensitive to its environment and climate variations. Unfavorable temperatures and droughts, even for short periods of time, can significantly impact yields and the quality of coffee beans."
-    },
     "labor": {
       "info": [
         "Agricultural workers are especially vulnerable to increased heat stress, which affects the health of individuals and reduces labor productivity. The Universal Thermal Climate Index identifies outdoor conditions that cause discomfort to people using a combination of temperature, humidity, wind, and radiation to determine the stress (sweating, shivering, skin wetness, etc.) a person undergoes when exposed to outdoor conditions.",

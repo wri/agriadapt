@@ -19,6 +19,7 @@ interface DetailItemProps {
   widgets?: {
     id?: string | ((country: string) => string);
     title: string;
+    info?: any;
     fullWidth?: boolean;
     type?: string | 'custom';
     widget?: React.FunctionComponent;
@@ -124,6 +125,7 @@ const DetailItem = ({
                       keySeparator: ':',
                     }),
                   })}
+                  info={w.info}
                   widget={w.widget}
                   controlsProps={{
                     ...w.controlsProps,

@@ -13,6 +13,9 @@ const inputs = {
       // { id: '284fed69-50e7-4d40-92a1-5640eb02e51f', fullWidth: true },
       {
         title: 'widgets:water_stress.title',
+        info: {
+          description: 'widgets:water_stress.rice_description',
+        },
         type: 'custom',
         fullWidth: true,
         widget: WaterStress,
@@ -31,7 +34,7 @@ const inputs = {
           },
         },
       },
-    ], // TODO: Additional Stacked Bar Visual
+    ],
   },
   //   fertilizer: {
   //     info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in dolor vitae sem hendrerit ultrices id at urna. Integer lectus lectus, accumsan sed libero in, mollis dapibus justo. Mauris auctor lectus ullamcorper dolor elementum feugiat. Integer et condimentum mi. ',

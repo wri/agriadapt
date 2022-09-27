@@ -10,6 +10,9 @@ const inputs = {
       // { id: '41612127-bb5f-4ac3-b80a-4676dd9c3a2b', fullWidth: true },
       {
         title: 'widgets:water_stress.title',
+        info: {
+          description: 'widgets:water_stress.coffee_description',
+        },
         type: 'custom',
         fullWidth: true,
         widget: WaterStress,
