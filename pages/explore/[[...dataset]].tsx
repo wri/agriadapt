@@ -213,6 +213,7 @@ export const getServerSideProps = withSession(
       tab,
       value_chains,
       emission_scenario,
+      add
     } = query;
     const worldview = req.session.user?.country;
     const india_worldview = worldview === 'IN';
@@ -226,6 +227,9 @@ export const getServerSideProps = withSession(
       dispatch(
         actions.setSidebarSelectedTab(String(tab))
       );
+
+    if (String(tab) === 'analysis' && String(add) === 'current')
+        dispatch(actions.setIsAdding(true))
 
     if (search)
       dispatch(actions.setFiltersSearch(String(search)));

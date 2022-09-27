@@ -1,19 +1,25 @@
+import React, {
+  ChangeEventHandler,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import Field from 'components/form/Field';
 import { EXPLORE_ANALYSIS } from '../constants';
 import Select from 'react-select';
 import useInput from 'hooks/form/useInput';
-import i18nIso from 'i18n-iso-countries';
-import { useCallback, useEffect, useMemo, useState } from 'react';
 import { fetchDatasetQuery } from 'services/query';
 import { GADM_ADMONE_DATSET_ID, GADM_ADMONE_SQL } from 'constants/app';
 import useSelect from 'hooks/form/useSelect';
 import { fetchGADM1Geostore } from 'services/geostore';
 import { AnalysisLocation } from 'types/analysis';
 import { getUserPosition } from 'utils/locations/user-position';
-import { forwardGeocode, reverseGeocode } from 'services/geocoder';
-import isoJSON from 'i18n-iso-countries/langs/en.json';
+import { forwardGeocode } from 'services/geocoder';
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
+import { getGeocodeInfo, getIso, makePointLocation } from './utils';
 
 const ExploreAnalysisLocationEditor = ({
   countries,
@@ -34,7 +40,10 @@ const ExploreAnalysisLocationEditor = ({
 
   const id = current.id;
   const label = current.label;
-  const locationType = useInput(current.type || 'point');
+  const locationType = useInput<AnalysisLocation['type']>(
+    current.type || 'point'
+  );
+  const typeRefs = useRef<Record<string, HTMLInputElement>>({});
   const address = useSelect(current.address);
   const country = useSelect(current.country);
   const [countryAndIso, setCountryAndIso] = useState({
@@ -54,67 +63,52 @@ const ExploreAnalysisLocationEditor = ({
 
   const router = useRouter();
   const { locale } = router;
-
-  /* Register locales */
-  useEffect(() => {
-    i18nIso.registerLocale(isoJSON);
-  }, []);
-
-  /* Side effect for switching to point or geocoded address location */
-  useEffect(() => {
-    if (locationType.value === 'point' || locationType.value === 'address') {
-      setIsDrawing(true);
-      if (current.type === 'point' || current.type === 'address')
-        setDataDrawing({
-          lng: current.longitude,
-          lat: current.latitude,
-        });
-    } else {
-      setIsDrawing(false);
-      setDataDrawing(null);
-    }
-  }, [
-    locationType.value,
-    current.type,
-    current.latitude,
-    current.longitude,
-    setIsDrawing,
-    setDataDrawing,
-  ]);
-
-  /* Side effect for switching to current location */
-  useEffect(() => {
-    if (locationType.value === 'current') {
-      setIsGeoLocating(true);
-      getUserPosition(({ coords: { longitude, latitude } }) =>
-        setDataGeoLocator({ longitude, latitude })
-      );
-    } else {
-      setIsGeoLocating(false);
-      setDataGeoLocator(null);
-    }
-  }, [locationType.value, setDataGeoLocator, setIsGeoLocating]);
+  const { add } = router.query;
 
   useEffect(() => {
-    const data =
-      locationType.value === 'point'
-        ? pointData
-        : locationType.value === 'current'
-        ? geoLocatorData
-        : null;
+    setIsDrawing(true);
+  }, [setIsDrawing]);
+
+  /**
+   * Side effect for processing clicked point data
+   */
+  useEffect(() => {
+    const data = locationType.value === 'point' ? pointData : null;
     if (data) {
-      reverseGeocode(Object.values(data), String(locale)).then((results) => {
-        if (results.length) {
-          setGeoLabel(results[0].place_name);
-          const country = results.at(-1).place_name;
-          setCountryAndIso({
-            country,
-            iso: i18nIso.getAlpha3Code(country, 'en'),
-          });
-        }
+      getGeocodeInfo(data, locale).then(({ label, country, iso }) => {
+        setGeoLabel(label);
+        setCountryAndIso({
+          country,
+          iso,
+        });
       });
     }
-  }, [countries, geoLocatorData, locale, locationType.value, pointData]);
+  }, [locale, locationType.value, pointData]);
+
+  const onChangeLocType: ChangeEventHandler<HTMLInputElement> = async (e) => {
+    locationType.onChange(e);
+    const type = e.target.value;
+    if (type === 'current') { // Current Location
+      const { coords } = await getUserPosition();
+      if (!coords) return;
+
+      const data = { longitude: coords.longitude, latitude: coords.latitude };
+
+      setIsGeoLocating(true);
+      setIsDrawing(false);
+      setDataGeoLocator(data);
+
+      const { label, ...countryAndIso } = await getGeocodeInfo(data, locale);
+      setGeoLabel(label);
+      setCountryAndIso(countryAndIso);
+    } else if (['point', 'address'].includes(type)) { // Point & Address Locations
+      setIsDrawing(true);
+      setIsGeoLocating(false);
+      // Places marker at previous location data
+      if (['point', 'address'].includes(current.type))
+        setDataDrawing({ lng: current.longitude, lat: current.latitude });
+    }
+  };
 
   const createLabel = useCallback(() => {
     const accuracy = 4;
@@ -122,8 +116,6 @@ const ExploreAnalysisLocationEditor = ({
     if (locationType.value === 'admin')
       return `${selectedState?.label}, ${country.value?.label}`;
     else if (locationType.value === 'point')
-      // return `(${pointData.lat.toFixed(accuracy)}, ${pointData.lng.toFixed(
-      //   accuracy
       return (
         geoLabel ||
         `(${pointData.lat.toFixed(accuracy)}, ${pointData.lng.toFixed(
@@ -150,12 +142,12 @@ const ExploreAnalysisLocationEditor = ({
     geoLabel,
   ]);
 
-  const stopEditing = () => {
+  const stopEditing = useCallback(() => {
     setIsDrawing(false);
     setDataDrawing(null);
     setIsGeoLocating(false);
     setDataGeoLocator(null);
-  };
+  }, [setDataDrawing, setDataGeoLocator, setIsDrawing, setIsGeoLocating]);
 
   const onCancel = () => {
     if (!isAdding) setEditing({ id, editing: false });
@@ -164,27 +156,28 @@ const ExploreAnalysisLocationEditor = ({
   };
 
   const onSubmit = () => {
+    const type = locationType.value;
     const loc = {
       id,
       label: label || createLabel(),
-      type: locationType.value,
+      type,
       iso: countryAndIso.iso,
       country: countryAndIso.country,
-      ...(locationType.value === 'admin' && {
-        country: country.value,
-        state: selectedState,
-        longitude: geocodeResults[1],
-        latitude: geocodeResults[0],
-      }),
-      ...(locationType.value === 'point' && {
+      // ...(type === 'admin' && {
+      //   country: country.value,
+      //   state: selectedState,
+      //   longitude: geocodeResults[1],
+      //   latitude: geocodeResults[0],
+      // }),
+      ...(type === 'point' && {
         longitude: pointData.lng,
         latitude: pointData.lat,
       }),
-      ...(locationType.value === 'current' && {
+      ...(type === 'current' && {
         longitude: geoLocatorData.longitude,
         latitude: geoLocatorData.latitude,
       }),
-      ...(locationType.value === 'address' && {
+      ...(type === 'address' && {
         address: address.value,
         longitude: pointData.lng,
         latitude: pointData.lat,
@@ -255,7 +248,7 @@ const ExploreAnalysisLocationEditor = ({
   const handleSelectAddr = (val: { country: string; lngLat: number[] }) => {
     address.onChange(val);
     setCountryAndIso({
-      iso: i18nIso.getAlpha3Code(val.country, 'en'),
+      iso: getIso(val.country, locale),
       country: val.country,
     });
     setDataDrawing(val.lngLat);
@@ -269,17 +262,18 @@ const ExploreAnalysisLocationEditor = ({
   /* Side Effect to Geocode the Country and Selected State */
   useEffect(() => {
     if (country.value?.label && selectedState?.label)
-      forwardGeocode(`${selectedState?.label}, ${country.value?.label}`, Array.isArray(locale) ? locale.join('') : locale).then(
-        (results) => {
-          if (results) {
-            const lngLatArr: number[] = [
-              results[0].geometry.coordinates[1],
-              results[0].geometry.coordinates[0],
-            ];
-            setGeocodeResults(lngLatArr);
-          }
+      forwardGeocode(
+        `${selectedState?.label}, ${country.value?.label}`,
+        Array.isArray(locale) ? locale.join('') : locale
+      ).then((results) => {
+        if (results) {
+          const lngLatArr: number[] = [
+            results[0].geometry.coordinates[1],
+            results[0].geometry.coordinates[0],
+          ];
+          setGeocodeResults(lngLatArr);
         }
-      );
+      });
     else {
       setGeocodeResults([]);
     }
@@ -331,6 +325,25 @@ const ExploreAnalysisLocationEditor = ({
     }
   }, [country.value, selectedState]);
 
+  /**
+   * Add user location from link
+   */
+  const addUserLocation = useCallback(async () => {
+    const { coords: { longitude, latitude } } = await getUserPosition();
+    const info = await getGeocodeInfo({ longitude, latitude }, locale);
+    const loc = makePointLocation('current', info, { longitude, latitude });
+    addLocation(loc);
+  }, [addLocation, locale]);
+
+  useEffect(() => {
+    if (String(add) === 'current') {
+      stopEditing();
+      addUserLocation();
+      delete router.query.add;
+      router.replace({ query: router.query }, undefined, { shallow: true } );
+    }
+  }, [add, addUserLocation, router, stopEditing]);
+
   const { t } = useTranslation(['explore', 'common']);
 
   return (
@@ -343,8 +356,9 @@ const ExploreAnalysisLocationEditor = ({
             <div key={o.value} className="c-radio">
               <input
                 id={`radio-${o.value}`}
+                ref={(el) => (typeRefs.current[o.value] = el)}
                 type="radio"
-                onChange={locationType.onChange}
+                onChange={onChangeLocType}
                 checked={locationType.value === o.value}
                 value={o.value}
               />
@@ -420,7 +434,9 @@ const ExploreAnalysisLocationEditor = ({
           className="c-button -primary"
           disabled={!isValid}
         >
-          {current.editing ? t('explore:analysis.Edit Location') : t('explore:analysis.Add Location')}
+          {current.editing
+            ? t('explore:analysis.Edit Location')
+            : t('explore:analysis.Add Location')}
         </button>
       </div>
     </div>

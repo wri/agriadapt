@@ -338,7 +338,7 @@ export const editLocation = createAction('EXPLORE/editLocation');
 export const renameLocation = createAction('EXPLORE/renameLocation');
 export const removeLocation = createAction('EXPLORE/removeLocation');
 export const setEditing = createAction('EXPLORE/setEditing');
-export const setIsAdding = createAction('EXPLORE/setIsAdding');
+export const setIsAdding = createAction<boolean>('EXPLORE/setIsAdding');
 
 // Async actions
 export const fetchTags = createThunkAction(

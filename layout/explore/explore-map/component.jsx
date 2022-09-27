@@ -494,7 +494,7 @@ const ExploreMap = (props) => {
               onEscapeKey={handleDrawEscapeKey}
               onDrawComplete={handleDrawComplete}
             /> */}
-            <PointEdit map={_map} />
+            <PointEdit />
 
             {/* {!isEmpty(layerGroupsInteractionLatLng) && activeLayers.length && !isDrawing && ( */}
             {!isEmpty(layerGroupsInteractionLatLng) && activeLayers.length && (
