@@ -13,6 +13,9 @@
     "land_suitability": {
       "info": "Rice cultivation is highly vulnerable to climate fluctuations, especially temperature and availability of water. However, the effects vary across geography, resulting in both risks and opportunities. Explore the visualizations below to learn more about how land suitability for rice production may change in the future due to climate change."
     },
+    "water_stress": {
+      "info": "Rice cultivation is highly vulnerable to climate fluctuations, especially water stress and temperature. Rice production is often water-intensive, however, water resources are becoming increasingly scarce. Rice cultivation under water stress can result in reduced yields and lower quality product."
+    },
     "labor": {
       "info": "<p>Agricultural workers are especially vulnerable to increased heat stress, which affects the health of individuals and reduces labor productivity. The Universal Thermal Climate Index identifies outdoor conditions that cause discomfort to people using a combination of temperature, humidity, wind, and radiation to determine the stress (sweating, shivering, skin wetness, etc.) a person undergoes when exposed to outdoor conditions.</p><p>Values between 9-26 means no thermal stress. Values above 26 are approaching heat stress, with values above 46 meaning extreme heat stress. Values below 9 are approaching cold stress, with values below -40 meaning extreme cold stress.</p>"
     },

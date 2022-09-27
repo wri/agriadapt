@@ -1,0 +1,17 @@
+.c_chart {
+  flex: 2 1 0;
+}
+
+.c_info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.c_legend {
+  min-width: 0;
+
+  div {
+    height: 400px;
+  }
+}

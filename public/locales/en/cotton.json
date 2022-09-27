@@ -14,6 +14,9 @@
     "land_suitability": {
       "info": "Appropriate cotton land use decisions are vital to achieve optimum productivity of the land and ensure environmental sustainability. Explore the visualizations below to learn more about how cotton land suitability may change in the future."
     },
+    "water_stress": {
+      "info": "While cotton is not a water-intensive crop, its sensitivity to water stress fluctuates throughout its life cycle. It is crucial that cotton receives water at certain growth stages in order to produce optimum yields. Water table depletion and rainfall variation due to climate change are likely to pose challenges to cotton production."
+    },
     "labor": {
       "info": [
         "Agricultural workers are especially vulnerable to increased heat stress, which affects the health of individuals and reduces labor productivity. The Universal Thermal Climate Index identifies outdoor conditions that cause discomfort to people using a combination of temperature, humidity, wind, and radiation to determine the stress (sweating, shivering, skin wetness, etc.) a person undergoes when exposed to outdoor conditions.",

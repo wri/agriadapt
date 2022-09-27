@@ -1,4 +1,7 @@
 {
+  "water_stress": {
+    "title": "Projected Water Stress in {{country}} Compared to Baseline (1950-2010)"
+  },
   "rice_land_suitability": {
     "title": "Land Suitability for Rice in {{country}}",
     "dryland_rice": "Dryland rice",

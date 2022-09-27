@@ -2,7 +2,7 @@ import cotton1 from 'public/images/quotes/cotton2.png';
 import cotton2 from 'public/images/quotes/cotton1.png';
 import cotton3 from 'public/images/quotes/cotton3.png';
 import ImportExport from '../custom-widgets/ImportExport';
-import LandSuitability from '../custom-widgets/LandSuitability';
+import WaterStress from '../custom-widgets/WaterStress';
 
 const inputs = {
   land_suitability: {
@@ -12,37 +12,21 @@ const inputs = {
       { id: '2a1aab23-1c36-4a17-b5e0-b63a68531c63', fullWidth: true },
       // { id: 'a5b13394-84a8-4f7c-aa2d-7fc332f5c842', fullWidth: true },
       {
-        title: 'widgets:cotton_land_suitability.title',
+        title: 'widgets:water_stress.title',
         type: 'custom',
         fullWidth: true,
-        widget: LandSuitability,
+        widget: WaterStress,
         controlsProps: {
-          options: [
-            {
-              label: 'widgets:cotton_land_suitability.rainfed_cotton',
-              value: 'rainfed',
-            },
-            {
-              label: 'widgets:cotton_land_suitability.irrigated_cotton',
-              value: 'irrigated',
-            },
-          ],
           layers: {
-            historic: [
-              '2000s_historic_irrigated_cotton',
-              '2000s_historic_rainfed_cotton',
-            ],
             rcp4p5: [
-              '2020s_rcp4p5_irrigated_cotton',
-              '2020s_rcp4p5_rainfed_cotton',
-              '2050s_rcp4p5_irrigated_cotton',
-              '2050s_rcp4p5_rainfed_cotton',
+              'ws2024cl',
+              'ws3024cl',
+              'ws4024cl',
             ],
             rcp8p5: [
-              '2020s_rcp8p5_irrigated_cotton',
-              '2020s_rcp8p5_rainfed_cotton',
-              '2050s_rcp8p5_irrigated_cotton',
-              '2050s_rcp8p5_rainfed_cotton',
+              'ws2038cl',
+              'ws3038cl',
+              'ws4038cl',
             ],
           },
         },
