@@ -8,23 +8,10 @@
   flex-direction: column;
 }
 
-.c_controls {
-  :global {
-    .c-radio-box {
-      display: flex;
-      flex-wrap: wrap;
-
-      .c-radio {
-        padding-right: 10px;
-      }
-    }
-  }
-}
-
 .c_legend {
   min-width: 0;
 
   div {
-    height: 300px;
+    height: 400px;
   }
 }

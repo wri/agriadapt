@@ -53,7 +53,7 @@ const UserStories = ({
         </div>
         <div className="c-user-info">
           <h3>{`${t(s.title)}, ${t(s.location)}`}</h3>
-          <Trans >
+          <Trans>
             <em><p>{`${t(s.quote)}`}</p></em>
           </Trans>
           {/* <Link href="/explore" passHref>

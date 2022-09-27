@@ -9,37 +9,21 @@ const inputs = {
       { id: '00b89bc8-b8c1-413f-ba55-2c4e7308133a', fullWidth: true },
       // { id: '41612127-bb5f-4ac3-b80a-4676dd9c3a2b', fullWidth: true },
       {
-        title: 'widgets:coffee_land_suitability.title',
+        title: 'widgets:water_stress.title',
         type: 'custom',
         fullWidth: true,
         widget: WaterStress,
         controlsProps: {
-          options: [
-            {
-              label: 'widgets:coffee_land_suitability.rainfed_coffee',
-              value: 'rainfed',
-            },
-            {
-              label: 'widgets:coffee_land_suitability.irrigated_coffee',
-              value: 'irrigated',
-            },
-          ],
           layers: {
-            historic: [
-              '2000s_historic_irrigated_coffee',
-              '2000s_historic_rainfed_coffee',
-            ],
             rcp4p5: [
-              '2020s_rcp4p5_irrigated_coffee',
-              '2020s_rcp4p5_rainfed_coffee',
-              '2050s_rcp4p5_irrigated_coffee',
-              '2050s_rcp4p5_rainfed_coffee',
+              'ws2024cl',
+              'ws3024cl',
+              'ws4024cl',
             ],
             rcp8p5: [
-              '2020s_rcp8p5_irrigated_coffee',
-              '2020s_rcp8p5_rainfed_coffee',
-              '2050s_rcp8p5_irrigated_coffee',
-              '2050s_rcp8p5_rainfed_coffee',
+              'ws2038cl',
+              'ws3038cl',
+              'ws4038cl',
             ],
           },
         },

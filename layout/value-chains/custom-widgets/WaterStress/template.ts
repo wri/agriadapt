@@ -33,7 +33,7 @@ export const template = {
           {
             type: 'string',
             property: 'Water Stress Change',
-            column: 'crop_suitability_class',
+            column: 'water_stress_change',
           },
           {
             type: 'string',
@@ -54,37 +54,36 @@ export const template = {
   data: [
     {
       name: 'source_0',
-      // url: "https://wri-rw.carto.com/api/v2/sql?q=select raster, country, crop_suitability_class, value from foo_067_rw0_crop_suitability_class_edit WHERE raster IN ('2020s_rcp4p5_rainfed_coffee', '2050s_rcp4p5_rainfed_coffee', '2000s_historic_rainfed_coffee') AND country IN ('Colombia') AND crop_suitability_class NOT IN ('No Cultivation')",
       format: { type: 'json', property: 'rows' },
       transform: [
         {
           type: 'formula',
-          expr: "if(datum.crop_suitability_class === 'Not Suitable', 0, if(datum.crop_suitability_class === 'Very Marginal', 1, 2))",
+          expr: "if(datum.water_stress_change === 'No data', 0, if(datum.water_stress_change === '2.8x or greater increase', 1, if(datum.water_stress_change === '2x increase',2,if(datum.water_stress_change === '1.4x increase',3,if(datum.water_stress_change === 'Near normal',4,if(datum.water_stress_change === '1.4x decrease',5,if(datum.water_stress_change === '2x decrease',6,7)))))))",
           as: 'siteOrder',
         },
         {
           type: 'aggregate',
-          groupby: ['raster', 'crop_suitability_class', 'siteOrder'],
+          groupby: ['layer', 'water_stress_change', 'siteOrder'],
           ops: ['sum'],
-          fields: ['value'],
-          as: ['sum_value'],
+          fields: ['area'],
+          as: ['sum_area'],
         },
         {
           type: 'stack',
-          groupby: ['raster'],
-          field: 'sum_value',
+          groupby: ['layer'],
+          field: 'sum_area',
           sort: { field: ['siteOrder'], order: ['ascending'] },
-          as: ['sum_value_start', 'sum_value_end'],
+          as: ['sum_area_start', 'sum_area_end'],
           offset: 'normalize',
         },
         {
           type: 'formula',
-          expr: "format((datum.sum_value_end - datum.sum_value_start), '.1%')",
+          expr: "format((datum.sum_area_end - datum.sum_area_start), '.1%')",
           as: 'percentage',
         },
         {
           type: 'filter',
-          expr: 'isValid(datum["sum_value"]) && isFinite(+datum["sum_value"])',
+          expr: 'isValid(datum["sum_area"]) && isFinite(+datum["sum_area"])',
         },
       ],
     },
@@ -118,13 +117,13 @@ export const template = {
         facet: {
           data: 'source_0',
           name: 'stack_group_main',
-          groupby: ['raster'],
+          groupby: ['layer'],
           aggregate: {
             fields: [
-              'sum_value_start',
-              'sum_value_start',
-              'sum_value_end',
-              'sum_value_end',
+              'sum_area_start',
+              'sum_area_start',
+              'sum_area_end',
+              'sum_area_end',
             ],
             ops: ['min', 'max', 'min', 'max'],
           },
@@ -132,15 +131,15 @@ export const template = {
       },
       encode: {
         update: {
-          x: { scale: 'x', field: 'raster' },
+          x: { scale: 'x', field: 'layer' },
           width: { scale: 'x', band: 1 },
           y: {
             signal:
-              'min(scale(\'y\',datum["min_sum_value_start"]),scale(\'y\',datum["max_sum_value_start"]),scale(\'y\',datum["min_sum_value_end"]),scale(\'y\',datum["max_sum_value_end"]))',
+              'min(scale(\'y\',datum["min_sum_area_start"]),scale(\'y\',datum["max_sum_area_start"]),scale(\'y\',datum["min_sum_area_end"]),scale(\'y\',datum["max_sum_area_end"]))',
           },
           y2: {
             signal:
-              'max(scale(\'y\',datum["min_sum_value_start"]),scale(\'y\',datum["max_sum_value_start"]),scale(\'y\',datum["min_sum_value_end"]),scale(\'y\',datum["max_sum_value_end"]))',
+              'max(scale(\'y\',datum["min_sum_area_start"]),scale(\'y\',datum["max_sum_area_start"]),scale(\'y\',datum["min_sum_area_end"]),scale(\'y\',datum["max_sum_area_end"]))',
           },
           clip: { value: true },
           cornerRadius: { value: 5 },
@@ -188,10 +187,9 @@ export const template = {
     {
       name: 'x',
       type: 'band',
-      domain: { data: 'source_0', field: 'raster', sort: true },
-      // range: [0, 500],
+      domain: { data: 'source_0', field: 'layer', sort: true },
       range: [0, { signal: 'width' }],
-      padding: 0.45,
+      padding: 0.15,
     },
     {
       name: 'y',
@@ -218,7 +216,9 @@ export const template = {
       ticks: false,
       encode: {
         labels: {
-          update: { text: { signal: '[substring(datum.label, 0, 5)]' } },
+          update: {
+            text: { signal: "['20'+ substring(datum.label, 2, 4) +'s']" },
+          },
         },
       },
       zindex: 0,
@@ -232,8 +232,8 @@ export const legend = {
   scales: [colors],
   legends: [
     {
-      columnPadding: 10,
-      columns: 2,
+      // columnPadding: 10,
+      columns: 1,
       rowPadding: 7,
       symbolSize: 1000,
       symbolType: 'square',
