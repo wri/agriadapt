@@ -81,8 +81,6 @@
 @import './components/subscriptions/subscriptions_form';
 @import './components/subscriptions/subscription_selector';
 
-@import './components/vis/globe';
-
 @import './components/map/map-swipe';
 
 @import '~@vizzuality/wysiwyg/build/rw';
@@ -191,14 +189,6 @@
 @import './layout/app/home/home-value-chains/value-chain-cards/styles';
 @import './layout/app/home/home-analysis/styles';
 
-@import './layout/app/pulse/legend/styles';
-@import './layout/app/pulse/layer-container/styles';
-@import './layout/app/pulse/layer-menu/styles';
-@import './layout/app/pulse/layer-menu-native/styles';
-@import './layout/app/pulse/layer-menu-dropdown/styles';
-@import './layout/app/pulse/styles';
-@import './layout/app/pulse/layer-card/styles';
-@import './layout/app/pulse/globe-tooltip/styles';
 @import './layout/about/styles';
 @import './layout/intro-header/styles';
 @import './layout/value-chains/content/styles.scss';
@@ -271,7 +261,6 @@
 @import './components/dropdown-list/styles';
 @import './components/tooltip-list/styles';
 // @import "./components/blog/rating/styles";
-@import './components/vis/globe-cesium/styles';
 @import './components/map/popup/styles';
 @import './components/map/plugins/compare/styles';
 @import './components/map/styles';
