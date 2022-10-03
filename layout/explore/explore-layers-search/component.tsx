@@ -10,7 +10,7 @@ import { logEvent } from 'utils/analytics';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 
-const ExploreDatasetsSearch = ({
+const ExploreLayersSearch = ({
   search,
   value_chains,
   emission_scenario,
@@ -75,6 +75,11 @@ const ExploreDatasetsSearch = ({
   const handleSelectTimescale = (timescale) => {
     selectedTimescale.onChange(timescale);
     setFiltersTimescale(timescale);
+    router.push(
+      { query: { ...router.query, timescale } },
+      {},
+      { shallow: true }
+    );
   };
 
   const handleCancel = () => {
@@ -163,7 +168,6 @@ const ExploreDatasetsSearch = ({
       <Field
         id={'EMISSION_SCENARIO'}
         properties={{
-          // TODO: Translate
           label: t('layers:Filter Layers by Emission Scenario', {
             keySeparator: ':',
           }),
@@ -192,13 +196,7 @@ const ExploreDatasetsSearch = ({
               label: t('layers:Filter Layers by Timescale', {
                 keySeparator: ':',
               }),
-              default: { ...timescale, label: t(timescale) },
-            }}
-            value={{
-              ...selectedTimescale.value,
-              label: t(`common:timescales.${selectedTimescale.value.label}`, {
-                keySeparator: ':',
-              }),
+              default: selectedTimescale.value,
             }}
             onChange={handleSelectTimescale}
             options={TIMESCALE.options.map(
@@ -224,4 +222,4 @@ const ExploreDatasetsSearch = ({
   );
 };
 
-export default ExploreDatasetsSearch;
+export default ExploreLayersSearch;

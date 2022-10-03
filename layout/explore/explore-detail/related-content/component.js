@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // Components
-import DatasetList from 'layout/explore/explore-datasets/list';
-import ExploreDatasetsActions from 'layout/explore/explore-datasets/explore-datasets-actions';
+import DatasetList from 'layout/explore/explore-layers/list';
+import ExploreDatasetsActions from 'layout/explore/explore-layers/explore-layers-actions';
 
 function RelatedContent(props) {
   const {

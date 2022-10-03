@@ -33,7 +33,7 @@ const ExploreDatasetsActions = (props) => {
   const { t } = useTranslation(['explore', 'common']);
 
   return (
-    <div className="c-explore-datasets-actions">
+    <div className="c-explore-layers-actions">
       <button
         className={classnames({
           'c-button': true,

@@ -299,7 +299,7 @@ export const setFiltersValueChains = createAction<string[]>(
 export const setFiltersEmissionScenario = createAction<string>(
   'EXPLORE/setFiltersEmissionScenario'
 );
-export const setFiltersTimescale = createAction('EXPLORE/setFiltersTimescale');
+export const setFiltersTimescale = createAction<string>('EXPLORE/setFiltersTimescale');
 
 // SORT
 export const setSortSelected = createAction('EXPLORE/setSortSelected');

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { withRouter } from 'next/router';
+import { Router, withRouter } from 'next/router';
 
 // actions
 import { setIsServer as setServerAction, setLocale } from 'redactions/common';
@@ -17,13 +17,13 @@ import { withSession } from 'hoc/session';
 interface ExplorePageProps {
   explore: RootState['explore'];
   dataset: Record<string, any>;
-  router;
+  router: Router;
   resetExplore: () => void;
   setIsServer: (isServer: boolean) => void;
   setSelectedDataset: (dataset: string) => void;
   setViewport: (params: Record<string, any>) => void;
   setBasemap: (basemap: string | string[]) => void;
-  setLabels: (labels: any) => void;
+  setLabels: (labels: string | string[]) => void;
   setBoundaries: (boundaries: boolean) => void;
   fetchMapLayerGroups: (layers: Record<string, any>) => void;
   setFiltersSearch: (search: string) => void;
@@ -187,6 +187,7 @@ export const getServerSideProps = withSession(
       tab,
       value_chains,
       emission_scenario,
+      timescale,
       add
     } = query;
     const worldview = req.session.user?.country;
@@ -216,6 +217,8 @@ export const getServerSideProps = withSession(
       );
     if (emission_scenario)
       dispatch(actions.setFiltersEmissionScenario(String(emission_scenario)));
+    if (timescale)
+          dispatch(actions.setFiltersTimescale(String(timescale)));
     if (dataset) {
       dispatch(actions.setSelectedDataset(String(dataset)));
       datasetData = await fetchDataset(String(dataset), { language: locale });

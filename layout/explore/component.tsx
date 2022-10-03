@@ -2,7 +2,7 @@ import Layout from 'layout/layout/layout-app';
 import { useState } from 'react';
 import ExploreSidebar from 'layout/explore/explore-sidebar';
 import ExploreMap from 'layout/explore/explore-map';
-import ExploreDatasets from 'layout/explore/explore-datasets';
+import ExploreDatasets from 'layout/explore/explore-layers';
 import ExploreDetail from 'layout/explore/explore-detail';
 import ExploreSwitch from './explore-switch';
 import classnames from 'classnames';

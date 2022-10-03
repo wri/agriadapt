@@ -2,8 +2,8 @@ import { useEffect, useMemo } from 'react';
 import classnames from 'classnames';
 
 import DatasetList from './list';
-import ExploreDatasetsActions from './explore-datasets-actions';
-import ExploreSearch from '../explore-datasets-search';
+import ExploreLayersActions from './explore-layers-actions';
+import ExploreSearch from '../explore-layers-search';
 
 interface ExploreDatasetsProps {
   datasets: {
@@ -28,8 +28,7 @@ export default function ExploreDatasets(props: ExploreDatasetsProps) {
     fetchCountries();
   }, [fetchCountries]);
 
-  const classValue = classnames({
-    'c-explore-datasets': true,
+  const classValue = classnames('c-explore-layers', {
     '-hidden': !!selected,
   });
 
@@ -50,7 +49,7 @@ export default function ExploreDatasets(props: ExploreDatasetsProps) {
 
   return (
     <div className={classValue}>
-      <div className="explore-datasets-search">
+      <div className="explore-layers-search">
         <ExploreSearch />
       </div>
 
@@ -76,7 +75,7 @@ export default function ExploreDatasets(props: ExploreDatasetsProps) {
             loading={loading}
             numberOfPlaceholders={10}
             list={relevantList}
-            actions={<ExploreDatasetsActions />}
+            actions={<ExploreLayersActions />}
           />
         </>
       )}
