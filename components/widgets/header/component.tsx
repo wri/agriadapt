@@ -20,7 +20,7 @@ interface WidgetHeaderProps {
   isInfoVisible?: boolean;
   isEnlarged?: boolean;
   onToggleInfo: () => void;
-  onToggleShare: () => void;
+  onToggleShare?: () => void;
   onToggleEnlarge?: () => void;
   onDownload?: () => void;
   download?: boolean;
@@ -72,7 +72,7 @@ export default function WidgetHeader({
         </div>
         <div className="button-list">
           <ul>
-            {!isEnlarged && (
+            {!isEnlarged && onToggleShare && (
               <li>
                 <button
                   type="button"
@@ -83,7 +83,6 @@ export default function WidgetHeader({
                 </button>
               </li>
             )}
-            {/* TODO: Implement download report */}
             {download && (
               <li>
                 <button type="button" className="c-btn -clean" onClick={onDownload}>

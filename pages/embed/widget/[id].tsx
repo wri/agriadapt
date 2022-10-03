@@ -2,19 +2,29 @@ import { useRouter } from 'next/router';
 
 // components
 import LayoutEmbedWidget from 'layout/embed/widget';
+import { GetServerSideProps } from 'next';
 
 const EmbedWidgetPage = () => {
   const {
-    query: { id, webshot, aoi, ...restQueryParams },
+    query: { webshot, aoi, ...restQueryParams },
   } = useRouter();
 
   return (
     <LayoutEmbedWidget
-      widgetId={String(id)}
       {...(webshot && { isWebshot: true })}
-      params={restQueryParams}
+      // params={restQueryParams}
     />
   );
 };
+
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+  const { id } = params;
+
+  return {
+    props: {
+      id,
+    }
+  }
+}
 
 export default EmbedWidgetPage;

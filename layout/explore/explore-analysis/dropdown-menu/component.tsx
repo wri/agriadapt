@@ -72,7 +72,7 @@ const AnalysisDropdownMenu = ({ options }) => {
                     delete: o.id === 'delete',
                   })}
                 >
-                  <a>{o.label}</a>
+                  <a>{t(o.label)}</a>
                 </li>
               ))}
             </ul>

@@ -31,7 +31,7 @@ const CustomWidget = ({ widget, controlsProps, title, info }: CustomWidgetProps)
       <WidgetHeader
         widget={widgetHeader}
         onToggleInfo={toggleShowInfo}
-        onToggleShare={toggleShareModal}
+        // onToggleShare={toggleShareModal}
       />
       {typeof window !== 'undefined' && (
         <div

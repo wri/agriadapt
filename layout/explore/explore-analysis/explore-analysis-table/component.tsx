@@ -4,7 +4,7 @@ import WidgetHeader from 'components/widgets/header';
 import { replace } from 'layer-manager';
 import { useEffect, useMemo, useState } from 'react';
 import { AnalysisLocation } from 'types/analysis';
-import AnalysisDropdownMenu from '../dropdown-menu/component';
+// import AnalysisDropdownMenu from '../dropdown-menu/component';
 import Spinner from 'components/ui/Spinner';
 import { fetchDatasetQuery } from 'services/query';
 import { APILayerSpec } from 'types/layer';
@@ -12,6 +12,8 @@ import { toGeoJSON } from 'utils/locations/geojson';
 import { createColorValueMap, legendConfigItem } from 'utils/layers/symbolizer';
 import { useTranslation } from 'next-i18next';
 import { exportToCSV, makeRows } from './utils';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 const AnalysisTable = ({
   loc_map: locations,
@@ -62,8 +64,10 @@ const AnalysisTable = ({
   }, [layerGroups, setOutputs, setValueMaps]);
 
   const columns = useMemo(() => {
-    const cols = [].concat(...interactions.map(({ label }) => label));
-    setVisCols(cols);
+    const cols = [].concat(
+      ...interactions.map(({ label, dataset }) => ({ label, dataset }))
+    );
+    setVisCols(cols.map(({ label }) => label));
     return cols;
   }, [interactions, setVisCols]);
 
@@ -133,6 +137,12 @@ const AnalysisTable = ({
   ];
 
   const { t } = useTranslation(['explore', 'common']);
+  const router = useRouter();
+
+  const datasetUrl = (dataset) => ({
+    pathname: `/explore/${dataset}`,
+    query: { ...router.query, tab: 'layers' },
+  });
 
   return (
     <div
@@ -143,10 +153,18 @@ const AnalysisTable = ({
       <div className="p-4 border-b border-gray-light widget-header-container">
         <WidgetHeader
           download
-          widget={{ name: t('explore:analysis.Layer Analysis Table'), id: 'analysis-table' }}
-          onDownload={() => exportToCSV(rows, columns)}
+          widget={{
+            name: t('explore:analysis.Layer Analysis Table'),
+            id: 'analysis-table',
+          }}
+          onDownload={() =>
+            exportToCSV(
+              rows,
+              columns.map(({ label }) => label)
+            )
+          }
           onToggleInfo={() => undefined}
-          onToggleShare={() => undefined}
+          // onToggleShare={() => undefined}
         />
       </div>
       <div className="c-a-table">
@@ -154,18 +172,22 @@ const AnalysisTable = ({
           <thead>
             <tr>
               <th>
-                <AnalysisDropdownMenu options={options.map((o) => ({...o, label: t(o.label)}))} />
+                {/* <AnalysisDropdownMenu options={options.map((o) => ({...o, label: t(o.label)}))} /> */}
                 {t('explore:analysis.Name')}
               </th>
               {columns.map((c, i) => (
                 <th key={i}>
                   <div className="flex items-start">
-                    <AnalysisDropdownMenu options={options} />
+                    {/* <AnalysisDropdownMenu options={options} /> */}
                     <div className="w-full">
                       <span className="float-right">
-                        <Icon name="icon-info" className="table-action" />
+                        <Link passHref href={datasetUrl(c.dataset)}>
+                          <a>
+                            <Icon name="icon-info" className="table-action" />
+                          </a>
+                        </Link>
                       </span>
-                      <span className="line-clamp-2">{c}</span>
+                      <span className="line-clamp-2">{c.label}</span>
                     </div>
                   </div>
                 </th>
