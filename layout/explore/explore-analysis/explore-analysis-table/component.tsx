@@ -2,7 +2,7 @@ import classnames from 'classnames';
 import Icon from 'components/ui/icon';
 import WidgetHeader from 'components/widgets/header';
 import { replace } from 'layer-manager';
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { AnalysisLocation } from 'types/analysis';
 // import AnalysisDropdownMenu from '../dropdown-menu/component';
 import Spinner from 'components/ui/Spinner';
@@ -144,6 +144,20 @@ const AnalysisTable = ({
     query: { ...router.query, tab: 'layers' },
   });
 
+  const handleDownload = useCallback(
+    () =>
+      exportToCSV(
+        rows,
+        columns.map(({ label }) => label)
+      ),
+    [rows, columns]
+  );
+
+  const canDownload = useMemo(
+    () => !!(rows?.length && columns?.length),
+    [rows, columns]
+  );
+
   return (
     <div
       className={classnames(
@@ -152,17 +166,12 @@ const AnalysisTable = ({
     >
       <div className="p-4 border-b border-gray-light widget-header-container">
         <WidgetHeader
-          download
+          download={canDownload}
           widget={{
             name: t('explore:analysis.Layer Analysis Table'),
             id: 'analysis-table',
           }}
-          onDownload={() =>
-            exportToCSV(
-              rows,
-              columns.map(({ label }) => label)
-            )
-          }
+          onDownload={handleDownload}
           onToggleInfo={() => undefined}
           // onToggleShare={() => undefined}
         />
