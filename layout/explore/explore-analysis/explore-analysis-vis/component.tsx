@@ -80,8 +80,10 @@ const AnalysisVisuals = ({
           );
           return (
             <>
-              <PieChart name={c} domain={labelDomain} />
-              {avg !== 'NaN' && (
+              {output.type === 'string' && (
+                <PieChart name={c} domain={labelDomain} />
+              )}
+              {output.type === 'number' && avg !== 'NaN' && (
                 <CalloutCard
                   analysis={{
                     name: c,
