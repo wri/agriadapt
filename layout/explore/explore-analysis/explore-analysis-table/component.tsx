@@ -172,13 +172,15 @@ const AnalysisTable = ({
           <thead>
             <tr>
               <th>
-                {/* <AnalysisDropdownMenu options={options.map((o) => ({...o, label: t(o.label)}))} /> */}
+                {/* <AnalysisDropdownMenu
+                  options={options.map((o) => ({ ...o, label: t(o.label) }))}
+                /> */}
                 {t('explore:analysis.Name')}
               </th>
               {columns.map((c, i) => (
                 <th key={i}>
                   <div className="flex items-start">
-                    {/* <AnalysisDropdownMenu options={options} /> */}
+                    {/* <AnalysisDropdownMenu options={options.map((o) => ({ ...o, label: t(o.label) }))} /> */}
                     <div className="w-full">
                       <span className="float-right">
                         <Link passHref href={datasetUrl(c.dataset)}>
