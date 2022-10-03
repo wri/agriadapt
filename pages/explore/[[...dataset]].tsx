@@ -15,33 +15,7 @@ import { fetchDataset } from 'services/dataset';
 import { withSession } from 'hoc/session';
 
 interface ExplorePageProps {
-  explore: {
-    datasets?: Record<string, any>;
-    filters?: {
-      search?: string;
-      value_chains?: string[];
-      emission_scenario?: string;
-    };
-    map?: {
-      viewport: {
-        zoom?: number;
-        latitude?: number;
-        longitude?: number;
-        pitch?: number;
-        bearing?: number;
-      };
-      basemap?: string;
-      labels?: any;
-      boundaries?: boolean;
-      layerGroups?: Record<string, any>[];
-      // aoi?: string;
-    };
-    sidebar?: {
-      anchor?: string;
-      selectedTab?: string;
-    };
-    worldview: string;
-  };
+  explore: RootState['explore'];
   dataset: Record<string, any>;
   router;
   resetExplore: () => void;
@@ -179,7 +153,7 @@ class ExplorePage extends PureComponent<ExplorePageProps> {
       map.viewport.pitch !== prevMap.viewport.pitch ||
       map.viewport.bearing !== prevMap.viewport.bearing ||
       map.basemap !== prevMap.basemap ||
-      map.labels.id !== prevMap.labels.id ||
+      map.labels !== prevMap.labels ||
       map.boundaries !== prevMap.boundaries ||
       layers !== prevLayers ||
       sidebar.selectedTab !== prevSidebar.selectedTab ||

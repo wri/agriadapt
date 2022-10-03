@@ -19,7 +19,7 @@ import { getUserPosition } from 'utils/locations/user-position';
 import { forwardGeocode } from 'services/geocoder';
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
-import { getGeocodeInfo, getIso, makePointLocation } from './utils';
+import { getGeocodeInfo, getIso } from './utils';
 
 const ExploreAnalysisLocationEditor = ({
   countries,
@@ -63,7 +63,6 @@ const ExploreAnalysisLocationEditor = ({
 
   const router = useRouter();
   const { locale } = router;
-  const { add } = router.query;
 
   useEffect(() => {
     setIsDrawing(true);
@@ -192,13 +191,13 @@ const ExploreAnalysisLocationEditor = ({
     countryAndIso.iso,
     createLabel,
     geo,
-    geoLocatorData.latitude,
-    geoLocatorData.longitude,
+    geoLocatorData?.latitude,
+    geoLocatorData?.longitude,
     id,
     label,
     locationType.value,
-    pointData.lat,
-    pointData.lng,
+    pointData?.lat,
+    pointData?.lng,
   ]);
 
   const onSubmit = () => {
@@ -343,25 +342,6 @@ const ExploreAnalysisLocationEditor = ({
         fetchGADM1Geostore(iso, gadm1Id).then((data) => setGeo(data));
     }
   }, [country.value, selectedState]);
-
-  /**
-   * Add user location from link
-   */
-  const addUserLocation = useCallback(async () => {
-    const { coords: { longitude, latitude } } = await getUserPosition();
-    const info = await getGeocodeInfo({ longitude, latitude }, locale);
-    const loc = makePointLocation('current', info, { longitude, latitude });
-    addLocation(loc);
-  }, [addLocation, locale]);
-
-  useEffect(() => {
-    if (String(add) === 'current') {
-      stopEditing();
-      addUserLocation();
-      delete router.query.add;
-      router.replace({ query: router.query }, undefined, { shallow: true } );
-    }
-  }, [add, addUserLocation, router, stopEditing]);
 
   const { t } = useTranslation(['explore', 'common']);
 

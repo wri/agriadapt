@@ -10,9 +10,9 @@ import initialState from './initial-state';
 
 export default createReducer(initialState, (builder) => {
   builder
-    .addCase(HYDRATE, (state, { payload }) => ({ ...payload.explore }))
+    .addCase(HYDRATE, (state, { payload }) => ({ ...payload.explore, analysis: state.analysis }))
     // explore
-    .addCase(actions.resetExplore, () => initialState)
+    .addCase(actions.resetExplore, (state) => ({ ...initialState, analysis: state.analysis}))
     .addCase(actions.setWorldview, (state, { payload }) => {
       state.worldview = payload;
     })

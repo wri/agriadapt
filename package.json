@@ -55,6 +55,7 @@
     "react-redux-toastr": "^7.2.3",
     "react-select": "^2.4.4",
     "react-tether": "^2.0.7",
+    "redux-persist": "^6.0.0",
     "redux-tools": "github:Vizzuality/redux-tools#v3.3.1",
     "use-debounce": "^7.0.1",
     "uuid": "^8.3.2",
