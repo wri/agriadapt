@@ -1,8 +1,9 @@
 import rice1 from 'public/images/quotes/rice1.png';
 import rice2 from 'public/images/quotes/rice2.png';
 import rice3 from 'public/images/quotes/rice3.png';
-import WaterStress from '../custom-widgets/WaterStress';
+// import WaterStress from '../custom-widgets/WaterStress';
 import ImportExport from '../custom-widgets/ImportExport';
+import LandSuitability from '../custom-widgets/LandSuitability';
 
 const inputs = {
   land_suitability: {
@@ -12,29 +13,82 @@ const inputs = {
       { id: '043440a2-b3fd-493e-93a9-362eac5637c7', fullWidth: true },
       // { id: '284fed69-50e7-4d40-92a1-5640eb02e51f', fullWidth: true },
       {
-        title: 'widgets:water_stress.title',
-        info: {
-          id: 'water-stress',
-          description: 'widgets:water_stress.rice_description',
-        },
+        title: 'widgets:rice_land_suitability.title',
         type: 'custom',
         fullWidth: true,
-        widget: WaterStress,
+        widget: LandSuitability,
         controlsProps: {
+          options: [
+            [
+              {
+                label: 'widgets:rice_land_suitability.dryland_rice',
+                value: 'dryland',
+              },
+              {
+                label: 'widgets:rice_land_suitability.wetland_rice',
+                value: 'wetland',
+              },
+            ],
+            [
+              {
+                label: 'widgets:rice_land_suitability.rainfed_rice',
+                value: 'rainfed',
+              },
+              {
+                label: 'widgets:rice_land_suitability.irrigated_rice',
+                value: 'irrigated',
+              },
+            ],
+          ],
           layers: {
+            historic: [
+              '2000s_historic_irrigated_wetland_rice',
+              '2000s_historic_rainfed_dryland_rice',
+              '2000s_historic_rainfed_wetland_rice',
+            ],
             rcp4p5: [
-              'ws2024cl',
-              'ws3024cl',
-              'ws4024cl',
+              '2020s_rcp4p5_irrigated_wetland_rice',
+              '2020s_rcp4p5_rainfed_dryland_rice',
+              '2020s_rcp4p5_rainfed_wetland_rice',
+              '2050s_rcp4p5_irrigated_wetland_rice',
+              '2050s_rcp4p5_rainfed_dryland_rice',
+              '2050s_rcp4p5_rainfed_wetland_rice',
             ],
             rcp8p5: [
-              'ws2038cl',
-              'ws3038cl',
-              'ws4038cl',
+              '2020s_rcp8p5_irrigated_wetland_rice',
+              '2020s_rcp8p5_rainfed_dryland_rice',
+              '2020s_rcp8p5_rainfed_wetland_rice',
+              '2050s_rcp8p5_irrigated_wetland_rice',
+              '2050s_rcp8p5_rainfed_dryland_rice',
+              '2050s_rcp8p5_rainfed_wetland_rice',
             ],
           },
         },
       },
+      // {
+      //   title: 'widgets:water_stress.title',
+      //   info: {
+      //     id: 'water-stress',
+      //     description: 'widgets:water_stress.rice_description',
+      //   },
+      //   type: 'custom',
+      //   fullWidth: true,
+      //   widget: WaterStress,
+      //   controlsProps: {
+      //     layers: {
+      //       rcp4p5: [
+      //         'ws2024cl',
+      //         'ws3024cl',
+      //         'ws4024cl',
+      //       ],
+      //       rcp8p5: [
+      //         'ws2038cl',
+      //         'ws3038cl',
+      //         'ws4038cl',
+      //       ],
+      //     },
+      //   },
+      // },
     ],
   },
   //   fertilizer: {

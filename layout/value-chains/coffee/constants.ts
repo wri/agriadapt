@@ -1,5 +1,6 @@
-import WaterStress from '../custom-widgets/WaterStress';
+// import WaterStress from '../custom-widgets/WaterStress';
 import ImportExport from '../custom-widgets/ImportExport';
+import LandSuitability from '../custom-widgets/LandSuitability';
 
 const inputs = {
   land_suitability: {
@@ -9,29 +10,65 @@ const inputs = {
       { id: '00b89bc8-b8c1-413f-ba55-2c4e7308133a', fullWidth: true },
       // { id: '41612127-bb5f-4ac3-b80a-4676dd9c3a2b', fullWidth: true },
       {
-        title: 'widgets:water_stress.title',
-        info: {
-          id: 'water-stress',
-          description: 'widgets:water_stress.coffee_description',
-        },
+        title: 'widgets:coffee_land_suitability.title',
         type: 'custom',
         fullWidth: true,
-        widget: WaterStress,
+        widget: LandSuitability,
         controlsProps: {
+          options: [
+            {
+              label: 'widgets:coffee_land_suitability.rainfed_coffee',
+              value: 'rainfed',
+            },
+            {
+              label: 'widgets:coffee_land_suitability.irrigated_coffee',
+              value: 'irrigated',
+            },
+          ],
           layers: {
+            historic: [
+              '2000s_historic_irrigated_coffee',
+              '2000s_historic_rainfed_coffee',
+            ],
             rcp4p5: [
-              'ws2024cl',
-              'ws3024cl',
-              'ws4024cl',
+              '2020s_rcp4p5_irrigated_coffee',
+              '2020s_rcp4p5_rainfed_coffee',
+              '2050s_rcp4p5_irrigated_coffee',
+              '2050s_rcp4p5_rainfed_coffee',
             ],
             rcp8p5: [
-              'ws2038cl',
-              'ws3038cl',
-              'ws4038cl',
+              '2020s_rcp8p5_irrigated_coffee',
+              '2020s_rcp8p5_rainfed_coffee',
+              '2050s_rcp8p5_irrigated_coffee',
+              '2050s_rcp8p5_rainfed_coffee',
             ],
           },
         },
       },
+      // {
+      //   title: 'widgets:water_stress.title',
+      //   info: {
+      //     id: 'water-stress',
+      //     description: 'widgets:water_stress.coffee_description',
+      //   },
+      //   type: 'custom',
+      //   fullWidth: true,
+      //   widget: WaterStress,
+      //   controlsProps: {
+      //     layers: {
+      //       rcp4p5: [
+      //         'ws2024cl',
+      //         'ws3024cl',
+      //         'ws4024cl',
+      //       ],
+      //       rcp8p5: [
+      //         'ws2038cl',
+      //         'ws3038cl',
+      //         'ws4038cl',
+      //       ],
+      //     },
+      //   },
+      // },
     ],
     // TODO: Additional Graphical Visual
   },
