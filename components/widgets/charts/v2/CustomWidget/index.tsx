@@ -48,9 +48,10 @@ const CustomWidget = ({ widget, controlsProps, title, info }: CustomWidgetProps)
       {showShareModal && (
         <WidgetShareModal
           isVisible={showShareModal}
-          widget={widget}
+          widget={info}
           onClose={toggleShareModal}
           country={undefined}
+          params={{ rcp: '4.5' }}
           worldview={undefined}
         />
       )}

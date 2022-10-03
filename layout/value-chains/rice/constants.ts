@@ -14,6 +14,7 @@ const inputs = {
       {
         title: 'widgets:water_stress.title',
         info: {
+          id: 'water-stress',
           description: 'widgets:water_stress.rice_description',
         },
         type: 'custom',

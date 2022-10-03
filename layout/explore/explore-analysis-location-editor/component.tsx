@@ -155,7 +155,7 @@ const ExploreAnalysisLocationEditor = ({
     stopEditing();
   };
 
-  const onSubmit = () => {
+  const makeLocation = useCallback(() => {
     const type = locationType.value;
     const loc = {
       id,
@@ -182,9 +182,28 @@ const ExploreAnalysisLocationEditor = ({
         longitude: pointData.lng,
         latitude: pointData.lat,
       }),
-      geo: geo,
+      geo,
       editing: false,
     };
+    return loc;
+  }, [
+    address.value,
+    countryAndIso.country,
+    countryAndIso.iso,
+    createLabel,
+    geo,
+    geoLocatorData.latitude,
+    geoLocatorData.longitude,
+    id,
+    label,
+    locationType.value,
+    pointData.lat,
+    pointData.lng,
+  ]);
+
+  const onSubmit = () => {
+    const loc = makeLocation();
+    
     if (current.editing)
       editLocation({
         id,
@@ -349,7 +368,6 @@ const ExploreAnalysisLocationEditor = ({
   return (
     <div className="c-analysis-location-editor">
       <div className="c-location-form">
-        {/* TODO: Translate */}
         <h4>{t('explore:analysis.Select a Location')}</h4>
         <div className="c-radio-box">
           {LOCATION_CONFIG.options.map((o) => (

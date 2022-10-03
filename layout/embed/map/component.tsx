@@ -1,5 +1,4 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
-import PropTypes from 'prop-types';
 import dynamic from 'next/dynamic';
 import { replace } from '@vizzuality/layer-manager-utils';
 
@@ -23,13 +22,25 @@ const WidgetShareModal = dynamic(
 
 const isExternal = isLoadedExternally();
 
+interface LayoutEmbedMapProps {
+  widget: {
+    name?: string;
+    description?: string;
+    thumbnailUrl?: string;
+  };
+  widgetId: string;
+  aoi?: string;
+  params?: Record<string, any>;
+  isWebshot?: boolean;
+}
+
 export default function LayoutEmbedMap({
   widget,
   widgetId,
-  aoi,
-  params,
-  isWebshot,
-}) {
+  aoi = null,
+  params = {},
+  isWebshot = false,
+}: LayoutEmbedMapProps) {
   const [widgetToShare, setWidgetToShare] = useState(null);
 
   const handleShareWidget = useCallback((_widget) => {
@@ -106,21 +117,3 @@ export default function LayoutEmbedMap({
     </LayoutEmbed>
   );
 }
-
-LayoutEmbedMap.defaultProps = {
-  aoi: null,
-  isWebshot: false,
-  params: {},
-};
-
-LayoutEmbedMap.propTypes = {
-  widget: PropTypes.shape({
-    name: PropTypes.string,
-    description: PropTypes.string,
-    thumbnailUrl: PropTypes.string,
-  }).isRequired,
-  widgetId: PropTypes.string.isRequired,
-  aoi: PropTypes.string,
-  params: PropTypes.shape({}),
-  isWebshot: PropTypes.bool,
-};
