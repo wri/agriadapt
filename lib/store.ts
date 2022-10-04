@@ -25,7 +25,17 @@ import { reducers as relatedToolsReducers } from 'components/tools/related-tools
 import storage from 'redux-persist/lib/storage';
 
 import { configureStore, Reducer } from '@reduxjs/toolkit';
-import { persistCombineReducers, persistReducer, persistStore } from 'redux-persist';
+import {
+  FLUSH,
+  PAUSE,
+  PERSIST,
+  persistCombineReducers,
+  persistReducer,
+  persistStore,
+  PURGE,
+  REGISTER,
+  REHYDRATE,
+} from 'redux-persist';
 
 const WERed: Reducer<{ editor: unknown; AnyAction }> = WEReducers;
 
@@ -38,8 +48,8 @@ const persistConfig = {
 const explorePersistConfig = {
   key: 'explore',
   storage,
-  whitelist: ['analysis', 'sidebar']
-}
+  whitelist: ['analysis', 'sidebar'],
+};
 
 const persistedRootReducer = persistCombineReducers(persistConfig, {
   ...reducers,
@@ -66,10 +76,16 @@ const persistedRootReducer = persistCombineReducers(persistConfig, {
 const makeStore = () => {
   const store = configureStore({
     reducer: persistedRootReducer,
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({
+        serializableCheck: {
+          ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+        },
+      }),
   });
   store['__persistor'] = persistStore(store);
   return store;
-}
+};
 
 export type AppStore = ReturnType<typeof makeStore>;
 export type RootState = ReturnType<AppStore['getState']>;
