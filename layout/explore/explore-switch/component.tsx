@@ -1,6 +1,7 @@
 import classnames from 'classnames';
 import Icon from 'components/ui/icon';
 import { useTranslation } from 'next-i18next';
+import { logEvent } from 'utils/analytics';
 import { capitalizeFirstLetter } from 'utils/utils';
 import { EXPLORE_TABS } from '../constants';
 
@@ -9,7 +10,8 @@ const ExploreSwitch = ({ open, selectedTab, setSidebarSelectedTab, setSidebarOpe
 
   const handleSelectTab = (id: string) => {
     setSidebarSelectedTab(id);
-    if(!open) setSidebarOpen(true);
+    if (!open) setSidebarOpen(true);
+    logEvent('Explore', 'Switch Tab', id);
   }
 
   return (

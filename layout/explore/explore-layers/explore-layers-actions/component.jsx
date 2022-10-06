@@ -22,7 +22,7 @@ const ExploreDatasetsActions = (props) => {
     (event) => {
       event.stopPropagation();
       if (!isActive)
-        logEvent({ action: 'add_dataset', params: { dataset: dataset.slug } });
+        logEvent('Explore', 'Add Dataset', dataset.slug);
 
       toggleMapLayerGroup({ dataset, toggle: !isActive });
       resetMapLayerGroupsInteraction();
