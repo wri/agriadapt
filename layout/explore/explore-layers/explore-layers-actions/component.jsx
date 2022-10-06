@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { logEvent } from 'utils/analytics';
+// import { logEvent } from 'utils/analytics';
 import { useTranslation } from 'next-i18next';
 
 const ExploreDatasetsActions = (props) => {
@@ -21,8 +21,8 @@ const ExploreDatasetsActions = (props) => {
   const handleToggleLayerGroup = useCallback(
     (event) => {
       event.stopPropagation();
-      if (!isActive)
-        logEvent('Explore', 'Add Dataset', dataset.slug);
+      // if (!isActive)
+      //   logEvent('Explore', 'Add Dataset', dataset.slug);
 
       toggleMapLayerGroup({ dataset, toggle: !isActive });
       resetMapLayerGroupsInteraction();
