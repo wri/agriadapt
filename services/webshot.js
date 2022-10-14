@@ -1,6 +1,7 @@
 // utils
 import { logger } from 'utils/logs';
 import { WRIAPI } from 'utils/axios';
+import axios from 'axios';
 
 /**
  * Check out the API docs for this endpoint {@link https://resource-watch.github.io/doc-api/reference.html#webshot|here}
@@ -11,13 +12,12 @@ import { WRIAPI } from 'utils/axios';
 export const takeWidgetWebshot = (widgetId, params = {}) => {
   logger.info(`Taking webshot to widget ${widgetId}...`);
 
-  return WRIAPI.post(
-    `webshot/widget/${widgetId}/thumbnail`,
-    {},
-    {
-      params,
-    }
-  )
+  const req =
+    params.type != 'widget'
+      ? WRIAPI.post(`webshot/widget/${widgetId}/thumbnail`, {}, { params })
+      : axios.get(`${location.origin}/embed/widget/${widgetId}`, { params });
+
+  return req
     .then(({ data }) => data.data)
     .catch(({ response }) => {
       const { status, statusText } = response;

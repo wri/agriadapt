@@ -5,6 +5,98 @@ import rice3 from 'public/images/quotes/rice3.png';
 import ImportExport from '../custom-widgets/ImportExport';
 import LandSuitability from '../custom-widgets/LandSuitability';
 
+export const rice_landslide_widget = {
+  title: 'widgets:rice_land_suitability.title',
+  info: {
+    id: 'rice_ls',
+    description: '',
+  },
+  type: 'custom',
+  fullWidth: true,
+  widget: LandSuitability,
+  controlsProps: {
+    options: [
+      [
+        {
+          label: 'widgets:rice_land_suitability.dryland_rice',
+          value: 'dryland',
+        },
+        {
+          label: 'widgets:rice_land_suitability.wetland_rice',
+          value: 'wetland',
+        },
+      ],
+      [
+        {
+          label: 'widgets:rice_land_suitability.rainfed_rice',
+          value: 'rainfed',
+        },
+        {
+          label: 'widgets:rice_land_suitability.irrigated_rice',
+          value: 'irrigated',
+        },
+      ],
+    ],
+    layers: {
+      historic: [
+        '2000s_historic_irrigated_wetland_rice',
+        '2000s_historic_rainfed_dryland_rice',
+        '2000s_historic_rainfed_wetland_rice',
+      ],
+      rcp4p5: [
+        '2020s_rcp4p5_irrigated_wetland_rice',
+        '2020s_rcp4p5_rainfed_dryland_rice',
+        '2020s_rcp4p5_rainfed_wetland_rice',
+        '2050s_rcp4p5_irrigated_wetland_rice',
+        '2050s_rcp4p5_rainfed_dryland_rice',
+        '2050s_rcp4p5_rainfed_wetland_rice',
+      ],
+      rcp8p5: [
+        '2020s_rcp8p5_irrigated_wetland_rice',
+        '2020s_rcp8p5_rainfed_dryland_rice',
+        '2020s_rcp8p5_rainfed_wetland_rice',
+        '2050s_rcp8p5_irrigated_wetland_rice',
+        '2050s_rcp8p5_rainfed_dryland_rice',
+        '2050s_rcp8p5_rainfed_wetland_rice',
+      ],
+    },
+  },
+};
+
+export const rice_import_widget = {
+  title: 'widgets:export_import.rice.title',
+  info: {
+    id: 'rice_ie',
+    description: '',
+  },
+  type: 'custom',
+  fullWidth: true,
+  widget: ImportExport,
+  controlsProps: {
+    products: [
+      {
+        label: 'widgets:export_import.rice.products.rice_husked',
+        value: 'Rice, husked',
+      },
+      {
+        label: 'widgets:export_import.rice.products.rice_milled',
+        value: 'Rice, milled',
+      },
+      {
+        label: 'widgets:export_import.rice.products.rice_paddy',
+        value: 'Rice, paddy',
+      },
+    ],
+    indicators: [
+      {
+        label: 'widgets:export_import.indicators.quantity',
+        value: 'Quantity',
+      },
+      { label: 'widgets:export_import.indicators.value', value: 'Value' },
+    ],
+  },
+};
+
 const inputs = {
   land_suitability: {
     info: 'inputs.land_suitability.info',
@@ -12,59 +104,7 @@ const inputs = {
     widgets: [
       { id: '043440a2-b3fd-493e-93a9-362eac5637c7', fullWidth: true },
       // { id: '284fed69-50e7-4d40-92a1-5640eb02e51f', fullWidth: true },
-      {
-        title: 'widgets:rice_land_suitability.title',
-        type: 'custom',
-        fullWidth: true,
-        widget: LandSuitability,
-        controlsProps: {
-          options: [
-            [
-              {
-                label: 'widgets:rice_land_suitability.dryland_rice',
-                value: 'dryland',
-              },
-              {
-                label: 'widgets:rice_land_suitability.wetland_rice',
-                value: 'wetland',
-              },
-            ],
-            [
-              {
-                label: 'widgets:rice_land_suitability.rainfed_rice',
-                value: 'rainfed',
-              },
-              {
-                label: 'widgets:rice_land_suitability.irrigated_rice',
-                value: 'irrigated',
-              },
-            ],
-          ],
-          layers: {
-            historic: [
-              '2000s_historic_irrigated_wetland_rice',
-              '2000s_historic_rainfed_dryland_rice',
-              '2000s_historic_rainfed_wetland_rice',
-            ],
-            rcp4p5: [
-              '2020s_rcp4p5_irrigated_wetland_rice',
-              '2020s_rcp4p5_rainfed_dryland_rice',
-              '2020s_rcp4p5_rainfed_wetland_rice',
-              '2050s_rcp4p5_irrigated_wetland_rice',
-              '2050s_rcp4p5_rainfed_dryland_rice',
-              '2050s_rcp4p5_rainfed_wetland_rice',
-            ],
-            rcp8p5: [
-              '2020s_rcp8p5_irrigated_wetland_rice',
-              '2020s_rcp8p5_rainfed_dryland_rice',
-              '2020s_rcp8p5_rainfed_wetland_rice',
-              '2050s_rcp8p5_irrigated_wetland_rice',
-              '2050s_rcp8p5_rainfed_dryland_rice',
-              '2050s_rcp8p5_rainfed_wetland_rice',
-            ],
-          },
-        },
-      },
+      rice_landslide_widget,
       // {
       //   title: 'widgets:water_stress.title',
       //   info: {
@@ -188,37 +228,7 @@ const trade = {
   },
   export_and_import: {
     info: 'trade.export_and_import.info',
-    widgets: [
-      {
-        title: 'widgets:export_import.rice.title',
-        type: 'custom',
-        fullWidth: true,
-        widget: ImportExport,
-        controlsProps: {
-          products: [
-            {
-              label: 'widgets:export_import.rice.products.rice_husked',
-              value: 'Rice, husked',
-            },
-            {
-              label: 'widgets:export_import.rice.products.rice_milled',
-              value: 'Rice, milled',
-            },
-            {
-              label: 'widgets:export_import.rice.products.rice_paddy',
-              value: 'Rice, paddy',
-            },
-          ],
-          indicators: [
-            {
-              label: 'widgets:export_import.indicators.quantity',
-              value: 'Quantity',
-            },
-            { label: 'widgets:export_import.indicators.value', value: 'Value' },
-          ],
-        },
-      },
-    ],
+    widgets: [rice_import_widget],
   },
 };
 

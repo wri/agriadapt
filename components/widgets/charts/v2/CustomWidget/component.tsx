@@ -5,13 +5,14 @@ import React, { Attributes, useState } from 'react';
 import styles from './styles.module.scss';
 
 interface CustomWidgetProps {
+  country,
   widget: React.FunctionComponent;
   controlsProps: any;
   title: string;
   info: any;
 }
 
-const CustomWidget = ({ widget, controlsProps, title, info }: CustomWidgetProps) => {
+const CustomWidget = ({ country, widget, controlsProps, title, info }: CustomWidgetProps) => {
   const widgetHeader = {
     id: null,
     name: title,
@@ -27,11 +28,11 @@ const CustomWidget = ({ widget, controlsProps, title, info }: CustomWidgetProps)
   const toggleShareModal = () => setShowShareModal((s) => !s);
 
   return (
-    <div className="p-4 border border-b-0 rounded border-gray-light shadow-gray-light shadow-sm">
+    <div className="p-4 border border-b-0 rounded border-gray-light shadow-gray-light shadow-sm h-full">
       <WidgetHeader
         widget={widgetHeader}
         onToggleInfo={toggleShowInfo}
-        // onToggleShare={toggleShareModal}
+        onToggleShare={toggleShareModal}
       />
       {typeof window !== 'undefined' && (
         <div
@@ -51,7 +52,7 @@ const CustomWidget = ({ widget, controlsProps, title, info }: CustomWidgetProps)
           widget={info}
           onClose={toggleShareModal}
           country={undefined}
-          params={{ rcp: '4.5' }}
+          params={{ geostore: country.value }}
           worldview={undefined}
         />
       )}
