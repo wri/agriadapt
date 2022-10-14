@@ -39,7 +39,7 @@ export default function WidgetShareModal({
 
       setWebshotLoading(true);
 
-      const { widgetThumbnail } = await takeWidgetWebshot(widget.id, {
+      const { widgetThumbnail} = await takeWidgetWebshot(widget.id, {
         type: widgetType,
         ...params,
       });
@@ -47,7 +47,7 @@ export default function WidgetShareModal({
       if (widgetThumbnail) {
         saveAs(
           widgetThumbnail,
-          `${widget.slug}-${dateFnsFormat(
+          `${widget.slug ?? widget.id}-${dateFnsFormat(
             Date.now(),
             "yyyy-MM-dd'T'HH:mm:ss"
           )}.png`

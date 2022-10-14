@@ -19,15 +19,17 @@ export const takeWidgetWebshot = (widgetId, params = {}) => {
       : WRIAPI.get(
           `webshot`,
           {
+            responseType: 'blob',
             params: {
               url: `${location.origin}/embed/widget/${widgetId}?${new URLSearchParams(params).toString()}`,
+              format: 'png',
               filename: `${widgetId}.png`,
             },
           }
         );
 
   return req
-    .then(({ data }) => data.data)
+    .then(({ data }) => (type !== 'widget' ? data.data : { widgetThumbnail: data }))
     .catch(({ response }) => {
       const { status, statusText } = response;
 
