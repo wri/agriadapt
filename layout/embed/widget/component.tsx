@@ -8,7 +8,7 @@ import { isLoadedExternally } from 'utils/embed';
 
 const isExternal = isLoadedExternally();
 
-const LayoutEmbedWidgetContainer = ({ widget: w, country, crop, isWebshot }) => {
+const LayoutEmbedWidgetContainer = ({ widget: w, country, crop, isWebshot, rcp }) => {
   const { t } = useTranslation(['common', 'countries', 'widgets']);
 
   const title = t(w.title, {
@@ -35,6 +35,7 @@ const LayoutEmbedWidgetContainer = ({ widget: w, country, crop, isWebshot }) => 
           widget={w.widget}
           controlsProps={{
             ...w.controlsProps,
+            rcp,
             country: params.country,
           }}
         />

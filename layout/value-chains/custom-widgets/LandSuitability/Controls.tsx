@@ -7,12 +7,12 @@ import RadioGroup from 'components/form/RadioGroup';
 import { useTranslation } from 'next-i18next';
 import styles from './styles.module.scss';
 
-const Controls = ({ setConfig, options: params, layers, country }) => {
+const Controls = ({ rcp, setConfig, setParams, options: params, layers, country }) => {
   const scenarios = [
     { label: 'common:emission_scenarios.pessimistic', value: 'rcp8p5' },
     { label: 'common:emission_scenarios.optimistic', value: 'rcp4p5' },
   ];
-  const emscen = useSelect(scenarios[0]);
+  const emscen = useSelect(scenarios.find((s) => s.value === rcp) ?? scenarios[0]);
   const [radios, setRadios] = useState(
     Array.isArray(params[0]) ? params.map((p) => p[0].value) : [params[0].value]
   );
@@ -27,6 +27,11 @@ const Controls = ({ setConfig, options: params, layers, country }) => {
     });
     setRadioToggle((t) => !t);
   };
+
+  const handleScenarioChange = (e) => {
+    emscen.onChange(e);
+    setParams((p) => ({ ...p, rcp: e.value}))
+  }
 
   useEffect(() => {
     const rasters = [...layers[emscen.value.value], ...layers['historic']]
@@ -58,7 +63,7 @@ const Controls = ({ setConfig, options: params, layers, country }) => {
         }}
         isSearchable={false}
         value={{ ...emscen.value, label: t(emscen.value.label) }}
-        onChange={emscen.onChange}
+        onChange={handleScenarioChange}
         options={scenarios.map((s) => ({ ...s, label: t(s.label) }))}
         className={'Select--large'}
       >

@@ -35,13 +35,14 @@ const geostore_defaults = {
 
 const EmbedWidgetPage = ({ id }) => {
   const {
-    query: { webshot },
+    query: { webshot, rcp },
   } = useRouter();
 
   return (
     <LayoutEmbedWidget
       {...(webshot && { isWebshot: true })}
       widget={widgets[id]}
+      rcp={rcp}
       // params={restQueryParams}
     />
   );

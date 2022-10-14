@@ -23,6 +23,7 @@ const CustomWidget = ({ country, widget, controlsProps, title, info }: CustomWid
 
   const [showShareModal, setShowShareModal] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
+  const [params, setParams] = useState({});
 
   const toggleShowInfo = () => setShowInfo((s) => !s);
   const toggleShareModal = () => setShowShareModal((s) => !s);
@@ -41,6 +42,7 @@ const CustomWidget = ({ country, widget, controlsProps, title, info }: CustomWid
           {React.createElement(widget, {
             config,
             setConfig,
+            setParams,
             controlsProps,
           } as Attributes)}
           {showInfo && widget && <WidgetInfo widget={info} className="p-4" />}
@@ -52,7 +54,7 @@ const CustomWidget = ({ country, widget, controlsProps, title, info }: CustomWid
           widget={info}
           onClose={toggleShareModal}
           country={undefined}
-          params={{ geostore: country.value }}
+          params={{ geostore: country.value, ...params }}
           worldview={undefined}
         />
       )}
