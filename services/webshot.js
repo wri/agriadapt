@@ -16,9 +16,8 @@ export const takeWidgetWebshot = (widgetId, params = {}) => {
   const req =
     type != 'widget'
       ? WRIAPI.post(`webshot/widget/${widgetId}/thumbnail`, {}, { params })
-      : WRIAPI.post(
+      : WRIAPI.get(
           `webshot`,
-          {},
           {
             params: {
               url: `${location.origin}/embed/widget/${widgetId}?${new URLSearchParams(params).toString()}`,
