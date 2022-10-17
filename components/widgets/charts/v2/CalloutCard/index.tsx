@@ -53,7 +53,7 @@ const CalloutCard = ({
     // {({ ref, inView }) => (
     <div className="w-full h-full flex">
       {/* {inView && ( */}
-      <div className="c-callout-card border border-b-0 border-gray-light shadow-gray-light shadow-sm flex rounded">
+      <div className="c-callout-card border border-b-0 border-gray-light shadow-gray shadow-sm flex rounded">
         <div className="c-data m-auto">
           <h1 className="stat-value">{result}</h1>
           {type && (

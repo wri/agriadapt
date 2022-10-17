@@ -5,8 +5,8 @@ import { template } from 'components/widgets/charts/v2/PieChart/template';
 
 const Pie = ({ widgetConfig }) => (
   <div
-    className="relative flex overflow-y-hidden widget-container grow mb-3"
-    style={{ height: 171 }}
+    className="relative flex overflow-y-hidden w-full grow mb-4"
+    style={{ width: 250, height: 171 }}
   >
     <Renderer widgetConfig={widgetConfig} adapter={RWAdapter} />
   </div>
@@ -43,7 +43,7 @@ const PieChart = ({
   // const valueString = `${20}%`;
 
   return (
-    <div className="c-pie-chart-v2 w-full">
+    <div className="c-pie-chart-v2 border border-b-0 border-gray-light shadow-gray shadow-sm rounded">
       <Pie widgetConfig={widgetConfig} />
       {/* <h1 className="stat-value">{valueString}</h1>
       <h3 className="stat-type">{type}</h3> */}

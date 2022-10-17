@@ -94,7 +94,7 @@ const AnalysisVisuals = ({
           const valid = output.type === 'number' ? !isNaN(parseFloat(avg)) : true;
 
           return valid && (
-            <div key={`${c}`} className={'vis-grid-item vis-grid-item--' + String.fromCharCode('a'.charCodeAt(0) + (i % (outputs.length/2)))}>
+            <div key={c} className="vis-grid-item">
               {output.type === 'string' && (
                 <PieChart name={c} domain={labelDomain} />
               )}

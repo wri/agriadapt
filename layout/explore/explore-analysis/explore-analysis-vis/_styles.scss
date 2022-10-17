@@ -1,37 +1,21 @@
 // Implement masonry layout here:
 
 .vis-grid {
-  // border: 1px solid;
-  // display: -webkit-box;
-  // display: -webkit-flex;
-  // display: -ms-flexbox;
   display: flex;
   flex-direction: row;
   overflow-x: wrap;
   gap: 10px;
 }
 
-.vis-grid:after {
-  display: block;
-  content: '';
-  clear: both;
-  
-}
-
 .vis-grid-col {
   float: left;
   width: 49%;
-  // background: #DDD;
-  display:block;
+  display: block;
   flex-grow: 1;
-  width: 250px;
 }
 
 .vis-grid-item {
-  border: 1px solid black;
-  display: flex;
-  flex-wrap: wrap;
-  flex: 1 1 250px;
+  width: 100%;
   margin-bottom: 10px;
 }
 
