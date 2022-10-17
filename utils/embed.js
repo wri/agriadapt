@@ -10,14 +10,13 @@ const ALLOWED_QUERY_PARAMS_MAPS_SWIPE_WIDGETS = [
   'geostore_id',
 ];
 
-const ALLOWED_QUERY_PARAMS_CUSTOM_WIDGETS = ['rcp'];
+const ALLOWED_QUERY_PARAMS_CUSTOM_WIDGETS = ['geostore', 'rcp'];
 
 const ALLOWED_QUERY_PARAMS_CHART_WIDGETS = ['geostore_env', 'geostore_id'];
 
 export const isLoadedExternally = () => {
   if (typeof document === 'undefined' || document.referrer === '') return false;
-  // TODO: change?
-  return !/localhost|(staging\.)?resourcewatch.org/.test(document.referrer);
+  return !/localhost|(staging\.)?agriadapt.org/.test(document.referrer);
 };
 
 export const getLinksByWidgetType = (widget = {}, params = {}) => {

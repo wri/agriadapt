@@ -52,10 +52,7 @@ const ExploreLayersSearch = ({
       {},
       { shallow: true }
     );
-    logEvent({
-      action: 'filter',
-      params: { value_chains: [...values].sort().join(',') },
-    });
+    logEvent('Explore (Filter)', 'Filter Value Chains', [...values].sort().join(','));
   };
 
   const handleSelectEmissionScenario = (scenario) => {
@@ -66,10 +63,7 @@ const ExploreLayersSearch = ({
       {},
       { shallow: true }
     );
-    logEvent({
-      action: 'filter',
-      params: { emission_scenario: scenario.value },
-    });
+    logEvent('Explore (Filter)', 'Filter Emission Scenario', scenario.value);
   };
 
   const handleSelectTimescale = (timescale) => {
@@ -88,12 +82,7 @@ const ExploreLayersSearch = ({
 
   const handleSubmit = () => {
     setFiltersAdvancedOpen(false);
-    logEvent({
-      action: 'filter',
-      params: {
-        timescale: selectedTimescale.value,
-      },
-    });
+    logEvent('Explore (Filter)', 'Filter Timescale', selectedTimescale.value);
     loadDatasets();
   };
 
@@ -106,12 +95,7 @@ const ExploreLayersSearch = ({
     if (!advOpen) {
       loadDatasets();
       value.trim().length &&
-        logEvent({
-          action: 'dataset_search',
-          params: {
-            search_term: value,
-          },
-        });
+        logEvent('Explore (Filter)', 'Search', value);
     }
   }, 500);
 
@@ -135,16 +119,14 @@ const ExploreLayersSearch = ({
         onSearch={handleSearch}
         input={{
           value: search,
-          placeholder: t('layers:Search Layers', { keySeparator: ':' }), // TODO: Translate
+          placeholder: t('layers:Search Layers', { keySeparator: ':' }),
         }}
       >
         {SearchInput}
       </Field>
       <Field
-        // TODO: Translate
         id={'VALUE_CHAINS'}
         properties={{
-          // TODO: Translate
           label: t('layers:Filter Layers by Value Chains', {
             keySeparator: ':',
           }),
@@ -177,13 +159,12 @@ const ExploreLayersSearch = ({
         }}
         value={{...selectedScenario.value, label: t(selectedScenario.value.label)}}
         onChange={handleSelectEmissionScenario}
-        placeholder={EMISSION_SCENARIO.placeholder} // TODO: Translate
+        placeholder={EMISSION_SCENARIO.placeholder}
         options={EMISSION_SCENARIO.options.map(o => ({ ...o, label: t(o.label)}))}
         className="Select--large"
       >
         {Select}
       </Field>
-      {/* TODO: Translate */}
       <div className="advanced-link">
         <a onClick={handleClickAdvanced}>{t('explore:layers.Advanced Search')}</a>
       </div>
@@ -192,7 +173,6 @@ const ExploreLayersSearch = ({
           <Field
             id={'TIMESCALE'}
             properties={{
-              // TODO: Translate
               label: t('layers:Filter Layers by Timescale', {
                 keySeparator: ':',
               }),
@@ -208,11 +188,9 @@ const ExploreLayersSearch = ({
           </Field>
           <div className="c-explore-search-actions">
             <button className="c-button -secondary" onClick={handleCancel}>
-              {/* TODO: Translate */}
               {t('common:Cancel')}
             </button>
             <button className="c-button -primary" onClick={handleSubmit}>
-              {/* TODO: Translate */}
               {t('common:Search')}
             </button>
           </div>

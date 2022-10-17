@@ -5,48 +5,91 @@ import ImportExport from '../custom-widgets/ImportExport';
 import LandSuitability from '../custom-widgets/LandSuitability';
 // import WaterStress from '../custom-widgets/WaterStress';
 
+export const cotton_landslide_widget = {
+  title: 'widgets:cotton_land_suitability.title',
+  info: {
+    id: 'cotton_ls',
+    description: 'all_land_suitability.description',
+    links: [
+      {
+        link: 'https://resourcewatch.org/data/explore/945185f8-76b5-4f4d-84d6-eff7f96dd1f3',
+        name: 'all_land_suitability.links.0',
+      },
+    ],
+    caption: "all_land_suitability.caption"
+  },
+  type: 'custom',
+  fullWidth: true,
+  widget: LandSuitability,
+  controlsProps: {
+    options: [
+      {
+        label: 'widgets:cotton_land_suitability.rainfed_cotton',
+        value: 'rainfed',
+      },
+      {
+        label: 'widgets:cotton_land_suitability.irrigated_cotton',
+        value: 'irrigated',
+      },
+    ],
+    layers: {
+      historic: [
+        '2000s_historic_irrigated_cotton',
+        '2000s_historic_rainfed_cotton',
+      ],
+      rcp4p5: [
+        '2020s_rcp4p5_irrigated_cotton',
+        '2020s_rcp4p5_rainfed_cotton',
+        '2050s_rcp4p5_irrigated_cotton',
+        '2050s_rcp4p5_rainfed_cotton',
+      ],
+      rcp8p5: [
+        '2020s_rcp8p5_irrigated_cotton',
+        '2020s_rcp8p5_rainfed_cotton',
+        '2050s_rcp8p5_irrigated_cotton',
+        '2050s_rcp8p5_rainfed_cotton',
+      ],
+    },
+  },
+};
+
+export const cotton_import_widget = {
+  title: 'widgets:export_import.cotton.title',
+  info: {
+    id: 'cotton_ie',
+    description: 'widgets:export_import.description'
+  },
+  type: 'custom',
+  fullWidth: true,
+  widget: ImportExport,
+  controlsProps: {
+    products: [
+      {
+        label: 'widgets:export_import.cotton.products.cotton_carded_combed',
+        value: 'Cotton, carded, combed',
+      },
+      {
+        label: 'widgets:export_import.cotton.products.cotton_lint',
+        value: 'Cotton lint',
+      },
+    ],
+    indicators: [
+      {
+        label: 'widgets:export_import.indicators.quantity',
+        value: 'Quantity',
+      },
+      { label: 'widgets:export_import.indicators.value', value: 'Value' },
+    ],
+  },
+};
+
 const inputs = {
   land_suitability: {
     info: 'inputs.land_suitability.info',
     fullWidth: true,
     widgets: [
       { id: '2a1aab23-1c36-4a17-b5e0-b63a68531c63', fullWidth: true },
-      {
-        title: 'widgets:cotton_land_suitability.title',
-        type: 'custom',
-        fullWidth: true,
-        widget: LandSuitability,
-        controlsProps: {
-          options: [
-            {
-              label: 'widgets:cotton_land_suitability.rainfed_cotton',
-              value: 'rainfed',
-            },
-            {
-              label: 'widgets:cotton_land_suitability.irrigated_cotton',
-              value: 'irrigated',
-            },
-          ],
-          layers: {
-            historic: [
-              '2000s_historic_irrigated_cotton',
-              '2000s_historic_rainfed_cotton',
-            ],
-            rcp4p5: [
-              '2020s_rcp4p5_irrigated_cotton',
-              '2020s_rcp4p5_rainfed_cotton',
-              '2050s_rcp4p5_irrigated_cotton',
-              '2050s_rcp4p5_rainfed_cotton',
-            ],
-            rcp8p5: [
-              '2020s_rcp8p5_irrigated_cotton',
-              '2020s_rcp8p5_rainfed_cotton',
-              '2050s_rcp8p5_irrigated_cotton',
-              '2050s_rcp8p5_rainfed_cotton',
-            ],
-          },
-        },
-      },
+      cotton_landslide_widget,
       // { id: 'a5b13394-84a8-4f7c-aa2d-7fc332f5c842', fullWidth: true },
       // {
       //   title: 'widgets:water_stress.title',
@@ -129,31 +172,7 @@ const trade = {
   },
   export_and_import: {
     info: 'trade.export_and_import.info',
-    widgets: [
-      {
-        title: 'widgets:export_import.cotton.title',
-        type: 'custom',
-        fullWidth: true,
-        widget: ImportExport,
-        controlsProps: {
-          products: [
-            {
-              label:
-                'widgets:export_import.cotton.products.cotton_carded_combed',
-              value: 'Cotton, carded, combed',
-            },
-            {
-              label: 'widgets:export_import.cotton.products.cotton_lint',
-              value: 'Cotton lint',
-            },
-          ],
-          indicators: [
-            { label: 'widgets:export_import.indicators.quantity', value: 'Quantity' },
-            { label: 'widgets:export_import.indicators.value', value: 'Value' },
-          ],
-        },
-      },
-    ],
+    widgets: [cotton_import_widget],
   },
 };
 

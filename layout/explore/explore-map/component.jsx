@@ -52,9 +52,11 @@ import {
 // constants
 import { LEGEND_TIMELINE_PROPERTIES, TIMELINE_THRESHOLD } from './constants';
 import PointEdit from 'components/map/plugins/point-edit';
+import { setSidebarOpen } from '../actions';
 
 const ExploreMap = (props) => {
   const {
+    open,
     token,
     userId,
     embed,
@@ -75,7 +77,7 @@ const ExploreMap = (props) => {
     exploreBehavior,
     onLayerInfoButtonClick,
     setSelectedDataset,
-    setSidebarAnchor,
+    setSidebarSelectedTab,
     setMapLayerGroupVisibility,
     setMapLayerGroupsInteractionLatLng,
     setMapLayerGroupsInteraction,
@@ -109,22 +111,19 @@ const ExploreMap = (props) => {
         layer,
       });
 
+
+      setSidebarSelectedTab('layers');
+      if(!open) setSidebarOpen(true);
+
       if (layer) {
         if (exploreBehavior && onLayerInfoButtonClick) {
           onLayerInfoButtonClick(layer);
         } else {
           setSelectedDataset(layer.dataset);
-          setSidebarAnchor('layers');
         }
       }
     },
-    [
-      mapState,
-      exploreBehavior,
-      onLayerInfoButtonClick,
-      setSelectedDataset,
-      setSidebarAnchor,
-    ]
+    [mapState, setSidebarSelectedTab, open, exploreBehavior, onLayerInfoButtonClick, setSelectedDataset]
   );
 
   const onChangeOpacity = debounce((l, opacity) => {

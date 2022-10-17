@@ -49,12 +49,8 @@ function DatasetLayerCard(props: DatasetLayerCardProps) {
 
   const handleToggleLayer = () => {
     if (!layerIsActive) {
-      logEvent({
-        action: 'event',
-        params: {
-          explore_detail_show_layer: `${name} [${id}]`,
-        },
-      });
+      logEvent('Explore', 'Show Layer', `${name} [${id}]`);
+
       if (!layerGroup) {
         toggleMapLayerGroup({ dataset, toggle: true });
       }
@@ -67,12 +63,7 @@ function DatasetLayerCard(props: DatasetLayerCardProps) {
         dataset: { id: dataset.id },
         toggle: false,
       });
-      logEvent({
-        action: 'event',
-        params: {
-          explore_detail_hide_layer: `${name} [${id}]`,
-        },
-      });
+      logEvent('Explore', 'Hide Layer', `${name} [${id}]`);
     }
   };
 

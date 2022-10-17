@@ -10,15 +10,26 @@ import { WRIAPI } from 'utils/axios';
  */
 export const takeWidgetWebshot = (widgetId, params = {}) => {
   logger.info(`Taking webshot to widget ${widgetId}...`);
+  const type = params.type;
+  if (params.type === 'widget') delete params.type;
 
-  return WRIAPI.post(
-    `webshot/widget/${widgetId}/thumbnail`,
-    {},
-    {
-      params,
-    }
-  )
-    .then(({ data }) => data.data)
+  const req =
+    type != 'widget'
+      ? WRIAPI.post(`webshot/widget/${widgetId}/thumbnail`, {}, { params })
+      : WRIAPI.get(
+          `webshot`,
+          {
+            responseType: 'blob',
+            params: {
+              url: `${location.origin}/embed/widget/${widgetId}?${new URLSearchParams(params).toString()}`,
+              format: 'png',
+              filename: `${widgetId}.png`,
+            },
+          }
+        );
+
+  return req
+    .then(({ data }) => (type !== 'widget' ? data.data : { widgetThumbnail: data }))
     .catch(({ response }) => {
       const { status, statusText } = response;
 

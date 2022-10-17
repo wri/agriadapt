@@ -2,6 +2,8 @@ import { useRouter } from 'next/router';
 
 // components
 import LayoutEmbedMap from 'layout/embed/map';
+import { GetServerSideProps } from 'next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const EmbedMapPage = () => {
   const {
@@ -17,5 +19,17 @@ const EmbedMapPage = () => {
     />
   );
 };
+
+export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, [
+        'common',
+        'countries',
+        'modals'
+      ])),
+    }
+  }
+}
 
 export default EmbedMapPage;

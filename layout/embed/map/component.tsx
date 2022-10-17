@@ -57,9 +57,7 @@ export default function LayoutEmbedMap({
     // see https://resource-watch.github.io/doc-api/reference.html#webshot
     // it waits until 2 seconds to notify is ready to screenshot
     const timerId = window.setTimeout(() => {
-      // eslint-disable-next-line
-      // @ts-ignore
-      window.WEBSHOT_READY = true;
+      window['WEBSHOT_READY'] = true;
     }, 2000);
 
     return () => {
