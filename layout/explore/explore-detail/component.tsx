@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 // Components
 import Spinner from 'components/ui/Spinner';
@@ -6,7 +6,6 @@ import ReadMore from 'components/ui/read-more';
 
 // Utils
 import { getDateConsideringTimeZone } from 'utils/utils';
-import { logEvent } from 'utils/analytics';
 
 // Explore detail components
 import ExploreDetailHeader from './explore-detail-header';
@@ -24,24 +23,17 @@ interface ExploreDetailComponentProps {
   dataset?: Record<string, any>;
   datasetLoading: boolean;
   tags: string[];
-  setSidebarAnchor: (anchor: any) => void;
   emission_scenario: 'rcp4.5' | 'rcp8.5';
   value_chains: Array<'coffee' | 'cotton' | 'rice'>;
 }
 
 const ExploreDetailComponent = ({
   dataset = null,
-  setSidebarAnchor,
   datasetLoading,
   tags,
   emission_scenario,
   value_chains,
 }: ExploreDetailComponentProps) => {
-  // We clear the anchor value so that next time the component is open
-  // the scroll is at the top
-  useEffect(() => {
-    return () => setSidebarAnchor(null);
-  }, [setSidebarAnchor]);
 
   const layerFilter = (l: APILayerSpec) =>
     (!l.applicationConfig.emission_scenario ||
