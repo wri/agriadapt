@@ -43,7 +43,7 @@ const PieChart = ({
   // const valueString = `${20}%`;
 
   return (
-    <div className="c-pie-chart-v2">
+    <div className="c-pie-chart-v2 w-full">
       <Pie widgetConfig={widgetConfig} />
       {/* <h1 className="stat-value">{valueString}</h1>
       <h3 className="stat-type">{type}</h3> */}

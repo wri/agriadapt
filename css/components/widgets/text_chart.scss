@@ -28,6 +28,7 @@
 .c-callout-card {
   background: $white;
   position: relative;
+  width: 100%;
 
   &::after {
     content: '';

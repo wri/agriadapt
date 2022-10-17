@@ -3,12 +3,8 @@ import CalloutCard from 'components/widgets/charts/v2/CalloutCard';
 import { ErrorBoundary } from 'react-error-boundary';
 import ErrorFallback from 'components/error-fallback';
 import { average, Output } from './utils';
-import Colcade from 'colcade';
 import { useEffect, useState } from 'react';
 import React from 'react';
-import classNames from 'classnames';
-import PropTypes from 'prop-types';
-import { withRouter } from 'next/router';
 
 interface AnaylsisVisualsProps {
   domains: {
@@ -152,9 +148,9 @@ const AnalysisVisuals = ({
   useEffect(() => {
     if (Colcade) {
       setColcade(
-        new Colcade('.grid', {
-          columns: '.grid-col',
-          items: '.grid-item'
+        new Colcade('.vis-grid', {
+          columns: '.vis-grid-col',
+          items: '.vis-grid-item'
         }),
       );
     }
@@ -176,9 +172,9 @@ const AnalysisVisuals = ({
     >
       {/* Implement masonry layout here: */}
       {/* data-colcade="columns: .grid-col, items: .grid-item" */}
-      <div className="c-analysis-visuals grid" data-colcade="columns: .grid-col, items: .grid-item">
-        <div className="grid-col grid-col--1"></div>
-        <div className="grid-col grid-col--2"></div>
+      <div className="c-analysis-visuals vis-grid" data-colcade="columns: .vis-grid-col, items: .vis-grid-item">
+        <div className="vis-grid-col vis-grid-col--1"></div>
+        <div className="vis-grid-col vis-grid-col--2"></div>
         {columns.map((c, i) => {
           const output = outputs[i];
           if (!output) return;
@@ -190,7 +186,7 @@ const AnalysisVisuals = ({
             output
           );
           return (
-            <div key={`${c}`} className={'grid-item grid-item--' + String.fromCharCode('a'.charCodeAt(0) + (i % (outputs.length/2)))}>
+            <div key={`${c}`} className={'vis-grid-item vis-grid-item--' + String.fromCharCode('a'.charCodeAt(0) + (i % (outputs.length/2)))}>
               {output.type === 'string' && (
                 <PieChart name={c} domain={labelDomain} />
               )}

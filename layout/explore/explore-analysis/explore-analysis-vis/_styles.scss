@@ -1,37 +1,38 @@
 // Implement masonry layout here:
 
-.grid {
-  border: 1px solid;
+.vis-grid {
+  // border: 1px solid;
   // display: -webkit-box;
   // display: -webkit-flex;
   // display: -ms-flexbox;
   display: flex;
   flex-direction: row;
   overflow-x: wrap;
-  width: 600px;
+  gap: 10px;
 }
 
-.grid:after {
+.vis-grid:after {
   display: block;
   content: '';
   clear: both;
   
 }
 
-.grid-col {
+.vis-grid-col {
   float: left;
   width: 49%;
-  margin-right: 2%;
-  background: #DDD;
+  // background: #DDD;
   display:block;
   flex-grow: 1;
   width: 250px;
 }
 
-.grid-item {
+.vis-grid-item {
+  border: 1px solid black;
   display: flex;
   flex-wrap: wrap;
   flex: 1 1 250px;
+  margin-bottom: 10px;
 }
 
 // .c-analysis-visuals {
