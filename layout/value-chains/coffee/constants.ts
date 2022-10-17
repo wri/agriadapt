@@ -6,7 +6,14 @@ export const coffee_landslide_widget = {
   title: 'widgets:coffee_land_suitability.title',
   info: {
     id: 'coffee_ls',
-    description: '',
+    description: 'widgets:all_land_suitability.description',
+    links: [
+      {
+        link: 'https://resourcewatch.org/data/explore/945185f8-76b5-4f4d-84d6-eff7f96dd1f3',
+        name: 'widgets:all_land_suitability.links.0',
+      },
+    ],
+    caption: "widgets:all_land_suitability.caption"
   },
   type: 'custom',
   fullWidth: true,
@@ -47,7 +54,7 @@ export const coffee_import_widget = {
   title: 'widgets:export_import.coffee.title',
   info: {
     id: 'coffee_ie',
-    description: '',
+    description: 'widgets:export_import.description'
   },
   type: 'custom',
   fullWidth: true,

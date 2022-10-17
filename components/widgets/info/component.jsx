@@ -5,7 +5,7 @@ import { useTranslation } from 'next-i18next';
 
 export default function WidgetInfo({ widget, className }) {
   const widgetLinks = useMemo(
-    () => widget?.metadata?.[0]?.info?.widgetLinks || [],
+    () => widget?.metadata?.[0]?.info?.widgetLinks ?? widget?.links ?? [],
     [widget]
   );
 
@@ -34,9 +34,9 @@ export default function WidgetInfo({ widget, className }) {
             <h4>{t('widgets:widget_info.links')}</h4>
             <ul>
               {widgetLinks.map((link) => (
-                <li key={link.name}>
+                <li key={t(link.name)}>
                   <a href={link.link} target="_blank" rel="noopener noreferrer">
-                    {link.name}
+                    {t(link.name)}
                   </a>
                 </li>
               ))}

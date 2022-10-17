@@ -1,8 +1,10 @@
 import WidgetHeader from 'components/widgets/header/component';
 import WidgetInfo from 'components/widgets/info';
+// import WidgetCaption from 'components/widgets/caption';
 import WidgetShareModal from 'components/widgets/share-modal/component';
 import React, { Attributes, useState } from 'react';
 import styles from './styles.module.scss';
+import classNames from 'classnames';
 
 interface CustomWidgetProps {
   country,
@@ -29,15 +31,23 @@ const CustomWidget = ({ country, widget, controlsProps, title, info }: CustomWid
   const toggleShareModal = () => setShowShareModal((s) => !s);
 
   return (
-    <div className="p-4 border border-b-0 rounded border-gray-light shadow-gray-light shadow-sm h-full">
+    <div className="border border-b-0 rounded border-gray-light shadow-gray-light shadow-sm h-full">
+      <div className='p-4 border border-b-0 rounded-tl rounded-tr border-gray-light'>
       <WidgetHeader
         widget={widgetHeader}
+        isInfoVisible={showInfo}
         onToggleInfo={toggleShowInfo}
         onToggleShare={toggleShareModal}
       />
+      </div>
       {typeof window !== 'undefined' && (
         <div
-          className={`${styles.c_param_chart} relative flex overflow-y-hidden widget-container grow mb-3 pt-6`}
+          className={classNames(`${styles.c_param_chart} relative flex overflow-y-hidden widget-container grow mb-3 pt-6`,
+            {
+              'p-4': !showInfo,
+              'rounded-none': !!info.caption,
+            }
+          )}
         >
           {React.createElement(widget, {
             config,
@@ -58,6 +68,7 @@ const CustomWidget = ({ country, widget, controlsProps, title, info }: CustomWid
           worldview={undefined}
         />
       )}
+      {/* {info.caption && <WidgetCaption text={info.caption} />} */}
     </div>
   );
 };

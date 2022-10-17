@@ -9,7 +9,14 @@ export const cotton_landslide_widget = {
   title: 'widgets:cotton_land_suitability.title',
   info: {
     id: 'cotton_ls',
-    description: '',
+    description: 'all_land_suitability.description',
+    links: [
+      {
+        link: 'https://resourcewatch.org/data/explore/945185f8-76b5-4f4d-84d6-eff7f96dd1f3',
+        name: 'all_land_suitability.links.0',
+      },
+    ],
+    caption: "all_land_suitability.caption"
   },
   type: 'custom',
   fullWidth: true,
@@ -50,7 +57,7 @@ export const cotton_import_widget = {
   title: 'widgets:export_import.cotton.title',
   info: {
     id: 'cotton_ie',
-    description: '',
+    description: 'widgets:export_import.description'
   },
   type: 'custom',
   fullWidth: true,
