@@ -185,12 +185,14 @@ const AnalysisVisuals = ({
             valueMaps[i],
             output
           );
-          return (
+          const valid = output.type === 'number' ? !isNaN(parseFloat(avg)) : true;
+
+          return valid && (
             <div key={`${c}`} className={'vis-grid-item vis-grid-item--' + String.fromCharCode('a'.charCodeAt(0) + (i % (outputs.length/2)))}>
               {output.type === 'string' && (
                 <PieChart name={c} domain={labelDomain} />
               )}
-              {output.type === 'number' && !isNaN(parseFloat(avg)) && (
+              {output.type === 'number' && (
                 <CalloutCard
                   analysis={{
                     name: c,
