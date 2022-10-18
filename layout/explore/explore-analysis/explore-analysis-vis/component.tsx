@@ -49,6 +49,8 @@ const AnalysisVisuals = ({
 
   const IS_STATIC = typeof window === 'undefined';
   
+  // eslint-disable-next-line
+  // @ts-ignore
   const { default: Colcade } = useDynamicImport(
     !IS_STATIC && import('colcade'),
   );
