@@ -2,12 +2,12 @@
 	"intro": {
 		"subtitle": "Riesgo climático en las cadenas de valor del arroz",
 		"description": [
-			"El aumento de la temperatura, el aumento del nivel del mar y los cambios en los patrones de lluvia y la distribución podrían tener un impacto sustancial en los recursos de tierra y agua para la producción de arroz. La extracción continua de agua subterránea para el riego con arrozales ya está dando lugar a una fuerte disminución de la disponibilidad de agua subterránea."
+			"El aumento de la temperatura, el aumento del nivel del mar y los cambios en los patrones de lluvia y su distribución podrían tener un impacto sustancial en los recursos de tierra y agua para la producción de arroz. La extracción continua de agua subterránea para el riego de arrozales ya está dando lugar a una fuerte disminución de la disponibilidad de agua subterránea."
 		]
 	},
 	"climate_hazard": {
 		"title": "¿Cómo afecta el cambio climático a la cadena de valor del arroz?",
-		"description": "La producción de arroz se ve afectada por diferentes amenazas climáticas a lo largo de su cadena de valor. Haga clic en los botones a continuación para encontrar información sobre cómo los peligros climáticos afectan a cada eslabón de la cadena de valor:"
+		"description": "La producción de arroz se ve afectada por diferentes amenazas climáticas a lo largo de su cadena de valor. Haga clic en los botones a continuación para encontrar información sobre cómo los riesgos climáticos afectan a cada eslabón de la cadena de valor:"
 	},
 	"inputs": {
 		"land_suitability": {
@@ -28,12 +28,12 @@
 			"info": "Los estudios sugieren que los cambios en los patrones de lluvia y la distribución podrían tener impactos sustanciales en la tierra y los recursos hídricos para la producción de arroz, incluida la reducción de la tierra cultivable debido a inundaciones y sequías, y pérdidas en el rendimiento como resultado de una mayor persistencia de plagas, entre otros."
 		},
 		"change_in_yield": {
-			"info": "La gran mayoría de los impactos del cambio climático en la producción de arroz son el resultado de variaciones en la temperatura y las precipitaciones que conducen a inundaciones, escasez de agua y aumentos en las plagas, enfermedades y malezas. Aunque las predicciones de las condiciones climáticas futuras incluyen una cantidad de incertidumbre, es importante medir los efectos potenciales del cambio climático en la producción mundial de arroz. Estos conocimientos pueden identificar áreas que son vulnerables al cambio climático e informar el desarrollo de estrategias de adaptación. Considerar los cambios en los rendimientos del arroz también es valioso para garantizar la seguridad alimentaria futura bajo las presiones de una población creciente y una creciente demanda de arroz."
+			"info": "La gran mayoría de los impactos del cambio climático en la producción de arroz son el resultado de variaciones en la temperatura y las precipitaciones que conducen a inundaciones, escasez de agua y aumentos en las plagas, enfermedades y malezas. Aunque las predicciones de las condiciones climáticas futuras tienen cierto grado de incertidumbre, es importante medir los efectos potenciales del cambio climático en la producción mundial del arroz. Con esta información se pueden identificar áreas que son vulnerables al cambio climático e informar el desarrollo de estrategias de adaptación. Considerar los cambios en los rendimientos del arroz también es valioso para garantizar la seguridad alimentaria futura bajo las presiones de una población y demanda de arroz en crecimiento."
 		}
 	},
 	"trade": {
 		"policies_and_price": {
-			"info": "La tasa nominal de protección mide la medida en que las políticas agrícolas afectan el precio de mercado de un producto básico. Calcula la diferencia entre el precio que recibe un agricultor y el precio que recibiría un agricultor sin estas políticas."
+			"info": "La tasa nominal de protección calcula en qué medida las políticas agrícolas afectan el precio de mercado de un producto básico. Calcula la diferencia entre el precio que recibe un agricultor y el precio que recibiría un agricultor sin estas políticas."
 		},
 		"food_vulnerability": {
 			"info": "El Puntaje de Vulnerabilidad Alimentaria muestra la vulnerabilidad de un país al cambio climático en una escala de 0 a 1. Los puntajes más bajos indican los países que son menos vulnerables. El puntaje de alimentos incorpora seis indicadores (cambio proyectado de los rendimientos de cereales, crecimiento proyectado de la población, dependencia de las importaciones de alimentos, población rural, capacidad agrícola y desnutrición infantil) para capturar su vulnerabilidad con respecto a la producción y demanda de alimentos, la nutrición y la población rural."
@@ -46,12 +46,12 @@
 		{
 			"location": "Chengalpet Dt, Tamilnadu",
 			"title": "Sr. V. Prabhu",
-			"quote": "Los peligros climáticos nos dejaron en bancarrota y nos llevaron a cerrar muchas unidades de molinos de arroz. Sin embargo, con la información en esta plataforma, ahora entiendo cómo el cambio climático está afectando al negocio y puedo decidir mejor sobre nuestro plan operativo y hacer las inversiones adecuadas para prevenir futuros riesgos climáticos."
+			"quote": "Los riesgos climáticos nos dejaron en bancarrota y nos llevaron a cerrar muchas unidades de molinos de arroz. Sin embargo, con la información en esta plataforma, ahora entiendo cómo el cambio climático está afectando al negocio y puedo decidir mejor sobre nuestro plan operativo y hacer las inversiones adecuadas para prevenir futuros riesgos climáticos."
 		},
 		{
 			"location": "Coimbatore, Tamilnadu, India",
 			"title": "Profesor Asst",
-			"quote": "La Herramienta de Riesgo Climático nos ayudará a proporcionar a todas las partes interesadas en la cadena de valor del arroz la información climática adecuada que necesitan para prepararse contra posibles peligros climáticos."
+			"quote": "La Herramienta de Riesgo Climático nos ayudará a proporcionar a todas las partes interesadas en la cadena de valor del arroz la información climática adecuada que necesitan para prepararse contra posibles riesgos climáticos."
 		},
 		{
 			"location": "Kanchipuram Dt, Tamilnadu, India",

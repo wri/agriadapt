@@ -2,7 +2,7 @@
 	"intro": {
 		"subtitle": "Riesgo climático en las cadenas de valor del café",
 		"description": [
-			"La investigación disponible revela que el cambio climático afectará la producción de café en todo el mundo, especialmente la producción de arábica. El aumento de las temperaturas promedio, las sequías y olas de calor más frecuentes, los patrones estacionales cambiantes y otros factores amenazan con alterar una gran parte de las áreas productoras de café adecuadas en las próximas décadas. Es probable que estos cambios aumenten la presión sobre el agua y otros recursos naturales."
+			"La investigación disponible revela que el cambio climático afectará la producción de café en todo el mundo, especialmente la producción de arábica. El aumento de las temperaturas promedio, las sequías y olas de calor más frecuentes, los patrones estacionales cambiantes y otros factores amenazan con afectar considerablemente las zonas productoras de café en las próximas décadas. Estos cambios pueden causar aumentos en la presión sobre el agua y otros recursos naturales."
 		],
 		"drop_down_title": "Seleccionar país"
 	},
@@ -34,7 +34,7 @@
 	},
 	"trade": {
 		"export_and_import": {
-			"info": "El café es uno de los productos más importantes comercializados comercialmente en el mercado internacional, así como una de las bebidas más populares en todo el mundo. Los impactos climáticos en la producción significan efectos dominó en los mercados globales al afectar la disponibilidad, la calidad y el precio de los productos. Explore la visualización para obtener información sobre las exportaciones e importaciones de café en {{country}}."
+			"info": "El café es uno de los productos más importantes comercializados en el mercado internacional, así como una de las bebidas más populares en todo el mundo. Los impactos climáticos en la producción significan efectos dominó en los mercados globales al afectar la disponibilidad, la calidad y el precio de los productos. Explore la visualización para obtener información sobre las exportaciones e importaciones de café en {{country}}."
 		}
 	},
 	"quotes": [

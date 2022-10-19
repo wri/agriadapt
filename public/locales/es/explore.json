@@ -9,7 +9,7 @@
 		"Filter Layers by Emission Scenario": "Filtrar capas por escenario de emisión",
 		"Filter Layers by Timescale": "Filtrar capas por escala de tiempo",
 		"value_chains": {
-			"hint": "Seleccione una ruta para obtener datos con visión de futuro."
+			"hint": "Seleccione un cultivo para obtener datos de proyecciones a futuro."
 		}
 	},
 	"analysis": {

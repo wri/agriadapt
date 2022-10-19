@@ -2,17 +2,17 @@
 	"intro": {
 		"subtitle": "Riesgo climático en las cadenas de valor del algodón",
 		"description": [
-			"Es probable que la cadena de valor del algodón experimente interrupciones debido a los impactos del cambio climático, como la disponibilidad de agua, los cambios en los patrones de lluvia y el aumento de las temperaturas. La larga temporada de crecimiento del algodón (aproximadamente 150-180 días) ya hace que el cultivo sea bastante vulnerable a plagas y enfermedades. Un clima más cálido solo aumentará la susceptibilidad del algodón."
+			"Es probable que la cadena de valor del algodón experimente interrupciones debido a los impactos del cambio climático, como la disponibilidad de agua, los cambios en los patrones de lluvia y el aumento de las temperaturas. La larga temporada de crecimiento del algodón (aproximadamente 150-180 días) hace que el cultivo ya sea bastante vulnerable a plagas y enfermedades. Un clima más cálido solo aumentará la susceptibilidad del algodón."
 		],
 		"drop_down_title": "Seleccionar país"
 	},
 	"climate_hazard": {
 		"title": "¿Cómo afecta el cambio climático a la cadena de valor del algodón?",
-		"description": "La producción de algodón se ve afectada por diferentes amenazas climáticas a lo largo de su cadena de valor. Haga clic en los botones a continuación para encontrar información sobre cómo los peligros climáticos afectan a cada eslabón de la cadena de valor:"
+		"description": "La producción de algodón se ve afectada por diferentes amenazas climáticas a lo largo de su cadena de valor. Haga clic en los botones a continuación para encontrar información sobre cómo los riesgos climáticos afectan a cada eslabón de la cadena de valor:"
 	},
 	"inputs": {
 		"land_suitability": {
-			"info": "Las decisiones apropiadas sobre el uso de la tierra del algodón son vitales para lograr una productividad óptima de la tierra y garantizar la sostenibilidad ambiental. Explore las visualizaciones a continuación para obtener más información sobre cómo la idoneidad de la tierra de algodón puede cambiar en el futuro."
+			"info": "Las decisiones apropiadas sobre el uso de las tierras algodoneras son vitales para lograr una productividad óptima de la tierra y garantizar la sostenibilidad ambiental. Explore las visualizaciones a continuación para obtener más información sobre cómo la idoneidad de la tierra de algodón puede cambiar en el futuro."
 		},
 		"labor": {
 			"info": [
@@ -29,12 +29,12 @@
 			"info": "El siguiente mapa muestra las principales regiones de cultivo de algodón en {{country}}, junto con la cantidad de algodón que se produce actualmente."
 		},
 		"pests_and_disease": {
-			"info": "Los cambios en el clima pueden resultar en la evolución continua de las plagas, haciéndolas más difíciles de contener, lo que puede influir significativamente en el rendimiento y la calidad. La temperatura adecuada, la humedad, las bajas precipitaciones, la baja velocidad del viento, el tiempo de sol adecuado y la baja evaporación tienen más probabilidades de causar plagas y enfermedades del algodón."
+			"info": "Los cambios en el clima pueden resultar en la evolución continua de las plagas, haciéndolas más difíciles de contener, lo que puede influir significativamente en el rendimiento y la calidad. La temperatura y tiempo al sol propicios, la humedad, las bajas precipitaciones, la baja velocidad del viento y la baja evaporación tienen más probabilidades de causar plagas y enfermedades del algodón."
 		}
 	},
 	"trade": {
 		"policies_and_price": {
-			"info": "La tasa nominal de protección mide la medida en que las políticas agrícolas afectan el precio de mercado de un producto básico. Calcula la diferencia entre el precio que recibe un agricultor y el precio que recibiría un agricultor sin estas políticas vigentes."
+			"info": "La tasa nominal de protección calcula en qué medida las políticas agrícolas afectan el precio de mercado de un producto básico. Calcula la diferencia entre el precio que recibe un agricultor y el precio que recibiría un agricultor sin estas políticas vigentes."
 		},
 		"export_and_import": {
 			"info": "El algodón es un cultivo comercial muy importante que tiene una creciente demanda en los mercados nacionales e internacionales. Las interrupciones en la producción de algodón pueden resultar en un mercado incierto para los agricultores y los efectos dominó se pueden ver a lo largo de toda la cadena de valor. Las limitaciones de producción afectarán a los mercados globales al afectar la disponibilidad, la calidad y el precio de los productos."
@@ -49,12 +49,12 @@
 		{
 			"location": "Vijayawada, India",
 			"title": "Gerente de Actividades de Cambio Climático, Banco Asiático de Inversión en Infraestructura",
-			"quote": "La cadena de suministro del algodón se enfrenta a varios desafíos en la calidad del algodón provocados por eventos climáticos extremos. A través de una plataforma robusta como AgriAdapt, Ginners / Spinners puede identificar las regiones menos afectadas por los peligros climáticos y planificar sus compras de algodón en consecuencia de estas áreas cultivadas."
+			"quote": "La cadena de suministro del algodón se enfrenta a varios desafíos en la calidad del algodón provocados por eventos climáticos extremos. A través de una plataforma robusta como AgriAdapt, Ginners / Spinners puede identificar las regiones menos afectadas por los riesgos climáticos y planificar sus compras de algodón en consecuencia de estas áreas cultivadas."
 		},
 		{
 			"location": "Guntur, India",
 			"title": "Gerente, KDM Spinners Pvt Ltd.",
-			"quote": "Los fenómenos meteorológicos extremos están afectando la calidad del algodón. Nos hemos enfrentado a muchos problemas relacionados con la mala calidad del algodón durante la adquisición, lo que afecta la producción final y plantea serias amenazas para el negocio. Al conocer los peligros climáticos y la lluvia no estacional a través del AgriAdapt, podemos adquirir algodón con mucha anticipación para evitar la compra de algodón a un alto costo y de mala calidad. También podemos sensibilizar a nuestros proveedores / agricultores sobre los peligros climáticos y la posible infestación de plagas y enfermedades para que podamos evitar los riesgos relacionados con el clima en la propia fuente."
+			"quote": "Los fenómenos meteorológicos extremos están afectando la calidad del algodón. Nos hemos enfrentado a muchos problemas relacionados con la mala calidad del algodón durante la adquisición, lo que afecta la producción final y plantea serias amenazas para el negocio. Al conocer los riesgos climáticos y la lluvia no estacional a través del AgriAdapt, podemos adquirir algodón con mucha anticipación para evitar la compra de algodón a un alto costo y de mala calidad. También podemos sensibilizar a nuestros proveedores / agricultores sobre los riesgos climáticos y la posible infestación de plagas y enfermedades para que podamos evitar los riesgos relacionados con el clima en la propia fuente."
 		}
 	]
 }

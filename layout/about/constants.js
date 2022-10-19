@@ -20,7 +20,7 @@ const acknowledgements = {
   },
 
   committee_members: {
-    subheader: 'Technical Advisory Committee Members',
+    subheader: 'acknowledgements.committee_members.subheader',
     content: [
       { name: 'CIAT', href: 'https://ciat.cgiar.org/' },
       { name: 'Climate Edge', href: 'https://www.climate-edge.com/' },

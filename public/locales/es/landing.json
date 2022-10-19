@@ -1,17 +1,17 @@
 {
 	"intro": {
-		"title": "¿Cómo está afectando el cambio climático a la agricultura? AgriAdapt ayuda a las empresas agrícolas a comprender y enfrentar este desafío",
+		"title": "¿Cómo afecta el cambio climático a la agricultura? AgriAdapt ayuda a empresas agrícolas a comprender y afrontar este desafío",
 		"subtitle": "Información y herramientas gratuitas para fortalecer la agricultura",
 		"button_label": "Analice los riesgos en su ubicación"
 	},
 	"sub_intro": {
 		"title": "Información confiable y verificada para tomar mejores decisiones en la agricultura",
-		"subtitle": "Entregamos información climática gratuita para informar las decisiones de las empresas agrícolas, pequeñas y grandes, para adaptarse al cambio climático.",
+		"subtitle": "Entregamos información climática gratuita para que pequeñas y grandes empresas agrícolas puedan adaptarse para afrontar el cambio climático.",
 		"button_label": "Explora el mapa",
 		"image_alt": "Mapa Explorar"
 	},
 	"value_chain_cards": {
-		"title": "La cadena de valor de cada cultivo se enfrenta a riesgos únicos",
+		"title": "La cadena de valor de cada cultivo se enfrenta a riesgos específicos",
 		"subtitle": "Obtenga más información sobre cómo el cambio climático afecta a varios cultivos",
 		"bottons": {
 			"coffee_card": {
@@ -31,17 +31,17 @@
 	"map_analysis_carousel": {
 		"title": "¡Inicio rápido!",
 		"image_alt": "Mapa de análisis",
-		"subtitle": "Comience a explorar las amenazas climáticas para la agricultura con estas recomendaciones de datos de nuestros especialistas",
+		"subtitle": "Comience a explorar las amenazas climáticas para la agricultura con estos datos recomendados por nuestros especialistas",
 		"content": [
-			"Comprender cómo la producción de algodón está expuesta al estrés hídrico.",
-			"Las sequías y las inundaciones ponen en peligro el arroz, afectando a toda la cadena de valor.",
+			"Conozca cómo la producción de algodón está expuesta al estrés hídrico.",
+			"Las sequías e inundaciones ponen en peligro la cadena de valor de arroz.",
 			"La calidad del café es susceptible al estrés hídrico y a temperaturas más altas."
 		],
 		"link_to_map_button": "Ver en el mapa"
 	},
 	"landing_to_about": {
 		"title": "Más información sobre el proyecto",
-		"subtitle": "El proyecto de la Herramienta de Adaptación Agrícola es una iniciativa del Instituto de Recursos Mundiales. La versión beta de la herramienta ha sido financiada por la Walmart Foundation.",
+		"subtitle": "El proyecto AgriAdapt es una iniciativa del World Resources Institute. La versión beta de la herramienta ha sido financiada por la Walmart Foundation.",
 		"button_label": "Leer más"
 	}
 }
