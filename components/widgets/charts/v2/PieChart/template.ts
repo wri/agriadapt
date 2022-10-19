@@ -1,4 +1,5 @@
 export const template = {
+  autosize: { type: 'fit', resize: true },
   interaction_config: [
     {
       config: {
@@ -68,6 +69,18 @@ export const template = {
         data: 'table',
       },
       type: 'arc',
+    },
+  ],
+  signals: [
+    {
+      name: 'width',
+      init: 'isFinite(containerSize()[0]) ? containerSize()[0] : 100',
+      on: [
+        {
+          update: 'isFinite(containerSize()[0]) ? containerSize()[0] : 100',
+          events: 'window:resize',
+        },
+      ],
     },
   ],
   scales: [

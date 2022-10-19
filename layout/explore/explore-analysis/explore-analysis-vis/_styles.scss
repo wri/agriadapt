@@ -1,37 +1,13 @@
-// Implement masonry layout here:
-
 .vis-grid {
   display: flex;
-  flex-direction: row;
-  overflow-x: wrap;
-  gap: 10px;
+  gap: 18px;
 }
 
 .vis-grid-col {
-  float: left;
-  width: 49%;
-  display: block;
-  flex-grow: 1;
+  flex: 1;
 }
 
 .vis-grid-item {
   width: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 18px;
 }
-
-// .c-analysis-visuals {
-//   margin-bottom: 50px;
-
-//   > div {
-//     display: inline-block;
-//     // box-shadow: 0px 0px 4px #00000040;
-//     width: 287px;
-//     border-radius: 4px;
-//     border: 1px solid black;
-//     margin-bottom: 16px;
-//   }
-
-//   @media screen and (min-width: map-get($breakpoints, large)) {
-//     columns: 2;
-//   }
-// }

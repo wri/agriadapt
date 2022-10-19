@@ -1,12 +1,12 @@
 import Renderer from '@widget-editor/renderer';
 import RWAdapter from '@widget-editor/rw-adapter';
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { template } from 'components/widgets/charts/v2/PieChart/template';
 
 const Pie = ({ widgetConfig }) => (
   <div
-    className="relative flex overflow-y-hidden w-full grow mb-4"
-    style={{ width: 250, height: 171 }}
+    className="relative flex overflow-y-hidden w-full mb-4"
+    style={{ height: 172 }}
   >
     <Renderer widgetConfig={widgetConfig} adapter={RWAdapter} />
   </div>
@@ -42,9 +42,15 @@ const PieChart = ({
 
   // const valueString = `${20}%`;
 
+  const [on, setOn] = useState(false);
+
+  useEffect(() => {
+    setOn(true);
+  }, []);
+
   return (
     <div className="c-pie-chart-v2 border border-b-0 border-gray-light shadow-gray shadow-sm rounded">
-      <Pie widgetConfig={widgetConfig} />
+      {on && <Pie widgetConfig={widgetConfig} />}
       {/* <h1 className="stat-value">{valueString}</h1>
       <h3 className="stat-type">{type}</h3> */}
       <div className="stat-name">{name}</div>
