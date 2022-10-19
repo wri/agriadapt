@@ -17,7 +17,6 @@ export default function HeadApp({ title, description, thumbnail }) {
     <>
       <HeadNext>
         <title>{title ? `${title} | AgriAdapt Beta` : 'AgriAdapt Beta'}</title>
-
         <meta property="og:url" content={url} />
         <meta name="description" content={description} />
         <meta property="og:title" content={title} />

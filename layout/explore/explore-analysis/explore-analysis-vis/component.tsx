@@ -3,7 +3,7 @@ import CalloutCard from 'components/widgets/charts/v2/CalloutCard';
 import { ErrorBoundary } from 'react-error-boundary';
 import ErrorFallback from 'components/error-fallback';
 import { average, Output } from './utils';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect } from 'react';
 import React from 'react';
 
 interface AnaylsisVisualsProps {
@@ -16,26 +16,6 @@ interface AnaylsisVisualsProps {
   outputs: Output[];
 }
 
-function useDynamicImport(importPromise) {
-  const [imported, setImported] = useState({});
-
-  useEffect(() => {
-    let cancelled = false;
-    const awaitImport = async () => {
-      const result = await importPromise;
-      if (!cancelled && result && Object.keys(imported).length === 0) {
-        setImported(() => result);
-      }
-    };
-    awaitImport();
-    return () => {
-      cancelled = true;
-    };
-  }, [importPromise, imported]);
-
-  return imported;
-};
-
 const CustomErrorFallback = (_props) => (
   <ErrorFallback {..._props} title="Something went wrong loading the widget" />
 );
@@ -47,29 +27,21 @@ const AnalysisVisuals = ({
   outputs,
 }: AnaylsisVisualsProps) => {
 
-  const IS_STATIC = typeof window === 'undefined';
-  
-  // eslint-disable-next-line
-  // @ts-ignore
-  const { default: Colcade } = useDynamicImport(
-    !IS_STATIC && import('colcade'),
-  );
-  const [colcade, setColcade] = useState(undefined);
+  const initColcade = useCallback(async() => {
+    const { default: Colcade } = await import('colcade');
+    const grid = document.querySelector('.vis-grid');
+    if (!Colcade || !grid) return;
+
+    const col = new Colcade(grid, {
+      columns: '.vis-grid-col',
+      items: '.vis-grid-item'
+    });
+    col.layout();
+  }, []);
 
   useEffect(() => {
-    if (Colcade) {
-      setColcade(
-        new Colcade('.vis-grid', {
-          columns: '.vis-grid-col',
-          items: '.vis-grid-item'
-        }),
-      );
-    }
-  }, [Colcade]);
-
-  useEffect(() => {
-    colcade?.layout();
-  }, [colcade]);
+    initColcade();
+  }, [initColcade])
 
   return (
     <ErrorBoundary
@@ -78,8 +50,6 @@ const AnalysisVisuals = ({
         console.error(error.message);
       }}
     >
-      {/* Implement masonry layout here: */}
-      {/* data-colcade="columns: .grid-col, items: .grid-item" */}
       <div className="c-analysis-visuals vis-grid" data-colcade="columns: .vis-grid-col, items: .vis-grid-item">
         <div className="vis-grid-col vis-grid-col--1"></div>
         <div className="vis-grid-col vis-grid-col--2"></div>
