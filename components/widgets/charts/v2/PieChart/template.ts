@@ -1,5 +1,5 @@
 export const template = {
-  autosize: { type: 'fit', resize: true },
+  autosize: { type: 'fit' },
   interaction_config: [
     {
       config: {

@@ -5,7 +5,7 @@ import { template } from 'components/widgets/charts/v2/PieChart/template';
 
 const Pie = ({ widgetConfig }) => (
   <div
-    className="relative flex overflow-y-hidden w-full mb-4"
+    className="relative flex overflow-hidden w-full mb-4"
     style={{ height: 172 }}
   >
     <Renderer widgetConfig={widgetConfig} adapter={RWAdapter} />
