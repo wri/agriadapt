@@ -2,6 +2,7 @@ import { useTranslation } from 'next-i18next';
 import dynamic from 'next/dynamic';
 import { useCallback, useEffect, useState } from 'react';
 import { fetchDatasetQuery } from 'services/query';
+import { ReactFitty as ReactFittyType } from 'react-fitty';
 // import InView from "components/in-view";
 
 interface CalloutCardProps {
@@ -52,7 +53,7 @@ const CalloutCard = ({
   const ReactFitty = dynamic(
     () => import('react-fitty').then(({ ReactFitty }) => ReactFitty),
     { ssr: false }
-  );
+  ) as typeof ReactFittyType;
 
   return (
     // <InView triggerOnce threshold={0.25}>
