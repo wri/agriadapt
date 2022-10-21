@@ -56,7 +56,8 @@ import { setSidebarOpen } from '../actions';
 
 const ExploreMap = (props) => {
   const {
-    open,
+    open: sidebarOpen,
+    selectedTab,
     token,
     userId,
     embed,
@@ -113,7 +114,7 @@ const ExploreMap = (props) => {
 
 
       setSidebarSelectedTab('layers');
-      if(!open) setSidebarOpen(true);
+      if(!sidebarOpen) setSidebarOpen(true);
 
       if (layer) {
         if (exploreBehavior && onLayerInfoButtonClick) {
@@ -123,7 +124,7 @@ const ExploreMap = (props) => {
         }
       }
     },
-    [mapState, setSidebarSelectedTab, open, exploreBehavior, onLayerInfoButtonClick, setSelectedDataset]
+    [mapState, setSidebarSelectedTab, sidebarOpen, exploreBehavior, onLayerInfoButtonClick, setSelectedDataset]
   );
 
   const onChangeOpacity = debounce((l, opacity) => {
@@ -450,6 +451,11 @@ const ExploreMap = (props) => {
     }
   }, [aoi, token, userId, setBounds, previewAoi]);
 
+  const handleResize = useCallback((map) => {
+    if (!sidebarOpen || selectedTab === 'layers')
+      map.resize();
+  }, [sidebarOpen, selectedTab]);
+
   return (
     <div className="l-explore-map -relative">
       {/* Brand logo */}
@@ -482,6 +488,7 @@ const ExploreMap = (props) => {
         // getCursor={handleMapCursor}
         className={mapClass}
         onMapViewportChange={handleViewport}
+        handleResize={handleResize}
       >
         {(_map) => (
           <>

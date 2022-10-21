@@ -36,6 +36,7 @@ export interface MapProps extends theProps {
     viewportOptions?: Partial<any>;
   };
 
+  handleResize: (map) => void;
   /** A function that exposes when the map is mounted.
    * It receives and object with the `mapRef` and `mapContainerRef` reference. */
   onMapReady?: ({ map, mapContainer }) => void;
@@ -76,6 +77,7 @@ export const Map = ({
   onMapReady,
   onMapLoad,
   onMapViewportChange,
+  handleResize,
   dragPan,
   dragRotate,
   scrollZoom,
@@ -357,6 +359,10 @@ export const Map = ({
     if (loaded) handleBoundaries(boundaries);
   }, [boundaries, loaded, handleBoundaries]);
 
+  useEffect(() => {
+    if (mapRef.current) handleResize && handleResize(mapRef.current);
+  }, [handleResize]);
+
   return (
     <div
       ref={mapContainerRef}
@@ -385,7 +391,6 @@ export const Map = ({
         onClick={handleOnClick}
         initialViewState={DEFAULT_VIEWPORT}
         onLoad={handleLoad}
-        onRender={(e) => e.target.resize()}
         // getCursor={handleGetCursor}
         transformRequest={(url, resourceType) => {
           // Global Fishing Watch tilers require authorization so we need to add
