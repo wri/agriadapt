@@ -36,7 +36,7 @@ export interface MapProps extends theProps {
     viewportOptions?: Partial<any>;
   };
 
-  handleResize: (map) => void;
+  handleResize?: (map) => void;
   /** A function that exposes when the map is mounted.
    * It receives and object with the `mapRef` and `mapContainerRef` reference. */
   onMapReady?: ({ map, mapContainer }) => void;
