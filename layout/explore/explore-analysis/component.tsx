@@ -19,7 +19,7 @@ import AnalysisVisuals from './explore-analysis-vis';
 // );
 
 const ExploreAnalysis = ({
-  locations: { loc_map: locations, isAdding },
+  locations: { loc_map: locations, isAdding, editingId },
   setIsAdding,
   addLocation,
 }) => {
@@ -63,7 +63,7 @@ const ExploreAnalysis = ({
     <div className="c-analysis">
       {Object.values(locations).map((loc: AnalysisLocation) => (
         <div key={loc.id}>
-          {!loc.editing ? (
+          {loc.id !== editingId ? (
             <Location label={loc.label} id={loc.id} />
           ) : (
             <ExploreAnalysisLocationEditor current={loc} />

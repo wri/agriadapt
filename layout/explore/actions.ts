@@ -256,7 +256,7 @@ export const fetchMapLayerGroups = createThunkAction(
 
     const params = {
       language: common.locale,
-      includes: 'layer',
+      includes: 'layer,metadata',
       ids: payload.map((lg) => lg.dataset).join(','),
       'page[size]': 999,
     };

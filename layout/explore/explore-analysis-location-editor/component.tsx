@@ -30,6 +30,7 @@ const ExploreAnalysisLocationEditor = ({
   current = {} as AnalysisLocation,
   setEditing,
   setIsDrawing,
+  editingId,
   setDataDrawing,
   drawer: { data: pointData },
   geoLocator: { data: geoLocatorData },
@@ -39,6 +40,7 @@ const ExploreAnalysisLocationEditor = ({
   const { LOCATION_CONFIG } = EXPLORE_ANALYSIS;
 
   const id = current.id;
+  const editing = current.id === editingId;
   const label = current.label;
   const locationType = useInput<AnalysisLocation['type']>(
     current.type || 'point'
@@ -142,15 +144,15 @@ const ExploreAnalysisLocationEditor = ({
   ]);
 
   const stopEditing = useCallback(() => {
+    setEditing(null);
     setIsDrawing(false);
     setDataDrawing(null);
     setIsGeoLocating(false);
     setDataGeoLocator(null);
-  }, [setDataDrawing, setDataGeoLocator, setIsDrawing, setIsGeoLocating]);
+  }, [setDataDrawing, setDataGeoLocator, setEditing, setIsDrawing, setIsGeoLocating]);
 
   const onCancel = () => {
-    if (!isAdding) setEditing({ id, editing: false });
-    else setIsAdding(false);
+    if (isAdding) setIsAdding(false);
     stopEditing();
   };
 
@@ -203,7 +205,7 @@ const ExploreAnalysisLocationEditor = ({
   const onSubmit = () => {
     const loc = makeLocation();
     
-    if (current.editing)
+    if (editing)
       editLocation({
         id,
         edit: loc,
@@ -432,7 +434,7 @@ const ExploreAnalysisLocationEditor = ({
           className="c-button -primary"
           disabled={!isValid}
         >
-          {current.editing
+          {editing
             ? t('explore:analysis.Edit Location')
             : t('explore:analysis.Add Location')}
         </button>

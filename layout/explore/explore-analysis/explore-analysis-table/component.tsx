@@ -28,6 +28,15 @@ const AnalysisTable = ({
   const [data, setData] = useState([]);
   const [resolutions, setResolutions] = useState([]);
 
+  const [abortController, setAbortController] = useState<AbortController>();
+  
+  /**
+   * Cancel any remaining requests whenever table dismounts
+   */
+  useEffect(() => {
+    return () => abortController?.abort();
+  }, [abortController]);
+
   const interactions = useMemo(() => {
     const valueMaps = [];
     const outputs = [];
@@ -75,9 +84,8 @@ const AnalysisTable = ({
     return cols;
   }, [interactions, setVisCols]);
 
-  useEffect(() => {
-    setLoading(true);
-    Promise.all(
+  const fetchTableData = useCallback((signal: AbortSignal) => {
+    return Promise.all(
       Object.values(locations).map((l: AnalysisLocation) => {
         const params = {
           geojson: encodeURIComponent(JSON.stringify(toGeoJSON(l))),
@@ -92,7 +100,7 @@ const AnalysisTable = ({
         return Promise.allSettled(
           interactions.map(({ dataset, query, output, valueMap, year }) => {
             const encoded = replace(query, { ...params, year });
-            return fetchDatasetQuery(dataset, encoded)
+            return fetchDatasetQuery(dataset, encoded, signal)
               .then(({ data }) => {
                 return {
                   interaction: data.data[0],
@@ -107,11 +115,23 @@ const AnalysisTable = ({
         ).then((r) => ({ loc: l, data: r.map(({ value }) => value) }));
       })
     )
+  }, [interactions, locations]);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    const { signal } = controller;
+    setAbortController((a) => {
+      a?.abort();
+      return controller;
+    });
+
+    setLoading(true);
+    fetchTableData(signal)
       .then((r) => {
         setData(r.map((d) => ({ ...d.loc, data: d.data })));
       })
       .finally(() => setLoading(false));
-  }, [interactions, locations, setLoading]);
+  }, [fetchTableData, setLoading]);
 
   const rows = useMemo(() => makeRows(data),[data]);
 
@@ -231,12 +251,10 @@ const AnalysisTable = ({
               </tr>
             </tbody>
           )}
-          {loading && (
-            <tbody>
-              <Spinner isLoading={loading} className="-transparent" />
-            </tbody>
-          )}
         </table>
+        {loading && (
+          <Spinner isLoading={loading} className="-transparent" />
+        )}
       </div>
     </div>
   );

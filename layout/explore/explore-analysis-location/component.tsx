@@ -16,7 +16,7 @@ const ExploreAnalysisLocation = ({
   const [renaming, setRenaming] = useState(false);
 
   const handleEdit = () => {
-    setEditing({ id, editing: true });
+    setEditing(id);
   };
   const handleDelete = () => {
     removeLocation(id);

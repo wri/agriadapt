@@ -38,12 +38,13 @@ export const fetchQuery = (token, sql, params = {}) => {
     });
 };
 
-export const fetchDatasetQuery = async (id, sql) => {
+export const fetchDatasetQuery = async (id, sql, signal) => {
   if (!id) return null;
   if (!sql) return null;
 
   return (
     WRIAPI.get(`/v1/query/${id}`, {
+      signal,
       params: { sql },
     })
       // return WRIAPI.post(`/v1/query/${id}`, { sql })

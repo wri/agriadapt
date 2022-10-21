@@ -30,6 +30,7 @@ const initialState = {
     locations: {
       loc_map: {},
       isAdding: false,
+      editingId: null,
       genId: 0,
     },
   },

@@ -153,15 +153,17 @@ export default createReducer(initialState, (builder) => {
         genId: genId + 1,
       };
     })
-    .addCase(actions.setEditing, (state, { payload: { id, editing } }) => {
-      state.analysis.locations.loc_map[id].editing = editing;
+    .addCase(actions.setEditing, (state, { payload }) => {
+      state.analysis.locations.editingId = payload;
+      if (payload) state.analysis.locations.isAdding = false;
     })
     .addCase(actions.setIsAdding, (state, { payload }) => {
       state.analysis.locations.isAdding = payload;
+      if (payload) state.analysis.locations.editingId = null;
     })
     .addCase(actions.editLocation, (state, { payload: { id, edit } }) => {
       state.analysis.locations.loc_map[id] = edit;
-      state.analysis.locations.loc_map[id].editing = false;
+      state.analysis.locations.editingId = null;
     })
     .addCase(actions.renameLocation, (state, { payload: { id, rename } }) => {
       state.analysis.locations.loc_map[id].label = rename;
@@ -356,7 +358,7 @@ export default createReducer(initialState, (builder) => {
 
       const layerGroups = datasets
         .map((_dataset) => {
-          const { id, layer: layers, applicationConfig } = _dataset;
+          const { id, layer: layers, applicationConfig, metadata } = _dataset;
           const dParams = params.find((p) => p.dataset === id);
           // gets only published layers in selected emission scenario and value_chain
           let publishedLayers = filterPublishedLayers(layers, state);
@@ -376,6 +378,7 @@ export default createReducer(initialState, (builder) => {
             dataset: id,
             opacity: dParams.opacity,
             visibility: dParams?.visibility || true,
+            resolution: metadata?.[0]?.info?.spatial_resolution?.trim(),
             layers: publishedLayers.map((_layer) => ({
               ..._layer,
               active: dParams.layer === _layer.id,
