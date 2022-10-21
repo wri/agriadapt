@@ -385,6 +385,7 @@ export const Map = ({
         onClick={handleOnClick}
         initialViewState={DEFAULT_VIEWPORT}
         onLoad={handleLoad}
+        onRender={(e) => e.target.resize()}
         // getCursor={handleGetCursor}
         transformRequest={(url, resourceType) => {
           // Global Fishing Watch tilers require authorization so we need to add
