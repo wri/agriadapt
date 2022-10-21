@@ -262,6 +262,7 @@ export default createReducer(initialState, (builder) => {
           dataset: dataset.id,
           visibility: true,
           layers: datasetLayers.map((l) => ({ ...l, active: l.default })),
+          resolution: dataset.metadata?.[0]?.info?.spatial_resolution?.trim(),
         });
         if (layerGroups[0].layers.length) {
           logEvent(

@@ -26,10 +26,12 @@ const AnalysisTable = ({
   setLoading,
 }) => {
   const [data, setData] = useState([]);
+  const [resolutions, setResolutions] = useState([]);
 
   const interactions = useMemo(() => {
     const valueMaps = [];
     const outputs = [];
+    const res = [];
     const arr = [].concat(
       ...layerGroups.map((g) =>
         g.layers.reduce((arr: any[], l: APILayerSpec) => {
@@ -41,6 +43,7 @@ const AnalysisTable = ({
               : null;
           valueMaps.push(valueMap);
           outputs.push(l.applicationConfig.output);
+          res.push(g.resolution ?? 'N/A');
           // TODO: Find out why time slider does not destructure out correct appConfig
           const appConfig =
             l.applicationConfig[process.env.NEXT_PUBLIC_APPLICATIONS] ||
@@ -60,6 +63,7 @@ const AnalysisTable = ({
     );
     setValueMaps(valueMaps);
     setOutputs(outputs);
+    setResolutions(res);
     return arr;
   }, [layerGroups, setOutputs, setValueMaps]);
 
@@ -98,7 +102,6 @@ const AnalysisTable = ({
               })
               .catch(() => ({ interaction: 'N/A' }));
           })
-          // TODO: Figure out why typescript does not think "value" property exists here
           // eslint-disable-next-line
           // @ts-ignore
         ).then((r) => ({ loc: l, data: r.map(({ value }) => value) }));
@@ -126,15 +129,15 @@ const AnalysisTable = ({
     setDomains(domains);
   }, [columns, rows, setDomains]);
 
-  const options = [
-    {
-      id: 'change-column-name',
-      label: 'explore:analysis.Change Column Name',
-      onClick: () => undefined,
-    },
-    { id: 'sort-a-z', label: 'explore:analysis.Sort by Column A-Z', onClick: () => undefined },
-    { id: 'delete', label: 'explore:analysis.Delete', onClick: () => undefined },
-  ];
+  // const options = [
+  //   {
+  //     id: 'change-column-name',
+  //     label: 'explore:analysis.Change Column Name',
+  //     onClick: () => undefined,
+  //   },
+  //   { id: 'sort-a-z', label: 'explore:analysis.Sort by Column A-Z', onClick: () => undefined },
+  //   { id: 'delete', label: 'explore:analysis.Delete', onClick: () => undefined },
+  // ];
 
   const { t } = useTranslation(['explore', 'common']);
   const router = useRouter();
@@ -215,17 +218,17 @@ const AnalysisTable = ({
                   ))}
                 </tr>
               ))}
-              {/* <tr>
+              <tr>
                 <td>
-                  Resolution{' '}
-                  <span>
+                  {t('Resolution')}
+                  {/* <span>
                     <Icon name="icon-info" className="table-action" />
-                  </span>
+                  </span> */}
                 </td>
-                {columns.map((c, i) => (
-                  <td key={i}>11 sq kilometers</td>
+                {resolutions.map((r, i) => (
+                  <td key={`${i}-${r}`}>{r}</td>
                 ))}
-              </tr> */}
+              </tr>
             </tbody>
           )}
           {loading && (
