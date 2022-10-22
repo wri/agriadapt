@@ -76,7 +76,9 @@ const ExploreAnalysisLocationEditor = ({
   useEffect(() => {
     const data = locationType.value === 'point' ? pointData : null;
     if (data) {
-      getGeocodeInfo(data, locale).then(({ label, country, iso }) => {
+      getGeocodeInfo(data, locale).then((data) => {
+        if (!data) return;
+        const { label, country, iso } = data;
         setGeoLabel(label);
         setCountryAndIso({
           country,

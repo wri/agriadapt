@@ -41,7 +41,7 @@ const AnalysisVisuals = ({
 
   useEffect(() => {
     initColcade();
-  }, [initColcade])
+  }, [initColcade]);
 
   return (
     <ErrorBoundary
