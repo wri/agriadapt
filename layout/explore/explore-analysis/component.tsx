@@ -32,7 +32,7 @@ const ExploreAnalysis = ({
   const [visCols, setVisCols] = useState([]);
   const [valueMaps, setValueMaps] = useState([]);
   const [outputs, setOutputs] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const { t } = useTranslation(['explore', 'common']);
   const router = useRouter();

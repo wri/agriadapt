@@ -58,7 +58,7 @@ const CalloutCard = ({
   return (
     // <InView triggerOnce threshold={0.25}>
     // {({ ref, inView }) => (
-    <div className="w-full h-full flex">
+    <div className="w-full flex">
       {/* {inView && ( */}
       <div className="c-callout-card border border-b-0 border-gray-light shadow-gray shadow-sm flex rounded">
         <div className="c-data m-auto">

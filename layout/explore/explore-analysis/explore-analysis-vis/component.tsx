@@ -1,9 +1,7 @@
 import PieChart from 'components/widgets/charts/v2/PieChart';
 import CalloutCard from 'components/widgets/charts/v2/CalloutCard';
-import { ErrorBoundary } from 'react-error-boundary';
-import ErrorFallback from 'components/error-fallback';
 import { average, Output } from './utils';
-import { useCallback, useEffect } from 'react';
+import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 import React from 'react';
 
 interface AnaylsisVisualsProps {
@@ -16,43 +14,15 @@ interface AnaylsisVisualsProps {
   outputs: Output[];
 }
 
-const CustomErrorFallback = (_props) => (
-  <ErrorFallback {..._props} title="Something went wrong loading the widget" />
-);
-
 const AnalysisVisuals = ({
   domains,
   columns,
   valueMaps,
   outputs,
 }: AnaylsisVisualsProps) => {
-
-  const initColcade = useCallback(async() => {
-    const { default: Colcade } = await import('colcade');
-    const grid = document.querySelector('.vis-grid');
-    if (!Colcade || !grid) return;
-
-    const col = new Colcade(grid, {
-      columns: '.vis-grid-col',
-      items: '.vis-grid-item'
-    });
-    col.layout();
-  }, []);
-
-  useEffect(() => {
-    initColcade();
-  }, [initColcade]);
-
   return (
-    <ErrorBoundary
-      FallbackComponent={CustomErrorFallback}
-      onError={(error) => {
-        console.error(error.message);
-      }}
-    >
-      <div className="c-analysis-visuals vis-grid" data-colcade="columns: .vis-grid-col, items: .vis-grid-item">
-        <div className="vis-grid-col vis-grid-col--1"></div>
-        <div className="vis-grid-col vis-grid-col--2"></div>
+    <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2 }}>
+      <Masonry gutter={16}>
         {columns.map((c, i) => {
           const output = outputs[i];
           if (!output) return;
@@ -63,27 +33,30 @@ const AnalysisVisuals = ({
             valueMaps[i],
             output
           );
-          const valid = output.type === 'number' ? !isNaN(parseFloat(avg)) : true;
+          const valid =
+            output.type === 'number' ? !isNaN(parseFloat(avg)) : true;
 
-          return valid && (
-            <div key={c} className="vis-grid-item">
-              {output.type === 'string' && (
-                <PieChart name={c} domain={labelDomain} />
-              )}
-              {output.type === 'number' && (
-                <CalloutCard
-                  analysis={{
-                    name: c,
-                    type: 'avg',
-                    value: avg,
-                  }}
-                />
-              )}
-            </div>
+          return (
+            valid && (
+              <React.Fragment key={c}>
+                {output.type === 'string' && (
+                  <PieChart name={c} domain={labelDomain} />
+                )}
+                {output.type === 'number' && (
+                  <CalloutCard
+                    analysis={{
+                      name: c,
+                      type: 'avg',
+                      value: avg,
+                    }}
+                  />
+                )}
+              </React.Fragment>
+            )
           );
         })}
-      </div>
-    </ErrorBoundary>
+      </Masonry>
+    </ResponsiveMasonry>
   );
 };
 

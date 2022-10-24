@@ -1982,11 +1982,6 @@
   "resolved" "https://registry.npmjs.org/code-point-at/-/code-point-at-1.1.0.tgz"
   "version" "1.1.0"
 
-"colcade@^0.2.0":
-  "integrity" "sha512-ccbmKzL0iZZvR1MZeR7r8wIDRSGGQxZI27NyILMjH8F6zOK8Xf04fEVJi2ajUlVgvY1uIRKml5KqHUv1eewBZw=="
-  "resolved" "https://registry.npmjs.org/colcade/-/colcade-0.2.0.tgz"
-  "version" "0.2.0"
-
 "collapse-white-space@^1.0.2":
   "integrity" "sha512-jEovNnrhMuqyCcjfEJA56v0Xq8SkIoPKDyaHahwo3POf4qcSXqMYuwNcOTzp74vTsR9Tn08z4MxWqAhcekogkQ=="
   "resolved" "https://registry.npmjs.org/collapse-white-space/-/collapse-white-space-1.0.6.tgz"
@@ -6382,6 +6377,11 @@
     "prop-types" "^15.6.1"
     "react-is" "^16.6.0"
     "react-lifecycles-compat" "^3.0.0"
+
+"react-responsive-masonry@^2.1.6":
+  "integrity" "sha512-yERdzOPvdr+eJdqPlRpkTnvCmURYDdwGxaLBjA/noZlrxL3TlxaP98wN0RjYDAG6g6B2f4hhoBZz4Yqi3YbrLg=="
+  "resolved" "https://registry.npmjs.org/react-responsive-masonry/-/react-responsive-masonry-2.1.6.tgz"
+  "version" "2.1.6"
 
 "react-select@^2.4.4":
   "integrity" "sha512-C4QPLgy9h42J/KkdrpVxNmkY6p4lb49fsrbDk/hRcZpX7JvZPNb6mGj+c5SzyEtBv1DmQ9oPH4NmhAFvCrg8Jw=="
