@@ -14,11 +14,23 @@
     flex-direction: row;
     background: white;
     border-radius: 4px;
-    box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.3);
     padding: 8px;
     margin-top: 6px;
     margin-bottom: 10px;
     display: flex;
+    position: relative;
+    
+    &::before {
+      content: '';
+      border-radius: 4px;
+      box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.3);
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      position: absolute;
+      z-index: -1;
+    }
     .c-button {
       width: 135px;
       height: 33px;
