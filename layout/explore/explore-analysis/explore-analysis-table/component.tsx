@@ -195,7 +195,7 @@ const AnalysisTable = ({
             id: 'analysis-table',
           }}
           onDownload={handleDownload}
-          onToggleInfo={() => undefined}
+          // onToggleInfo={() => undefined}
           // onToggleShare={() => undefined}
         />
       </div>

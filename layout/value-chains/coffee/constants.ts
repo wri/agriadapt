@@ -126,7 +126,7 @@ const production = {
     info: 'production.production_volume.info',
     widgets: [
       { id: 'f44edefe-e3eb-4598-bb37-692d70a21d23' },
-      { id: 'ef4cc300-9d92-492a-9252-457a1964a5d1' },
+      { id: 'ef4cc300-9d92-492a-9252-457a1964a5d1', fullWidth: true },
     ],
     // TODO: Additional Callout - Need working query
     // analysis: {

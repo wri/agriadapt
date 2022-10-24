@@ -19,7 +19,7 @@ interface WidgetHeaderProps {
   // isInACollection: boolean,
   isInfoVisible?: boolean;
   isEnlarged?: boolean;
-  onToggleInfo: () => void;
+  onToggleInfo?: () => void;
   onToggleShare?: () => void;
   onToggleEnlarge?: () => void;
   onDownload?: () => void;
@@ -90,7 +90,7 @@ export default function WidgetHeader({
                 </button>
               </li>
             )}
-            {!isEnlarged && (
+            {!isEnlarged && onToggleInfo && (
               <li>
                 <button
                   type="button"

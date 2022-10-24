@@ -131,12 +131,12 @@ const production = {
   production_volume: {
     info: 'production.production_volume.info',
     fullWidth: true,
-    widgets: [{ id: '8cf03ba0-a517-4a43-b5b4-e677ccc6099c' }],
+    widgets: [{ id: '8cf03ba0-a517-4a43-b5b4-e677ccc6099c', fullWidth: true  }],
     //TODO: Additional Callout - Need working query
-    analysis: {
-      value: 'N/A',
-      name: 'Data Coming Soon',
-    },
+    // analysis: {
+    //   value: 'N/A',
+    //   name: 'Data Coming Soon',
+    // },
     // analysis: {
     //   name: ({
     //     crop,
