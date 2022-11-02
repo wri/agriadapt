@@ -48,13 +48,6 @@ const LayoutCrop = ({
         <IntroHeader crop={crop} {...header} countries={countries} />
         <div className="l-container">
           <div className="row">
-            <div className="column small-12">
-              {quotes?.length && <UserStories crop={crop} quotes={quotes} />}
-            </div>
-          </div>
-        </div>
-        <div className="l-container">
-          <div className="row">
             <HazardsIntro crop={crop} />
           </div>
         </div>
@@ -67,6 +60,13 @@ const LayoutCrop = ({
           <div className="row">
             <div className="column small-12">
               <StepDetails details={details} />
+            </div>
+          </div>
+        </div>
+        <div className="l-container">
+          <div className="row">
+            <div className="column small-12">
+              {quotes?.length && <UserStories crop={crop} quotes={quotes} />}
             </div>
           </div>
         </div>

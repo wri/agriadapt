@@ -52,7 +52,7 @@ const UserStories = ({
           />
         </div>
         <div className="c-user-info">
-          <h3>{`${t(s.title)}, ${t(s.location)}`}</h3>
+          <h3>{t(s.location)}</h3>
           <Trans>
             <em><p>{`${t(s.quote)}`}</p></em>
           </Trans>
