@@ -1,5 +1,6 @@
 import { mediaStyles } from 'lib/media';
 import { Html, Head, Main, NextScript } from 'next/document';
+import GoogleTagManagerNoScript from 'scripts/google-tag-manager-noscript';
 
 export default function Document() {
   return (
@@ -12,6 +13,7 @@ export default function Document() {
         <style type="text/css">{mediaStyles}</style>
       </Head>
       <body>
+        <GoogleTagManagerNoScript />
         <Main />
         <NextScript />
       </body>

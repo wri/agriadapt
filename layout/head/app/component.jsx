@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import HeadNext from 'next/head';
 import dynamic from 'next/dynamic';
 import GoogleAnalyticsV4Script from 'scripts/google-analytics-v4';
+import GoogleTagManagerScript from 'scripts/google-tag-manager';
 
 const HotjarScript = dynamic(() => import('../../../scripts/hotjar'), {
   ssr: false,
@@ -29,6 +30,7 @@ export default function HeadApp({ title, description, thumbnail }) {
         <>
           <HotjarScript />
           <GoogleAnalyticsV4Script />
+          <GoogleTagManagerScript />
         </>
       )}
     </>
