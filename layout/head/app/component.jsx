@@ -3,6 +3,7 @@ import HeadNext from 'next/head';
 import dynamic from 'next/dynamic';
 import GoogleAnalyticsV4Script from 'scripts/google-analytics-v4';
 import GoogleTagManagerScript from 'scripts/google-tag-manager';
+import PixelScript from 'scripts/pixel-script';
 
 const HotjarScript = dynamic(() => import('../../../scripts/hotjar'), {
   ssr: false,
@@ -28,6 +29,7 @@ export default function HeadApp({ title, description, thumbnail }) {
       </HeadNext>
       {process.env.NODE_ENV === 'production' && (
         <>
+          <PixelScript />
           <HotjarScript />
           <GoogleAnalyticsV4Script />
           <GoogleTagManagerScript />
