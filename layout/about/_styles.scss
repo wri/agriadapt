@@ -1,6 +1,7 @@
 .l-about {
   @media screen and (min-width: map-get($breakpoints, small)) {
     margin: 0 $margin-size-small 172px;
+    @media screen and (max-width:767px){padding-bottom: 64px;margin:0;}
 
     .c-intro-header {
       margin: 0 $margin-size-small * -1;

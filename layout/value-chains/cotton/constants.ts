@@ -126,6 +126,10 @@ const inputs = {
     info: 'inputs.seedlings.info',
     widgets: [{ id: 'e9ef2704-04b7-4ab1-adce-57d0a73317d9' }],
   },
+  water: {
+    info: 'inputs.water.info',
+    // widgets: [cotton_import_widget],
+  },
 };
 const production = {
   production_volume: {
@@ -158,21 +162,25 @@ const production = {
   },
 };
 const trade = {
-  policies_and_price: {
-    info: 'trade.policies_and_price.info',
-    //TODO: Callout
-    analysis: {
-      dataset: '641c0a35-f2e5-4198-8ed9-576ea7e9685a',
-      query: ({ iso }: { iso: string }) =>
-        `select nrp as x from data where countrycode='${iso}' order by year desc limit 1`,
-      format: '0.00',
-      suffix: '%',
-      name: 'Nominal rate of protection, {{crop}} in {{country}} in 2018',
-    },
-  },
+  // policies_and_price: {
+  //   info: 'trade.policies_and_price.info',
+  //   //TODO: Callout
+  //   analysis: {
+  //     dataset: '641c0a35-f2e5-4198-8ed9-576ea7e9685a',
+  //     query: ({ iso }: { iso: string }) =>
+  //       `select nrp as x from data where countrycode='${iso}' order by year desc limit 1`,
+  //     format: '0.00',
+  //     suffix: '%',
+  //     name: 'Nominal rate of protection, {{crop}} in {{country}} in 2018',
+  //   },
+  // },
   export_and_import: {
     info: 'trade.export_and_import.info',
     widgets: [cotton_import_widget],
+  },
+  Roads: {
+    info: 'trade.Roads.info',
+    // widgets: [cotton_import_widget],
   },
 };
 

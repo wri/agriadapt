@@ -1,0 +1,56 @@
+$adapt-step:url('../../../public/images/adaptation/step_vector.svg');
+
+.how_to_use {padding-bottom: 104px;
+  @media screen and (max-width:767px){padding-bottom: 64px;}
+  h2{font-family: Lato;font-size: 36px;font-weight: 500;line-height: 43.2px;
+    @media screen and (max-width:767px){margin-bottom: 18px !important;font-size:24px;}}
+  .learn_p{font-family: Lato;font-size: 14px; font-weight: 400;line-height: 22px;color: #333333;opacity: 0.7;}
+  .use_steps{display: flex;margin-top:32px;justify-content: space-between;flex-wrap:wrap;
+    @media only screen and (max-width:1040px){
+      gap: 33px;justify-content: center;
+    }
+    @media screen and (max-width:767px){gap: 12px;}
+    .steps{text-align:center;position: relative;min-width: 236px;min-height:144px;background-color:#F4F7F3;margin-right:47px;padding-top:45px;
+     
+      &::after{ content: "";
+        position: absolute;
+        left: 0px;
+        bottom: 0;
+        width: 0;
+        height: 0;
+        border-left: 44px solid white;
+        border-top: 74px solid transparent;
+        border-bottom: 69px solid transparent;}
+        &::before{content: "";
+          position: absolute;
+          right: -44px;
+          bottom: 0;
+          width: 0;
+          height: 0;
+          border-left: 44px solid #F4F7F3;
+          border-top: 74px solid transparent;
+          border-bottom: 69px solid transparent;z-index: 10;}
+      
+          &:nth-child(2)
+          {
+            margin-left: -60px;
+            @media only screen and (max-width:1040px){margin-left: 0;}
+          }
+          &:nth-child(3)
+          {
+            margin-left: -60px;
+              @media only screen and (max-width:1040px){margin-left: 0;}
+          }
+          &:nth-child(4)
+          {
+            margin-left: -60px;
+              @media only screen and (max-width:1040px){margin-left: 0;}
+          }
+      h4{font-family: Lato;font-size: 16px;font-weight: 500;line-height: 19.2px;color: #266510;margin-left: 47px;}
+      p{max-width: 154px;width: 100%;font-family: Lato;font-size: 16px;font-weight: 600;line-height: 24px;color: #333333; margin: 0 auto;margin-left: 67px;}
+
+
+    }
+   }
+}
+

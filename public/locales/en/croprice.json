@@ -1,0 +1,99 @@
+{
+  "data": [
+    {
+      "id": 29,
+      "documentId": "xafevg9hl93tizjwndmutzy6",
+      "Title": "Rice",
+      "slug": "rice",
+      "Heading": "Rice",
+      "Sub_heading": "Adapting Rice Value Chains for Climate Resilience",
+      "Description": "Temperature increases, rising sea levels, and changes in rainfall patterns could lead to substantial impacts on land and water resources needed for reliable rice production. Continuous groundwater extraction for rice paddy irrigation is already resulting in a steep decline in groundwater availability. </br>\nFurther along the value chain, climate change can cause an increased risk of mold, insect infestation, fungi and diseases that could negatively affect processing and storage. These impacts ultimately influence the quality and quantity of rice produced, which can result in price volatility and lower food availability.",
+      "Explore_heading": "Explore Crop Adaptation Resources",
+      "explore_sub_heading": "Explore adaptation resources by value chain node",
+      "createdAt": "2025-01-21T10:15:44.425Z",
+      "updatedAt": "2025-02-19T15:06:11.199Z",
+      "publishedAt": "2025-02-19T15:06:11.236Z",
+      "card_image": {
+        "id": 18,
+        "documentId": "l9obcb4uzebvv06nnuw3t8hr",
+        "name": "image (1).png",
+        "alternativeText": null,
+        "caption": null,
+        "width": 271,
+        "height": 157,
+        "formats": {
+          "thumbnail": {
+            "ext": ".png",
+            "url": "/uploads/thumbnail_image_1_ca3b7904ed.png",
+            "hash": "thumbnail_image_1_ca3b7904ed",
+            "mime": "image/png",
+            "name": "thumbnail_image (1).png",
+            "path": null,
+            "size": 101.85,
+            "width": 245,
+            "height": 142,
+            "sizeInBytes": 101853
+          }
+        },
+        "hash": "image_1_ca3b7904ed",
+        "ext": ".png",
+        "mime": "image/png",
+        "size": 36.6,
+        "url": "/uploads/image_1_ca3b7904edkkkkkkkkkkkk.png",
+        "previewUrl": null,
+        "provider": "local",
+        "provider_metadata": null,
+        "createdAt": "2025-01-30T09:41:13.386Z",
+        "updatedAt": "2025-01-30T11:03:19.339Z",
+        "publishedAt": "2025-01-30T09:41:13.388Z"
+      },
+      "Banner_image": {
+        "id": 18,
+        "documentId": "l9obcb4uzebvv06nnuw3t8hr",
+        "name": "image (1).png",
+        "alternativeText": null,
+        "caption": null,
+        "width": 271,
+        "height": 157,
+        "formats": {
+          "thumbnail": {
+            "ext": ".png",
+            "url": "/uploads/thumbnail_image_1_ca3b7904ed.png",
+            "hash": "thumbnail_image_1_ca3b7904ed",
+            "mime": "image/png",
+            "name": "thumbnail_image (1).png",
+            "path": null,
+            "size": 101.85,
+            "width": 245,
+            "height": 142,
+            "sizeInBytes": 101853
+          }
+        },
+        "hash": "image_1_ca3b7904ed",
+        "ext": ".png",
+        "mime": "image/png",
+        "size": 36.6,
+        "url": "/images/adaptation/rice_image.png",
+        "previewUrl": null,
+        "provider": "local",
+        "provider_metadata": null,
+        "createdAt": "2025-01-30T09:41:13.386Z",
+        "updatedAt": "2025-01-30T11:03:19.339Z",
+        "publishedAt": "2025-01-30T09:41:13.388Z"
+      },
+      "Learn_more": {
+        "id": 46,
+        "Button_Text": "Learn More",
+        "Button_url": "#"
+      }
+    }
+  ],
+  "meta": {
+    "pagination": {
+      "page": 1,
+      "pageSize": 25,
+      "pageCount": 1,
+      "total": 1
+    }
+  }
+}

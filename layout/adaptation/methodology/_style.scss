@@ -1,0 +1,19 @@
+
+
+
+.methodology{padding-bottom: 104px;
+  @media screen and (max-width:767px){padding-bottom: 64px;}
+  h2{font-family: Lato;font-size: 36px;font-weight: 500;line-height: 43.2px;
+    @media screen and (max-width:767px){margin-bottom: 18px !important;font-size:24px;}}
+  p{font-family: Lato;font-size: 14px; font-weight: 400;line-height: 22px;color: #333333;opacity: 0.7;}
+.note_card{background-color: #F2F2F2;padding:16px;border-radius: 16px;
+  @media screen and (max-width:767px){padding: 10px 12px;}
+h5{font-family: Lato;font-size: 12px;font-weight: 400;line-height: 20px;color: #333333;}
+p{font-family: Lato; font-size: 12px;font-weight: 400; line-height: 20px;color: #333333;opacity: 0.7;}
+}
+.method_p{margin-top: 40px !important;}
+.method_right_pad{padding-left: 48px;
+span{height: 100% !important;min-height: 377px !important;}
+}
+}
+

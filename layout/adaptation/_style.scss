@@ -1,0 +1,8 @@
+.adaptation_intro{
+  .image-container{
+         .image{mask: unset;}
+    } 
+}
+
+.adapt_container{max-width: 1051px;width: 100%;padding: 0 10px;margin: 0 auto;
+  @media screen and (max-width:767px){padding: 0 20px;}}

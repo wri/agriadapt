@@ -1,0 +1,107 @@
+{
+  "data": [
+    {
+      "id": 30,
+      "documentId": "s1u2fbkmlhzb6qy1vuuo5zme",
+      "Title": "Cotton",
+      "slug": "cotton",
+      "Heading": null,
+      "Sub_heading": "Adapting Cotton Value Chains for Climate Resilience",
+      "Description": "The cotton value chain is likely to experience disruptions due to climate change impacts such as shifts in irrigation water availability, changing rainfall patterns, and rising temperatures. Cotton's lengthy growing season (approximately 150-180 days) already makes the crop quite vulnerable to pests and diseases, and higher temperatures will increase its susceptibility. Higher moisture and increased humidity impact the weight of cotton bales and fiber content, which negatively impacts the quality of the product when it reaches the processing stage.",
+      "Explore_heading": "Explore Crop Adaptation Resources",
+      "explore_sub_heading": "Explore adaptation resources by value chain node",
+      "createdAt": "2025-01-21T10:37:50.892Z",
+      "updatedAt": "2025-02-19T15:19:54.930Z",
+      "publishedAt": "2025-02-19T15:19:54.958Z",
+      "card_image": {
+        "id": 19,
+        "documentId": "b6873l3m9ggx5v90uot8f3im",
+        "name": "image (2).png",
+        "alternativeText": null,
+        "caption": null,
+        "width": 271,
+        "height": 157,
+        "formats": {
+          "thumbnail": {
+            "ext": ".png",
+            "url": "/uploads/thumbnail_image_2_19c62b64a2.png",
+            "hash": "thumbnail_image_2_19c62b64a2",
+            "mime": "image/png",
+            "name": "thumbnail_image (2).png",
+            "path": null,
+            "size": 92.85,
+            "width": 245,
+            "height": 142,
+            "sizeInBytes": 92847
+          }
+        },
+        "hash": "image_2_19c62b64a2",
+        "ext": ".png",
+        "mime": "image/png",
+        "size": 32.75,
+        "url": "/images/adaptation/cotton.png",
+        "previewUrl": null,
+        "provider": "local",
+        "provider_metadata": null,
+        "createdAt": "2025-01-30T09:41:28.497Z",
+        "updatedAt": "2025-02-19T14:11:54.247Z",
+        "publishedAt": "2025-01-30T09:41:28.497Z"
+      },
+      "Banner_image": {
+        "id": 28,
+        "documentId": "pjjcprojepwrau7wd8lfcr8n",
+        "name": "Cotton.jpg",
+        "alternativeText": null,
+        "caption": null,
+        "width": 426,
+        "height": 548,
+        "formats": {
+          "small": {
+            "ext": ".jpg",
+            "url": "/uploads/small_Cotton_c307619124.jpg",
+            "hash": "small_Cotton_c307619124",
+            "mime": "image/jpeg",
+            "name": "small_Cotton.jpg",
+            "path": null,
+            "size": 40.75,
+            "width": 389,
+            "height": 500,
+            "sizeInBytes": 40748
+          },
+          "thumbnail": {
+            "ext": ".jpg",
+            "url": "/uploads/thumbnail_Cotton_c307619124.jpg",
+            "hash": "thumbnail_Cotton_c307619124",
+            "mime": "image/jpeg",
+            "name": "thumbnail_Cotton.jpg",
+            "path": null,
+            "size": 7.02,
+            "width": 121,
+            "height": 156,
+            "sizeInBytes": 7024
+          }
+        },
+        "hash": "Cotton_c307619124",
+        "ext": ".jpg",
+        "mime": "image/jpeg",
+        "size": 46.97,
+        "url": "/images/adaptation/cotton image.png",
+        "previewUrl": null,
+        "provider": "local",
+        "provider_metadata": null,
+        "createdAt": "2025-02-19T15:19:47.782Z",
+        "updatedAt": "2025-02-19T15:19:47.782Z",
+        "publishedAt": "2025-02-19T15:19:47.783Z"
+      },
+      "Learn_more": null
+    }
+  ],
+  "meta": {
+    "pagination": {
+      "page": 1,
+      "pageSize": 25,
+      "pageCount": 1,
+      "total": 1
+    }
+  }
+}

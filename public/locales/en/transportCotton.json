@@ -1,0 +1,557 @@
+[
+  {
+    "intro": {
+      "title": "Transport, Trade, and Sales",
+      "description": [
+        "Climate change will pose new challenges for transportation due to sea level rise, temperature changes, and damaged infrastructure. The trade node could be impacted by poor quality and lower product volumes, which will increase sourcing costs and add to price volatility. Less availability of good quality product can ultimately affect the cost of products at the consumer level."
+      ],
+      "banner_image":"/images/adaptation/banner_images/transport_cotton.png"
+    }
+  }
+  ,
+  {
+    "id": "Rainfall_Variability",
+    "label": "Rainfall Variability",
+    "content": "As climate change reshapes agriculture, resilient crops offer a lifeline to farmers. These innovative solutions are designed to withstand droughts, heat, and floods—ensuring food security, sustainable livelihoods, and a healthier planet. Discover how science and tradition are coming together to build a brighter future for farming.",
+    "blogs": [
+      {
+        "id": "blog_724",
+        "title": "Mapping the cotton value chain in Pakistan: a preliminary assessment for climate vulnerabilities and pathways to adaptation",
+        "tags": [
+          { "icon": "/images/icons/tick-circle.svg", "label": "Peer Reviewed" },
+          { "icon": "/images/icons/location.svg", "label": "Pakistan" },
+          { "icon": "/images/icons/rice_icon.svg", "label": "Cotton" }
+        ],
+        "links": [
+          { "icon": "/images/icons/link.svg", "label": "Rainfall variability", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Increased temperatures", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Water stress", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Flooding", "href": "#" }
+        ],
+        "journal": {
+          "icon": "/images/icons/globe.svg",
+          "label": "Working Paper 2017 (English)",
+          "href": "http://terra-web.irepo.in:4010/adaptations/cotton/input-and-production",
+          "sendIcon": "/images/icons/Send.svg"
+        }
+      },
+      {
+        "id": "blog_720",
+        "title": "Cotton 2040",
+        "tags": [
+          { "icon": "/images/icons/tick-circle.svg", "label": "Peer Reviewed" },
+          { "icon": "/images/icons/location.svg", "label": "N/A" },
+          { "icon": "/images/icons/rice_icon.svg", "label": "Cotton" }
+        ],
+        "links": [
+          { "icon": "/images/icons/link.svg", "label": "Rainfall variability", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Increased temperatures", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Water stress", "href": "#" }
+        ],
+        "journal": null
+      },
+      {
+        "id": "blog_725",
+        "title": "Cotton and Climate",
+        "tags": [
+          { "icon": "/images/icons/tick-circle.svg", "label": "Peer Reviewed" },
+          { "icon": "/images/icons/location.svg", "label": "N/A" },
+          { "icon": "/images/icons/rice_icon.svg", "label": "Cotton" }
+        ],
+        "links": [
+          { "icon": "/images/icons/link.svg", "label": "Rainfall variability", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Increased temperatures", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Water stress", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Drought", "href": "#" }
+        ],
+        "journal": {
+          "icon": "/images/icons/globe.svg",
+          "label": "Report 2023 (English)",
+          "href": "https://sustainablecottonhub.org/uploads/default/files/965e21efd12b96d9a1985aff175641a4.pdf",
+          "sendIcon": "/images/icons/Send.svg"
+        }
+      },
+      
+        {
+          "id": "blog_721",
+          "title": "Climate-resilient agriculture in Bangladesh: A value chain analysis of cotton",
+          "tags": [
+            { "icon": "/images/icons/tick-circle.svg", "label": "Peer Reviewed" },
+            { "icon": "/images/icons/location.svg", "label": "Bangladesh" },
+            { "icon": "/images/icons/rice_icon.svg", "label": "Cotton" }
+          ],
+          "links": [
+            { "icon": "/images/icons/link.svg", "label": "Rainfall variability", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "Increased temperatures", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "High Humidity", "href": "#" }
+          ],
+          "journal": {
+            "icon": "/images/icons/globe.svg",
+            "label": "Report 2019 (English)",
+            "href": "https://www.researchgate.net/publication/335749429_Climate-resilient_agriculture_in_Bangladesh_A_value_chain_analysis_of_cotton",
+            "sendIcon": "/images/icons/Send.svg"
+          }
+        },
+        {
+          "id": "blog_722",
+          "title": "Cotton 2040 Physical climate risk and vulnerability assessment of cotton value chain: India analysis",
+          "tags": [
+            { "icon": "/images/icons/tick-circle.svg", "label": "Peer Reviewed" },
+            { "icon": "/images/icons/location.svg", "label": "India" },
+            { "icon": "/images/icons/rice_icon.svg", "label": "Cotton" }
+          ],
+          "links": [
+            { "icon": "/images/icons/link.svg", "label": "Rainfall variability", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "Increased temperatures", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "Water stress", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "Flooding", "href": "#" }
+          ],
+          "journal": {
+            "icon": "/images/icons/globe.svg",
+            "label": "Technical report 2021 (English)",
+            "href": "https://www.researchgate.net/publication/335749429_Climate-resilient_agriculture_in_Bangladesh_A_value_chain_analysis_of_cotton",
+            "sendIcon": "/images/icons/Send.svg"
+          }
+        },
+        {
+          "id": "blog_723",
+          "title": "Towards a climate resilient cotton value chain in Pakistan: Understanding key risks, vulnerabilities and adaptive capacities",
+          "tags": [
+            { "icon": "/images/icons/tick-circle.svg", "label": "Peer Reviewed" },
+            { "icon": "/images/icons/location.svg", "label": "Pakistan" },
+            { "icon": "/images/icons/rice_icon.svg", "label": "Cotton" }
+          ],
+          "links": [
+            { "icon": "/images/icons/link.svg", "label": "Rainfall variability", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "Increased temperatures", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "Water stress", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "Flooding", "href": "#" }
+          ],
+          "journal": {
+            "icon": "/images/icons/globe.svg",
+            "label": "Working Paper 2018 (English)",
+            "href": "https://sdpi.org/sdpiweb/publications/files/TowardsaclimateresilientcvcinPakUnderstandingkeyrisksvulnerabilities&adaptivecapacities.pdf",
+            "sendIcon": "/images/icons/Send.svg"
+          }
+        }
+            
+    ]
+    
+  },
+  {
+    "id": "Temperature",
+    "label": "Increased Temperature",
+    "content": "Rising temperatures are a major concern for agriculture. Understanding how crops respond to these changes and developing solutions that enhance resilience are critical to ensuring food security in a warming world.",
+    "blogs": [
+      {
+        "id": "blog_707",
+        "title": "Climate-resilient agriculture in Bangladesh: A value chain analysis of cotton",
+        "tags": [
+          { "icon": "/images/icons/tick-circle.svg", "label": "Peer Reviewed" },
+          { "icon": "/images/icons/location.svg", "label": "Bangladesh" },
+          { "icon": "/images/icons/rice_icon.svg", "label": "Cotton" }
+        ],
+        "links": [
+          { "icon": "/images/icons/link.svg", "label": "Rainfall variability", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Increased temperatures", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "High Humidity", "href": "#" }
+        ],
+        "journal": {
+          "icon": "/images/icons/globe.svg",
+          "label": "Report 2019 (English)",
+          "href": "https://www.researchgate.net/publication/335749429_Climate-resilient_agriculture_in_Bangladesh_A_value_chain_analysis_of_cotton",
+          "sendIcon": "/images/icons/Send.svg"
+        }
+      },
+      {
+        "id": "blog_708",
+        "title": "Cotton 2040 Physical climate risk and vulnerability assessment of cotton value chain: India analysis",
+        "tags": [
+          { "icon": "/images/icons/tick-circle.svg", "label": "Peer Reviewed" },
+          { "icon": "/images/icons/location.svg", "label": "India" },
+          { "icon": "/images/icons/rice_icon.svg", "label": "Cotton" }
+        ],
+        "links": [
+          { "icon": "/images/icons/link.svg", "label": "Rainfall variability", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Increased temperatures", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Water stress", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Flooding", "href": "#" }
+        ],
+        "journal": {
+          "icon": "/images/icons/globe.svg",
+          "label": "Technical report 2021 (English)",
+          "href": "https://www.researchgate.net/publication/335749429_Climate-resilient_agriculture_in_Bangladesh_A_value_chain_analysis_of_cotton",
+          "sendIcon": "/images/icons/Send.svg"
+        }
+      },
+      {
+        "id": "blog_709",
+        "title": "Towards a climate resilient cotton value chain in Pakistan: Understanding key risks, vulnerabilities and adaptive capacities",
+        "tags": [
+          { "icon": "/images/icons/tick-circle.svg", "label": "Peer Reviewed" },
+          { "icon": "/images/icons/location.svg", "label": "Pakistan" },
+          { "icon": "/images/icons/rice_icon.svg", "label": "Cotton" }
+        ],
+        "links": [
+          { "icon": "/images/icons/link.svg", "label": "Rainfall variability", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Increased temperatures", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Water stress", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Flooding", "href": "#" }
+        ],
+        "journal": {
+          "icon": "/images/icons/globe.svg",
+          "label": "Working Paper 2018 (English)",
+          "href": "https://sdpi.org/sdpiweb/publications/files/TowardsaclimateresilientcvcinPakUnderstandingkeyrisksvulnerabilities&adaptivecapacities.pdf",
+          "sendIcon": "/images/icons/Send.svg"
+        }
+      },
+      
+        {
+          "id": "blog_710",
+          "title": "Mapping the cotton value chain in Pakistan: a preliminary assessment for climate vulnerabilities and pathways to adaptation",
+          "tags": [
+            { "icon": "/images/icons/tick-circle.svg", "label": "Peer Reviewed" },
+            { "icon": "/images/icons/location.svg", "label": "Pakistan" },
+            { "icon": "/images/icons/rice_icon.svg", "label": "Cotton" }
+          ],
+          "links": [
+            { "icon": "/images/icons/link.svg", "label": "Rainfall variability", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "Increased temperatures", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "Water stress", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "Flooding", "href": "#" }
+          ],
+          "journal": {
+            "icon": "/images/icons/globe.svg",
+            "label": "Working Paper 2017 (English)",
+            "href": "http://terra-web.irepo.in:4010/adaptations/cotton/input-and-production",
+            "sendIcon": "/images/icons/Send.svg"
+          }
+        },
+        {
+          "id": "blog_706",
+          "title": "Cotton 2040",
+          "tags": [
+            { "icon": "/images/icons/tick-circle.svg", "label": "Peer Reviewed" },
+            { "icon": "/images/icons/location.svg", "label": "N/A" },
+            { "icon": "/images/icons/rice_icon.svg", "label": "Cotton" }
+          ],
+          "links": [
+            { "icon": "/images/icons/link.svg", "label": "Rainfall variability", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "Increased temperatures", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "Water stress", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "Flooding", "href": "#" }
+          ],
+          "journal": {
+            "icon": "/images/icons/globe.svg",
+            "label": "No university",
+            "href": "#",
+            "sendIcon": "/images/icons/Send.svg"
+          }
+        },
+        {
+          "id": "blog_711",
+          "title": "Cotton Connect",
+          "tags": [
+            { "icon": "/images/icons/tick-circle.svg", "label": "Peer Reviewed" },
+            { "icon": "/images/icons/location.svg", "label": "N/A" },
+            { "icon": "/images/icons/rice_icon.svg", "label": "Cotton" }
+          ],
+          "links": [
+            { "icon": "/images/icons/link.svg", "label": "Increased temperatures", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "Water stress", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "Water stress", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "Flooding", "href": "#" }
+          ],
+          "journal": {
+            "icon": "/images/icons/globe.svg",
+            "label": "Website (English)",
+            "href": "https://sdpi.org/sdpiweb/publications/files/TowardsaclimateresilientcvcinPakUnderstandingkeyrisksvulnerabilities&adaptivecapacities.pdf",
+            "sendIcon": "/images/icons/Send.svg"
+          }
+        },
+        
+          {
+            "id": "blog_712",
+            "title": "Cotton and Climate",
+            "tags": [
+              { "icon": "/images/icons/tick-circle.svg", "label": "Peer Reviewed" },
+              { "icon": "/images/icons/location.svg", "label": "N/A" },
+              { "icon": "/images/icons/rice_icon.svg", "label": "Cotton" }
+            ],
+            "links": [
+              { "icon": "/images/icons/link.svg", "label": "Rainfall variability", "href": "#" },
+              { "icon": "/images/icons/link.svg", "label": "Increased temperatures", "href": "#" },
+              { "icon": "/images/icons/link.svg", "label": "Water stress", "href": "#" },
+              { "icon": "/images/icons/link.svg", "label": "Drought", "href": "#" }
+            ],
+            "journal": {
+              "icon": "/images/icons/globe.svg",
+              "label": "Report 2023 (English)",
+              "href": "https://sustainablecottonhub.org/uploads/default/files/965e21efd12b96d9a1985aff175641a4.pdf",
+              "sendIcon": "/images/icons/Send.svg"
+            }
+          }
+                
+            
+    ]
+    
+  },
+  {
+    "id": "Water_Stress",
+    "label": "Water Stress",
+    "content": "Water stress due to climate change is affecting crop production. Identifying water-efficient crops and improving irrigation techniques can help mitigate these effects and secure agricultural productivity",
+    "blogs": [
+      {
+        "id": "blog_734",
+        "title": "Cotton 2040 Physical climate risk and vulnerability assessment of cotton value chain: India analysis",
+        "tags": [
+          { "icon": "/images/icons/tick-circle.svg", "label": "Peer Reviewed" },
+          { "icon": "/images/icons/location.svg", "label": "India" },
+          { "icon": "/images/icons/rice_icon.svg", "label": "Cotton" }
+        ],
+        "links": [
+          { "icon": "/images/icons/link.svg", "label": "Rainfall variability", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Increased temperatures", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Water stress", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Flooding", "href": "#" }
+        ],
+        "journal": {
+          "icon": "/images/icons/globe.svg",
+          "label": "Technical report 2021 (English)",
+          "href": "https://www.researchgate.net/publication/335749429_Climate-resilient_agriculture_in_Bangladesh_A_value_chain_analysis_of_cotton",
+          "sendIcon": "/images/icons/Send.svg"
+        }
+      },
+      {
+        "id": "blog_735",
+        "title": "Towards a climate resilient cotton value chain in Pakistan: Understanding key risks, vulnerabilities and adaptive capacities",
+        "tags": [
+          { "icon": "/images/icons/tick-circle.svg", "label": "Peer Reviewed" },
+          { "icon": "/images/icons/location.svg", "label": "Pakistan" },
+          { "icon": "/images/icons/rice_icon.svg", "label": "Cotton" }
+        ],
+        "links": [
+          { "icon": "/images/icons/link.svg", "label": "Rainfall variability", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Increased temperatures", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Water stress", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Flooding", "href": "#" }
+        ],
+        "journal": {
+          "icon": "/images/icons/globe.svg",
+          "label": "Working Paper 2018 (English)",
+          "href": "https://sdpi.org/sdpiweb/publications/files/TowardsaclimateresilientcvcinPakUnderstandingkeyrisksvulnerabilities&adaptivecapacities.pdf",
+          "sendIcon": "/images/icons/Send.svg"
+        }
+      },
+      {
+        "id": "blog_736",
+        "title": "Mapping the cotton value chain in Pakistan: a preliminary assessment for climate vulnerabilities and pathways to adaptation",
+        "tags": [
+          { "icon": "/images/icons/tick-circle.svg", "label": "Peer Reviewed" },
+          { "icon": "/images/icons/location.svg", "label": "Pakistan" },
+          { "icon": "/images/icons/rice_icon.svg", "label": "Cotton" }
+        ],
+        "links": [
+          { "icon": "/images/icons/link.svg", "label": "Rainfall variability", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Increased temperatures", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Water stress", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Flooding", "href": "#" }
+        ],
+        "journal": {
+          "icon": "/images/icons/globe.svg",
+          "label": "Working Paper 2017 (English)",
+          "href": "http://terra-web.irepo.in:4010/adaptations/cotton/input-and-production",
+          "sendIcon": "/images/icons/Send.svg"
+        }
+      },
+      
+        {
+          "id": "blog_733",
+          "title": "Cotton 2040",
+          "tags": [
+            { "icon": "/images/icons/tick-circle.svg", "label": "Peer Reviewed" },
+            { "icon": "/images/icons/location.svg", "label": "N/A" },
+            { "icon": "/images/icons/rice_icon.svg", "label": "Cotton" }
+          ],
+          "links": [
+            { "icon": "/images/icons/link.svg", "label": "Rainfall variability", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "Increased temperatures", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "Water stress", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "Flooding", "href": "#" }
+          ],
+          "journal": {
+            "icon": "/images/icons/globe.svg",
+            "label": "N/A",
+            "href": "#",
+            "sendIcon": "/images/icons/Send.svg"
+          }
+        },
+        {
+          "id": "blog_737",
+          "title": "Cotton Connect",
+          "tags": [
+            { "icon": "/images/icons/tick-circle.svg", "label": "Peer Reviewed" },
+            { "icon": "/images/icons/location.svg", "label": "N/A" },
+            { "icon": "/images/icons/rice_icon.svg", "label": "Cotton" }
+          ],
+          "links": [
+            { "icon": "/images/icons/link.svg", "label": "Increased temperatures", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "Water stress", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "Water stress", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "Flooding", "href": "#" }
+          ],
+          "journal": {
+            "icon": "/images/icons/globe.svg",
+            "label": "Website (English)",
+            "href": "https://sdpi.org/sdpiweb/publications/files/TowardsaclimateresilientcvcinPakUnderstandingkeyrisksvulnerabilities&adaptivecapacities.pdf",
+            "sendIcon": "/images/icons/Send.svg"
+          }
+        },
+        {
+          "id": "blog_738",
+          "title": "Cotton and Climate",
+          "tags": [
+            { "icon": "/images/icons/tick-circle.svg", "label": "Peer Reviewed" },
+            { "icon": "/images/icons/location.svg", "label": "N/A" },
+            { "icon": "/images/icons/rice_icon.svg", "label": "Cotton" }
+          ],
+          "links": [
+            { "icon": "/images/icons/link.svg", "label": "Rainfall variability", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "Increased temperatures", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "Water stress", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "Drought", "href": "#" }
+          ],
+          "journal": {
+            "icon": "/images/icons/globe.svg",
+            "label": "Report 2023 (English)",
+            "href": "https://sustainablecottonhub.org/uploads/default/files/965e21efd12b96d9a1985aff175641a4.pdf",
+            "sendIcon": "/images/icons/Send.svg"
+          }
+        }
+            
+    ]
+    
+  },
+  {
+    "id": "Drought",
+    "label": "Drought",
+    "content": "Drought due to climate change is affecting crop production. Identifying water-efficient crops and improving irrigation techniques can help mitigate these effects and secure agricultural productivity.",
+    "blogs": [
+      {
+        "id": "blog_734",
+        "title": "Cotton 2040 Physical climate risk and vulnerability assessment of cotton value chain: India analysis",
+        "tags": [
+          { "icon": "/images/icons/tick-circle.svg", "label": "Peer Reviewed" },
+          { "icon": "/images/icons/location.svg", "label": "India" },
+          { "icon": "/images/icons/rice_icon.svg", "label": "Cotton" }
+        ],
+        "links": [
+          { "icon": "/images/icons/link.svg", "label": "Rainfall variability", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Increased temperatures", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Water stress", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Flooding", "href": "#" }
+        ],
+        "journal": {
+          "icon": "/images/icons/globe.svg",
+          "label": "Technical report 2021 (English)",
+          "href": "https://www.researchgate.net/publication/335749429_Climate-resilient_agriculture_in_Bangladesh_A_value_chain_analysis_of_cotton",
+          "sendIcon": "/images/icons/Send.svg"
+        }
+      },
+      {
+        "id": "blog_735",
+        "title": "Towards a climate resilient cotton value chain in Pakistan: Understanding key risks, vulnerabilities and adaptive capacities",
+        "tags": [
+          { "icon": "/images/icons/tick-circle.svg", "label": "Peer Reviewed" },
+          { "icon": "/images/icons/location.svg", "label": "Pakistan" },
+          { "icon": "/images/icons/rice_icon.svg", "label": "Cotton" }
+        ],
+        "links": [
+          { "icon": "/images/icons/link.svg", "label": "Rainfall variability", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Increased temperatures", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Water stress", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Flooding", "href": "#" }
+        ],
+        "journal": {
+          "icon": "/images/icons/globe.svg",
+          "label": "Working Paper 2018 (English)",
+          "href": "https://sdpi.org/sdpiweb/publications/files/TowardsaclimateresilientcvcinPakUnderstandingkeyrisksvulnerabilities&adaptivecapacities.pdf",
+          "sendIcon": "/images/icons/Send.svg"
+        }
+      },
+      {
+        "id": "blog_736",
+        "title": "Mapping the cotton value chain in Pakistan: a preliminary assessment for climate vulnerabilities and pathways to adaptation",
+        "tags": [
+          { "icon": "/images/icons/tick-circle.svg", "label": "Peer Reviewed" },
+          { "icon": "/images/icons/location.svg", "label": "Pakistan" },
+          { "icon": "/images/icons/rice_icon.svg", "label": "Cotton" }
+        ],
+        "links": [
+          { "icon": "/images/icons/link.svg", "label": "Rainfall variability", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Increased temperatures", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Water stress", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Flooding", "href": "#" }
+        ],
+        "journal": {
+          "icon": "/images/icons/globe.svg",
+          "label": "Working Paper 2017 (English)",
+          "href": "http://terra-web.irepo.in:4010/adaptations/cotton/input-and-production",
+          "sendIcon": "/images/icons/Send.svg"
+        }
+      }
+    ]
+    
+  },
+  {
+    "id": "Flooding",
+    "label": "Flooding",
+    "content": "Flooding due to climate change is affecting crop production. Identifying water-efficient crops and improving irrigation techniques can help mitigate these effects and secure agricultural productivity.",
+    "blogs": [
+      {
+        "id": "blog_746",
+        "title": "Towards a climate resilient cotton value chain in Pakistan: Understanding key risks, vulnerabilities and adaptive capacities",
+        "tags": [
+          { "icon": "/images/icons/tick-circle.svg", "label": "Peer Reviewed" },
+          { "icon": "/images/icons/location.svg", "label": "Pakistan" },
+          { "icon": "/images/icons/rice_icon.svg", "label": "Cotton" }
+        ],
+        "links": [
+          { "icon": "/images/icons/link.svg", "label": "Rainfall variability", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Increased temperatures", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Water stress", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Flooding", "href": "#" }
+        ],
+        "journal": {
+          "icon": "/images/icons/globe.svg",
+          "label": "Working Paper 2018 (English)",
+          "href": "https://sdpi.org/sdpiweb/publications/files/TowardsaclimateresilientcvcinPakUnderstandingkeyrisksvulnerabilities&adaptivecapacities.pdf",
+          "sendIcon": "/images/icons/Send.svg"
+        }
+      },
+      {
+        "id": "blog_747",
+        "title": "Cotton and Climate",
+        "tags": [
+          { "icon": "/images/icons/tick-circle.svg", "label": "Peer Reviewed" },
+          { "icon": "/images/icons/location.svg", "label": "N/A" },
+          { "icon": "/images/icons/rice_icon.svg", "label": "Cotton" }
+        ],
+        "links": [
+          { "icon": "/images/icons/link.svg", "label": "Rainfall variability", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Increased temperatures", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Water stress", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Drought", "href": "#" }
+        ],
+        "journal": {
+          "icon": "/images/icons/globe.svg",
+          "label": "Report 2023 (English)",
+          "href": "https://sustainablecottonhub.org/uploads/default/files/965e21efd12b96d9a1985aff175641a4.pdf",
+          "sendIcon": "/images/icons/Send.svg"
+        }
+      }
+    ]
+    
+  }
+
+]

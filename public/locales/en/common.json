@@ -22,6 +22,10 @@
     "cotton": "Cotton",
     "rice": "Rice"
   },
+  "value_chains_crops": {
+    "cotton": "Cotton",
+    "rice": "Rice"
+  },
   "Search": "Search",
   "Select": "Select",
   "share": {
@@ -40,14 +44,19 @@
     "trade": "Trade",
     "land_suitability": "Land Suitability",
     "labor": "Labor",
-    "seedlings": "Seedlings",
+    "seedlings": "Germination",
     "production_volume": "Production Volume",
-    "pest_and_disease": "Pest and Disease",
-    "changes_in_rainfall": "Changes in Rainfall",
+    "pest_and_disease": "Pests and Disease",
+    "changes_in_rainfall": "Projected Changes in Rainfall",
     "change_in_yield": "Change in Yield",
-    "policies_and_price": "Policies and Price",
-    "food_vulnerability": "Food Vulnerability",
-    "export_and_import": "Export and Import"
+    "policies_and_price": "",
+    "food_vulnerability": "",
+    "export_and_import": "Export and Import",
+    "water":"Water",
+    "Roads":"Roads",
+    "rice_water":"Water",
+    "rice_roads":"Roads",
+    "coffee_roads":"Roads"
   },
   "GDPR": "This website uses cookies to provide you with an improved user experience. By continuing to browse this site, you consent to the use of cookies and similar technologies. Please visit our",
   "further_details": "for further details.",

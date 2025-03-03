@@ -21,6 +21,7 @@
     flex-direction: row;
     justify-content: space-between;
   }
+  &.crop_chains{gap: 56px;}
 
   .value-chain-card {
     background: #fff
@@ -52,5 +53,15 @@
     height: 305px;
     z-index: 0;
     top: -50px;
+  }
+}
+
+
+
+.crop_detail_landing{
+  padding: 80px 0;
+  h3{color: #393f44;}
+  .c-button{
+    white-space: unset;line-height: 1;
   }
 }

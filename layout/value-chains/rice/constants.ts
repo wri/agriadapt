@@ -150,6 +150,9 @@ const inputs = {
     info: 'inputs.seedlings.info',
     widgets: [{ id: '9529e2a9-112c-4c77-b893-5b5a4d983be7' }],
   },
+  rice_water:{
+    info: 'inputs.rice_water.info',
+  }
 };
 
 const production = {
@@ -208,35 +211,38 @@ const production = {
 // const processing = {};
 
 const trade = {
-  policies_and_price: {
-    info: 'trade.policies_and_price.info',
-    // TODO: Additional Callout
-    analysis: {
-      dataset: '641c0a35-f2e5-4198-8ed9-576ea7e9685a',
-      query: ({ iso }: { iso: string }) =>
-        `select nrp as x from data where countrycode='${iso}' order by year desc limit 1`,
-      format: '0.00',
-      suffix: '%',
-      name: 'Nominal rate of protection, {{crop}} in {{country}} in 2018',
-    },
-  },
-  food_vulnerability: {
-    info: 'trade.food_vulnerability.info',
-    // TODO: Additional Callout
-    analysis: {
-      dataset: '7e98607d-23d8-42f8-9662-5658f349bf0f',
-      query: ({ country }: { country: string }) =>
-        `select cri_score / 100 as x from data where country='${country}'`,
-      format: '0.00',
-      // type: 'Total',
-      // TODO: Translate
-      name: `Food vulnerability score in 2019`,
-    },
-  },
+  // policies_and_price: {
+  //   info: 'trade.policies_and_price.info',
+  //   // TODO: Additional Callout
+  //   analysis: {
+  //     dataset: '641c0a35-f2e5-4198-8ed9-576ea7e9685a',
+  //     query: ({ iso }: { iso: string }) =>
+  //       `select nrp as x from data where countrycode='${iso}' order by year desc limit 1`,
+  //     format: '0.00',
+  //     suffix: '%',
+  //     name: 'Nominal rate of protection, {{crop}} in {{country}} in 2018',
+  //   },
+  // },
+  // food_vulnerability: {
+  //   info: 'trade.food_vulnerability.info',
+  //   // TODO: Additional Callout
+  //   analysis: {
+  //     dataset: '7e98607d-23d8-42f8-9662-5658f349bf0f',
+  //     query: ({ country }: { country: string }) =>
+  //       `select cri_score / 100 as x from data where country='${country}'`,
+  //     format: '0.00',
+  //     // type: 'Total',
+  //     // TODO: Translate
+  //     name: `Food vulnerability score in 2019`,
+  //   },
+  // },
   export_and_import: {
     info: 'trade.export_and_import.info',
     widgets: [rice_import_widget],
   },
+  rice_roads:{
+    info: 'trade.rice_roads.info',
+  }
 };
 
 export const quotes = {

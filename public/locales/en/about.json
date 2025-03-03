@@ -1,9 +1,9 @@
 {
   "intro": {
-    "title": "About the Agricultural Adaptation Tool",
+    "title": "About AgriAdapt",
     "description": [
-      "World Resources Institute has been building out a multifaceted program on Transforming Agriculture for Climate Resilience over the past five years. The aim of this work is to inform funders, policymakers and practitioners to integrate climate risk and resilience into plans, policies and programs.",
-      "The Agricultural Adaptation Tool is developed focusing on in-depth stakeholder engagement to bring together sectoral knowledge with technical and data expertise, underpinned by a user-centric approach to tool development."
+      "The World Resources Institute has been working on <a href='https://www.wri.org/initiatives/climate-resilient-and-transformative-adaptation-agriculture'> climate resilient and transformative adaptation for agriculture</a>  over the past several years, as part of our larger goal of supporting funders, policymakers and practitioners to integrate climate risk and resilience into plans, policies and programs.",
+      "The beta version of AgriAdapt was developed through extensive engagement with our intended users along the rice and cotton value chains in India, as well as coffee in Colombia, to bring together local knowledge with technical and data expertise."
     ]
   },
   "acknowledgements": {

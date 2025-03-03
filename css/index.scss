@@ -308,3 +308,13 @@
     vertical-align: initial;
   }
 }
+
+
+@import '/layout/adaptation/style';
+@import '/layout/adaptation/methodology/style';
+@import '/layout/adaptation/howToUse/style';
+@import '/layout/adaptation/exploreAdapt/style';
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+// @import '/layout/inputAndProduction/style';
+@import '/layout/adaptation/2025update/styles'
