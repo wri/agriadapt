@@ -2,7 +2,7 @@
   "intro": {
     "subtitle": "Climate Risk in Coffee Value Chains",
     "description": [
-      "Available research reveals that climate change will affect coffee production worldwide, especially arabica production. Increasing average temperatures, more frequent droughts and heat waves, shifting seasonal patterns, and other factors threaten to upend a large portion of suitable coffee producing areas over the next decades. These changes are likely to increase pressure on water and other natural resources."
+      "Climate change is already affecting coffee production worldwide. Increasing average temperatures, more frequent droughts and heat waves, shifting seasonal patterns, and other factors threaten to upend a large portion of suitable coffee producing areas over the next decades. These changes are likely to increase pressure on water, drive production uphill (often into areas critical for biodiversity), put workers at greater risk, and have additional impacts on communities and natural resources."
     ],
     "drop_down_title": "Select Country"
   },
@@ -12,7 +12,7 @@
   },
   "inputs": {
     "land_suitability": {
-      "info": "Coffee arabica production is highly sensitive to climate change. Significant reductions in climate suitability are expected for most coffee growing regions."
+      "info": "Arabica coffee production is highly sensitive to climate change. Significant reductions in climate suitability are expected for most coffee growing regions."
     },
     "labor": {
       "info": [
@@ -26,15 +26,18 @@
       "info": "Explore our data visualizations to better understand where the main coffee growing regions in {{country}} are and how much coffee is currently produced."
     },
     "pests_and_disease": {
-      "info": "The coffee berry borer and coffee leaf rust are the most threatening pest and disease to the health of coffee trees. In general, increased temperatures will increase the spread of pests and diseases in coffee trees. However, projected decreased rainfall in certain regions may decrease the spread of pest and disease."
+      "info": "The coffee berry borer and coffee leaf rust pose the greatest pest and disease risks to the health of coffee trees. In general, rising temperatures will increase the spread of pests and diseases in coffee trees. However, projected decreased rainfall in certain regions may slow pest and disease outbreaks – but also directly undermine production due to water stress."
     },
     "changes_in_rainfall": {
-      "info": "Temperature and rainfall conditions are considered to be important factors in defining potential coffee yield. Both factors interfere in the crop phenology, and consequently in productivity and quality."
+      "info": "Temperature and rainfall conditions are important factors in defining potential coffee yield. Changes in both factors may affect productivity and quality of the crop."
     }
   },
   "trade": {
     "export_and_import": {
-      "info": "Coffee is one of the most important commercially traded commodities in the international market, as well as one of the most popular beverages around the world. Climate impacts to production means ripple effects to global markets by affecting product availability, quality, and price. Explore the visualization to learn about coffee exports and imports in {{country}}."
+      "info": "Coffee is one of the most important commercially traded commodities in the international market, as well as one of the most popular beverages around the world. Localized climate impacts can ripple out to global markets by affecting product availability, quality, and price. Explore the visualization to learn about coffee exports and imports in Colombia."
+    },
+    "coffee_roads": {
+      "info": "Roads are a fundamental part of transportation infrastructure connecting food systems. Climate-related events such as heavy rainfall, flooding and landslides can cause major disruptions to roads and result in trickle down impacts throughout the entire value chain."
     }
   }
 }

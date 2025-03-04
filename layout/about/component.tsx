@@ -12,7 +12,7 @@ const LayoutAbout = () => {
 
   return (
     <Layout>
-      <div className="l-about">
+      <div className="l-about chevron_next_div">
         <IntroHeader {...ABOUT} />
         <div className="c-about-body">
           <div className="l-container">

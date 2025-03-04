@@ -19,7 +19,7 @@ const Chart = ({ datasetUrl, widget, layer, expandedChart }) => {
   const isWidgetMap = widget && widget.widgetConfig.type === 'map';
   const isEmbedWidget = widget && widget.widgetConfig.type === 'embed';
   const classNameValue = classnames({
-    'list-item-chart': true,
+    'list-item-chart': false,
     '-expanded-chart': expandedChart,
   });
 

@@ -1,0 +1,359 @@
+[
+  {
+    "intro": {
+      "title": "Transport, Trade, and Sales",
+      "description": [
+        "Climate change will pose new challenges for transportation due to sea level rise, temperature changes, and damaged infrastructure, leading to more food loss due to spoiling. Trade could be impacted by poor quality and lower product volumes, increasing sourcing costs and adding to price volatility. Less food availability will ultimately impact the cost of rice as the consumer level."
+      ],
+      "banner_image":"/images/adaptation/banner_images/transport_rice.png"
+    }
+  }
+  ,
+  {
+    "id": "Rainfall_Variability",
+    "label": "Rainfall Variability",
+    "content": "As climate change reshapes agriculture, resilient crops offer a lifeline to farmers. These innovative solutions are designed to withstand droughts, heat, and floods—ensuring food security, sustainable livelihoods, and a healthier planet. Discover how science and tradition are coming together to build a brighter future for farming.",
+    "blogs": [
+    
+        {
+          "id": "blog_474",
+          "title": "Climate Risk and Vulnerability (CR&V) Assessment for Climate Services: Rice Production and Value Chain",
+          "tags": [
+            { "icon": "/images/icons/location.svg", "label": "Vietnam" },
+            { "icon": "/images/icons/rice_icon.svg", "label": "Rice" }
+          ],
+          "links": [
+            { "icon": "/images/icons/link.svg", "label": "Increased Temperatures", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "Rainfall Variability", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "High Humidity", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "Drought", "href": "#" }
+          ],
+          "journal": {
+            "icon": "/images/icons/globe.svg",
+            "label": "Report 2023 (English)",
+            "href": "https://cgspace.cgiar.org/server/api/core/bitstreams/4900e31d-191e-43ea-8176-f10eae536f12/content#:~:text=Climate%20variability%20and%20changes%20not%20only%20threaten%20the,income%20for%20the%20actors%20along%20the%20value%20chain.",
+            "sendIcon": "/images/icons/Send.svg"
+          }
+        },
+        {
+          "id": "blog_475",
+          "title": "Understanding Climate Change Adaptation for Smallholders/Marginal Farmers and Quantifying its Impact on Agri-allied Value Chains in Indo-Gangetic Plains",
+          "tags": [
+            { "icon": "/images/icons/location.svg", "label": "Global" },
+            { "icon": "/images/icons/rice_icon.svg", "label": "Rice/Cotton" }
+          ],
+          "links": [
+            { "icon": "/images/icons/link.svg", "label": "Increased Temperatures", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "Rainfall Variability", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "Flooding", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "Water Stress", "href": "#" }
+          ],
+          "journal": {
+            "icon": "/images/icons/globe.svg",
+            "label": "Journal article, 2021 (English)",
+            "href": "https://www.undp.org/sites/g/files/zskgke326/files/2023-07/climate_change_adaptation_in_agri_value_chains.pdf",
+            "sendIcon": "/images/icons/Send.svg"
+          }
+        },
+        {
+          "id": "blog_476",
+          "title": "Enabling Climate Risk Management Along Agricultural Value Chains: Insights from the rice value chain in Uganda",
+          "tags": [
+            { "icon": "/images/icons/location.svg", "label": "Uganda" },
+            { "icon": "/images/icons/rice_icon.svg", "label": "Rice" }
+          ],
+          "links": [
+            { "icon": "/images/icons/link.svg", "label": "Increased Temperatures", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "Rainfall Variability", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "High Humidity", "href": "#" }
+          ],
+          "journal": {
+            "icon": "/images/icons/globe.svg",
+            "label": "Report, 2016 (English)",
+            "href": "https://www.jstor.org/stable/resrep17132",
+            "sendIcon": "/images/icons/Send.svg"
+          }
+        }
+            
+    ]
+  },
+  {
+    "id": "Temperature",
+    "label": "Increased Temperature",
+    "content": "Rising temperatures are a major concern for agriculture. Understanding how crops respond to these changes and developing solutions that enhance resilience are critical to ensuring food security in a warming world.",
+    "blogs": [
+    
+        {
+          "id": "blog_481",
+          "title": "Climate Risk and Vulnerability (CR&V) Assessment for Climate Services: Rice Production and Value Chain",
+          "tags": [
+            { "icon": "/images/icons/location.svg", "label": "Vietnam" },
+            { "icon": "/images/icons/rice_icon.svg", "label": "Rice" }
+          ],
+          "links": [
+            { "icon": "/images/icons/link.svg", "label": "Increased Temperatures", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "Rainfall Variability", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "High Humidity", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "Drought", "href": "#" }
+          ],
+          "journal": {
+            "icon": "/images/icons/globe.svg",
+            "label": "Report 2023 (English)",
+            "href": "https://cgspace.cgiar.org/server/api/core/bitstreams/4900e31d-191e-43ea-8176-f10eae536f12/content#:~:text=Climate%20variability%20and%20changes%20not%20only%20threaten%20the,income%20for%20the%20actors%20along%20the%20value%20chain.",
+            "sendIcon": "/images/icons/Send.svg"
+          }
+        },
+        {
+          "id": "blog_482",
+          "title": "Understanding Climate Change Adaptation for Smallholders/Marginal Farmers and Quantifying its Impact on Agri-allied Value Chains in Indo-Gangetic Plains",
+          "tags": [
+            { "icon": "/images/icons/location.svg", "label": "Global" },
+            { "icon": "/images/icons/rice_icon.svg", "label": "Rice/Cotton" }
+          ],
+          "links": [
+            { "icon": "/images/icons/link.svg", "label": "Increased Temperatures", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "Rainfall Variability", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "Flooding", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "Water Stress", "href": "#" }
+          ],
+          "journal": {
+            "icon": "/images/icons/globe.svg",
+            "label": "Journal article, 2021 (English)",
+            "href": "https://www.undp.org/sites/g/files/zskgke326/files/2023-07/climate_change_adaptation_in_agri_value_chains.pdf",
+            "sendIcon": "/images/icons/Send.svg"
+          }
+        },
+        {
+          "id": "blog_483",
+          "title": "Enabling Climate Risk Management Along Agricultural Value Chains: Insights from the rice value chain in Uganda",
+          "tags": [
+            { "icon": "/images/icons/location.svg", "label": "Uganda" },
+            { "icon": "/images/icons/rice_icon.svg", "label": "Rice" }
+          ],
+          "links": [
+            { "icon": "/images/icons/link.svg", "label": "Increased Temperatures", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "Rainfall Variability", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "High Humidity", "href": "#" }
+          ],
+          "journal": {
+            "icon": "/images/icons/globe.svg",
+            "label": "Report, 2016 (English)",
+            "href": "https://www.jstor.org/stable/resrep17132",
+            "sendIcon": "/images/icons/Send.svg"
+          }
+        }
+          
+    ]
+  },
+  {
+    "id": "Water_Stress",
+    "label": "Water Stress",
+    "content": "Water stress due to climate change is affecting crop production. Identifying water-efficient crops and improving irrigation techniques can help mitigate these effects and secure agricultural productivity.",
+    "blogs": [
+    
+        {
+          "id": "blog_496",
+          "title": "Understanding Climate Change Adaptation for Smallholders/Marginal Farmers and Quantifying its Impact on Agri-allied Value Chains in Indo-Gangetic Plains",
+          "tags": [
+            { "icon": "/images/icons/location.svg", "label": "Global" },
+            { "icon": "/images/icons/rice_icon.svg", "label": "Rice/Cotton" }
+          ],
+          "links": [
+            { "icon": "/images/icons/link.svg", "label": "Increased Temperatures", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "Rainfall Variability", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "Flooding", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "Water Stress", "href": "#" }
+          ],
+          "journal": {
+            "icon": "/images/icons/globe.svg",
+            "label": "Journal article, 2021 (English)",
+            "href": "https://www.undp.org/sites/g/files/zskgke326/files/2023-07/climate_change_adaptation_in_agri_value_chains.pdf",
+            "sendIcon": "/images/icons/Send.svg"
+          }
+        },
+        {
+          "id": "blog_497",
+          "title": "Pinoy Rice Knowledge Bank",
+          "tags": [
+            { "icon": "/images/icons/location.svg", "label": "Philippines" },
+            { "icon": "/images/icons/rice_icon.svg", "label": "Rice" }
+          ],
+          "links": [
+            { "icon": "/images/icons/link.svg", "label": "Water Stress", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "Drought", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "Pests and Diseases", "href": "#" }
+          ],
+          "journal": {
+            "icon": "/images/icons/globe.svg",
+            "label": "Website, 2022 (English)",
+            "href": "https://www.pinoyrice.com/",
+            "sendIcon": "/images/icons/Send.svg"
+          }
+        }
+          
+    ]
+  },
+  {
+    "id": "Drought",
+    "label": "Drought",
+    "content": "Drought due to climate change is affecting crop production. Identifying water-efficient crops and improving irrigation techniques can help mitigate these effects and secure agricultural productivity.",
+    "blogs": [
+      
+        {
+          "id": "blog_488",
+          "title": "Climate Risk and Vulnerability (CR&V) Assessment for Climate Services: Rice Production and Value Chain",
+          "tags": [
+            { "icon": "/images/icons/location.svg", "label": "Vietnam" },
+            { "icon": "/images/icons/rice_icon.svg", "label": "Rice" }
+          ],
+          "links": [
+            { "icon": "/images/icons/link.svg", "label": "Increased Temperatures", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "Rainfall Variability", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "High Humidity", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "Drought", "href": "#" }
+          ],
+          "journal": {
+            "icon": "/images/icons/globe.svg",
+            "label": "Report 2023 (English)",
+            "href": "https://cgspace.cgiar.org/server/api/core/bitstreams/4900e31d-191e-43ea-8176-f10eae536f12/content#:~:text=Climate%20variability%20and%20changes%20not%20only%20threaten%20the,income%20for%20the%20actors%20along%20the%20value%20chain.",
+            "sendIcon": "/images/icons/Send.svg"
+          }
+        },
+        {
+          "id": "blog_489",
+          "title": "Pinoy Rice Knowledge Bank",
+          "tags": [
+            { "icon": "/images/icons/location.svg", "label": "Philippines" },
+            { "icon": "/images/icons/rice_icon.svg", "label": "Rice" }
+          ],
+          "links": [
+            { "icon": "/images/icons/link.svg", "label": "Water Stress", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "Drought", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "Pests and Diseases", "href": "#" },
+            { "icon": "/images/icons/link.svg", "label": "Flooding", "href": "#" }
+          ],
+          "journal": {
+            "icon": "/images/icons/globe.svg",
+            "label": "Website, 2022 (English)",
+            "href": "https://www.pinoyrice.com/",
+            "sendIcon": "/images/icons/Send.svg"
+          }
+        }
+            
+    ]
+  },
+  {
+    "id": "Flooding",
+    "label": "Flooding",
+    "content": "Flooding due to climate change is affecting crop production. Identifying water-efficient crops and improving irrigation techniques can help mitigate these effects and secure agricultural productivity.",
+    "blogs": [
+      {
+        "id": "blog_475",
+        "title": "Understanding Climate Change Adaptation for Smallholders/Marginal Farmers and Quantifying its Impact on Agri-allied Value Chains in Indo-Gangetic Plains",
+        "tags": [
+          { "icon": "/images/icons/location.svg", "label": "Global" },
+          { "icon": "/images/icons/rice_icon.svg", "label": "Rice/Cotton" }
+        ],
+        "links": [
+          { "icon": "/images/icons/link.svg", "label": "Increased Temperatures", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Rainfall Variability", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Flooding", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Water Stress", "href": "#" }
+        ],
+        "journal": {
+          "icon": "/images/icons/globe.svg",
+          "label": "Journal article, 2021 (English)",
+          "href": "https://www.undp.org/sites/g/files/zskgke326/files/2023-07/climate_change_adaptation_in_agri_value_chains.pdf",
+          "sendIcon": "/images/icons/Send.svg"
+        }
+      },
+{
+        "id": "blog_482",
+        "title": "Understanding Climate Change Adaptation for Smallholders/Marginal Farmers and Quantifying its Impact on Agri-allied Value Chains in Indo-Gangetic Plains",
+        "tags": [
+          { "icon": "/images/icons/location.svg", "label": "Global" },
+          { "icon": "/images/icons/rice_icon.svg", "label": "Rice/Cotton" }
+        ],
+        "links": [
+          { "icon": "/images/icons/link.svg", "label": "Increased Temperatures", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Rainfall Variability", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Flooding", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Water Stress", "href": "#" }
+        ],
+        "journal": {
+          "icon": "/images/icons/globe.svg",
+          "label": "Journal article, 2021 (English)",
+          "href": "https://www.undp.org/sites/g/files/zskgke326/files/2023-07/climate_change_adaptation_in_agri_value_chains.pdf",
+          "sendIcon": "/images/icons/Send.svg"
+        }
+      },
+{
+        "id": "blog_496",
+        "title": "Understanding Climate Change Adaptation for Smallholders/Marginal Farmers and Quantifying its Impact on Agri-allied Value Chains in Indo-Gangetic Plains",
+        "tags": [
+          { "icon": "/images/icons/location.svg", "label": "Global" },
+          { "icon": "/images/icons/rice_icon.svg", "label": "Rice/Cotton" }
+        ],
+        "links": [
+          { "icon": "/images/icons/link.svg", "label": "Increased Temperatures", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Rainfall Variability", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Flooding", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Water Stress", "href": "#" }
+        ],
+        "journal": {
+          "icon": "/images/icons/globe.svg",
+          "label": "Journal article, 2021 (English)",
+          "href": "https://www.undp.org/sites/g/files/zskgke326/files/2023-07/climate_change_adaptation_in_agri_value_chains.pdf",
+          "sendIcon": "/images/icons/Send.svg"
+        }
+      },
+  {
+        "id": "blog_489",
+        "title": "Pinoy Rice Knowledge Bank",
+        "tags": [
+          { "icon": "/images/icons/location.svg", "label": "Philippines" },
+          { "icon": "/images/icons/rice_icon.svg", "label": "Rice" }
+        ],
+        "links": [
+          { "icon": "/images/icons/link.svg", "label": "Water Stress", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Drought", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Pests and Diseases", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Flooding", "href": "#" }
+        ],
+        "journal": {
+          "icon": "/images/icons/globe.svg",
+          "label": "Website, 2022 (English)",
+          "href": "https://www.pinoyrice.com/",
+          "sendIcon": "/images/icons/Send.svg"
+        }
+      }
+    ]
+  },
+  {
+    "id": "Pests_and_Diseases",
+    "label": "Pests and Diseases",
+    "content": "Changes to climate can result in more frequent and severe outbreaks of pests, including in locations outside their expected ranges. This can make them harder to contain and significantly influence yield and quality.",
+    "blogs": [
+      {
+        "id": "blog_499",
+        "title": "Pinoy Rice Knowledge Bank",
+        "tags": [
+          { "icon": "/images/icons/location.svg", "label": "Philippines" },
+          { "icon": "/images/icons/rice_icon.svg", "label": "Rice" }
+        ],
+        "links": [
+          { "icon": "/images/icons/link.svg", "label": "Water Stress", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Drought", "href": "#" },
+          { "icon": "/images/icons/link.svg", "label": "Pests and Diseases", "href": "#" }
+        ],
+        "journal": {
+          "icon": "/images/icons/globe.svg",
+          "label": "Website, 2022 (English)",
+          "href": "https://www.pinoyrice.com/",
+          "sendIcon": "/images/icons/Send.svg"
+        }
+      }
+    ]
+    
+  }
+]

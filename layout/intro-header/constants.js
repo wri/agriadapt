@@ -8,6 +8,15 @@ import coffeeImage from 'public/images/components/layout/intro-header/coffee/int
 import coffeeBlob from 'public/images/components/layout/intro-header/coffee/intro-coffee-blob.svg';
 import cottonImage from 'public/images/components/layout/intro-header/cotton/intro-cotton-image.jpg';
 import cottonBlob from 'public/images/components/layout/intro-header/cotton/intro-cotton-blob.svg';
+import adaptImage from 'public/images/adaptation/intro.png';
+import adaptBlob from 'public/images/adaptation/adapt-vector.png';
+import cropImagerice from 'public/images/adaptation/rice_image.png';
+import cropImagecotton from 'public/images/adaptation/cotton image.png';
+import cropBlob from 'public/images/components/layout/intro-header/landing/intro-landing-blob.svg';
+import storageimagerice from 'public/images/adaptation/storage_cotton.png';
+import storageimagecotton from 'public/images/adaptation/transport-rice.png';
+import storageimagec from 'public/images/adaptation/storage-cotton-image.png';
+import transportimagec from 'public/images/adaptation/transport-cotton.png';
 
 const ABOUT = {
   id: 'ABOUT',
@@ -16,6 +25,70 @@ const ABOUT = {
   image: aboutImage,
   blob: aboutBlob,
 };
+const ADAPT = {
+  id: 'ADAPTATION',
+  title: 'intro.title',
+  description: ['intro.description.0'],
+  image: adaptImage,
+  blob: adaptBlob,
+};
+
+const INPUT = {
+  id: 'INPUT',
+  title: 'Inputs and Production',
+  description: ['Browse through our adaptation informationClimate change will cause a great strain on crucial inputs such as water and labor. Rainfall variability and drought impact water availability and can result in harvest losses and poor crop quality. Increased temperatures will cause unsafe working conditions, causing workers to lose income and resulting in decreased labor productivity. More frequent extreme weather events such as flooding will also harm crop quality and quantity. All of these impacts and more will ultimately effect incomes for workers in these value chain nodes.'],
+  image: adaptImage,
+  blob: adaptBlob,
+};
+
+const STORAGE = {
+  id: 'STORAGE',
+  title: 'Storage and Processing',
+  description: ['Growing climate hazards will increase the risks of mold, insect infestation, fungi and diseases for rice storage, negatively impacting quality and quantity of processed products. Increased temperatures can result in unsafe facility working conditions, causing workers to lose income and resulting in decreased labor productivity.'],
+  image: storageimagerice,
+  blob: adaptBlob,
+};
+
+const TRANSPORT = {
+  id: 'TRANSPORT',
+  title: 'Transport, Trade, and Sales',
+  description: ['Climate change will pose new challenges for transportation due to sea level rise, temperature changes, and damaged infrastructure, leading to more food loss due to spoiling. Trade could be impacted by poor quality and lower product volumes, increasing sourcing costs and adding to price volatility. Less food availability will ultimately impact the cost of rice as the consumer level.'],
+  image: storageimagecotton,
+  blob: adaptBlob,
+};
+const STORAGECOTTON = {
+  id: 'STORAGE',
+  title: 'Storage and Processing',
+  description: ['Growing climate hazards will increase the risks of mold, insect infestation, fungi and diseases for rice storage, negatively impacting quality and quantity of processed products. Increased temperatures can result in unsafe facility working conditions, causing workers to lose income and resulting in decreased labor productivity.'],
+  image: storageimagec,
+  blob: adaptBlob,
+};
+
+const TRANSPORTCOTTON = {
+  id: 'TRANSPORT',
+  title: 'Transport, Trade, and Sales',
+  description: ['Climate change will pose new challenges for transportation due to sea level rise, temperature changes, and damaged infrastructure, leading to more food loss due to spoiling. Trade could be impacted by poor quality and lower product volumes, increasing sourcing costs and adding to price volatility. Less food availability will ultimately impact the cost of rice as the consumer level.'],
+  image: transportimagec,
+  blob: adaptBlob,
+};
+
+const CROPSRICE ={
+  id: 'CROPSRICE',
+  title: 'Rice',
+  subtitle: 'Adapting Rice Value Chains for Climate Resilience',
+  description: ['Temperature increases, rising sea levels, and changes in rainfall patterns could lead to substantial impacts on land and water resources needed for reliable rice production. Continuous groundwater extraction for rice paddy irrigation is already resulting in a steep decline in groundwater availability.  ','Further along the value chain, climate change can cause an increased risk of mold, insect infestation, fungi and diseases that could negatively affect processing and storage. These impacts ultimately influence the quality and quantity of rice produced, which can result in price volatility and lower food availability.'],
+  image: cropImagerice,
+  blob: cropBlob,
+}
+const CROPSCOTTON ={
+  id: 'CROPSCOTTON',
+  title: 'Cotton',
+  subtitle: 'Adapting Cotton Value Chains for Climate Resilience',
+  description: ['adaptation:intro_cotton.description_cotton.0'],
+  image: cropImagecotton,
+  blob: cropBlob,
+}
+
 
 const LANDING = {
   id: 'LANDING',
@@ -25,6 +98,10 @@ const LANDING = {
   blob: landingBlob,
   button: {
     label: 'intro.button_label',
+    label2: 'intro.button_explore_label',
+    url2: {
+      pathname: '/adaptations',
+    },
     url: {
       pathname: '/explore',
       query: {
@@ -60,6 +137,12 @@ const LANDING = {
       },
     },
   },
+  button2:{
+    label:'intro.button_label2',
+    url: {
+      pathname: '/explore',
+    }
+  }
 };
 
 const RICE = {
@@ -89,4 +172,4 @@ const COFFEE = {
   blob: coffeeBlob,
 };
 
-export { ABOUT, LANDING, RICE, COTTON, COFFEE };
+export { ABOUT, LANDING, RICE, COTTON, COFFEE,ADAPT,CROPSRICE,CROPSCOTTON,INPUT,STORAGE,TRANSPORT,STORAGECOTTON,TRANSPORTCOTTON };
