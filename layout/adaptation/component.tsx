@@ -74,6 +74,7 @@ const LayoutAdapt = ({ data, error }) => {
                      <div className="info-container -adaptation">
                        <h2>{t(data.Seo_details.Meta_title)} </h2>
                        <p className="description">{t(data.Seo_details.Meta_description)} </p>
+                       <p className='beta_ver'>{t(data.Seo_details.beta_version)}</p>
                      </div>
                    </div>
                  </div>
