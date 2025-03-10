@@ -37,6 +37,22 @@ export const APP_HEADER_ITEMS = [
     ],
   },
   {
+    id: 'adaptation',
+    label: 'header:adaptation',
+    href: '/adaptations',
+    root: '/adaptations',
+    children: [
+      {
+        label: 'header:Rice',
+        href: '/adaptations/rice',
+      },
+      {
+        label: 'header:Cotton',
+        href: '/adaptations/cotton',
+      }
+    ],
+  },
+  {
     id: 'about',
     label: 'header:about',
     href: '/about',

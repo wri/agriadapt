@@ -15,6 +15,7 @@ $about-vector-mask: url('/images/components/layout/intro-header/about-vector-mas
   position: relative;
   width: 100%;
   z-index: 1;
+  @media screen and (max-width:767px){padding: 0 30px;}
 
   @media screen and (min-width: map-get($breakpoints, medium)) {
     position: absolute;
@@ -24,6 +25,7 @@ $about-vector-mask: url('/images/components/layout/intro-header/about-vector-mas
     position: absolute;
     top: 30%;
   }
+  .landing_btn{gap: 16px;}
 }
 
 .visual-container {
@@ -83,14 +85,17 @@ $about-vector-mask: url('/images/components/layout/intro-header/about-vector-mas
 
   &.-rice {
     max-width: calc(95% * 622 / 799);
+    img{height:100% !important}
   }
 
   &.-coffee {
     max-width: calc(95% * 622 / 799);
+    img{height:100% !important}
   }
 
   &.-cotton {
     max-width: calc(95% * 622 / 799);
+    img{height:100% !important}
   }
 }
 
@@ -162,3 +167,7 @@ $about-vector-mask: url('/images/components/layout/intro-header/about-vector-mas
     }
   }
 }
+
+
+
+.beta_ver{font-style: italic;font-size: 12px;}

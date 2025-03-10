@@ -1,18 +1,19 @@
 {
   "intro": {
-    "title": "How is climate change impacting agriculture? AgriAdapt helps agricultural businesses understand and face this challenge",
-    "subtitle": "Free information and tools to strengthen agriculture",
-    "button_label": "Analyze Risks in Your Location"
+    "title": "How can those who depend on agricultural value chains understand climate risks and build resilience?",
+    "subtitle": "AgriAdapt is a free platform that makes it easier to understand the challenges agricultural value chains face and learn about options to build resilience.",
+    "button_label": "Analyze Risks in Your Location",
+    "button_explore_label":"Explore adaptation resources"
   },
   "sub_intro": {
-    "title": "Reliable, verified information to make better decisions in agriculture",
-    "subtitle": "We deliver free climate information to inform decisions for agriculture businesses – small and large – to adapt in the face of climate change.",
+    "title": "Reliable, verified information to understand climate risks and build the resilience of agricultural value chains.",
+    "subtitle": "AgriAdapt delivers free global climate risk information to assist stakeholders in agricultural value chains to adapt to climate change.",
     "button_label": "Explore the Map",
     "image_alt": "Map Explore"
   },
   "value_chain_cards": {
-    "title": "The value chain of each crop faces unique risks",
-    "subtitle": "Learn more about how climate change affects various crops",
+    "title": "AgriAdapt also offers more specific information tailored to select value chains",
+    "subtitle": "Learn more about how climate change affects the value chains of the following crops",
     "bottons": {
       "coffee_card": {
         "coffee_title": "Coffee",
@@ -28,10 +29,25 @@
       }
     }
   },
+  "value_chain_cards_crops": {
+    "subtitle": "Learn more about adaptation resources for the value chains of the following crops",
+    "bottons": {
+      "rice_card": {
+        "rice_title": "Rice",
+        "rice_button": "Explore adaptation resources for the rice value chain"
+      },
+      "cotton_card": {
+        "cotton_title": "Cotton",
+        "cotton_button": "Explore adaptation resources for the cotton value chain"
+      }
+    
+    }
+  },
+  
   "map_analysis_carousel": {
     "title": "Quick Start!",
     "image_alt": "Analysis Map",
-    "subtitle": "Begin exploring climate threats for agriculture with these data recommendations from our specialists",
+    "subtitle": "Begin exploring climate threats to select agricultural value chains with these data recommendations from our specialists.",
     "content": [
       "Understand how cotton production is exposed to water stress.",
       "Droughts and floods put rice in danger, impacting the entire value chain.",
@@ -41,7 +57,7 @@
   },
   "landing_to_about": {
     "title": "Learn more about the project",
-    "subtitle": "The Agricultural Adaptation Tool project is an initiative by World Resources Institute. The beta version of the tool has been funded by the Walmart Foundation.",
+    "subtitle": "AgriAdapt is an initiative of the World Resources Institute. This beta version of the tool is funded by the Walmart Foundation.",
     "button_label": "Read More"
   }
 }

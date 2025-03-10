@@ -1,0 +1,399 @@
+{
+  "data": {
+    "id": 37,
+    "documentId": "y48v1v14b9iwflkh5w1lkwot",
+    "createdAt": "2025-01-21T08:03:46.495Z",
+    "updatedAt": "2025-02-13T07:41:37.158Z",
+    "publishedAt": "2025-02-13T07:41:37.229Z",
+    "Seo_details": {
+      "id": 39,
+      "Meta_title": "How is climate change impacting agricultural value chains?",
+      "Meta_description": "AgriAdapt helps farmers and those who provide inputs and work in processing, storage, transport and distribution to understand and face these challenges.",
+      "beta_version":"The adaptation resources in this site is a beta version and only includes adaptations for rice and cotton in India",
+      "Og_image": {
+        "id": 17,
+        "documentId": "n4dm5h3s6jkc1xol1ej5grw1",
+        "name": "left-vector-mask.svg.png",
+        "alternativeText": null,
+        "caption": null,
+        "width": 677,
+        "height": 729,
+        "formats": {
+          "small": {
+            "ext": ".png",
+            "url": "/uploads/small_left_vector_mask_svg_6c11777ce9.png",
+            "hash": "small_left_vector_mask_svg_6c11777ce9",
+            "mime": "image/png",
+            "name": "small_left-vector-mask.svg.png",
+            "path": null,
+            "size": 580.61,
+            "width": 464,
+            "height": 500,
+            "sizeInBytes": 580605
+          },
+          "thumbnail": {
+            "ext": ".png",
+            "url": "/uploads/thumbnail_left_vector_mask_svg_6c11777ce9.png",
+            "hash": "thumbnail_left_vector_mask_svg_6c11777ce9",
+            "mime": "image/png",
+            "name": "thumbnail_left-vector-mask.svg.png",
+            "path": null,
+            "size": 58.81,
+            "width": 145,
+            "height": 156,
+            "sizeInBytes": 58810
+          }
+        },
+        "hash": "left_vector_mask_svg_6c11777ce9",
+        "ext": ".png",
+        "mime": "image/png",
+        "size": 348.45,
+        "url": "/uploads/left_vector_mask_svg_6c11777ce9.png",
+        "previewUrl": null,
+        "provider": "local",
+        "provider_metadata": null,
+        "createdAt": "2025-01-30T06:01:22.629Z",
+        "updatedAt": "2025-01-30T06:01:22.629Z",
+        "publishedAt": "2025-01-30T06:01:22.630Z"
+      }
+    },
+    "Banner_section": {
+      "id": 37,
+      "Heading": "How is climate change impacting agriculture? AgriAdapt helps agricultural businesses understand and face this challenge?",
+      "Sub_heading": "Browse through our adaptation information",
+      "Banner_image": {
+        "id": 1,
+        "documentId": "u1iuki1nmc4tyucpbc7xbsuk",
+        "name": "image (3).png",
+        "alternativeText": null,
+        "caption": null,
+        "width": 665,
+        "height": 723,
+        "formats": {
+          "small": {
+            "ext": ".png",
+            "url": "/uploads/small_image_3_ef6f76bfaa.png",
+            "hash": "small_image_3_ef6f76bfaa",
+            "mime": "image/png",
+            "name": "small_image (3).png",
+            "path": null,
+            "size": 477.04,
+            "width": 460,
+            "height": 500,
+            "sizeInBytes": 477044
+          },
+          "thumbnail": {
+            "ext": ".png",
+            "url": "/uploads/thumbnail_image_3_ef6f76bfaa.png",
+            "hash": "thumbnail_image_3_ef6f76bfaa",
+            "mime": "image/png",
+            "name": "thumbnail_image (3).png",
+            "path": null,
+            "size": 50.58,
+            "width": 143,
+            "height": 156,
+            "sizeInBytes": 50583
+          }
+        },
+        "hash": "image_3_ef6f76bfaa",
+        "ext": ".png",
+        "mime": "image/png",
+        "size": 276.57,
+        "url": "/uploads/image_3_ef6f76bfaa.png",
+        "previewUrl": null,
+        "provider": "local",
+        "provider_metadata": null,
+        "createdAt": "2025-01-21T08:03:10.847Z",
+        "updatedAt": "2025-01-21T08:03:10.847Z",
+        "publishedAt": "2025-01-21T08:03:10.850Z"
+      }
+    },
+    "Year_update": {
+      "id": 19,
+      "Title": "2025 Update",
+      "Description": "In this latest update to AgriAdapt since its beta launch in October 2022, project staff have responded to feedback from users by adding an adaptation “menu” to better support our ultimate goal of enhancing the climate resilience of people working in the most vulnerable parts of these supply chains. </br>\nThe Adaptation Resources page connects climate risks to relevant adaptation resources on the platform, bridging the gap between the climate risk data AgriAdapt provides and potential interventions."
+    },
+    "Methodology": {
+      "id": 37,
+      "Image_description": null,
+      "Main_title": "Methodology",
+      "Description": "The AgriAdapt research team identified adaptation resources for the rice and cotton value chains globally, with a special focus on India. We delved into primarily English language literature from 2009 to 2024 to provide an overview of potential adaptation measures for these target value chains. We included both peer reviewed resources and non-peer reviewed information such as reports, working papers, videos and government agency guidance.  </br>\nWe found few peer-reviewed studies on adaptation beyond the farm level – a data gap that suggests the need for further research on adaptation measures for value chain nodes other than production.  </br>\nOur partners in India, the National Agro Foundation and Tamil Nadu Agricultural University, supported the development of this feature by contributing to the resource list and facilitating stakeholder engagement to gather feedback on design and content. ",
+      "Note_text": "WRI does not endorse specific practices. Instead, this menu provides information to help inform decision-making and to direct users to additional information on adaptation options.",
+      "Please_note_text": "Please note:",
+      "Image": {
+        "id": 20,
+        "documentId": "cysx8hp4hhe2nk6rdskbxj36",
+        "name": "image (3).png",
+        "alternativeText": null,
+        "caption": null,
+        "width": 478,
+        "height": 377,
+        "formats": {
+          "thumbnail": {
+            "ext": ".png",
+            "url": "/uploads/thumbnail_image_3_4f021a5579.png",
+            "hash": "thumbnail_image_3_4f021a5579",
+            "mime": "image/png",
+            "name": "thumbnail_image (3).png",
+            "path": null,
+            "size": 64.54,
+            "width": 198,
+            "height": 156,
+            "sizeInBytes": 64537
+          }
+        },
+        "hash": "image_3_4f021a5579",
+        "ext": ".png",
+        "mime": "image/png",
+        "size": 90.78,
+        "url": "/uploads/image_3_4f021a5579.png",
+        "previewUrl": null,
+        "provider": "local",
+        "provider_metadata": null,
+        "createdAt": "2025-01-30T11:07:40.222Z",
+        "updatedAt": "2025-01-30T11:07:40.222Z",
+        "publishedAt": "2025-01-30T11:07:40.223Z"
+      }
+    },
+    "How_to_use": {
+      "id": 37,
+      "Heading": "How to use",
+      "Sub_heading": null,
+      "Steps": [
+        {
+          "id": 145,
+          "Step_count": "STEP 1",
+          "Title": "Select a crop"
+        },
+        {
+          "id": 146,
+          "Step_count": "STEP 2",
+          "Title": "Select a value chain node"
+        },
+        {
+          "id": 147,
+          "Step_count": "STEP 3",
+          "Title": "Select climate risks"
+        },
+        {
+          "id": 148,
+          "Step_count": "STEP 4",
+          "Title": "Browse through adaptation resources"
+        }
+      ]
+    },
+    "Explore_adaptation": {
+      "id": 36,
+      "Title": "Explore adaptation resources by value chain node",
+      "Sub_title": null,
+      "explore_crop_adaptions": [
+        {
+          "id": 29,
+          "documentId": "xafevg9hl93tizjwndmutzy6",
+          "Title": "Rice",
+          "slug": "rice",
+          "Heading": "Rice",
+          "Sub_heading": "Adapting Rice Value Chains for Climate Resilience",
+          "Description": "Temperature increases, rising sea levels, and changes in rainfall patterns could lead to substantial impacts on land and water resources needed for reliable rice production. Continuous groundwater extraction for rice paddy irrigation is already resulting in a steep decline in groundwater availability. </br>\nFurther along the value chain, climate change can cause an increased risk of mold, insect infestation, fungi and diseases that could negatively affect processing and storage. These impacts ultimately influence the quality and quantity of rice produced, which can result in price volatility and lower food availability.",
+          "Explore_heading": "Explore Crop Adaptation Resources",
+          "explore_sub_heading": "Explore adaptation resources by value chain node",
+          "createdAt": "2025-01-21T10:15:44.425Z",
+          "updatedAt": "2025-02-19T15:06:11.199Z",
+          "publishedAt": "2025-02-19T15:06:11.236Z",
+          "card_image": {
+            "id": 18,
+            "documentId": "l9obcb4uzebvv06nnuw3t8hr",
+            "name": "image (1).png",
+            "alternativeText": null,
+            "caption": null,
+            "width": 271,
+            "height": 157,
+            "formats": {
+              "thumbnail": {
+                "ext": ".png",
+                "url": "/uploads/thumbnail_image_1_ca3b7904ed.png",
+                "hash": "thumbnail_image_1_ca3b7904ed",
+                "mime": "image/png",
+                "name": "thumbnail_image (1).png",
+                "path": null,
+                "size": 101.85,
+                "width": 245,
+                "height": 142,
+                "sizeInBytes": 101853
+              }
+            },
+            "hash": "image_1_ca3b7904ed",
+            "ext": ".png",
+            "mime": "image/png",
+            "size": 36.6,
+            "url": "/images/adaptation/rice.png",
+            "previewUrl": null,
+            "provider": "local",
+            "provider_metadata": null,
+            "createdAt": "2025-01-30T09:41:13.386Z",
+            "updatedAt": "2025-01-30T11:03:19.339Z",
+            "publishedAt": "2025-01-30T09:41:13.388Z"
+          },
+          "Banner_image": {
+            "id": 18,
+            "documentId": "l9obcb4uzebvv06nnuw3t8hr",
+            "name": "image (1).png",
+            "alternativeText": null,
+            "caption": null,
+            "width": 271,
+            "height": 157,
+            "formats": {
+              "thumbnail": {
+                "ext": ".png",
+                "url": "/uploads/thumbnail_image_1_ca3b7904ed.png",
+                "hash": "thumbnail_image_1_ca3b7904ed",
+                "mime": "image/png",
+                "name": "thumbnail_image (1).png",
+                "path": null,
+                "size": 101.85,
+                "width": 245,
+                "height": 142,
+                "sizeInBytes": 101853
+              }
+            },
+            "hash": "image_1_ca3b7904ed",
+            "ext": ".png",
+            "mime": "image/png",
+            "size": 36.6,
+            "url": "/uploads/image_1_ca3b7904ed.png",
+            "previewUrl": null,
+            "provider": "local",
+            "provider_metadata": null,
+            "createdAt": "2025-01-30T09:41:13.386Z",
+            "updatedAt": "2025-01-30T11:03:19.339Z",
+            "publishedAt": "2025-01-30T09:41:13.388Z"
+          },
+          "Learn_more": {
+            "id": 46,
+            "Button_Text": "Learn More",
+            "Button_url": "#"
+          }
+        },
+        {
+          "id": 30,
+          "documentId": "s1u2fbkmlhzb6qy1vuuo5zme",
+          "Title": "Cotton",
+          "slug": "cotton",
+          "Heading": null,
+          "Sub_heading": "Adapting Cotton Value Chains for Climate Resilience",
+          "Description": "The cotton value chain is likely to experience disruptions due to climate change impacts such as shifts in irrigation water availability, changing rainfall patterns, and rising temperatures. Cotton's lengthy growing season (approximately 150-180 days) already makes the crop quite vulnerable to pests and diseases, and higher temperatures will increase its susceptibility. Higher moisture and increased humidity impact the weight of cotton bales and fiber content, which negatively impacts the quality of the product when it reaches the processing stage.",
+          "Explore_heading": "Explore Crop Adaptation Resources",
+          "explore_sub_heading": "Explore adaptation resources by value chain node",
+          "createdAt": "2025-01-21T10:37:50.892Z",
+          "updatedAt": "2025-02-19T15:19:54.930Z",
+          "publishedAt": "2025-02-19T15:19:54.958Z",
+          "card_image": {
+            "id": 19,
+            "documentId": "b6873l3m9ggx5v90uot8f3im",
+            "name": "image (2).png",
+            "alternativeText": null,
+            "caption": null,
+            "width": 271,
+            "height": 157,
+            "formats": {
+              "thumbnail": {
+                "ext": ".png",
+                "url": "/uploads/thumbnail_image_2_19c62b64a2.png",
+                "hash": "thumbnail_image_2_19c62b64a2",
+                "mime": "image/png",
+                "name": "thumbnail_image (2).png",
+                "path": null,
+                "size": 92.85,
+                "width": 245,
+                "height": 142,
+                "sizeInBytes": 92847
+              }
+            },
+            "hash": "image_2_19c62b64a2",
+            "ext": ".png",
+            "mime": "image/png",
+            "size": 32.75,
+            "url": "/images/adaptation/cotton.png",
+            "previewUrl": null,
+            "provider": "local",
+            "provider_metadata": null,
+            "createdAt": "2025-01-30T09:41:28.497Z",
+            "updatedAt": "2025-02-19T14:11:54.247Z",
+            "publishedAt": "2025-01-30T09:41:28.497Z"
+          },
+          "Banner_image": {
+            "id": 28,
+            "documentId": "pjjcprojepwrau7wd8lfcr8n",
+            "name": "Cotton.jpg",
+            "alternativeText": null,
+            "caption": null,
+            "width": 426,
+            "height": 548,
+            "formats": {
+              "small": {
+                "ext": ".jpg",
+                "url": "/uploads/small_Cotton_c307619124.jpg",
+                "hash": "small_Cotton_c307619124",
+                "mime": "image/jpeg",
+                "name": "small_Cotton.jpg",
+                "path": null,
+                "size": 40.75,
+                "width": 389,
+                "height": 500,
+                "sizeInBytes": 40748
+              },
+              "thumbnail": {
+                "ext": ".jpg",
+                "url": "/uploads/thumbnail_Cotton_c307619124.jpg",
+                "hash": "thumbnail_Cotton_c307619124",
+                "mime": "image/jpeg",
+                "name": "thumbnail_Cotton.jpg",
+                "path": null,
+                "size": 7.02,
+                "width": 121,
+                "height": 156,
+                "sizeInBytes": 7024
+              }
+            },
+            "hash": "Cotton_c307619124",
+            "ext": ".jpg",
+            "mime": "image/jpeg",
+            "size": 46.97,
+            "url": "/uploads/Cotton_c307619124.jpg",
+            "previewUrl": null,
+            "provider": "local",
+            "provider_metadata": null,
+            "createdAt": "2025-02-19T15:19:47.782Z",
+            "updatedAt": "2025-02-19T15:19:47.782Z",
+            "publishedAt": "2025-02-19T15:19:47.783Z"
+          },
+          "Learn_more": null
+        }
+      ]
+    }
+  },
+  "meta": {},
+
+"CROPS": {
+  "rice": {
+    "name": "Explore Crop Adaptation Resources",
+    "description": "Explore adaptation resources by value chain node",
+    "title1": "Inputs and Production",
+    "title2": "Storage and Processing",
+    "title3": "Transport, Trade, and Sales",
+    "descript1": "Explore educational adaptation resources related to inputs (such as water) and farm-level production practices",
+    "descript2": "Discover adaptation materials for storage and processing best practices",
+    "descript3": "Access resources on adaptation options for the transportation, trade, and sale of rice"
+  },
+  "cotton": {
+    "name": "Explore Crop Adaptation Resources",
+    "description": "Explore adaptation resources by value chain node",
+    "title1": "Inputs and Production",
+    "title2": "Storage and Processing",
+    "title3": "Transport, Trade, and Sales",
+    "descript1": "Explore educational adaptation resources related to inputs (such as water) and farm-level production practices",
+    "descript2": "Discover adaptation materials for storage and processing best practices",
+    "descript3": "Access resources on adaptation options for the transportation, trade, and sale of cotton"
+  }
+}
+}

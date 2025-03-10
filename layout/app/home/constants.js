@@ -49,6 +49,27 @@ const VALUECHAINS = {
   ],
 };
 
+const VALUECHAINSCROP = {
+  title: 'landing:value_chain_cards_crops.title',
+  subTitle: 'landing:value_chain_cards_crops.subtitle',
+  chains: [
+    {
+      label: 'common:value_chains.rice',
+      button_label:
+        'landing:value_chain_cards_crops.bottons.rice_card.rice_button',
+      image: riceImage,
+      href: '/rice',
+    },
+    {
+      label: 'common:value_chains.cotton',
+      button_label:
+        'landing:value_chain_cards_crops.bottons.cotton_card.cotton_button',
+      image: cottonImage,
+      href: '/cotton',
+    }
+  ],
+};
+
 const ANALYSIS = {
   // title: 'Overlay risk information to reveal potential impacts of hazards.',
   title: 'landing:map_analysis_carousel.title',
@@ -153,4 +174,4 @@ const LEARN = {
   image: aboutImage,
 };
 
-export { MAP, VALUECHAINS, ANALYSIS, LEARN };
+export { MAP, VALUECHAINS, ANALYSIS, LEARN ,VALUECHAINSCROP};

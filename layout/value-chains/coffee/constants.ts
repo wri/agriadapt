@@ -159,6 +159,10 @@ const trade = {
     // widgets: [{ id: '96622815-7e6b-4d15-97cc-3ca3bc1a5c98' }],
     widgets: [coffee_import_widget],
   },
+  Roads: {
+    info: 'trade.coffee_roads.info',
+    // widgets: [cotton_import_widget],
+  },
 };
 
 const details = { inputs, production, trade };

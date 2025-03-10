@@ -44,7 +44,7 @@ const LayoutCrop = ({
   return (
     // TODO: Translate
     <Layout title={`${capitalizeFirstLetter(crop)} (${country.label})`}>
-      <div className="l-crop">
+      <div className="l-crop chevron_next_div">
         <IntroHeader crop={crop} {...header} countries={countries} />
         <div className="l-container">
           <div className="row">

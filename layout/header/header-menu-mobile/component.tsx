@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Link from 'next/link';
@@ -12,12 +12,13 @@ import { APP_HEADER_ITEMS } from 'layout/header/constants';
 import { useTranslation } from 'next-i18next';
 
 const HeaderMenuMobile = ({ header, setMobileOpened }) => {
-
   const { t } = useTranslation(['header', 'common']);
-
   const { mobileOpened } = header;
 
-  const classNames = classnames({ '-opened': mobileOpened });
+  // State to manage the "clicked" class
+  const [clicked, setClicked] = useState(false);
+
+  const classNames = classnames({ '-openeds': mobileOpened, '-opened': clicked });
 
   useEffect(() => {
     document.body.classList.toggle('no-scroll', mobileOpened);
@@ -26,44 +27,49 @@ const HeaderMenuMobile = ({ header, setMobileOpened }) => {
   const router = useRouter();
   const { pathname, query, asPath } = router;
 
-  const changeLanguage = (locale: string) => {
+  const changeLanguage = (locale) => {
     router.push({ pathname, query }, asPath, { locale });
     setMobileOpened(false);
   };
 
+  const handleOpen = () => {
+    setMobileOpened(true);
+    setClicked(true); // Add the "-clicked" class
+  };
+
+  const handleClose = () => {
+    setMobileOpened(false);
+    setClicked(false); // Remove the "-clicked" class
+  };
 
   return (
     <div className="c-header-menu-mobile">
+      {/* Burger button to open the menu */}
       <button
         className="c-button -secondary -alt -compressed header-burger-button"
-        onClick={() => setMobileOpened(true)}
+        onClick={handleOpen}
       >
         {t('menu')}
       </button>
 
       <div className={`header-menu-mobile-content ${classNames}`}>
+        {/* Backdrop */}
         <button
           className={`c-button -clean header-menu-mobile-backdrop ${classNames}`}
-          onClick={() => setMobileOpened(false)}
+          onClick={handleClose}
         />
 
         <nav className={`header-menu-mobile-nav ${classNames}`}>
+          {/* Close button */}
           <button
             className="c-button -secondary -compressed -square header-close-button"
-            onClick={() => setMobileOpened(false)}
+            onClick={handleClose}
           >
             <Icon name="icon-cross" className="-smaller" />
           </button>
+
           <ul>
             {APP_HEADER_ITEMS.map((item) => {
-              // const isUserLogged = !!token;
-              // const isUserAdmin = isUserLogged && role === 'ADMIN';
-
-              // If user is defined and is not equal to the current token
-              // if (typeof item.user !== 'undefined' && item.user !== isUserLogged) return null;
-
-              // If admin user is defined and is not equal to the current token
-              // if (typeof item.admin !== 'undefined' && item.admin !== isUserAdmin) return null;
               const activeClassName = classnames({
                 '-active':
                   item.children &&

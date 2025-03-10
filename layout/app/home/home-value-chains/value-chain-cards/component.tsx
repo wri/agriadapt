@@ -6,6 +6,9 @@ import Link from 'next/link';
 import mobileBlob from 'public/images/components/layout/landing/value-chain-cards/mobile-blob.svg';
 
 import { VALUECHAINS } from '../../constants';
+import { VALUECHAINSCROP } from '../../constants';
+
+
 
 export const ValueChainCards = () => {
   const { t } = useTranslation(['landing', 'common']);
@@ -49,6 +52,52 @@ export const ValueChainCards = () => {
           ))}
         </div>
       </Media>
+
+
+      {/* explore crop pages */}
+      <div className='crop_detail_landing'>
+      <h3>{t(VALUECHAINSCROP.subTitle)}</h3>
+      <Media at="sm">
+        <div className="c-value-chain-cards">
+          <div className="c-mobile-blob">
+            <Image
+              unoptimized
+              loader={loader}
+              layout="fill"
+              src={mobileBlob}
+              alt="valuechain-blob"
+            />
+          </div>
+          {VALUECHAINSCROP.chains.map((c) => (
+            <Link href={`/adaptations/${c.href}`} key={c.label} passHref>
+              <a className="c-button -secondary">{t(c.label)}</a>
+            </Link>
+          ))}
+        </div>
+      </Media>
+
+      <Media greaterThanOrEqual="md">
+        <div className="c-value-chain-cards justify-content-start crop_chains">
+          {VALUECHAINSCROP.chains.map((c) => (
+            <div key={c.label} className={'value-chain-card'}>
+              <div className="c-image">
+                <Image loader={loader} src={c.image} alt={t(c.label)} />
+              </div>
+              <div className="c-value-chain-card-info">
+                <h2>{t(c.label)}</h2>
+                <Link passHref href={`/adaptations/${c.href}`}>
+                  <a className="c-button -secondary -fullwidth">
+                    {t(c.button_label)}
+                  </a>
+                </Link>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Media>
+      </div>
+
+
     </>
   );
 };

@@ -26,18 +26,38 @@ export const item_labels = {
   //   label: 'Changing Rainfall',
   //   icon: 'icon-pests-and-diseases',
   // },
-  policies_and_price: {
-    label: 'common:content.policies_and_price',
-    icon: 'icon-labor',
-  },
-  food_vulnerability: {
-    label: 'common:content.food_vulnerability',
-    icon: 'icon-labor',
-  },
+  // policies_and_price: {
+  //   label: 'common:content.policies_and_price',
+  //   icon: 'icon-labor',
+  // },
+  // food_vulnerability: {
+  //   label: 'common:content.food_vulnerability',
+  //   icon: 'icon-labor',
+  // },
   export_and_import: {
     label: 'common:content.export_and_import',
     icon: 'icon-labor',
   },
+  water:{
+    label: 'common:content.water',
+    icon: 'icon-labor',
+  },
+  Roads:{
+    label: 'common:content.Roads',
+    icon: 'icon-labor',
+  },
+  rice_water:{
+    label: 'common:content.rice_water',
+    icon: 'icon-labor',
+  },
+  rice_roads:{
+    label: 'common:content.rice_roads',
+    icon: 'icon-labor',
+  },
+  coffee_roads:{
+    label: 'common:content.coffee_roads',
+    icon: 'icon-labor',
+  }
 };
 
 export const chain_items = {
@@ -48,6 +68,8 @@ export const chain_items = {
       'seedlings',
       // 'fertilizer',
       'labor',
+      'water',
+      'rice_water'
     ],
   },
   production: {
@@ -65,6 +87,6 @@ export const chain_items = {
   // },
   trade: {
     label: { text: 'common:content.trade', icon: 'icon-trade' },
-    options: ['poliies_and_price', 'food_vulnerability', 'export_and_import'],
+    options: ['poliies_and_price', 'food_vulnerability', 'export_and_import','Roads','rice_roads','coffee_roads'],
   },
 };
