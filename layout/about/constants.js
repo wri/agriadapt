@@ -1,6 +1,7 @@
 import climaLogo from 'public/images/about/clima-y-cafe-logo.png';
 import nationalAgroLogo from 'public/images/about/national-agro-logo.png';
 import walmartFoundationLogo from 'public/images/about/walmart-foundation-logo.png';
+import logo_tnau from 'public/images/about/TNAU-Logo.png'
 
 const acknowledgements = {
   contributors: {
@@ -15,6 +16,11 @@ const acknowledgements = {
         name: 'National Agro Foundation Towards Rural Prosperity',
         image: nationalAgroLogo,
         href: 'http://www.nationalagro.org/',
+      },
+      {
+        name: 'Tami Nadu Agriculture University',
+        image: logo_tnau,
+        href: 'https://tnau.ac.in/site/about-us/',
       },
     ],
   },
