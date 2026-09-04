@@ -19,7 +19,7 @@ function AgriAdaptApp({ Component, pageProps }: AppProps) {
       <MediaContextProvider>
         <DeprecationBanner>
           Thank you for visting Agriadapt. This site is no longer being updated and will be archived in the coming months.
-          <br/>See <a href="https://www.wri.org/data/data-applications/" target="_blank">WRI's Applications Portfolio</a> or visit the <a href="https://datasets.wri.org/" target="_blank">Data Explorer</a> to browse WRI data.
+          <br/>See <a href="https://www.wri.org/data/data-applications/" target="_blank" rel="noreferrer">WRI's Applications Portfolio</a> or visit the <a href="https://datasets.wri.org/" target="_blank" rel="noreferrer">Data Explorer</a> to browse WRI data.
         </DeprecationBanner>
         <Component {...pageProps} />
         {/* <MaintenancePage /> */}
